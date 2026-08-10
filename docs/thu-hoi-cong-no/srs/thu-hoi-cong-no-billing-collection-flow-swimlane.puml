@@ -1,0 +1,117 @@
+@startuml
+!theme plain
+title Quy trình Billing và Thu hồi Công nợ CloudAZ
+
+|Console Hãng|
+|Hệ thống ERP|
+|Khách hàng|
+|Sales AM|
+|Kế toán|
+|HCNS|
+|Phòng Mua|
+|Legal|
+
+|Hệ thống ERP|
+start
+repeat
+  |Hệ thống ERP|
+  :Gọi API lấy dữ liệu tiêu dùng từ Console Hãng;
+  :Tính cước chi tiết cho Khách hàng;
+  :Gửi email bảng tính cước yêu cầu xác nhận;
+  |Khách hàng|
+  :Nhận email và kiểm tra chi tiết cước;
+  if (Xác nhận chi phí đúng?) then (Có sai lệch)
+    :Bấm phản hồi sai lệch cước;
+    |Sales AM|
+    :Nhận thông báo lệch cước;
+    :Phối hợp đối soát với Khách hàng và Kế toán;
+    |Kế toán|
+    :Cập nhật lại chính sách/dữ liệu cước trên ERP;
+  else (Chính xác)
+    :Bấm Xác nhận đúng chi phí;
+  endif
+repeat while (Khách hàng báo lệch cước?) is (Có) not (Không)
+
+|Hệ thống ERP|
+:Thông báo cho Kế toán xuất hóa đơn;
+|Kế toán|
+:Xuất hóa đơn điện tử trên phần mềm MISA;
+:Cập nhật thông tin hóa đơn lên ERP;
+|Hệ thống ERP|
+:Gửi email hóa đơn điện tử cho Khách hàng;
+note right
+  Bắt đầu tính Ngày 0 (Giai đoạn 0)
+  Hạn thanh toán là Ngày X
+end note
+
+|HCNS|
+:Gửi ĐNTT bản cứng qua chuyển phát nhanh;
+:Theo dõi bưu tá và cập nhật ngày nhận thành công lên ERP;
+
+|Hệ thống ERP|
+:Theo dõi trạng thái thanh toán;
+if (Khách hàng thanh toán trước Ngày X - 2?) then (Đã thanh toán)
+  |Hệ thống ERP|
+  :Ghi nhận thanh toán và đóng luồng;
+  stop
+else (Chưa thanh toán)
+  |Hệ thống ERP|
+  :Gửi email Alert cảnh báo (Ngày X - 2);
+  |Sales AM|
+  :Phối hợp nhắc Khách hàng thanh toán;
+endif
+
+|Hệ thống ERP|
+if (Khách hàng thanh toán trước Ngày X?) then (Đã thanh toán)
+  |Hệ thống ERP|
+  :Ghi nhận thanh toán và đóng luồng;
+  stop
+else (Chưa thanh toán)
+  |Hệ thống ERP|
+  :Gửi email Warning thông báo quá hạn (Ngày X + 1);
+  note right
+    Tần suất nhắc: 1 lần / ngày
+  end note
+  |Sales AM|
+  :Phối hợp nhắc nợ quá hạn;
+  :Cảnh báo rủi ro dừng dịch vụ;
+  |Legal|
+  :Chuẩn bị soạn thảo công văn thu hồi nợ;
+endif
+
+|Hệ thống ERP|
+if (Khách hàng thanh toán trước Ngày X + 3?) then (Đã thanh toán)
+  |Hệ thống ERP|
+  :Ghi nhận thanh toán và đóng luồng;
+  stop
+else (Chưa thanh toán)
+  |Hệ thống ERP|
+  :Gửi email yêu cầu dừng dịch vụ (Ngày X + 4);
+  |Phòng Mua|
+  :Tiến hành dừng cung cấp dịch vụ của Khách hàng;
+  :Gửi thông báo đã dừng dịch vụ cho các bên;
+  |Sales AM|
+  :Gửi email thông báo đã dừng dịch vụ cho Khách hàng;
+endif
+
+|Hệ thống ERP|
+if (Khách hàng thanh toán trong vòng 30 ngày (trước Ngày X + 30)?) then (Đã thanh toán)
+  |Sales AM|
+  if (Khách bị tạm dừng lần thứ 2?) then (Có)
+    :Yêu cầu Khách hàng đặt cọc trước;
+  else (Không)
+  endif
+  |Phòng Mua|
+  :Mở lại dịch vụ cho Khách hàng;
+  |Hệ thống ERP|
+  :Ghi nhận thanh toán và đóng luồng;
+  stop
+else (Chưa thanh toán)
+  |Legal|
+  :Soạn thảo văn bản chấm dứt HĐ (Ngày X + 15);
+  :Thực hiện thủ tục đơn phương chấm dứt HĐ (Ngày X + 30);
+  :Tiến hành các biện pháp pháp lý thu hồi nợ quá hạn;
+  stop
+endif
+
+@enduml
