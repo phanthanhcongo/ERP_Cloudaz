@@ -1,0 +1,30 @@
+@startuml
+!theme plain
+title Phân luồng 2: Xuất hóa đơn và Chuyển phát (Invoicing & Delivery Flow)
+
+|Hệ thống ERP|
+|Kế toán|
+|HCNS|
+
+|Hệ thống ERP|
+start
+:Nhận sự kiện Bill được chốt thành công;
+:Thông báo cho Kế toán xuất hóa đơn;
+|Kế toán|
+:Xuất hóa đơn điện tử trên phần mềm MISA;
+:Cập nhật thông tin hóa đơn lên ERP;
+|Hệ thống ERP|
+:Gửi email hóa đơn điện tử cho Khách hàng;
+note right
+  Bắt đầu tính Ngày 0 (Giai đoạn 0)
+  Hạn thanh toán là Ngày X
+end note
+
+|HCNS|
+:Gửi ĐNTT bản cứng qua chuyển phát nhanh;
+:Theo dõi bưu tá và cập nhật ngày nhận thành công lên ERP;
+
+|Hệ thống ERP|
+:Kích hoạt job theo dõi trạng thái thanh toán;
+stop
+@enduml

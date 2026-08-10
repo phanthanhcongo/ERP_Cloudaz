@@ -1,0 +1,44 @@
+@startuml
+!theme plain
+title Phân luồng 1: Tính cước và Đối soát (Billing & Dispute Flow)
+
+|Console Hãng|
+|Hệ thống ERP|
+|Khách hàng|
+|Sales AM|
+|Kế toán|
+
+|Hệ thống ERP|
+start
+repeat
+  |Hệ thống ERP|
+  :Gửi yêu cầu lấy dữ liệu tiêu dùng;
+  |Console Hãng|
+  :Cung cấp dữ liệu tiêu dùng qua API;
+  |Hệ thống ERP|
+  :Tính cước chi tiết cho Khách hàng;
+  :Gửi email bảng tính cước yêu cầu xác nhận;
+  |Khách hàng|
+  :Nhận email và kiểm tra chi tiết cước;
+  if (Xác nhận chi phí đúng?) then (Có sai lệch)
+    :Bấm phản hồi sai lệch cước;
+    |Sales AM|
+    :Nhận thông báo lệch cước;
+    :Phối hợp đối soát với Khách hàng và Kế toán;
+    |Kế toán|
+    :Cập nhật lại chính sách/dữ liệu cước trên ERP;
+    |Hệ thống ERP|
+    :Ghi nhận trạng thái: Cần đối soát lại;
+  else (Chính xác)
+    :Bấm Xác nhận đúng chi phí;
+    |Hệ thống ERP|
+    :Ghi nhận trạng thái: Đã xác nhận;
+  endif
+  |Hệ thống ERP|
+repeat while (Trạng thái xác nhận Bill?) is (Cần đối soát lại) not (Đã xác nhận)
+
+|Hệ thống ERP|
+:Ghi nhận Bill đã duyệt (Chốt Bill);
+:Chuyển sang Luồng xuất hóa đơn;
+stop
+@enduml
