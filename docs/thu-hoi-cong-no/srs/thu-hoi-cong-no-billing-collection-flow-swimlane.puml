@@ -15,7 +15,10 @@ title Quy trình Billing và Thu hồi Công nợ CloudAZ
 start
 repeat
   |Hệ thống ERP|
-  :Gọi API lấy dữ liệu tiêu dùng từ Console Hãng;
+  :Gửi yêu cầu lấy dữ liệu tiêu dùng;
+  |Console Hãng|
+  :Cung cấp dữ liệu tiêu dùng qua API;
+  |Hệ thống ERP|
   :Tính cước chi tiết cho Khách hàng;
   :Gửi email bảng tính cước yêu cầu xác nhận;
   |Khách hàng|
@@ -30,6 +33,7 @@ repeat
   else (Chính xác)
     :Bấm Xác nhận đúng chi phí;
   endif
+  |Hệ thống ERP|
 repeat while (Khách hàng báo lệch cước?) is (Có) not (Không)
 
 |Hệ thống ERP|
