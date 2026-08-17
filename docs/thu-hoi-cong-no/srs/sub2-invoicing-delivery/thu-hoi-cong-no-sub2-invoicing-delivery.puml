@@ -11,7 +11,7 @@ start
 :Nhận sự kiện Bill được chốt thành công;
 :Thông báo cho Kế toán xuất hóa đơn;
 |Kế toán|
-:Xuất hóa đơn điện tử trên phần mềm MISA;
+:Xuất hóa đơn điện tử trên phần mềm HĐĐT;
 :Cập nhật thông tin hóa đơn lên ERP;
 |Hệ thống ERP|
 :Gửi email hóa đơn điện tử cho Khách hàng;

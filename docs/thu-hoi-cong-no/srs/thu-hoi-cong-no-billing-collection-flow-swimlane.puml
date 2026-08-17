@@ -39,7 +39,7 @@ repeat while (Khách hàng báo lệch cước?) is (Có) not (Không)
 |Hệ thống ERP|
 :Thông báo cho Kế toán xuất hóa đơn;
 |Kế toán|
-:Xuất hóa đơn điện tử trên phần mềm MISA;
+:Xuất hóa đơn điện tử trên phần mềm HĐĐT;
 :Cập nhật thông tin hóa đơn lên ERP;
 |Hệ thống ERP|
 :Gửi email hóa đơn điện tử cho Khách hàng;

@@ -28,9 +28,9 @@ Dựa trên sơ đồ quy trình nghiệp vụ tổng quát (End-to-End), các t
 
 ---
 
-### Mô-đun 4: Quản lý Hóa đơn & Đồng bộ MISA (Invoicing & ERP Integration)
-*   **[F4.1] Đẩy yêu cầu xuất hóa đơn (P1):** Sau khi khách xác nhận bill OK, hệ thống tự động đẩy dữ liệu sang phần mềm hóa đơn (API MISA meInvoice) để tạo hóa đơn nháp.
-*   **[F4.2] Ghi nhận & Cập nhật hóa đơn (P0):** Kế toán nhập số hóa đơn, ngày phát hành (Ngày 0) và tải file PDF hóa đơn lên (nếu làm thủ công), hoặc hệ thống tự động đồng bộ số hóa đơn từ MISA về ERP.
+### Mô-đun 4: Quản lý Hóa đơn & Đồng bộ phần mềm HĐĐT (Invoicing & ERP Integration)
+*   **[F4.1] Đẩy yêu cầu xuất hóa đơn (P1):** Sau khi khách xác nhận bill OK, hệ thống tự động đẩy dữ liệu sang phần mềm hóa đơn (qua API) để tạo hóa đơn nháp.
+*   **[F4.2] Ghi nhận & Cập nhật hóa đơn (P0):** Kế toán nhập số hóa đơn, ngày phát hành (Ngày 0) và tải file PDF hóa đơn lên (nếu làm thủ công), hoặc hệ thống tự động đồng bộ số hóa đơn từ phần mềm HĐĐT về ERP.
 *   **[F4.3] Tự động gửi email hóa đơn điện tử (P0):** Hệ thống tự động gửi email đính kèm hóa đơn điện tử cho khách hàng và tính toán ngày đến hạn (Ngày X).
 
 ---
