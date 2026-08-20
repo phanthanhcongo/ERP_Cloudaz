@@ -1,3 +1,6 @@
+# ── ERP Source Code (sub-repos có .git riêng) ──────────
+ERP_ClouAZ/
+
 # ── Dependencies ────────────────────────────────────────
 node_modules/
 bower_components/
