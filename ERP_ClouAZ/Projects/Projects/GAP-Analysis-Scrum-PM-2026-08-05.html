@@ -1,0 +1,434 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word">
+<head>
+<meta charset="utf-8">
+<title>Gap Analysis - Đặc tả Scrum vs Module PM</title>
+<style>
+@page { size: A4; margin: 2cm 1.8cm; }
+body { font-family: "Segoe UI", Calibri, Arial, sans-serif; font-size: 10.5pt; line-height: 1.45; color: #1a1a1a; max-width: 21cm; margin: 0 auto; padding: 1.5cm; }
+h1 { font-size: 20pt; color: #0f3d6e; border-bottom: 3px solid #0f3d6e; padding-bottom: 8px; margin-bottom: 4px; }
+h2 { font-size: 14pt; color: #0f3d6e; margin-top: 28px; border-left: 5px solid #0f3d6e; padding-left: 10px; }
+h3 { font-size: 11.5pt; color: #1c5a94; margin-top: 20px; }
+.sub { color: #666; font-size: 9.5pt; margin-top: 0; }
+table { border-collapse: collapse; width: 100%; margin: 10px 0 18px 0; font-size: 9pt; }
+th { background: #0f3d6e; color: #fff; text-align: left; padding: 6px 7px; border: 1px solid #0f3d6e; font-weight: 600; }
+td { border: 1px solid #c5d3e0; padding: 5px 7px; vertical-align: top; }
+tr:nth-child(even) td { background: #f6f9fc; }
+.ok { background: #d9f2e0 !important; color: #14602f; font-weight: 600; text-align: center; white-space: nowrap; }
+.part { background: #fdf1cf !important; color: #8a5c00; font-weight: 600; text-align: center; white-space: nowrap; }
+.no { background: #fbdcdc !important; color: #9b1c1c; font-weight: 600; text-align: center; white-space: nowrap; }
+code { font-family: Consolas, monospace; font-size: 8.5pt; background: #eef2f6; padding: 1px 4px; border-radius: 2px; color: #234; }
+.box { background: #f2f7fb; border-left: 4px solid #1c5a94; padding: 10px 14px; margin: 14px 0; font-size: 9.5pt; }
+.warn { background: #fff6e5; border-left: 4px solid #d98b00; padding: 10px 14px; margin: 14px 0; font-size: 9.5pt; }
+.crit { background: #fdeaea; border-left: 4px solid #c0392b; padding: 10px 14px; margin: 14px 0; font-size: 9.5pt; }
+.p0 { background: #c0392b; color: #fff; padding: 1px 7px; border-radius: 3px; font-size: 8pt; font-weight: 700; }
+.p1 { background: #d98b00; color: #fff; padding: 1px 7px; border-radius: 3px; font-size: 8pt; font-weight: 700; }
+.p2 { background: #5a7d9a; color: #fff; padding: 1px 7px; border-radius: 3px; font-size: 8pt; font-weight: 700; }
+.pagebreak { page-break-before: always; }
+ul { margin: 6px 0 6px 0; padding-left: 22px; }
+li { margin-bottom: 4px; }
+.legend span { margin-right: 16px; font-size: 9pt; }
+</style>
+</head>
+<body>
+
+<h1>Báo cáo phân tích khoảng trống (Gap Analysis)</h1>
+<p class="sub"><b>Đối tượng:</b> Đặc tả tính năng phần mềm quản lý dự án chuẩn Scrum &nbsp;↔&nbsp; Module PM (Project &amp; Portfolio Management) của hệ thống ERP hiện tại<br>
+<b>Ngày lập:</b> 05/08/2026 &nbsp;·&nbsp; <b>Codebase:</b> <code>erp</code> — release line v2.0.0, Phase 435 &nbsp;·&nbsp; <b>Phương pháp:</b> rà soát trực tiếp entity Go, service layer, SQL migration, route API và component SvelteKit</p>
+
+<div class="box">
+<b>Cách đọc báo cáo.</b> Mỗi yêu cầu trong đặc tả được đối chiếu với code thật và phân loại:
+<div class="legend" style="margin-top:6px">
+<span><b style="color:#14602f">■ ĐÃ CÓ</b> — implement đầy đủ, dùng được ngay</span>
+<span><b style="color:#8a5c00">■ MỘT PHẦN</b> — có nền tảng nhưng thiếu ràng buộc/UI/logic then chốt</span>
+<span><b style="color:#9b1c1c">■ CHƯA CÓ</b> — không tồn tại ở bất kỳ tầng nào</span>
+</div>
+</div>
+
+<h2>1. Tóm tắt điều hành</h2>
+
+<p>Module PM hiện tại là một <b>hệ quản trị dự án theo WBS (Work Breakdown Structure) truyền thống</b> đã được bổ sung một lớp Scrum ở phía trên: có Sprint, Story Point, Scrum Board, Backlog, Release và báo cáo Velocity. Nền tảng kỹ thuật rất chắc — Clean Architecture, permission per-project, lịch sử bất biến (<code>sprint_item_history</code>, <code>sprint_report</code>, <code>release_report</code>), optimistic UI. Tuy nhiên so với đặc tả Scrum toàn diện, hệ thống <b>đáp ứng khoảng 38%</b>, và các khoảng trống tập trung vào đúng phần <i>nghi thức và chất lượng</i> của Scrum chứ không phải phần lưu trữ dữ liệu.</p>
+
+<table>
+<tr><th style="width:38%">Nhóm tính năng theo đặc tả</th><th style="width:9%">Đã có</th><th style="width:9%">Một phần</th><th style="width:9%">Chưa có</th><th style="width:12%">Mức đáp ứng</th><th>Nhận định</th></tr>
+<tr><td>1. Quản lý Dự án &amp; Phân quyền</td><td class="ok">1</td><td class="part">3</td><td class="no">0</td><td><b>~55%</b></td><td>Cơ chế RBAC mạnh, nhưng thiếu đúng bộ vai trò Scrum</td></tr>
+<tr><td>2. Backlog &amp; Release Management</td><td class="ok">0</td><td class="part">3</td><td class="no">1</td><td><b>~45%</b></td><td>Có Backlog + Release; thiếu phân cấp Epic/Feature và refinement</td></tr>
+<tr><td>3. Khởi tạo &amp; Quản lý Sprint</td><td class="ok">1</td><td class="part">2</td><td class="no">0</td><td><b>~70%</b></td><td>Nhóm mạnh nhất; chỉ thiếu vài validation</td></tr>
+<tr><td>4. Bảng Scrum &amp; Giám sát tiến độ</td><td class="ok">1</td><td class="part">1</td><td class="no">2</td><td><b>~35%</b></td><td>Board 1 chiều, không swimlane, không WIP limit</td></tr>
+<tr><td>5. Story, Task &amp; Definition of Done</td><td class="ok">1</td><td class="part">1</td><td class="no">4</td><td><b>~25%</b></td><td><b>Điểm nghẽn kiến trúc lớn nhất</b> — sprint chỉ nhận node lá</td></tr>
+<tr><td>6. Sprint Review &amp; Retrospective</td><td class="ok">0</td><td class="part">0</td><td class="no">7</td><td><b>0%</b></td><td><b>Vắng mặt hoàn toàn</b> — 2/4 nghi thức Scrum không tồn tại</td></tr>
+<tr><td>7. Timesheet &amp; Bóc tách chi phí R&amp;D</td><td class="ok">2</td><td class="part">1</td><td class="no">2</td><td><b>~50%</b></td><td>Luồng duyệt tốt; không có thuộc tính R&amp;D nào</td></tr>
+<tr><td>8. Báo cáo, Chỉ số &amp; Audit Log</td><td class="ok">2</td><td class="part">3</td><td class="no">2</td><td><b>~40%</b></td><td>Có Velocity; thiếu Burnup, CFD, Burndown nội-sprint</td></tr>
+<tr><td>9. Giao tiếp &amp; Hiệu năng</td><td class="ok">1</td><td class="part">2</td><td class="no">3</td><td><b>~35%</b></td><td>Không i18n, không ping overdue, timezone UTC cứng</td></tr>
+<tr style="background:#e8eef4"><td><b>TỔNG CỘNG (46 hạng mục nguyên tử)</b></td><td class="ok">9</td><td class="part">16</td><td class="no">21</td><td><b>~38%</b></td><td></td></tr>
+</table>
+
+<div class="crit">
+<b>5 phát hiện nghiêm trọng nhất</b>
+<ul style="margin-bottom:0">
+<li><b>Sprint chỉ nhận node lá (leaf-only).</b> <code>AddNodesToSprint</code> chặn mọi node có con (<code>wbs_service_impl.go:368-381</code>), mọi query sprint-item đều lọc <code>has_children IS NOT TRUE</code>. Hệ quả: <b>một User Story có sub-task thì không bao giờ vào được Sprint</b>. Toàn bộ yêu cầu về Story View, Swimlanes, kế thừa sprint xuống sub-task, spillover chọn lọc, khóa Story Done khi task con dở — <i>đều bị chặn bởi một quyết định thiết kế duy nhất này</i>.</li>
+<li><b>Không có Sprint Review và Sprint Retrospective.</b> Grep toàn repo (backend + frontend + SQL): 0 bảng, 0 route, 0 UI. Đây là 2 trong 4 nghi thức Scrum.</li>
+<li><b>Job cảnh báo quá hạn là hàm rỗng.</b> <code>checkProjectDeadlines()</code> và <code>checkStaleIssues()</code> (<code>notification_service.go:199-210</code>) chỉ ghi log "placeholder". Job <code>daily_notifications</code> vẫn chạy 24h/lần nhưng không gửi gì; hai loại thông báo <code>DEADLINE_SOON</code> / <code>ISSUE_STALE</code> đã khai báo nhưng <b>không bao giờ được sinh ra</b>.</li>
+<li><b>Cảnh báo vượt giờ gửi sai người.</b> <code>EFFORT_OVERRUN</code> được gửi cho <code>t.UserID</code> — chính lập trình viên vừa log giờ, <b>không phải PM/SM</b> (<code>timesheet_service.go:146-155</code>). Ngoài ra không có chống lặp: mỗi lần log thêm giờ lại bắn thêm 1 thông báo.</li>
+<li><b>Lỗ hổng gate DoD.</b> Gate chặn chuyển sang Done khi DoD chưa 100% chỉ chạy trong <code>UpdateNode</code>. <code>BulkUpdateNodes</code> (<code>wbs_service_impl.go:1304-1320</code>) chỉ gọi <code>validateTransition</code> mà bỏ qua DoD gate — đây là đường vòng qua ràng buộc chất lượng.</li>
+</ul>
+</div>
+
+<div class="pagebreak"></div>
+<h2>2. Đối chiếu chi tiết theo từng nhóm</h2>
+
+<h3>Nhóm 1 — Quản lý Dự án &amp; Phân quyền (RBAC)</h3>
+<table>
+<tr><th style="width:22%">Yêu cầu đặc tả</th><th style="width:10%">Trạng thái</th><th style="width:38%">Hiện trạng thực tế trong code</th><th>Việc cần phát triển</th></tr>
+<tr>
+<td><b>Vòng đời dự án</b><br>Draft → Planning → Active → Closed → Archived</td><td class="part">MỘT PHẦN</td>
+<td>Không có enum lifecycle. Trạng thái là category tự do (<code>projects.project_status_id</code> → bảng <code>categories</code>). Seed thực tế: <b>Planned · Active · On Hold · Completed · Cancelled</b> (<code>000155_restore_category_tables.up.sql:94</code>). Không có <b>Draft</b>, không có <b>Archived</b>, và <b>không có state machine</b> — chuyển trạng thái nào cũng được.</td>
+<td>Bổ sung Draft + Archived; xây bảng transition cho project status; validate chuyển trạng thái ở service layer; ẩn dự án Archived khỏi danh sách mặc định.</td></tr>
+<tr>
+<td><b>Product Goal bắt buộc</b> khi khởi tạo</td><td class="part">MỘT PHẦN</td>
+<td>Cột <code>projects.product_goal TEXT</code> đã có (migration <code>000251</code>), entity <code>Project.ProductGoal *string</code>, đã hiển thị ở danh sách. <b>Nhưng nullable và không có <code>binding:"required"</code></b>; form <code>ProjectModal.svelte:58</code> không đặt <code>required</code>.</td>
+<td>Thêm ràng buộc bắt buộc ở cả BE (binding + NOT NULL) và FE; backfill dữ liệu cũ trước khi siết.</td></tr>
+<tr>
+<td><b>Màn hình danh mục</b> hiển thị PM / Goal / Progress / Status</td><td class="ok">ĐÃ CÓ</td>
+<td>Đủ 5 cột đúng đặc tả: <code>project_info</code>, <code>product_goal</code>, <code>manager</code>, <code>progress</code>, <code>status</code> (<code>projectColumns.ts</code>), có progress bar (<code>ProjectTableRow.svelte:86</code>).</td>
+<td>—</td></tr>
+<tr>
+<td><b>RBAC vai trò Scrum</b><br>Admin / PMO / PO / SM / Developer / Viewer</td><td class="part">MỘT PHẦN</td>
+<td>Cơ chế RBAC 2 tầng rất mạnh: role hệ thống + <b>role riêng từng dự án</b> (<code>project_roles</code>, <code>project_role_permissions</code>, tab "Roles &amp; Permissions"). Chặn vượt quyền trả HTTP 403 với message rõ ràng.<br><b>Nhưng bộ vai trò sai:</b> hệ thống = Admin, PMO, Project Manager, Team Lead, Member, Viewer; dự án = Lead / Member / Observer. <b>Không tồn tại Product Owner, Scrum Master, Developer.</b></td>
+<td>Seed thêm 3 project role chuẩn Scrum (PO / SM / Developer) kèm ma trận quyền mặc định; đổi thông báo lỗi thành "Access Denied" theo đặc tả; migration backfill cho dự án đang chạy.</td></tr>
+</table>
+
+<h3>Nhóm 2 — Quản lý Backlog &amp; Phiên bản</h3>
+<table>
+<tr><th style="width:22%">Yêu cầu đặc tả</th><th style="width:10%">Trạng thái</th><th style="width:38%">Hiện trạng thực tế trong code</th><th>Việc cần phát triển</th></tr>
+<tr>
+<td><b>Phân cấp</b> Project → Epic → Feature → Story → Task</td><td class="part">MỘT PHẦN</td>
+<td>Cơ chế đầy đủ: cây WBS materialized-path, sâu tối đa 5 cấp, bảng node type per-project (<code>project_wbs_node_types</code>) + bảng luật cha-con (<code>wbs_type_rules</code>).<br><b>Nhưng type mặc định là Phase · Milestone · Work Package</b> (<code>000155:133</code>), và luật mặc định là <b>permissive toàn phần</b> — cha nào cũng đẻ được con nào (<code>wbs_type_rules_default.go:37-48</code>).</td>
+<td>Seed bộ type Scrum (Epic / Feature / Story / Task) làm mặc định cho dự án kiểu Scrum; seed type rule ràng buộc đúng thứ tự phân cấp; cho phép chọn "template dự án" khi tạo.</td></tr>
+<tr>
+<td><b>Không gian Backlog Refinement</b><br>New → Ready for Refinement → Ready for Sprint</td><td class="no">CHƯA CÓ</td>
+<td>Grep <code>refinement</code> / <code>Ready for Sprint</code> toàn repo: <b>0 kết quả</b>. Có màn hình Backlog riêng (tab Backlog + panel cạnh Scrum Board) nhưng Backlog chỉ là <i>view dẫn xuất</i>: node lá chưa gán sprint (<code>wbs_repository_backlog.go:30</code>). Người dùng có thể tự đặt tên status là "Ready for Sprint" nhưng hệ thống không gắn ngữ nghĩa gì.</td>
+<td>Thêm khái niệm refinement state (cột riêng hoặc kind mới trong workflow); xây màn hình Refinement với gate chuyển trạng thái.</td></tr>
+<tr>
+<td><b>Cảnh báo thẻ thiếu Story Point / DoD</b> khi ở Ready for Sprint</td><td class="no">CHƯA CÓ</td>
+<td><code>AddNodesToSprint</code> chỉ chặn node non-leaf / khác dự án / đã có sprint — <b>không hề kiểm tra story point hay DoD</b> (<code>wbs_service_impl.go:348-420</code>). Validation duy nhất về story point là về giá trị (0–999.9, bước 0.1).</td>
+<td>Xây rule engine "readiness check" (SP &gt; 0, DoD ≥ 1 mục, có assignee...); hiển thị badge cảnh báo trên thẻ backlog; chặn mềm khi kéo vào Sprint.</td></tr>
+<tr>
+<td><b>Fix Version / Release</b> gắn cho Epic / Feature / Story</td><td class="part">MỘT PHẦN</td>
+<td>Module Release rất hoàn chỉnh: bảng <code>releases</code> (DRAFT/RELEASED), <code>release_item_history</code>, <code>release_report</code> snapshot, 5 permission riêng, UI đầy đủ (attach / return / mark released). Cột <code>wbs_nodes.release_id</code> đã có.<br><b>Hạn chế:</b> chỉ attach được item có status kind = <code>done</code> (<code>release_service_impl.go:186-198</code>), và vì item lấy từ tập node lá nên <b>Epic/Feature (node có con) không gắn được release</b>.</td>
+<td>Cho phép gắn release ở cấp Epic/Feature (node có con) như "fix version" quy hoạch trước khi hoàn thành; nới ràng buộc "chỉ item Done" thành 2 chế độ: <i>planned version</i> vs <i>shipped item</i>.</td></tr>
+<tr>
+<td><b>Quick Filter + Drag&amp;Drop + cộng dồn Story Point</b></td><td class="part">MỘT PHẦN</td>
+<td>Drag &amp; drop backlog ↔ sprint: <b>đã có, kèm optimistic UI và rollback từng thẻ</b> (<code>ScrumBoard.svelte:280-333</code>). Cộng dồn SP: có ở sprint (<code>sprintStats()</code> — committed/completed/percent).<br><b>Thiếu:</b> filter chỉ có Type + Status (backlog) / Type + Priority + Status + Assignee (board) — <b>không lọc theo Epic/Feature (parent), không lọc theo Label</b> dù cột <code>wbs_nodes.labels</code> đã tồn tại. Backlog không có dòng tổng Story Point.</td>
+<td>Bổ sung filter theo Epic/parent và theo Label ở cả 2 màn hình; thêm dòng tổng SP cho backlog.</td></tr>
+</table>
+
+<div class="pagebreak"></div>
+<h3>Nhóm 3 — Khởi tạo &amp; Quản lý Sprint</h3>
+<table>
+<tr><th style="width:22%">Yêu cầu đặc tả</th><th style="width:10%">Trạng thái</th><th style="width:38%">Hiện trạng thực tế trong code</th><th>Việc cần phát triển</th></tr>
+<tr>
+<td><b>Thiết lập Sprint</b>: tên duy nhất, Sprint Goal, ngày bắt đầu/kết thúc, thời lượng &gt; 0</td><td class="part">MỘT PHẦN</td>
+<td>Entity đủ trường: <code>Name</code>, <code>Goal</code>, <code>StartDate</code>, <code>EndDate</code>, <code>Status</code> (<code>entity/sprint.go:14-40</code>).<br><b>Thiếu 3 validation:</b> (a) tên <b>không</b> unique trong project — không có UNIQUE index trên <code>(project_id, name)</code>; (b) thời lượng chỉ kiểm <code>start &lt;= end</code> nên sprint 0 ngày vẫn hợp lệ; (c) ngày bắt đầu/kết thúc <b>nullable</b>, tạo sprint không ngày vẫn được.</td>
+<td>Thêm UNIQUE index <code>(project_id, name)</code>; siết <code>end_date &gt; start_date</code>; bắt buộc nhập ngày khi chuyển sang ACTIVE.</td></tr>
+<tr>
+<td><b>Phân quyền chủ động</b> cho SM và PO tạo/start/end sprint</td><td class="part">MỘT PHẦN</td>
+<td>Permission key đã tách đúng: <code>project:sprint:{view,create,update,delete}</code>. Seed: Lead có đủ 6 quyền, Member/Observer chỉ <code>:view</code> (<code>000190</code>).<br><b>Nhưng không có role SM/PO</b> để gán; và <b>start &amp; complete dùng chung <code>sprint:update</code></b>, không tách riêng.</td>
+<td>Tạo role SM/PO (xem Nhóm 1); tách permission <code>sprint:start</code> và <code>sprint:complete</code> để kiểm soát mịn hơn.</td></tr>
+<tr>
+<td><b>Quy tắc độc quyền</b>: tối đa 01 Sprint Active / dự án; luồng Planning → Active → Completed</td><td class="ok">ĐÃ CÓ</td>
+<td>Enforce ở <b>cả 2 tầng</b>: service kiểm <code>CountActiveByProject()</code> → 409 <code>ErrSprintActiveConflict</code>; DB có partial unique index <code>uniq_active_sprint_per_project ... WHERE status='ACTIVE'</code>. State machine chỉ cho PLANNING→ACTIVE và ACTIVE→COMPLETED, không cho quay lui (<code>sprint_service.go:230-239</code>).</td>
+<td>— <i>(dọn dẹp: baseline.sql đang có 2 index trùng chức năng, dư thừa nhưng vô hại)</i></td></tr>
+</table>
+
+<h3>Nhóm 4 — Bảng Scrum trực quan &amp; Giám sát tiến độ</h3>
+<table>
+<tr><th style="width:22%">Yêu cầu đặc tả</th><th style="width:10%">Trạng thái</th><th style="width:38%">Hiện trạng thực tế trong code</th><th>Việc cần phát triển</th></tr>
+<tr>
+<td><b>Story View</b>: thẻ là User Story, có progress bar, tỷ lệ Task/DoD (3/5), nút expand tick nhanh</td><td class="no">CHƯA CÓ</td>
+<td>Board chỉ có <b>một chế độ xem duy nhất</b> — kanban phẳng, thẻ là node lá. Không tồn tại từ khóa <code>viewMode</code> trong toàn bộ thư mục scrum.<br>Đã có: badge DoD dạng <code>3/5</code> (<code>CardDodBadge.svelte</code>, tính bằng SQL <code>jsonb_array_elements</code>).<br>Chưa có: progress bar trên thẻ, tỷ lệ task con (thẻ là lá nên không có con), nút expand để tick DoD/task ngay trên board — phải mở trang chi tiết node.</td>
+<td>Phụ thuộc gap kiến trúc <b>#1</b> (sprint leaf-only). Sau khi cho Story vào sprint được: xây Story View + progress bar + panel expand inline.</td></tr>
+<tr>
+<td><b>Task View / Swimlanes</b> cho họp Daily</td><td class="no">CHƯA CÓ</td>
+<td>Không có swimlane. Board không có khái niệm nhóm hàng ngang theo Story.</td>
+<td>Xây view thứ 2: hàng ngang = Story, cột = trạng thái, thẻ = sub-task. Phụ thuộc gap <b>#1</b>.</td></tr>
+<tr>
+<td><b>Tùy biến cột</b>, bắt buộc map vào 3 trạng thái lõi To Do / Doing / Done</td><td class="ok">ĐÃ CÓ</td>
+<td>Đúng thiết kế đặc tả: mỗi project tự cấu hình status riêng (tên, màu, transition), nhưng mỗi status bắt buộc thuộc 1 trong 3 <code>kind</code>: <code>todo</code> / <code>in_progress</code> / <code>done</code>. Board render cố định 3 cột theo kind và gom status vào đúng cột (<code>adapter.ts:51-79</code>).</td>
+<td>— <i>(tùy chọn: cho phép hiển thị cột theo status thay vì gộp theo kind)</i></td></tr>
+<tr>
+<td><b>WIP Limit</b> + cảnh báo đỏ khi vượt trần</td><td class="no">CHƯA CÓ</td>
+<td>Chỉ có <b>chỗ trống của UI</b>: <code>types.ts:53</code> khai báo <code>wipLimit: number | null</code> kèm comment "Not yet backed by data"; <code>adapter.ts:76</code> gán cứng <code>null</code> ("WIP limits out of scope, D-416-2"), nên nhánh hiển thị cảnh báo không bao giờ chạy. <b>Không có cột <code>wip_limit</code> trong DB.</b></td>
+<td>Thêm cột <code>wip_limit</code> vào cấu hình workflow/status của project; API cấu hình; bật lại UI cảnh báo đỏ; quyết định chặn cứng hay chỉ cảnh báo.</td></tr>
+<tr>
+<td><b>Drag &amp; Drop mượt</b></td><td class="ok">ĐÃ CÓ</td>
+<td>Optimistic UI kèm rollback chính xác từng thẻ, serialize theo <code>pendingCardIds</code>, có guard trước khi move (sprint đã đóng / thiếu quyền / transition không hợp lệ / DoD chưa đủ).</td><td>—</td></tr>
+</table>
+
+<div class="pagebreak"></div>
+<h3>Nhóm 5 — Story, Task &amp; Definition of Done</h3>
+
+<div class="crit" style="margin-bottom:14px">
+<b>Đây là nhóm có khoảng trống lớn nhất, và gần như toàn bộ bắt nguồn từ một quyết định thiết kế:</b><br>
+Sprint chỉ nhận <b>node lá</b>. Node có con bị <code>AddNodesToSprint</code> từ chối (SPN_0007), và mọi truy vấn sprint-item đều lọc <code>has_children IS NOT TRUE</code>. Mô hình hiện tại vì thế là <b>"flat sprint backlog theo node lá"</b>, không phải mô hình Story → Sub-task của Scrum. Muốn đáp ứng đặc tả, đây là hạng mục phải xử lý <u>trước tiên</u>.
+</div>
+
+<table>
+<tr><th style="width:22%">Yêu cầu đặc tả</th><th style="width:10%">Trạng thái</th><th style="width:38%">Hiện trạng thực tế trong code</th><th>Việc cần phát triển</th></tr>
+<tr>
+<td><b>Phân rã Story thành Sub-task</b></td><td class="part">MỘT PHẦN</td>
+<td>Về mặt dữ liệu: có — sub-task là node con trong cây WBS, sâu tối đa 5 cấp. Về mặt Scrum: <b>không dùng được</b>, vì Story có con thì không vào được sprint.</td>
+<td>Thiết kế lại quy tắc sprint membership: Story (node cha) là đơn vị vào sprint, sub-task theo cha.</td></tr>
+<tr>
+<td><b>Kế thừa thuộc tính Sprint</b> từ Story cha xuống sub-task</td><td class="no">CHƯA CÓ</td>
+<td>Không có code nào lan truyền <code>sprint_id</code> xuống con. <code>UpdateNode</code> còn cưỡng bức giữ nguyên <code>sprint_id</code> cũ (<code>wbs_service_impl.go:764</code>) để tránh ghi gián tiếp.</td>
+<td>Cascade <code>sprint_id</code> xuống toàn bộ cây con trong cùng transaction khi Story vào sprint.</td></tr>
+<tr>
+<td><b>Spillover chọn lọc</b>: chỉ sub-task chưa xong chuyển sang Sprint sau, sub-task đã Done giữ lại cho Sprint cũ</td><td class="no">CHƯA CÓ</td>
+<td>Khi đóng sprint, resolution duy nhất được chấp nhận là <code>"RETURN"</code> → item về Product Backlog (<code>sprint_id = NULL</code>). <b>Không tồn tại đường code nào gán item sang sprint kế tiếp.</b> Muốn chuyển sprint phải Return rồi Add thủ công (ghi rõ trong comment: "moving between sprints must go Return-then-Add").</td>
+<td>Thêm action <code>MOVE_TO_NEXT_SPRINT</code> khi close sprint; logic tách sub-task done/chưa-done; giữ nguyên burned hours ghi nhận cho sprint cũ (bảng <code>sprint_item_history</code> đã sẵn sàng cho việc này).</td></tr>
+<tr>
+<td><b>Bắt buộc Assignee + Estimate Hours</b> trên Task</td><td class="no">CHƯA CÓ</td>
+<td><code>CreateNode</code> / <code>UpdateNode</code> chỉ validate title, type rule, status, sprint point, ngày. <b>Không bắt buộc</b> <code>AssignedTo</code> hay <code>EstimatedEffort</code>.</td>
+<td>Thêm validation bắt buộc cho node thuộc type "Task"; nên áp dụng có điều kiện (chỉ khi node nằm trong sprint) để không phá dữ liệu cũ.</td></tr>
+<tr>
+<td><b>Khóa chặn trạng thái</b>: Story không thể Done khi còn Task con To Do/Doing</td><td class="no">CHƯA CÓ</td>
+<td><code>validateTransition()</code> chỉ kiểm tra tồn tại cạnh trong bảng <code>project_transitions</code>, <b>hoàn toàn không nhìn xuống node con</b>. Rollup cha-con chỉ tính progress/effort, không đụng status. → Node cha có thể set Done dù con còn dở.</td>
+<td>Thêm check trong <code>validateTransition</code>: nếu chuyển sang kind=done và tồn tại con có status kind ≠ done → chặn với mã lỗi riêng.</td></tr>
+<tr>
+<td><b>DoD checklist + khóa 100% mới được Done</b></td><td class="ok">ĐÃ CÓ</td>
+<td>Implement tốt, 2 tầng: BE chặn cứng bằng <code>ErrWBSDefinitionOfDoneIncomplete</code> (HTTP 422, mã <code>WBS_0028</code>) khi chuyển vào kind=done mà checklist chưa đủ; FE pre-check trước khi gửi write. Lưu ở <code>wbs_nodes.definition_of_done</code> JSONB, có 3 permission riêng (<code>dod:create/update/delete</code>), có test <code>wbs_dod_gate_test.go</code>.</td>
+<td><span class="p1">CẦN VÁ</span> <code>BulkUpdateNodes</code> bỏ qua DoD gate — cần gọi cùng predicate <code>definitionOfDoneComplete()</code>.</td></tr>
+<tr>
+<td><b>Override DoD</b> bởi SM/PO kèm <b>lý do bắt buộc</b> + Audit Log</td><td class="no">CHƯA CÓ</td>
+<td>Grep <code>override</code> trong module project: <b>0 kết quả</b>. <code>WBS_0028</code> là chặn cứng, không có tham số bypass, không có permission kiểu <code>dod:override</code>, không có nơi lưu lý do.<br>Thêm nữa: <b>các thao tác DoD không ghi audit</b> — <code>wbs_dod_service.go</code> không gọi activity log lẫn node activity (khác với <code>UpdateNode</code> có <code>logNodeChanges</code>).</td>
+<td>Thêm permission <code>project:wbs:dod:override</code>; endpoint override nhận <code>reason</code> bắt buộc; ghi vào bảng audit; hiển thị dấu hiệu "đã override" trên thẻ. Đồng thời bổ sung audit cho mọi thao tác DoD.</td></tr>
+</table>
+
+<div class="pagebreak"></div>
+<h3>Nhóm 6 — Sprint Review &amp; Retrospective</h3>
+
+<div class="crit">
+<b>Toàn bộ nhóm này chưa tồn tại — 0%.</b> Kết quả grep toàn repository:
+<ul style="margin-bottom:0">
+<li><code>retro</code> / <code>retrospective</code> trong <code>backend/</code>: 5 kết quả, <b>tất cả đều là từ "retroactively" / "retro-backfill" trong comment</b>. Trong <code>frontend/</code>: 1 kết quả, là từ <b>"retrofit"</b> trong comment. Không có bảng, entity, route hay component nào.</li>
+<li>Route sprint chỉ gồm: <code>GET/POST ""</code>, <code>PUT/DELETE /:sprintId</code>, <code>POST /:sprintId/transition</code>, <code>GET/POST /:sprintId/items</code>, <code>POST /:sprintId/items/return</code>. <b>Không có route review/accept/reject.</b></li>
+<li>Vòng đời sprint chỉ có PLANNING → ACTIVE → COMPLETED — <b>không có trạng thái IN_REVIEW</b>.</li>
+</ul>
+</div>
+
+<table>
+<tr><th style="width:22%">Yêu cầu đặc tả</th><th style="width:10%">Trạng thái</th><th style="width:38%">Hiện trạng thực tế trong code</th><th>Việc cần phát triển</th></tr>
+<tr>
+<td><b>Sprint Review</b> — PO nghiệm thu Accept / Reject từng thẻ</td><td class="no">CHƯA CÓ</td>
+<td>Không có actor PO, không có quyết định nghiệm thu, không có audit "ai đã nghiệm thu". Thứ gần nhất là DoD checklist — nhưng đó là checklist <i>tự tick</i> bởi người làm, không phải nghiệm thu bởi người khác.</td>
+<td>Bảng <code>sprint_reviews</code> + <code>sprint_review_items</code> (outcome ACCEPTED/REJECTED, actor, thời điểm, ghi chú); trạng thái sprint <code>IN_REVIEW</code>; permission <code>project:sprint:review</code>; màn hình Review.</td></tr>
+<tr>
+<td><b>Thẻ bị Reject tự động dội về Backlog</b></td><td class="part">MỘT PHẦN</td>
+<td>Cơ chế "trả về backlog" <b>đã có và khá chắc</b>: <code>ReturnNodesToBacklog(...)</code> với 3 trigger hợp lệ (<code>MANUAL</code>, <code>SPRINT_CLOSE</code>, <code>RELEASE_RETURN</code>), có <code>reason</code> bắt buộc (CHECK constraint ở DB), ghi lịch sử bất biến.<br><b>Nhưng không có trigger <code>REVIEW_REJECT</code></b> vì không có bước reject.</td>
+<td>Tận dụng cơ chế sẵn có: chỉ cần thêm trigger <code>REVIEW_REJECT</code> và nối vào luồng nghiệm thu. Đây là hạng mục chi phí thấp nhất trong nhóm.</td></tr>
+<tr>
+<td><b>Lưu feedback Stakeholder</b> + 1-click tạo Story mới</td><td class="no">CHƯA CÓ</td>
+<td>Có bảng <code>stakeholders</code> nhưng chỉ là danh bạ/ma trận, <b>không liên kết với sprint</b>. Trường text tự do duy nhất là <code>sprint_item_history.reason</code> — dùng cho lý do trả item, không phải feedback nghiệm thu.</td>
+<td>Bảng <code>sprint_review_feedback</code> liên kết stakeholder ↔ sprint; nút "Tạo Story từ feedback" sinh node backlog và lưu liên kết ngược.</td></tr>
+<tr>
+<td><b>Bảng Retro số hóa</b> + template (Well / Wrong / Improvements)</td><td class="no">CHƯA CÓ</td><td rowspan="4" style="vertical-align:middle">Không tồn tại ở bất kỳ tầng nào: không entity, không bảng, không route, không UI. Đây là phân hệ phải xây từ con số 0.</td>
+<td>Bảng <code>retrospectives</code>, <code>retro_columns</code> (theo template), <code>retro_notes</code>.</td></tr>
+<tr><td><b>Chế độ ẩn danh</b> (Anonymous)</td><td class="no">CHƯA CÓ</td><td>Cờ <code>is_anonymous</code> trên retro + ẩn <code>author_id</code> ở tầng API (không chỉ ẩn ở UI).</td></tr>
+<tr><td><b>Dot-voting</b></td><td class="no">CHƯA CÓ</td><td>Bảng <code>retro_votes</code>, giới hạn số phiếu/người, realtime đếm phiếu.</td></tr>
+<tr><td><b>Action Items tự động</b> + đưa vào Sprint Backlog kế tiếp; <b>lưu trữ lịch sử Retro</b></td><td class="no">CHƯA CÓ</td>
+<td>Bảng <code>retro_action_items</code> có <code>generated_node_id</code> trỏ về WBS node; nút "Tạo thẻ hành động" gán type tương ứng; màn hình tra cứu Retro theo lịch sử + biểu đồ sức khỏe nhóm.</td></tr>
+</table>
+
+<div class="pagebreak"></div>
+<h3>Nhóm 7 — Quản lý Giờ công &amp; Bóc tách chi phí R&amp;D</h3>
+<table>
+<tr><th style="width:22%">Yêu cầu đặc tả</th><th style="width:10%">Trạng thái</th><th style="width:38%">Hiện trạng thực tế trong code</th><th>Việc cần phát triển</th></tr>
+<tr>
+<td><b>Đánh dấu R&amp;D / Thương mại</b> ở cấp Epic/Feature/Story + kế thừa xuống Task</td><td class="no">CHƯA CÓ</td>
+<td>Grep <code>rnd</code>, <code>r_and_d</code>, <code>is_rnd</code>, <code>billable</code>, <code>commercial</code> trong toàn bộ <code>backend/internal</code>: <b>chỉ 2 kết quả và cả hai đều nằm trong file license của font chữ</b>. Không có trường phân loại nào trên <code>Project</code>, <code>WBSNode</code>, hay <code>Timesheet</code>.</td>
+<td>Thêm cột phân loại (enum RND / COMMERCIAL / INTERNAL) ở cấp project và node; logic kế thừa xuống cây con; denormalize sang timesheet khi log giờ để báo cáo nhanh. <b>Đây là điều kiện cần để bóc tách chi phí R&amp;D hưởng ưu đãi thuế.</b></td></tr>
+<tr>
+<td><b>Cho phép log vượt estimate + cảnh báo đỏ cho PM/SM</b></td><td class="part">MỘT PHẦN</td>
+<td>Có <code>estimated_effort</code> / <code>actual_effort</code> trên node; <code>actual_effort</code> <b>tự động cộng dồn từ timesheet</b> (có xử lý cả trường hợp sửa entry, có guard chống âm) và có rollup lên node cha. Cảnh báo đã tồn tại: notification type <code>EFFORT_OVERRUN</code> khi <code>actual &gt; estimated</code>.<br><b>3 khiếm khuyết:</b> (a) gửi cho <b>chính người log giờ</b>, không phải PM/SM; (b) <b>không chống lặp</b> — bắn lại mỗi lần log; (c) ngưỡng cứng 100%, không cấu hình được.</td>
+<td>Đổi người nhận thành PM + SM của dự án; thêm cờ chống lặp (mẫu <code>LastReminderAt</code> đã có sẵn ở <code>report_service.go</code>); cho cấu hình ngưỡng (vd 80% / 100% / 120%).</td></tr>
+<tr>
+<td><b>Luồng phê duyệt Timesheet</b></td><td class="ok">ĐÃ CÓ</td>
+<td>Đầy đủ và chắc chắn: <code>DRAFT → SUBMITTED → APPROVED | REJECTED</code>, có cả <b>recall</b> (chỉ owner, chỉ entry bị reject). Bulk approve, reject kèm lý do, entry đã submit là bất biến. Permission gate <code>timesheet:approve</code>. UI review riêng.<br><i>Lưu ý:</i> phạm vi duyệt xác định theo <b>cấp quản lý nhân sự</b> (admin / org / managed members), <b>không theo vai trò PM của dự án</b> — khác với mô tả đặc tả.</td>
+<td>Cân nhắc bổ sung kênh duyệt theo PM/SM của dự án song song với kênh quản lý nhân sự.</td></tr>
+<tr>
+<td><b>Chỉ xuất giờ đã duyệt sang HRM/Kế toán; không tính tiền trong PM</b></td><td class="ok">ĐÃ CÓ</td>
+<td>Đúng nguyên tắc đặc tả: 4 endpoint báo cáo/export (org + team), truy vấn có điều kiện cứng <code>AND t.status = 'APPROVED'</code>. Module PM <b>không</b> có <code>cost_rate</code> / <code>hourly_rate</code> (0 kết quả grep); việc tính tiền nằm ở module <code>fin</code> tách biệt.</td>
+<td>Hiện chỉ là <b>file XLSX tải về</b>, chưa phải API tích hợp máy-máy. Nếu cần nối HRM/kế toán tự động: bổ sung endpoint JSON có phân trang + webhook/job đẩy dữ liệu.</td></tr>
+</table>
+
+<h3>Nhóm 8 — Báo cáo, Chỉ số &amp; Lịch sử truy vết</h3>
+<table>
+<tr><th style="width:22%">Yêu cầu đặc tả</th><th style="width:10%">Trạng thái</th><th style="width:38%">Hiện trạng thực tế trong code</th><th>Việc cần phát triển</th></tr>
+<tr>
+<td><b>Burndown</b> theo từng ngày, dựa trên Giờ/Task còn lại</td><td class="part">MỘT PHẦN</td>
+<td>Có một đường <i>được đặt tên</i> "Burndown" trong <code>SprintTrendBars.svelte</code>, nhưng <b>trục X là các sprint đã đóng, không phải các ngày trong sprint</b>, và đơn vị là <b>story point</b> chứ không phải remaining hours. Không có ideal line, không có dữ liệu remaining theo ngày. → <b>Không có burndown nội-sprint theo đúng nghĩa Scrum.</b></td>
+<td>Bảng snapshot hằng ngày cho sprint đang chạy (remaining hours + remaining tasks); job chụp tự động lúc cuối ngày; biểu đồ có ideal line.</td></tr>
+<tr>
+<td><b>Burnup Chart</b> (kiểm soát scope creep)</td><td class="no">CHƯA CÓ</td>
+<td>Grep <code>burnup</code>: 0 kết quả trong code. Chỉ xuất hiện trong tài liệu thiết kế <code>docs/ui/SCRUM-BOARD-DESIGN.md</code> — đã thiết kế nhưng chưa hiện thực.</td>
+<td>Dùng chung hạ tầng snapshot với Burndown; vẽ 2 đường: tổng scope và khối lượng hoàn thành.</td></tr>
+<tr>
+<td><b>Velocity Chart</b> (committed vs completed qua các sprint)</td><td class="ok">ĐÃ CÓ</td>
+<td>Dữ liệu đúng nghĩa velocity và <b>bất biến</b>: khi sprint chuyển sang ACTIVE, hệ ghi baseline <code>COMMITTED</code> cho từng item; khi đóng sprint, ghi <code>sprint_report</code> với <code>committed_points/items</code>, <code>completed_points/items</code>, <code>returned_*</code>, <code>completion_rate</code>. Có UI biểu đồ. "Done" được xác định theo <b>status kind</b> chứ không theo tên status — thiết kế tốt.</td>
+<td>— <i>(tùy chọn: vẽ tách bạch cột Committed thay vì suy ra từ Completed + Remaining)</i></td></tr>
+<tr>
+<td><b>Cumulative Flow Diagram (CFD)</b></td><td class="no">CHƯA CÓ</td>
+<td>Grep <code>cumulative_flow</code> / <code>CFD</code>: 0 kết quả. <b>Thiếu điều kiện cần</b>: không có bảng lưu số lượng item theo từng status theo ngày.</td>
+<td>Bảng snapshot đếm item theo status theo ngày (có thể suy từ <code>wbs_node_activities</code> nếu ghi đủ status change); biểu đồ vùng xếp chồng.</td></tr>
+<tr>
+<td><b>Progress % dự án tự động</b></td><td class="part">MỘT PHẦN</td>
+<td>Rollup <b>tự động ở cấp WBS node</b> và khá tinh vi (EV-weighted theo planned value, fallback trung bình cộng khi PV = 0).<br><b>Nhưng <code>projects.progress</code> là giá trị nhập tay</b> — ghi thẳng từ payload Create/Update, không có hàm nào tính lại từ WBS. Program/Objective tổng hợp lên cũng đang đọc con số nhập tay này.</td>
+<td>Nối rollup WBS lên <code>projects.progress</code>; hoặc bỏ cột nhập tay và tính động khi đọc.</td></tr>
+<tr>
+<td><b>Audit Log toàn diện</b> (100% thao tác)</td><td class="part">MỘT PHẦN</td>
+<td>Có ghi, nhưng <b>phân mảnh thành 3 bảng không thống nhất và schema nghèo</b>:<br>• <code>activity_logs</code> — chỉ có <code>email, screen, action (text tự do), action_time</code>. <b>Không có entity_id, không có old/new value, không có project_id</b> → không truy vấn được "lịch sử thay đổi của task X". Có ghi: start/complete/CRUD sprint, log giờ, duyệt/từ chối/thu hồi timesheet.<br>• <code>wbs_node_activities</code> — có <code>old_value/new_value</code> nhưng chỉ phạm vi WBS node (comment + status change).<br>• <code>sprint_item_history</code> — append-only, chỉ cho sprint item.<br><b>Không ghi:</b> thao tác DoD; không có bước duyệt ngoại lệ DoD để ghi.</td>
+<td>Chuẩn hóa schema audit (thêm <code>entity_type</code>, <code>entity_id</code>, <code>project_id</code>, <code>old_value</code>, <code>new_value</code>); xây view/API tổng hợp 3 nguồn; bổ sung audit cho DoD và override.</td></tr>
+<tr>
+<td><b>Snapshot lịch sử</b> để vẽ chart theo thời gian</td><td class="part">MỘT PHẦN</td>
+<td>Có 5 bảng snapshot: <code>project_snapshots</code> (SPI/CPI/EV/AC/PV/progress), <code>milestone_snapshots</code>, <code>resource_heatmap_snapshots</code>, <code>sprint_report</code>, <code>release_report</code>.<br><b>Điểm yếu:</b> <code>project_snapshots</code> chỉ chụp <b>thủ công</b> qua <code>POST /reporting/snapshots/capture</code> — cron tự động đã bị gỡ. Chuỗi thời gian sẽ thủng lỗ nếu không ai bấm nút.</td>
+<td>Khôi phục job chụp snapshot tự động hằng ngày (hạ tầng <code>JobRegistry</code> + distributed lock đã sẵn sàng).</td></tr>
+</table>
+
+<div class="pagebreak"></div>
+<h3>Nhóm 9 — Hệ sinh thái Giao tiếp &amp; Hiệu năng</h3>
+<table>
+<tr><th style="width:22%">Yêu cầu đặc tả</th><th style="width:10%">Trạng thái</th><th style="width:38%">Hiện trạng thực tế trong code</th><th>Việc cần phát triển</th></tr>
+<tr>
+<td><b>Thông báo trúng đích</b> Lark + chuông in-app, gửi cho Creator + Assignee, chống spam</td><td class="part">MỘT PHẦN</td>
+<td>Chuông in-app: có đầy đủ. Lark: <b>có nhưng phạm vi rất hẹp</b> — chỉ 3 tình huống (@mention trong comment, gán việc 1 node, gán việc hàng loạt). <b>Sprint start/complete, duyệt timesheet, vượt giờ đều KHÔNG gửi Lark</b>, chỉ hiện in-app.<br>Người nhận không theo mẫu "creator + assignee": gán việc → chỉ assignee mới (creator không nhận); timesheet → chỉ owner.<br>Chống spam: đã làm tốt ở 3 chỗ (dedup người nhận khi bulk approve, distributed lock chống gửi ×N khi chạy nhiều instance, gộp 1 card cho bulk assignment) nhưng <b>thiếu ở <code>EFFORT_OVERRUN</code></b>. Mọi lời gọi Lark đều fire-and-forget nên Lark chết không ảnh hưởng request — thiết kế tốt.</td>
+<td>Mở rộng kênh Lark cho sprint event + timesheet + overrun; bổ sung creator vào danh sách người nhận; thêm chống lặp cho overrun.</td></tr>
+<tr>
+<td><b>Ping Lark khẩn khi thẻ quá hạn (Overdue)</b></td><td class="no">CHƯA CÓ</td>
+<td><b>Job tồn tại nhưng thân hàm rỗng.</b> <code>daily_notifications</code> đã đăng ký trong <code>JobRegistry</code> (chạy 24h/lần, có lock, có cờ bật/tắt hot-reload), nhưng <code>checkProjectDeadlines()</code> và <code>checkStaleIssues()</code> chỉ ghi log <i>"placeholder (requires project repo)"</i>. Các notification type <code>DEADLINE_SOON</code> / <code>ISSUE_STALE</code> đã khai báo nhưng không bao giờ được sinh.<br>Overdue hiện <b>chỉ được tính để hiển thị badge</b> (trang My Work, thống kê team), không ping ai.</td>
+<td>Hiện thực 2 hàm placeholder: inject project repo + issue repo, truy vấn item quá hạn/sắp hạn, gửi in-app + Lark cho assignee và PM. <b>Chi phí thấp, tác động cao</b> — hạ tầng job đã sẵn sàng.</td></tr>
+<tr>
+<td><b>Hiệu năng</b>: cập nhật/kéo thả &lt; 300ms, tải danh sách &lt; 1s</td><td class="ok">ĐÃ CÓ</td>
+<td>Optimistic UI cho cả kéo thả và quick-assign → phản hồi tức thời, có rollback khi API lỗi. README công bố xử lý 10k+ node WBS với độ trễ dưới 500ms.</td>
+<td>Nên có bộ đo hiệu năng tự động (benchmark trong CI) để bảo vệ ngưỡng khi hệ thống lớn dần.</td></tr>
+<tr>
+<td><b>Đa ngôn ngữ EN/VN</b></td><td class="no">CHƯA CÓ</td>
+<td><b>Không có thư viện i18n nào được cài</b> (grep <code>svelte-i18n</code>, <code>paraglide</code>, <code>inlang</code>, <code>i18next</code> trong <code>package.json</code>: 0 kết quả). Không có thư mục <code>locales/</code>, không có <code>en.json</code>/<code>vi.json</code>. Các kết quả khớp <code>locale</code> đều là <code>toLocaleDateString()</code> để format ngày.<br><b>Nghiêm trọng hơn:</b> chuỗi UI hard-code <b>ở cả 2 tầng</b> — một số thông báo sinh thẳng từ backend Go (vd <code>"Effort Overrun: "</code>, <code>"Timesheet approved"</code>).</td>
+<td>Chọn thư viện i18n; trích xuất chuỗi FE; <b>quan trọng:</b> refactor backend để trả <b>mã lỗi + tham số</b> thay vì câu tiếng Anh, để FE tự dịch. Nên làm sớm — càng để lâu chi phí càng tăng theo số màn hình.</td></tr>
+<tr>
+<td><b>Múi giờ mặc định UTC+7</b></td><td class="no">CHƯA CÓ</td>
+<td>Hệ thống chạy <b>UTC cứng</b>, không có biến cấu hình timezone nào. DB dùng <code>TIMESTAMPTZ</code> (tốt) nhưng <code>timesheets.work_date</code> là kiểu <code>DATE</code> không có timezone.<br><b>Rủi ro đã hiện hình trong test:</b> <code>tests/e2e/releases.spec.ts:381</code> ghi nhận "trước ~07:00 giờ địa phương ở UTC+7 thì tham số ngày trả sai kết quả"; test backend phải xử lý riêng offset <code>+07:00</code>. → Ranh giới ngày của timesheet và báo cáo tuần <b>có rủi ro lệch 1 ngày</b>.</td>
+<td>Thêm cấu hình timezone tập trung (mặc định Asia/Ho_Chi_Minh); chuẩn hóa mọi phép tính ranh giới ngày/tuần theo timezone đó thay vì UTC.</td></tr>
+<tr>
+<td><b>Đáp ứng &gt; 100 CCU</b></td><td class="part">MỘT PHẦN</td>
+<td>Kiến trúc phù hợp (Go + Postgres, có distributed lock cho job khi chạy nhiều instance, đã dockerized). <b>Nhưng không tìm thấy kết quả load test nào</b> trong repo để xác nhận con số 100 CCU.</td>
+<td>Chạy load test và ghi nhận kết quả làm bằng chứng nghiệm thu.</td></tr>
+</table>
+
+<div class="pagebreak"></div>
+<h2>3. Danh sách khoảng trống theo thứ tự ưu tiên</h2>
+
+<p>Thứ tự dưới đây tính theo <b>mức chặn nghiệp vụ</b> và <b>phụ thuộc kỹ thuật</b>, không phải theo thứ tự trong đặc tả. Ước lượng là tương đối, dùng để so sánh giữa các hạng mục.</p>
+
+<h3><span class="p0">P0</span> &nbsp;Chặn vận hành Scrum — phải làm trước</h3>
+<table>
+<tr><th style="width:5%">#</th><th style="width:30%">Hạng mục</th><th style="width:12%">Quy mô</th><th>Lý do ưu tiên</th></tr>
+<tr><td><b>1</b></td><td><b>Tái thiết kế sprint membership: cho Story (node có con) vào Sprint</b></td><td>Lớn — chạm DB, service, mọi query sprint-item, FE board</td><td><b>Nút thắt kiến trúc.</b> 6 hạng mục khác (Story View, Swimlanes, kế thừa sprint, spillover chọn lọc, khóa Story Done, tick task trên board) đều bị chặn bởi hạng mục này. Làm sau sẽ phải sửa lại các phần đã xây.</td></tr>
+<tr><td><b>2</b></td><td><b>Phân hệ Sprint Review</b> (trạng thái IN_REVIEW, PO Accept/Reject, reject → backlog, feedback stakeholder, 1-click tạo story)</td><td>Vừa</td><td>1 trong 4 nghi thức Scrum, hiện vắng mặt hoàn toàn. Cơ chế "return to backlog" đã có sẵn nên chi phí thấp hơn tưởng.</td></tr>
+<tr><td><b>3</b></td><td><b>Phân hệ Sprint Retrospective</b> (bảng retro + template, ẩn danh, dot-voting, action items sinh thẻ, lịch sử retro)</td><td>Lớn — xây từ 0</td><td>Nghi thức thứ 2 vắng mặt. Không có Retro thì không có vòng cải tiến — mất giá trị cốt lõi của Scrum.</td></tr>
+<tr><td><b>4</b></td><td><b>Bộ vai trò Scrum trong RBAC</b> (Product Owner / Scrum Master / Developer + ma trận quyền mặc định)</td><td>Nhỏ</td><td>Cơ chế RBAC per-project đã hoàn chỉnh — chỉ cần seed role + permission. Nhưng là tiền đề cho mọi quy tắc phân quyền trong Review/Retro/Override.</td></tr>
+<tr><td><b>5</b></td><td><b>Bộ node type Scrum mặc định</b> (Epic / Feature / Story / Task) + type rules ràng buộc phân cấp</td><td>Nhỏ</td><td>Hạ tầng type per-project đã có; chỉ cần seed + template dự án. Không có bước này thì mọi màn hình Scrum vẫn hiển thị Phase/Milestone/Work Package.</td></tr>
+</table>
+
+<h3><span class="p1">P1</span> &nbsp;Ảnh hưởng trực tiếp chất lượng &amp; kỷ luật quy trình</h3>
+<table>
+<tr><th style="width:5%">#</th><th style="width:30%">Hạng mục</th><th style="width:12%">Quy mô</th><th>Ghi chú</th></tr>
+<tr><td><b>6</b></td><td>Scrum Board: <b>Story View + Task View/Swimlanes</b>, progress bar trên thẻ, expand tick nhanh</td><td>Vừa–Lớn</td><td>Phụ thuộc #1.</td></tr>
+<tr><td><b>7</b></td><td><b>Khóa chặn Story Done khi còn Task con chưa xong</b></td><td>Nhỏ</td><td>Phụ thuộc #1. Thêm check vào <code>validateTransition</code>.</td></tr>
+<tr><td><b>8</b></td><td><b>Override DoD</b> + lý do bắt buộc + audit; đồng thời <b>vá lỗ hổng DoD gate ở <code>BulkUpdateNodes</code></b> và bổ sung audit cho thao tác DoD</td><td>Nhỏ</td><td>Lỗ hổng <code>BulkUpdateNodes</code> nên vá ngay, độc lập với phần override.</td></tr>
+<tr><td><b>9</b></td><td><b>WIP Limit</b> theo cột + cảnh báo đỏ</td><td>Nhỏ</td><td>FE đã chừa sẵn chỗ (<code>wipLimit</code> luôn null); chỉ cần thêm cột DB + API cấu hình.</td></tr>
+<tr><td><b>10</b></td><td><b>Spillover chọn lọc</b> khi đóng sprint (chuyển sang sprint kế tiếp, giữ lại sub-task đã Done)</td><td>Vừa</td><td>Phụ thuộc #1. Bảng <code>sprint_item_history</code> đã đủ để ghi nhận burned hours cho sprint cũ.</td></tr>
+<tr><td><b>11</b></td><td><b>Refinement states</b> + cảnh báo thẻ thiếu Story Point/DoD trước khi vào Sprint</td><td>Vừa</td><td></td></tr>
+<tr><td><b>12</b></td><td><b>Burndown nội-sprint theo ngày</b> (remaining hours/tasks + ideal line) + snapshot hằng ngày</td><td>Vừa</td><td>Hạ tầng <code>JobRegistry</code> + distributed lock đã sẵn sàng.</td></tr>
+<tr><td><b>13</b></td><td><b>Thuộc tính R&amp;D / Thương mại</b> + kế thừa xuống task + denormalize sang timesheet</td><td>Vừa</td><td>Điều kiện cần để bóc tách chi phí R&amp;D — có ý nghĩa thuế/tài chính.</td></tr>
+<tr><td><b>14</b></td><td><b>Sửa <code>EFFORT_OVERRUN</code></b>: gửi cho PM/SM thay vì người log giờ, thêm chống lặp, cho cấu hình ngưỡng</td><td>Rất nhỏ</td><td>Đây là <b>bug logic</b>, không phải tính năng thiếu. Nên vá ngay.</td></tr>
+<tr><td><b>15</b></td><td><b>Hiện thực job cảnh báo quá hạn</b> (<code>checkProjectDeadlines</code> / <code>checkStaleIssues</code> hiện là hàm rỗng)</td><td>Nhỏ</td><td>Chi phí thấp, tác động cao. Job và notification type đã khai báo sẵn.</td></tr>
+<tr><td><b>16</b></td><td><b>Bắt buộc Assignee + Estimate Hours</b> cho Task trong sprint</td><td>Nhỏ</td><td>Nên áp dụng có điều kiện để không phá dữ liệu cũ.</td></tr>
+<tr><td><b>17</b></td><td><b>Product Goal bắt buộc</b> khi tạo dự án</td><td>Rất nhỏ</td><td>Cần backfill dữ liệu cũ trước khi siết NOT NULL.</td></tr>
+<tr><td><b>18</b></td><td><b>Validation Sprint</b>: tên duy nhất trong project, thời lượng &gt; 0, bắt buộc ngày khi ACTIVE</td><td>Rất nhỏ</td><td></td></tr>
+</table>
+
+<h3><span class="p2">P2</span> &nbsp;Hoàn thiện &amp; nâng cấp trải nghiệm</h3>
+<table>
+<tr><th style="width:5%">#</th><th style="width:30%">Hạng mục</th><th style="width:12%">Quy mô</th><th>Ghi chú</th></tr>
+<tr><td><b>19</b></td><td><b>Đa ngôn ngữ EN/VN</b></td><td>Lớn</td><td>Phải refactor cả backend (trả mã lỗi + tham số thay vì câu tiếng Anh). <b>Chi phí tăng theo thời gian</b> — quyết định sớm dù triển khai sau.</td></tr>
+<tr><td><b>20</b></td><td><b>Burnup Chart</b> + <b>CFD</b></td><td>Vừa</td><td>Dùng chung hạ tầng snapshot với #12.</td></tr>
+<tr><td><b>21</b></td><td><b>Cấu hình timezone tập trung</b> (mặc định UTC+7)</td><td>Nhỏ–Vừa</td><td>Đang có rủi ro lệch ngày đã ghi nhận trong test.</td></tr>
+<tr><td><b>22</b></td><td><b>Hợp nhất Audit Log</b> (chuẩn hóa schema + view tổng hợp 3 bảng)</td><td>Vừa</td><td></td></tr>
+<tr><td><b>23</b></td><td><b>Progress % dự án tự động</b> từ rollup WBS</td><td>Nhỏ</td><td></td></tr>
+<tr><td><b>24</b></td><td><b>Quick Filter theo Epic/Feature và Label</b>; tổng Story Point cho backlog</td><td>Nhỏ</td><td>Cột <code>labels</code> đã có sẵn trong DB.</td></tr>
+<tr><td><b>25</b></td><td><b>Fix Version cho Epic/Feature</b> (nới ràng buộc "chỉ item Done")</td><td>Nhỏ</td><td></td></tr>
+<tr><td><b>26</b></td><td><b>Vòng đời dự án</b>: thêm Draft + Archived, xây state machine</td><td>Nhỏ–Vừa</td><td></td></tr>
+<tr><td><b>27</b></td><td><b>Khôi phục cron snapshot tự động</b> cho <code>project_snapshots</code></td><td>Rất nhỏ</td><td>Hiện chỉ chụp thủ công → chuỗi thời gian thủng lỗ.</td></tr>
+<tr><td><b>28</b></td><td><b>API tích hợp HRM/Kế toán</b> (JSON endpoint / webhook thay vì chỉ file XLSX)</td><td>Vừa</td><td></td></tr>
+<tr><td><b>29</b></td><td><b>Mở rộng kênh Lark</b> cho sprint event, timesheet, overrun; bổ sung creator vào người nhận</td><td>Nhỏ</td><td></td></tr>
+<tr><td><b>30</b></td><td><b>Load test xác nhận &gt; 100 CCU</b></td><td>Nhỏ</td><td>Cần bằng chứng nghiệm thu, hiện chưa có trong repo.</td></tr>
+</table>
+
+<div class="pagebreak"></div>
+<h2>4. Lộ trình triển khai đề xuất</h2>
+
+<table>
+<tr><th style="width:14%">Giai đoạn</th><th style="width:30%">Nội dung</th><th style="width:20%">Kết quả đạt được</th><th>Hạng mục</th></tr>
+<tr>
+<td><b>Đợt 0</b><br><i>Vá lỗi</i></td>
+<td>Sửa <code>EFFORT_OVERRUN</code> gửi sai người; vá DoD gate ở <code>BulkUpdateNodes</code>; hiện thực job cảnh báo quá hạn; validation Sprint; Product Goal bắt buộc; khôi phục cron snapshot</td>
+<td>Bịt các lỗi logic đang âm thầm làm sai lệch quy trình, chi phí rất thấp</td><td>#8 (phần vá), #14, #15, #17, #18, #27</td></tr>
+<tr>
+<td><b>Đợt 1</b><br><i>Nền tảng Scrum</i></td>
+<td>Tái thiết kế sprint membership cho Story; seed vai trò PO/SM/Developer; seed node type Epic/Feature/Story/Task + type rules</td>
+<td>Hệ thống bắt đầu <b>nói đúng ngôn ngữ Scrum</b>; mở khóa toàn bộ các đợt sau</td><td>#1, #4, #5</td></tr>
+<tr>
+<td><b>Đợt 2</b><br><i>Khép vòng lặp</i></td>
+<td>Sprint Review (nghiệm thu PO) + Sprint Retrospective (bảng retro, ẩn danh, dot-voting, action items, lịch sử)</td>
+<td>Đủ 4 nghi thức Scrum — <b>đây là đợt mang lại giá trị nghiệp vụ lớn nhất</b></td><td>#2, #3</td></tr>
+<tr>
+<td><b>Đợt 3</b><br><i>Kỷ luật thực thi</i></td>
+<td>Story View + Swimlanes; WIP limit; khóa Story Done theo task con; Override DoD + reason log; spillover chọn lọc; refinement states; bắt buộc assignee/estimate</td>
+<td>Board dùng được cho họp Daily; chất lượng được ràng buộc bằng hệ thống thay vì bằng thỏa thuận miệng</td><td>#6–#11, #16</td></tr>
+<tr>
+<td><b>Đợt 4</b><br><i>Đo lường</i></td>
+<td>Snapshot hằng ngày + Burndown nội-sprint + Burnup + CFD; Progress % tự động; hợp nhất audit log</td>
+<td>Scrum Master có đủ công cụ chẩn đoán điểm nghẽn và kiểm soát scope creep</td><td>#12, #20, #22, #23</td></tr>
+<tr>
+<td><b>Đợt 5</b><br><i>Tài chính &amp; tích hợp</i></td>
+<td>Thuộc tính R&amp;D/Thương mại + kế thừa; API tích hợp HRM/kế toán; mở rộng kênh Lark</td>
+<td>Bóc tách được chi phí R&amp;D; nối được với hệ thống kế toán</td><td>#13, #28, #29</td></tr>
+<tr>
+<td><b>Đợt 6</b><br><i>Chuẩn hệ thống</i></td>
+<td>Đa ngôn ngữ EN/VN; cấu hình timezone UTC+7; vòng đời dự án Draft/Archived; quick filter mở rộng; fix version cho Epic; load test</td>
+<td>Đáp ứng đầy đủ nhóm yêu cầu phi chức năng</td><td>#19, #21, #24, #25, #26, #30</td></tr>
+</table>
+
+<div class="warn">
+<b>Khuyến nghị về thứ tự.</b> Cám dỗ thường gặp là làm trước những hạng mục nhỏ và dễ thấy (WIP limit, Story View, biểu đồ). Nhưng vì <b>hạng mục #1 chạm vào quy tắc "node nào được vào sprint"</b> — điều mà Story View, Swimlanes, spillover và khóa Story Done đều phụ thuộc — nên làm những thứ kia trước sẽ dẫn đến phải viết lại. Đề xuất giữ nguyên thứ tự Đợt 1 → Đợt 3.
+</div>
+
+<h2>5. Ghi nhận điểm mạnh của hệ thống hiện tại</h2>
+
+<p>Báo cáo này tập trung vào khoảng trống, nên cần nói rõ: <b>phần đã làm được làm rất tốt</b>, và đó là lý do các đợt phát triển ở trên có chi phí thấp hơn so với xây mới.</p>
+
+<ul>
+<li><b>Lịch sử bất biến (immutable history).</b> <code>sprint_item_history</code>, <code>sprint_report</code>, <code>release_report</code> là snapshot đóng băng, và báo cáo chỉ đọc từ đây chứ không đọc <code>wbs_nodes</code> — nghĩa là số liệu Velocity không bao giờ bị "trôi" khi ai đó sửa dữ liệu quá khứ. Đây là thiết kế mà nhiều sản phẩm thương mại làm sai.</li>
+<li><b>Ràng buộc 2 tầng.</b> Quy tắc "1 sprint Active/dự án" được enforce ở <i>cả</i> service layer <i>và</i> partial unique index của Postgres. DoD gate cũng có cả BE (chặn cứng) và FE (pre-check). Đây là kỷ luật kỹ thuật tốt.</li>
+<li><b>Workflow tùy biến nhưng vẫn có xương sống.</b> Mỗi dự án tự đặt tên status và transition riêng, nhưng mọi status buộc phải thuộc 1 trong 3 <code>kind</code>. Nhờ vậy báo cáo và board vẫn hiểu được "Done" nghĩa là gì mà không cần hard-code tên status — đúng theo tinh thần mục 4 của đặc tả.</li>
+<li><b>Cơ chế "return to backlog" có lý do bắt buộc</b>, được ép bằng CHECK constraint ở DB chứ không chỉ ở tầng ứng dụng. Cơ chế này tái sử dụng được ngay cho luồng Review Reject.</li>
+<li><b>Optimistic UI làm cẩn thận</b> — rollback chính xác từng thẻ (không rollback cả mảng), serialize theo thẻ đang chờ, guard đầy đủ trước khi gửi write.</li>
+<li><b>Lark fire-and-forget</b> — dịch vụ thông báo ngoài chết không kéo theo request nghiệp vụ.</li>
+<li><b>Distributed lock cho background job</b> — sẵn sàng chạy nhiều instance mà không gửi trùng thông báo.</li>
+</ul>
+
+<hr style="margin-top:30px; border:none; border-top:1px solid #c5d3e0">
+<p style="font-size:8.5pt; color:#777">Báo cáo lập ngày 05/08/2026 dựa trên rà soát trực tiếp mã nguồn tại nhánh <code>main</code> của repository <code>erp</code>. Mọi kết luận đều kèm dẫn chiếu file và dòng để có thể kiểm chứng lại. Các kết luận "CHƯA CÓ" đã được kiểm chứng chéo bằng tìm kiếm toàn văn trên toàn bộ backend, frontend và SQL migration.</p>
+
+</body>
+</html>

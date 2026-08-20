@@ -1,0 +1,395 @@
+﻿"ID","Epic","Feature","User Story (Short Desc)","User Story (Detail)","Acceptance Criteria","Trạng thái","Việc cần phát triển","Ưu tiên","Thứ tự thực hiện","Tên nhóm","Phụ thuộc"
+"PM-091","EP-00 Tách khung quản trị dự án","Lưới an toàn","Bộ test khóa hành vi dự án PMI trước khi thay đổi","Là một kỹ sư, tôi muốn có bộ test ghi lại chính xác hành vi hiện tại của dự án PMI trước khi thêm bất kỳ tính năng Scrum nào, để mọi thay đổi làm lệch hành vi PMI đều bị phát hiện ngay trong CI.","AC1: Có test khóa hành vi WBS truyền thống: tạo, sửa, xóa, di chuyển node và rollup 5 trường EVM.
+AC2: Có test khóa hành vi hiện tại cho phép đặt node cha sang Done khi node con chưa xong.
+AC3: Có test khóa hành vi cập nhật hàng loạt KHÔNG áp gate DoD.
+AC4: Có test khóa việc tạo node không bắt buộc người thực hiện và giờ ước lượng.
+AC5: Bộ test chạy trong CI và fail ngay khi bất kỳ hành vi nào ở trên thay đổi.","CHƯA CÓ","LÀM TRƯỚC TIÊN. Hiện KHÔNG có test nào phân biệt hành vi node PMI với node Scrum, vì hiện chưa tồn tại khác biệt nào để test. Đây là rủi ro lớn nhất của toàn kế hoạch: mọi sửa đổi ở UpdateNode, validateTransition, rollupAncestorsTx sẽ tự động lan sang cả 2 loại dự án mà không test nào bắt được. Cần: viết mới bộ characterization test, tham chiếu các test đã có (wbs_rollup_atomic_test.go, wbs_transition_validation_test.go, wbs_dod_gate_test.go, wbs_bulk_query_count_test.go).","P0","G00-01","G00 Tách khung quản trị dự án",""
+"PM-092","EP-00 Tách khung quản trị dự án","Khung quản trị","Bắt buộc chọn khung quản trị khi khởi tạo dự án","Là một PMO, tôi muốn chọn khung quản trị Scrum hoặc PMI ngay khi tạo dự án, để hệ thống hiển thị đúng bộ tính năng cho từng cách làm việc.","AC1: Form tạo dự án có trường Khung quản trị với đúng 2 lựa chọn Scrum và PMI, bắt buộc chọn, không có giá trị mặc định ngầm.
+AC2: Không tạo được dự án khi chưa chọn khung; API trả lỗi 400 kèm mã lỗi.
+AC3: Khung quản trị hiển thị ở danh sách dự án và trang chi tiết.
+AC4: Cột lưu trên bảng projects, có DEFAULT an toàn là PMI để dữ liệu cũ không đổi hành vi.
+AC5: KHÔNG hỗ trợ mô hình lai; một dự án thuộc đúng một khung.","CHƯA CÓ","KHÔNG dùng project_type_id: cột này trỏ vào bảng categories mà người dùng tự sửa được ở màn hình Categories, giá trị hiện tại là Internal/External, và id không ổn định giữa các môi trường. Theo tiền lệ is_ticket_project: thêm cột trên projects kèm CHECK constraint và DEFAULT về PMI, migration một dòng theo mẫu 000259_add_project_ticket_rnd_flags.up.sql.","P0","G00-02","G00 Tách khung quản trị dự án","PM-091"
+"PM-093","EP-00 Tách khung quản trị dự án","Khung quản trị","Backfill khung quản trị cho dự án hiện hữu","Là một quản trị hệ thống, tôi muốn gán khung quản trị cho toàn bộ dự án đang chạy theo tiêu chí đã thống nhất, để không dự án nào bị mất tính năng đang dùng.","AC1: Dự án thuộc program_id = 2 (Digital Transformation) được gán khung Scrum.
+AC2: Dự án đã có bản ghi trong bảng sprints, hoặc có wbs_nodes.sprint_id khác NULL, được gán khung Scrum.
+AC3: Hai tiêu chí trên áp dụng theo quan hệ hoặc; thỏa một trong hai là đủ.
+AC4: Mọi dự án còn lại giữ khung PMI, hành vi không đổi.
+AC5: Script chạy được ở chế độ thử nghiệm, xuất bản đối chiếu danh sách dự án và khung sẽ gán, trước khi ghi thật.
+AC6: Chạy lại nhiều lần cho cùng kết quả.","CHƯA CÓ","Viết script chạy một lần nhận program_id làm tham số thay vì hard-code tên program trong migration (chuỗi Digital Transformation chỉ tồn tại trong dữ liệu vận hành; trong code nó chỉ là placeholder của ô nhập liệu tại programs/+page.svelte:232). CẢNH BÁO CẦN THÔNG BÁO TRƯỚC CHO NGƯỜI DÙNG: vai trò Lead của mọi dự án hiện hữu đang được cấp TOÀN BỘ quyền (project_repository_impl.go:221-223) nên đang nhìn thấy đủ 5 tab Scrum; sau khi gate, Lead của dự án PMI sẽ mất 5 tab này.","P0","G00-03","G00 Tách khung quản trị dự án","PM-092"
+"PM-094","EP-00 Tách khung quản trị dự án","Khung quản trị","Seed cấu hình mặc định khác nhau theo khung","Là một Scrum Master, tôi muốn dự án Scrum mới tạo đã có sẵn đúng bộ loại thẻ, trạng thái và vai trò của Scrum, để bắt tay vào việc ngay.","AC1: Dự án Scrum được seed 5 loại thẻ: Epic, Feature, Story, Task, Sub-task, kèm luật phân cấp Epic chứa Feature, Feature chứa Story, Story chứa Task, Task chứa Sub-task.
+AC2: Dự án Scrum được seed 4 vai trò: Product Owner, Scrum Master, Developer, Viewer, kèm ma trận quyền mặc định.
+AC3: Dự án PMI giữ nguyên seed hiện tại: loại thẻ Phase, Milestone, Work Package và vai trò Lead, Member, Observer.
+AC4: Bộ trạng thái workflow mặc định khác nhau giữa 2 khung nhưng đều tuân thủ 3 nhóm lõi todo, in_progress, done.
+AC5: Sau khi tạo, người dùng vẫn sửa được cấu hình của dự án mình.
+AC6: Phân cấp 5 cấp nằm vừa trong giới hạn độ sâu hiện tại, không cần sửa giới hạn.","CHƯA CÓ","Một dự án chỉ có MỘT bộ workflow (project_workflows là 1:1 với project; wbs_nodes.status_id trỏ thẳng vào project_statuses; Scrum Board dùng chính bộ status đó làm cột). Vì vậy khác biệt giữa 2 khung CHỈ tạo được ở bước seed lúc tạo dự án, không thể tách schema. Đây là nơi gộp phần seed của PM-005 và PM-009. Giới hạn độ sâu 5 cấp tại wbs_service_impl.go:817-822 vừa đủ cho Epic đến Sub-task nhưng KHÔNG còn dư cấp nào.","P0","G00-04","G00 Tách khung quản trị dự án","PM-092"
+"PM-095","EP-00 Tách khung quản trị dự án","Tách giao diện","Ẩn hiện tab và nút hành động theo khung quản trị","Là một người dùng, tôi muốn chỉ nhìn thấy các tính năng thuộc khung quản trị của dự án mình, để giao diện không rối bởi những thứ không dùng đến.","AC1: Dự án PMI không thấy các tab Sprints, Backlog, Scrum Board.
+AC2: Dự án Scrum không thấy các màn hình thuần PMI: Baseline và Earned Value.
+AC3: Các tính năng dùng chung giữ nguyên cho cả hai khung: Risk, Issue, Stakeholder, Timesheet, Resource, Team.
+AC4: Quy tắc ẩn hiện áp dụng SAU tầng phân quyền, không thay thế tầng phân quyền.
+AC5: Có unit test khóa danh sách tab của từng khung.","CHƯA CÓ","Tái sử dụng cơ chế ĐÃ CÓ: TICKET_PROJECT_HIDDEN_TABS tại projectTabs.ts:43-49 (hiện ẩn đúng 5 tab Scrum cho ticket project) và ProjectHeader.svelte:109. Chỉ cần đổi cờ boolean thành map khung sang tập tab ẩn. Hàm buildProjectTabs là hàm thuần đã có unit test đầy đủ nên chi phí thấp. KHÔNG cần đụng navigation.ts vì menu trái không có mục Scrum nào.","P0","G00-05","G00 Tách khung quản trị dự án","PM-093"
+"PM-096","EP-00 Tách khung quản trị dự án","Tách giao diện","Chặn truy cập chéo ở tầng API theo khung","Là một quản trị hệ thống, tôi muốn ranh giới giữa hai khung được ép ở tầng máy chủ, để không thể lách qua bằng cách gọi API trực tiếp hay gõ thẳng đường dẫn.","AC1: Mọi API sprint, backlog, scrum board của dự án PMI trả về lỗi kèm mã lỗi rõ ràng.
+AC2: Chặn ở tầng service hoặc middleware, không phụ thuộc việc giao diện có ẩn hay không.
+AC3: Truy cập thẳng đường dẫn scrum-board của dự án PMI sẽ chuyển hướng về trang chi tiết dự án.
+AC4: Có test API cho cả hai chiều truy cập chéo.","CHƯA CÓ","Đường dẫn scrum-board và toàn bộ API sprint, backlog, release hiện truy cập được từ MỌI dự án, chỉ gate bằng quyền (router_pm.go:103-173). Đây là phần thay đổi hành vi thật sự nên phải làm SAU khi backfill xong, tránh chặn nhầm dự án đang dùng Sprint.","P0","G00-06","G00 Tách khung quản trị dự án","PM-093"
+"PM-097","EP-00 Tách khung quản trị dự án","Khung quản trị","Khóa khung quản trị sau khi tạo dự án","Là một PMO, tôi muốn khung quản trị không đổi được sau khi dự án đã tạo, để không phát sinh dữ liệu Sprint hay Story Point mồ côi.","AC1: Khung quản trị không sửa được sau khi tạo, ở cả giao diện lẫn API.
+AC2: API cập nhật dự án bỏ qua hoặc từ chối trường khung quản trị.
+AC3: Trang chi tiết hiển thị khung ở dạng chỉ đọc kèm ghi chú không thể thay đổi.
+AC4: Nhu cầu đổi khung xử lý bằng thao tác quản trị có kiểm soát, nằm ngoài luồng sản phẩm.","CHƯA CÓ","Theo mẫu freeze đã có tại project_service_impl.go:104 (UpdateProject luôn giữ nguyên giá trị progress cũ) và handler DTO cố tình không khai báo trường đó (project_handler.go:21).","P1","G00-07","G00 Tách khung quản trị dự án","PM-092"
+"PM-098","EP-00 Tách khung quản trị dự án","Danh mục","Lọc và thống kê danh mục dự án theo khung","Là một PMO, tôi muốn lọc và thống kê dự án theo khung quản trị, để nắm được tỷ lệ áp dụng của từng cách làm việc.","AC1: Danh sách dự án lọc được theo khung quản trị.
+AC2: Cột khung hiển thị ở bảng danh sách.
+AC3: Portfolio và Program hiển thị số lượng dự án theo từng khung.","CHƯA CÓ","ProjectListFilter (entity/project.go:76-82) hiện chưa có tham số lọc theo loại; cần bổ sung tham số và chỉ mục nếu danh mục lớn.","P2","G00-08","G00 Tách khung quản trị dự án","PM-092"
+"PM-001","EP-01 Quản lý Dự án & Phân quyền","Danh mục dự án","Xem danh sách dự án với thông số chính","Là một PMO, tôi muốn xem danh sách toàn bộ dự án kèm PM phụ trách, Product Goal, tiến độ và trạng thái, để nắm nhanh bức tranh toàn danh mục mà không cần mở từng dự án.","AC1: Bảng danh sách hiển thị đủ 5 cột: Tên dự án, Product Goal, Project Manager, Progress, Status.
+AC2: Cột Progress hiển thị dạng thanh tiến trình kèm số phần trăm.
+AC3: Người dùng chỉ thấy dự án mình có quyền truy cập.
+AC4: Danh sách tải xong dưới 1 giây với 200 dự án.","ĐÃ CÓ","Không. Đã implement tại projectColumns.ts và ProjectTableRow.svelte.","—","—","—",""
+"PM-002","EP-01 Quản lý Dự án & Phân quyền","Vòng đời dự án","Khai báo Product Goal khi tạo dự án (tùy chọn)","Là một Product Owner, tôi muốn khai báo Product Goal cho dự án để tuyên bố định hướng cốt lõi, nhưng không bị chặn nếu chưa nghĩ ra ngay tại thời điểm khởi tạo.","AC1: Form tạo và sửa dự án có trường Product Goal, cho phép để trống.
+AC2: Product Goal hiển thị ở danh sách dự án và trang chi tiết.
+AC3: Trường hỗ trợ định dạng văn bản có cấu trúc.
+AC4: Dự án không khai báo Product Goal vẫn hoạt động bình thường ở mọi chức năng.","ĐÃ CÓ","Không. Cột projects.product_goal, entity và form nhập liệu đã có, để ở dạng tùy chọn theo đúng yêu cầu. GHI CHÚ: yêu cầu bắt buộc khai báo đã được gỡ bỏ theo quyết định ngày 05/08/2026.","—","—","—",""
+"PM-003","EP-01 Quản lý Dự án & Phân quyền","Vòng đời dự án","Chuyển trạng thái dự án theo vòng đời chuẩn","Là một PMO, tôi muốn dự án chỉ chuyển trạng thái theo luồng Draft đến Planning đến Active đến Closed đến Archived, để trạng thái danh mục phản ánh đúng thực tế.","AC1: Hệ thống có đủ 5 trạng thái chuẩn, trong đó Draft là trạng thái khởi tạo mặc định.
+AC2: Có bảng định nghĩa transition hợp lệ giữa các trạng thái.
+AC3: Gọi API chuyển sang trạng thái không hợp lệ trả lỗi kèm mã lỗi rõ ràng.","NGOÀI PHẠM VI","ĐƯA RA KHỎI PHẠM VI SCRUM: đây là thay đổi ở cấp danh mục dự án, ảnh hưởng toàn bộ dự án PMI đang chạy. Hiện trạng thái là category tự do (Planned, Active, On Hold, Completed, Cancelled) không có state machine. Nếu muốn làm, đưa vào backlog riêng của phía PMI.","—","—","Ngoài phạm vi Scrum",""
+"PM-004","EP-01 Quản lý Dự án & Phân quyền","Vòng đời dự án","Lưu trữ (Archive) dự án đã đóng","Là một PMO, tôi muốn lưu trữ dự án đã kết thúc để danh sách làm việc hằng ngày chỉ còn dự án đang sống.","AC1: Có hành động Archive trên dự án ở trạng thái Closed.
+AC2: Dự án đã Archive bị ẩn khỏi danh sách mặc định.
+AC3: Dự án đã Archive ở chế độ chỉ đọc.","NGOÀI PHẠM VI","ĐƯA RA KHỎI PHẠM VI SCRUM: ảnh hưởng toàn bộ danh mục dự án gồm cả PMI. Đưa vào backlog riêng của phía PMI nếu cần.","—","—","Ngoài phạm vi Scrum",""
+"PM-005","EP-01 Quản lý Dự án & Phân quyền","Phân quyền vai trò Scrum","Bộ vai trò Scrum chuẩn cho dự án Scrum","Là một Scrum Master, tôi muốn dự án Scrum có sẵn các vai trò Product Owner, Scrum Master và Developer, để không phải tự dựng lại ma trận quyền cho từng dự án mới.","AC1: Dự án khung Scrum tự động có các vai trò: Product Owner, Scrum Master, Developer, Viewer.
+AC2: Mỗi vai trò được gán sẵn bộ quyền mặc định đúng trách nhiệm Scrum.
+AC3: Product Owner quản trị Backlog và nghiệm thu; Scrum Master quản trị Sprint, workflow và Retro; Developer cập nhật thẻ và log giờ; Viewer chỉ đọc.
+AC4: Dự án khung PMI KHÔNG bị ảnh hưởng, giữ nguyên bộ vai trò Lead, Member, Observer.","CHƯA CÓ","Role hệ thống hiện là Admin, PMO, Project Manager, Team Lead, Member, Viewer; role dự án seed cứng là Lead, Member, Observer. Không tồn tại Product Owner, Scrum Master, Developer. Phần seed được gộp vào PM-094; hạng mục này lo phần ma trận quyền chi tiết và màn hình quản lý.","P0","G02-01","G02 Nền tảng Scrum: vai trò & loại thẻ","PM-094"
+"PM-006","EP-01 Quản lý Dự án & Phân quyền","Phân quyền vai trò Scrum","Gán vai trò cho thành viên dự án","Là một Scrum Master, tôi muốn gán vai trò cụ thể cho từng thành viên trong dự án, để quyền hạn phản ánh đúng trách nhiệm của họ trong nhóm.","AC1: Màn hình thành viên dự án cho phép chọn vai trò từ danh sách vai trò của dự án đó.
+AC2: Đổi vai trò có hiệu lực ngay ở lần gọi API kế tiếp.
+AC3: Mỗi thành viên có đúng một vai trò trong một dự án.
+AC4: Không thể gỡ vai trò của người cuối cùng giữ quyền quản trị dự án.","ĐÃ CÓ","Không. Đã có bảng project_members.project_role_id, API quản lý thành viên và tab Roles & Permissions.","—","—","—",""
+"PM-007","EP-01 Quản lý Dự án & Phân quyền","Phân quyền vai trò Scrum","Chuẩn hóa thông báo Access Denied","Là một Admin, tôi muốn thông báo từ chối quyền dùng đúng một cách diễn đạt trên toàn hệ thống.","AC1: Thiếu quyền trả HTTP 403 kèm thông báo Access Denied và mã lỗi.
+AC2: Giao diện ẩn hoặc vô hiệu hóa nút thao tác mà người dùng không có quyền.","NGOÀI PHẠM VI","ĐƯA RA KHỎI PHẠM VI SCRUM: thay đổi chuỗi thông báo trên toàn hệ thống, thuần thẩm mỹ, không phục vụ mục tiêu Scrum. Cơ chế chặn quyền hiện đã đầy đủ và đúng (403 với thông điệp cụ thể).","—","—","Ngoài phạm vi Scrum",""
+"PM-008","EP-02 Backlog & Quản lý Phiên bản","Cấu trúc phân cấp","Tạo cây công việc phân cấp","Là một Product Owner, tôi muốn tổ chức công việc thành cây phân cấp nhiều tầng, để nhìn được cả bức tranh lớn lẫn chi tiết thực thi.","AC1: Tạo được node con dưới node cha, độ sâu tối đa 5 cấp.
+AC2: Vượt quá 5 cấp trả lỗi rõ ràng.
+AC3: Node cha tự động cập nhật progress và effort khi node con thay đổi.
+AC4: Cây 10000 node hiển thị dưới 500ms.","ĐÃ CÓ","Không. Đã có cây WBS materialized-path với LTree, giới hạn 5 cấp, và cơ chế rollup ở wbs_repository_rollup.go. Giới hạn 5 cấp vừa đủ cho phân cấp Epic đến Sub-task của Scrum.","—","—","—",""
+"PM-009","EP-02 Backlog & Quản lý Phiên bản","Cấu trúc phân cấp","Bộ loại thẻ Scrum: Epic, Feature, Story, Task, Sub-task","Là một Product Owner, tôi muốn dự án Scrum có sẵn bộ loại thẻ đúng chuẩn, để bắt đầu làm việc ngay mà không phải tự khai báo lại từ đầu.","AC1: Dự án khung Scrum có sẵn 5 loại thẻ: Epic, Feature, Story, Task, Sub-task, mỗi loại có màu và icon riêng.
+AC2: Loại thẻ Story được đánh dấu là loại thẻ mang Story Point VÀ là đơn vị được đưa vào Sprint.
+AC3: Người dùng vẫn thêm, sửa, xóa được loại thẻ của riêng dự án mình.
+AC4: Dự án khung PMI giữ nguyên bộ Phase, Milestone, Work Package.","CHƯA CÓ","Hạ tầng loại thẻ theo dự án (bảng project_wbs_node_types) đã có nhưng seed mặc định là Phase, Milestone, Work Package. Phần seed gộp vào PM-094. Hạng mục này lo phần đánh dấu ngữ nghĩa: loại thẻ nào là Story để các màn hình Scrum và quy tắc sprint membership nhận diện. QUAN TRỌNG: đây là tiền đề bắt buộc của PM-040.","P0","G02-02","G02 Nền tảng Scrum: vai trò & loại thẻ","PM-094"
+"PM-010","EP-02 Backlog & Quản lý Phiên bản","Cấu trúc phân cấp","Ràng buộc phân cấp cha con theo loại thẻ","Là một Scrum Master, tôi muốn hệ thống chặn việc tạo sai thứ bậc, ví dụ tạo Epic bên trong Story, để cấu trúc backlog luôn nhất quán.","AC1: Với dự án Scrum, luật mặc định là Epic chứa Feature, Feature chứa Story, Story chứa Task, Task chứa Sub-task.
+AC2: Tạo hoặc di chuyển node vi phạm luật trả lỗi kèm thông báo cụ thể.
+AC3: Scrum Master sửa được bảng luật của dự án mình.
+AC4: Dự án khung PMI giữ nguyên luật permissive hiện tại, không bị siết.","MỘT PHẦN","Bảng wbs_type_rules và API cấu hình đã có, nhưng luật mặc định là permissive toàn phần (cha nào cũng chứa con nào). Cần seed luật ràng buộc đúng thứ bậc CHỈ cho dự án Scrum.","P0","G02-03","G02 Nền tảng Scrum: vai trò & loại thẻ","PM-009"
+"PM-011","EP-02 Backlog & Quản lý Phiên bản","Product Backlog","Xem Product Backlog của dự án","Là một Product Owner, tôi muốn xem toàn bộ hạng mục chưa được đưa vào Sprint ở một màn hình riêng, để quy hoạch thứ tự ưu tiên.","AC1: Backlog liệt kê các hạng mục chưa gán Sprint của dự án.
+AC2: Có cả chế độ xem dạng bảng phẳng và dạng cây.
+AC3: Có phân trang khi backlog vượt 100 hạng mục.","ĐÃ CÓ","Không. Đã có tab Backlog, panel Product Backlog cạnh board, và cả chế độ bảng lẫn cây. Lưu ý: sau PM-040 màn hình này sẽ trả về node loại Story thay vì node lá.","—","—","—",""
+"PM-012","EP-02 Backlog & Quản lý Phiên bản","Product Backlog","Lọc nhanh backlog theo loại thẻ và trạng thái","Là một Product Owner, tôi muốn lọc nhanh backlog để tập trung vào nhóm hạng mục đang quan tâm.","AC1: Có bộ lọc theo Type và Status.
+AC2: Có ô tìm kiếm theo tiêu đề.
+AC3: Bộ lọc giữ nguyên khi chuyển tab và quay lại.","ĐÃ CÓ","Không. Đã có BacklogFilterPanel với filter Type, Status và search.","—","—","—",""
+"PM-013","EP-02 Backlog & Quản lý Phiên bản","Product Backlog","Lọc backlog và bảng Scrum theo Epic hoặc Feature","Là một Product Owner, tôi muốn lọc backlog theo Epic hoặc Feature cha, để soi riêng phạm vi của một mảng tính năng khi refinement.","AC1: Có bộ lọc chọn Epic hoặc Feature cha ở cả màn hình Backlog và Scrum Board.
+AC2: Chọn một Epic sẽ hiển thị toàn bộ hạng mục nằm trong nhánh cây của Epic đó, không chỉ con trực tiếp.
+AC3: Bộ lọc kết hợp được với các bộ lọc khác.
+AC4: Chỉ áp dụng cho dự án khung Scrum.","CHƯA CÓ","Bộ lọc hiện chỉ có Type và Status ở backlog, Type, Priority, Status, Assignee ở board. Cần thêm tham số lọc theo nhánh cây cha ở API và UI, tận dụng cột path của WBS.","P3","G10-01","G10 Hoàn thiện bộ lọc & phiên bản","PM-009"
+"PM-014","EP-02 Backlog & Quản lý Phiên bản","Product Backlog","Lọc backlog và bảng Scrum theo Label","Là một thành viên nhóm, tôi muốn lọc thẻ theo Label, để nhóm các hạng mục cùng chủ đề dù nằm ở các Epic khác nhau.","AC1: Có bộ lọc đa chọn theo Label ở cả Backlog và Scrum Board.
+AC2: Chọn nhiều label thì lọc theo quan hệ hoặc.
+AC3: Danh sách label gợi ý lấy từ label thực tế đang dùng trong dự án.","CHƯA CÓ","Cột wbs_nodes.labels đã tồn tại và đã hiển thị trên thẻ (CardLabelChips) nhưng chưa có bộ lọc. Cần thêm tham số lọc label vào API backlog và sprint-items, thêm UI chọn label. Là bộ lọc thuần cộng thêm nên an toàn cho cả hai khung.","P3","G10-02","G10 Hoàn thiện bộ lọc & phiên bản",""
+"PM-015","EP-02 Backlog & Quản lý Phiên bản","Product Backlog","Xem tổng Story Point của backlog","Là một Product Owner, tôi muốn thấy tổng Story Point còn tồn trong backlog, để ước lượng cần bao nhiêu Sprint mới giải phóng hết.","AC1: Panel và tab Backlog hiển thị dòng tổng số hạng mục và tổng Story Point.
+AC2: Hạng mục chưa ước lượng Story Point được đếm riêng thành một chỉ số cảnh báo.
+AC3: Tổng cập nhật ngay khi áp bộ lọc.
+AC4: Chỉ tính ở cấp Story, không cộng trùng từ Task và Sub-task.
+AC5: Chỉ áp dụng cho dự án khung Scrum.","CHƯA CÓ","Backlog hiện chỉ hiển thị số lượng hạng mục chưa gán sprint. Cần bổ sung trường tổng hợp trong response API backlog và hiển thị ở UI.","P3","G10-03","G10 Hoàn thiện bộ lọc & phiên bản","PM-040"
+"PM-016","EP-02 Backlog & Quản lý Phiên bản","Backlog Refinement","Đánh dấu trạng thái tinh chỉnh của hạng mục backlog","Là một Product Owner, tôi muốn phân biệt rõ hạng mục nào mới ghi nhận, hạng mục nào đang tinh chỉnh và hạng mục nào đã sẵn sàng vào Sprint, để buổi Sprint Planning không mất thời gian bàn lại từ đầu.","AC1: Mỗi hạng mục backlog có trạng thái refinement với 3 giá trị: New, Ready for Refinement, Ready for Sprint.
+AC2: Trạng thái refinement độc lập với trạng thái thực thi To Do, Doing, Done.
+AC3: Màn hình Backlog cho phép lọc và nhóm theo trạng thái refinement.
+AC4: Chỉ Product Owner và Scrum Master được chuyển hạng mục sang Ready for Sprint.
+AC5: Chỉ áp dụng cho dự án khung Scrum; không thêm cột hay hành vi nào cho dự án PMI.","CHƯA CÓ","Grep refinement và Ready for Sprint toàn repo cho 0 kết quả. Cần thêm cột trạng thái refinement trên wbs_nodes hoặc bảng phụ; API cập nhật; UI lọc và nhóm; permission riêng cho bước duyệt sẵn sàng.","P1","G07-01","G07 Kỷ luật Backlog & DoD","PM-005"
+"PM-017","EP-02 Backlog & Quản lý Phiên bản","Backlog Refinement","Cảnh báo hạng mục Ready for Sprint còn thiếu thông tin","Là một Scrum Master, tôi muốn hệ thống tự phát hiện hạng mục đã đánh dấu sẵn sàng nhưng còn thiếu Story Point hoặc DoD, để không đưa công việc mơ hồ vào Sprint.","AC1: Hạng mục ở trạng thái Ready for Sprint mà thiếu Story Point hoặc chưa có mục DoD nào sẽ hiển thị badge cảnh báo.
+AC2: Rê chuột vào badge hiển thị danh sách thông tin còn thiếu.
+AC3: Kéo hạng mục có cảnh báo vào Sprint sẽ hiện hộp thoại xác nhận và ghi nhận người xác nhận.
+AC4: Bộ tiêu chí sẵn sàng cấu hình được ở cấp dự án.
+AC5: Chỉ áp dụng cho dự án khung Scrum.","CHƯA CÓ","AddNodesToSprint hiện chỉ chặn node có con, khác dự án hoặc đã gán sprint, không kiểm tra Story Point hay DoD. Cần xây bộ quy tắc readiness cấu hình được; API trả danh sách thiếu sót; badge và hộp thoại xác nhận ở UI.","P1","G07-02","G07 Kỷ luật Backlog & DoD","PM-016"
+"PM-018","EP-02 Backlog & Quản lý Phiên bản","Release & Fix Version","Tạo và quản lý Release","Là một Product Owner, tôi muốn tạo các Release để đóng gói cụm tính năng chuẩn bị đưa lên môi trường thật.","AC1: Tạo được Release với tên, ngày dự kiến và ghi chú.
+AC2: Tên Release là duy nhất trong phạm vi dự án.
+AC3: Release có 2 trạng thái DRAFT và RELEASED.
+AC4: Chỉ vai trò có quyền release mới tạo, sửa, xóa được.","ĐÃ CÓ","Không. Đã có bảng releases với ràng buộc UNIQUE(project_id, name), CHECK status, 5 permission riêng và UI đầy đủ.","—","—","—",""
+"PM-019","EP-02 Backlog & Quản lý Phiên bản","Release & Fix Version","Gắn hạng mục đã hoàn thành vào Release","Là một Product Owner, tôi muốn gắn các hạng mục đã xong vào một Release, để biết chính xác phiên bản này gồm những gì.","AC1: Chỉ gắn được hạng mục có trạng thái thuộc nhóm Done.
+AC2: Gắn hạng mục chưa hoàn thành trả lỗi rõ ràng.
+AC3: Một hạng mục chỉ thuộc tối đa một Release.
+AC4: Mỗi lần gắn được ghi vào lịch sử bất biến.","ĐÃ CÓ","Không. Đã có cột wbs_nodes.release_id, ràng buộc chỉ nhận item Done, và bảng release_item_history. Lưu ý: sau PM-040 truy vấn ứng viên gắn Release phải đổi từ node lá sang gốc sprint item.","—","—","—",""
+"PM-020","EP-02 Backlog & Quản lý Phiên bản","Release & Fix Version","Gỡ hạng mục khỏi Release kèm lý do","Là một Product Owner, tôi muốn gỡ hạng mục khỏi Release khi phát hiện chưa đạt, và bắt buộc ghi lý do để truy vết về sau.","AC1: Gỡ hạng mục bắt buộc nhập lý do, để trống thì bị chặn.
+AC2: Ràng buộc bắt buộc lý do được ép ở tầng cơ sở dữ liệu.
+AC3: Hạng mục bị gỡ quay về trạng thái chưa thuộc Release nào.
+AC4: Lịch sử ghi rõ ai gỡ, khi nào và vì sao.","ĐÃ CÓ","Không. Đã có API return items với reason bắt buộc và CHECK constraint ở DB.","—","—","—",""
+"PM-021","EP-02 Backlog & Quản lý Phiên bản","Release & Fix Version","Chốt Release và đóng băng số liệu","Là một Product Owner, tôi muốn chốt Release khi đã lên môi trường thật, và số liệu của Release đó không bao giờ thay đổi nữa.","AC1: Chuyển Release sang RELEASED sẽ tạo bản snapshot số điểm và số hạng mục đã phát hành.
+AC2: Snapshot chỉ tạo một lần cho mỗi Release.
+AC3: Sau khi chốt, không gắn thêm hoặc gỡ hạng mục được nữa.
+AC4: Báo cáo đọc từ snapshot nên số liệu quá khứ không bị trôi.","ĐÃ CÓ","Không. Đã có bảng release_report với UNIQUE(release_id) và báo cáo chỉ đọc từ snapshot.","—","—","—",""
+"PM-022","EP-02 Backlog & Quản lý Phiên bản","Release & Fix Version","Gắn Fix Version cho Epic hoặc Feature chưa hoàn thành","Là một Product Owner, tôi muốn gắn nhãn phiên bản dự kiến cho Epic hoặc Feature ngay từ khi quy hoạch, để theo dõi tiến độ của cụm tính năng chuẩn bị phát hành.","AC1: Gắn được Fix Version cho Epic và Feature ở trạng thái bất kỳ.
+AC2: Hệ thống phân biệt rõ phiên bản dự kiến và hạng mục đã phát hành.
+AC3: Màn hình Release hiển thị tiến độ của phiên bản dự kiến theo tỷ lệ hạng mục con đã xong.
+AC4: Chốt Release vẫn chỉ tính các hạng mục thực sự đã hoàn thành.
+AC5: Chỉ áp dụng cho dự án khung Scrum.","CHƯA CÓ","Hiện chỉ attach được hạng mục có trạng thái Done. Cần tách 2 khái niệm phiên bản dự kiến và hạng mục đã phát hành; nới ràng buộc cho node có con; bổ sung tính tiến độ theo nhánh cây.","P3","G10-04","G10 Hoàn thiện bộ lọc & phiên bản","PM-009"
+"PM-023","EP-03 Quản lý Sprint","Khởi tạo Sprint","Tạo Sprint với mục tiêu và khung thời gian","Là một Scrum Master, tôi muốn tạo Sprint kèm tên, mục tiêu và ngày bắt đầu, ngày kết thúc, để nhóm có nhịp độ làm việc rõ ràng.","AC1: Form tạo Sprint có các trường Tên, Sprint Goal, Ngày bắt đầu, Ngày kết thúc.
+AC2: Sprint mới tạo luôn ở trạng thái PLANNING.
+AC3: Bắt buộc có ngày bắt đầu và ngày kết thúc trước khi chuyển Sprint sang ACTIVE.
+AC4: Chỉ vai trò có quyền tạo Sprint mới tạo được.","MỘT PHẦN","Entity đã đủ trường nhưng ngày bắt đầu và kết thúc là nullable nên tạo Sprint không ngày vẫn được. Cần bắt buộc nhập ngày, hoặc tối thiểu bắt buộc trước khi chuyển sang ACTIVE. Sau PM-096 thì Sprint chỉ còn tồn tại ở dự án Scrum nên không ảnh hưởng PMI.","P1","G01-03","G01 Vá lỗi & siết validation",""
+"PM-024","EP-03 Quản lý Sprint","Khởi tạo Sprint","Validate tên Sprint duy nhất trong dự án","Là một Scrum Master, tôi muốn hệ thống chặn việc đặt trùng tên Sprint trong cùng dự án, để báo cáo và trao đổi không bị nhầm lẫn.","AC1: Tạo hoặc đổi tên Sprint trùng với Sprint đã có trong cùng dự án bị chặn kèm thông báo rõ ràng.
+AC2: Ràng buộc được ép bằng UNIQUE index ở cơ sở dữ liệu.
+AC3: So sánh không phân biệt hoa thường và bỏ khoảng trắng thừa hai đầu.","CHƯA CÓ","Hiện chỉ trim và kiểm tra rỗng, độ dài; không có UNIQUE index trên (project_id, name). Cần thêm UNIQUE index, xử lý trùng dữ liệu cũ trước khi tạo index, và validate ở service.","P1","G01-04","G01 Vá lỗi & siết validation",""
+"PM-025","EP-03 Quản lý Sprint","Khởi tạo Sprint","Validate thời lượng Sprint lớn hơn 0","Là một Scrum Master, tôi muốn hệ thống chặn Sprint có thời lượng bằng 0, để tránh dữ liệu vô nghĩa làm sai lệch biểu đồ.","AC1: Ngày kết thúc phải lớn hơn ngày bắt đầu; bằng nhau cũng bị chặn.
+AC2: Ràng buộc được ép ở cả service và CHECK constraint.
+AC3: Thông báo lỗi chỉ rõ trường nào sai.","CHƯA CÓ","Hiện chỉ kiểm tra start không lớn hơn end nên Sprint 0 ngày vẫn hợp lệ, ở cả service lẫn CHECK constraint. Cần siết điều kiện thành end lớn hơn hẳn start ở cả 2 tầng.","P1","G01-05","G01 Vá lỗi & siết validation","PM-023"
+"PM-026","EP-03 Quản lý Sprint","Vận hành Sprint","Bắt đầu Sprint và chốt cam kết","Là một Scrum Master, tôi muốn bắt đầu Sprint và hệ thống tự ghi lại khối lượng cam kết tại thời điểm đó, để về sau đo được nhóm cam kết bao nhiêu và làm được bao nhiêu.","AC1: Chuyển Sprint từ PLANNING sang ACTIVE ghi lại mốc cam kết cho từng hạng mục đang có trong Sprint.
+AC2: Mốc cam kết là bất biến, không thay đổi khi sau đó thêm hoặc bớt hạng mục.
+AC3: Luồng trạng thái chỉ cho phép PLANNING sang ACTIVE và ACTIVE sang COMPLETED.","ĐÃ CÓ","Không. Đã có activateWithCommit ghi baseline COMMITTED vào sprint_item_history và state machine chặt. Lưu ý: sau PM-040 mốc cam kết chỉ ghi ở cấp gốc sprint item.","—","—","—",""
+"PM-027","EP-03 Quản lý Sprint","Vận hành Sprint","Chỉ cho phép một Sprint Active mỗi dự án","Là một Scrum Master, tôi muốn hệ thống đảm bảo mỗi dự án chỉ có tối đa một Sprint đang chạy, để nhóm không bị phân tán nguồn lực.","AC1: Bắt đầu Sprint thứ hai khi đã có Sprint ACTIVE trả lỗi 409 kèm thông báo rõ ràng.
+AC2: Ràng buộc được ép ở cả service và bằng partial unique index.
+AC3: Sau khi đóng Sprint hiện tại thì Sprint kế tiếp bắt đầu được ngay.","ĐÃ CÓ","Không. Đã enforce ở cả CountActiveByProject (409) và partial unique index uniq_active_sprint_per_project. Ghi chú kỹ thuật: baseline.sql đang có 2 index trùng chức năng, nên dọn cho sạch.","—","—","—",""
+"PM-028","EP-03 Quản lý Sprint","Vận hành Sprint","Trao quyền vận hành Sprint cho Scrum Master và Product Owner","Là một Scrum Master, tôi muốn tự tạo, bắt đầu và kết thúc Sprint mà không phải chờ PMO phê duyệt, để nhóm không bị thắt cổ chai ở khâu quản lý.","AC1: Vai trò Scrum Master và Product Owner được gán sẵn quyền tạo, bắt đầu và kết thúc Sprint.
+AC2: Vai trò Developer chỉ xem được Sprint, không vận hành.
+AC3: Có permission tách riêng cho hành động bắt đầu và hành động kết thúc Sprint.","MỘT PHẦN","Permission key sprint view, create, update, delete đã có, nhưng bắt đầu và kết thúc dùng chung sprint update, và chưa có vai trò SM, PO để gán. Cần tách permission sprint start và sprint complete; gán vào ma trận quyền của vai trò Scrum mới.","P1","G02-04","G02 Nền tảng Scrum: vai trò & loại thẻ","PM-005"
+"PM-029","EP-03 Quản lý Sprint","Vận hành Sprint","Kéo thả hạng mục từ Backlog vào Sprint","Là một Scrum Master, tôi muốn kéo thả hạng mục từ Backlog vào Sprint và thấy tổng Story Point tự cộng dồn ngay, để buổi Sprint Planning diễn ra nhanh.","AC1: Kéo thẻ từ panel Backlog thả vào cột của board sẽ gán thẻ vào Sprint đang chạy.
+AC2: Kéo thẻ từ board trả ngược về panel Backlog sẽ gỡ khỏi Sprint.
+AC3: Tổng Story Point cam kết cập nhật ngay không cần tải lại trang.
+AC4: Thao tác lỗi thì thẻ tự quay về vị trí cũ kèm thông báo.","ĐÃ CÓ","Không. Đã có drag and drop 2 chiều giữa BacklogPanel và board, kèm optimistic UI và rollback. Sau PM-040 thẻ được kéo là Story chứ không phải node lá.","—","—","—",""
+"PM-030","EP-03 Quản lý Sprint","Đóng Sprint","Đóng Sprint và xử lý hạng mục chưa hoàn thành","Là một Scrum Master, tôi muốn khi đóng Sprint hệ thống bắt buộc xử lý dứt điểm mọi hạng mục chưa xong, để không có công việc bị bỏ quên.","AC1: Không đóng được Sprint khi còn hạng mục chưa hoàn thành mà chưa chọn cách xử lý.
+AC2: Hệ thống liệt kê rõ các hạng mục đang chặn việc đóng Sprint.
+AC3: Mỗi lựa chọn xử lý bắt buộc kèm lý do.
+AC4: Đóng Sprint tạo bản snapshot số liệu bất biến.","ĐÃ CÓ","Không. Đã có closeSprint chặn khi thiếu resolution, bắt buộc reason, và ghi sprint_report.","—","—","—",""
+"PM-031","EP-03 Quản lý Sprint","Đóng Sprint","Chuyển hạng mục dở dang sang Sprint kế tiếp (Spillover)","Là một Scrum Master, tôi muốn khi đóng Sprint có thể chuyển thẳng hạng mục làm chưa xong sang Sprint kế tiếp, thay vì phải trả về Backlog rồi thêm lại thủ công.","AC1: Hộp thoại đóng Sprint có thêm lựa chọn Chuyển sang Sprint kế tiếp bên cạnh lựa chọn Trả về Backlog.
+AC2: Chỉ các Sub-task chưa hoàn thành được chuyển đi; Sub-task đã Done ở lại Sprint cũ để ghi nhận công sức đã bỏ ra.
+AC3: Số giờ đã log ở Sprint cũ vẫn được tính cho Sprint cũ, không bị chuyển theo.
+AC4: Lịch sử ghi rõ hạng mục nào tràn từ Sprint nào sang Sprint nào và vì sao.
+AC5: Chọn chuyển tiếp khi chưa có Sprint kế tiếp sẽ hiện gợi ý tạo Sprint mới.
+AC6: Chỉ áp dụng cho dự án khung Scrum.","CHƯA CÓ","Hiện cách xử lý duy nhất khi đóng Sprint là trả về Backlog; không có đường code nào gán hạng mục sang Sprint kế. Cần thêm hành động chuyển tiếp; logic tách Sub-task đã xong và chưa xong; ghi bổ sung vào sprint_item_history. Chỉ khả thi sau khi Story kèm Sub-task vào được Sprint.","P1","G07-05","G07 Kỷ luật Backlog & DoD","PM-041"
+"PM-032","EP-04 Bảng Scrum & Giám sát tiến độ","Bảng Scrum cơ bản","Xem bảng Scrum theo ba trạng thái lõi","Là một thành viên nhóm, tôi muốn xem công việc của Sprint trên bảng ba cột To Do, Doing, Done, để nắm ngay tình hình.","AC1: Bảng hiển thị đúng 3 cột theo nhóm trạng thái lõi.
+AC2: Cột không có hạng mục nào vẫn hiển thị để giữ bố cục ổn định.
+AC3: Bảng chỉ hiển thị hạng mục thuộc Sprint đang được chọn.","ĐÃ CÓ","Không. Đã có 3 cột cố định theo kind trong adapter.ts.","—","—","—",""
+"PM-033","EP-04 Bảng Scrum & Giám sát tiến độ","Bảng Scrum cơ bản","Tùy biến cột trạng thái nhưng buộc quy về ba trạng thái lõi","Là một Scrum Master, tôi muốn định nghĩa trạng thái riêng cho quy trình của nhóm mình, nhưng mỗi trạng thái đều phải quy về một trong ba nhóm lõi, để báo cáo vẫn hiểu được Done nghĩa là gì.","AC1: Mỗi dự án tự định nghĩa danh sách trạng thái với tên và màu riêng.
+AC2: Mỗi trạng thái bắt buộc thuộc một trong ba nhóm todo, in_progress, done.
+AC3: Không lưu được trạng thái chưa gán nhóm.
+AC4: Báo cáo và bảng Scrum nhận diện Done theo nhóm chứ không theo tên trạng thái.","ĐÃ CÓ","Không. Đã có project_statuses.kind với 3 giá trị và báo cáo dùng IsSprintItemDone theo kind.","—","—","—",""
+"PM-034","EP-04 Bảng Scrum & Giám sát tiến độ","Bảng Scrum cơ bản","Kéo thả thẻ đổi trạng thái với phản hồi tức thời","Là một thành viên nhóm, tôi muốn kéo thẻ sang cột khác và thấy thay đổi ngay lập tức, để cập nhật tiến độ nhanh trong buổi Daily.","AC1: Thẻ đổi vị trí ngay khi thả, không chờ phản hồi máy chủ.
+AC2: Nếu máy chủ trả lỗi thì đúng thẻ đó quay về trạng thái cũ, các thẻ khác không bị ảnh hưởng.
+AC3: Chuyển trạng thái không hợp lệ theo workflow bị chặn trước khi gọi API.
+AC4: Không kéo thả được khi Sprint đã đóng hoặc người dùng thiếu quyền.","ĐÃ CÓ","Không. Đã có optimistic UI với rollback từng thẻ và đầy đủ guard.","—","—","—",""
+"PM-035","EP-04 Bảng Scrum & Giám sát tiến độ","Chế độ xem","Story View hiển thị thẻ ở cấp User Story","Là một Product Owner, tôi muốn bảng Scrum hiển thị thẻ ở cấp User Story kèm tiến độ tổng hợp, để nhìn tiến trình theo giá trị bàn giao chứ không lạc trong chi tiết kỹ thuật.","AC1: Có nút chuyển đổi giữa các chế độ xem trên thanh công cụ của bảng.
+AC2: Ở Story View, thẻ di chuyển trên bảng là User Story.
+AC3: Mặt thẻ hiển thị thanh tiến trình và tỷ lệ Task con đã hoàn thành dạng số trên tổng.
+AC4: Mặt thẻ hiển thị tỷ lệ mục DoD đã tick dạng số trên tổng.
+AC5: Chế độ xem đang chọn được ghi nhớ cho lần truy cập sau.
+AC6: Chỉ áp dụng cho dự án khung Scrum.","CHƯA CÓ","Bảng hiện chỉ có một chế độ xem duy nhất; không tồn tại khái niệm viewMode. Badge DoD đã có. TIN TỐT: thanh tiến trình gần như miễn phí vì rollupAncestorsTx đã tự tổng hợp progress từ node con lên cha, và với node Scrum thì planned_value bằng 0 nên rollup rơi vào nhánh trung bình cộng progress các con, đúng thứ Story View cần. TUYỆT ĐỐI KHÔNG thêm sprint_point vào rollup, sẽ phá TestWBSRollupParity.","P0","G06-01","G06 Bảng Scrum nâng cao","PM-041"
+"PM-036","EP-04 Bảng Scrum & Giám sát tiến độ","Chế độ xem","Task View với Swimlane theo từng User Story","Là một thành viên nhóm, tôi muốn bảng chia thành các hàng ngang theo từng User Story và thẻ di chuyển là Task con, để buổi Daily thấy rõ ai đang vướng ở đâu.","AC1: Ở Task View, mỗi hàng ngang tương ứng một User Story của Sprint.
+AC2: Thẻ di chuyển trong các cột là Task và Sub-task của Story ở hàng đó.
+AC3: Mỗi hàng hiển thị tên Story kèm tiến độ tổng hợp của hàng đó.
+AC4: Thu gọn và mở rộng được từng hàng.
+AC5: Kéo Task sang cột khác không làm Task nhảy sang hàng khác.
+AC6: Chỉ áp dụng cho dự án khung Scrum.","CHƯA CÓ","Cần xây layout swimlane và API trả cấu trúc Story kèm Task con của Sprint. Truy vấn thứ hai bên cạnh truy vấn gốc sprint item, lọc theo nhánh cây của từng Story.","P0","G06-02","G06 Bảng Scrum nâng cao","PM-035"
+"PM-037","EP-04 Bảng Scrum & Giám sát tiến độ","Chế độ xem","Mở rộng thẻ để tick nhanh Task và DoD ngay trên bảng","Là một thành viên nhóm, tôi muốn tick hoàn thành Task hoặc mục DoD ngay trên thẻ mà không cần mở trang chi tiết, để cập nhật nhanh trong buổi Daily.","AC1: Thẻ có nút mở rộng hiển thị danh sách Task con và checklist DoD.
+AC2: Tick một mục sẽ lưu ngay và cập nhật tỷ lệ trên thẻ.
+AC3: Thao tác tick tuân thủ đúng phân quyền.
+AC4: Tick lỗi thì trạng thái checkbox quay về như cũ kèm thông báo.
+AC5: Chỉ áp dụng cho dự án khung Scrum.","CHƯA CÓ","Hiện muốn tick DoD phải mở trang chi tiết node. Cần component panel mở rộng trên thẻ; gọi API DoD sẵn có; bổ sung API cập nhật nhanh trạng thái Task con.","P1","G06-03","G06 Bảng Scrum nâng cao","PM-035"
+"PM-038","EP-04 Bảng Scrum & Giám sát tiến độ","Kiểm soát luồng","Thiết lập giới hạn công việc dở dang (WIP Limit)","Là một Scrum Master, tôi muốn đặt số lượng thẻ tối đa cho mỗi cột và được cảnh báo khi vượt trần, để phát hiện ngay điểm nghẽn.","AC1: Cấu hình được WIP Limit cho từng cột ở cấp dự án.
+AC2: Cột vượt trần đổi sang màu đỏ cảnh báo kèm hiển thị số hiện tại trên giới hạn.
+AC3: Cột chưa đặt giới hạn thì không hiển thị cảnh báo.
+AC4: Có tùy chọn chỉ cảnh báo hoặc chặn cứng khi vượt trần.
+AC5: Chỉ áp dụng cho dự án khung Scrum.","CHƯA CÓ","Giao diện đã chừa sẵn trường wipLimit nhưng luôn gán null nên nhánh cảnh báo không bao giờ chạy; không có cột wip_limit trong cơ sở dữ liệu. Cần thêm cột cấu hình ở cấp workflow hoặc status; API cấu hình; bật lại UI cảnh báo.","P1","G06-04","G06 Bảng Scrum nâng cao",""
+"PM-039","EP-04 Bảng Scrum & Giám sát tiến độ","Kiểm soát luồng","Xem tiến độ Story Point của Sprint đang chạy","Là một Scrum Master, tôi muốn nhìn ngay tỷ lệ Story Point đã hoàn thành trên tổng cam kết của Sprint, để biết nhóm có kịp tiến độ không.","AC1: Đầu bảng hiển thị tổng điểm cam kết, tổng điểm đã hoàn thành và tỷ lệ phần trăm.
+AC2: Hạng mục chưa ước lượng điểm được tính là 0 và không làm hỏng phép tính.
+AC3: Số liệu cập nhật ngay khi thẻ chuyển sang Done.","ĐÃ CÓ","Không. Đã có sprintStats và SprintProgressMeter. Lưu ý: sau PM-040 phép tính phải chỉ cộng ở cấp gốc sprint item.","—","—","—",""
+"PM-040","EP-05 Story, Task & Definition of Done","Mô hình Sprint Backlog","Đưa User Story kèm toàn bộ Sub-task vào Sprint","Là một Product Owner, tôi muốn đưa User Story cùng toàn bộ Task và Sub-task của nó vào Sprint, để Sprint Backlog phản ánh đúng đơn vị giá trị bàn giao theo chuẩn Scrum thay vì các mảnh công việc rời rạc.","AC1: Đơn vị được thêm vào Sprint là node loại Story, xác định theo LOẠI THẺ chứ không theo việc node có con hay không.
+AC2: Node loại Epic và Feature không được thêm vào Sprint vì trải dài nhiều Sprint.
+AC3: Node được thêm trực tiếp được đánh dấu là gốc sprint item; Task và Sub-task kế thừa được đánh dấu không phải gốc.
+AC4: Tổng Story Point của Sprint chỉ cộng ở các gốc sprint item, không cộng trùng từ Task và Sub-task.
+AC5: sprint_item_history chỉ ghi sự kiện ở cấp gốc sprint item, để Velocity không đếm trùng.
+AC6: Dữ liệu Sprint cũ (đều là node lá) đọc và báo cáo bình thường, được backfill thành gốc sprint item.
+AC7: Thao tác gán Sprint KHÔNG kích hoạt rollup và không chạm 5 trường planned_value, actual_cost, progress, estimated_effort, actual_effort.
+AC8: Chỉ áp dụng cho dự án khung Scrum; dự án PMI giữ nguyên hành vi hiện tại.","CHƯA CÓ","HẠNG MỤC LÕI CỦA TOÀN BỘ KẾ HOẠCH. Thêm cột đánh dấu gốc sprint item trên wbs_nodes (SetNodesSprint đã là đường ghi sprint_id duy nhất được phép nên chi phí duy trì gần bằng 0). Sửa đúng 7 điểm code: wbs_service_impl.go:473 (đổi điều kiện từ HasChildren sang loại thẻ), wbs_repository_sprint_items.go dòng 21, 259, 270, sprint_repository_impl.go:150, wbs_repository_backlog.go:33, release_repository_impl.go:217. VÁ CÙNG LÚC lỗi tiềm ẩn đã được chính team ghi chú tại entity/sprint.go:36 (ListByProject không lọc has_children nên node cha mang sprint_id sẽ làm phồng total_sprint_point) — hiện vô hại nhưng sẽ kích hoạt NGAY khi Story có con vào Sprint. Cập nhật có chủ đích guard test wbs_sprint_id_writesites_test.go.","P0","G03-01","G03 Mô hình Story và Sub-task trong Sprint","PM-009"
+"PM-041","EP-05 Story, Task & Definition of Done","Mô hình Sprint Backlog","Sub-task kế thừa Sprint từ User Story cha","Là một thành viên nhóm, tôi muốn khi Story được kéo vào Sprint thì mọi Task và Sub-task tự động thuộc Sprint đó, để không phải gán lại thủ công từng cái.","AC1: Thêm Story vào Sprint sẽ gán toàn bộ Task và Sub-task trong nhánh cây vào cùng Sprint.
+AC2: Toàn bộ thao tác nằm trong một giao dịch; lỗi thì rollback sạch.
+AC3: Task hoặc Sub-task tạo mới sau khi Story đã vào Sprint cũng tự thuộc Sprint đó.
+AC4: Gỡ Story khỏi Sprint sẽ gỡ theo toàn bộ nhánh cây.
+AC5: Hạng mục kế thừa không được đếm vào Story Point cam kết của Sprint.
+AC6: Cascade KHÔNG kích hoạt rollup.
+AC7: Chỉ áp dụng cho dự án khung Scrum.","CHƯA CÓ","UpdateNode hiện cưỡng bức giữ nguyên sprint_id cũ (wbs_service_impl.go:884, defense-in-depth Phase 382) nên cascade PHẢI đi qua SetNodesSprint là đường ghi duy nhất được phép. SetNodesSprint hiện cố ý không gọi rollup vì sprint_id không phải chỉ số EVM; phải giữ nguyên tính chất này. Xử lý cả trường hợp tạo Task hoặc Sub-task sau khi Story đã vào Sprint bằng hook ở CreateNode.","P0","G03-02","G03 Mô hình Story và Sub-task trong Sprint","PM-040"
+"PM-042","EP-05 Story, Task & Definition of Done","Mô hình Sprint Backlog","Bắt buộc Assignee và Estimate cho Sub-task khi Story vào Sprint","Là một Scrum Master, tôi muốn mọi Task và Sub-task trong Sprint đều có người thực hiện và giờ ước lượng, để biết ai làm gì và có đủ dữ liệu vẽ biểu đồ Burndown.","AC1: Story chỉ vào được Sprint khi mọi Task và Sub-task của nó đã có người thực hiện và giờ ước lượng lớn hơn 0.
+AC2: Ràng buộc đặt ở bước thêm vào Sprint, KHÔNG đặt ở bước tạo node.
+AC3: Thông báo lỗi liệt kê rõ hạng mục nào thiếu thông tin gì.
+AC4: Tạo node trong Backlog vẫn không bắt buộc hai trường này.
+AC5: Dự án khung PMI hoàn toàn không bị ràng buộc.","CHƯA CÓ","TUYỆT ĐỐI KHÔNG đặt ở CreateNode: sẽ chặn đứng workflow tạo cấu trúc WBS của PMI (tạo trước, gán người sau), làm vỡ CloneNode vốn cố ý set assigned_to NULL (TestCloneNodeNullsAssignedTo), và làm vỡ personal task My Work vốn có ProjectID NULL. Ngoài ra timesheet service gọi thẳng wbsRepo.UpdateNode bypass service nên ràng buộc kiểu NOT NULL ở cơ sở dữ liệu sẽ làm vỡ luồng log giờ.","P1","G03-04","G03 Mô hình Story và Sub-task trong Sprint","PM-041"
+"PM-043","EP-05 Story, Task & Definition of Done","Ràng buộc chất lượng","Chặn Story chuyển sang Done khi còn Sub-task dở dang","Là một Scrum Master, tôi muốn hệ thống không cho đánh dấu Story hoàn thành khi bên trong còn Task chưa xong, để triệt tiêu tình trạng báo cáo xong nhưng thực tế chưa xong.","AC1: Chuyển Story sang trạng thái nhóm Done khi còn Task hoặc Sub-task thuộc nhóm To Do hoặc Doing sẽ bị chặn với mã lỗi riêng.
+AC2: Thông báo lỗi liệt kê rõ các hạng mục con đang chặn.
+AC3: Ràng buộc áp dụng cho mọi đường ghi của dự án Scrum, gồm cả kéo thả trên bảng.
+AC4: Story không có hạng mục con nào thì không bị ràng buộc.
+AC5: Dự án khung PMI KHÔNG bị ràng buộc này; node cha vẫn đặt Done được khi node con chưa xong, giữ nguyên hành vi hiện tại.","CHƯA CÓ","Guard bằng điều kiện khung bằng Scrum VÀ node là gốc sprint item. TUYỆT ĐỐI KHÔNG sửa evaluateTransitionEdge (đang bị 3 test pin: TestValidateTransition, TestUpdateNode_EnforcesTransition, TestBulkUpdateNodes_EnforcesTransition) — đặt ở nhánh riêng trong UpdateNode. Lưu ý đường bypass: repo.UpdateStatus (wbs_repository_node.go:394) ghi thẳng status_id và được gọi từ ReturnNodesToBacklog để reset trạng thái.","P0","G03-03","G03 Mô hình Story và Sub-task trong Sprint","PM-041"
+"PM-044","EP-05 Story, Task & Definition of Done","Definition of Done","Quản lý checklist Definition of Done trên thẻ","Là một Scrum Master, tôi muốn khai báo checklist DoD cho từng thẻ, để tiêu chuẩn hoàn thành được viết ra rõ ràng thay vì hiểu ngầm.","AC1: Thêm, sửa nội dung, tick hoàn thành và xóa được từng mục DoD.
+AC2: Mỗi thao tác DoD có permission riêng.
+AC3: Thao tác DoD chỉ ảnh hưởng thẻ thuộc đúng dự án của người dùng.","ĐÃ CÓ","Không. Đã có cột definition_of_done kiểu JSONB và 3 permission riêng.","—","—","—",""
+"PM-045","EP-05 Story, Task & Definition of Done","Definition of Done","Chặn chuyển sang Done khi DoD chưa hoàn tất 100%","Là một Scrum Master, tôi muốn thẻ không thể chuyển sang Done khi checklist DoD chưa tick đủ, để chất lượng được ràng buộc bằng hệ thống chứ không bằng thỏa thuận miệng.","AC1: Chuyển thẻ vào trạng thái nhóm Done khi DoD chưa đủ 100% bị chặn với HTTP 422 và mã lỗi riêng.
+AC2: Thông báo lỗi nêu rõ đã tick bao nhiêu trên tổng bao nhiêu mục.
+AC3: Thẻ không khai báo mục DoD nào thì không bị chặn.
+AC4: Giao diện kiểm tra trước khi gửi để thẻ không nhấp nháy vô ích.","ĐÃ CÓ","Không. LƯU Ý cho dự án PMI: gate này áp dụng cho MỌI wbs_node chứ không riêng node trong Sprint, chỉ im lặng vì checklist rỗng được coi là hợp lệ. Vì vậy tránh mọi thiết kế kiểu seed DoD mặc định cho mọi node, sẽ vô tình chặn node PMI.","—","—","—",""
+"PM-046","EP-05 Story, Task & Definition of Done","Definition of Done","Áp gate DoD cho luồng cập nhật hàng loạt","Là một Scrum Master, tôi muốn ràng buộc DoD được áp dụng ở mọi đường ghi dữ liệu.","AC1: Cập nhật hàng loạt chuyển thẻ sang Done cũng bị chặn nếu DoD chưa đủ.","NGOÀI PHẠM VI","ĐÍNH CHÍNH SO VỚI BÁO CÁO GAP BAN ĐẦU: đây KHÔNG phải lỗi. Caller duy nhất của BulkUpdateNodes là màn hình WBS của dự án PMI; Scrum Board gọi updateNode từng thẻ một nên KHÔNG hưởng lợi gì. Hành vi gate-free được khóa có chủ đích bởi test TestBulkUpdateNodes_DoneGate_NotApplied kèm ghi chú thiết kế D-436-4. Vá gate ở đây chỉ làm hỏng thao tác chọn nhiều dòng rồi đặt Done trên bảng WBS của dự án PMI. Ngoài ra GetNodesByIDs không load cột definition_of_done nên gate sẽ hoặc luôn pass, hoặc phải thêm truy vấn và phá TestBulkUpdateNodes_ConstantQueryCount.","—","—","Ngoài phạm vi Scrum",""
+"PM-047","EP-05 Story, Task & Definition of Done","Definition of Done","Duyệt ngoại lệ DoD kèm lý do bắt buộc","Là một Scrum Master hoặc Product Owner, tôi muốn được phép bỏ qua checklist DoD trong trường hợp đặc biệt, nhưng phải ghi lý do, để linh hoạt mà vẫn truy cứu được.","AC1: Chỉ vai trò Scrum Master và Product Owner có quyền duyệt ngoại lệ DoD.
+AC2: Duyệt ngoại lệ bắt buộc nhập lý do; để trống thì bị chặn.
+AC3: Lý do và người duyệt được ghi vào nhật ký truy vết.
+AC4: Thẻ đã được duyệt ngoại lệ hiển thị dấu hiệu nhận biết trên bảng và ở trang chi tiết.
+AC5: Có màn hình tra cứu toàn bộ trường hợp đã duyệt ngoại lệ trong dự án.
+AC6: Cơ chế ngoại lệ KHÔNG được nới lỏng ngoài ý muốn cho node của dự án PMI có checklist DoD.","CHƯA CÓ","Grep override trong module project cho 0 kết quả; mã lỗi WBS_0028 là chặn cứng không có tham số bypass. Cần thêm permission riêng cho duyệt ngoại lệ; endpoint nhận lý do bắt buộc; ghi nhật ký; badge trên giao diện; màn hình tra cứu. Nhật ký ghi vào wbs_node_activities, KHÔNG đụng activity_logs.","P1","G07-03","G07 Kỷ luật Backlog & DoD","PM-005"
+"PM-048","EP-05 Story, Task & Definition of Done","Definition of Done","Ghi nhật ký truy vết cho thao tác DoD","Là một Scrum Master, tôi muốn mọi thay đổi trên checklist DoD đều được ghi lại, để biết ai đã thêm, sửa, tick hay xóa tiêu chí nào.","AC1: Thêm, sửa, tick và xóa mục DoD đều ghi một bản ghi nhật ký.
+AC2: Bản ghi lưu người thực hiện, thời điểm, giá trị trước và giá trị sau.
+AC3: Nhật ký hiển thị trên dòng thời gian của thẻ.","CHƯA CÓ","wbs_dod_service.go hiện không gọi activity log lẫn node activity, khác với UpdateNode vốn có logNodeChanges. Ghi vào bảng wbs_node_activities (riêng của module PM, đã có sẵn cột giá trị trước và sau), TUYỆT ĐỐI KHÔNG đụng activity_logs vốn dùng chung 5 module.","P1","G07-04","G07 Kỷ luật Backlog & DoD","PM-044"
+"PM-049","EP-06 Sprint Review & Retrospective","Sprint Review","Mở phiên Sprint Review khi kết thúc Sprint","Là một Scrum Master, tôi muốn mở một phiên Sprint Review khi Sprint sắp kết thúc, để nhóm trình bày kết quả và Product Owner nghiệm thu chính thức.","AC1: Sprint có thêm trạng thái IN_REVIEW nằm giữa ACTIVE và COMPLETED.
+AC2: Mở phiên Review sẽ khóa việc thêm hạng mục mới vào Sprint.
+AC3: Màn hình Review liệt kê toàn bộ Story của Sprint kèm trạng thái hiện tại.
+AC4: Chỉ Scrum Master và Product Owner mở và đóng được phiên Review.
+AC5: Không đóng Sprint được khi phiên Review chưa kết thúc.
+AC6: Chỉ áp dụng cho dự án khung Scrum.","CHƯA CÓ","Không có bất kỳ khái niệm review nào ở cấp Sprint; route sprint chỉ gồm CRUD, transition và quản lý item. Cần thêm trạng thái IN_REVIEW vào state machine; bảng sprint_reviews; permission riêng; màn hình Review.","P0","G04-01","G04 Sprint Review","PM-005"
+"PM-050","EP-06 Sprint Review & Retrospective","Sprint Review","Product Owner nghiệm thu Accept hoặc Reject từng Story","Là một Product Owner, tôi muốn nghiệm thu hoặc từ chối từng Story trong buổi Review, để chỉ những gì thực sự đạt yêu cầu mới được tính là hoàn thành.","AC1: Mỗi Story trong phiên Review có hai hành động Accept và Reject.
+AC2: Chỉ Product Owner thực hiện được hành động nghiệm thu.
+AC3: Reject bắt buộc nhập lý do.
+AC4: Kết quả nghiệm thu lưu kèm người quyết định và thời điểm, không sửa được sau khi đóng phiên.
+AC5: Bảng tổng kết hiển thị số Story được chấp nhận và bị từ chối.
+AC6: Chỉ áp dụng cho dự án khung Scrum.","CHƯA CÓ","Không có actor nghiệm thu, không có quyết định Accept hay Reject, không có nhật ký ai nghiệm thu. Thứ gần nhất là checklist DoD nhưng đó là tự tick bởi chính người làm. Cần bảng sprint_review_items lưu kết quả, người quyết định và lý do; API và giao diện nghiệm thu.","P0","G04-02","G04 Sprint Review","PM-049"
+"PM-051","EP-06 Sprint Review & Retrospective","Sprint Review","Story bị từ chối tự động dội về Backlog","Là một Product Owner, tôi muốn Story bị từ chối tự quay về Product Backlog kèm lý do, để không phải thao tác thủ công và không có việc nào bị thất lạc.","AC1: Reject một Story sẽ tự gỡ Story đó cùng toàn bộ Sub-task khỏi Sprint và đưa về Backlog.
+AC2: Lý do từ chối được ghi vào lịch sử với loại kích hoạt riêng dành cho nghiệm thu.
+AC3: Story quay về Backlog giữ nguyên Story Point và các Sub-task đã có.
+AC4: Số liệu đã hoàn thành của Sprint được điều chỉnh tương ứng trước khi chốt snapshot.
+AC5: Chỉ áp dụng cho dự án khung Scrum.","MỘT PHẦN","Cơ chế trả về Backlog đã có và khá chắc: ReturnNodesToBacklog với 3 loại kích hoạt, lý do bắt buộc được ép bằng CHECK constraint, lịch sử bất biến. Chỉ thiếu loại kích hoạt dành cho nghiệm thu vì chưa có bước reject. ĐÂY LÀ HẠNG MỤC CHI PHÍ THẤP NHẤT TRONG EPIC NÀY. Sau PM-041 thì việc gỡ phải cascade theo cả nhánh cây.","P0","G04-03","G04 Sprint Review","PM-050"
+"PM-052","EP-06 Sprint Review & Retrospective","Sprint Review","Ghi nhận phản hồi của Stakeholder trong buổi Review","Là một Product Owner, tôi muốn lưu lại phản hồi của các bên liên quan ngay trong buổi Review, để ý kiến không bị rơi rụng sau cuộc họp.","AC1: Ghi được nhiều phản hồi trong một phiên Review, mỗi phản hồi gắn với một stakeholder trong danh bạ dự án.
+AC2: Phản hồi gắn được với một Story cụ thể hoặc để ở mức toàn Sprint.
+AC3: Phản hồi hiển thị lại khi tra cứu phiên Review trong quá khứ.
+AC4: Chỉ áp dụng cho dự án khung Scrum.","CHƯA CÓ","Có bảng stakeholders nhưng chỉ là danh bạ, không liên kết với sprint. Trường văn bản tự do duy nhất hiện có là lý do trả hạng mục, không phải phản hồi nghiệm thu. Cần bảng riêng liên kết stakeholder với sprint và Story.","P1","G04-04","G04 Sprint Review","PM-049"
+"PM-053","EP-06 Sprint Review & Retrospective","Sprint Review","Tạo nhanh User Story mới từ phản hồi Review","Là một Product Owner, tôi muốn biến một phản hồi thành User Story mới chỉ bằng một thao tác, để ý tưởng đi thẳng vào Backlog thay vì nằm trong biên bản họp.","AC1: Mỗi phản hồi có nút tạo User Story mới.
+AC2: Story mới được tạo trong Backlog của dự án với loại thẻ Story, tiêu đề và mô tả lấy từ phản hồi.
+AC3: Story mới lưu liên kết ngược về phản hồi gốc và về phiên Review đã sinh ra nó.
+AC4: Người dùng chỉnh sửa được nội dung trước khi xác nhận tạo.
+AC5: Chỉ áp dụng cho dự án khung Scrum.","CHƯA CÓ","Không có endpoint tạo Story từ phản hồi vì chưa có bảng phản hồi. Cần API tạo node backlog từ phản hồi kèm lưu liên kết hai chiều.","P1","G04-05","G04 Sprint Review","PM-052"
+"PM-054","EP-06 Sprint Review & Retrospective","Sprint Retrospective","Tạo phiên Retro theo mẫu có sẵn","Là một Scrum Master, tôi muốn tạo phiên Retrospective từ các mẫu quen thuộc như Well, Wrong, Improvements, để không phải dựng lại bảng từ đầu mỗi Sprint.","AC1: Mỗi Sprint tạo được một phiên Retro.
+AC2: Có sẵn tối thiểu 2 mẫu bảng Retro để chọn khi tạo phiên.
+AC3: Số cột và tên cột của bảng lấy theo mẫu đã chọn và sửa lại được.
+AC4: Thành viên dự án thêm được ghi chú vào từng cột.
+AC5: Chỉ Scrum Master mở và đóng được phiên Retro.
+AC6: Chỉ áp dụng cho dự án khung Scrum.","CHƯA CÓ","Grep retro toàn repo cho 0 kết quả thực; các kết quả khớp chỉ là từ retroactively và retrofit trong comment. Đây là phân hệ phải xây từ con số 0: bảng phiên Retro, bảng cột, bảng ghi chú; API; màn hình bảng Retro.","P0","G05-01","G05 Sprint Retrospective","PM-005"
+"PM-055","EP-06 Sprint Review & Retrospective","Sprint Retrospective","Ghi ý kiến ở chế độ ẩn danh","Là một thành viên nhóm, tôi muốn nêu ý kiến mà không lộ danh tính, để nói thật về vấn đề khó nói mà vẫn an toàn.","AC1: Phiên Retro bật hoặc tắt được chế độ ẩn danh khi tạo.
+AC2: Ở chế độ ẩn danh, danh tính người viết bị ẩn ngay tại tầng API, không chỉ ẩn ở giao diện.
+AC3: Scrum Master cũng không xem được danh tính khi phiên đang ở chế độ ẩn danh.
+AC4: Người viết vẫn sửa và xóa được ghi chú của chính mình.","CHƯA CÓ","Chưa tồn tại phân hệ Retro. Cần cờ ẩn danh trên phiên Retro và lọc bỏ mã người viết ở tầng serializer chứ không chỉ ẩn ở giao diện.","P0","G05-02","G05 Sprint Retrospective","PM-054"
+"PM-056","EP-06 Sprint Review & Retrospective","Sprint Retrospective","Bỏ phiếu chọn vấn đề ưu tiên (Dot-voting)","Là một thành viên nhóm, tôi muốn bỏ phiếu cho các ghi chú, để cả nhóm cùng chọn ra vấn đề nhức nhối nhất thay vì người nói to nhất quyết định.","AC1: Mỗi người có số phiếu giới hạn, cấu hình được khi tạo phiên.
+AC2: Bỏ phiếu và rút phiếu được, không vượt quá hạn mức.
+AC3: Số phiếu hiển thị theo thời gian thực cho mọi người đang mở bảng.
+AC4: Sắp xếp ghi chú theo số phiếu giảm dần.
+AC5: Khóa bỏ phiếu được khi Scrum Master chuyển sang bước thảo luận.","CHƯA CÓ","Chưa tồn tại phân hệ Retro. Cần bảng phiếu bầu với ràng buộc hạn mức; cập nhật theo thời gian thực; giao diện sắp xếp theo phiếu.","P1","G05-03","G05 Sprint Retrospective","PM-054"
+"PM-057","EP-06 Sprint Review & Retrospective","Sprint Retrospective","Sinh Action Item từ kết luận Retro thành thẻ công việc","Là một Scrum Master, tôi muốn biến giải pháp thống nhất trong Retro thành thẻ công việc thật, để cải tiến được thực thi chứ không dừng ở biên bản.","AC1: Mỗi ghi chú Retro có tùy chọn tạo Action Item.
+AC2: Action Item sinh ra một thẻ trong Backlog với loại thẻ tương ứng và người chịu trách nhiệm.
+AC3: Thẻ sinh ra lưu liên kết ngược về phiên Retro đã tạo ra nó.
+AC4: Màn hình Retro hiển thị trạng thái hiện tại của các thẻ Action Item đã sinh.","CHƯA CÓ","Chưa tồn tại phân hệ Retro. Cần bảng Action Item với cột trỏ về WBS node; API tạo thẻ; hiển thị trạng thái ngược lại trên màn hình Retro.","P0","G05-04","G05 Sprint Retrospective","PM-054"
+"PM-058","EP-06 Sprint Review & Retrospective","Sprint Retrospective","Đưa Action Item vào Sprint Backlog kế tiếp","Là một Scrum Master, tôi muốn đưa các thẻ hành động vào Sprint kế tiếp, để cải tiến có chỗ trong kế hoạch chứ không bị đẩy lùi mãi.","AC1: Từ màn hình Retro chọn được Sprint đích để đưa Action Item vào.
+AC2: Action Item chưa hoàn thành sau Sprint đó được đánh dấu nổi bật ở Retro kế tiếp.
+AC3: Có chỉ số tỷ lệ Action Item đã hoàn thành qua các Sprint.","CHƯA CÓ","Chưa tồn tại phân hệ Retro. Tận dụng API gán Sprint sẵn có; thêm chỉ số theo dõi tỷ lệ hoàn thành Action Item.","P1","G05-05","G05 Sprint Retrospective","PM-057"
+"PM-059","EP-06 Sprint Review & Retrospective","Sprint Retrospective","Tra cứu lịch sử các phiên Retro đã qua","Là một Scrum Master, tôi muốn xem lại biên bản Retro của các Sprint trước, để nhận ra nhóm có đang lặp lại sai lầm cũ hay không.","AC1: Có danh sách toàn bộ phiên Retro của dự án sắp theo thời gian.
+AC2: Mở lại được nội dung đầy đủ của phiên đã đóng ở chế độ chỉ đọc.
+AC3: Tìm kiếm được theo từ khóa trong nội dung ghi chú và Action Item.
+AC4: Chế độ ẩn danh của phiên cũ vẫn được tôn trọng khi tra cứu lại.","CHƯA CÓ","Chưa tồn tại phân hệ Retro. Cần màn hình danh sách và chi tiết chỉ đọc; đánh chỉ mục tìm kiếm toàn văn.","P1","G05-06","G05 Sprint Retrospective","PM-054"
+"PM-060","EP-06 Sprint Review & Retrospective","Sprint Retrospective","Biểu đồ sức khỏe nhóm qua các phiên Retro","Là một Scrum Master, tôi muốn thấy xu hướng sức khỏe nhóm qua nhiều Sprint, để đánh giá nhóm đang tiến bộ hay đang xấu đi.","AC1: Mỗi phiên Retro thu thập một chỉ số tâm trạng hoặc mức độ hài lòng của thành viên.
+AC2: Chỉ số này luôn ẩn danh.
+AC3: Có biểu đồ đường thể hiện xu hướng qua các Sprint.
+AC4: Biểu đồ đối chiếu được với biểu đồ Velocity cùng kỳ.","CHƯA CÓ","Chưa tồn tại phân hệ Retro. Cần cơ chế thu thập chỉ số ẩn danh; lưu snapshot theo phiên; biểu đồ xu hướng.","P2","G05-07","G05 Sprint Retrospective","PM-059"
+"PM-061","EP-07 Timesheet & Bóc tách chi phí R&D","Ghi nhận giờ công","Log giờ làm việc vào Task","Là một Developer, tôi muốn ghi nhận số giờ đã làm cho từng Task theo ngày, để công sức được ghi nhận đầy đủ.","AC1: Ghi được số giờ theo ngày, gắn với Task, Team Task hoặc chỉ dự án.
+AC2: Mô tả công việc là bắt buộc.
+AC3: Bản ghi ở trạng thái nháp thì sửa và xóa được, đã gửi duyệt thì không.","ĐÃ CÓ","Không. Đã có entity Timesheet với đủ trường và 4 trạng thái. Dùng chung cho cả hai khung quản trị.","—","—","—",""
+"PM-062","EP-07 Timesheet & Bóc tách chi phí R&D","Ghi nhận giờ công","Tự động cộng dồn giờ thực tế lên thẻ và node cha","Là một Project Manager, tôi muốn giờ thực tế tự cộng dồn lên thẻ và lên các node cha, để nhìn được chi phí công sức ở mọi cấp mà không phải tính tay.","AC1: Log giờ vào Task sẽ cộng vào giờ thực tế của Task đó.
+AC2: Sửa hoặc xóa bản ghi giờ sẽ điều chỉnh lại đúng, không để giá trị âm.
+AC3: Giờ thực tế được tổng hợp ngược lên toàn bộ node cha.","ĐÃ CÓ","Không. Đã có logic cộng dồn kèm guard chống âm, và rollup lên node cha. LƯU Ý KỸ THUẬT: timesheet gọi thẳng repository nên mỗi lần log giờ đều kích hoạt rollup toàn chuỗi tổ tiên — đây là mắt xích nối Timesheet với EVM của dự án PMI, cần thận trọng khi đụng vào.","—","—","—",""
+"PM-063","EP-07 Timesheet & Bóc tách chi phí R&D","Phê duyệt giờ công","Gửi duyệt bảng giờ công theo kỳ","Là một Developer, tôi muốn gửi duyệt toàn bộ giờ công của một kỳ trong một thao tác, để không phải gửi từng dòng.","AC1: Chọn khoảng thời gian và gửi duyệt toàn bộ bản ghi nháp trong khoảng đó.
+AC2: Bản ghi đã gửi chuyển sang trạng thái chờ duyệt và trở thành bất biến.
+AC3: Hệ thống báo rõ số bản ghi đã gửi thành công.","ĐÃ CÓ","Không. Đã có gửi duyệt theo kỳ và cơ chế khóa bản ghi sau khi gửi.","—","—","—",""
+"PM-064","EP-07 Timesheet & Bóc tách chi phí R&D","Phê duyệt giờ công","Duyệt hoặc từ chối bảng giờ công","Là một quản lý, tôi muốn duyệt hoặc từ chối giờ công của nhân sự thuộc phạm vi quản lý, để số liệu chuyển sang kế toán là số liệu đã được xác nhận.","AC1: Duyệt được nhiều bản ghi cùng lúc.
+AC2: Từ chối bắt buộc kèm lý do.
+AC3: Chỉ duyệt được bản ghi của nhân sự thuộc phạm vi quản lý.
+AC4: Người sở hữu bản ghi nhận được thông báo kết quả.","ĐÃ CÓ","Không. Đã có duyệt hàng loạt, từ chối kèm lý do, kiểm tra phạm vi quản lý và thông báo cho chủ sở hữu.","—","—","—",""
+"PM-065","EP-07 Timesheet & Bóc tách chi phí R&D","Phê duyệt giờ công","Cho phép PM và Scrum Master duyệt giờ công của dự án mình","Là một Project Manager, tôi muốn duyệt giờ công của các thành viên trong dự án tôi phụ trách.","AC1: PM và Scrum Master duyệt được bản ghi giờ gắn với dự án mình phụ trách.
+AC2: Hai kênh duyệt cùng tồn tại và không duyệt trùng nhau.","NGOÀI PHẠM VI","ĐƯA RA KHỎI PHẠM VI SCRUM: luồng phê duyệt timesheet dùng chung cho mọi dự án của mọi khung; đổi phạm vi duyệt là đổi hành vi của cả dự án PMI. Hiện phạm vi duyệt xác định theo cấp quản lý nhân sự, hoạt động ổn định. Đưa vào backlog riêng nếu cần.","—","—","Ngoài phạm vi Scrum",""
+"PM-066","EP-07 Timesheet & Bóc tách chi phí R&D","Phê duyệt giờ công","Xuất dữ liệu giờ công đã duyệt","Là một nhân sự kế toán, tôi muốn xuất dữ liệu giờ công đã duyệt theo kỳ, để nhân với đơn giá ở hệ thống kế toán.","AC1: Chỉ xuất bản ghi ở trạng thái đã duyệt.
+AC2: Xuất được theo phạm vi toàn tổ chức và theo nhóm.
+AC3: File xuất ở định dạng Excel kèm tên file có ghi kỳ báo cáo.","ĐÃ CÓ","Không. Đã có 4 endpoint báo cáo và xuất file với điều kiện cứng chỉ lấy bản ghi đã duyệt.","—","—","—",""
+"PM-067","EP-07 Timesheet & Bóc tách chi phí R&D","Phê duyệt giờ công","API tích hợp giờ công sang hệ thống HRM và Kế toán","Là một quản trị hệ thống, tôi muốn hệ thống kế toán tự lấy dữ liệu giờ công đã duyệt qua API, để không phải xuất file và nhập tay hằng tháng.","AC1: Có endpoint trả dữ liệu giờ công đã duyệt ở định dạng JSON, hỗ trợ phân trang và lọc theo kỳ.
+AC2: Endpoint xác thực bằng khóa dịch vụ riêng, không dùng phiên đăng nhập người dùng.
+AC3: Dữ liệu trả về không chứa đơn giá hay số tiền, đúng nguyên tắc không tính tiền trong module dự án.
+AC4: Có cơ chế đánh dấu kỳ đã đồng bộ để tránh lấy trùng.","CHƯA CÓ","Hiện chỉ có file Excel tải về cho người dùng, chưa phải API tích hợp máy với máy, không có webhook. Cần endpoint JSON có phân trang; cơ chế xác thực dịch vụ; đánh dấu kỳ đã đồng bộ. Phục vụ cả hai khung quản trị.","P2","G09-03","G09 Tài chính & tích hợp","PM-066"
+"PM-068","EP-07 Timesheet & Bóc tách chi phí R&D","Bóc tách R&D","Đánh dấu thuộc tính R&D hoặc Thương mại ở cấp Epic, Feature, Story","Là một Project Manager, tôi muốn phân loại công việc là R&D hay Thương mại ngay từ cấp Epic, để về sau bóc tách được chi phí phục vụ ưu đãi thuế.","AC1: Node cấp Epic, Feature và Story có trường phân loại với các giá trị R&D, Thương mại, Nội bộ.
+AC2: Trường này khai báo được cả ở cấp dự án làm giá trị mặc định.
+AC3: Đổi phân loại được ghi nhật ký truy vết.
+AC4: Có báo cáo tổng hợp giờ công theo từng phân loại.
+AC5: Áp dụng cho cả hai khung quản trị.","CHƯA CÓ","Đã có cờ is_rnd_project ở cấp dự án và wbs_nodes.is_rnd ở cấp node nhưng mới là metadata, chưa có phân loại 3 giá trị, chưa có kế thừa và chưa có báo cáo. Cần mở rộng thành trường phân loại đầy đủ; API; giao diện; báo cáo theo phân loại.","P1","G09-01","G09 Tài chính & tích hợp","PM-092"
+"PM-069","EP-07 Timesheet & Bóc tách chi phí R&D","Bóc tách R&D","Kế thừa thuộc tính R&D xuống Task và bản ghi giờ công","Là một Developer, tôi muốn khi log giờ hệ thống tự biết công việc này thuộc loại R&D hay Thương mại, để tôi không phải chọn thủ công mỗi lần.","AC1: Task và Sub-task tự kế thừa phân loại từ node cha gần nhất có khai báo.
+AC2: Bản ghi giờ công lưu lại phân loại tại thời điểm ghi nhận, không phụ thuộc thay đổi về sau.
+AC3: Đổi phân loại ở node cha chỉ ảnh hưởng bản ghi giờ mới, không sửa lại dữ liệu quá khứ.
+AC4: Trường hợp cần ghi đè ở cấp Task thì vẫn cho phép và hiển thị dấu hiệu đã ghi đè.","CHƯA CÓ","Cần logic kế thừa theo nhánh cây và sao chép giá trị vào bản ghi timesheet tại thời điểm ghi. CẨN TRỌNG: timesheet service gọi thẳng repository, bypass service layer, nên logic kế thừa phải đặt đúng chỗ mới có hiệu lực.","P1","G09-02","G09 Tài chính & tích hợp","PM-068"
+"PM-070","EP-07 Timesheet & Bóc tách chi phí R&D","Kiểm soát ngân sách giờ","Cảnh báo vượt ngân sách giờ gửi đúng cho PM và Scrum Master","Là một Project Manager, tôi muốn nhận cảnh báo khi giờ thực tế vượt giờ ước lượng, để can thiệp kịp thời trước khi dự án đội chi phí.","AC1: Cảnh báo được gửi cho Project Manager và Scrum Master của dự án, không phải cho người vừa log giờ.
+AC2: Mỗi thẻ chỉ gửi cảnh báo một lần cho mỗi ngưỡng đã vượt, không gửi lại mỗi lần log thêm.
+AC3: Ngưỡng cảnh báo cấu hình được ở cấp dự án, mặc định 100 phần trăm.
+AC4: Developer vẫn log được giờ vượt ước lượng; hệ thống không chặn, chỉ cảnh báo.
+AC5: Cảnh báo gửi qua cả chuông trong ứng dụng và Lark.
+AC6: Áp dụng cho cả hai khung quản trị; đây là thay đổi hành vi có chủ đích cần thông báo trước.","MỘT PHẦN","LỖI ĐANG TỒN TẠI: thông báo vượt giờ hiện gửi cho chính người log giờ chứ không phải PM hay SM, không có cơ chế chống lặp nên bắn lại mỗi lần log, và ngưỡng cứng 100 phần trăm không cấu hình được. LƯU Ý PHẠM VI: thông báo này phát cho MỌI wbs_node của MỌI dự án kể cả PMI, nên sửa người nhận là thay đổi hành vi của cả hai khung. Cần đổi người nhận; thêm cờ chống lặp theo mẫu đã có ở report_service; cho cấu hình ngưỡng; mở kênh Lark.","P0","G01-02","G01 Vá lỗi & siết validation",""
+"PM-071","EP-08 Báo cáo, Chỉ số & Audit Log","Chỉ số Sprint","Biểu đồ Velocity so sánh cam kết và hoàn thành","Là một Scrum Master, tôi muốn so sánh Story Point cam kết và thực tế hoàn thành qua các Sprint, để dự báo chính xác khối lượng cho Sprint tới.","AC1: Biểu đồ hiển thị từng Sprint đã đóng với số điểm cam kết và số điểm hoàn thành.
+AC2: Số liệu lấy từ bản snapshot đóng băng lúc đóng Sprint, không đọc dữ liệu sống.
+AC3: Sửa dữ liệu quá khứ không làm thay đổi số liệu Velocity đã ghi nhận.
+AC4: Có tỷ lệ hoàn thành theo phần trăm cho từng Sprint.","ĐÃ CÓ","Không. Đã có bảng snapshot Sprint với số điểm cam kết, hoàn thành, trả về và tỷ lệ hoàn thành, cùng biểu đồ. LƯU Ý: sau PM-040 phải đảm bảo chỉ đếm ở cấp gốc sprint item để Velocity không phồng lên.","—","—","—",""
+"PM-072","EP-08 Báo cáo, Chỉ số & Audit Log","Chỉ số Sprint","Biểu đồ Burndown trong Sprint theo từng ngày","Là một Scrum Master, tôi muốn xem đường công việc còn lại giảm dần theo từng ngày trong Sprint, để phát hiện sớm nguy cơ không kịp tiến độ.","AC1: Trục ngang là các ngày trong Sprint đang chạy, không phải các Sprint.
+AC2: Đường thực tế vẽ theo giờ còn lại của Task và Sub-task, hoặc theo số hạng mục còn lại, cấu hình được.
+AC3: Có đường lý tưởng để đối chiếu.
+AC4: Dữ liệu được chụp tự động mỗi ngày, không phụ thuộc thao tác thủ công.
+AC5: Ngày nghỉ và ngày lễ được loại khỏi đường lý tưởng.
+AC6: Chỉ áp dụng cho dự án khung Scrum; dự án PMI đã có SPI và CPI riêng.","MỘT PHẦN","Đường hiện được đặt tên Burndown thực chất vẽ theo các Sprint đã đóng và theo Story Point, không phải theo ngày trong Sprint và không có đường lý tưởng. TIN TỐT: sau PM-041 thì Sub-task nằm trong Sprint và mang giờ ước lượng, giờ thực tế đã tự cộng dồn từ timesheet, nên nguồn dữ liệu vẽ Burndown theo giờ còn lại đã sẵn sàng. Cần bảng snapshot hằng ngày cho Sprint đang chạy và tác vụ nền chụp cuối ngày.","P1","G08-01","G08 Đo lường & biểu đồ","PM-042"
+"PM-073","EP-08 Báo cáo, Chỉ số & Audit Log","Chỉ số dự án","Biểu đồ Burnup kiểm soát phình to phạm vi","Là một Product Owner, tôi muốn xem đường tổng khối lượng công việc song song với đường đã hoàn thành, để phát hiện ngay khi phạm vi bị phình to.","AC1: Biểu đồ có hai đường: tổng khối lượng công việc và khối lượng đã hoàn thành.
+AC2: Đường tổng tăng đột ngột được đánh dấu nổi bật kèm ghi chú hạng mục nào vừa được thêm.
+AC3: Xem được ở phạm vi Sprint và phạm vi toàn dự án.
+AC4: Chỉ áp dụng cho dự án khung Scrum.","CHƯA CÓ","Grep burnup cho 0 kết quả trong code, chỉ có trong tài liệu thiết kế. Dùng chung hạ tầng snapshot hằng ngày với PM-072; vẽ 2 đường; đánh dấu điểm phạm vi tăng.","P2","G08-02","G08 Đo lường & biểu đồ","PM-072"
+"PM-074","EP-08 Báo cáo, Chỉ số & Audit Log","Chỉ số dự án","Biểu đồ luồng tích lũy (CFD) phát hiện nút thắt","Là một Scrum Master, tôi muốn xem số lượng thẻ ở từng trạng thái theo thời gian, để phát hiện chính xác chỗ nào đang làm nghẽn luồng công việc.","AC1: Biểu đồ vùng xếp chồng thể hiện số thẻ ở từng trạng thái theo ngày.
+AC2: Vùng của một trạng thái phình to liên tục được cảnh báo là nút thắt tiềm năng.
+AC3: Chọn được khoảng thời gian hiển thị.
+AC4: Rê chuột hiển thị số liệu chi tiết của ngày đó.
+AC5: Chỉ áp dụng cho dự án khung Scrum.","CHƯA CÓ","Grep cumulative flow và CFD cho 0 kết quả. Thiếu điều kiện cần: không có bảng lưu số lượng thẻ theo từng trạng thái theo ngày. Dùng chung hạ tầng snapshot với PM-072; thêm biểu đồ vùng xếp chồng.","P2","G08-03","G08 Đo lường & biểu đồ","PM-072"
+"PM-075","EP-08 Báo cáo, Chỉ số & Audit Log","Chỉ số dự án","Tính tiến độ dự án tự động từ cây công việc","Là một PMO, tôi muốn tiến độ dự án được tính tự động từ tiến độ các hạng mục con.","AC1: Tiến độ dự án được tính từ tổng hợp tiến độ của cây công việc, không nhập tay.","NGOÀI PHẠM VI","ĐƯA RA KHỎI PHẠM VI SCRUM: cột tiến độ của dự án được ĐỌC bởi 7 màn hình và báo cáo (Strategic Objective tính có trọng số, Program tính trung bình, Portfolio, danh sách dự án, snapshot EVM, xuất PDF, xuất Excel), và hiện đang bị freeze CÓ CHỦ ĐÍCH (UpdateProject luôn giữ giá trị cũ). Đây là quyết định của phía PMI. Đổi cách tính sẽ làm gãy tính liên tục của dữ liệu snapshot lịch sử.","—","—","Ngoài phạm vi Scrum",""
+"PM-076","EP-08 Báo cáo, Chỉ số & Audit Log","Chỉ số dự án","Chụp ảnh số liệu dự án tự động hằng ngày","Là một PMO, tôi muốn số liệu dự án được chụp lại tự động mỗi ngày, để biểu đồ xu hướng không bị thủng lỗ khi không ai bấm nút.","AC1: Có tác vụ nền chạy hằng ngày chụp số liệu của mọi dự án đang hoạt động.
+AC2: Tác vụ chạy an toàn khi hệ thống có nhiều máy chủ, không tạo bản ghi trùng.
+AC3: Bật hoặc tắt được tác vụ từ màn hình cấu hình mà không cần khởi động lại.
+AC4: Endpoint chụp thủ công vẫn giữ nguyên để dùng khi cần.","MỘT PHẦN","Có 5 bảng snapshot nhưng snapshot dự án chỉ chụp thủ công qua endpoint, tác vụ tự động đã bị gỡ. Cần khôi phục tác vụ chụp hằng ngày, tận dụng bộ đăng ký tác vụ nền và khóa phân tán đã có sẵn. Phục vụ cả hai khung quản trị.","P1","G01-06","G01 Vá lỗi & siết validation",""
+"PM-077","EP-08 Báo cáo, Chỉ số & Audit Log","Báo cáo tổng hợp","Báo cáo tổng hợp Sprint và Release","Là một Product Owner, tôi muốn một báo cáo tổng hợp toàn bộ Sprint và Release của dự án, để trình bày với lãnh đạo mà không phải ghép số liệu thủ công.","AC1: Báo cáo có phần tổng quan, danh sách Sprint đã đóng và danh sách Release đã phát hành.
+AC2: Số liệu đọc từ snapshot nên không đổi khi dữ liệu sống thay đổi.
+AC3: Xuất được ra Excel và PDF.","ĐÃ CÓ","Không. Đã có endpoint báo cáo tổng hợp đọc từ snapshot Sprint và Release, kèm chức năng xuất file.","—","—","—",""
+"PM-078","EP-08 Báo cáo, Chỉ số & Audit Log","Nhật ký truy vết","Ghi nhật ký các thao tác quan trọng","Là một Admin, tôi muốn mọi thao tác quan trọng được ghi lại, để truy cứu khi có sự cố hoặc tranh chấp.","AC1: Ghi nhật ký cho các thao tác quan trọng kèm người thực hiện và thời điểm.","NGOÀI PHẠM VI","ĐƯA RA KHỎI PHẠM VI SCRUM: bảng nhật ký dùng chung được ghi từ 42 file trên 5 module (pm, ticket, hr, fin, sys), cộng middleware audit và 2 tác vụ nền. Việc phủ đủ và chuẩn hóa là dự án riêng. Nhu cầu ghi nhật ký của Scrum đi vào bảng riêng của module PM (xem PM-047, PM-048).","—","—","Ngoài phạm vi Scrum",""
+"PM-079","EP-08 Báo cáo, Chỉ số & Audit Log","Nhật ký truy vết","Chuẩn hóa nhật ký với giá trị trước và sau","Là một Admin, tôi muốn tra được chính xác một thẻ đã thay đổi những gì và ai đổi.","AC1: Bản ghi nhật ký có đủ loại đối tượng, mã đối tượng, mã dự án, giá trị trước và giá trị sau.","NGOÀI PHẠM VI","ĐƯA RA KHỎI PHẠM VI SCRUM: đổi schema bảng nhật ký dùng chung ảnh hưởng TẤT CẢ module cùng middleware audit và 2 tác vụ nền. Rủi ro rất cao, lợi ích cho Scrum thấp. Bảng nhật ký riêng của module PM đã có sẵn cột giá trị trước và sau.","—","—","Ngoài phạm vi Scrum",""
+"PM-080","EP-08 Báo cáo, Chỉ số & Audit Log","Nhật ký truy vết","Màn hình tra cứu nhật ký hợp nhất","Là một Admin, tôi muốn tra cứu nhật ký ở một chỗ duy nhất thay vì ba nguồn rời rạc.","AC1: Màn hình gộp dữ liệu từ cả ba nguồn nhật ký hiện có.","NGOÀI PHẠM VI","ĐƯA RA KHỎI PHẠM VI SCRUM: phụ thuộc PM-079 vốn đã ngoài phạm vi. Đưa vào backlog hạ tầng nếu cần.","—","—","Ngoài phạm vi Scrum",""
+"PM-081","EP-09 Giao tiếp & Chuẩn hệ thống","Thông báo","Nhận thông báo trong ứng dụng","Là một thành viên nhóm, tôi muốn nhận thông báo qua chuông trong ứng dụng, để không bỏ lỡ việc liên quan đến mình.","AC1: Có biểu tượng chuông hiển thị số thông báo chưa đọc.
+AC2: Đánh dấu đã đọc từng thông báo hoặc tất cả.
+AC3: Bấm vào thông báo mở đúng đối tượng liên quan.","ĐÃ CÓ","Không. Đã có chuông thông báo và bảng thông báo với cờ đã đọc.","—","—","—",""
+"PM-082","EP-09 Giao tiếp & Chuẩn hệ thống","Thông báo","Nhận thông báo Lark khi được gán việc hoặc bị nhắc tên","Là một thành viên nhóm, tôi muốn nhận thông báo qua Lark khi được gán việc hoặc bị nhắc tên trong bình luận, để biết ngay mà không cần mở hệ thống.","AC1: Gán việc và nhắc tên trong bình luận đều gửi thông báo Lark.
+AC2: Gán hàng loạt nhiều thẻ chỉ gửi một thông báo gộp.
+AC3: Lark gặp sự cố không làm hỏng thao tác nghiệp vụ đang thực hiện.","ĐÃ CÓ","Không. Đã có thông báo nhắc tên, gán việc đơn và gán việc hàng loạt, theo mô hình gửi và bỏ qua lỗi.","—","—","—",""
+"PM-083","EP-09 Giao tiếp & Chuẩn hệ thống","Thông báo","Mở rộng kênh Lark cho sự kiện Sprint và giờ công","Là một thành viên nhóm, tôi muốn nhận thông báo Lark cho cả các sự kiện Sprint và kết quả duyệt giờ công, để không phải vào hệ thống kiểm tra.","AC1: Bắt đầu Sprint, kết thúc Sprint, duyệt và từ chối giờ công, cảnh báo vượt giờ đều gửi được qua Lark.
+AC2: Người dùng bật hoặc tắt được từng loại thông báo theo kênh.
+AC3: Người tạo thẻ cũng nằm trong danh sách nhận thông báo bên cạnh người được gán việc.","CHƯA CÓ","Kênh Lark hiện chỉ phủ 3 tình huống: nhắc tên, gán việc đơn, gán việc hàng loạt. Sự kiện Sprint, giờ công và cảnh báo vượt giờ chỉ hiện trong ứng dụng. Cần mở rộng kênh gửi; thêm cấu hình bật tắt theo loại; bổ sung người tạo vào danh sách nhận.","P2","G09-04","G09 Tài chính & tích hợp",""
+"PM-084","EP-09 Giao tiếp & Chuẩn hệ thống","Thông báo","Cảnh báo khẩn khi thẻ quá hạn","Là một Project Manager, tôi muốn được cảnh báo khi thẻ quá hạn hoặc sắp đến hạn, để xử lý trước khi trễ tiến độ.","AC1: Tác vụ nền chạy hằng ngày quét các thẻ quá hạn và sắp đến hạn.
+AC2: Thông báo gửi cho người được gán việc và cho PM của dự án.
+AC3: Gửi qua cả chuông trong ứng dụng và Lark.
+AC4: Mỗi thẻ chỉ nhắc lại theo chu kỳ đã cấu hình.
+AC5: Thẻ đã hoàn thành không bao giờ bị tính là quá hạn.
+AC6: Áp dụng cho cả hai khung quản trị.","CHƯA CÓ","LỖI ĐANG TỒN TẠI: tác vụ thông báo hằng ngày đã đăng ký và vẫn chạy 24 giờ một lần, nhưng hai hàm kiểm tra hạn dự án và hạng mục ứ đọng chỉ ghi log placeholder, nên hai loại thông báo tương ứng không bao giờ được sinh ra. Quá hạn hiện chỉ được tính để hiển thị badge. CÁCH LÀM AN TOÀN: tạo job key MỚI trong bộ đăng ký tác vụ kèm migration, KHÔNG sửa nhánh tác vụ hiện có vì đang bị 4 test pin. Chi phí thấp, tác động cao.","P0","G01-01","G01 Vá lỗi & siết validation",""
+"PM-085","EP-09 Giao tiếp & Chuẩn hệ thống","Thông báo","Chống trùng lặp và spam thông báo","Là một thành viên nhóm, tôi không muốn nhận nhiều thông báo trùng lặp cho cùng một sự việc, để chuông thông báo còn giữ được giá trị.","AC1: Duyệt hàng loạt chỉ gửi một thông báo cho mỗi người bị ảnh hưởng.
+AC2: Hệ thống chạy nhiều máy chủ vẫn chỉ gửi một lần cho mỗi sự kiện.
+AC3: Cảnh báo lặp lại theo điều kiện có chu kỳ nhắc lại tối thiểu, cấu hình được.","MỘT PHẦN","Đã làm tốt ở 3 chỗ: khử trùng người nhận khi duyệt hàng loạt, khóa phân tán chống gửi nhiều lần khi chạy nhiều máy chủ, và gộp thông báo cho gán việc hàng loạt. Thiếu ở cảnh báo vượt giờ. Cần áp dụng chu kỳ nhắc lại thống nhất cho mọi loại cảnh báo có tính lặp.","P1","G07-06","G07 Kỷ luật Backlog & DoD","PM-070"
+"PM-086","EP-09 Giao tiếp & Chuẩn hệ thống","Hiệu năng","Phản hồi tức thời khi cập nhật trạng thái và kéo thả","Là một thành viên nhóm, tôi muốn thao tác trên bảng phản hồi tức thì, để buổi Daily không bị ngắt quãng vì chờ hệ thống.","AC1: Cập nhật trạng thái và kéo thả phản hồi trên giao diện dưới 300 mili giây.
+AC2: Tải danh sách dữ liệu dưới 1 giây.
+AC3: Thao tác lỗi thì giao diện quay về trạng thái đúng kèm thông báo.","ĐÃ CÓ","Không. Đã có phản hồi lạc quan kèm khôi phục trạng thái cho cả kéo thả và gán việc nhanh.","—","—","—",""
+"PM-087","EP-09 Giao tiếp & Chuẩn hệ thống","Hiệu năng","Kiểm chứng khả năng chịu tải trên 100 người dùng đồng thời","Là một quản trị hệ thống, tôi muốn có bằng chứng hệ thống chịu được trên 100 người dùng đồng thời, để yên tâm triển khai diện rộng.","AC1: Có kịch bản kiểm thử tải mô phỏng trên 100 người dùng đồng thời trên các luồng chính.
+AC2: Kết quả ghi nhận thời gian phản hồi trung bình và phân vị 95.
+AC3: Kết quả được lưu trong kho mã nguồn làm bằng chứng nghiệm thu.
+AC4: Kiểm thử tải chạy lại được trong quy trình tích hợp liên tục.","CHƯA CÓ","Kiến trúc phù hợp nhưng không tìm thấy kết quả kiểm thử tải nào trong kho mã nguồn. Cần xây kịch bản và lưu kết quả.","P3","G11-04","G11 Chuẩn hệ thống",""
+"PM-088","EP-09 Giao tiếp & Chuẩn hệ thống","Chuẩn hệ thống","Hỗ trợ đa ngôn ngữ tiếng Anh và tiếng Việt","Là một người dùng, tôi muốn chuyển giao diện sang tiếng Việt, để làm việc thuận tiện hơn.","AC1: Có nút chuyển ngôn ngữ giữa tiếng Anh và tiếng Việt.
+AC2: Toàn bộ chuỗi giao diện được dịch, không còn chuỗi tiếng Anh sót lại.
+AC3: Lựa chọn ngôn ngữ được ghi nhớ theo tài khoản.
+AC4: Định dạng ngày, giờ và số tuân theo ngôn ngữ đang chọn.","CHƯA CÓ","Không có thư viện đa ngôn ngữ nào được cài, không có thư mục chứa file dịch. Cần chọn thư viện và trích xuất chuỗi giao diện. Phục vụ cả hai khung quản trị.","P2","G11-02","G11 Chuẩn hệ thống","PM-089"
+"PM-089","EP-09 Giao tiếp & Chuẩn hệ thống","Chuẩn hệ thống","Backend trả mã lỗi thay vì câu chữ tiếng Anh","Là một lập trình viên giao diện, tôi muốn backend trả về mã lỗi kèm tham số thay vì câu tiếng Anh hoàn chỉnh, để giao diện tự dịch được sang ngôn ngữ người dùng chọn.","AC1: Mọi phản hồi lỗi trả về mã lỗi và các tham số cần thiết.
+AC2: Chuỗi thông báo hiển thị được dựng ở phía giao diện từ mã lỗi đó.
+AC3: Nội dung thông báo do backend sinh ra cũng theo cơ chế mã lỗi, không hard-code câu chữ.
+AC4: Có danh mục mã lỗi được ghi tài liệu đầy đủ.","CHƯA CÓ","Hiện chuỗi giao diện hard-code ở cả hai tầng, một số thông báo sinh thẳng từ backend bằng tiếng Anh. CHI PHÍ TĂNG THEO THỜI GIAN: càng xây thêm màn hình Scrum thì càng nhiều chuỗi phải sửa lại. Nếu chắc chắn sẽ làm đa ngôn ngữ, cân nhắc kéo hạng mục này lên ngay sau nhóm G02.","P2","G11-01","G11 Chuẩn hệ thống",""
+"PM-090","EP-09 Giao tiếp & Chuẩn hệ thống","Chuẩn hệ thống","Cấu hình múi giờ tập trung mặc định UTC+7","Là một người dùng tại Việt Nam, tôi muốn mọi mốc thời gian và ranh giới ngày tính theo múi giờ UTC+7, để báo cáo ngày và tuần không bị lệch.","AC1: Có cấu hình múi giờ tập trung ở cấp hệ thống, mặc định là múi giờ Việt Nam.
+AC2: Mọi phép tính ranh giới ngày, tuần và tháng đều theo múi giờ cấu hình, không theo UTC.
+AC3: Ngày ghi nhận giờ công và các báo cáo theo tuần cho kết quả đúng ở mọi thời điểm trong ngày.
+AC4: Có kiểm thử tự động cho các trường hợp biên quanh nửa đêm.","CHƯA CÓ","Hệ thống hiện chạy UTC cứng, không có biến cấu hình múi giờ. Rủi ro đã hiện hình trong kiểm thử: trước khoảng 7 giờ sáng giờ Việt Nam thì tham số ngày trả sai kết quả. Ảnh hưởng cả hai khung quản trị, đặc biệt quan trọng với Burndown theo ngày.","P2","G11-03","G11 Chuẩn hệ thống",""
