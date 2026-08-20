@@ -1,0 +1,88 @@
+# ── Dependencies ────────────────────────────────────────
+node_modules/
+bower_components/
+jspm_packages/
+.pnp
+.pnp.js
+
+# ── Lock files (mỗi sub-repo quản lý riêng) ───────────
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# ── Build output ────────────────────────────────────────
+dist/
+build/
+out/
+.next/
+.nuxt/
+.output/
+.turbo/
+.vercel/
+
+# ── Environment variables ───────────────────────────────
+.env
+.env.local
+.env.dev
+.env.staging
+.env.production
+.env.*.local
+
+# ── Logs ────────────────────────────────────────────────
+logs/
+logger/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ── OS files ────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+Desktop.ini
+ehthumbs.db
+ehthumbs_vista.db
+*.lnk
+
+# ── IDE / Editor ────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+*.sublime-project
+*.sublime-workspace
+.project
+.classpath
+.settings/
+
+# ── Node ────────────────────────────────────────────────
+.npm
+.eslintcache
+.node_repl_history
+*.tsbuildinfo
+.yarn/
+
+# ── Coverage & Testing ─────────────────────────────────
+coverage/
+.nyc_output/
+*.lcov
+
+# ── Docker ──────────────────────────────────────────────
+docker-compose.override.yml
+
+# ── Nested Git repos (sub-projects có .git riêng) ──────
+CloudAZ-CM-Backend/.git
+CloudAZ-CM-Frontend/.git
+gws-saleflow-website-repo/.git
+
+# ── Misc ────────────────────────────────────────────────
+*.pid
+*.seed
+*.pid.lock
+*.orig
+.cache/
+tmp/
+temp/
+*.ER
