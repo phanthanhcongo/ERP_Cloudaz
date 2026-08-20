@@ -11,11 +11,18 @@
 4.  Lọc khoảng thời gian tương ứng để tìm hóa đơn cần tải.
 5.  Nhấp vào số hóa đơn hoặc biểu tượng **Download** (Tải xuống), chọn định dạng **PDF** hoặc **CSV** để lưu về máy.
 
+> [!NOTE]
+> Bảng điều khiển Admin Console chỉ lưu trữ lịch sử hóa đơn tối đa 12 tháng gần nhất. Để lấy các hóa đơn cũ hơn, bạn cần liên hệ với bộ phận hỗ trợ của Google Workspace.
+
 ## 3. Quy trình thực tế dành cho Reseller (CloudAZ - Partner Sales Console)
-Đối với kế toán CloudAZ quản lý dịch vụ Google Workspace Flex của nhiều khách hàng:
+Đối với đối tác bán lại (Reseller) quản lý dịch vụ Google Workspace Flex của nhiều khách hàng:
 1.  Đăng nhập vào [Partner Sales Console](https://partner.cloud.google.com/).
-2.  Đi tới phần **Billing** (Thanh toán) hoặc **Reports** (Báo cáo).
-3.  Tải xuống file CSV chứa chi tiết sử dụng cước hàng tháng của tất cả các khách hàng (GWS Flex billing CSV).
+2.  Đi tới phần **Billing** (Thanh toán) hoặc **Reports** (Báo cáo) để truy cập thông tin cước.
+3.  Tải xuống báo cáo chi tiết tháng dưới dạng CSV (**Monthly Detail Report**).
+    *   *Cách thay thế:* Bạn cũng có thể tải file này từ **Google Payments Center** hoặc cấu hình tự động tải qua hệ thống **SFTP của Google** (`partnerupload.google.com`, cổng `19321`, thư mục `invoices`).
 4.  Chuyển đổi file CSV tải được sang dạng file Excel.
 5.  Đẩy file Excel này lên hệ thống CM nội bộ để sinh bảng tổng hợp chi phí tự động gửi khách hàng.
+
+> [!TIP]
+> Google cũng cung cấp tính năng tự động xuất dữ liệu thanh toán kênh đối tác (**Channel Services billing data export**) sang **BigQuery** để phục vụ việc tự động hóa đối soát và tích hợp hệ thống ở quy mô lớn.
 
