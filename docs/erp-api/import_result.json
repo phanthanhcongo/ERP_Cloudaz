@@ -1,0 +1,857 @@
+{
+  "stats": {
+    "epic": 11,
+    "feature": 30,
+    "story": 100,
+    "errors": 0
+  },
+  "elapsed_seconds": 98.655351,
+  "tasks": [
+    {
+      "type": "epic",
+      "id": 808,
+      "path": "000002.000003",
+      "title": "EP-02 Gemini & Credit — Nhận diện Gemini API & xử lý Credit"
+    },
+    {
+      "type": "feature",
+      "id": 809,
+      "path": "000002.000003.000001",
+      "title": "Nhận diện & tách Gemini API"
+    },
+    {
+      "type": "user_story",
+      "id": 810,
+      "path": "000002.000003.000001.000001",
+      "title": "BD-10: Tự động phát hiện & tách riêng Gemini API cho từng khách GCP"
+    },
+    {
+      "type": "user_story",
+      "id": 811,
+      "path": "000002.000003.000001.000002",
+      "title": "BD-15: Xác nhận GMP không áp dụng Credit & Gemini API"
+    },
+    {
+      "type": "feature",
+      "id": 812,
+      "path": "000002.000003.000002",
+      "title": "Tự động phát hiện Credit Promotion"
+    },
+    {
+      "type": "user_story",
+      "id": 813,
+      "path": "000002.000003.000002.000001",
+      "title": "BD-11: Tự động phát hiện Credit Promotion trên Console GCP"
+    },
+    {
+      "type": "user_story",
+      "id": 814,
+      "path": "000002.000003.000002.000002",
+      "title": "BD-14: Cảnh báo credit chưa được phân loại trước khi gửi bill"
+    },
+    {
+      "type": "user_story",
+      "id": 815,
+      "path": "000002.000003.000002.000003",
+      "title": "BD-62: Hiển thị danh sách khách có credit promotion trong tháng"
+    },
+    {
+      "type": "user_story",
+      "id": 816,
+      "path": "000002.000003.000002.000004",
+      "title": "BD-64: Hướng dẫn/nhắc nhở bỏ chọn tích Promotion Credit trên Console"
+    },
+    {
+      "type": "feature",
+      "id": 817,
+      "path": "000002.000003.000003",
+      "title": "Quy trình phê duyệt & phân bổ Credit"
+    },
+    {
+      "type": "user_story",
+      "id": 818,
+      "path": "000002.000003.000003.000001",
+      "title": "BD-12: Xuất danh sách khách có credit gửi BGĐ/Sale xác nhận"
+    },
+    {
+      "type": "user_story",
+      "id": 819,
+      "path": "000002.000003.000003.000002",
+      "title": "BD-13: Hỗ trợ chia credit giữa khách và công ty"
+    },
+    {
+      "type": "user_story",
+      "id": 820,
+      "path": "000002.000003.000003.000003",
+      "title": "BD-63: Gửi danh sách credit cho BGĐ/Sale xác nhận"
+    },
+    {
+      "type": "user_story",
+      "id": 821,
+      "path": "000002.000003.000003.000004",
+      "title": "BD-65: Hỗ trợ kế toán check thủ công từng trường hợp credit"
+    },
+    {
+      "type": "epic",
+      "id": 822,
+      "path": "000002.000004",
+      "title": "EP-03 Pricing Engine — Công thức tính cước"
+    },
+    {
+      "type": "feature",
+      "id": 823,
+      "path": "000002.000004.000001",
+      "title": "Tính toán cước theo dịch vụ"
+    },
+    {
+      "type": "user_story",
+      "id": 824,
+      "path": "000002.000004.000001.000001",
+      "title": "BD-17: Tính cước GCP theo công thức"
+    },
+    {
+      "type": "user_story",
+      "id": 825,
+      "path": "000002.000004.000001.000002",
+      "title": "BD-18: Tính cước GMP theo công thức"
+    },
+    {
+      "type": "user_story",
+      "id": 826,
+      "path": "000002.000004.000001.000003",
+      "title": "BD-19: Tính cước GWS Flex theo SKU pricing & proration"
+    },
+    {
+      "type": "user_story",
+      "id": 827,
+      "path": "000002.000004.000001.000004",
+      "title": "BD-25: Hỗ trợ công thức GWS Flex cũ (trước 02/2024)"
+    },
+    {
+      "type": "feature",
+      "id": 828,
+      "path": "000002.000004.000002",
+      "title": "Xử lý thuế và quy đổi tiền tệ"
+    },
+    {
+      "type": "user_story",
+      "id": 829,
+      "path": "000002.000004.000002.000001",
+      "title": "BD-20: Quy đổi VND & làm tròn đến hàng đơn vị"
+    },
+    {
+      "type": "user_story",
+      "id": 830,
+      "path": "000002.000004.000002.000002",
+      "title": "BD-21: Tính thuế GTGT đầu ra 10%, hỗ trợ KCT"
+    },
+    {
+      "type": "user_story",
+      "id": 831,
+      "path": "000002.000004.000002.000003",
+      "title": "BD-22: Hỗ trợ flag vat_gross và fct_gross"
+    },
+    {
+      "type": "feature",
+      "id": 832,
+      "path": "000002.000004.000003",
+      "title": "Ánh xạ cấu hình hợp đồng"
+    },
+    {
+      "type": "user_story",
+      "id": 833,
+      "path": "000002.000004.000003.000001",
+      "title": "BD-23: Ánh xạ field hợp đồng GCP vào công thức tính"
+    },
+    {
+      "type": "epic",
+      "id": 834,
+      "path": "000002.000005",
+      "title": "EP-04 Report & Delivery — Sinh bảng đối soát & gửi khách"
+    },
+    {
+      "type": "feature",
+      "id": 835,
+      "path": "000002.000005.000001",
+      "title": "Tự động sinh bảng đối soát chi phí"
+    },
+    {
+      "type": "user_story",
+      "id": 836,
+      "path": "000002.000005.000001.000001",
+      "title": "BD-26: Sinh bảng đối soát chi phí XLSX từ template"
+    },
+    {
+      "type": "user_story",
+      "id": 837,
+      "path": "000002.000005.000001.000002",
+      "title": "BD-27: Gộp nhiều project của cùng 1 khách vào 1 bảng đối soát"
+    },
+    {
+      "type": "user_story",
+      "id": 838,
+      "path": "000002.000005.000001.000003",
+      "title": "BD-28: Gộp nhiều billing account của cùng 1 khách vào 1 bảng"
+    },
+    {
+      "type": "user_story",
+      "id": 839,
+      "path": "000002.000005.000001.000004",
+      "title": "BD-31: Xử lý làm tròn chính xác đến hàng đồng VND"
+    },
+    {
+      "type": "user_story",
+      "id": 840,
+      "path": "000002.000005.000001.000005",
+      "title": "BD-32: Hỗ trợ khách chia nhiều pháp nhân: tính/gửi/xuất HĐ riêng"
+    },
+    {
+      "type": "user_story",
+      "id": 841,
+      "path": "000002.000005.000001.000006",
+      "title": "BD-33: Xuất bảng đối soát dạng PDF"
+    },
+    {
+      "type": "feature",
+      "id": 842,
+      "path": "000002.000005.000002",
+      "title": "Điều chỉnh số liệu & Đối soát thủ công"
+    },
+    {
+      "type": "user_story",
+      "id": 843,
+      "path": "000002.000005.000002.000001",
+      "title": "BD-29: Cho phép kế toán sửa tay số liệu trên bảng đối soát trước khi gửi"
+    },
+    {
+      "type": "user_story",
+      "id": 844,
+      "path": "000002.000005.000002.000002",
+      "title": "BD-30: Đối soát tự động ERP vs bảng tính tay, highlight dòng lệch"
+    },
+    {
+      "type": "feature",
+      "id": 845,
+      "path": "000002.000005.000003",
+      "title": "Gửi thông báo & Theo dõi chốt cước"
+    },
+    {
+      "type": "user_story",
+      "id": 846,
+      "path": "000002.000005.000003.000001",
+      "title": "BD-34: Gửi email bảng đối soát kèm screenshot cho khách"
+    },
+    {
+      "type": "user_story",
+      "id": 847,
+      "path": "000002.000005.000003.000002",
+      "title": "BD-35: Gửi riêng email cho từng dịch vụ (GWS → GCP → GMP)"
+    },
+    {
+      "type": "user_story",
+      "id": 848,
+      "path": "000002.000005.000003.000003",
+      "title": "BD-36: Tự động nhắc nhở và chốt số liệu khi khách không phản hồi"
+    },
+    {
+      "type": "user_story",
+      "id": 849,
+      "path": "000002.000005.000003.000004",
+      "title": "BD-37: Ghi nhận xác nhận qua email phản hồi hoặc chuyển khoản"
+    },
+    {
+      "type": "user_story",
+      "id": 850,
+      "path": "000002.000005.000003.000005",
+      "title": "BD-38: Xuất hóa đơn ngay sau khi khách xác nhận, không cần phê duyệt"
+    },
+    {
+      "type": "epic",
+      "id": 851,
+      "path": "000002.000006",
+      "title": "EP-05 Dispute Handling — Xử lý tranh chấp cước"
+    },
+    {
+      "type": "feature",
+      "id": 852,
+      "path": "000002.000006.000001",
+      "title": "Xử lý phản hồi lệch cước"
+    },
+    {
+      "type": "user_story",
+      "id": 853,
+      "path": "000002.000006.000001.000001",
+      "title": "BD-39: Cho phép kế toán sửa bảng và gửi lại khi khách phản hồi lệch cước"
+    },
+    {
+      "type": "user_story",
+      "id": 854,
+      "path": "000002.000006.000001.000002",
+      "title": "BD-40: Xử lý riêng dịch vụ có tranh chấp, dịch vụ khác chốt bình thường"
+    },
+    {
+      "type": "user_story",
+      "id": 855,
+      "path": "000002.000006.000001.000003",
+      "title": "BD-43: Lưu lịch sử chỉnh sửa dispute để tra cứu"
+    },
+    {
+      "type": "feature",
+      "id": 856,
+      "path": "000002.000006.000002",
+      "title": "Điều chỉnh tài chính sau xuất hóa đơn"
+    },
+    {
+      "type": "user_story",
+      "id": 857,
+      "path": "000002.000006.000002.000001",
+      "title": "BD-41: Hỗ trợ điều chỉnh sau khi đã xuất hóa đơn VAT"
+    },
+    {
+      "type": "user_story",
+      "id": 858,
+      "path": "000002.000006.000002.000002",
+      "title": "BD-42: Cho phép điều chỉnh vào kỳ cước tiếp theo thay vì hủy/sửa HĐ"
+    },
+    {
+      "type": "epic",
+      "id": 859,
+      "path": "000002.000007",
+      "title": "EP-06 Contract & Timeline Config — Cấu hình HĐ, công thức & timeline"
+    },
+    {
+      "type": "feature",
+      "id": 860,
+      "path": "000002.000007.000001",
+      "title": "Cấu hình thông tin & pháp nhân hợp đồng"
+    },
+    {
+      "type": "user_story",
+      "id": 861,
+      "path": "000002.000007.000001.000001",
+      "title": "BD-44: Cấu hình thông tin hợp đồng & công thức tính cước"
+    },
+    {
+      "type": "user_story",
+      "id": 862,
+      "path": "000002.000007.000001.000002",
+      "title": "BD-45: Hỗ trợ khách thay đổi pháp nhân"
+    },
+    {
+      "type": "user_story",
+      "id": 863,
+      "path": "000002.000007.000001.000003",
+      "title": "BD-46: Hỗ trợ 1 hợp đồng nhiều pháp nhân"
+    },
+    {
+      "type": "user_story",
+      "id": 864,
+      "path": "000002.000007.000001.000004",
+      "title": "BD-47: Thông báo cho kế toán khi có thay đổi hợp đồng/phụ lục"
+    },
+    {
+      "type": "feature",
+      "id": 865,
+      "path": "000002.000007.000002",
+      "title": "Cấu hình công thức & ánh xạ tham số tính cước"
+    },
+    {
+      "type": "user_story",
+      "id": 866,
+      "path": "000002.000007.000002.000001",
+      "title": "BD-16: Cấu hình công thức tính cước riêng cho từng khách/hợp đồng"
+    },
+    {
+      "type": "user_story",
+      "id": 867,
+      "path": "000002.000007.000002.000002",
+      "title": "BD-24: Hỗ trợ cập nhật công thức khi có phụ lục hợp đồng mới"
+    },
+    {
+      "type": "user_story",
+      "id": 868,
+      "path": "000002.000007.000002.000003",
+      "title": "BD-48: Cấu hình ngân hàng & thời điểm lấy tỷ giá riêng cho từng HĐ"
+    },
+    {
+      "type": "user_story",
+      "id": 869,
+      "path": "000002.000007.000002.000004",
+      "title": "BD-49: Ánh xạ field hợp đồng GMP vào công thức tính"
+    },
+    {
+      "type": "user_story",
+      "id": 870,
+      "path": "000002.000007.000002.000005",
+      "title": "BD-50: Ánh xạ field hợp đồng GWS Flex vào công thức tính"
+    },
+    {
+      "type": "feature",
+      "id": 871,
+      "path": "000002.000007.000003",
+      "title": "Cấu hình & giám sát timeline đối soát"
+    },
+    {
+      "type": "user_story",
+      "id": 872,
+      "path": "000002.000007.000003.000001",
+      "title": "BD-51: Quản lý timeline tính cước theo từng dịch vụ"
+    },
+    {
+      "type": "user_story",
+      "id": 873,
+      "path": "000002.000007.000003.000002",
+      "title": "BD-52: Cảnh báo khi invoice hãng về chậm so với deadline"
+    },
+    {
+      "type": "user_story",
+      "id": 874,
+      "path": "000002.000007.000003.000003",
+      "title": "BD-53: Gửi thông báo trễ cho khách khi invoice về chậm"
+    },
+    {
+      "type": "user_story",
+      "id": 875,
+      "path": "000002.000007.000003.000004",
+      "title": "BD-54: Xử lý khách hủy dịch vụ giữa tháng"
+    },
+    {
+      "type": "user_story",
+      "id": 876,
+      "path": "000002.000007.000003.000005",
+      "title": "BD-55: Xử lý deadline đặc biệt cho BeatVN (GCP) và Pharmacity (GMP)"
+    },
+    {
+      "type": "epic",
+      "id": 877,
+      "path": "000002.000008",
+      "title": "EP-07 Storage & Audit — Lưu trữ, tra cứu & kiểm soát"
+    },
+    {
+      "type": "feature",
+      "id": 878,
+      "path": "000002.000008.000001",
+      "title": "Quản lý kho dữ liệu đối soát tập trung"
+    },
+    {
+      "type": "user_story",
+      "id": 879,
+      "path": "000002.000008.000001.000001",
+      "title": "BD-56: Lưu trữ tập trung bill, bảng đối soát, hóa đơn trên S3"
+    },
+    {
+      "type": "user_story",
+      "id": 880,
+      "path": "000002.000008.000001.000002",
+      "title": "BD-57: Tra cứu bill lịch sử theo bộ lọc"
+    },
+    {
+      "type": "user_story",
+      "id": 881,
+      "path": "000002.000008.000001.000003",
+      "title": "BD-58: Lưu tất cả lần gửi/sửa của cùng 1 bảng đối soát (versioning)"
+    },
+    {
+      "type": "user_story",
+      "id": 882,
+      "path": "000002.000008.000001.000004",
+      "title": "BD-59: Xuất Excel tổng hợp số cuối toàn bộ khách hàng trong tháng"
+    },
+    {
+      "type": "feature",
+      "id": 883,
+      "path": "000002.000008.000002",
+      "title": "Hệ thống nhật ký kiểm toán (Audit Trail)"
+    },
+    {
+      "type": "user_story",
+      "id": 884,
+      "path": "000002.000008.000002.000001",
+      "title": "BD-60: Ghi log mọi thay đổi trên bảng đối soát"
+    },
+    {
+      "type": "user_story",
+      "id": 885,
+      "path": "000002.000008.000002.000002",
+      "title": "BD-61: Kế toán sửa tay không cần ghi lý do — system tự động audit"
+    },
+    {
+      "type": "epic",
+      "id": 886,
+      "path": "000002.000009",
+      "title": "EP-08 Invoicing & Delivery — Xuất hóa đơn & Chuyển phát"
+    },
+    {
+      "type": "feature",
+      "id": 887,
+      "path": "000002.000009.000001",
+      "title": "Xuất & quản lý hóa đơn VAT"
+    },
+    {
+      "type": "user_story",
+      "id": 888,
+      "path": "000002.000009.000001.000001",
+      "title": "DC-01: Tự động sinh hóa đơn VAT từ bảng đối soát đã chốt"
+    },
+    {
+      "type": "user_story",
+      "id": 889,
+      "path": "000002.000009.000001.000002",
+      "title": "DC-02: Xuất hóa đơn riêng cho từng pháp nhân"
+    },
+    {
+      "type": "user_story",
+      "id": 890,
+      "path": "000002.000009.000001.000003",
+      "title": "DC-03: Hỗ trợ thay đổi pháp nhân trên hóa đơn"
+    },
+    {
+      "type": "user_story",
+      "id": 891,
+      "path": "000002.000009.000001.000004",
+      "title": "DC-04: Cho phép kế toán kiểm tra, điều chỉnh hóa đơn trước phát hành"
+    },
+    {
+      "type": "user_story",
+      "id": 892,
+      "path": "000002.000009.000001.000005",
+      "title": "DC-05: Xuất hóa đơn điều chỉnh tăng/giảm"
+    },
+    {
+      "type": "user_story",
+      "id": 893,
+      "path": "000002.000009.000001.000006",
+      "title": "DC-06: Lưu lịch sử hóa đơn đã xuất theo khách/tháng/dịch vụ"
+    },
+    {
+      "type": "feature",
+      "id": 894,
+      "path": "000002.000009.000002",
+      "title": "Tạo & gửi Đề nghị thanh toán (ĐNTT)"
+    },
+    {
+      "type": "user_story",
+      "id": 895,
+      "path": "000002.000009.000002.000001",
+      "title": "DC-07: Tự động tạo Đề nghị thanh toán (ĐNTT) từ hóa đơn"
+    },
+    {
+      "type": "user_story",
+      "id": 896,
+      "path": "000002.000009.000002.000002",
+      "title": "DC-08: Xác định hạn thanh toán (Ngày X) theo hợp đồng"
+    },
+    {
+      "type": "user_story",
+      "id": 897,
+      "path": "000002.000009.000002.000003",
+      "title": "DC-09: Gửi ĐNTT song song email + yêu cầu chuyển phát bản cứng"
+    },
+    {
+      "type": "user_story",
+      "id": 898,
+      "path": "000002.000009.000002.000004",
+      "title": "DC-10: Quản lý danh sách email nhận ĐNTT theo hợp đồng"
+    },
+    {
+      "type": "user_story",
+      "id": 899,
+      "path": "000002.000009.000002.000005",
+      "title": "DC-11: Gộp nhiều hóa đơn các dịch vụ khác nhau vào 1 ĐNTT"
+    },
+    {
+      "type": "feature",
+      "id": 900,
+      "path": "000002.000009.000003",
+      "title": "Theo dõi chuyển phát bản cứng"
+    },
+    {
+      "type": "user_story",
+      "id": 901,
+      "path": "000002.000009.000003.000001",
+      "title": "DC-12: HCNS cập nhật trạng thái chuyển phát bản cứng"
+    },
+    {
+      "type": "user_story",
+      "id": 902,
+      "path": "000002.000009.000003.000002",
+      "title": "DC-13: Gửi email thông báo cho Kế toán khi ĐNTT bản cứng phát thành công"
+    },
+    {
+      "type": "user_story",
+      "id": 903,
+      "path": "000002.000009.000003.000003",
+      "title": "DC-14: Cảnh báo nếu quá 48h chưa có cập nhật trạng thái phát thư"
+    },
+    {
+      "type": "epic",
+      "id": 904,
+      "path": "000002.000010",
+      "title": "EP-09 Debt Collection & Reminders — Nhắc nợ & Xử lý quá hạn"
+    },
+    {
+      "type": "feature",
+      "id": 905,
+      "path": "000002.000010.000001",
+      "title": "Cảnh báo & kích hoạt nhắc nợ"
+    },
+    {
+      "type": "user_story",
+      "id": 906,
+      "path": "000002.000010.000001.000001",
+      "title": "DC-15: Tự động gửi email cảnh báo trước hạn vào Ngày X-2"
+    },
+    {
+      "type": "user_story",
+      "id": 907,
+      "path": "000002.000010.000001.000002",
+      "title": "DC-16: Tự động kích hoạt luồng nhắc nợ khi quá Ngày X"
+    },
+    {
+      "type": "feature",
+      "id": 908,
+      "path": "000002.000010.000002",
+      "title": "Nhắc nợ tự động & tính lãi chậm"
+    },
+    {
+      "type": "user_story",
+      "id": 909,
+      "path": "000002.000010.000002.000001",
+      "title": "DC-17: Tự động gửi email nhắc nợ hàng ngày cho khách quá hạn"
+    },
+    {
+      "type": "user_story",
+      "id": 910,
+      "path": "000002.000010.000002.000002",
+      "title": "DC-18: Soạn nội dung email nhắc nợ đầy đủ thông tin"
+    },
+    {
+      "type": "user_story",
+      "id": 911,
+      "path": "000002.000010.000002.000003",
+      "title": "DC-19: Hỗ trợ nhắc nợ tự động cho GWS Committed"
+    },
+    {
+      "type": "user_story",
+      "id": 912,
+      "path": "000002.000010.000002.000004",
+      "title": "DC-21: Tự động tính lãi chậm thanh toán cộng dồn hàng ngày"
+    },
+    {
+      "type": "feature",
+      "id": 913,
+      "path": "000002.000010.000003",
+      "title": "Cấu hình & kiểm soát luồng nhắc nợ"
+    },
+    {
+      "type": "user_story",
+      "id": 914,
+      "path": "000002.000010.000003.000001",
+      "title": "DC-20: Cấu hình duyệt email nhắc nợ: tự động gửi hoặc tạo nháp cho Sales duyệt"
+    },
+    {
+      "type": "user_story",
+      "id": 915,
+      "path": "000002.000010.000003.000002",
+      "title": "DC-22: Cấu hình tỷ lệ lãi chậm thanh toán riêng cho từng hợp đồng"
+    },
+    {
+      "type": "feature",
+      "id": 916,
+      "path": "000002.000010.000004",
+      "title": "Dashboard & đôn đốc Sales AM"
+    },
+    {
+      "type": "user_story",
+      "id": 917,
+      "path": "000002.000010.000004.000001",
+      "title": "DC-23: Dashboard công nợ cho Sales AM: danh sách khách quá hạn"
+    },
+    {
+      "type": "user_story",
+      "id": 918,
+      "path": "000002.000010.000004.000002",
+      "title": "DC-24: Sales AM gọi điện/chat đôn đốc khách (không gửi email)"
+    },
+    {
+      "type": "epic",
+      "id": 919,
+      "path": "000002.000011",
+      "title": "EP-10 Service Suspension & Recovery — Dừng & Khôi phục dịch vụ"
+    },
+    {
+      "type": "feature",
+      "id": 920,
+      "path": "000002.000011.000001",
+      "title": "Cảnh báo & phê duyệt dừng dịch vụ"
+    },
+    {
+      "type": "user_story",
+      "id": 921,
+      "path": "000002.000011.000001.000001",
+      "title": "DC-25: Gửi email cảnh báo dừng dịch vụ đến khách Ngày X+4"
+    },
+    {
+      "type": "user_story",
+      "id": 922,
+      "path": "000002.000011.000001.000002",
+      "title": "DC-26: Tạo yêu cầu dừng dịch vụ gửi Sales AM xác nhận"
+    },
+    {
+      "type": "user_story",
+      "id": 923,
+      "path": "000002.000011.000001.000003",
+      "title": "DC-27: Sales AM xác nhận hoặc từ chối yêu cầu dừng DV (từ chối phải ghi lý do)"
+    },
+    {
+      "type": "user_story",
+      "id": 924,
+      "path": "000002.000011.000001.000004",
+      "title": "DC-31: Chặn dừng DV nếu chưa có xác nhận từ Sales AM"
+    },
+    {
+      "type": "feature",
+      "id": 925,
+      "path": "000002.000011.000002",
+      "title": "Thực thi & thông báo kết quả dừng DV"
+    },
+    {
+      "type": "user_story",
+      "id": 926,
+      "path": "000002.000011.000002.000001",
+      "title": "DC-28: Gửi yêu cầu đến Phòng mua sau khi Sales AM xác nhận"
+    },
+    {
+      "type": "user_story",
+      "id": 927,
+      "path": "000002.000011.000002.000002",
+      "title": "DC-29: Phòng mua thực thi dừng DV trên Console hãng, cập nhật trạng thái"
+    },
+    {
+      "type": "user_story",
+      "id": 928,
+      "path": "000002.000011.000002.000003",
+      "title": "DC-30: Gửi email kết quả dừng DV cho Kế toán, Sales, Legal"
+    },
+    {
+      "type": "feature",
+      "id": 929,
+      "path": "000002.000011.000003",
+      "title": "Khôi phục dịch vụ & quản lý rủi ro"
+    },
+    {
+      "type": "user_story",
+      "id": 930,
+      "path": "000002.000011.000003.000001",
+      "title": "DC-32: Ghi lịch sử dừng DV: khách bị dừng lần 2 → yêu cầu đặt cọc"
+    },
+    {
+      "type": "user_story",
+      "id": 931,
+      "path": "000002.000011.000003.000002",
+      "title": "DC-42: Xử lý khi khách thanh toán sau khi bị dừng dịch vụ"
+    },
+    {
+      "type": "user_story",
+      "id": 932,
+      "path": "000002.000011.000003.000003",
+      "title": "DC-43: Phòng mua khôi phục dịch vụ trên Console, cập nhật trạng thái"
+    },
+    {
+      "type": "user_story",
+      "id": 933,
+      "path": "000002.000011.000003.000004",
+      "title": "DC-44: Yêu cầu đặt cọc khi khách bị dừng lần 2"
+    },
+    {
+      "type": "epic",
+      "id": 934,
+      "path": "000002.000012",
+      "title": "EP-11 Legal Process — Quy trình pháp lý"
+    },
+    {
+      "type": "feature",
+      "id": 935,
+      "path": "000002.000012.000001",
+      "title": "Template & soạn thảo văn bản pháp lý"
+    },
+    {
+      "type": "user_story",
+      "id": 936,
+      "path": "000002.000012.000001.000001",
+      "title": "DC-33: Template công văn nhắc nợ/chấm dứt HĐ tự động điền thông tin"
+    },
+    {
+      "type": "user_story",
+      "id": 937,
+      "path": "000002.000012.000001.000002",
+      "title": "DC-34: Thông báo cho Legal soạn văn bản chấm dứt HĐ vào Ngày X+15"
+    },
+    {
+      "type": "user_story",
+      "id": 938,
+      "path": "000002.000012.000001.000003",
+      "title": "DC-35: Legal soạn văn bản chấm dứt HĐ theo template riêng"
+    },
+    {
+      "type": "feature",
+      "id": 939,
+      "path": "000002.000012.000002",
+      "title": "Gửi công văn & chấm dứt hợp đồng"
+    },
+    {
+      "type": "user_story",
+      "id": 940,
+      "path": "000002.000012.000002.000001",
+      "title": "DC-36: Gửi công văn song song bản cứng + email"
+    },
+    {
+      "type": "user_story",
+      "id": 941,
+      "path": "000002.000012.000002.000002",
+      "title": "DC-37: Legal thực hiện đơn phương chấm dứt HĐ, khởi kiện Ngày X+30"
+    },
+    {
+      "type": "epic",
+      "id": 942,
+      "path": "000002.000013",
+      "title": "EP-12 Audit & Dashboard — Kiểm soát & Dashboard công nợ"
+    },
+    {
+      "type": "feature",
+      "id": 943,
+      "path": "000002.000013.000001",
+      "title": "Audit trail toàn bộ quy trình"
+    },
+    {
+      "type": "user_story",
+      "id": 944,
+      "path": "000002.000013.000001.000001",
+      "title": "DC-38: Lưu lịch sử toàn bộ quy trình thu hồi công nợ"
+    },
+    {
+      "type": "feature",
+      "id": 945,
+      "path": "000002.000013.000002",
+      "title": "Dashboard & cảnh báo công nợ"
+    },
+    {
+      "type": "user_story",
+      "id": 946,
+      "path": "000002.000013.000002.000001",
+      "title": "DC-39: Dashboard tổng nợ quá hạn, số khách, phân loại giai đoạn"
+    },
+    {
+      "type": "user_story",
+      "id": 947,
+      "path": "000002.000013.000002.000002",
+      "title": "DC-40: Dashboard khách quá hạn thuộc quyền Sales AM"
+    },
+    {
+      "type": "user_story",
+      "id": 948,
+      "path": "000002.000013.000002.000003",
+      "title": "DC-41: Cảnh báo khi khách đến giai đoạn dừng DV hoặc chấm dứt HĐ"
+    }
+  ]
+}

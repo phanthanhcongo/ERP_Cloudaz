@@ -1,0 +1,1721 @@
+[
+  {
+    "node_id": 797,
+    "story_id": "BD-01",
+    "dod_items": [
+      {
+        "text": "AC1: Hệ thống tự động kết nối Console cho từng khách GCP (mỗi khách 1 link riêng)."
+      },
+      {
+        "text": "AC2: Lấy được dữ liệu cước theo tháng cho tất cả billing ID và project."
+      },
+      {
+        "text": "AC3: Dữ liệu được lưu trữ đúng định dạng, sẵn sàng cho bước tính cước."
+      },
+      {
+        "text": "AC4: Xử lý lỗi kết nối (retry + thông báo) khi Console không truy cập được."
+      }
+    ]
+  },
+  {
+    "node_id": 798,
+    "story_id": "BD-02",
+    "dod_items": [
+      {
+        "text": "AC1: Hệ thống lấy dữ liệu từ 1 link GMP chứa nhiều project (lên tới 23 project)."
+      },
+      {
+        "text": "AC2: Cho phép kế toán chọn từng project để lấy dữ liệu riêng."
+      },
+      {
+        "text": "AC3: Dữ liệu được tách riêng theo từng khách hàng."
+      }
+    ]
+  },
+  {
+    "node_id": 799,
+    "story_id": "BD-08",
+    "dod_items": [
+      {
+        "text": "AC1: Kết nối được AWS Billing API."
+      },
+      {
+        "text": "AC2: Lấy dữ liệu cước theo tháng."
+      },
+      {
+        "text": "AC3: Dữ liệu được chuẩn hóa về format chung."
+      }
+    ]
+  },
+  {
+    "node_id": 800,
+    "story_id": "BD-09",
+    "dod_items": [
+      {
+        "text": "AC1: Kết nối được DigitalOcean Billing API."
+      },
+      {
+        "text": "AC2: Lấy dữ liệu cước theo tháng."
+      },
+      {
+        "text": "AC3: Dữ liệu được chuẩn hóa về format chung."
+      }
+    ]
+  },
+  {
+    "node_id": 802,
+    "story_id": "BD-03",
+    "dod_items": [
+      {
+        "text": "AC1: Parse CSV đúng các cột: Domain name, Subscription, Description, Quantity, Start date, End date, Amount, Customer ID, SKU ID."
+      },
+      {
+        "text": "AC2: Skip 9 dòng header invoice."
+      },
+      {
+        "text": "AC3: Tự động xóa dòng GST/VAT cuối cùng."
+      },
+      {
+        "text": "AC4: Dữ liệu được lưu đúng cấu trúc."
+      }
+    ]
+  },
+  {
+    "node_id": 803,
+    "story_id": "BD-04",
+    "dod_items": [
+      {
+        "text": "AC1: Parse Sheet 0 (Project Number) đúng cấu trúc."
+      },
+      {
+        "text": "AC2: Parse Sheet 1 (Billing ID) đúng cấu trúc."
+      },
+      {
+        "text": "AC3: Không skip header, không pop dòng cuối."
+      },
+      {
+        "text": "AC4: Map đúng Project Number với Billing ID."
+      }
+    ]
+  },
+  {
+    "node_id": 804,
+    "story_id": "BD-05",
+    "dod_items": [
+      {
+        "text": "AC1: Lưu dữ liệu tổng theo Billing ID (mỗi khách 1 dòng)."
+      },
+      {
+        "text": "AC2: Lưu dữ liệu chi tiết theo Project (từng project riêng)."
+      },
+      {
+        "text": "AC3: Có liên kết giữa 2 dạng dữ liệu."
+      }
+    ]
+  },
+  {
+    "node_id": 805,
+    "story_id": "BD-06",
+    "dod_items": [
+      {
+        "text": "AC1: Phát hiện domain có cả Flex và Committed."
+      },
+      {
+        "text": "AC2: Chỉ giữ dòng Usage/New commitment/Commitment increase."
+      },
+      {
+        "text": "AC3: Dòng Committed bị loại được ghi log để tra cứu."
+      }
+    ]
+  },
+  {
+    "node_id": 807,
+    "story_id": "BD-07",
+    "dod_items": [
+      {
+        "text": "AC1: Mặc định tỷ giá bán chuyển khoản Techcombank ngày cuối tháng."
+      },
+      {
+        "text": "AC2: Cho phép cấu hình ngân hàng & thời điểm lấy tỷ giá riêng cho từng HĐ."
+      },
+      {
+        "text": "AC3: Tỷ giá được áp dụng đúng cho từng khách/HĐ."
+      }
+    ]
+  },
+  {
+    "node_id": 810,
+    "story_id": "BD-10",
+    "dod_items": [
+      {
+        "text": "AC1: Phát hiện Gemini API usage tự động trên Console GCP."
+      },
+      {
+        "text": "AC2: Tách riêng Gemini khỏi Usage_total."
+      },
+      {
+        "text": "AC3: Gemini không bị áp discount (cộng thẳng vào sau discount)."
+      },
+      {
+        "text": "AC4: Luôn tách nếu có phát sinh (không ngưỡng tối thiểu)."
+      }
+    ]
+  },
+  {
+    "node_id": 811,
+    "story_id": "BD-15",
+    "dod_items": [
+      {
+        "text": "AC1: GMP không hiển thị/tách Gemini API."
+      },
+      {
+        "text": "AC2: GMP không phát hiện Credit Promotion."
+      },
+      {
+        "text": "AC3: Logic tính cước GMP đơn giản hơn GCP."
+      }
+    ]
+  },
+  {
+    "node_id": 813,
+    "story_id": "BD-11",
+    "dod_items": [
+      {
+        "text": "AC1: So sánh số liệu khi bật và tắt tích Promotion Credit."
+      },
+      {
+        "text": "AC2: Tính được lượng credit của từng khách."
+      },
+      {
+        "text": "AC3: Ghi nhận credit vào hệ thống để xử lý tiếp."
+      }
+    ]
+  },
+  {
+    "node_id": 814,
+    "story_id": "BD-14",
+    "dod_items": [
+      {
+        "text": "AC1: Kiểm tra trạng thái credit trước khi cho phép gửi bill."
+      },
+      {
+        "text": "AC2: Hiển thị cảnh báo nếu credit chưa được xác nhận."
+      },
+      {
+        "text": "AC3: Chặn gửi bill nếu credit chưa xử lý (có thể ghi đè nếu cần)."
+      }
+    ]
+  },
+  {
+    "node_id": 815,
+    "story_id": "BD-62",
+    "dod_items": [
+      {
+        "text": "AC1: Tự động phát hiện khách có credit."
+      },
+      {
+        "text": "AC2: Hiển thị danh sách kèm số tiền credit."
+      },
+      {
+        "text": "AC3: Cập nhật real-time khi có credit mới."
+      }
+    ]
+  },
+  {
+    "node_id": 816,
+    "story_id": "BD-64",
+    "dod_items": [
+      {
+        "text": "AC1: Hiển thị nhắc nhở khi lấy dữ liệu."
+      },
+      {
+        "text": "AC2: Hướng dẫn cụ thể thao tác trên Console."
+      },
+      {
+        "text": "AC3: Ghi nhận đã thực hiện."
+      }
+    ]
+  },
+  {
+    "node_id": 818,
+    "story_id": "BD-12",
+    "dod_items": [
+      {
+        "text": "AC1: Tạo danh sách khách có credit trong tháng."
+      },
+      {
+        "text": "AC2: Gửi danh sách cho BGĐ/Sale theo luồng phê duyệt."
+      },
+      {
+        "text": "AC3: Ghi nhận kết quả xác nhận (credit khách / credit công ty)."
+      }
+    ]
+  },
+  {
+    "node_id": 819,
+    "story_id": "BD-13",
+    "dod_items": [
+      {
+        "text": "AC1: Cho phép nhập số lượng credit chia cho khách và giữ lại."
+      },
+      {
+        "text": "AC2: Ghi log lý do chia credit."
+      },
+      {
+        "text": "AC3: Áp dụng đúng phần credit vào công thức tính cước."
+      }
+    ]
+  },
+  {
+    "node_id": 820,
+    "story_id": "BD-63",
+    "dod_items": [
+      {
+        "text": "AC1: Tạo danh sách credit gửi BGĐ/Sale."
+      },
+      {
+        "text": "AC2: Cho phép phê duyệt credit khách / credit công ty."
+      },
+      {
+        "text": "AC3: Ghi nhận kết quả phê duyệt."
+      }
+    ]
+  },
+  {
+    "node_id": 821,
+    "story_id": "BD-65",
+    "dod_items": [
+      {
+        "text": "AC1: Giao diện check từng khách có credit."
+      },
+      {
+        "text": "AC2: Cho phép nhập số credit thủ công."
+      },
+      {
+        "text": "AC3: Ghi log lịch sử check credit."
+      }
+    ]
+  },
+  {
+    "node_id": 824,
+    "story_id": "BD-17",
+    "dod_items": [
+      {
+        "text": "AC1: Tính đúng Usage_total (đã bỏ Reseller Margin)."
+      },
+      {
+        "text": "AC2: Tách Gemini riêng, không áp discount."
+      },
+      {
+        "text": "AC3: VAT GG = Lượng dùng USD × VAT_rate (hoặc sau discount với khách đặc biệt)."
+      },
+      {
+        "text": "AC4: PDV = (Lượng dùng trước discount + VAT GG) × PDV_rate."
+      },
+      {
+        "text": "AC5: Trừ credit đã xác nhận."
+      }
+    ]
+  },
+  {
+    "node_id": 825,
+    "story_id": "BD-18",
+    "dod_items": [
+      {
+        "text": "AC1: Tính đúng lượng dùng USD."
+      },
+      {
+        "text": "AC2: Áp dụng discount nếu có (hiện chưa có khách GMP được discount)."
+      },
+      {
+        "text": "AC3: Tính PDV đúng tỷ lệ."
+      }
+    ]
+  },
+  {
+    "node_id": 826,
+    "story_id": "BD-19",
+    "dod_items": [
+      {
+        "text": "AC1: Tra SKU pricing đúng subscription."
+      },
+      {
+        "text": "AC2: Tính dailyPrice = unitPrice / daysInMonth."
+      },
+      {
+        "text": "AC3: amount = dailyPrice × usageDays × quantity."
+      },
+      {
+        "text": "AC4: Áp dụng discount và fct đúng công thức."
+      },
+      {
+        "text": "AC5: floor(priceBeforeVAT × exchangeRate) → × 1.1 (VAT đầu ra)."
+      }
+    ]
+  },
+  {
+    "node_id": 827,
+    "story_id": "BD-25",
+    "dod_items": [
+      {
+        "text": "AC1: Nếu kỳ cước trước 02/2024, áp dụng công thức cũ."
+      },
+      {
+        "text": "AC2: Nếu kỳ cước từ 02/2024, áp dụng công thức mới."
+      }
+    ]
+  },
+  {
+    "node_id": 829,
+    "story_id": "BD-20",
+    "dod_items": [
+      {
+        "text": "AC1: Thu khách VND = floor(Thu khách USD × Tỷ giá)."
+      },
+      {
+        "text": "AC2: Làm tròn đến hàng đơn vị (đồng)."
+      },
+      {
+        "text": "AC3: Cước phí dù chỉ $0.01 vẫn được tính đầy đủ."
+      }
+    ]
+  },
+  {
+    "node_id": 830,
+    "story_id": "BD-21",
+    "dod_items": [
+      {
+        "text": "AC1: Mặc định tính VAT đầu ra 10%."
+      },
+      {
+        "text": "AC2: Hỗ trợ flag KCT (Không chịu thuế) cho dịch vụ đặc biệt."
+      },
+      {
+        "text": "AC3: Cấu hình VAT rate theo từng khách/dịch vụ."
+      }
+    ]
+  },
+  {
+    "node_id": 831,
+    "story_id": "BD-22",
+    "dod_items": [
+      {
+        "text": "AC1: Nếu vat_gross=true, VAT = gross × rate với gross = 1/(1-rate)."
+      },
+      {
+        "text": "AC2: Nếu fct_gross=true, FCT = gross × rate với gross = 1/(1-rate)."
+      }
+    ]
+  },
+  {
+    "node_id": 833,
+    "story_id": "BD-23",
+    "dod_items": [
+      {
+        "text": "AC1: Map đúng billing_id (comma-separated)."
+      },
+      {
+        "text": "AC2: Map đúng gcp_project_number (comma-separated)."
+      },
+      {
+        "text": "AC3: Map đúng discount, vat, vat_gross, fct, fct_gross, rate."
+      }
+    ]
+  },
+  {
+    "node_id": 836,
+    "story_id": "BD-26",
+    "dod_items": [
+      {
+        "text": "AC1: Sinh file XLSX từ template có sẵn trên S3."
+      },
+      {
+        "text": "AC2: Điền đúng số liệu vào các ô tương ứng."
+      },
+      {
+        "text": "AC3: Hỗ trợ riêng từng dịch vụ (GCP, GMP, GWS)."
+      },
+      {
+        "text": "AC4: File output lưu trên S3 theo cấu trúc khách/tháng/dịch vụ."
+      }
+    ]
+  },
+  {
+    "node_id": 837,
+    "story_id": "BD-27",
+    "dod_items": [
+      {
+        "text": "AC1: Phát hiện tất cả project thuộc cùng 1 khách."
+      },
+      {
+        "text": "AC2: Cộng tổng số liệu các project."
+      },
+      {
+        "text": "AC3: Hiển thị chi tiết từng project trong bảng."
+      }
+    ]
+  },
+  {
+    "node_id": 838,
+    "story_id": "BD-28",
+    "dod_items": [
+      {
+        "text": "AC1: Phát hiện tất cả billing account thuộc cùng 1 khách."
+      },
+      {
+        "text": "AC2: Gộp dữ liệu từ nhiều billing ID."
+      },
+      {
+        "text": "AC3: Hiển thị chi tiết từng billing account."
+      }
+    ]
+  },
+  {
+    "node_id": 839,
+    "story_id": "BD-31",
+    "dod_items": [
+      {
+        "text": "AC1: Làm tròn đến hàng đơn vị (đồng)."
+      },
+      {
+        "text": "AC2: Không có chênh lệch rounding giữa bảng đối soát và hóa đơn."
+      },
+      {
+        "text": "AC3: Log chênh lệch rounding nếu có."
+      }
+    ]
+  },
+  {
+    "node_id": 840,
+    "story_id": "BD-32",
+    "dod_items": [
+      {
+        "text": "AC1: Cho phép cấu hình nhiều pháp nhân cho 1 HĐ."
+      },
+      {
+        "text": "AC2: Tính riêng bảng đối soát cho từng pháp nhân."
+      },
+      {
+        "text": "AC3: Gửi email riêng cho từng pháp nhân."
+      },
+      {
+        "text": "AC4: Xuất hóa đơn riêng cho từng pháp nhân."
+      },
+      {
+        "text": "AC5: Số các pháp nhân không nằm trong tổng đối chiếu với invoice tổng."
+      }
+    ]
+  },
+  {
+    "node_id": 841,
+    "story_id": "BD-33",
+    "dod_items": [
+      {
+        "text": "AC1: Xuất PDF từ dữ liệu bảng đối soát."
+      },
+      {
+        "text": "AC2: Định dạng chuyên nghiệp, đầy đủ thông tin."
+      },
+      {
+        "text": "AC3: Logo và thông tin công ty trên PDF."
+      }
+    ]
+  },
+  {
+    "node_id": 843,
+    "story_id": "BD-29",
+    "dod_items": [
+      {
+        "text": "AC1: Cho phép sửa số liệu trên bảng đối soát."
+      },
+      {
+        "text": "AC2: Ghi log audit trail (ai sửa, giá trị trước/sau)."
+      },
+      {
+        "text": "AC3: Không yêu cầu phê duyệt hay ghi lý do (ghi tự động)."
+      }
+    ]
+  },
+  {
+    "node_id": 844,
+    "story_id": "BD-30",
+    "dod_items": [
+      {
+        "text": "AC1: Import bảng tính tay của kế toán."
+      },
+      {
+        "text": "AC2: So khớp từng dòng với số ERP."
+      },
+      {
+        "text": "AC3: Highlight dòng lệch (màu đỏ/cảnh báo)."
+      },
+      {
+        "text": "AC4: Hiển thị chênh lệch cụ thể từng dòng."
+      }
+    ]
+  },
+  {
+    "node_id": 846,
+    "story_id": "BD-34",
+    "dod_items": [
+      {
+        "text": "AC1: Gửi email đúng danh sách email trên hợp đồng."
+      },
+      {
+        "text": "AC2: Đính kèm bảng đối soát (PDF/XLSX)."
+      },
+      {
+        "text": "AC3: Đính kèm screenshot lượng dùng."
+      },
+      {
+        "text": "AC4: Email có nội dung chuyên nghiệp, đúng thông tin khách hàng."
+      }
+    ]
+  },
+  {
+    "node_id": 847,
+    "story_id": "BD-35",
+    "dod_items": [
+      {
+        "text": "AC1: GWS gửi trước (invoice sớm nhất)."
+      },
+      {
+        "text": "AC2: GCP gửi sau GWS."
+      },
+      {
+        "text": "AC3: GMP gửi sau cùng."
+      },
+      {
+        "text": "AC4: Mỗi dịch vụ là 1 email riêng với bảng đối soát riêng."
+      }
+    ]
+  },
+  {
+    "node_id": 848,
+    "story_id": "BD-36",
+    "dod_items": [
+      {
+        "text": "AC1: Gửi nhắc nhở lần 1 sau 2 ngày không phản hồi."
+      },
+      {
+        "text": "AC2: Tự động chốt số liệu sau 1 ngày nhắc nhở."
+      },
+      {
+        "text": "AC3: Ghi log trạng thái xác nhận."
+      }
+    ]
+  },
+  {
+    "node_id": 849,
+    "story_id": "BD-37",
+    "dod_items": [
+      {
+        "text": "AC1: Phát hiện email phản hồi xác nhận từ khách."
+      },
+      {
+        "text": "AC2: Ghi nhận chuyển khoản thanh toán là xác nhận."
+      },
+      {
+        "text": "AC3: Cập nhật trạng thái bill thành \"Đã xác nhận\"."
+      }
+    ]
+  },
+  {
+    "node_id": 850,
+    "story_id": "BD-38",
+    "dod_items": [
+      {
+        "text": "AC1: Tự động xuất hóa đơn sau xác nhận."
+      },
+      {
+        "text": "AC2: Không yêu cầu phê duyệt."
+      },
+      {
+        "text": "AC3: Hóa đơn đúng thông tin khách hàng và số liệu."
+      }
+    ]
+  },
+  {
+    "node_id": 853,
+    "story_id": "BD-39",
+    "dod_items": [
+      {
+        "text": "AC1: Mở bảng đối soát từ dispute của khách."
+      },
+      {
+        "text": "AC2: Sửa số liệu trực tiếp."
+      },
+      {
+        "text": "AC3: Gửi lại bản cập nhật cho khách."
+      },
+      {
+        "text": "AC4: Lưu version cũ để tra cứu."
+      }
+    ]
+  },
+  {
+    "node_id": 854,
+    "story_id": "BD-40",
+    "dod_items": [
+      {
+        "text": "AC1: Phát hiện dịch vụ có dispute."
+      },
+      {
+        "text": "AC2: Chỉ chặn xuất HĐ cho dịch vụ có dispute."
+      },
+      {
+        "text": "AC3: Dịch vụ khác vẫn chốt và xuất HĐ bình thường."
+      }
+    ]
+  },
+  {
+    "node_id": 855,
+    "story_id": "BD-43",
+    "dod_items": [
+      {
+        "text": "AC1: Ghi log mỗi lần sửa dispute."
+      },
+      {
+        "text": "AC2: Hiển thị lịch sử theo timeline."
+      },
+      {
+        "text": "AC3: Không cho phép xóa/sửa lịch sử."
+      }
+    ]
+  },
+  {
+    "node_id": 857,
+    "story_id": "BD-41",
+    "dod_items": [
+      {
+        "text": "AC1: Tạo biên bản điều chỉnh."
+      },
+      {
+        "text": "AC2: Phát hành hóa đơn điều chỉnh tăng/giảm."
+      },
+      {
+        "text": "AC3: Không cần phê duyệt của kế toán trưởng."
+      },
+      {
+        "text": "AC4: Ghi log lịch sử điều chỉnh."
+      }
+    ]
+  },
+  {
+    "node_id": 858,
+    "story_id": "BD-42",
+    "dod_items": [
+      {
+        "text": "AC1: Tạo dòng điều chỉnh (+, -) cho kỳ cước sau."
+      },
+      {
+        "text": "AC2: Ghi chú rõ lý do điều chỉnh."
+      },
+      {
+        "text": "AC3: Liên kết với dispute gốc."
+      }
+    ]
+  },
+  {
+    "node_id": 861,
+    "story_id": "BD-44",
+    "dod_items": [
+      {
+        "text": "AC1: Nhập đầy đủ thông tin hợp đồng."
+      },
+      {
+        "text": "AC2: Cấu hình discount %, PDV %, VAT GG %."
+      },
+      {
+        "text": "AC3: Cấu hình thời gian đối soát, thời hạn TT, hồ sơ TT."
+      },
+      {
+        "text": "AC4: Lưu lịch sử thay đổi cấu hình."
+      }
+    ]
+  },
+  {
+    "node_id": 862,
+    "story_id": "BD-45",
+    "dod_items": [
+      {
+        "text": "AC1: Giữ nguyên số liệu cũ khi đổi pháp nhân."
+      },
+      {
+        "text": "AC2: Thay đổi pháp nhân trên hóa đơn."
+      },
+      {
+        "text": "AC3: Liên kết với hợp đồng mới (ký HĐ mới, không ủy quyền)."
+      }
+    ]
+  },
+  {
+    "node_id": 863,
+    "story_id": "BD-46",
+    "dod_items": [
+      {
+        "text": "AC1: Cấu hình nhiều pháp nhân cho 1 HĐ."
+      },
+      {
+        "text": "AC2: Mỗi pháp nhân có bảng đối soát riêng."
+      },
+      {
+        "text": "AC3: Mỗi pháp nhân nhận email riêng."
+      },
+      {
+        "text": "AC4: Mỗi pháp nhân có hóa đơn riêng."
+      }
+    ]
+  },
+  {
+    "node_id": 864,
+    "story_id": "BD-47",
+    "dod_items": [
+      {
+        "text": "AC1: Phát hiện thay đổi hợp đồng/phụ lục."
+      },
+      {
+        "text": "AC2: Gửi thông báo đến kế toán."
+      },
+      {
+        "text": "AC3: Thông báo rõ nội dung thay đổi."
+      }
+    ]
+  },
+  {
+    "node_id": 866,
+    "story_id": "BD-16",
+    "dod_items": [
+      {
+        "text": "AC1: Cấu hình được discount %, VAT GG %, PDV % cho từng HĐ."
+      },
+      {
+        "text": "AC2: Hỗ trợ VAT GG tính trên số trước discount (mặc định) hoặc sau discount (VD: VPBank)."
+      },
+      {
+        "text": "AC3: Hỗ trợ flag vat_gross và fct_gross."
+      },
+      {
+        "text": "AC4: Thay đổi công thức có hiệu lực từ kỳ cước tiếp theo."
+      }
+    ]
+  },
+  {
+    "node_id": 867,
+    "story_id": "BD-24",
+    "dod_items": [
+      {
+        "text": "AC1: Lưu lịch sử thay đổi công thức."
+      },
+      {
+        "text": "AC2: Thay đổi có hiệu lực từ kỳ cước được chỉ định."
+      },
+      {
+        "text": "AC3: Hiển thị công thức cũ và mới khi tra cứu bill lịch sử."
+      }
+    ]
+  },
+  {
+    "node_id": 868,
+    "story_id": "BD-48",
+    "dod_items": [
+      {
+        "text": "AC1: Cấu hình ngân hàng khác Techcombank."
+      },
+      {
+        "text": "AC2: Cấu hình thời điểm lấy tỷ giá khác ngày cuối tháng."
+      },
+      {
+        "text": "AC3: Áp dụng đúng tỷ giá cho từng HĐ."
+      }
+    ]
+  },
+  {
+    "node_id": 869,
+    "story_id": "BD-49",
+    "dod_items": [
+      {
+        "text": "AC1: Map đúng billing_id (comma-separated)."
+      },
+      {
+        "text": "AC2: Map đúng gmp_project_number (comma-separated)."
+      },
+      {
+        "text": "AC3: Map đúng discount, vat, vat_gross, fct, fct_gross, rate."
+      }
+    ]
+  },
+  {
+    "node_id": 870,
+    "story_id": "BD-50",
+    "dod_items": [
+      {
+        "text": "AC1: Map đúng gws_domain."
+      },
+      {
+        "text": "AC2: Map đúng plan (Flexible Plan)."
+      },
+      {
+        "text": "AC3: Map đúng SKU và license quantity."
+      }
+    ]
+  },
+  {
+    "node_id": 872,
+    "story_id": "BD-51",
+    "dod_items": [
+      {
+        "text": "AC1: Hiển thị timeline cho từng dịch vụ."
+      },
+      {
+        "text": "AC2: Nhắc nhở khi đến hạn xử lý từng dịch vụ."
+      },
+      {
+        "text": "AC3: Cho phép tùy chỉnh timeline."
+      }
+    ]
+  },
+  {
+    "node_id": 873,
+    "story_id": "BD-52",
+    "dod_items": [
+      {
+        "text": "AC1: Theo dõi thời gian invoice về."
+      },
+      {
+        "text": "AC2: Cảnh báo khi invoice trễ deadline."
+      },
+      {
+        "text": "AC3: Gửi thông báo cho kế toán."
+      }
+    ]
+  },
+  {
+    "node_id": 874,
+    "story_id": "BD-53",
+    "dod_items": [
+      {
+        "text": "AC1: Tạo thông báo trễ chuyên nghiệp."
+      },
+      {
+        "text": "AC2: Gửi email thông báo cho khách."
+      },
+      {
+        "text": "AC3: Không gửi số tạm tính."
+      }
+    ]
+  },
+  {
+    "node_id": 875,
+    "story_id": "BD-54",
+    "dod_items": [
+      {
+        "text": "AC1: Đánh dấu khách hủy dịch vụ."
+      },
+      {
+        "text": "AC2: Chờ invoice đầu tháng sau."
+      },
+      {
+        "text": "AC3: Tính cước pro-rata cho số ngày dùng."
+      }
+    ]
+  },
+  {
+    "node_id": 876,
+    "story_id": "BD-55",
+    "dod_items": [
+      {
+        "text": "AC1: Cấu hình deadline riêng cho BeatVN và Pharmacity."
+      },
+      {
+        "text": "AC2: Ưu tiên xử lý trước các khách khác."
+      },
+      {
+        "text": "AC3: Nhắc nhở deadline riêng."
+      }
+    ]
+  },
+  {
+    "node_id": 879,
+    "story_id": "BD-56",
+    "dod_items": [
+      {
+        "text": "AC1: Lưu file lên S3 đúng cấu trúc thư mục."
+      },
+      {
+        "text": "AC2: File được đặt tên chuẩn (KH_tháng_năm_dịch vụ)."
+      },
+      {
+        "text": "AC3: Có thể tải xuống bất kỳ lúc nào."
+      }
+    ]
+  },
+  {
+    "node_id": 880,
+    "story_id": "BD-57",
+    "dod_items": [
+      {
+        "text": "AC1: Bộ lọc khách hàng (dropdown/search)."
+      },
+      {
+        "text": "AC2: Bộ lọc tháng/năm."
+      },
+      {
+        "text": "AC3: Bộ lọc dịch vụ (GCP/GMP/GWS)."
+      },
+      {
+        "text": "AC4: Hiển thị danh sách kết quả, click xem chi tiết."
+      }
+    ]
+  },
+  {
+    "node_id": 881,
+    "story_id": "BD-58",
+    "dod_items": [
+      {
+        "text": "AC1: Mỗi lần sửa/gửi tạo version mới."
+      },
+      {
+        "text": "AC2: Hiển thị danh sách version."
+      },
+      {
+        "text": "AC3: Xem và tải được version cũ."
+      }
+    ]
+  },
+  {
+    "node_id": 882,
+    "story_id": "BD-59",
+    "dod_items": [
+      {
+        "text": "AC1: Tổng hợp tất cả khách hàng trong 1 file."
+      },
+      {
+        "text": "AC2: Đúng số liệu đã chốt."
+      },
+      {
+        "text": "AC3: Có thể lọc theo dịch vụ."
+      }
+    ]
+  },
+  {
+    "node_id": 884,
+    "story_id": "BD-60",
+    "dod_items": [
+      {
+        "text": "AC1: Ghi log tự động mỗi lần sửa."
+      },
+      {
+        "text": "AC2: Log bao gồm: người sửa, thời gian, giá trị cũ, giá trị mới."
+      },
+      {
+        "text": "AC3: Hiển thị audit trail theo timeline."
+      },
+      {
+        "text": "AC4: Không cho phép xóa/sửa log."
+      }
+    ]
+  },
+  {
+    "node_id": 885,
+    "story_id": "BD-61",
+    "dod_items": [
+      {
+        "text": "AC1: Cho phép sửa tay không cần nhập lý do."
+      },
+      {
+        "text": "AC2: Hệ thống tự động ghi audit trail."
+      },
+      {
+        "text": "AC3: Quản lý có thể xem audit trail khi cần."
+      }
+    ]
+  },
+  {
+    "node_id": 888,
+    "story_id": "DC-01",
+    "dod_items": [
+      {
+        "text": "AC1: Tự động sinh HĐ VAT khi bill được chốt."
+      },
+      {
+        "text": "AC2: HĐ đúng số liệu từ bảng đối soát."
+      },
+      {
+        "text": "AC3: Áp dụng đúng thuế suất (10% / KCT)."
+      },
+      {
+        "text": "AC4: Lưu HĐ theo khách/tháng/dịch vụ."
+      }
+    ]
+  },
+  {
+    "node_id": 889,
+    "story_id": "DC-02",
+    "dod_items": [
+      {
+        "text": "AC1: Mỗi pháp nhân có HĐ riêng."
+      },
+      {
+        "text": "AC2: Số liệu đúng với pháp nhân đó."
+      },
+      {
+        "text": "AC3: Ghi chú rõ pháp nhân trên HĐ."
+      }
+    ]
+  },
+  {
+    "node_id": 890,
+    "story_id": "DC-03",
+    "dod_items": [
+      {
+        "text": "AC1: Cho phép thay đổi pháp nhân trước khi xuất HĐ."
+      },
+      {
+        "text": "AC2: Số liệu giữ nguyên."
+      },
+      {
+        "text": "AC3: Liên kết với pháp nhân mới."
+      }
+    ]
+  },
+  {
+    "node_id": 891,
+    "story_id": "DC-04",
+    "dod_items": [
+      {
+        "text": "AC1: Xem trước HĐ trước phát hành."
+      },
+      {
+        "text": "AC2: Cho phép sửa thông tin (số liệu, địa chỉ, MST...)."
+      },
+      {
+        "text": "AC3: Ghi log điều chỉnh."
+      }
+    ]
+  },
+  {
+    "node_id": 892,
+    "story_id": "DC-05",
+    "dod_items": [
+      {
+        "text": "AC1: Tạo HĐ điều chỉnh từ HĐ gốc."
+      },
+      {
+        "text": "AC2: Hỗ trợ điều chỉnh tăng hoặc giảm."
+      },
+      {
+        "text": "AC3: Ghi rõ lý do điều chỉnh."
+      },
+      {
+        "text": "AC4: Liên kết với HĐ gốc."
+      }
+    ]
+  },
+  {
+    "node_id": 893,
+    "story_id": "DC-06",
+    "dod_items": [
+      {
+        "text": "AC1: Lưu tất cả HĐ đã xuất."
+      },
+      {
+        "text": "AC2: Tra cứu theo khách, tháng, dịch vụ."
+      },
+      {
+        "text": "AC3: Xem và tải lại HĐ cũ."
+      }
+    ]
+  },
+  {
+    "node_id": 895,
+    "story_id": "DC-07",
+    "dod_items": [
+      {
+        "text": "AC1: Tạo ĐNTT tự động sau xuất HĐ."
+      },
+      {
+        "text": "AC2: Đúng số tiền, hạn TT (Ngày X), tài khoản NH."
+      },
+      {
+        "text": "AC3: Hiển thị lãi chậm TT theo HĐ."
+      }
+    ]
+  },
+  {
+    "node_id": 896,
+    "story_id": "DC-08",
+    "dod_items": [
+      {
+        "text": "AC1: Đọc thời hạn TT từ cấu hình HĐ."
+      },
+      {
+        "text": "AC2: Tính Ngày X = ngày xuất HĐ + thời hạn."
+      },
+      {
+        "text": "AC3: Cho phép sửa tay nếu cần."
+      }
+    ]
+  },
+  {
+    "node_id": 897,
+    "story_id": "DC-09",
+    "dod_items": [
+      {
+        "text": "AC1: Gửi email PDF ĐNTT đến danh sách email HĐ."
+      },
+      {
+        "text": "AC2: Tạo task/yêu cầu cho HCNS gửi bản cứng."
+      },
+      {
+        "text": "AC3: Ghi log gửi."
+      }
+    ]
+  },
+  {
+    "node_id": 898,
+    "story_id": "DC-10",
+    "dod_items": [
+      {
+        "text": "AC1: Cấu hình danh sách email theo HĐ."
+      },
+      {
+        "text": "AC2: Cho phép thêm/sửa email."
+      },
+      {
+        "text": "AC3: Gửi ĐNTT đến tất cả email trong danh sách."
+      }
+    ]
+  },
+  {
+    "node_id": 899,
+    "story_id": "DC-11",
+    "dod_items": [
+      {
+        "text": "AC1: Phát hiện tất cả HĐ chưa TT của 1 khách."
+      },
+      {
+        "text": "AC2: Gộp vào 1 ĐNTT."
+      },
+      {
+        "text": "AC3: Hiển thị chi tiết từng HĐ trong ĐNTT."
+      }
+    ]
+  },
+  {
+    "node_id": 901,
+    "story_id": "DC-12",
+    "dod_items": [
+      {
+        "text": "AC1: Form cập nhật: ngày gửi, đơn vị CP, ngày phát TC, người nhận, trạng thái."
+      },
+      {
+        "text": "AC2: Yêu cầu cập nhật 2 lần/ngày (trước 10:00 và 14:00)."
+      },
+      {
+        "text": "AC3: Lưu lịch sử cập nhật."
+      }
+    ]
+  },
+  {
+    "node_id": 902,
+    "story_id": "DC-13",
+    "dod_items": [
+      {
+        "text": "AC1: Tự động gửi email khi HCNS cập nhật \"phát thành công\"."
+      },
+      {
+        "text": "AC2: Email gồm: tên KH, ngày phát, người nhận."
+      }
+    ]
+  },
+  {
+    "node_id": 903,
+    "story_id": "DC-14",
+    "dod_items": [
+      {
+        "text": "AC1: Quét trạng thái phát thư định kỳ."
+      },
+      {
+        "text": "AC2: Cảnh báo nếu quá 48h không cập nhật."
+      },
+      {
+        "text": "AC3: Gửi thông báo cho HCNS và Kế toán."
+      }
+    ]
+  },
+  {
+    "node_id": 906,
+    "story_id": "DC-15",
+    "dod_items": [
+      {
+        "text": "AC1: Tự động gửi email Ngày X-2."
+      },
+      {
+        "text": "AC2: CC Sales AM."
+      },
+      {
+        "text": "AC3: Tiêu đề chuẩn: `[Alert!] CloudAZ // [Tên KH] // Đề nghị thanh toán chi phí dịch vụ...`"
+      },
+      {
+        "text": "AC4: Nội dung: số tiền, hạn TT, tài khoản NH."
+      }
+    ]
+  },
+  {
+    "node_id": 907,
+    "story_id": "DC-16",
+    "dod_items": [
+      {
+        "text": "AC1: Kiểm tra thanh toán hàng ngày."
+      },
+      {
+        "text": "AC2: Nếu quá Ngày X chưa TT → chuyển trạng thái \"Quá hạn\"."
+      },
+      {
+        "text": "AC3: Kích hoạt luồng nhắc nợ tự động."
+      }
+    ]
+  },
+  {
+    "node_id": 909,
+    "story_id": "DC-17",
+    "dod_items": [
+      {
+        "text": "AC1: Gửi email nhắc nợ Ngày X+1."
+      },
+      {
+        "text": "AC2: Gộp tất cả HĐ các dịch vụ vào 1 email."
+      },
+      {
+        "text": "AC3: Tối đa 1 email/khách/ngày."
+      },
+      {
+        "text": "AC4: Tần suất 1 lần/ngày đến khi TT hoặc dừng DV."
+      }
+    ]
+  },
+  {
+    "node_id": 910,
+    "story_id": "DC-18",
+    "dod_items": [
+      {
+        "text": "AC1: Hiển thị số tiền quá hạn."
+      },
+      {
+        "text": "AC2: Tính và hiển thị lãi chậm cộng dồn."
+      },
+      {
+        "text": "AC3: Thông báo ngày dừng DV (X+4)."
+      },
+      {
+        "text": "AC4: Thông báo ngày chấm dứt HĐ (X+30)."
+      }
+    ]
+  },
+  {
+    "node_id": 911,
+    "story_id": "DC-19",
+    "dod_items": [
+      {
+        "text": "AC1: Phát hiện HĐ GWS Committed quá hạn."
+      },
+      {
+        "text": "AC2: Gửi email nhắc nợ theo luồng chung."
+      },
+      {
+        "text": "AC3: Nội dung phù hợp với dịch vụ Committed."
+      }
+    ]
+  },
+  {
+    "node_id": 912,
+    "story_id": "DC-21",
+    "dod_items": [
+      {
+        "text": "AC1: Tính lãi = nợ gốc × (lãi suất/365) × số ngày quá hạn."
+      },
+      {
+        "text": "AC2: Cộng dồn hàng ngày."
+      },
+      {
+        "text": "AC3: Hiển thị chi tiết: nợ gốc, lãi phạt, tổng phải thu."
+      }
+    ]
+  },
+  {
+    "node_id": 914,
+    "story_id": "DC-20",
+    "dod_items": [
+      {
+        "text": "AC1: Cấu hình theo nhóm khách."
+      },
+      {
+        "text": "AC2: Nếu \"tự động\" → gửi thẳng."
+      },
+      {
+        "text": "AC3: Nếu \"duyệt trước\" → tạo nháp, gửi thông báo cho Sales duyệt."
+      },
+      {
+        "text": "AC4: Sales duyệt/từ chối, ghi lý do."
+      }
+    ]
+  },
+  {
+    "node_id": 915,
+    "story_id": "DC-22",
+    "dod_items": [
+      {
+        "text": "AC1: Trường lãi suất trong cấu hình HĐ."
+      },
+      {
+        "text": "AC2: Mặc định nếu không cấu hình."
+      },
+      {
+        "text": "AC3: Thay đổi áp dụng cho HĐ mới hoặc kỳ mới."
+      }
+    ]
+  },
+  {
+    "node_id": 917,
+    "story_id": "DC-23",
+    "dod_items": [
+      {
+        "text": "AC1: Dashboard chỉ hiển thị khách của Sales AM đó."
+      },
+      {
+        "text": "AC2: Hiển thị: tên KH, số tiền, số ngày QH, giai đoạn."
+      },
+      {
+        "text": "AC3: Click vào KH xem chi tiết công nợ."
+      }
+    ]
+  },
+  {
+    "node_id": 918,
+    "story_id": "DC-24",
+    "dod_items": [
+      {
+        "text": "AC1: Ghi nhận cuộc gọi/tương tác."
+      },
+      {
+        "text": "AC2: Ghi kết quả (KH hứa TT ngày...)."
+      },
+      {
+        "text": "AC3: Lưu lịch sử tương tác."
+      }
+    ]
+  },
+  {
+    "node_id": 921,
+    "story_id": "DC-25",
+    "dod_items": [
+      {
+        "text": "AC1: Tự động gửi email Ngày X+4."
+      },
+      {
+        "text": "AC2: Nội dung: thông báo dừng DV, hậu quả (mất dữ liệu)."
+      },
+      {
+        "text": "AC3: CC Kế toán, Sales AM."
+      }
+    ]
+  },
+  {
+    "node_id": 922,
+    "story_id": "DC-26",
+    "dod_items": [
+      {
+        "text": "AC1: Tạo yêu cầu dừng DV."
+      },
+      {
+        "text": "AC2: Gửi thông báo cho Sales AM."
+      },
+      {
+        "text": "AC3: Yêu cầu bao gồm: KH, dịch vụ, lý do, ngày dự kiến dừng."
+      }
+    ]
+  },
+  {
+    "node_id": 923,
+    "story_id": "DC-27",
+    "dod_items": [
+      {
+        "text": "AC1: Nút \"Xác nhận\" / \"Từ chối\"."
+      },
+      {
+        "text": "AC2: Từ chối bắt buộc nhập lý do."
+      },
+      {
+        "text": "AC3: Ghi log quyết định."
+      }
+    ]
+  },
+  {
+    "node_id": 924,
+    "story_id": "DC-31",
+    "dod_items": [
+      {
+        "text": "AC1: Kiểm tra trạng thái duyệt trước khi cho phép dừng."
+      },
+      {
+        "text": "AC2: Cảnh báo nếu cố gắng dừng khi chưa duyệt."
+      },
+      {
+        "text": "AC3: Chỉ Phòng mua mới bypass được (ghi lý do)."
+      }
+    ]
+  },
+  {
+    "node_id": 926,
+    "story_id": "DC-28",
+    "dod_items": [
+      {
+        "text": "AC1: Tự động gửi yêu cầu sau Sales xác nhận."
+      },
+      {
+        "text": "AC2: Yêu cầu: KH, dịch vụ, hướng dẫn thao tác."
+      },
+      {
+        "text": "AC3: Thông báo cho Kế toán, Sales, Legal."
+      }
+    ]
+  },
+  {
+    "node_id": 927,
+    "story_id": "DC-29",
+    "dod_items": [
+      {
+        "text": "AC1: Form cập nhật trạng thái thực thi."
+      },
+      {
+        "text": "AC2: Cập nhật: đã dừng / thất bại / lỗi."
+      },
+      {
+        "text": "AC3: Ghi chú chi tiết nếu thất bại."
+      }
+    ]
+  },
+  {
+    "node_id": 928,
+    "story_id": "DC-30",
+    "dod_items": [
+      {
+        "text": "AC1: Gửi email kết quả."
+      },
+      {
+        "text": "AC2: Nội dung: KH, dịch vụ, ngày dừng, trạng thái."
+      },
+      {
+        "text": "AC3: Đính kèm bằng chứng nếu có."
+      }
+    ]
+  },
+  {
+    "node_id": 930,
+    "story_id": "DC-32",
+    "dod_items": [
+      {
+        "text": "AC1: Lưu lịch sử dừng DV theo KH."
+      },
+      {
+        "text": "AC2: Nếu lần 2 → đánh dấu yêu cầu đặt cọc."
+      },
+      {
+        "text": "AC3: Thông báo cho Kế toán và Sales."
+      }
+    ]
+  },
+  {
+    "node_id": 931,
+    "story_id": "DC-42",
+    "dod_items": [
+      {
+        "text": "AC1: Ghi nhận thanh toán."
+      },
+      {
+        "text": "AC2: Thông báo Phòng mua khôi phục DV."
+      },
+      {
+        "text": "AC3: Cập nhật trạng thái HĐ."
+      }
+    ]
+  },
+  {
+    "node_id": 932,
+    "story_id": "DC-43",
+    "dod_items": [
+      {
+        "text": "AC1: Nhận yêu cầu khôi phục."
+      },
+      {
+        "text": "AC2: Thực thi trên Console hãng."
+      },
+      {
+        "text": "AC3: Cập nhật trạng thái \"Đã khôi phục\"."
+      }
+    ]
+  },
+  {
+    "node_id": 933,
+    "story_id": "DC-44",
+    "dod_items": [
+      {
+        "text": "AC1: Phát hiện lịch sử dừng lần 2."
+      },
+      {
+        "text": "AC2: Yêu cầu đặt cọc % theo cấu hình."
+      },
+      {
+        "text": "AC3: Chặn khôi phục nếu chưa đặt cọc."
+      }
+    ]
+  },
+  {
+    "node_id": 936,
+    "story_id": "DC-33",
+    "dod_items": [
+      {
+        "text": "AC1: Template riêng cho từng HĐ (nếu có)."
+      },
+      {
+        "text": "AC2: Tự động điền: tên KH, MST, địa chỉ, số tiền, ngày."
+      },
+      {
+        "text": "AC3: Cho phép Legal chỉnh sửa trước khi gửi."
+      }
+    ]
+  },
+  {
+    "node_id": 937,
+    "story_id": "DC-34",
+    "dod_items": [
+      {
+        "text": "AC1: Tự động gửi thông báo Ngày X+15."
+      },
+      {
+        "text": "AC2: Đính kèm thông tin KH và HĐ."
+      },
+      {
+        "text": "AC3: Link đến template công văn."
+      }
+    ]
+  },
+  {
+    "node_id": 938,
+    "story_id": "DC-35",
+    "dod_items": [
+      {
+        "text": "AC1: Chọn template từ HĐ."
+      },
+      {
+        "text": "AC2: Điền thông tin tự động."
+      },
+      {
+        "text": "AC3: Cho phép sửa tay."
+      },
+      {
+        "text": "AC4: Lưu bản nháp và phiên bản."
+      }
+    ]
+  },
+  {
+    "node_id": 940,
+    "story_id": "DC-36",
+    "dod_items": [
+      {
+        "text": "AC1: Gửi email PDF cho khách."
+      },
+      {
+        "text": "AC2: Tạo yêu cầu gửi bản cứng cho HCNS."
+      },
+      {
+        "text": "AC3: Ghi log gửi."
+      }
+    ]
+  },
+  {
+    "node_id": 941,
+    "story_id": "DC-37",
+    "dod_items": [
+      {
+        "text": "AC1: Thông báo Ngày X+30."
+      },
+      {
+        "text": "AC2: Cung cấp template khởi kiện."
+      },
+      {
+        "text": "AC3: Ghi log trạng thái pháp lý."
+      }
+    ]
+  },
+  {
+    "node_id": 944,
+    "story_id": "DC-38",
+    "dod_items": [
+      {
+        "text": "AC1: Ghi log mọi hành động trong quy trình."
+      },
+      {
+        "text": "AC2: Log bao gồm: người thực hiện, thời gian, hành động."
+      },
+      {
+        "text": "AC3: Hiển thị timeline đầy đủ cho từng KH."
+      },
+      {
+        "text": "AC4: Không cho phép xóa/sửa log."
+      }
+    ]
+  },
+  {
+    "node_id": 946,
+    "story_id": "DC-39",
+    "dod_items": [
+      {
+        "text": "AC1: Tổng nợ quá hạn (VND)."
+      },
+      {
+        "text": "AC2: Số khách quá hạn."
+      },
+      {
+        "text": "AC3: Phân loại theo giai đoạn (biểu đồ/bảng)."
+      },
+      {
+        "text": "AC4: Click vào từng giai đoạn xem chi tiết."
+      }
+    ]
+  },
+  {
+    "node_id": 947,
+    "story_id": "DC-40",
+    "dod_items": [
+      {
+        "text": "AC1: Danh sách KH quá hạn của Sales AM."
+      },
+      {
+        "text": "AC2: Số tiền, số ngày QH, giai đoạn."
+      },
+      {
+        "text": "AC3: Sắp xếp theo mức độ khẩn cấp."
+      }
+    ]
+  },
+  {
+    "node_id": 948,
+    "story_id": "DC-41",
+    "dod_items": [
+      {
+        "text": "AC1: Cảnh báo khi đến Ngày X+4 (dừng DV)."
+      },
+      {
+        "text": "AC2: Cảnh báo khi đến Ngày X+15 (pháp lý)."
+      },
+      {
+        "text": "AC3: Cảnh báo khi đến Ngày X+30 (chấm dứt HĐ)."
+      },
+      {
+        "text": "AC4: Gửi thông báo cho Kế toán, Sales, Legal."
+      }
+    ]
+  }
+]

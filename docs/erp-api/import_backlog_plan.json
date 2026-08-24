@@ -1,0 +1,1272 @@
+[
+  {
+    "_comment": "=== EP-01 ===",
+    "epic": {
+      "title": "EP-01 Data Ingestion — Lấy dữ liệu cước từ hãng",
+      "type": "Task",
+      "type_id": 188,
+      "parent_path": "000002",
+      "_response_path": "<epic_path>"
+    },
+    "features": [
+      {
+        "feature": {
+          "title": "Kết nối & tự động lấy dữ liệu cước",
+          "type": "Task",
+          "type_id": 190,
+          "parent_path": "<epic_path>",
+          "_response_path": "<feature_path>"
+        },
+        "user_stories": [
+          {
+            "title": "BD-01: Kết nối & lấy dữ liệu cước GCP từ Google Cloud Console",
+            "description": "Là một Kế toán doanh thu, tôi muốn hệ thống tự động kết nối và lấy dữ liệu cước hàng tháng từ Google Cloud Console cho tất cả khách hàng GCP (~70-80 khách, ~94 billing ID, ~600+ project), để không phải copy-paste thủ công từng khách.\n\n**Acceptance Criteria:**\nAC1: Hệ thống tự động kết nối Console cho từng khách GCP (mỗi khách 1 link riêng).\nAC2: Lấy được dữ liệu cước theo tháng cho tất cả billing ID và project.\nAC3: Dữ liệu được lưu trữ đúng định dạng, sẵn sàng cho bước tính cước.\nAC4: Xử lý lỗi kết nối (retry + thông báo) khi Console không truy cập được.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          },
+          {
+            "title": "BD-02: Kết nối & lấy dữ liệu cước GMP từ billing link chung",
+            "description": "Là một Kế toán doanh thu, tôi muốn hệ thống kết nối và lấy dữ liệu cước GMP từ các billing link (1 link chứa nhiều project/khách), để không phải vào từng link riêng lẻ.\n\n**Acceptance Criteria:**\nAC1: Hệ thống lấy dữ liệu từ 1 link GMP chứa nhiều project (lên tới 23 project).\nAC2: Cho phép kế toán chọn từng project để lấy dữ liệu riêng.\nAC3: Dữ liệu được tách riêng theo từng khách hàng.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          },
+          {
+            "title": "BD-08: Kết nối & lấy dữ liệu cước AWS",
+            "description": "Là một Kế toán doanh thu, tôi muốn hệ thống kết nối AWS Billing Console/Cost Explorer để lấy dữ liệu cước, để quản lý tập trung tất cả hãng cloud trên 1 hệ thống.\n\n**Acceptance Criteria:**\nAC1: Kết nối được AWS Billing API.\nAC2: Lấy dữ liệu cước theo tháng.\nAC3: Dữ liệu được chuẩn hóa về format chung.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          },
+          {
+            "title": "BD-09: Kết nối & lấy dữ liệu cước DigitalOcean",
+            "description": "Là một Kế toán doanh thu, tôi muốn hệ thống kết nối DigitalOcean Billing API để lấy dữ liệu cước, để quản lý tập trung tất cả hãng cloud trên 1 hệ thống.\n\n**Acceptance Criteria:**\nAC1: Kết nối được DigitalOcean Billing API.\nAC2: Lấy dữ liệu cước theo tháng.\nAC3: Dữ liệu được chuẩn hóa về format chung.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          }
+        ]
+      },
+      {
+        "feature": {
+          "title": "Chuẩn hóa & xử lý dữ liệu cước",
+          "type": "Task",
+          "type_id": 190,
+          "parent_path": "<epic_path>",
+          "_response_path": "<feature_path>"
+        },
+        "user_stories": [
+          {
+            "title": "BD-03: Tải & xử lý file CSV GWS Flex tự động",
+            "description": "Là một Kế toán doanh thu, tôi muốn hệ thống tự động tải và xử lý file CSV tổng từ Google Workspace Console cho tất cả domain GWS Flex, để không phải parse Excel thủ công.\n\n**Acceptance Criteria:**\nAC1: Parse CSV đúng các cột: Domain name, Subscription, Description, Quantity, Start date, End date, Amount, Customer ID, SKU ID.\nAC2: Skip 9 dòng header invoice.\nAC3: Tự động xóa dòng GST/VAT cuối cùng.\nAC4: Dữ liệu được lưu đúng cấu trúc.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          },
+          {
+            "title": "BD-04: Parse 2 sheets cho dữ liệu GCP/GMP",
+            "description": "Là một Kế toán doanh thu, tôi muốn hệ thống parse đúng cấu trúc 2 sheets của file Excel GCP/GMP (Sheet 0: Project Number, Sheet 1: Billing ID), để dữ liệu được ánh xạ chính xác.\n\n**Acceptance Criteria:**\nAC1: Parse Sheet 0 (Project Number) đúng cấu trúc.\nAC2: Parse Sheet 1 (Billing ID) đúng cấu trúc.\nAC3: Không skip header, không pop dòng cuối.\nAC4: Map đúng Project Number với Billing ID.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          },
+          {
+            "title": "BD-05: Lưu trữ dữ liệu theo Billing ID và theo Project",
+            "description": "Là một Kế toán doanh thu, tôi muốn hệ thống lưu trữ song song dữ liệu theo Billing ID (~94 dòng) và theo Project (~600+ dòng), để có thể tra cứu và đối soát ở cả 2 cấp độ.\n\n**Acceptance Criteria:**\nAC1: Lưu dữ liệu tổng theo Billing ID (mỗi khách 1 dòng).\nAC2: Lưu dữ liệu chi tiết theo Project (từng project riêng).\nAC3: Có liên kết giữa 2 dạng dữ liệu.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          },
+          {
+            "title": "BD-06: Tự động lọc bỏ dòng GWS Committed khỏi dữ liệu Flex",
+            "description": "Là một Kế toán doanh thu, tôi muốn hệ thống tự động lọc bỏ dòng GWS Committed khi domain có cả 2 gói Flex và Commit, để không tính trùng cước.\n\n**Acceptance Criteria:**\nAC1: Phát hiện domain có cả Flex và Committed.\nAC2: Chỉ giữ dòng Usage/New commitment/Commitment increase.\nAC3: Dòng Committed bị loại được ghi log để tra cứu.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          }
+        ]
+      },
+      {
+        "feature": {
+          "title": "Cấu hình tỷ giá tiền tệ",
+          "type": "Task",
+          "type_id": 190,
+          "parent_path": "<epic_path>",
+          "_response_path": "<feature_path>"
+        },
+        "user_stories": [
+          {
+            "title": "BD-07: Nhập & cấu hình tỷ giá USD-VND theo hợp đồng",
+            "description": "Là một Kế toán doanh thu, tôi muốn hệ thống cho phép nhập tỷ giá USD-VND (mặc định Techcombank ngày cuối tháng, có thể cấu hình riêng theo HĐ), để quy đổi cước chính xác theo điều khoản từng hợp đồng.\n\n**Acceptance Criteria:**\nAC1: Mặc định tỷ giá bán chuyển khoản Techcombank ngày cuối tháng.\nAC2: Cho phép cấu hình ngân hàng & thời điểm lấy tỷ giá riêng cho từng HĐ.\nAC3: Tỷ giá được áp dụng đúng cho từng khách/HĐ.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_comment": "=== EP-02 ===",
+    "epic": {
+      "title": "EP-02 Gemini & Credit — Nhận diện Gemini API & xử lý Credit",
+      "type": "Task",
+      "type_id": 188,
+      "parent_path": "000002",
+      "_response_path": "<epic_path>"
+    },
+    "features": [
+      {
+        "feature": {
+          "title": "Nhận diện & tách Gemini API",
+          "type": "Task",
+          "type_id": 190,
+          "parent_path": "<epic_path>",
+          "_response_path": "<feature_path>"
+        },
+        "user_stories": [
+          {
+            "title": "BD-10: Tự động phát hiện & tách riêng Gemini API cho từng khách GCP",
+            "description": "Là một Kế toán doanh thu, tôi muốn hệ thống tự động phát hiện và tách riêng lượng dùng Gemini API cho từng khách GCP (group by Service), để tính cước Gemini riêng biệt không bị ảnh hưởng bởi discount.\n\n**Acceptance Criteria:**\nAC1: Phát hiện Gemini API usage tự động trên Console GCP.\nAC2: Tách riêng Gemini khỏi Usage_total.\nAC3: Gemini không bị áp discount (cộng thẳng vào sau discount).\nAC4: Luôn tách nếu có phát sinh (không ngưỡng tối thiểu).",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          },
+          {
+            "title": "BD-15: Xác nhận GMP không áp dụng Credit & Gemini API",
+            "description": "Là một Kế toán doanh thu, tôi muốn xác nhận GMP không có Credit và Gemini API, để không áp dụng sai logic tính cước cho dịch vụ này.\n\n**Acceptance Criteria:**\nAC1: GMP không hiển thị/tách Gemini API.\nAC2: GMP không phát hiện Credit Promotion.\nAC3: Logic tính cước GMP đơn giản hơn GCP.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          }
+        ]
+      },
+      {
+        "feature": {
+          "title": "Tự động phát hiện Credit Promotion",
+          "type": "Task",
+          "type_id": 190,
+          "parent_path": "<epic_path>",
+          "_response_path": "<feature_path>"
+        },
+        "user_stories": [
+          {
+            "title": "BD-11: Tự động phát hiện Credit Promotion trên Console GCP",
+            "description": "Là một Kế toán doanh thu, tôi muốn hệ thống tự động phát hiện Credit Promotion trên Console từng khách GCP (bằng cách so sánh số khi bật/tắt tích credit), để không bỏ sót credit.\n\n**Acceptance Criteria:**\nAC1: So sánh số liệu khi bật và tắt tích Promotion Credit.\nAC2: Tính được lượng credit của từng khách.\nAC3: Ghi nhận credit vào hệ thống để xử lý tiếp.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          },
+          {
+            "title": "BD-14: Cảnh báo credit chưa được phân loại trước khi gửi bill",
+            "description": "Là một Hệ thống (tự động), tôi cần cảnh báo khi phát hiện credit chưa được phân loại/xác nhận trước khi gửi bill cho khách, để tránh gửi sai số liệu.\n\n**Acceptance Criteria:**\nAC1: Kiểm tra trạng thái credit trước khi cho phép gửi bill.\nAC2: Hiển thị cảnh báo nếu credit chưa được xác nhận.\nAC3: Chặn gửi bill nếu credit chưa xử lý (có thể ghi đè nếu cần).",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          },
+          {
+            "title": "BD-62: Hiển thị danh sách khách có credit promotion trong tháng",
+            "description": "Là một Kế toán doanh thu, tôi muốn hệ thống hiển thị danh sách khách có credit promotion trong tháng (~10-15 khách GG/tháng), để biết khách nào cần xử lý credit.\n\n**Acceptance Criteria:**\nAC1: Tự động phát hiện khách có credit.\nAC2: Hiển thị danh sách kèm số tiền credit.\nAC3: Cập nhật real-time khi có credit mới.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          },
+          {
+            "title": "BD-64: Hướng dẫn/nhắc nhở bỏ chọn tích Promotion Credit trên Console",
+            "description": "Là một Kế toán doanh thu, tôi muốn hệ thống nhắc nhở bỏ chọn tích Promotion Credit trên Console trước khi lấy số (credit thuộc công ty), để không lấy sai số liệu.\n\n**Acceptance Criteria:**\nAC1: Hiển thị nhắc nhở khi lấy dữ liệu.\nAC2: Hướng dẫn cụ thể thao tác trên Console.\nAC3: Ghi nhận đã thực hiện.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          }
+        ]
+      },
+      {
+        "feature": {
+          "title": "Quy trình phê duyệt & phân bổ Credit",
+          "type": "Task",
+          "type_id": 190,
+          "parent_path": "<epic_path>",
+          "_response_path": "<feature_path>"
+        },
+        "user_stories": [
+          {
+            "title": "BD-12: Xuất danh sách khách có credit gửi BGĐ/Sale xác nhận",
+            "description": "Là một Kế toán doanh thu, tôi muốn hệ thống tự động xuất danh sách khách hàng có credit trong tháng (~10-15 khách) và gửi cho Ban Giám Đốc/Sale xác nhận, để biết credit thuộc về khách hay công ty.\n\n**Acceptance Criteria:**\nAC1: Tạo danh sách khách có credit trong tháng.\nAC2: Gửi danh sách cho BGĐ/Sale theo luồng phê duyệt.\nAC3: Ghi nhận kết quả xác nhận (credit khách / credit công ty).",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          },
+          {
+            "title": "BD-13: Hỗ trợ chia credit giữa khách và công ty",
+            "description": "Là một Kế toán doanh thu, tôi muốn hệ thống hỗ trợ trường hợp chia credit (VD: 4.000 credit → 2.500 cho khách, 1.500 giữ lại), để xử lý linh hoạt theo từng tình huống thực tế.\n\n**Acceptance Criteria:**\nAC1: Cho phép nhập số lượng credit chia cho khách và giữ lại.\nAC2: Ghi log lý do chia credit.\nAC3: Áp dụng đúng phần credit vào công thức tính cước.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          },
+          {
+            "title": "BD-63: Gửi danh sách credit cho BGĐ/Sale xác nhận",
+            "description": "Là một Hệ thống (tự động), tôi cần gửi danh sách khách có credit cho Ban Giám Đốc/Sale xác nhận: credit thuộc về khách hay thuộc về CloudAZ/Cloudino.\n\n**Acceptance Criteria:**\nAC1: Tạo danh sách credit gửi BGĐ/Sale.\nAC2: Cho phép phê duyệt credit khách / credit công ty.\nAC3: Ghi nhận kết quả phê duyệt.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          },
+          {
+            "title": "BD-65: Hỗ trợ kế toán check thủ công từng trường hợp credit",
+            "description": "Là một Kế toán doanh thu, tôi muốn hệ thống hỗ trợ check thủ công từng trường hợp credit (vì không có danh sách cố định), để xử lý linh hoạt.\n\n**Acceptance Criteria:**\nAC1: Giao diện check từng khách có credit.\nAC2: Cho phép nhập số credit thủ công.\nAC3: Ghi log lịch sử check credit.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_comment": "=== EP-03 ===",
+    "epic": {
+      "title": "EP-03 Pricing Engine — Công thức tính cước",
+      "type": "Task",
+      "type_id": 188,
+      "parent_path": "000002",
+      "_response_path": "<epic_path>"
+    },
+    "features": [
+      {
+        "feature": {
+          "title": "Tính toán cước theo dịch vụ",
+          "type": "Task",
+          "type_id": 190,
+          "parent_path": "<epic_path>",
+          "_response_path": "<feature_path>"
+        },
+        "user_stories": [
+          {
+            "title": "BD-17: Tính cước GCP theo công thức",
+            "description": "Là một Kế toán doanh thu, tôi muốn hệ thống tính cước GCP tự động theo công thức: Thu khách = (Usage_total - Gemini) × (1 - Discount%) + Gemini + VAT GG + PDV - Credit, để không phải tính tay từng khách.\n\n**Acceptance Criteria:**\nAC1: Tính đúng Usage_total (đã bỏ Reseller Margin).\nAC2: Tách Gemini riêng, không áp discount.\nAC3: VAT GG = Lượng dùng USD × VAT_rate (hoặc sau discount với khách đặc biệt).\nAC4: PDV = (Lượng dùng trước discount + VAT GG) × PDV_rate.\nAC5: Trừ credit đã xác nhận.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          },
+          {
+            "title": "BD-18: Tính cước GMP theo công thức",
+            "description": "Là một Kế toán doanh thu, tôi muốn hệ thống tính cước GMP tự động theo công thức: Thu khách = Lượng dùng USD × (1 - Discount%) + PDV, để không phải tính tay.\n\n**Acceptance Criteria:**\nAC1: Tính đúng lượng dùng USD.\nAC2: Áp dụng discount nếu có (hiện chưa có khách GMP được discount).\nAC3: Tính PDV đúng tỷ lệ.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          },
+          {
+            "title": "BD-19: Tính cước GWS Flex theo SKU pricing & proration",
+            "description": "Là một Kế toán doanh thu, tôi muốn hệ thống tính cước GWS Flex tự động theo SKU pricing và công thức proration theo ngày, để không phải tính thủ công từng domain.\n\n**Acceptance Criteria:**\nAC1: Tra SKU pricing đúng subscription.\nAC2: Tính dailyPrice = unitPrice / daysInMonth.\nAC3: amount = dailyPrice × usageDays × quantity.\nAC4: Áp dụng discount và fct đúng công thức.\nAC5: floor(priceBeforeVAT × exchangeRate) → × 1.1 (VAT đầu ra).",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          },
+          {
+            "title": "BD-25: Hỗ trợ công thức GWS Flex cũ (trước 02/2024)",
+            "description": "Là một Kế toán doanh thu, tôi muốn hệ thống hỗ trợ công thức GWS Flex cũ (amount = Excel.Amount × 100/80) cho các kỳ cước trước 02/2024, để tra cứu bill lịch sử chính xác.\n\n**Acceptance Criteria:**\nAC1: Nếu kỳ cước trước 02/2024, áp dụng công thức cũ.\nAC2: Nếu kỳ cước từ 02/2024, áp dụng công thức mới.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          }
+        ]
+      },
+      {
+        "feature": {
+          "title": "Xử lý thuế và quy đổi tiền tệ",
+          "type": "Task",
+          "type_id": 190,
+          "parent_path": "<epic_path>",
+          "_response_path": "<feature_path>"
+        },
+        "user_stories": [
+          {
+            "title": "BD-20: Quy đổi VND & làm tròn đến hàng đơn vị",
+            "description": "Là một Kế toán doanh thu, tôi muốn hệ thống tự động quy đổi thu khách từ USD sang VND (floor) và làm tròn đến hàng đơn vị, để số liệu chính xác và khớp với hóa đơn.\n\n**Acceptance Criteria:**\nAC1: Thu khách VND = floor(Thu khách USD × Tỷ giá).\nAC2: Làm tròn đến hàng đơn vị (đồng).\nAC3: Cước phí dù chỉ $0.01 vẫn được tính đầy đủ.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          },
+          {
+            "title": "BD-21: Tính thuế GTGT đầu ra 10%, hỗ trợ KCT",
+            "description": "Là một Kế toán doanh thu, tôi muốn hệ thống tự động tính thuế GTGT đầu ra (10% đa phần) và hỗ trợ dịch vụ Không chịu thuế (KCT) như Bubble, để xuất hóa đơn đúng quy định.\n\n**Acceptance Criteria:**\nAC1: Mặc định tính VAT đầu ra 10%.\nAC2: Hỗ trợ flag KCT (Không chịu thuế) cho dịch vụ đặc biệt.\nAC3: Cấu hình VAT rate theo từng khách/dịch vụ.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          },
+          {
+            "title": "BD-22: Hỗ trợ flag vat_gross và fct_gross",
+            "description": "Là một Kế toán doanh thu, tôi muốn hệ thống hỗ trợ flag vat_gross và fct_gross (tính trên gross: 1/(1-rate)×rate), để áp dụng đúng cho các hợp đồng có điều khoản đặc biệt.\n\n**Acceptance Criteria:**\nAC1: Nếu vat_gross=true, VAT = gross × rate với gross = 1/(1-rate).\nAC2: Nếu fct_gross=true, FCT = gross × rate với gross = 1/(1-rate).",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          }
+        ]
+      },
+      {
+        "feature": {
+          "title": "Ánh xạ cấu hình hợp đồng",
+          "type": "Task",
+          "type_id": 190,
+          "parent_path": "<epic_path>",
+          "_response_path": "<feature_path>"
+        },
+        "user_stories": [
+          {
+            "title": "BD-23: Ánh xạ field hợp đồng GCP vào công thức tính",
+            "description": "Là một Quản trị viên, tôi muốn hệ thống ánh xạ đúng các field hợp đồng GCP (billing_id, project_number, discount, vat, vat_gross, fct, fct_gross, rate) vào công thức tính cước, để đảm bảo tính chính xác cho từng khách.\n\n**Acceptance Criteria:**\nAC1: Map đúng billing_id (comma-separated).\nAC2: Map đúng gcp_project_number (comma-separated).\nAC3: Map đúng discount, vat, vat_gross, fct, fct_gross, rate.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_comment": "=== EP-04 ===",
+    "epic": {
+      "title": "EP-04 Report & Delivery — Sinh bảng đối soát & gửi khách",
+      "type": "Task",
+      "type_id": 188,
+      "parent_path": "000002",
+      "_response_path": "<epic_path>"
+    },
+    "features": [
+      {
+        "feature": {
+          "title": "Tự động sinh bảng đối soát chi phí",
+          "type": "Task",
+          "type_id": 190,
+          "parent_path": "<epic_path>",
+          "_response_path": "<feature_path>"
+        },
+        "user_stories": [
+          {
+            "title": "BD-26: Sinh bảng đối soát chi phí XLSX từ template",
+            "description": "Là một Kế toán doanh thu, tôi muốn hệ thống tự động sinh bảng đối soát chi phí dạng XLSX từ template trên S3 (riêng từng dịch vụ, từng khách), để không phải tự tạo Excel thủ công.\n\n**Acceptance Criteria:**\nAC1: Sinh file XLSX từ template có sẵn trên S3.\nAC2: Điền đúng số liệu vào các ô tương ứng.\nAC3: Hỗ trợ riêng từng dịch vụ (GCP, GMP, GWS).\nAC4: File output lưu trên S3 theo cấu trúc khách/tháng/dịch vụ.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          },
+          {
+            "title": "BD-27: Gộp nhiều project của cùng 1 khách vào 1 bảng đối soát",
+            "description": "Là một Kế toán doanh thu, tôi muốn hệ thống tự động cộng tổng tất cả project của cùng 1 khách (dựa trên Project number matching với contract), để không phải gộp thủ công.\n\n**Acceptance Criteria:**\nAC1: Phát hiện tất cả project thuộc cùng 1 khách.\nAC2: Cộng tổng số liệu các project.\nAC3: Hiển thị chi tiết từng project trong bảng.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          },
+          {
+            "title": "BD-28: Gộp nhiều billing account của cùng 1 khách vào 1 bảng",
+            "description": "Là một Kế toán doanh thu, tôi muốn hệ thống tự động gộp dữ liệu từ nhiều billing ID vào cùng 1 bảng đối soát cho khách có nhiều billing account, để không phải gộp thủ công.\n\n**Acceptance Criteria:**\nAC1: Phát hiện tất cả billing account thuộc cùng 1 khách.\nAC2: Gộp dữ liệu từ nhiều billing ID.\nAC3: Hiển thị chi tiết từng billing account.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          },
+          {
+            "title": "BD-31: Xử lý làm tròn chính xác đến hàng đồng VND",
+            "description": "Là một Kế toán doanh thu, tôi muốn hệ thống xử lý làm tròn chính xác (đến hàng đồng VND), giải quyết lỗi rounding hiện tại của CM, để số liệu khớp với hóa đơn và không mất thời gian sửa lỗi.\n\n**Acceptance Criteria:**\nAC1: Làm tròn đến hàng đơn vị (đồng).\nAC2: Không có chênh lệch rounding giữa bảng đối soát và hóa đơn.\nAC3: Log chênh lệch rounding nếu có.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          },
+          {
+            "title": "BD-32: Hỗ trợ khách chia nhiều pháp nhân: tính/gửi/xuất HĐ riêng",
+            "description": "Là một Kế toán doanh thu, tôi muốn hệ thống hỗ trợ khách có nhiều pháp nhân (VD: 1 HĐ → 9 công ty): tính riêng file, gửi riêng, xuất hóa đơn riêng cho từng pháp nhân, để xử lý đúng theo yêu cầu của khách.\n\n**Acceptance Criteria:**\nAC1: Cho phép cấu hình nhiều pháp nhân cho 1 HĐ.\nAC2: Tính riêng bảng đối soát cho từng pháp nhân.\nAC3: Gửi email riêng cho từng pháp nhân.\nAC4: Xuất hóa đơn riêng cho từng pháp nhân.\nAC5: Số các pháp nhân không nằm trong tổng đối chiếu với invoice tổng.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          },
+          {
+            "title": "BD-33: Xuất bảng đối soát dạng PDF",
+            "description": "Là một Kế toán doanh thu, tôi muốn hệ thống xuất bảng đối soát dưới dạng PDF (ngoài XLSX), để gửi cho khách dưới định dạng không chỉnh sửa được.\n\n**Acceptance Criteria:**\nAC1: Xuất PDF từ dữ liệu bảng đối soát.\nAC2: Định dạng chuyên nghiệp, đầy đủ thông tin.\nAC3: Logo và thông tin công ty trên PDF.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          }
+        ]
+      },
+      {
+        "feature": {
+          "title": "Điều chỉnh số liệu & Đối soát thủ công",
+          "type": "Task",
+          "type_id": 190,
+          "parent_path": "<epic_path>",
+          "_response_path": "<feature_path>"
+        },
+        "user_stories": [
+          {
+            "title": "BD-29: Cho phép kế toán sửa tay số liệu trên bảng đối soát trước khi gửi",
+            "description": "Là một Kế toán doanh thu, tôi muốn hệ thống cho phép sửa trực tiếp số liệu trên bảng đối soát (điều chỉnh credit, lỗi rounding, phí dịch vụ) trước khi gửi khách, để linh hoạt xử lý các trường hợp đặc biệt.\n\n**Acceptance Criteria:**\nAC1: Cho phép sửa số liệu trên bảng đối soát.\nAC2: Ghi log audit trail (ai sửa, giá trị trước/sau).\nAC3: Không yêu cầu phê duyệt hay ghi lý do (ghi tự động).",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          },
+          {
+            "title": "BD-30: Đối soát tự động ERP vs bảng tính tay, highlight dòng lệch",
+            "description": "Là một Kế toán doanh thu, tôi muốn hệ thống tự động so khớp số ERP gen ra với bảng tính tay của mình, highlight các dòng lệch, để phát hiện sai sót trước khi gửi khách.\n\n**Acceptance Criteria:**\nAC1: Import bảng tính tay của kế toán.\nAC2: So khớp từng dòng với số ERP.\nAC3: Highlight dòng lệch (màu đỏ/cảnh báo).\nAC4: Hiển thị chênh lệch cụ thể từng dòng.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          }
+        ]
+      },
+      {
+        "feature": {
+          "title": "Gửi thông báo & Theo dõi chốt cước",
+          "type": "Task",
+          "type_id": 190,
+          "parent_path": "<epic_path>",
+          "_response_path": "<feature_path>"
+        },
+        "user_stories": [
+          {
+            "title": "BD-34: Gửi email bảng đối soát kèm screenshot cho khách",
+            "description": "Là một Kế toán doanh thu, tôi muốn hệ thống tự động gửi email bảng đối soát (PDF/XLSX) kèm screenshot lượng dùng cho khách theo danh sách email đã đăng ký trên hợp đồng, để không phải gửi thủ công từng email.\n\n**Acceptance Criteria:**\nAC1: Gửi email đúng danh sách email trên hợp đồng.\nAC2: Đính kèm bảng đối soát (PDF/XLSX).\nAC3: Đính kèm screenshot lượng dùng.\nAC4: Email có nội dung chuyên nghiệp, đúng thông tin khách hàng.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          },
+          {
+            "title": "BD-35: Gửi riêng email cho từng dịch vụ (GWS → GCP → GMP)",
+            "description": "Là một Kế toán doanh thu, tôi muốn hệ thống gửi riêng từng email cho mỗi dịch vụ (GWS, GCP, GMP) theo thời điểm có invoice, để khách nhận được bảng đối soát đúng dịch vụ đúng thời điểm.\n\n**Acceptance Criteria:**\nAC1: GWS gửi trước (invoice sớm nhất).\nAC2: GCP gửi sau GWS.\nAC3: GMP gửi sau cùng.\nAC4: Mỗi dịch vụ là 1 email riêng với bảng đối soát riêng.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          },
+          {
+            "title": "BD-36: Tự động nhắc nhở và chốt số liệu khi khách không phản hồi",
+            "description": "Là một Hệ thống (tự động), tôi cần tự động gửi email nhắc nhở sau 02 ngày làm việc khách chưa xác nhận, và tự động chốt số liệu sau 01 ngày nhắc nhở, để không bị chậm tiến độ xuất hóa đơn.\n\n**Acceptance Criteria:**\nAC1: Gửi nhắc nhở lần 1 sau 2 ngày không phản hồi.\nAC2: Tự động chốt số liệu sau 1 ngày nhắc nhở.\nAC3: Ghi log trạng thái xác nhận.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          },
+          {
+            "title": "BD-37: Ghi nhận xác nhận qua email phản hồi hoặc chuyển khoản",
+            "description": "Là một Kế toán doanh thu, tôi muốn hệ thống ghi nhận xác nhận của khách qua 2 hình thức: phản hồi email hoặc chuyển khoản thanh toán, để không bỏ sót xác nhận từ khách.\n\n**Acceptance Criteria:**\nAC1: Phát hiện email phản hồi xác nhận từ khách.\nAC2: Ghi nhận chuyển khoản thanh toán là xác nhận.\nAC3: Cập nhật trạng thái bill thành \"Đã xác nhận\".",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          },
+          {
+            "title": "BD-38: Xuất hóa đơn ngay sau khi khách xác nhận, không cần phê duyệt",
+            "description": "Là một Kế toán doanh thu, tôi muốn hệ thống tự động xuất hóa đơn ngay sau khi khách xác nhận, không cần bước phê duyệt trung gian, để rút ngắn thời gian xử lý.\n\n**Acceptance Criteria:**\nAC1: Tự động xuất hóa đơn sau xác nhận.\nAC2: Không yêu cầu phê duyệt.\nAC3: Hóa đơn đúng thông tin khách hàng và số liệu.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_comment": "=== EP-05 ===",
+    "epic": {
+      "title": "EP-05 Dispute Handling — Xử lý tranh chấp cước",
+      "type": "Task",
+      "type_id": 188,
+      "parent_path": "000002",
+      "_response_path": "<epic_path>"
+    },
+    "features": [
+      {
+        "feature": {
+          "title": "Xử lý phản hồi lệch cước",
+          "type": "Task",
+          "type_id": 190,
+          "parent_path": "<epic_path>",
+          "_response_path": "<feature_path>"
+        },
+        "user_stories": [
+          {
+            "title": "BD-39: Cho phép kế toán sửa bảng và gửi lại khi khách phản hồi lệch cước",
+            "description": "Là một Kế toán doanh thu, tôi muốn khi khách phản hồi lệch cước, hệ thống cho phép mở bảng đối soát, sửa đổi trực tiếp và gửi lại bản cập nhật, để xử lý tranh chấp nhanh chóng.\n\n**Acceptance Criteria:**\nAC1: Mở bảng đối soát từ dispute của khách.\nAC2: Sửa số liệu trực tiếp.\nAC3: Gửi lại bản cập nhật cho khách.\nAC4: Lưu version cũ để tra cứu.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          },
+          {
+            "title": "BD-40: Xử lý riêng dịch vụ có tranh chấp, dịch vụ khác chốt bình thường",
+            "description": "Là một Kế toán doanh thu, tôi muốn dịch vụ nào có tranh chấp thì xử lý riêng, dịch vụ khác vẫn chốt bình thường — không cần chờ đồng thời, để không bị chậm toàn bộ tiến độ.\n\n**Acceptance Criteria:**\nAC1: Phát hiện dịch vụ có dispute.\nAC2: Chỉ chặn xuất HĐ cho dịch vụ có dispute.\nAC3: Dịch vụ khác vẫn chốt và xuất HĐ bình thường.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          },
+          {
+            "title": "BD-43: Lưu lịch sử chỉnh sửa dispute để tra cứu",
+            "description": "Là một Kế toán doanh thu/Quản lý, tôi muốn hệ thống lưu lịch sử tất cả chỉnh sửa dispute (ai sửa, lúc nào, giá trị trước/sau), để tra cứu khi cần.\n\n**Acceptance Criteria:**\nAC1: Ghi log mỗi lần sửa dispute.\nAC2: Hiển thị lịch sử theo timeline.\nAC3: Không cho phép xóa/sửa lịch sử.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          }
+        ]
+      },
+      {
+        "feature": {
+          "title": "Điều chỉnh tài chính sau xuất hóa đơn",
+          "type": "Task",
+          "type_id": 190,
+          "parent_path": "<epic_path>",
+          "_response_path": "<feature_path>"
+        },
+        "user_stories": [
+          {
+            "title": "BD-41: Hỗ trợ điều chỉnh sau khi đã xuất hóa đơn VAT",
+            "description": "Là một Kế toán doanh thu, tôi muốn khi phát hiện lệch cước sau khi đã xuất hóa đơn VAT, hệ thống hỗ trợ gửi biên bản điều chỉnh và phát hành hóa đơn điều chỉnh tăng/giảm, để xử lý sai sót kịp thời.\n\n**Acceptance Criteria:**\nAC1: Tạo biên bản điều chỉnh.\nAC2: Phát hành hóa đơn điều chỉnh tăng/giảm.\nAC3: Không cần phê duyệt của kế toán trưởng.\nAC4: Ghi log lịch sử điều chỉnh.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          },
+          {
+            "title": "BD-42: Cho phép điều chỉnh vào kỳ cước tiếp theo thay vì hủy/sửa HĐ",
+            "description": "Là một Kế toán doanh thu, tôi muốn hệ thống cho phép điều chỉnh chênh lệch vào kỳ cước tiếp theo thay vì hủy/sửa hóa đơn đã xuất, để giảm thủ tục hành chính.\n\n**Acceptance Criteria:**\nAC1: Tạo dòng điều chỉnh (+, -) cho kỳ cước sau.\nAC2: Ghi chú rõ lý do điều chỉnh.\nAC3: Liên kết với dispute gốc.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_comment": "=== EP-06 ===",
+    "epic": {
+      "title": "EP-06 Contract & Timeline Config — Cấu hình HĐ, công thức & timeline",
+      "type": "Task",
+      "type_id": 188,
+      "parent_path": "000002",
+      "_response_path": "<epic_path>"
+    },
+    "features": [
+      {
+        "feature": {
+          "title": "Cấu hình thông tin & pháp nhân hợp đồng",
+          "type": "Task",
+          "type_id": 190,
+          "parent_path": "<epic_path>",
+          "_response_path": "<feature_path>"
+        },
+        "user_stories": [
+          {
+            "title": "BD-44: Cấu hình thông tin hợp đồng & công thức tính cước",
+            "description": "Là một Quản trị viên, tôi muốn cấu hình cho từng hợp đồng: tên KH, mã KH, dịch vụ, discount, PDV, VAT GG, thời gian đối soát, thời hạn TT, hồ sơ TT, để hệ thống áp dụng đúng điều khoản.\n\n**Acceptance Criteria:**\nAC1: Nhập đầy đủ thông tin hợp đồng.\nAC2: Cấu hình discount %, PDV %, VAT GG %.\nAC3: Cấu hình thời gian đối soát, thời hạn TT, hồ sơ TT.\nAC4: Lưu lịch sử thay đổi cấu hình.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          },
+          {
+            "title": "BD-45: Hỗ trợ khách thay đổi pháp nhân",
+            "description": "Là một Kế toán doanh thu, tôi muốn hệ thống hỗ trợ khách thay đổi pháp nhân: giữ nguyên số liệu, thay đổi pháp nhân xuất hóa đơn, liên kết với hợp đồng mới, để xử lý khi khách thay đổi pháp nhân thường xuyên.\n\n**Acceptance Criteria:**\nAC1: Giữ nguyên số liệu cũ khi đổi pháp nhân.\nAC2: Thay đổi pháp nhân trên hóa đơn.\nAC3: Liên kết với hợp đồng mới (ký HĐ mới, không ủy quyền).",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          },
+          {
+            "title": "BD-46: Hỗ trợ 1 hợp đồng nhiều pháp nhân",
+            "description": "Là một Kế toán doanh thu, tôi muốn hệ thống hỗ trợ 1 hợp đồng có nhiều pháp nhân (VD: 1 HĐ → 9 công ty): tính riêng, gửi riêng, xuất hóa đơn riêng, để xử lý đúng theo cấu trúc khách hàng.\n\n**Acceptance Criteria:**\nAC1: Cấu hình nhiều pháp nhân cho 1 HĐ.\nAC2: Mỗi pháp nhân có bảng đối soát riêng.\nAC3: Mỗi pháp nhân nhận email riêng.\nAC4: Mỗi pháp nhân có hóa đơn riêng.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          },
+          {
+            "title": "BD-47: Thông báo cho kế toán khi có thay đổi hợp đồng/phụ lục",
+            "description": "Là một Hệ thống (tự động), tôi cần thông báo cho kế toán khi có thay đổi hợp đồng/phụ lục (hiện kế toán chỉ biết qua CC mail), để kế toán cập nhật kịp thời.\n\n**Acceptance Criteria:**\nAC1: Phát hiện thay đổi hợp đồng/phụ lục.\nAC2: Gửi thông báo đến kế toán.\nAC3: Thông báo rõ nội dung thay đổi.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          }
+        ]
+      },
+      {
+        "feature": {
+          "title": "Cấu hình công thức & ánh xạ tham số tính cước",
+          "type": "Task",
+          "type_id": 190,
+          "parent_path": "<epic_path>",
+          "_response_path": "<feature_path>"
+        },
+        "user_stories": [
+          {
+            "title": "BD-16: Cấu hình công thức tính cước riêng cho từng khách/hợp đồng",
+            "description": "Là một Quản trị viên/Kế toán trưởng, tôi muốn cấu hình công thức tính cước riêng cho từng khách hàng, từng hợp đồng (discount, VAT GG, PDV), để áp dụng đúng điều khoản thương mại đã ký.\n\n**Acceptance Criteria:**\nAC1: Cấu hình được discount %, VAT GG %, PDV % cho từng HĐ.\nAC2: Hỗ trợ VAT GG tính trên số trước discount (mặc định) hoặc sau discount (VD: VPBank).\nAC3: Hỗ trợ flag vat_gross và fct_gross.\nAC4: Thay đổi công thức có hiệu lực từ kỳ cước tiếp theo.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          },
+          {
+            "title": "BD-24: Hỗ trợ cập nhật công thức khi có phụ lục hợp đồng mới",
+            "description": "Là một Quản trị viên, tôi muốn hệ thống cho phép cập nhật/thay đổi công thức tính khi có phụ lục hợp đồng mới (VD: thay đổi thuế phí), để luôn áp dụng đúng điều khoản hiện tại.\n\n**Acceptance Criteria:**\nAC1: Lưu lịch sử thay đổi công thức.\nAC2: Thay đổi có hiệu lực từ kỳ cước được chỉ định.\nAC3: Hiển thị công thức cũ và mới khi tra cứu bill lịch sử.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          },
+          {
+            "title": "BD-48: Cấu hình ngân hàng & thời điểm lấy tỷ giá riêng cho từng HĐ",
+            "description": "Là một Kế toán doanh thu, tôi muốn cấu hình ngân hàng lấy tỷ giá và thời điểm lấy tỷ giá riêng cho từng hợp đồng (theo điều khoản HĐ), để quy đổi đúng theo thỏa thuận.\n\n**Acceptance Criteria:**\nAC1: Cấu hình ngân hàng khác Techcombank.\nAC2: Cấu hình thời điểm lấy tỷ giá khác ngày cuối tháng.\nAC3: Áp dụng đúng tỷ giá cho từng HĐ.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          },
+          {
+            "title": "BD-49: Ánh xạ field hợp đồng GMP vào công thức tính",
+            "description": "Là một Quản trị viên, tôi muốn hệ thống ánh xạ đúng các field hợp đồng GMP (billing_id, project_number, discount, vat, vat_gross, fct, fct_gross, rate) vào công thức tính cước.\n\n**Acceptance Criteria:**\nAC1: Map đúng billing_id (comma-separated).\nAC2: Map đúng gmp_project_number (comma-separated).\nAC3: Map đúng discount, vat, vat_gross, fct, fct_gross, rate.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          },
+          {
+            "title": "BD-50: Ánh xạ field hợp đồng GWS Flex vào công thức tính",
+            "description": "Là một Quản trị viên, tôi muốn hệ thống ánh xạ đúng các field hợp đồng GWS Flex (domain, plan, SKU, license quantity) vào công thức tính cước.\n\n**Acceptance Criteria:**\nAC1: Map đúng gws_domain.\nAC2: Map đúng plan (Flexible Plan).\nAC3: Map đúng SKU và license quantity.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          }
+        ]
+      },
+      {
+        "feature": {
+          "title": "Cấu hình & giám sát timeline đối soát",
+          "type": "Task",
+          "type_id": 190,
+          "parent_path": "<epic_path>",
+          "_response_path": "<feature_path>"
+        },
+        "user_stories": [
+          {
+            "title": "BD-51: Quản lý timeline tính cước theo từng dịch vụ",
+            "description": "Là một Kế toán doanh thu, tôi muốn hệ thống quản lý timeline tính cước theo từng dịch vụ: GWS (ngày 1-3), GCP (ngày 1-6), GMP (ngày 6-10), để biết thứ tự ưu tiên xử lý.\n\n**Acceptance Criteria:**\nAC1: Hiển thị timeline cho từng dịch vụ.\nAC2: Nhắc nhở khi đến hạn xử lý từng dịch vụ.\nAC3: Cho phép tùy chỉnh timeline.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          },
+          {
+            "title": "BD-52: Cảnh báo khi invoice hãng về chậm so với deadline",
+            "description": "Là một Hệ thống (tự động), tôi cần cảnh báo khi hóa đơn hãng về chậm so với deadline cam kết gửi khách, để kế toán chủ động xử lý.\n\n**Acceptance Criteria:**\nAC1: Theo dõi thời gian invoice về.\nAC2: Cảnh báo khi invoice trễ deadline.\nAC3: Gửi thông báo cho kế toán.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          },
+          {
+            "title": "BD-53: Gửi thông báo trễ cho khách khi invoice về chậm",
+            "description": "Là một Kế toán doanh thu, tôi muốn hệ thống gửi thông báo trễ cho khách khi invoice về chậm hơn deadline hợp đồng (không gửi số tạm tính), để giữ uy tín với khách.\n\n**Acceptance Criteria:**\nAC1: Tạo thông báo trễ chuyên nghiệp.\nAC2: Gửi email thông báo cho khách.\nAC3: Không gửi số tạm tính.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          },
+          {
+            "title": "BD-54: Xử lý khách hủy dịch vụ giữa tháng",
+            "description": "Là một Kế toán doanh thu, tôi muốn hệ thống chờ đến đầu tháng kế tiếp khi nhận invoice hãng mới tính chi phí cho khách hủy dịch vụ giữa tháng, để có số liệu chính xác.\n\n**Acceptance Criteria:**\nAC1: Đánh dấu khách hủy dịch vụ.\nAC2: Chờ invoice đầu tháng sau.\nAC3: Tính cước pro-rata cho số ngày dùng.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          },
+          {
+            "title": "BD-55: Xử lý deadline đặc biệt cho BeatVN (GCP) và Pharmacity (GMP)",
+            "description": "Là một Kế toán doanh thu, tôi muốn hệ thống hỗ trợ deadline đặc biệt mùng 7 cho BeatVN (GCP) và Pharmacity (GMP), để gửi bill trước cho 2 khách đặc biệt này.\n\n**Acceptance Criteria:**\nAC1: Cấu hình deadline riêng cho BeatVN và Pharmacity.\nAC2: Ưu tiên xử lý trước các khách khác.\nAC3: Nhắc nhở deadline riêng.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_comment": "=== EP-07 ===",
+    "epic": {
+      "title": "EP-07 Storage & Audit — Lưu trữ, tra cứu & kiểm soát",
+      "type": "Task",
+      "type_id": 188,
+      "parent_path": "000002",
+      "_response_path": "<epic_path>"
+    },
+    "features": [
+      {
+        "feature": {
+          "title": "Quản lý kho dữ liệu đối soát tập trung",
+          "type": "Task",
+          "type_id": 190,
+          "parent_path": "<epic_path>",
+          "_response_path": "<feature_path>"
+        },
+        "user_stories": [
+          {
+            "title": "BD-56: Lưu trữ tập trung bill, bảng đối soát, hóa đơn trên S3",
+            "description": "Là một Kế toán doanh thu, tôi muốn hệ thống lưu trữ tập trung toàn bộ lịch sử bill, bảng đối soát, hóa đơn trên S3 theo khách hàng/tháng/dịch vụ, để không phải lưu trên PC cá nhân.\n\n**Acceptance Criteria:**\nAC1: Lưu file lên S3 đúng cấu trúc thư mục.\nAC2: File được đặt tên chuẩn (KH_tháng_năm_dịch vụ).\nAC3: Có thể tải xuống bất kỳ lúc nào.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          },
+          {
+            "title": "BD-57: Tra cứu bill lịch sử theo bộ lọc",
+            "description": "Là một Kế toán doanh thu/Sales AM, tôi muốn tra cứu bill lịch sử theo bộ lọc: khách hàng, tháng/năm, dịch vụ, để dễ dàng tìm lại thông tin cũ.\n\n**Acceptance Criteria:**\nAC1: Bộ lọc khách hàng (dropdown/search).\nAC2: Bộ lọc tháng/năm.\nAC3: Bộ lọc dịch vụ (GCP/GMP/GWS).\nAC4: Hiển thị danh sách kết quả, click xem chi tiết.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          },
+          {
+            "title": "BD-58: Lưu tất cả lần gửi/sửa của cùng 1 bảng đối soát (versioning)",
+            "description": "Là một Kế toán doanh thu/Quản lý, tôi muốn hệ thống lưu tất cả lần gửi/sửa của cùng 1 bảng đối soát (versioning), để tra cứu được các phiên bản cũ khi cần.\n\n**Acceptance Criteria:**\nAC1: Mỗi lần sửa/gửi tạo version mới.\nAC2: Hiển thị danh sách version.\nAC3: Xem và tải được version cũ.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          },
+          {
+            "title": "BD-59: Xuất Excel tổng hợp số cuối toàn bộ khách hàng trong tháng",
+            "description": "Là một Quản lý/Kế toán trưởng, tôi muốn xuất file Excel tổng hợp số cuối của toàn bộ khách hàng trong tháng, để phục vụ báo cáo và đối chiếu tổng thể.\n\n**Acceptance Criteria:**\nAC1: Tổng hợp tất cả khách hàng trong 1 file.\nAC2: Đúng số liệu đã chốt.\nAC3: Có thể lọc theo dịch vụ.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          }
+        ]
+      },
+      {
+        "feature": {
+          "title": "Hệ thống nhật ký kiểm toán (Audit Trail)",
+          "type": "Task",
+          "type_id": 190,
+          "parent_path": "<epic_path>",
+          "_response_path": "<feature_path>"
+        },
+        "user_stories": [
+          {
+            "title": "BD-60: Ghi log mọi thay đổi trên bảng đối soát",
+            "description": "Là một Hệ thống (tự động) và Quản lý, chúng tôi cần ghi log mọi thay đổi trên bảng đối soát: ai sửa, lúc nào, giá trị trước/sau, để truy vết khi cần.\n\n**Acceptance Criteria:**\nAC1: Ghi log tự động mỗi lần sửa.\nAC2: Log bao gồm: người sửa, thời gian, giá trị cũ, giá trị mới.\nAC3: Hiển thị audit trail theo timeline.\nAC4: Không cho phép xóa/sửa log.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          },
+          {
+            "title": "BD-61: Kế toán sửa tay không cần ghi lý do — system tự động audit",
+            "description": "Là một Kế toán doanh thu, tôi muốn sửa tay số liệu mà không cần ghi lý do (hiện tại đã làm vậy), hệ thống tự động ghi nhận hành vi để truy vết khi cần.\n\n**Acceptance Criteria:**\nAC1: Cho phép sửa tay không cần nhập lý do.\nAC2: Hệ thống tự động ghi audit trail.\nAC3: Quản lý có thể xem audit trail khi cần.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_comment": "=== EP-08 ===",
+    "epic": {
+      "title": "EP-08 Invoicing & Delivery — Xuất hóa đơn & Chuyển phát",
+      "type": "Task",
+      "type_id": 188,
+      "parent_path": "000002",
+      "_response_path": "<epic_path>"
+    },
+    "features": [
+      {
+        "feature": {
+          "title": "Xuất & quản lý hóa đơn VAT",
+          "type": "Task",
+          "type_id": 190,
+          "parent_path": "<epic_path>",
+          "_response_path": "<feature_path>"
+        },
+        "user_stories": [
+          {
+            "title": "DC-01: Tự động sinh hóa đơn VAT từ bảng đối soát đã chốt",
+            "description": "Là một Kế toán doanh thu, tôi muốn hệ thống tự động sinh hóa đơn VAT cho từng khách hàng dựa trên bảng đối soát chi phí đã chốt (khách xác nhận hoặc quá hạn xác nhận), để không phải xuất hóa đơn thủ công.\n\n**Acceptance Criteria:**\nAC1: Tự động sinh HĐ VAT khi bill được chốt.\nAC2: HĐ đúng số liệu từ bảng đối soát.\nAC3: Áp dụng đúng thuế suất (10% / KCT).\nAC4: Lưu HĐ theo khách/tháng/dịch vụ.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          },
+          {
+            "title": "DC-02: Xuất hóa đơn riêng cho từng pháp nhân",
+            "description": "Là một Kế toán doanh thu, tôi muốn hệ thống xuất hóa đơn riêng cho từng pháp nhân khi khách chia nhiều pháp nhân (VD: 1 HĐ → 9 công ty), để đúng pháp nhân xuất hóa đơn.\n\n**Acceptance Criteria:**\nAC1: Mỗi pháp nhân có HĐ riêng.\nAC2: Số liệu đúng với pháp nhân đó.\nAC3: Ghi chú rõ pháp nhân trên HĐ.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          },
+          {
+            "title": "DC-03: Hỗ trợ thay đổi pháp nhân trên hóa đơn",
+            "description": "Là một Kế toán doanh thu, tôi muốn hệ thống hỗ trợ thay đổi pháp nhân xuất hóa đơn (giữ nguyên số liệu), để xử lý khi khách thay đổi pháp nhân thường xuyên.\n\n**Acceptance Criteria:**\nAC1: Cho phép thay đổi pháp nhân trước khi xuất HĐ.\nAC2: Số liệu giữ nguyên.\nAC3: Liên kết với pháp nhân mới.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          },
+          {
+            "title": "DC-04: Cho phép kế toán kiểm tra, điều chỉnh hóa đơn trước phát hành",
+            "description": "Là một Kế toán doanh thu, tôi muốn hệ thống cho phép kiểm tra và điều chỉnh hóa đơn trước khi phát hành chính thức, để tránh sai sót.\n\n**Acceptance Criteria:**\nAC1: Xem trước HĐ trước phát hành.\nAC2: Cho phép sửa thông tin (số liệu, địa chỉ, MST...).\nAC3: Ghi log điều chỉnh.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          },
+          {
+            "title": "DC-05: Xuất hóa đơn điều chỉnh tăng/giảm",
+            "description": "Là một Kế toán doanh thu, tôi muốn hệ thống hỗ trợ xuất hóa đơn điều chỉnh (tăng/giảm) khi sai sót sau phát hành, để xử lý theo quy định thuế.\n\n**Acceptance Criteria:**\nAC1: Tạo HĐ điều chỉnh từ HĐ gốc.\nAC2: Hỗ trợ điều chỉnh tăng hoặc giảm.\nAC3: Ghi rõ lý do điều chỉnh.\nAC4: Liên kết với HĐ gốc.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          },
+          {
+            "title": "DC-06: Lưu lịch sử hóa đơn đã xuất theo khách/tháng/dịch vụ",
+            "description": "Là một Kế toán doanh thu, tôi muốn hệ thống lưu lịch sử hóa đơn đã xuất theo khách/tháng/dịch vụ, để tra cứu khi cần.\n\n**Acceptance Criteria:**\nAC1: Lưu tất cả HĐ đã xuất.\nAC2: Tra cứu theo khách, tháng, dịch vụ.\nAC3: Xem và tải lại HĐ cũ.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          }
+        ]
+      },
+      {
+        "feature": {
+          "title": "Tạo & gửi Đề nghị thanh toán (ĐNTT)",
+          "type": "Task",
+          "type_id": 190,
+          "parent_path": "<epic_path>",
+          "_response_path": "<feature_path>"
+        },
+        "user_stories": [
+          {
+            "title": "DC-07: Tự động tạo Đề nghị thanh toán (ĐNTT) từ hóa đơn",
+            "description": "Là một Kế toán doanh thu, tôi muốn hệ thống tự động tạo ĐNTT từ hóa đơn đã phát hành (số tiền, hạn thanh toán, tài khoản NH, lãi chậm), để gửi khách ngay.\n\n**Acceptance Criteria:**\nAC1: Tạo ĐNTT tự động sau xuất HĐ.\nAC2: Đúng số tiền, hạn TT (Ngày X), tài khoản NH.\nAC3: Hiển thị lãi chậm TT theo HĐ.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          },
+          {
+            "title": "DC-08: Xác định hạn thanh toán (Ngày X) theo hợp đồng",
+            "description": "Là một Kế toán doanh thu, tôi muốn hệ thống tự động xác định Ngày X dựa trên cấu hình thời hạn thanh toán trong hợp đồng từng khách, để không tính sai hạn.\n\n**Acceptance Criteria:**\nAC1: Đọc thời hạn TT từ cấu hình HĐ.\nAC2: Tính Ngày X = ngày xuất HĐ + thời hạn.\nAC3: Cho phép sửa tay nếu cần.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          },
+          {
+            "title": "DC-09: Gửi ĐNTT song song email + yêu cầu chuyển phát bản cứng",
+            "description": "Là một Kế toán doanh thu, tôi muốn hệ thống gửi ĐNTT song song: email (PDF) cho khách + yêu cầu chuyển phát bản cứng cho HCNS, để đảm bảo khách nhận được.\n\n**Acceptance Criteria:**\nAC1: Gửi email PDF ĐNTT đến danh sách email HĐ.\nAC2: Tạo task/yêu cầu cho HCNS gửi bản cứng.\nAC3: Ghi log gửi.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          },
+          {
+            "title": "DC-10: Quản lý danh sách email nhận ĐNTT theo hợp đồng",
+            "description": "Là một Kế toán doanh thu, tôi muốn hệ thống quản lý danh sách email nhận ĐNTT theo hợp đồng, để gửi đúng người.\n\n**Acceptance Criteria:**\nAC1: Cấu hình danh sách email theo HĐ.\nAC2: Cho phép thêm/sửa email.\nAC3: Gửi ĐNTT đến tất cả email trong danh sách.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          },
+          {
+            "title": "DC-11: Gộp nhiều hóa đơn các dịch vụ khác nhau vào 1 ĐNTT",
+            "description": "Là một Kế toán doanh thu, tôi muốn hệ thống gộp nhiều hóa đơn các dịch vụ khác nhau (GCP, GMP, GWS) của cùng 1 khách vào 1 ĐNTT duy nhất, để khách chỉ nhận 1 lần.\n\n**Acceptance Criteria:**\nAC1: Phát hiện tất cả HĐ chưa TT của 1 khách.\nAC2: Gộp vào 1 ĐNTT.\nAC3: Hiển thị chi tiết từng HĐ trong ĐNTT.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          }
+        ]
+      },
+      {
+        "feature": {
+          "title": "Theo dõi chuyển phát bản cứng",
+          "type": "Task",
+          "type_id": 190,
+          "parent_path": "<epic_path>",
+          "_response_path": "<feature_path>"
+        },
+        "user_stories": [
+          {
+            "title": "DC-12: HCNS cập nhật trạng thái chuyển phát bản cứng",
+            "description": "Là một Nhân viên HCNS, tôi muốn cập nhật trạng thái phát thư (ngày gửi, đơn vị CP, ngày phát thành công, người nhận), để Kế toán biết tình trạng.\n\n**Acceptance Criteria:**\nAC1: Form cập nhật: ngày gửi, đơn vị CP, ngày phát TC, người nhận, trạng thái.\nAC2: Yêu cầu cập nhật 2 lần/ngày (trước 10:00 và 14:00).\nAC3: Lưu lịch sử cập nhật.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          },
+          {
+            "title": "DC-13: Gửi email thông báo cho Kế toán khi ĐNTT bản cứng phát thành công",
+            "description": "Là một Hệ thống (tự động), tôi cần gửi email thông báo cho Kế toán khi HCNS cập nhật ĐNTT bản cứng phát thành công, để Kế toán biết và theo dõi.\n\n**Acceptance Criteria:**\nAC1: Tự động gửi email khi HCNS cập nhật \"phát thành công\".\nAC2: Email gồm: tên KH, ngày phát, người nhận.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          },
+          {
+            "title": "DC-14: Cảnh báo nếu quá 48h chưa có cập nhật trạng thái phát thư",
+            "description": "Là một Hệ thống (tự động), tôi cần cảnh báo nếu quá 48h chưa có cập nhật trạng thái phát thư từ HCNS, để tránh thất lạc ĐNTT.\n\n**Acceptance Criteria:**\nAC1: Quét trạng thái phát thư định kỳ.\nAC2: Cảnh báo nếu quá 48h không cập nhật.\nAC3: Gửi thông báo cho HCNS và Kế toán.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_comment": "=== EP-09 ===",
+    "epic": {
+      "title": "EP-09 Debt Collection & Reminders — Nhắc nợ & Xử lý quá hạn",
+      "type": "Task",
+      "type_id": 188,
+      "parent_path": "000002",
+      "_response_path": "<epic_path>"
+    },
+    "features": [
+      {
+        "feature": {
+          "title": "Cảnh báo & kích hoạt nhắc nợ",
+          "type": "Task",
+          "type_id": 190,
+          "parent_path": "<epic_path>",
+          "_response_path": "<feature_path>"
+        },
+        "user_stories": [
+          {
+            "title": "DC-15: Tự động gửi email cảnh báo trước hạn vào Ngày X-2",
+            "description": "Là một Kế toán doanh thu, tôi muốn hệ thống tự động gửi email cảnh báo vào Ngày X-2 cho khách (CC Sales AM), để nhắc khách thanh toán đúng hạn.\n\n**Acceptance Criteria:**\nAC1: Tự động gửi email Ngày X-2.\nAC2: CC Sales AM.\nAC3: Tiêu đề chuẩn: `[Alert!] CloudAZ // [Tên KH] // Đề nghị thanh toán chi phí dịch vụ...`\nAC4: Nội dung: số tiền, hạn TT, tài khoản NH.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          },
+          {
+            "title": "DC-16: Tự động kích hoạt luồng nhắc nợ khi quá Ngày X",
+            "description": "Là một Hệ thống (tự động), tôi cần tự động kích hoạt luồng nhắc nợ khi quá Ngày X chưa thanh toán, để không bỏ sót khách quá hạn.\n\n**Acceptance Criteria:**\nAC1: Kiểm tra thanh toán hàng ngày.\nAC2: Nếu quá Ngày X chưa TT → chuyển trạng thái \"Quá hạn\".\nAC3: Kích hoạt luồng nhắc nợ tự động.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          }
+        ]
+      },
+      {
+        "feature": {
+          "title": "Nhắc nợ tự động & tính lãi chậm",
+          "type": "Task",
+          "type_id": 190,
+          "parent_path": "<epic_path>",
+          "_response_path": "<feature_path>"
+        },
+        "user_stories": [
+          {
+            "title": "DC-17: Tự động gửi email nhắc nợ hàng ngày cho khách quá hạn",
+            "description": "Là một Kế toán doanh thu, tôi muốn hệ thống tự động gửi email nhắc nợ vào Ngày X+1 và hàng ngày sau đó cho khách chưa thanh toán, để không phải soạn email thủ công.\n\n**Acceptance Criteria:**\nAC1: Gửi email nhắc nợ Ngày X+1.\nAC2: Gộp tất cả HĐ các dịch vụ vào 1 email.\nAC3: Tối đa 1 email/khách/ngày.\nAC4: Tần suất 1 lần/ngày đến khi TT hoặc dừng DV.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          },
+          {
+            "title": "DC-18: Soạn nội dung email nhắc nợ đầy đủ thông tin",
+            "description": "Là một Kế toán doanh thu, tôi muốn email nhắc nợ bao gồm: thông báo quá hạn, số tiền, lãi chậm, thời gian dừng DV (X+4), thời gian chấm dứt HĐ (X+30), để khách biết rõ hậu quả.\n\n**Acceptance Criteria:**\nAC1: Hiển thị số tiền quá hạn.\nAC2: Tính và hiển thị lãi chậm cộng dồn.\nAC3: Thông báo ngày dừng DV (X+4).\nAC4: Thông báo ngày chấm dứt HĐ (X+30).",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          },
+          {
+            "title": "DC-19: Hỗ trợ nhắc nợ tự động cho GWS Committed",
+            "description": "Là một Kế toán doanh thu, tôi muốn hệ thống hỗ trợ nhắc nợ tự động cho cả GWS Committed (license trả trước), để quản lý công nợ đồng bộ.\n\n**Acceptance Criteria:**\nAC1: Phát hiện HĐ GWS Committed quá hạn.\nAC2: Gửi email nhắc nợ theo luồng chung.\nAC3: Nội dung phù hợp với dịch vụ Committed.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          },
+          {
+            "title": "DC-21: Tự động tính lãi chậm thanh toán cộng dồn hàng ngày",
+            "description": "Là một Kế toán doanh thu, tôi muốn hệ thống tự động tính lãi chậm dựa trên số ngày quá hạn và tỷ lệ % theo hợp đồng, cộng dồn hàng ngày, để không tính tay.\n\n**Acceptance Criteria:**\nAC1: Tính lãi = nợ gốc × (lãi suất/365) × số ngày quá hạn.\nAC2: Cộng dồn hàng ngày.\nAC3: Hiển thị chi tiết: nợ gốc, lãi phạt, tổng phải thu.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          }
+        ]
+      },
+      {
+        "feature": {
+          "title": "Cấu hình & kiểm soát luồng nhắc nợ",
+          "type": "Task",
+          "type_id": 190,
+          "parent_path": "<epic_path>",
+          "_response_path": "<feature_path>"
+        },
+        "user_stories": [
+          {
+            "title": "DC-20: Cấu hình duyệt email nhắc nợ: tự động gửi hoặc tạo nháp cho Sales duyệt",
+            "description": "Là một Quản lý, tôi muốn cấu hình luồng gửi email nhắc nợ: tự động gửi hoặc tạo nháp cho Sales AM duyệt trước, theo nhóm khách, để linh hoạt theo từng đối tượng.\n\n**Acceptance Criteria:**\nAC1: Cấu hình theo nhóm khách.\nAC2: Nếu \"tự động\" → gửi thẳng.\nAC3: Nếu \"duyệt trước\" → tạo nháp, gửi thông báo cho Sales duyệt.\nAC4: Sales duyệt/từ chối, ghi lý do.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          },
+          {
+            "title": "DC-22: Cấu hình tỷ lệ lãi chậm thanh toán riêng cho từng hợp đồng",
+            "description": "Là một Quản trị viên, tôi muốn cấu hình tỷ lệ lãi chậm thanh toán riêng cho từng hợp đồng, để áp dụng đúng điều khoản thương mại.\n\n**Acceptance Criteria:**\nAC1: Trường lãi suất trong cấu hình HĐ.\nAC2: Mặc định nếu không cấu hình.\nAC3: Thay đổi áp dụng cho HĐ mới hoặc kỳ mới.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          }
+        ]
+      },
+      {
+        "feature": {
+          "title": "Dashboard & đôn đốc Sales AM",
+          "type": "Task",
+          "type_id": 190,
+          "parent_path": "<epic_path>",
+          "_response_path": "<feature_path>"
+        },
+        "user_stories": [
+          {
+            "title": "DC-23: Dashboard công nợ cho Sales AM: danh sách khách quá hạn",
+            "description": "Là một Sales AM, tôi muốn xem dashboard công nợ hiển thị danh sách khách quá hạn thuộc quyền quản lý của mình (số tiền, số ngày quá hạn), để chủ động đôn đốc.\n\n**Acceptance Criteria:**\nAC1: Dashboard chỉ hiển thị khách của Sales AM đó.\nAC2: Hiển thị: tên KH, số tiền, số ngày QH, giai đoạn.\nAC3: Click vào KH xem chi tiết công nợ.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          },
+          {
+            "title": "DC-24: Sales AM gọi điện/chat đôn đốc khách (không gửi email)",
+            "description": "Là một Sales AM, tôi muốn gọi điện hoặc chat đôn đốc khách thanh toán (không gửi email nhắc nợ để tránh spam), và ghi nhận kết quả trên hệ thống.\n\n**Acceptance Criteria:**\nAC1: Ghi nhận cuộc gọi/tương tác.\nAC2: Ghi kết quả (KH hứa TT ngày...).\nAC3: Lưu lịch sử tương tác.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_comment": "=== EP-10 ===",
+    "epic": {
+      "title": "EP-10 Service Suspension & Recovery — Dừng & Khôi phục dịch vụ",
+      "type": "Task",
+      "type_id": 188,
+      "parent_path": "000002",
+      "_response_path": "<epic_path>"
+    },
+    "features": [
+      {
+        "feature": {
+          "title": "Cảnh báo & phê duyệt dừng dịch vụ",
+          "type": "Task",
+          "type_id": 190,
+          "parent_path": "<epic_path>",
+          "_response_path": "<feature_path>"
+        },
+        "user_stories": [
+          {
+            "title": "DC-25: Gửi email cảnh báo dừng dịch vụ đến khách Ngày X+4",
+            "description": "Là một Hệ thống (tự động), tôi cần gửi email cảnh báo dừng dịch vụ đến khách vào Ngày X+4, để khách có cơ hội thanh toán trước khi bị dừng.\n\n**Acceptance Criteria:**\nAC1: Tự động gửi email Ngày X+4.\nAC2: Nội dung: thông báo dừng DV, hậu quả (mất dữ liệu).\nAC3: CC Kế toán, Sales AM.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          },
+          {
+            "title": "DC-26: Tạo yêu cầu dừng dịch vụ gửi Sales AM xác nhận",
+            "description": "Là một Kế toán doanh thu, tôi muốn hệ thống tạo yêu cầu dừng DV gửi Sales AM xác nhận (sau Ngày X+4), để có sự đồng thuận trước khi dừng.\n\n**Acceptance Criteria:**\nAC1: Tạo yêu cầu dừng DV.\nAC2: Gửi thông báo cho Sales AM.\nAC3: Yêu cầu bao gồm: KH, dịch vụ, lý do, ngày dự kiến dừng.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          },
+          {
+            "title": "DC-27: Sales AM xác nhận hoặc từ chối yêu cầu dừng DV (từ chối phải ghi lý do)",
+            "description": "Là một Sales AM, tôi muốn xác nhận hoặc từ chối yêu cầu dừng DV trên hệ thống (nếu từ chối phải ghi lý do), để kiểm soát việc dừng DV với khách hàng của mình.\n\n**Acceptance Criteria:**\nAC1: Nút \"Xác nhận\" / \"Từ chối\".\nAC2: Từ chối bắt buộc nhập lý do.\nAC3: Ghi log quyết định.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          },
+          {
+            "title": "DC-31: Chặn dừng DV nếu chưa có xác nhận từ Sales AM",
+            "description": "Là một Hệ thống (tự động), tôi cần chặn thao tác dừng DV nếu chưa có xác nhận từ Sales AM, để tránh dừng nhầm khách quan trọng.\n\n**Acceptance Criteria:**\nAC1: Kiểm tra trạng thái duyệt trước khi cho phép dừng.\nAC2: Cảnh báo nếu cố gắng dừng khi chưa duyệt.\nAC3: Chỉ Phòng mua mới bypass được (ghi lý do).",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          }
+        ]
+      },
+      {
+        "feature": {
+          "title": "Thực thi & thông báo kết quả dừng DV",
+          "type": "Task",
+          "type_id": 190,
+          "parent_path": "<epic_path>",
+          "_response_path": "<feature_path>"
+        },
+        "user_stories": [
+          {
+            "title": "DC-28: Gửi yêu cầu đến Phòng mua sau khi Sales AM xác nhận",
+            "description": "Là một Hệ thống (tự động), tôi cần gửi yêu cầu đến Phòng mua sau khi Sales AM xác nhận dừng DV, để Phòng mua thực thi trên Console hãng.\n\n**Acceptance Criteria:**\nAC1: Tự động gửi yêu cầu sau Sales xác nhận.\nAC2: Yêu cầu: KH, dịch vụ, hướng dẫn thao tác.\nAC3: Thông báo cho Kế toán, Sales, Legal.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          },
+          {
+            "title": "DC-29: Phòng mua thực thi dừng DV trên Console hãng, cập nhật trạng thái",
+            "description": "Là một Nhân viên Phòng mua, tôi muốn nhận yêu cầu dừng DV, thực thi trên Console Google, và cập nhật kết quả lên hệ thống, để hoàn tất quy trình.\n\n**Acceptance Criteria:**\nAC1: Form cập nhật trạng thái thực thi.\nAC2: Cập nhật: đã dừng / thất bại / lỗi.\nAC3: Ghi chú chi tiết nếu thất bại.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          },
+          {
+            "title": "DC-30: Gửi email kết quả dừng DV cho Kế toán, Sales, Legal",
+            "description": "Là một Hệ thống (tự động), tôi cần gửi email kết quả dừng DV cho Kế toán, Sales, Legal sau khi Phòng mua cập nhật, để các bên biết trạng thái.\n\n**Acceptance Criteria:**\nAC1: Gửi email kết quả.\nAC2: Nội dung: KH, dịch vụ, ngày dừng, trạng thái.\nAC3: Đính kèm bằng chứng nếu có.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          }
+        ]
+      },
+      {
+        "feature": {
+          "title": "Khôi phục dịch vụ & quản lý rủi ro",
+          "type": "Task",
+          "type_id": 190,
+          "parent_path": "<epic_path>",
+          "_response_path": "<feature_path>"
+        },
+        "user_stories": [
+          {
+            "title": "DC-32: Ghi lịch sử dừng DV: khách bị dừng lần 2 → yêu cầu đặt cọc",
+            "description": "Là một Hệ thống (tự động), tôi cần ghi lịch sử dừng DV và tự động yêu cầu đặt cọc nếu khách bị dừng lần 2, để quản lý rủi ro.\n\n**Acceptance Criteria:**\nAC1: Lưu lịch sử dừng DV theo KH.\nAC2: Nếu lần 2 → đánh dấu yêu cầu đặt cọc.\nAC3: Thông báo cho Kế toán và Sales.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          },
+          {
+            "title": "DC-42: Xử lý khi khách thanh toán sau khi bị dừng dịch vụ",
+            "description": "Là một Kế toán doanh thu, tôi muốn hệ thống hỗ trợ xử lý khi khách thanh toán sau khi bị dừng DV: ghi nhận TT, thông báo Phòng mua khôi phục, để nối lại dịch vụ nhanh chóng.\n\n**Acceptance Criteria:**\nAC1: Ghi nhận thanh toán.\nAC2: Thông báo Phòng mua khôi phục DV.\nAC3: Cập nhật trạng thái HĐ.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          },
+          {
+            "title": "DC-43: Phòng mua khôi phục dịch vụ trên Console, cập nhật trạng thái",
+            "description": "Là một Nhân viên Phòng mua, tôi muốn nhận yêu cầu khôi phục DV, thực thi trên Console, và cập nhật kết quả, để nối lại dịch vụ cho khách.\n\n**Acceptance Criteria:**\nAC1: Nhận yêu cầu khôi phục.\nAC2: Thực thi trên Console hãng.\nAC3: Cập nhật trạng thái \"Đã khôi phục\".",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          },
+          {
+            "title": "DC-44: Yêu cầu đặt cọc khi khách bị dừng lần 2",
+            "description": "Là một Kế toán doanh thu, tôi muốn hệ thống tự động yêu cầu đặt cọc khi khách bị dừng DV lần 2, để giảm rủi ro công nợ.\n\n**Acceptance Criteria:**\nAC1: Phát hiện lịch sử dừng lần 2.\nAC2: Yêu cầu đặt cọc % theo cấu hình.\nAC3: Chặn khôi phục nếu chưa đặt cọc.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_comment": "=== EP-11 ===",
+    "epic": {
+      "title": "EP-11 Legal Process — Quy trình pháp lý",
+      "type": "Task",
+      "type_id": 188,
+      "parent_path": "000002",
+      "_response_path": "<epic_path>"
+    },
+    "features": [
+      {
+        "feature": {
+          "title": "Template & soạn thảo văn bản pháp lý",
+          "type": "Task",
+          "type_id": 190,
+          "parent_path": "<epic_path>",
+          "_response_path": "<feature_path>"
+        },
+        "user_stories": [
+          {
+            "title": "DC-33: Template công văn nhắc nợ/chấm dứt HĐ tự động điền thông tin",
+            "description": "Là một Nhân viên Pháp lý (Legal), tôi muốn hệ thống cung cấp template công văn nhắc nợ/chấm dứt HĐ tự động điền thông tin hợp đồng, để không phải soạn từ đầu mỗi lần.\n\n**Acceptance Criteria:**\nAC1: Template riêng cho từng HĐ (nếu có).\nAC2: Tự động điền: tên KH, MST, địa chỉ, số tiền, ngày.\nAC3: Cho phép Legal chỉnh sửa trước khi gửi.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          },
+          {
+            "title": "DC-34: Thông báo cho Legal soạn văn bản chấm dứt HĐ vào Ngày X+15",
+            "description": "Là một Hệ thống (tự động), tôi cần thông báo cho Legal soạn văn bản chấm dứt HĐ vào Ngày X+15, để kịp tiến độ pháp lý.\n\n**Acceptance Criteria:**\nAC1: Tự động gửi thông báo Ngày X+15.\nAC2: Đính kèm thông tin KH và HĐ.\nAC3: Link đến template công văn.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          },
+          {
+            "title": "DC-35: Legal soạn văn bản chấm dứt HĐ theo template riêng",
+            "description": "Là một Nhân viên Pháp lý (Legal), tôi muốn soạn văn bản chấm dứt HĐ dựa trên template riêng của từng hợp đồng, để đúng điều khoản pháp lý.\n\n**Acceptance Criteria:**\nAC1: Chọn template từ HĐ.\nAC2: Điền thông tin tự động.\nAC3: Cho phép sửa tay.\nAC4: Lưu bản nháp và phiên bản.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          }
+        ]
+      },
+      {
+        "feature": {
+          "title": "Gửi công văn & chấm dứt hợp đồng",
+          "type": "Task",
+          "type_id": 190,
+          "parent_path": "<epic_path>",
+          "_response_path": "<feature_path>"
+        },
+        "user_stories": [
+          {
+            "title": "DC-36: Gửi công văn song song bản cứng + email",
+            "description": "Là một Nhân viên Pháp lý (Legal), tôi muốn hệ thống hỗ trợ gửi công văn song song: bản cứng (bưu điện) + email (PDF), để đảm bảo khách nhận được.\n\n**Acceptance Criteria:**\nAC1: Gửi email PDF cho khách.\nAC2: Tạo yêu cầu gửi bản cứng cho HCNS.\nAC3: Ghi log gửi.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          },
+          {
+            "title": "DC-37: Legal thực hiện đơn phương chấm dứt HĐ, khởi kiện Ngày X+30",
+            "description": "Là một Nhân viên Pháp lý (Legal), tôi muốn hệ thống nhắc và hỗ trợ thực hiện đơn phương chấm dứt HĐ, khởi kiện theo điều khoản HĐ vào Ngày X+30, để xử lý dứt điểm công nợ.\n\n**Acceptance Criteria:**\nAC1: Thông báo Ngày X+30.\nAC2: Cung cấp template khởi kiện.\nAC3: Ghi log trạng thái pháp lý.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_comment": "=== EP-12 ===",
+    "epic": {
+      "title": "EP-12 Audit & Dashboard — Kiểm soát & Dashboard công nợ",
+      "type": "Task",
+      "type_id": 188,
+      "parent_path": "000002",
+      "_response_path": "<epic_path>"
+    },
+    "features": [
+      {
+        "feature": {
+          "title": "Audit trail toàn bộ quy trình",
+          "type": "Task",
+          "type_id": 190,
+          "parent_path": "<epic_path>",
+          "_response_path": "<feature_path>"
+        },
+        "user_stories": [
+          {
+            "title": "DC-38: Lưu lịch sử toàn bộ quy trình thu hồi công nợ",
+            "description": "Là một Quản lý/Kế toán trưởng, tôi muốn hệ thống lưu lịch sử toàn bộ quy trình: xuất HĐ, gửi ĐNTT, nhắc nợ, lãi phạt, yêu cầu dừng, xác nhận, thực thi, công văn, để truy vết khi có tranh chấp.\n\n**Acceptance Criteria:**\nAC1: Ghi log mọi hành động trong quy trình.\nAC2: Log bao gồm: người thực hiện, thời gian, hành động.\nAC3: Hiển thị timeline đầy đủ cho từng KH.\nAC4: Không cho phép xóa/sửa log.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          }
+        ]
+      },
+      {
+        "feature": {
+          "title": "Dashboard & cảnh báo công nợ",
+          "type": "Task",
+          "type_id": 190,
+          "parent_path": "<epic_path>",
+          "_response_path": "<feature_path>"
+        },
+        "user_stories": [
+          {
+            "title": "DC-39: Dashboard tổng nợ quá hạn, số khách, phân loại giai đoạn",
+            "description": "Là một Kế toán trưởng, tôi muốn dashboard hiển thị tổng nợ quá hạn, số khách, phân loại theo giai đoạn (ĐNTT, nhắc nợ, dừng DV, pháp lý), để nắm tổng quan công nợ.\n\n**Acceptance Criteria:**\nAC1: Tổng nợ quá hạn (VND).\nAC2: Số khách quá hạn.\nAC3: Phân loại theo giai đoạn (biểu đồ/bảng).\nAC4: Click vào từng giai đoạn xem chi tiết.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          },
+          {
+            "title": "DC-40: Dashboard khách quá hạn thuộc quyền Sales AM",
+            "description": "Là một Sales AM, tôi muốn dashboard hiển thị khách quá hạn thuộc quyền, số tiền, số ngày quá hạn, giai đoạn hiện tại, để ưu tiên xử lý.\n\n**Acceptance Criteria:**\nAC1: Danh sách KH quá hạn của Sales AM.\nAC2: Số tiền, số ngày QH, giai đoạn.\nAC3: Sắp xếp theo mức độ khẩn cấp.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          },
+          {
+            "title": "DC-41: Cảnh báo khi khách đến giai đoạn dừng DV hoặc chấm dứt HĐ",
+            "description": "Là một Hệ thống (tự động), tôi cần cảnh báo khi khách đến giai đoạn dừng DV hoặc chấm dứt HĐ, để các bên liên quan xử lý kịp thời.\n\n**Acceptance Criteria:**\nAC1: Cảnh báo khi đến Ngày X+4 (dừng DV).\nAC2: Cảnh báo khi đến Ngày X+15 (pháp lý).\nAC3: Cảnh báo khi đến Ngày X+30 (chấm dứt HĐ).\nAC4: Gửi thông báo cho Kế toán, Sales, Legal.",
+            "type": "Task",
+            "type_id": 390,
+            "parent_path": "<feature_path>"
+          }
+        ]
+      }
+    ]
+  }
+]

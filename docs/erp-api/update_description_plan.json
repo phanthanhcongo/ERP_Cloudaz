@@ -1,0 +1,547 @@
+[
+  {
+    "node_id": 797,
+    "story_id": "BD-01",
+    "description": "Là một Kế toán doanh thu, tôi muốn hệ thống tự động kết nối và lấy dữ liệu cước hàng tháng từ Google Cloud Console cho tất cả khách hàng GCP (~70-80 khách, ~94 billing ID, ~600+ project), để không phải copy-paste thủ công từng khách."
+  },
+  {
+    "node_id": 798,
+    "story_id": "BD-02",
+    "description": "Là một Kế toán doanh thu, tôi muốn hệ thống kết nối và lấy dữ liệu cước GMP từ các billing link (1 link chứa nhiều project/khách), để không phải vào từng link riêng lẻ."
+  },
+  {
+    "node_id": 799,
+    "story_id": "BD-08",
+    "description": "Là một Kế toán doanh thu, tôi muốn hệ thống kết nối AWS Billing Console/Cost Explorer để lấy dữ liệu cước, để quản lý tập trung tất cả hãng cloud trên 1 hệ thống."
+  },
+  {
+    "node_id": 800,
+    "story_id": "BD-09",
+    "description": "Là một Kế toán doanh thu, tôi muốn hệ thống kết nối DigitalOcean Billing API để lấy dữ liệu cước, để quản lý tập trung tất cả hãng cloud trên 1 hệ thống."
+  },
+  {
+    "node_id": 802,
+    "story_id": "BD-03",
+    "description": "Là một Kế toán doanh thu, tôi muốn hệ thống tự động tải và xử lý file CSV tổng từ Google Workspace Console cho tất cả domain GWS Flex, để không phải parse Excel thủ công."
+  },
+  {
+    "node_id": 803,
+    "story_id": "BD-04",
+    "description": "Là một Kế toán doanh thu, tôi muốn hệ thống parse đúng cấu trúc 2 sheets của file Excel GCP/GMP (Sheet 0: Project Number, Sheet 1: Billing ID), để dữ liệu được ánh xạ chính xác."
+  },
+  {
+    "node_id": 804,
+    "story_id": "BD-05",
+    "description": "Là một Kế toán doanh thu, tôi muốn hệ thống lưu trữ song song dữ liệu theo Billing ID (~94 dòng) và theo Project (~600+ dòng), để có thể tra cứu và đối soát ở cả 2 cấp độ."
+  },
+  {
+    "node_id": 805,
+    "story_id": "BD-06",
+    "description": "Là một Kế toán doanh thu, tôi muốn hệ thống tự động lọc bỏ dòng GWS Committed khi domain có cả 2 gói Flex và Commit, để không tính trùng cước."
+  },
+  {
+    "node_id": 807,
+    "story_id": "BD-07",
+    "description": "Là một Kế toán doanh thu, tôi muốn hệ thống cho phép nhập tỷ giá USD-VND (mặc định Techcombank ngày cuối tháng, có thể cấu hình riêng theo HĐ), để quy đổi cước chính xác theo điều khoản từng hợp đồng."
+  },
+  {
+    "node_id": 810,
+    "story_id": "BD-10",
+    "description": "Là một Kế toán doanh thu, tôi muốn hệ thống tự động phát hiện và tách riêng lượng dùng Gemini API cho từng khách GCP (group by Service), để tính cước Gemini riêng biệt không bị ảnh hưởng bởi discount."
+  },
+  {
+    "node_id": 811,
+    "story_id": "BD-15",
+    "description": "Là một Kế toán doanh thu, tôi muốn xác nhận GMP không có Credit và Gemini API, để không áp dụng sai logic tính cước cho dịch vụ này."
+  },
+  {
+    "node_id": 813,
+    "story_id": "BD-11",
+    "description": "Là một Kế toán doanh thu, tôi muốn hệ thống tự động phát hiện Credit Promotion trên Console từng khách GCP (bằng cách so sánh số khi bật/tắt tích credit), để không bỏ sót credit."
+  },
+  {
+    "node_id": 814,
+    "story_id": "BD-14",
+    "description": "Là một Hệ thống (tự động), tôi cần cảnh báo khi phát hiện credit chưa được phân loại/xác nhận trước khi gửi bill cho khách, để tránh gửi sai số liệu."
+  },
+  {
+    "node_id": 815,
+    "story_id": "BD-62",
+    "description": "Là một Kế toán doanh thu, tôi muốn hệ thống hiển thị danh sách khách có credit promotion trong tháng (~10-15 khách GG/tháng), để biết khách nào cần xử lý credit."
+  },
+  {
+    "node_id": 816,
+    "story_id": "BD-64",
+    "description": "Là một Kế toán doanh thu, tôi muốn hệ thống nhắc nhở bỏ chọn tích Promotion Credit trên Console trước khi lấy số (credit thuộc công ty), để không lấy sai số liệu."
+  },
+  {
+    "node_id": 818,
+    "story_id": "BD-12",
+    "description": "Là một Kế toán doanh thu, tôi muốn hệ thống tự động xuất danh sách khách hàng có credit trong tháng (~10-15 khách) và gửi cho Ban Giám Đốc/Sale xác nhận, để biết credit thuộc về khách hay công ty."
+  },
+  {
+    "node_id": 819,
+    "story_id": "BD-13",
+    "description": "Là một Kế toán doanh thu, tôi muốn hệ thống hỗ trợ trường hợp chia credit (VD: 4.000 credit → 2.500 cho khách, 1.500 giữ lại), để xử lý linh hoạt theo từng tình huống thực tế."
+  },
+  {
+    "node_id": 820,
+    "story_id": "BD-63",
+    "description": "Là một Hệ thống (tự động), tôi cần gửi danh sách khách có credit cho Ban Giám Đốc/Sale xác nhận: credit thuộc về khách hay thuộc về CloudAZ/Cloudino."
+  },
+  {
+    "node_id": 821,
+    "story_id": "BD-65",
+    "description": "Là một Kế toán doanh thu, tôi muốn hệ thống hỗ trợ check thủ công từng trường hợp credit (vì không có danh sách cố định), để xử lý linh hoạt."
+  },
+  {
+    "node_id": 824,
+    "story_id": "BD-17",
+    "description": "Là một Kế toán doanh thu, tôi muốn hệ thống tính cước GCP tự động theo công thức: Thu khách = (Usage_total - Gemini) × (1 - Discount%) + Gemini + VAT GG + PDV - Credit, để không phải tính tay từng khách."
+  },
+  {
+    "node_id": 825,
+    "story_id": "BD-18",
+    "description": "Là một Kế toán doanh thu, tôi muốn hệ thống tính cước GMP tự động theo công thức: Thu khách = Lượng dùng USD × (1 - Discount%) + PDV, để không phải tính tay."
+  },
+  {
+    "node_id": 826,
+    "story_id": "BD-19",
+    "description": "Là một Kế toán doanh thu, tôi muốn hệ thống tính cước GWS Flex tự động theo SKU pricing và công thức proration theo ngày, để không phải tính thủ công từng domain."
+  },
+  {
+    "node_id": 827,
+    "story_id": "BD-25",
+    "description": "Là một Kế toán doanh thu, tôi muốn hệ thống hỗ trợ công thức GWS Flex cũ (amount = Excel.Amount × 100/80) cho các kỳ cước trước 02/2024, để tra cứu bill lịch sử chính xác."
+  },
+  {
+    "node_id": 829,
+    "story_id": "BD-20",
+    "description": "Là một Kế toán doanh thu, tôi muốn hệ thống tự động quy đổi thu khách từ USD sang VND (floor) và làm tròn đến hàng đơn vị, để số liệu chính xác và khớp với hóa đơn."
+  },
+  {
+    "node_id": 830,
+    "story_id": "BD-21",
+    "description": "Là một Kế toán doanh thu, tôi muốn hệ thống tự động tính thuế GTGT đầu ra (10% đa phần) và hỗ trợ dịch vụ Không chịu thuế (KCT) như Bubble, để xuất hóa đơn đúng quy định."
+  },
+  {
+    "node_id": 831,
+    "story_id": "BD-22",
+    "description": "Là một Kế toán doanh thu, tôi muốn hệ thống hỗ trợ flag vat_gross và fct_gross (tính trên gross: 1/(1-rate)×rate), để áp dụng đúng cho các hợp đồng có điều khoản đặc biệt."
+  },
+  {
+    "node_id": 833,
+    "story_id": "BD-23",
+    "description": "Là một Quản trị viên, tôi muốn hệ thống ánh xạ đúng các field hợp đồng GCP (billing_id, project_number, discount, vat, vat_gross, fct, fct_gross, rate) vào công thức tính cước, để đảm bảo tính chính xác cho từng khách."
+  },
+  {
+    "node_id": 836,
+    "story_id": "BD-26",
+    "description": "Là một Kế toán doanh thu, tôi muốn hệ thống tự động sinh bảng đối soát chi phí dạng XLSX từ template trên S3 (riêng từng dịch vụ, từng khách), để không phải tự tạo Excel thủ công."
+  },
+  {
+    "node_id": 837,
+    "story_id": "BD-27",
+    "description": "Là một Kế toán doanh thu, tôi muốn hệ thống tự động cộng tổng tất cả project của cùng 1 khách (dựa trên Project number matching với contract), để không phải gộp thủ công."
+  },
+  {
+    "node_id": 838,
+    "story_id": "BD-28",
+    "description": "Là một Kế toán doanh thu, tôi muốn hệ thống tự động gộp dữ liệu từ nhiều billing ID vào cùng 1 bảng đối soát cho khách có nhiều billing account, để không phải gộp thủ công."
+  },
+  {
+    "node_id": 839,
+    "story_id": "BD-31",
+    "description": "Là một Kế toán doanh thu, tôi muốn hệ thống xử lý làm tròn chính xác (đến hàng đồng VND), giải quyết lỗi rounding hiện tại của CM, để số liệu khớp với hóa đơn và không mất thời gian sửa lỗi."
+  },
+  {
+    "node_id": 840,
+    "story_id": "BD-32",
+    "description": "Là một Kế toán doanh thu, tôi muốn hệ thống hỗ trợ khách có nhiều pháp nhân (VD: 1 HĐ → 9 công ty): tính riêng file, gửi riêng, xuất hóa đơn riêng cho từng pháp nhân, để xử lý đúng theo yêu cầu của khách."
+  },
+  {
+    "node_id": 841,
+    "story_id": "BD-33",
+    "description": "Là một Kế toán doanh thu, tôi muốn hệ thống xuất bảng đối soát dưới dạng PDF (ngoài XLSX), để gửi cho khách dưới định dạng không chỉnh sửa được."
+  },
+  {
+    "node_id": 843,
+    "story_id": "BD-29",
+    "description": "Là một Kế toán doanh thu, tôi muốn hệ thống cho phép sửa trực tiếp số liệu trên bảng đối soát (điều chỉnh credit, lỗi rounding, phí dịch vụ) trước khi gửi khách, để linh hoạt xử lý các trường hợp đặc biệt."
+  },
+  {
+    "node_id": 844,
+    "story_id": "BD-30",
+    "description": "Là một Kế toán doanh thu, tôi muốn hệ thống tự động so khớp số ERP gen ra với bảng tính tay của mình, highlight các dòng lệch, để phát hiện sai sót trước khi gửi khách."
+  },
+  {
+    "node_id": 846,
+    "story_id": "BD-34",
+    "description": "Là một Kế toán doanh thu, tôi muốn hệ thống tự động gửi email bảng đối soát (PDF/XLSX) kèm screenshot lượng dùng cho khách theo danh sách email đã đăng ký trên hợp đồng, để không phải gửi thủ công từng email."
+  },
+  {
+    "node_id": 847,
+    "story_id": "BD-35",
+    "description": "Là một Kế toán doanh thu, tôi muốn hệ thống gửi riêng từng email cho mỗi dịch vụ (GWS, GCP, GMP) theo thời điểm có invoice, để khách nhận được bảng đối soát đúng dịch vụ đúng thời điểm."
+  },
+  {
+    "node_id": 848,
+    "story_id": "BD-36",
+    "description": "Là một Hệ thống (tự động), tôi cần tự động gửi email nhắc nhở sau 02 ngày làm việc khách chưa xác nhận, và tự động chốt số liệu sau 01 ngày nhắc nhở, để không bị chậm tiến độ xuất hóa đơn."
+  },
+  {
+    "node_id": 849,
+    "story_id": "BD-37",
+    "description": "Là một Kế toán doanh thu, tôi muốn hệ thống ghi nhận xác nhận của khách qua 2 hình thức: phản hồi email hoặc chuyển khoản thanh toán, để không bỏ sót xác nhận từ khách."
+  },
+  {
+    "node_id": 850,
+    "story_id": "BD-38",
+    "description": "Là một Kế toán doanh thu, tôi muốn hệ thống tự động xuất hóa đơn ngay sau khi khách xác nhận, không cần bước phê duyệt trung gian, để rút ngắn thời gian xử lý."
+  },
+  {
+    "node_id": 853,
+    "story_id": "BD-39",
+    "description": "Là một Kế toán doanh thu, tôi muốn khi khách phản hồi lệch cước, hệ thống cho phép mở bảng đối soát, sửa đổi trực tiếp và gửi lại bản cập nhật, để xử lý tranh chấp nhanh chóng."
+  },
+  {
+    "node_id": 854,
+    "story_id": "BD-40",
+    "description": "Là một Kế toán doanh thu, tôi muốn dịch vụ nào có tranh chấp thì xử lý riêng, dịch vụ khác vẫn chốt bình thường — không cần chờ đồng thời, để không bị chậm toàn bộ tiến độ."
+  },
+  {
+    "node_id": 855,
+    "story_id": "BD-43",
+    "description": "Là một Kế toán doanh thu/Quản lý, tôi muốn hệ thống lưu lịch sử tất cả chỉnh sửa dispute (ai sửa, lúc nào, giá trị trước/sau), để tra cứu khi cần."
+  },
+  {
+    "node_id": 857,
+    "story_id": "BD-41",
+    "description": "Là một Kế toán doanh thu, tôi muốn khi phát hiện lệch cước sau khi đã xuất hóa đơn VAT, hệ thống hỗ trợ gửi biên bản điều chỉnh và phát hành hóa đơn điều chỉnh tăng/giảm, để xử lý sai sót kịp thời."
+  },
+  {
+    "node_id": 858,
+    "story_id": "BD-42",
+    "description": "Là một Kế toán doanh thu, tôi muốn hệ thống cho phép điều chỉnh chênh lệch vào kỳ cước tiếp theo thay vì hủy/sửa hóa đơn đã xuất, để giảm thủ tục hành chính."
+  },
+  {
+    "node_id": 861,
+    "story_id": "BD-44",
+    "description": "Là một Quản trị viên, tôi muốn cấu hình cho từng hợp đồng: tên KH, mã KH, dịch vụ, discount, PDV, VAT GG, thời gian đối soát, thời hạn TT, hồ sơ TT, để hệ thống áp dụng đúng điều khoản."
+  },
+  {
+    "node_id": 862,
+    "story_id": "BD-45",
+    "description": "Là một Kế toán doanh thu, tôi muốn hệ thống hỗ trợ khách thay đổi pháp nhân: giữ nguyên số liệu, thay đổi pháp nhân xuất hóa đơn, liên kết với hợp đồng mới, để xử lý khi khách thay đổi pháp nhân thường xuyên."
+  },
+  {
+    "node_id": 863,
+    "story_id": "BD-46",
+    "description": "Là một Kế toán doanh thu, tôi muốn hệ thống hỗ trợ 1 hợp đồng có nhiều pháp nhân (VD: 1 HĐ → 9 công ty): tính riêng, gửi riêng, xuất hóa đơn riêng, để xử lý đúng theo cấu trúc khách hàng."
+  },
+  {
+    "node_id": 864,
+    "story_id": "BD-47",
+    "description": "Là một Hệ thống (tự động), tôi cần thông báo cho kế toán khi có thay đổi hợp đồng/phụ lục (hiện kế toán chỉ biết qua CC mail), để kế toán cập nhật kịp thời."
+  },
+  {
+    "node_id": 866,
+    "story_id": "BD-16",
+    "description": "Là một Quản trị viên/Kế toán trưởng, tôi muốn cấu hình công thức tính cước riêng cho từng khách hàng, từng hợp đồng (discount, VAT GG, PDV), để áp dụng đúng điều khoản thương mại đã ký."
+  },
+  {
+    "node_id": 867,
+    "story_id": "BD-24",
+    "description": "Là một Quản trị viên, tôi muốn hệ thống cho phép cập nhật/thay đổi công thức tính khi có phụ lục hợp đồng mới (VD: thay đổi thuế phí), để luôn áp dụng đúng điều khoản hiện tại."
+  },
+  {
+    "node_id": 868,
+    "story_id": "BD-48",
+    "description": "Là một Kế toán doanh thu, tôi muốn cấu hình ngân hàng lấy tỷ giá và thời điểm lấy tỷ giá riêng cho từng hợp đồng (theo điều khoản HĐ), để quy đổi đúng theo thỏa thuận."
+  },
+  {
+    "node_id": 869,
+    "story_id": "BD-49",
+    "description": "Là một Quản trị viên, tôi muốn hệ thống ánh xạ đúng các field hợp đồng GMP (billing_id, project_number, discount, vat, vat_gross, fct, fct_gross, rate) vào công thức tính cước."
+  },
+  {
+    "node_id": 870,
+    "story_id": "BD-50",
+    "description": "Là một Quản trị viên, tôi muốn hệ thống ánh xạ đúng các field hợp đồng GWS Flex (domain, plan, SKU, license quantity) vào công thức tính cước."
+  },
+  {
+    "node_id": 872,
+    "story_id": "BD-51",
+    "description": "Là một Kế toán doanh thu, tôi muốn hệ thống quản lý timeline tính cước theo từng dịch vụ: GWS (ngày 1-3), GCP (ngày 1-6), GMP (ngày 6-10), để biết thứ tự ưu tiên xử lý."
+  },
+  {
+    "node_id": 873,
+    "story_id": "BD-52",
+    "description": "Là một Hệ thống (tự động), tôi cần cảnh báo khi hóa đơn hãng về chậm so với deadline cam kết gửi khách, để kế toán chủ động xử lý."
+  },
+  {
+    "node_id": 874,
+    "story_id": "BD-53",
+    "description": "Là một Kế toán doanh thu, tôi muốn hệ thống gửi thông báo trễ cho khách khi invoice về chậm hơn deadline hợp đồng (không gửi số tạm tính), để giữ uy tín với khách."
+  },
+  {
+    "node_id": 875,
+    "story_id": "BD-54",
+    "description": "Là một Kế toán doanh thu, tôi muốn hệ thống chờ đến đầu tháng kế tiếp khi nhận invoice hãng mới tính chi phí cho khách hủy dịch vụ giữa tháng, để có số liệu chính xác."
+  },
+  {
+    "node_id": 876,
+    "story_id": "BD-55",
+    "description": "Là một Kế toán doanh thu, tôi muốn hệ thống hỗ trợ deadline đặc biệt mùng 7 cho BeatVN (GCP) và Pharmacity (GMP), để gửi bill trước cho 2 khách đặc biệt này."
+  },
+  {
+    "node_id": 879,
+    "story_id": "BD-56",
+    "description": "Là một Kế toán doanh thu, tôi muốn hệ thống lưu trữ tập trung toàn bộ lịch sử bill, bảng đối soát, hóa đơn trên S3 theo khách hàng/tháng/dịch vụ, để không phải lưu trên PC cá nhân."
+  },
+  {
+    "node_id": 880,
+    "story_id": "BD-57",
+    "description": "Là một Kế toán doanh thu/Sales AM, tôi muốn tra cứu bill lịch sử theo bộ lọc: khách hàng, tháng/năm, dịch vụ, để dễ dàng tìm lại thông tin cũ."
+  },
+  {
+    "node_id": 881,
+    "story_id": "BD-58",
+    "description": "Là một Kế toán doanh thu/Quản lý, tôi muốn hệ thống lưu tất cả lần gửi/sửa của cùng 1 bảng đối soát (versioning), để tra cứu được các phiên bản cũ khi cần."
+  },
+  {
+    "node_id": 882,
+    "story_id": "BD-59",
+    "description": "Là một Quản lý/Kế toán trưởng, tôi muốn xuất file Excel tổng hợp số cuối của toàn bộ khách hàng trong tháng, để phục vụ báo cáo và đối chiếu tổng thể."
+  },
+  {
+    "node_id": 884,
+    "story_id": "BD-60",
+    "description": "Là một Hệ thống (tự động) và Quản lý, chúng tôi cần ghi log mọi thay đổi trên bảng đối soát: ai sửa, lúc nào, giá trị trước/sau, để truy vết khi cần."
+  },
+  {
+    "node_id": 885,
+    "story_id": "BD-61",
+    "description": "Là một Kế toán doanh thu, tôi muốn sửa tay số liệu mà không cần ghi lý do (hiện tại đã làm vậy), hệ thống tự động ghi nhận hành vi để truy vết khi cần."
+  },
+  {
+    "node_id": 888,
+    "story_id": "DC-01",
+    "description": "Là một Kế toán doanh thu, tôi muốn hệ thống tự động sinh hóa đơn VAT cho từng khách hàng dựa trên bảng đối soát chi phí đã chốt (khách xác nhận hoặc quá hạn xác nhận), để không phải xuất hóa đơn thủ công."
+  },
+  {
+    "node_id": 889,
+    "story_id": "DC-02",
+    "description": "Là một Kế toán doanh thu, tôi muốn hệ thống xuất hóa đơn riêng cho từng pháp nhân khi khách chia nhiều pháp nhân (VD: 1 HĐ → 9 công ty), để đúng pháp nhân xuất hóa đơn."
+  },
+  {
+    "node_id": 890,
+    "story_id": "DC-03",
+    "description": "Là một Kế toán doanh thu, tôi muốn hệ thống hỗ trợ thay đổi pháp nhân xuất hóa đơn (giữ nguyên số liệu), để xử lý khi khách thay đổi pháp nhân thường xuyên."
+  },
+  {
+    "node_id": 891,
+    "story_id": "DC-04",
+    "description": "Là một Kế toán doanh thu, tôi muốn hệ thống cho phép kiểm tra và điều chỉnh hóa đơn trước khi phát hành chính thức, để tránh sai sót."
+  },
+  {
+    "node_id": 892,
+    "story_id": "DC-05",
+    "description": "Là một Kế toán doanh thu, tôi muốn hệ thống hỗ trợ xuất hóa đơn điều chỉnh (tăng/giảm) khi sai sót sau phát hành, để xử lý theo quy định thuế."
+  },
+  {
+    "node_id": 893,
+    "story_id": "DC-06",
+    "description": "Là một Kế toán doanh thu, tôi muốn hệ thống lưu lịch sử hóa đơn đã xuất theo khách/tháng/dịch vụ, để tra cứu khi cần."
+  },
+  {
+    "node_id": 895,
+    "story_id": "DC-07",
+    "description": "Là một Kế toán doanh thu, tôi muốn hệ thống tự động tạo ĐNTT từ hóa đơn đã phát hành (số tiền, hạn thanh toán, tài khoản NH, lãi chậm), để gửi khách ngay."
+  },
+  {
+    "node_id": 896,
+    "story_id": "DC-08",
+    "description": "Là một Kế toán doanh thu, tôi muốn hệ thống tự động xác định Ngày X dựa trên cấu hình thời hạn thanh toán trong hợp đồng từng khách, để không tính sai hạn."
+  },
+  {
+    "node_id": 897,
+    "story_id": "DC-09",
+    "description": "Là một Kế toán doanh thu, tôi muốn hệ thống gửi ĐNTT song song: email (PDF) cho khách + yêu cầu chuyển phát bản cứng cho HCNS, để đảm bảo khách nhận được."
+  },
+  {
+    "node_id": 898,
+    "story_id": "DC-10",
+    "description": "Là một Kế toán doanh thu, tôi muốn hệ thống quản lý danh sách email nhận ĐNTT theo hợp đồng, để gửi đúng người."
+  },
+  {
+    "node_id": 899,
+    "story_id": "DC-11",
+    "description": "Là một Kế toán doanh thu, tôi muốn hệ thống gộp nhiều hóa đơn các dịch vụ khác nhau (GCP, GMP, GWS) của cùng 1 khách vào 1 ĐNTT duy nhất, để khách chỉ nhận 1 lần."
+  },
+  {
+    "node_id": 901,
+    "story_id": "DC-12",
+    "description": "Là một Nhân viên HCNS, tôi muốn cập nhật trạng thái phát thư (ngày gửi, đơn vị CP, ngày phát thành công, người nhận), để Kế toán biết tình trạng."
+  },
+  {
+    "node_id": 902,
+    "story_id": "DC-13",
+    "description": "Là một Hệ thống (tự động), tôi cần gửi email thông báo cho Kế toán khi HCNS cập nhật ĐNTT bản cứng phát thành công, để Kế toán biết và theo dõi."
+  },
+  {
+    "node_id": 903,
+    "story_id": "DC-14",
+    "description": "Là một Hệ thống (tự động), tôi cần cảnh báo nếu quá 48h chưa có cập nhật trạng thái phát thư từ HCNS, để tránh thất lạc ĐNTT."
+  },
+  {
+    "node_id": 906,
+    "story_id": "DC-15",
+    "description": "Là một Kế toán doanh thu, tôi muốn hệ thống tự động gửi email cảnh báo vào Ngày X-2 cho khách (CC Sales AM), để nhắc khách thanh toán đúng hạn."
+  },
+  {
+    "node_id": 907,
+    "story_id": "DC-16",
+    "description": "Là một Hệ thống (tự động), tôi cần tự động kích hoạt luồng nhắc nợ khi quá Ngày X chưa thanh toán, để không bỏ sót khách quá hạn."
+  },
+  {
+    "node_id": 909,
+    "story_id": "DC-17",
+    "description": "Là một Kế toán doanh thu, tôi muốn hệ thống tự động gửi email nhắc nợ vào Ngày X+1 và hàng ngày sau đó cho khách chưa thanh toán, để không phải soạn email thủ công."
+  },
+  {
+    "node_id": 910,
+    "story_id": "DC-18",
+    "description": "Là một Kế toán doanh thu, tôi muốn email nhắc nợ bao gồm: thông báo quá hạn, số tiền, lãi chậm, thời gian dừng DV (X+4), thời gian chấm dứt HĐ (X+30), để khách biết rõ hậu quả."
+  },
+  {
+    "node_id": 911,
+    "story_id": "DC-19",
+    "description": "Là một Kế toán doanh thu, tôi muốn hệ thống hỗ trợ nhắc nợ tự động cho cả GWS Committed (license trả trước), để quản lý công nợ đồng bộ."
+  },
+  {
+    "node_id": 912,
+    "story_id": "DC-21",
+    "description": "Là một Kế toán doanh thu, tôi muốn hệ thống tự động tính lãi chậm dựa trên số ngày quá hạn và tỷ lệ % theo hợp đồng, cộng dồn hàng ngày, để không tính tay."
+  },
+  {
+    "node_id": 914,
+    "story_id": "DC-20",
+    "description": "Là một Quản lý, tôi muốn cấu hình luồng gửi email nhắc nợ: tự động gửi hoặc tạo nháp cho Sales AM duyệt trước, theo nhóm khách, để linh hoạt theo từng đối tượng."
+  },
+  {
+    "node_id": 915,
+    "story_id": "DC-22",
+    "description": "Là một Quản trị viên, tôi muốn cấu hình tỷ lệ lãi chậm thanh toán riêng cho từng hợp đồng, để áp dụng đúng điều khoản thương mại."
+  },
+  {
+    "node_id": 917,
+    "story_id": "DC-23",
+    "description": "Là một Sales AM, tôi muốn xem dashboard công nợ hiển thị danh sách khách quá hạn thuộc quyền quản lý của mình (số tiền, số ngày quá hạn), để chủ động đôn đốc."
+  },
+  {
+    "node_id": 918,
+    "story_id": "DC-24",
+    "description": "Là một Sales AM, tôi muốn gọi điện hoặc chat đôn đốc khách thanh toán (không gửi email nhắc nợ để tránh spam), và ghi nhận kết quả trên hệ thống."
+  },
+  {
+    "node_id": 921,
+    "story_id": "DC-25",
+    "description": "Là một Hệ thống (tự động), tôi cần gửi email cảnh báo dừng dịch vụ đến khách vào Ngày X+4, để khách có cơ hội thanh toán trước khi bị dừng."
+  },
+  {
+    "node_id": 922,
+    "story_id": "DC-26",
+    "description": "Là một Kế toán doanh thu, tôi muốn hệ thống tạo yêu cầu dừng DV gửi Sales AM xác nhận (sau Ngày X+4), để có sự đồng thuận trước khi dừng."
+  },
+  {
+    "node_id": 923,
+    "story_id": "DC-27",
+    "description": "Là một Sales AM, tôi muốn xác nhận hoặc từ chối yêu cầu dừng DV trên hệ thống (nếu từ chối phải ghi lý do), để kiểm soát việc dừng DV với khách hàng của mình."
+  },
+  {
+    "node_id": 924,
+    "story_id": "DC-31",
+    "description": "Là một Hệ thống (tự động), tôi cần chặn thao tác dừng DV nếu chưa có xác nhận từ Sales AM, để tránh dừng nhầm khách quan trọng."
+  },
+  {
+    "node_id": 926,
+    "story_id": "DC-28",
+    "description": "Là một Hệ thống (tự động), tôi cần gửi yêu cầu đến Phòng mua sau khi Sales AM xác nhận dừng DV, để Phòng mua thực thi trên Console hãng."
+  },
+  {
+    "node_id": 927,
+    "story_id": "DC-29",
+    "description": "Là một Nhân viên Phòng mua, tôi muốn nhận yêu cầu dừng DV, thực thi trên Console Google, và cập nhật kết quả lên hệ thống, để hoàn tất quy trình."
+  },
+  {
+    "node_id": 928,
+    "story_id": "DC-30",
+    "description": "Là một Hệ thống (tự động), tôi cần gửi email kết quả dừng DV cho Kế toán, Sales, Legal sau khi Phòng mua cập nhật, để các bên biết trạng thái."
+  },
+  {
+    "node_id": 930,
+    "story_id": "DC-32",
+    "description": "Là một Hệ thống (tự động), tôi cần ghi lịch sử dừng DV và tự động yêu cầu đặt cọc nếu khách bị dừng lần 2, để quản lý rủi ro."
+  },
+  {
+    "node_id": 931,
+    "story_id": "DC-42",
+    "description": "Là một Kế toán doanh thu, tôi muốn hệ thống hỗ trợ xử lý khi khách thanh toán sau khi bị dừng DV: ghi nhận TT, thông báo Phòng mua khôi phục, để nối lại dịch vụ nhanh chóng."
+  },
+  {
+    "node_id": 932,
+    "story_id": "DC-43",
+    "description": "Là một Nhân viên Phòng mua, tôi muốn nhận yêu cầu khôi phục DV, thực thi trên Console, và cập nhật kết quả, để nối lại dịch vụ cho khách."
+  },
+  {
+    "node_id": 933,
+    "story_id": "DC-44",
+    "description": "Là một Kế toán doanh thu, tôi muốn hệ thống tự động yêu cầu đặt cọc khi khách bị dừng DV lần 2, để giảm rủi ro công nợ."
+  },
+  {
+    "node_id": 936,
+    "story_id": "DC-33",
+    "description": "Là một Nhân viên Pháp lý (Legal), tôi muốn hệ thống cung cấp template công văn nhắc nợ/chấm dứt HĐ tự động điền thông tin hợp đồng, để không phải soạn từ đầu mỗi lần."
+  },
+  {
+    "node_id": 937,
+    "story_id": "DC-34",
+    "description": "Là một Hệ thống (tự động), tôi cần thông báo cho Legal soạn văn bản chấm dứt HĐ vào Ngày X+15, để kịp tiến độ pháp lý."
+  },
+  {
+    "node_id": 938,
+    "story_id": "DC-35",
+    "description": "Là một Nhân viên Pháp lý (Legal), tôi muốn soạn văn bản chấm dứt HĐ dựa trên template riêng của từng hợp đồng, để đúng điều khoản pháp lý."
+  },
+  {
+    "node_id": 940,
+    "story_id": "DC-36",
+    "description": "Là một Nhân viên Pháp lý (Legal), tôi muốn hệ thống hỗ trợ gửi công văn song song: bản cứng (bưu điện) + email (PDF), để đảm bảo khách nhận được."
+  },
+  {
+    "node_id": 941,
+    "story_id": "DC-37",
+    "description": "Là một Nhân viên Pháp lý (Legal), tôi muốn hệ thống nhắc và hỗ trợ thực hiện đơn phương chấm dứt HĐ, khởi kiện theo điều khoản HĐ vào Ngày X+30, để xử lý dứt điểm công nợ."
+  },
+  {
+    "node_id": 944,
+    "story_id": "DC-38",
+    "description": "Là một Quản lý/Kế toán trưởng, tôi muốn hệ thống lưu lịch sử toàn bộ quy trình: xuất HĐ, gửi ĐNTT, nhắc nợ, lãi phạt, yêu cầu dừng, xác nhận, thực thi, công văn, để truy vết khi có tranh chấp."
+  },
+  {
+    "node_id": 946,
+    "story_id": "DC-39",
+    "description": "Là một Kế toán trưởng, tôi muốn dashboard hiển thị tổng nợ quá hạn, số khách, phân loại theo giai đoạn (ĐNTT, nhắc nợ, dừng DV, pháp lý), để nắm tổng quan công nợ."
+  },
+  {
+    "node_id": 947,
+    "story_id": "DC-40",
+    "description": "Là một Sales AM, tôi muốn dashboard hiển thị khách quá hạn thuộc quyền, số tiền, số ngày quá hạn, giai đoạn hiện tại, để ưu tiên xử lý."
+  },
+  {
+    "node_id": 948,
+    "story_id": "DC-41",
+    "description": "Là một Hệ thống (tự động), tôi cần cảnh báo khi khách đến giai đoạn dừng DV hoặc chấm dứt HĐ, để các bên liên quan xử lý kịp thời."
+  }
+]
