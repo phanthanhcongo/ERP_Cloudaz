@@ -1,13 +1,7 @@
-"""
-Import Product Backlog vào ERP CloudAZ qua API.
-Logic: Depth-first — hoàn tất toàn bộ User Story của Feature N
-       trước khi tạo Feature N+1.
-
-Usage:
-  python import_backlog.py              # Dry-run (chỉ in, không gọi API)
-  python import_backlog.py --execute    # Thực thi gọi API
-"""
-import json, sys, time, requests
+import requests
+import json
+import time
+import sys
 from datetime import datetime
 
 if sys.version_info >= (3, 7):
@@ -15,7 +9,7 @@ if sys.version_info >= (3, 7):
 
 # === CONFIG ===
 API_URL = "https://erp.cloudaz.io/api/v1/projects/9/wbs"
-TOKEN = "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6ZmFsc2UsImVtYWlsIjoiY29uZy5wdEBjbG91ZGF6LmNjIiwiZXhwIjoxNzg3MzcyMDQ4LCJpYXQiOjE3ODcyODU2NDgsInBlcm1zIjoiQkFCQUFBQ0FBQUFBQUFBQUFnRGNBd0FBQUFBQUFBQTRoQUFBQUFBQUF3Iiwicm9sZSI6NSwic3ViIjo4NH0.imQog87cr-PUTmJJGGQkEmyhg0E4Z6e9T-OGQYEi5KEeAEZmujzgHHg1HYXM0L4MwEssOw3va5kVhdpS2bfqoVo4as5L_S483VSWW_mU8fppjv3FJHhJbvy2o6Yce3WAmwjGmUFhuTVEAT6QuKX5GN6If5vmIAZbocSr6KRUL4hae_Sl9EtexLXMwYqDr7vYH3XNmy07uH6aj2vgAqwlBo0tceV7wd_7wIgyix72gYekBHUBRcEERpV9aJenUVlfjvgK8iVd38hw8PdM_p_lP7HrX9E_Q1t81IOM_Ef2kGuEjGDPd3CdBvDAu-9vsSKJDimn1rqMYjh964l5KfSVeg"
+TOKEN = "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6ZmFsc2UsImVtYWlsIjoiY29uZy5wdEBjbG91ZGF6LmNjIiwiZXhwIjoxNzg3NjYwODQ5LCJpYXQiOjE3ODc1NzQ0NDksInBlcm1zIjoiQkFCQUFBQ0FBQUFBQUFBQUFnRGNBd0FBQUFBQUFBQTRoQUFBQUFBQUF3Iiwicm9sZSI6NSwic3ViIjo4NH0.S70Bg9E5R0pFvyEQYY8CGvdB6A9YT4PLgEiyGOIudZKZh4Dx4ChjTATKByPOSu98gLe-dOnXb0uSRGDSsPp9G8aTzT1L3w6VlKwQElZURI8rxdFdqAEKHzo9Nf2zAujBSnwWP-vyA8JVXblVSanoslO0o9KIozUit2PeeK9LnJgYh9b-5pNPiYiT1TeMFEWwkE4fWKu2XS6XVbI4707S09ayOuSTvspEF2TSVnsDBcQrUUlqRDCOpay7wFkFOQaM8LkFb_YFy00ZlHhppOlVaKTJZdrPIclQvjEWNMeYvJDGPRwDx8RSXPVZgIjL4c7Ff7czS3ozJhWMIDmBZ3JJsQ"
 HEADERS = {
     "Authorization": TOKEN,
     "Content-Type": "application/json"
@@ -23,47 +17,45 @@ HEADERS = {
 MAX_RETRIES = 3
 DELAY_BETWEEN_REQUESTS = 0.3  # seconds
 
-# === LOAD IMPORT PLAN ===
-plan_path = r"c:\Users\thanh\Desktop\ERP_Cloudaz\docs\erp-api\import_backlog_plan.json"
-log_path = r"c:\Users\thanh\Desktop\ERP_Cloudaz\docs\erp-api\import_result.json"
+# Dry run mode check
+DRY_RUN = "--execute" not in sys.argv
+if DRY_RUN:
+    print("⚠️ DRY RUN MODE: Chỉ in thông tin, không gọi API. Dùng '--execute' để thực thi thực sự.\n")
 
+# Load import plan
+plan_path = r"c:\Users\thanh\Desktop\ERP_Cloudaz\docs\erp-api\import_backlog_plan.json"
 with open(plan_path, "r", encoding="utf-8") as f:
     plan = json.load(f)
 
-# === MODE ===
-DRY_RUN = "--execute" not in sys.argv
-if DRY_RUN:
-    print("=" * 60)
-    print("🔍 DRY-RUN MODE — Chỉ in ra, KHÔNG gọi API")
-    print("   Thêm --execute để chạy thật")
-    print("=" * 60)
-else:
-    print("=" * 60)
-    print("🚀 EXECUTE MODE — Đang gọi API thật!")
-    print("=" * 60)
+print(f"📋 Loaded {len(plan)} Features từ import_backlog_plan.json")
 
-# === STATS ===
-stats = {"epic": 0, "feature": 0, "story": 0, "errors": 0}
-results = []  # log mọi task đã tạo
+# === HELPER ===
+stats = {"feature": 0, "story": 0, "errors": 0}
+results = []
 
 def create_task(payload, label, indent=0):
-    """Gọi API tạo 1 task. Retry tối đa 3 lần."""
     prefix = "  " * indent
-    # Loại bỏ field internal
-    body = {k: v for k, v in payload.items() if not k.startswith("_")}
+    body = {
+        "title": payload["title"],
+        "type": "Task",
+        "type_id": payload["type_id"],
+        "parent_path": payload["parent_path"]
+    }
+    if "description" in payload and payload["description"]:
+        body["description"] = payload["description"]
 
     if DRY_RUN:
-        print(f"{prefix}📋 [DRY] {label}: {body['title']}")
-        # Giả lập path cho dry-run
-        fake_path = body.get("parent_path", "000002") + ".000001"
-        return {"id": 0, "path": fake_path, "title": body["title"]}
+        fake_id = 9999
+        fake_path = f"{payload['parent_path']}.9999"
+        print(f"{prefix}📝 [DRY-RUN] {label}: {body['title']} (type_id={body['type_id']}, parent={body['parent_path']})")
+        return {"id": fake_id, "path": fake_path, "title": body["title"]}
 
     for attempt in range(1, MAX_RETRIES + 1):
         try:
             resp = requests.post(API_URL, headers=HEADERS, json=body, timeout=15)
             if resp.status_code == 201:
                 data = resp.json()["data"]
-                print(f"{prefix}✅ {label}: {body['title']} → id={data['id']}, path={data['path']}")
+                print(f"{prefix}✅ {label}: {body['title']} → id={data['id']}, path={data['path']} (type_id={data['type_id']})")
                 time.sleep(DELAY_BETWEEN_REQUESTS)
                 return data
             else:
@@ -81,81 +73,53 @@ def create_task(payload, label, indent=0):
     print(f"{prefix}💀 FAILED after {MAX_RETRIES} retries: {body['title']}")
     return None
 
-# === LIMIT & START ===
-START = 0   # skip N epic đầu (0-indexed)
-LIMIT = 12  # mặc định chạy hết
-for arg in sys.argv:
-    if arg.startswith("--limit="):
-        LIMIT = int(arg.split("=")[1])
-    if arg.startswith("--start="):
-        START = int(arg.split("=")[1])
-epics_to_run = plan[START:START + LIMIT]
-
-# === MAIN IMPORT LOOP (depth-first) ===
-total_epics = len(epics_to_run)
-print(f"\n📦 Bắt đầu import {total_epics}/{len(plan)} Epics...\n")
+# === MAIN IMPORT LOOP ===
+total_features = len(plan)
+print(f"\n📦 Bắt đầu import {total_features} Features & các User Stories bên trong...\n")
 start_time = datetime.now()
 
-for i, epic_entry in enumerate(epics_to_run, 1):
-    epic_payload = epic_entry["epic"]
+for i, feat_entry in enumerate(plan, 1):
+    feat_payload = feat_entry["feature"].copy()
     print(f"\n{'='*60}")
-    print(f"📦 EPIC {i}/12: {epic_payload['title']}")
+    print(f"📂 FEATURE {i}/{total_features}: {feat_payload['title']} (type_id=188)")
     print(f"{'='*60}")
 
-    # 1. Tạo Epic
-    epic_result = create_task(epic_payload, "EPIC", indent=0)
-    if epic_result is None:
-        print(f"⛔ Skip toàn bộ Epic {i} do lỗi tạo Epic")
+    # 1. Tạo Feature node (type_id=188) trực tiếp dưới Root 000002
+    feat_result = create_task(feat_payload, "FEATURE", indent=0)
+    if feat_result is None:
+        print(f"⛔ Skip toàn bộ Feature {i} do lỗi tạo Feature")
         continue
-    stats["epic"] += 1
-    results.append({"type": "epic", "id": epic_result["id"], "path": epic_result["path"], "title": epic_result["title"]})
+    stats["feature"] += 1
+    results.append({"type": "feature", "id": feat_result["id"], "path": feat_result["path"], "title": feat_result["title"]})
 
-    epic_path = epic_result["path"]
+    feat_path = feat_result["path"]
 
-    # 2. Với mỗi Feature (tuần tự)
-    for j, feat_entry in enumerate(epic_entry["features"], 1):
-        feat_payload = feat_entry["feature"].copy()
-        feat_payload["parent_path"] = epic_path  # Fill parent = epic
+    # 2. Tạo TẤT CẢ User Stories (type_id=190) trực tiếp dưới Feature này
+    for k, story_payload in enumerate(feat_entry["user_stories"], 1):
+        story_body = story_payload.copy()
+        story_body["parent_path"] = feat_path  # Fill parent = Feature path
 
-        print(f"\n  📂 FEATURE {j}/{len(epic_entry['features'])}: {feat_payload['title']}")
+        story_result = create_task(story_body, f"  US {k}/{len(feat_entry['user_stories'])} (type_id=190)", indent=1)
+        if story_result:
+            stats["story"] += 1
+            results.append({"type": "user_story", "id": story_result["id"], "path": story_result["path"], "title": story_result["title"]})
 
-        feat_result = create_task(feat_payload, "FEATURE", indent=1)
-        if feat_result is None:
-            print(f"  ⛔ Skip Feature {j} và các User Story bên trong")
-            continue
-        stats["feature"] += 1
-        results.append({"type": "feature", "id": feat_result["id"], "path": feat_result["path"], "title": feat_result["title"]})
-
-        feature_path = feat_result["path"]
-
-        # 3. Tạo TẤT CẢ User Story của Feature này TRƯỚC khi sang Feature kế
-        for k, story_payload in enumerate(feat_entry["user_stories"], 1):
-            story_body = story_payload.copy()
-            story_body["parent_path"] = feature_path  # Fill parent = feature
-
-            story_result = create_task(story_body, f"  US {k}/{len(feat_entry['user_stories'])}", indent=2)
-            if story_result:
-                stats["story"] += 1
-                results.append({"type": "user_story", "id": story_result["id"], "path": story_result["path"], "title": story_result["title"]})
-
-        print(f"  ✅ Feature '{feat_payload['title']}' — {len(feat_entry['user_stories'])} stories done")
-
-    print(f"✅ Epic {i} hoàn tất!")
+    print(f"✅ Feature '{feat_payload['title']}' — {len(feat_entry['user_stories'])} stories done")
 
 # === SUMMARY ===
 elapsed = (datetime.now() - start_time).total_seconds()
 print(f"\n{'='*60}")
-print(f"📊 KẾT QUẢ IMPORT")
+print("📊 KẾT QUẢ IMPORT")
 print(f"{'='*60}")
-print(f"  Epic:       {stats['epic']}/12")
-print(f"  Feature:    {stats['feature']}/33")
-print(f"  User Story: {stats['story']}/109")
+print(f"  Feature:    {stats['feature']}/{len(plan)} (type_id=188)")
+print(f"  User Story: {stats['story']}/30 (type_id=190)")
 print(f"  Errors:     {stats['errors']}")
 print(f"  Thời gian:  {elapsed:.1f}s")
-print(f"{'='*60}")
+print(f"{'='*60}\n")
 
-# Save result log
-if not DRY_RUN and results:
+# Save results log
+if not DRY_RUN:
+    log_path = r"c:\Users\thanh\Desktop\ERP_Cloudaz\docs\erp-api\import_result.json"
     with open(log_path, "w", encoding="utf-8") as f:
-        json.dump({"stats": stats, "elapsed_seconds": elapsed, "tasks": results}, f, ensure_ascii=False, indent=2)
-    print(f"\n💾 Log saved: {log_path}")
+        json.dump(results, f, ensure_ascii=False, indent=2)
+    print(f"💾 Log saved: {log_path}")
