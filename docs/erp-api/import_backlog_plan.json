@@ -219,22 +219,22 @@
     "user_stories": [
       {
         "id_code": "DC-01",
-        "title": "DC-01: Quản lý xuất hóa đơn VAT & Tích hợp phần mềm hóa đơn MISA (chữ ký số)",
-        "description": "Là một Kế toán doanh thu, tôi muốn kết xuất dữ liệu bảng cước đã chốt sang phần mềm MISA để ký số phát hành hóa đơn VAT và nhận tự động số hóa đơn điện tử về ERP, để quản lý hóa đơn tập trung mà không phải nhập tay.",
+        "title": "DC-01: Ký phát hành hóa đơn VAT sau thanh toán & Đồng bộ số hóa đơn",
+        "description": "Là một Kế toán doanh thu, tôi muốn sau khi khách hàng đã thanh toán thành công, tôi tiến hành cắm USB Token để ký số phát hành chính thức hóa đơn điện tử trên MISA và đồng bộ số hóa đơn, file PDF về ERP để hoàn tất hồ sơ thu nợ.",
         "type": "Task",
         "type_id": 190
       },
       {
         "id_code": "DC-02",
-        "title": "DC-02: Lập & gộp Bộ chứng từ Đề nghị thanh toán (hỗ trợ nhiều hợp đồng & gộp đa dịch vụ)",
-        "description": "Là một Kế toán doanh thu, tôi muốn lập Bộ chứng từ Đề nghị thanh toán từ các hóa đơn VAT đã phát hành (hoặc đính kèm file ĐNTT từ hệ thống CM), hỗ trợ gộp nhiều hợp đồng hoặc nhiều hóa đơn dịch vụ của cùng một khách hàng thành một đợt thu tiền duy nhất và xác định mốc hạn thanh toán (Ngày X), để bàn giao bộ chứng từ hoàn chỉnh cho bộ phận Hành chính nhân sự phát bản cứng.",
+        "title": "DC-02: Lập Bộ chứng từ ĐNTT & Đẩy hóa đơn nháp lên MISA",
+        "description": "Là một Kế toán doanh thu, tôi muốn từ dữ liệu cước đã chốt (hoặc dữ liệu CM) để tự động đẩy hóa đơn nháp lên MISA nhằm ghi nhận công nợ dự kiến và gộp Bộ chứng từ ĐNTT bàn giao cho Hành chính nhân sự đi gửi.",
         "type": "Task",
         "type_id": 190
       },
       {
         "id_code": "DC-03",
-        "title": "DC-03: Quy trình trình ký, đóng dấu đỏ & thông báo HCNS chuyển phát bản cứng ĐNTT",
-        "description": "Là một Kế toán / Hành chính nhân sự, tôi muốn Kế toán in bản cứng Đề nghị thanh toán trình ký và đóng dấu đỏ công ty, sau đó hệ thống tự động thông báo cho bộ phận Hành chính nhân sự qua nhận thư mang đi chuyển phát và cập nhật mã vận đơn, chỉ cho phép gửi email Đề nghị thanh toán sau khi Hành chính nhân sự xác nhận khách đã nhận bản cứng thành công.",
+        "title": "DC-03: Quy trình đóng dấu đỏ, thông báo chuyển phát & tự động xác định Ngày X",
+        "description": "Là một Kế toán / Hành chính nhân sự, tôi muốn Kế toán đóng dấu đỏ ĐNTT và báo HCNS đi gửi bưu điện, sau khi HCNS xác nhận phát thành công thì hệ thống tự động xác định mốc hạn thanh toán Ngày X dựa trên ngày giao nhận thực tế và mở khóa nút gửi email.",
         "type": "Task",
         "type_id": 190
       }
@@ -306,7 +306,7 @@
       {
         "id_code": "DC-09",
         "title": "DC-09: Quy trình Xử lý Pháp lý & Chấm dứt Hợp đồng",
-        "description": "Là một Nhân viên Pháp lý (Legal), tôi muốn nhận thông báo khi khách quá hạn 15 ngày để lập công văn nhắc nợ/chấm dứt hợp đồng theo mẫu có sẵn và nhận nhắc nhở làm thủ tục đơn phương chấm dứt hợp đồng hoặc khởi kiện vào Ngày X+30.",
+        "description": "Là một Nhân viên Pháp lý (Legal), tôi muốn xem danh sách khách hàng quá hạn cần lập công văn (mốc X+15) và mốc chấm dứt hợp đồng (mốc X+30), để lập công văn theo mẫu và làm thủ tục đơn phương chấm dứt hợp đồng hoặc khởi kiện đúng quy định.",
         "type": "Task",
         "type_id": 190
       }

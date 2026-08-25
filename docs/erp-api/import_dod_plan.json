@@ -334,64 +334,52 @@
   },
   {
     "story_id": "DC-01",
-    "title": "DC-01: Quản lý xuất hóa đơn VAT & Tích hợp phần mềm hóa đơn MISA (chữ ký số)",
+    "title": "DC-01: Ký phát hành hóa đơn VAT sau thanh toán & Đồng bộ số hóa đơn",
     "dod_items": [
       {
-        "text": "AC1: Tự động kết xuất dữ liệu bảng cước đã chốt sang phần mềm hóa đơn MISA để kế toán ký chữ ký số và phát hành HĐ VAT."
+        "text": "AC1: Nhận thông báo xác nhận khách đã thanh toán thành công để kích hoạt trạng thái cho phép ký phát hành hóa đơn."
       },
       {
-        "text": "AC2: Tích hợp kết nối hệ thống MISA để nhận trạng thái phát hành và số hóa đơn điện tử tự động về ERP."
+        "text": "AC2: Hỗ trợ kế toán cắm USB Token để ký phát hành chính thức hóa đơn điện tử từ HĐ nháp đã đẩy trên MISA từ trước."
       },
       {
-        "text": "AC3: Hỗ trợ phân loại xuất hóa đơn riêng cho từng pháp nhân công ty con hoặc điều chỉnh thông tin trước khi phát hành trên MISA."
-      },
-      {
-        "text": "AC4: Hỗ trợ quy trình phát hành hóa đơn điều chỉnh tăng/giảm trên phần mềm MISA khi có sai sót sau phát hành."
-      },
-      {
-        "text": "AC5: Đồng bộ và lưu trữ lịch sử toàn bộ hóa đơn VAT đã xuất từ phần mềm MISA về ERP theo khách/tháng/dịch vụ."
+        "text": "AC3: Tự động đồng bộ số hóa đơn điện tử chính thức và tải file PDF hóa đơn đã ký từ MISA về ERP để lưu trữ và tất toán hồ sơ công nợ."
       }
     ]
   },
   {
     "story_id": "DC-02",
-    "title": "DC-02: Lập & gộp Bộ chứng từ Đề nghị thanh toán (hỗ trợ nhiều hợp đồng & gộp đa dịch vụ)",
+    "title": "DC-02: Lập Bộ chứng từ ĐNTT & Đẩy hóa đơn nháp lên MISA",
     "dod_items": [
       {
-        "text": "AC1: Lập Bộ chứng từ thu nợ bằng cách kết nối Hóa đơn VAT MISA với file ĐNTT (lấy từ hệ thống CM đối với gói Committed hoặc tự động tạo đối với các dịch vụ khác)."
+        "text": "AC1: Tự động kết xuất dữ liệu cước và gọi API đẩy thông tin tạo Hóa đơn nháp (Draft Invoice) trên phần mềm MISA để theo dõi công nợ dự kiến."
       },
       {
-        "text": "AC2: Tự động xác định thời hạn thanh toán (mốc Ngày X) theo điều khoản hợp đồng."
+        "text": "AC2: Ghép HĐ nháp vừa tạo với file ĐNTT từ CM (hoặc sinh tự động) tạo Bộ chứng từ thu nợ."
       },
       {
-        "text": "AC3: Hỗ trợ gộp nhiều hợp đồng / hóa đơn VAT của cùng 1 khách hàng vào 1 ĐNTT duy nhất (Phase 1: Gộp các hợp đồng GWS Committed; Phase 2: Mở rộng gộp chéo với GCP, GMP, AWS)."
+        "text": "AC3: Hỗ trợ gộp nhiều hợp đồng / dịch vụ của cùng 1 khách hàng vào một bộ hồ sơ ĐNTT."
       },
       {
-        "text": "AC4: Tự động tạo task bàn giao Bộ chứng từ thu nợ (dạng PDF) cho bộ phận Hành chính nhân sự để thực hiện in trình ký và chuyển phát bản cứng."
-      },
-      {
-        "text": "AC5: Quản lý danh sách email đại diện nhận thông báo công nợ theo hợp đồng."
+        "text": "AC4: Quản lý danh sách email đại diện nhận thông báo công nợ của khách hàng."
       }
     ]
   },
   {
     "story_id": "DC-03",
-    "title": "DC-03: Quy trình trình ký, đóng dấu đỏ & thông báo HCNS chuyển phát bản cứng ĐNTT",
+    "title": "DC-03: Quy trình đóng dấu đỏ, thông báo chuyển phát & tự động xác định Ngày X",
     "dod_items": [
       {
-        "text": "AC1: Kế toán in bản cứng ĐNTT, trình ký và đóng dấu đỏ công ty, sau đó bấm xác nhận \"Đã đóng dấu đỏ bản cứng\" trên hệ thống."
+        "text": "AC1: Kế toán in bản cứng ĐNTT, trình ký đóng dấu đỏ công ty và bấm xác nhận trên hệ thống để gửi thông báo cho HCNS sang nhận thư."
       },
       {
-        "text": "AC2: Tự động gửi thông báo cho bộ phận HCNS sang nhận phong bì bản cứng đã đóng dấu để gửi chuyển phát."
+        "text": "AC2: HCNS nhận phong bì thư, gửi chuyển phát và cập nhật mã vận đơn / xác nhận ngày khách nhận bản cứng thành công."
       },
       {
-        "text": "AC3: HCNS cập nhật thông tin chuyển phát (ngày gửi, đơn vị vận chuyển, mã vận đơn, xác nhận khách đã nhận thư thành công)."
+        "text": "AC3: Hệ thống tự động tính toán và lưu mốc Ngày X = Ngày khách nhận bản cứng + số ngày được nợ theo điều khoản hợp đồng."
       },
       {
-        "text": "AC4: Tự động cảnh báo cho Kế toán và HCNS nếu quá 48h chưa có cập nhật trạng thái phát thư."
-      },
-      {
-        "text": "AC5: **Ràng buộc bắt buộc:** Nút gửi email ĐNTT điện tử CHỈ ĐƯỢC MỞ KHÓA khi HCNS bấm xác nhận khách đã nhận bản cứng thành công."
+        "text": "AC4: **Ràng buộc bắt buộc:** Nút gửi email ĐNTT điện tử CHỈ ĐƯỢC MỞ KHÓA khi HCNS bấm xác nhận khách đã nhận bản cứng thành công (cảnh báo nếu quá 48h chưa có cập nhật)."
       }
     ]
   },
@@ -481,16 +469,13 @@
     "title": "DC-09: Quy trình Xử lý Pháp lý & Chấm dứt Hợp đồng",
     "dod_items": [
       {
-        "text": "AC1: Template công văn nhắc nợ / chấm dứt HĐ tự động điền thông tin hợp đồng."
+        "text": "AC1: Giao diện danh sách dành riêng cho bộ phận Pháp lý (Legal) xem các khách hàng quá hạn chạm mốc X+15 (cần lập công văn) và mốc X+30 (cần chấm dứt HĐ / khởi kiện)."
       },
       {
-        "text": "AC2: Tự động gửi thông báo cho Legal soạn văn bản chấm dứt HĐ vào Ngày X+15."
+        "text": "AC2: Mẫu công văn pháp lý tự động điền (tên khách hàng, số hợp đồng, tổng nợ gốc, tiền lãi phạt) để Legal duyệt và xuất file (Word/PDF) gửi bản cứng/email cho khách."
       },
       {
-        "text": "AC3: Legal soạn văn bản chấm dứt HĐ theo mẫu riêng và gửi song song bản cứng/email."
-      },
-      {
-        "text": "AC4: Legal thực hiện đơn phương chấm dứt HĐ & lập hồ sơ khởi kiện vào Ngày X+30."
+        "text": "AC3: Kích hoạt nút thực hiện đơn phương chấm dứt hợp đồng trên hệ thống và ghi nhận trạng thái hồ sơ khởi kiện vào mốc Ngày X+30."
       }
     ]
   },
