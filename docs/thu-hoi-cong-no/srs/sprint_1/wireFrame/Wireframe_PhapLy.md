@@ -44,13 +44,13 @@ Hệ thống hiển thị bản xem trước đã merge dữ liệu. Nhân viên
 > **Kính gửi:**<br>
 > **`[customer_name]`**
 >
-> Đại diện theo pháp luật: Ông/Bà `[customer_rep_name]`
+> Đại diện theo pháp luật: Ông/Bà `[rep_name]`
 >
-> Mã số doanh nghiệp: `[customer_tax_code]`
+> Mã số doanh nghiệp: `[tax_code]`
 >
 > Địa chỉ: `[customer_address]`
 >
-> Địa chỉ người đại diện pháp luật: `[customer_rep_address]`
+> Địa chỉ người đại diện pháp luật: `[rep_address]`
 >
 > *(Sau đây gọi tắt là “Công ty”)*
 > 
@@ -127,8 +127,9 @@ Hệ thống hiển thị bản xem trước đã merge dữ liệu. Nhân viên
 ---
 
 ### Logic Lấy Dữ liệu (Dành cho Dev):
-- `[customer_*]`, `[contract_*]`: Lấy thông tin từ DB ERP (đồng bộ từ CM). Thêm trường `customer_rep_address` (Địa chỉ người đại diện).
-- `[document_number]`: Tự động sinh dựa trên format. Ví dụ: `01-[publish_year][publish_month][publish_day]/CV/CLOUDAZ-[customer_short_name]`.
+- `[customer_name]`, `[customer_address]`, `[rep_name]`, `[rep_address]`: Lấy từ bảng `CUSTOMERS`.
+- `[tax_code]`: Lấy từ `CONTRACTS.tax_code` (Mã số thuế của Legal Entity ký hợp đồng).
+- `[document_number]`: Tự động sinh dựa trên format. Ví dụ: `01-[publish_year][publish_month][publish_day]/CV/CLOUDAZ-[customer_code]`.
 - `[product_name]`, `[total_principal]`: Lấy trực tiếp từ bảng `DEBTS`.
 - `[start_billing_month]`, `[end_billing_month]`, `[billing_year]`: Parse từ chuỗi `billing_cycle`.
 - `[payment_term_clause]`, `[grace_period_days]`: Các biến số tĩnh (Ví dụ: grace=10 ngày) lấy từ bảng cấu hình biểu mẫu `DOCUMENT_TEMPLATES`.
