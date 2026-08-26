@@ -6,31 +6,78 @@
 
 ```mermaid
 erDiagram
+    DEBTS ||--o| DEBT_DELIVERIES : "has one"
+    DEBTS ||--o| DEBT_COLLECTIONS : "has one"
+    DEBTS ||--o{ DEBT_LEGAL_ACTIONS : "has many"
     DEBTS ||--o{ DEBT_PENALTY_LOGS : "has many"
     DEBTS ||--o{ DEBT_AUDIT_LOGS : "tracks events"
+    
+    DOCUMENT_TEMPLATES {
+        uuid id PK
+        string template_type "Loại: EMAIL, LEGAL_DOC"
+        string template_code "Mã: REMINDER_X2, LEGAL_X30..."
+        string subject "Tiêu đề thư"
+        text content "Nội dung chứa các biến [customer_name]..."
+        string appendix_number "Cấu hình số Phụ lục"
+        string payment_term_clause "Cấu hình Điều khoản thanh toán"
+        string penalty_clause "Cấu hình Điều khoản phạt"
+        boolean is_active "Trạng thái kích hoạt"
+        datetime created_at
+        datetime updated_at
+    }
     
     DEBTS {
         uuid id PK
         string dntt_cm_id "ID mapping với CM"
+        string document_id "ID file ĐNTT (bảng documents local)"
+        string product_id "ID sản phẩm (AWS, GCP...)"
+        string product_name "Tên sản phẩm (lưu nhanh để filter)"
+        string billing_cycle "Kỳ cước (VD: 08/2026)"
         string customer_id
         string contract_id
+        string pic_id "Mã Sales AM phụ trách (Query nhanh)"
         
         decimal total_principal "Nợ gốc từ CM"
         decimal total_penalty "Tổng lãi phạt cộng dồn"
+        decimal penalty_rate "Lãi suất phạt chậm (VD: 0.05%/ngày - Kế toán nhập)"
+        int payment_term_days "Số ngày được nợ kể từ khi nhận bản cứng (Kế toán nhập)"
         
-        datetime delivered_at "Ngày giao bản cứng (HCNS update)"
-        datetime ngay_x "Ngày X = delivered_at + payment_term"
+        datetime ngay_x "Ngày X = delivered_at + payment_term_days"
         datetime paid_at "Ngày khách thanh toán thành công"
         
-        string email_status "Trạng thái Email: UNSENT, SENT, LOCKED"
-        int email_sent_count "Số lần gửi email"
+        string debt_status "Trạng thái Nợ: WAITING_HARDCOPY, IN_TERM, OVERDUE, PAID"
+        string suspend_status "Trạng thái Khóa DV: NONE, WAITING_SALES, WAITING_PROCUREMENT, SUSPENDED, WAITING_UNSUSPEND, UNSUSPENDED"
         
+        datetime created_at
+        datetime updated_at
+    }
+    
+    DEBT_DELIVERIES {
+        uuid id PK
+        uuid debt_id FK
         string hardcopy_status "Bản cứng: NONE, STAMPED, POSTED, DELIVERED"
         string tracking_code "Mã vận đơn"
-        
-        string debt_status "Trạng thái Nợ: WAITING_HARDCOPY, IN_TERM, OVERDUE, PAID"
-        string suspend_status "Trạng thái Khóa DV: NONE, WAITING_SALES, WAITING_PROCUREMENT, SUSPENDED"
+        datetime delivered_at "Ngày giao bản cứng (HCNS update)"
+    }
+    
+    DEBT_COLLECTIONS {
+        uuid id PK
+        uuid debt_id FK
+        string email_status "Trạng thái Email: UNSENT, SENT, LOCKED"
+        int email_sent_count "Số lần gửi email"
+        jsonb call_logs "Mảng JSON lưu lịch sử đôn đốc"
+    }
+    
+    DEBT_LEGAL_ACTIONS {
+        uuid id PK
+        uuid debt_id FK
+        string document_type "Loại: REMINDER_1, SUED..."
         string legal_status "Trạng thái Pháp lý: NONE, PREPARING, SUED"
+        date publish_date "Ngày phát hành/ký công văn (Dùng chốt lãi phạt)"
+        date termination_date "Ngày chính thức chấm dứt HĐ"
+        decimal locked_penalty "Lãi phạt chốt tại thời điểm phát hành"
+        string file_url "File Công văn / Khởi kiện đính kèm"
+        datetime created_at
     }
     
     DEBT_PENALTY_LOGS {
@@ -38,7 +85,7 @@ erDiagram
         uuid debt_id FK
         date calculated_date "Ngày chạy Cronjob"
         int days_overdue "Số ngày quá hạn"
-        decimal penalty_amount "Tiền phạt phát sinh trong ngày"
+        decimal penalty_amount "Tiền phạt chậm trả tích lũy tính đến ngày chạy cronjob"
     }
     
     DEBT_AUDIT_LOGS {
@@ -47,32 +94,49 @@ erDiagram
         string action_by "User/System thực hiện"
         string action_type "Loại sự kiện (EMAIL_SENT, HARDCOPY_DELIVERED...)"
         string description "Chi tiết (Ví dụ: HCNS cập nhật mã vận đơn VN1234)"
+        string file_url "Đường dẫn file đính kèm/ảnh minh chứng (nếu có)"
         datetime created_at
     }
 ```
 ## 1. Bảng `DEBTS` (Hồ sơ Công nợ gốc)
-Đây là bảng **xương sống**, lưu trữ toàn bộ trạng thái và vòng đời của 1 khoản nợ (từ lúc tạo ĐNTT cho đến khi khách trả tiền hoặc bị kiện). Được thiết kế theo dạng State Machine phân chia rạch ròi trách nhiệm của từng phòng ban.
+Đây là bảng **xương sống**, lưu trữ toàn bộ định danh, dòng tiền và trạng thái tổng quát.
 
 * **Nhóm Định danh (Identification):**
   - `id`: Mã định danh duy nhất của khoản nợ trên ERP.
   - `dntt_cm_id`: ID gốc link với hệ thống CM (dùng để đối chiếu xem ĐNTT này sinh ra từ file cước nào bên CM).
+  - `product_id` & `product_name`: ID và Tên sản phẩm (Ví dụ: AWS, GCP, GWS) dùng để lọc nhanh danh sách công nợ theo sản phẩm trên màn hình ERP.
+  - `billing_cycle`: Kỳ cước (VD: 08/2026). Phục vụ Kế toán/Sales filter nhanh danh sách công nợ theo tháng mà không cần gọi API CM.
   - `customer_id` & `contract_id`: ID của khách hàng và hợp đồng, dùng để tra cứu thông tin liên hệ, tra cứu số ngày ân hạn (để tính Ngày X).
+  - `pic_id`: ID của Sales AM phụ trách. Lưu sẵn để load nhanh màn hình cho Sales mà không cần gọi API chéo sang CM.
 
 * **Nhóm Tiền nong (Financials):**
   - `total_principal`: Nợ gốc (Số tiền chốt cước ban đầu kéo từ CM về).
   - `total_penalty`: Tiền phạt cộng dồn. Bằng 0 trong hạn, bắt đầu tăng dần mỗi ngày khi quá hạn.
 
-* **Nhóm Thời gian (Timing Triggers):**
-  - `delivered_at`: Ngày Hành chính nhân sự (HCNS) xác nhận khách đã nhận bản cứng. Đây là mốc thời gian cực kỳ quan trọng để "kích hoạt" đồng hồ đếm ngược.
-  - `ngay_x`: Ngày hạn chót thanh toán (Tự động tính: `ngay_x = delivered_at + số ngày hợp đồng cho nợ`).
+* **Nhóm Thời gian & Trạng thái chính:**
+  - `payment_term_days` & `penalty_rate`: Số ngày được thanh toán và % lãi chậm trả. Cả hai trường này **bắt buộc do Kế toán nhập thủ công ở lần đầu dùng hệ thống**.
+  - `ngay_x`: Ngày hạn chót thanh toán (Tự động tính: `ngay_x = delivered_at + payment_term_days`).
   - `paid_at`: Ngày Kế toán xác nhận tiền đã nổi tài khoản (Dùng để chốt sổ, dừng tính lãi phạt).
+  - `debt_status`: Trạng thái tổng quát (`Trong hạn`, `Quá hạn`, `Đã tất toán`...). Khoản nợ dù bị khởi kiện hay nợ xấu vẫn giữ trạng thái `OVERDUE`.
+  - `suspend_status`: Sales AM duyệt ➔ Phòng Mua thao tác. Quản lý luồng khóa dịch vụ (SUSPEND) và luồng nhắc mở khóa khi khách trả tiền (WAITING_UNSUSPEND ➔ UNSUSPENDED).
 
-* **Nhóm Trạng thái (Phân mảnh theo Phòng ban):**
-  - `debt_status`: Trạng thái tổng quát của khoản nợ (`Trong hạn`, `Quá hạn`, `Đã tất toán`...).
-  - `email_status` & `email_sent_count`: Kế toán thao tác. Quản lý việc Kế toán đã duyệt gửi email nhắc nợ chưa, và đã gửi mấy lần.
+---
+
+## 2. Các Bảng Nghiệp Vụ (Domains)
+Để tránh `DEBTS` bị phình to (God Object), các nghiệp vụ đặc thù được tách ra các bảng con.
+
+* **Bảng `DEBT_DELIVERIES` (Giao nhận Bản cứng):** 
   - `hardcopy_status` & `tracking_code`: HCNS thao tác. Quản lý việc HCNS đã gửi bưu điện chưa, mã vận đơn là gì (Bằng chứng pháp lý trước tòa).
-  - `suspend_status`: Sales AM duyệt ➔ Phòng Mua thao tác. Quản lý luồng khóa dịch vụ.
-  - `legal_status`: Pháp lý thao tác. Quản lý luồng kiện tụng.
+  - `delivered_at`: Ngày Hành chính nhân sự (HCNS) xác nhận khách đã nhận bản cứng. Đây là mốc thời gian cực kỳ quan trọng để "kích hoạt" đồng hồ đếm ngược Ngày X.
+
+* **Bảng `DEBT_COLLECTIONS` (Đôn đốc nhắc nợ):**
+  - `email_status` & `email_sent_count`: Kế toán thao tác. Quản lý việc duyệt gửi email nhắc nợ chưa, và đã gửi mấy lần.
+  - `call_logs`: Sales AM thao tác. Lưu dưới dạng mảng JSON chứa lịch sử chi tiết tất cả các cuộc gọi đôn đốc. Giúp Frontend dễ dàng render lịch sử đôn đốc nhanh.
+
+* **Bảng `DEBT_LEGAL_ACTIONS` (Lịch sử Pháp lý & Công văn):**
+  - Một khoản nợ có thể xuất nhiều Công văn (Lần 1, Lần 2, Tối hậu thư). Bảng này lưu vết mỗi lần xuất.
+  - `legal_status` & `file_url`: Pháp lý thao tác. Quản lý luồng kiện tụng và link tải file công văn đã đóng dấu.
+  - `publish_date`, `termination_date`, `locked_penalty`: Các biến số pháp lý chốt tại thời điểm xuất văn bản. Số tiền phạt được "snapshot" chính xác đến ngày ký.
 
 ---
 
@@ -82,7 +146,7 @@ Vai trò: Bảng này sinh ra để **chứng minh số tiền phạt**, giải 
 - `debt_id`: Khóa ngoại trỏ về khoản nợ gốc.
 - `calculated_date`: Ngày hệ thống (Cronjob) chạy tính toán.
 - `days_overdue`: Đếm số ngày đã trễ hạn tính đến thời điểm đó.
-- `penalty_amount`: Số tiền phạt **chỉ sinh ra trong riêng ngày hôm đó**. (Công thức: `penalty_amount = total_principal * penalty_rate_applied / 365`).
+- `penalty_amount`: Số tiền phạt chậm trả tích lũy tính đến ngày chạy cronjob. (Công thức tính: `penalty_amount = % lãi trả chậm quy định theo hợp đồng × days_overdue × nợ gốc phải trả kỳ đó`).
 
 ---
 
@@ -92,5 +156,16 @@ Vai trò: Phục vụ trực tiếp cho tính năng UI **Expandable Row (Bấm v
 - `debt_id`: Khóa ngoại trỏ về khoản nợ gốc.
 - `action_by`: Ai là người làm? (Kế toán A, Sales B, HCNS C, hoặc System).
 - `action_type`: Mã hành động chuẩn hóa (`EMAIL_SENT`, `SALES_APPROVED_SUSPEND`, `DAY_X_CALCULATED`). Giúp Frontend dễ dàng render ra các Icon tương ứng cho đẹp mắt.
+- `file_url`: Lưu trữ link tải file/ảnh chụp màn hình minh chứng do từng bộ phận tải lên (Ảnh hóa đơn chuyển phát, ảnh Console Google đã khóa, ảnh UNC nợ...).
 - `description`: Diễn giải chi tiết. Ví dụ: *"Sales AM Nguyễn Văn A đã bấm duyệt khóa dịch vụ với lý do: Khách hàng chây ỳ"*.
 - `created_at`: Thời gian chính xác (Timestamp).
+
+---
+
+## 4. Bảng `DOCUMENT_TEMPLATES` (Quản lý Biểu mẫu động)
+Vai trò: Vì doanh nghiệp có rất nhiều loại biểu mẫu khác nhau (Email nhắc nợ X-2 cường độ nhẹ, Email nhắc nợ X+1 cường độ mạnh, Công văn X+15, Quyết định khởi kiện X+30...), hệ thống cần một bảng cấu hình chung để Admin tự vào sửa nội dung mà không cần nhờ Dev fix code.
+
+- `template_type`: Phân loại biểu mẫu là `EMAIL` hay `LEGAL_DOC` (Công văn bản cứng).
+- `template_code`: Mã tra cứu cứng trong logic code (VD: `REMINDER_X_MINUS_2`, `LEGAL_X_30`).
+- `appendix_number`, `payment_term_clause`, `penalty_clause`: Các trường cấu hình cứng cho riêng template đó (VD: Điều 3, Điều 5). Tách riêng ra khỏi content để Admin dễ cấu hình.
+- `content`: Nội dung thô (HTML/Markdown) chứa các "biến số" (Placeholder) như `[customer_name]`, `[total_penalty]`. Khi Kế toán/Pháp lý bấm "Soạn công văn", backend sẽ móc template này ra và `replace()` các biến bằng số liệu thật ở bảng `DEBTS` (và các trường điều khoản).

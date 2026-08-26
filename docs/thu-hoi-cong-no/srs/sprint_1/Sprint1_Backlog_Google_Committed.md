@@ -28,9 +28,8 @@ Xây dựng và kiểm thử thông suốt **100% Quy trình Thu hồi Công n�
 | 7 | **DC-06** | `1661` | Sales AM | Dashboard công nợ Sales AM | Dashboard công nợ khách quá hạn do AM quản lý & form ghi nhật ký đôn đốc |
 | 8 | **DC-07** | `1663` | Kế toán & Sales AM | Duyệt Dừng Dịch vụ Ngày X+4 | Cảnh báo X+4 & **ràng buộc phê duyệt bắt buộc từ Sales AM** trước khi dừng DV |
 | 9 | **DC-08** | `1664` | Phòng Mua (Procurement) | Thực thi Dừng/Mở Console Google | Phòng Mua thực thi Suspend/Unsuspend trên Google Admin Console & yêu cầu cọc |
-| 10 | **DC-01** | `1655` | Kế toán doanh thu | Ký phát hành hóa đơn VAT sau thanh toán | Khách thanh toán ➔ Kế toán cắm USB Token ký phát hành HĐ VAT trên MISA |
-| 11 | **DC-09** | `1666` | Pháp lý (Legal) | Quy trình Pháp lý & Hủy Hợp đồng | Giao diện danh sách X+15/X+30, soạn công văn X+15 & đơn phương hủy HĐ/khởi kiện X+30 |
-| 12 | **DC-10** | `1668` | Ban Quản Lý / KTT | Executive Dashboard & Audit Trail | Dashboard tổng quan nợ quá hạn toàn công ty & Audit Trail quy trình công nợ |
+| 10 | **DC-09** | `1666` | Pháp lý (Legal) | Quy trình Pháp lý & Hủy Hợp đồng | Giao diện danh sách X+15/X+30, soạn công văn X+15 & đơn phương hủy HĐ/khởi kiện X+30 |
+| 11 | **DC-10** | `1668` | Ban Quản Lý / KTT | Executive Dashboard & Audit Trail | Dashboard tổng quan nợ quá hạn toàn công ty & Audit Trail quy trình công nợ |
 
 ---
 
@@ -99,7 +98,7 @@ Xây dựng và kiểm thử thông suốt **100% Quy trình Thu hồi Công n�
   > Là một Kế toán doanh thu / Quản lý, tôi muốn duyệt trước nội dung email nhắc nợ (hoặc chuyển Sales AM duyệt) trước khi gửi cho khách và tự động tính tiền lãi chậm thanh toán cộng dồn hàng ngày theo hợp đồng, để đôn đốc công nợ chính xác.
 * **Tiêu chí nghiệm thu (Acceptance Criteria / DoD):**
   - **AC1:** Cấu hình luồng duyệt email nhắc nợ: gửi tự động hoặc tạo nháp gửi Sales AM duyệt trước.
-  - **AC2:** Tự động tính lãi chậm thanh toán cộng dồn hàng ngày = `nợ gốc × (lãi suất/365) × số ngày quá hạn`.
+  - **AC2:** Tự động tính lãi chậm thanh toán = `% lãi trả chậm quy định theo hợp đồng × số ngày trả chậm × nợ gốc (tiền cước phải trả kỳ đó)`.
   - **AC3:** Cấu hình tỷ lệ % lãi chậm thanh toán riêng cho từng hợp đồng.
 
 ---
@@ -143,18 +142,6 @@ Xây dựng và kiểm thử thông suốt **100% Quy trình Thu hồi Công n�
 
 ---
 
-### 10. DC-01 (ERP Node ID: 1655)
-* **Feature:** Feature 08: Hóa đơn VAT, ĐNTT & Chuyển phát bản cứng
-* **Bộ phận:** Kế toán doanh thu
-* **Tên ngắn:** `DC-01: Ký phát hành hóa đơn VAT sau thanh toán & Đồng bộ số hóa đơn`
-* **Mô tả chi tiết (User Story Detail):**
-  > Là một Kế toán doanh thu, tôi muốn sau khi khách hàng đã thanh toán thành công, tôi tiến hành cắm USB Token để ký số phát hành chính thức hóa đơn điện tử trên MISA và đồng bộ số hóa đơn, file PDF về ERP để hoàn tất hồ sơ thu nợ.
-* **Tiêu chí nghiệm thu (Acceptance Criteria / DoD):**
-  - **AC1:** Nhận thông báo xác nhận khách đã thanh toán thành công để kích hoạt trạng thái cho phép ký phát hành hóa đơn.
-  - **AC2:** Hỗ trợ kế toán cắm USB Token để ký phát hành chính thức hóa đơn điện tử từ HĐ nháp đã đẩy trên MISA từ trước.
-  - **AC3:** Tự động đồng bộ số hóa đơn điện tử chính thức và tải file PDF hóa đơn đã ký từ MISA về ERP để lưu trữ và tất toán hồ sơ công nợ.
-
----
 
 ### 11. DC-09 (ERP Node ID: 1666)
 * **Feature:** Feature 11: Quy trình Pháp lý & Đơn phương Chấm dứt Hợp đồng

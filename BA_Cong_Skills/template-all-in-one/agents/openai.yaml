@@ -1,0 +1,4 @@
+﻿interface:
+  display_name: "Template All In One"
+  short_description: "Write BA docs in one lead-BA style template"
+  default_prompt: "Use $template-all-in-one to draft a lead-BA style all-in-one document template."
