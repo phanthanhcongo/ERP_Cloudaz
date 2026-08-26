@@ -46,7 +46,7 @@ Khi Sales thực hiện gọi điện (hoặc liên hệ bằng tay) đòi nợ 
 
 **Logic Backend khi Lưu:**
 1. Đọc mảng `call_logs` hiện tại, lấy độ dài mảng (length) để tự động gán `call_index = length + 1` (Ví dụ: Đã có 1 log thì log tiếp theo là Lần 2).
-2. Append (thêm mới) một object `{ call_index: N, type: 'CALL/ZALO/MEETING', note: '...', created_at: '...' }` vào mảng `call_logs` trong bảng `DEBTS`.
+2. Append (thêm mới) một object `{ call_index: N, type: 'CALL/ZALO/MEETING', note: '...', created_at: '...' }` vào mảng `call_logs` trong bảng `DEBT_COLLECTIONS`.
 3. Tạo 1 bản ghi log chi tiết trong bảng `DEBT_AUDIT_LOGS` để làm bằng chứng lịch sử (Ví dụ: `Sales Nguyễn Văn A đã gọi đôn đốc lần N, nội dung: ...`).
 
 ---
@@ -98,9 +98,9 @@ Khi Sales bấm `[Duyệt Khóa]` hoặc `[Từ chối]` đối với khách hà
 | **Kỳ cước** | `DEBTS.billing_cycle` | Định dạng hiển thị `MM/YYYY` |
 | **Tổng Nợ** | `total_principal` + `total_penalty` | Tổng nợ gốc + lãi phạt cộng dồn của bản ghi |
 | **Số ngày trễ** | Derived từ `DEBTS.ngay_x` | Hiển thị `Trễ (current_date - ngay_x) ngày` nếu nợ đã quá hạn |
-| **Đôn đốc (Sales AM)** | `DEBTS.call_logs` | - **Số lần:** bằng độ dài mảng `call_logs.length`. <br>- **Nội dung cuộc gần nhất:** Lấy field `note` của phần tử cuối cùng trong `call_logs` mảng JSONB |
+| **Đôn đốc (Sales AM)** | `DEBT_COLLECTIONS.call_logs` | - **Số lần:** bằng độ dài mảng `call_logs.length`. <br>- **Nội dung cuộc gần nhất:** Lấy field `note` của phần tử cuối cùng trong `call_logs` mảng JSONB |
 | **Trạng thái Khóa DV** | `DEBTS.suspend_status` | Hiển thị `WAITING_SALES`, `SUSPENDED`, `NONE`... |
-| **Popup Log Call (Submit)** | `DEBTS.call_logs` & `DEBT_AUDIT_LOGS` | - Append object mới vào `DEBTS.call_logs`<br>- Insert 1 dòng audit log mới vào `DEBT_AUDIT_LOGS` |
+| **Popup Log Call (Submit)** | `DEBT_COLLECTIONS.call_logs` & `DEBT_AUDIT_LOGS` | - Append object mới vào `DEBT_COLLECTIONS.call_logs`<br>- Insert 1 dòng audit log mới vào `DEBT_AUDIT_LOGS` |
 | **Popup Duyệt Khóa (Submit)** | `DEBTS.suspend_status` & `DEBT_AUDIT_LOGS` | - **Duyệt:** `suspend_status = WAITING_PROCUREMENT`<br>- **Từ chối:** `suspend_status = NONE`<br>- Lưu lý do bảo lãnh vào `DEBT_AUDIT_LOGS.description` |
 
 

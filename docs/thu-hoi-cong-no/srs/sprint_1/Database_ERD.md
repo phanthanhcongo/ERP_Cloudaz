@@ -6,11 +6,33 @@
 
 ```mermaid
 erDiagram
+    CUSTOMERS ||--o{ CONTRACTS : "has"
+    CUSTOMERS ||--o{ DEBTS : "has"
+    CONTRACTS ||--o{ DEBTS : "has"
+    
     DEBTS ||--o| DEBT_DELIVERIES : "has one"
     DEBTS ||--o| DEBT_COLLECTIONS : "has one"
     DEBTS ||--o{ DEBT_LEGAL_ACTIONS : "has many"
     DEBTS ||--o{ DEBT_PENALTY_LOGS : "has many"
     DEBTS ||--o{ DEBT_AUDIT_LOGS : "tracks events"
+    
+    CUSTOMERS {
+        string id PK "ID Khách hàng (Sync CM)"
+        string customer_name "Tên doanh nghiệp chính thức (Sync CM)"
+        string address "Địa chỉ (Sync CM gợi ý / Kế toán xác nhận)"
+        string rep_name "Người đại diện PL (Kế toán tự nhập)"
+        string rep_address "Địa chỉ người đại diện (Kế toán tự nhập)"
+        string customer_code "Mã KH viết tắt - Dùng sinh số HĐ/PL/CV (Kế toán tự nhập)"
+    }
+    
+    CONTRACTS {
+        string id PK "ID Hợp đồng (Sync CM)"
+        string customer_id FK "(Sync CM)"
+        string contract_number "Số hợp đồng (Sync CM)"
+        string tax_code "MST theo legal entity của HĐ (Sync CM)"
+        date sign_date "Ngày ký HĐ (Sync CM gợi ý / Kế toán xác nhận)"
+        int default_payment_term "Số ngày ân hạn mặc định (Kế toán tự nhập)"
+    }
     
     DOCUMENT_TEMPLATES {
         uuid id PK
@@ -21,6 +43,7 @@ erDiagram
         string appendix_number "Cấu hình số Phụ lục"
         string payment_term_clause "Cấu hình Điều khoản thanh toán"
         string penalty_clause "Cấu hình Điều khoản phạt"
+        int grace_period_days "Số ngày gia hạn trước khi kiện (VD: 10 ngày)"
         boolean is_active "Trạng thái kích hoạt"
         datetime created_at
         datetime updated_at
@@ -98,6 +121,7 @@ erDiagram
         datetime created_at
     }
 ```
+
 ## 1. Bảng `DEBTS` (Hồ sơ Công nợ gốc)
 Đây là bảng **xương sống**, lưu trữ toàn bộ định danh, dòng tiền và trạng thái tổng quát.
 
@@ -114,11 +138,24 @@ erDiagram
   - `total_penalty`: Tiền phạt cộng dồn. Bằng 0 trong hạn, bắt đầu tăng dần mỗi ngày khi quá hạn.
 
 * **Nhóm Thời gian & Trạng thái chính:**
-  - `payment_term_days` & `penalty_rate`: Số ngày được thanh toán và % lãi chậm trả. Cả hai trường này **bắt buộc do Kế toán nhập thủ công ở lần đầu dùng hệ thống**.
+  - `payment_term_days` & `penalty_rate`: Số ngày được thanh toán và % lãi chậm trả. Cả hai trường này **bắt buộc do Kế toán nhập thủ công ở lần đầu dùng hệ thống** (Có thể gợi ý sẵn từ `CONTRACTS.default_payment_term`).
   - `ngay_x`: Ngày hạn chót thanh toán (Tự động tính: `ngay_x = delivered_at + payment_term_days`).
   - `paid_at`: Ngày Kế toán xác nhận tiền đã nổi tài khoản (Dùng để chốt sổ, dừng tính lãi phạt).
   - `debt_status`: Trạng thái tổng quát (`Trong hạn`, `Quá hạn`, `Đã tất toán`...). Khoản nợ dù bị khởi kiện hay nợ xấu vẫn giữ trạng thái `OVERDUE`.
   - `suspend_status`: Sales AM duyệt ➔ Phòng Mua thao tác. Quản lý luồng khóa dịch vụ (SUSPEND) và luồng nhắc mở khóa khi khách trả tiền (WAITING_UNSUSPEND ➔ UNSUSPENDED).
+
+---
+
+## 2. Các Bảng Master Data (Dữ liệu nền)
+Đây là các bảng đóng vai trò "Gương soi" (Mirror Tables), lưu trữ bản sao dữ liệu tĩnh được đồng bộ từ hệ thống CM sang ERP để phục vụ việc truy vấn nhanh mà không cần gọi API. Tuy nhiên, do hệ thống CM ở Phase 1 chưa quản lý đủ sâu các thông tin pháp lý, dữ liệu trên ERP sẽ là sự kết hợp giữa **Sync tự động** và **Nhập thủ công**.
+
+* **Bảng `CUSTOMERS` (Khách hàng):** Phục vụ việc tự động điền (auto-fill) vào mẫu Công văn.
+  - **Đồng bộ từ CM:** `id`, `customer_name` (Tên công ty), `address` (gợi ý từ `legalEntity.address`).
+  - **Kế toán tự nhập bổ sung trên ERP:** `rep_name` (Người đại diện PL), `rep_address` (Địa chỉ người đại diện), `customer_code` (Mã KH viết tắt — dùng sinh số HĐ/PL/Công văn).
+
+* **Bảng `CONTRACTS` (Hợp đồng):** Hỗ trợ tra cứu nhanh khi tạo thông báo Pháp lý.
+  - **Đồng bộ từ CM:** `id`, `customer_id`, `contract_number` (từ `legal[].contract_code`), `tax_code` (từ `legalEntity.taxNumber` của legal entity gắn với HĐ đó), `sign_date` (từ `legal[].sign_date`, gợi ý).
+  - **Kế toán tự nhập bổ sung trên ERP:** `default_payment_term` (Số ngày ân hạn mặc định).
 
 ---
 
@@ -167,5 +204,31 @@ Vai trò: Vì doanh nghiệp có rất nhiều loại biểu mẫu khác nhau (E
 
 - `template_type`: Phân loại biểu mẫu là `EMAIL` hay `LEGAL_DOC` (Công văn bản cứng).
 - `template_code`: Mã tra cứu cứng trong logic code (VD: `REMINDER_X_MINUS_2`, `LEGAL_X_30`).
-- `appendix_number`, `payment_term_clause`, `penalty_clause`: Các trường cấu hình cứng cho riêng template đó (VD: Điều 3, Điều 5). Tách riêng ra khỏi content để Admin dễ cấu hình.
+- `appendix_number`, `payment_term_clause`, `penalty_clause`, `grace_period_days`: Các trường cấu hình cứng cho riêng template đó (VD: Điều 3, Điều 5, 10 ngày). Tách riêng ra khỏi content để Admin dễ cấu hình.
 - `content`: Nội dung thô (HTML/Markdown) chứa các "biến số" (Placeholder) như `[customer_name]`, `[total_penalty]`. Khi Kế toán/Pháp lý bấm "Soạn công văn", backend sẽ móc template này ra và `replace()` các biến bằng số liệu thật ở bảng `DEBTS` (và các trường điều khoản).
+
+---
+
+## 3. Tổng hợp Phân luồng Nguồn Dữ Liệu (Sync vs Manual)
+
+Để đảm bảo tính khả thi trong Phase 1 (khi hệ thống CM chưa chứa đủ dữ liệu pháp lý), dưới đây là bảng tổng hợp rõ ràng ranh giới giữa việc lấy dữ liệu tự động từ API CM và việc người dùng (Kế toán/Pháp lý) phải tự nhập liệu thủ công trên ERP:
+
+### 3.1. Lưu ý về mapping dữ liệu CM
+
+- `address` trong CM lưu ở `legalEntity.address`. Mỗi hợp đồng gắn với 1 legal entity → lấy address từ legal entity của HĐ đó.
+- `contract_number` và `sign_date` trong CM nằm trong mảng `legal[]` subdoc của contract (mỗi contract có thể có nhiều legal document). Lấy legal đầu tiên.
+- `tax_code` gắn với từng hợp đồng — mỗi HĐ ký với 1 legal entity có MST riêng. Sync từ `legalEntity.taxNumber` qua `contract.legalEntityId`.
+- CM **không có** các field: `rep_name`, `rep_address`, `customer_code`.
+
+### 3.2. Bảng tổng hợp nguồn dữ liệu
+
+| Bảng | Trường dữ liệu | Nguồn | Ghi chú |
+|---|---|---|---|
+| **CUSTOMERS** | `id`, `customer_name` | 🔄 **Sync CM** | Từ `customer.name` |
+| **CUSTOMERS** | `address` | ⚠️ **Gợi ý từ CM, xác nhận** | Từ `legalEntity.address` gắn với HĐ |
+| **CUSTOMERS** | `rep_name`, `rep_address`, `customer_code` | ✍️ **Nhập tay ERP** | `customer_code` là mã KH viết tắt, dùng sinh số HĐ/PL/CV |
+| **CONTRACTS** | `id`, `customer_id`, `contract_number`, `tax_code` | 🔄 **Sync CM** | `contract_number` từ `legal[].contract_code`, `tax_code` từ `legalEntity.taxNumber` |
+| **CONTRACTS** | `sign_date` | ⚠️ **Gợi ý từ CM, xác nhận** | Từ `legal[].sign_date` |
+| **CONTRACTS** | `default_payment_term` | ✍️ **Nhập tay ERP** | Số ngày ân hạn mặc định |
+| **DEBTS** | `total_principal`, `billing_cycle`, `product_name` | 🔄 **Sync CM** | Data cốt lõi của kỳ cước |
+| **DEBTS** | `payment_term_days`, `penalty_rate` | ✍️ **Nhập tay ERP** | Kế toán tự nhập lần đầu |

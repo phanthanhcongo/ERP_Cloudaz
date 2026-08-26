@@ -45,8 +45,8 @@ Vì hệ thống ERP không chọc API tự động khóa Google, nhân viên Ph
 | UI Element / Column | Database Field (`DEBTS` & related) | Mô tả & Cách hiển thị |
 |---|---|---|
 | **Tabs lọc nhanh** | `suspend_status` | - **Đang yêu cầu Khóa:** `suspend_status = WAITING_PROCUREMENT`<br>- **Đang yêu cầu Mở khóa:** `suspend_status = WAITING_UNSUSPEND` |
-| **Khách hàng / Hợp đồng** | CM API (`customer_id`, `contract_id`) | Hiển thị Tên Khách hàng và Mã Hợp đồng lấy qua API CM |
-| **Sản phẩm** | CM API | Hiển thị Tên gói dịch vụ lấy từ CM |
+| **Khách hàng / Hợp đồng** | `DEBTS.customer_id`, `DEBTS.contract_id` | Hiển thị Tên Khách hàng và Mã Hợp đồng lấy trực tiếp từ DB ERP (đã đồng bộ) |
+| **Sản phẩm** | `DEBTS.product_name` | Hiển thị Tên gói dịch vụ lưu sẵn trong ERP |
 | **Tình trạng Nợ** | `debt_status` | Hiển thị "Đã tất toán" hoặc "Quá hạn N ngày" (tính từ `ngay_x`) |
 | **Trạng thái Yêu cầu** | `suspend_status` | Hiển thị `WAITING_PROCUREMENT` (Yêu cầu khóa), `WAITING_UNSUSPEND` (Yêu cầu mở), `SUSPENDED` (Đã khóa) |
 | **Hạn chót xử lý** | Derived từ `DEBTS.updated_at` | Hạn chót = `updated_at` của trạng thái chờ + 24 giờ. Quá hạn thì cảnh báo đỏ |
