@@ -31,7 +31,7 @@ erDiagram
         string contract_number "Số hợp đồng (Sync CM)"
         string tax_code "MST theo legal entity của HĐ (Sync CM)"
         date sign_date "Ngày ký HĐ (Sync CM gợi ý / Kế toán xác nhận)"
-        int default_payment_term "Số ngày ân hạn mặc định (Kế toán tự nhập)"
+        int payment_term_days "Số ngày ân hạn mặc định (Kế toán tự nhập, sync xuống DEBTS.payment_term_days)"
     }
     
     DOCUMENT_TEMPLATES {
@@ -63,7 +63,6 @@ erDiagram
         decimal total_principal "Nợ gốc từ CM"
         decimal total_penalty "Tổng lãi phạt cộng dồn"
         decimal penalty_rate "Lãi suất phạt chậm (VD: 0.05%/ngày - Kế toán nhập)"
-        int payment_term_days "Số ngày được nợ kể từ khi nhận bản cứng (Kế toán nhập)"
         
         datetime ngay_x "Ngày X = delivered_at + payment_term_days"
         datetime paid_at "Ngày khách thanh toán thành công"
@@ -88,6 +87,7 @@ erDiagram
         uuid debt_id FK
         string email_status "Trạng thái Email: UNSENT, SENT, LOCKED"
         int email_sent_count "Số lần gửi email"
+        string first_email_message_id "Message-ID của email đầu tiên để làm thread (In-Reply-To)"
         jsonb call_logs "Mảng JSON lưu lịch sử đôn đốc"
     }
     
@@ -155,7 +155,7 @@ erDiagram
 
 * **Bảng `CONTRACTS` (Hợp đồng):** Hỗ trợ tra cứu nhanh khi tạo thông báo Pháp lý.
   - **Đồng bộ từ CM:** `id`, `customer_id`, `contract_number` (từ `legal[].contract_code`), `tax_code` (từ `legalEntity.taxNumber` của legal entity gắn với HĐ đó), `sign_date` (từ `legal[].sign_date`, gợi ý).
-  - **Kế toán tự nhập bổ sung trên ERP:** `default_payment_term` (Số ngày ân hạn mặc định).
+  - **Kế toán tự nhập bổ sung trên ERP:** `payment_term_days` (Số ngày ân hạn mặc định, dùng gợi ý cho `DEBTS.payment_term_days`).
 
 ---
 
@@ -168,6 +168,7 @@ erDiagram
 
 * **Bảng `DEBT_COLLECTIONS` (Đôn đốc nhắc nợ):**
   - `email_status` & `email_sent_count`: Kế toán thao tác. Quản lý việc duyệt gửi email nhắc nợ chưa, và đã gửi mấy lần.
+  - `first_email_message_id`: Lưu `Message-ID` của email đầu tiên gửi đi (`REMINDER_DELIVERED`) để dùng làm header `In-Reply-To` cho các email nhắc tiếp theo, đảm bảo tất cả email của 1 khoản nợ đều gom vào 1 luồng (thread) duy nhất.
   - `call_logs`: Sales AM thao tác. Lưu dưới dạng mảng JSON chứa lịch sử chi tiết tất cả các cuộc gọi đôn đốc. Giúp Frontend dễ dàng render lịch sử đôn đốc nhanh.
 
 * **Bảng `DEBT_LEGAL_ACTIONS` (Lịch sử Pháp lý & Công văn):**
@@ -229,6 +230,7 @@ Vai trò: Vì doanh nghiệp có rất nhiều loại biểu mẫu khác nhau (E
 | **CUSTOMERS** | `rep_name`, `rep_address`, `customer_code` | ✍️ **Nhập tay ERP** | `customer_code` là mã KH viết tắt, dùng sinh số HĐ/PL/CV |
 | **CONTRACTS** | `id`, `customer_id`, `contract_number`, `tax_code` | 🔄 **Sync CM** | `contract_number` từ `legal[].contract_code`, `tax_code` từ `legalEntity.taxNumber` |
 | **CONTRACTS** | `sign_date` | ⚠️ **Gợi ý từ CM, xác nhận** | Từ `legal[].sign_date` |
-| **CONTRACTS** | `default_payment_term` | ✍️ **Nhập tay ERP** | Số ngày ân hạn mặc định |
+| **CONTRACTS** | `payment_term_days` | ✍️ **Nhập tay ERP** | Số ngày ân hạn mặc định, dùng tính `ngay_x` |
 | **DEBTS** | `total_principal`, `billing_cycle`, `product_name` | 🔄 **Sync CM** | Data cốt lõi của kỳ cước |
-| **DEBTS** | `payment_term_days`, `penalty_rate` | ✍️ **Nhập tay ERP** | Kế toán tự nhập lần đầu |
+| **DEBTS** | `penalty_rate` | ✍️ **Nhập tay ERP** | Kế toán tự nhập lần đầu |
+| **CONTRACTS** | `payment_term_days` | ✍️ **Nhập tay ERP** | Dùng tính `ngay_x = delivered_at + payment_term_days` |

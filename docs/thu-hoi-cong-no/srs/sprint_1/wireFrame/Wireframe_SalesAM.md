@@ -1,6 +1,6 @@
 # Mockup: Màn Hình Công Nợ (Sales AM)
 
-Bảng điều khiển dành riêng cho từng Sales AM. Hệ thống tự động filter dựa trên `pic_id` của Sales đang đăng nhập.
+Bảng điều khiển dành riêng cho từng Sales AM. Hệ thống tự động filter dựa trên `sale_owner` của Sales đang đăng nhập.
 
 ---
 
@@ -91,8 +91,8 @@ Khi Sales bấm `[Duyệt Khóa]` hoặc `[Từ chối]` đối với khách hà
 
 | UI Element / Column | Database Field (`DEBTS` & related) | Mô tả & Cách hiển thị |
 |---|---|---|
-| **Thẻ KPI Cards** | `DEBTS` (Tổng hợp) | - **Tổng nợ khách hàng của tôi:** SUM(`total_principal` + `total_penalty`) WHERE `pic_id = current_user` AND `debt_status != PAID`. <br>- **Số khách hàng quá hạn:** COUNT(`id`) WHERE `pic_id = current_user` AND `debt_status = OVERDUE`. <br>- **Chờ duyệt khóa DV:** COUNT(`id`) WHERE `pic_id = current_user` AND `suspend_status = WAITING_SALES` |
-| **Tabs lọc nhanh** | `pic_id` & `debt_status` & `suspend_status` | Filter dòng theo `pic_id = current_user` kết hợp các trạng thái nợ của `DEBTS` |
+| **Thẻ KPI Cards** | `DEBTS` (Tổng hợp) | - **Tổng nợ khách hàng của tôi:** SUM(`total_principal` + `total_penalty`) WHERE `sale_owner = current_user_email` AND `debt_status != PAID`. <br>- **Số khách hàng quá hạn:** COUNT(`id`) WHERE `sale_owner = current_user_email` AND `debt_status = OVERDUE`. <br>- **Chờ duyệt khóa DV:** COUNT(`id`) WHERE `sale_owner = current_user_email` AND `suspend_status = WAITING_SALES` |
+| **Tabs lọc nhanh** | `sale_owner` & `debt_status` & `suspend_status` | Filter dòng theo `sale_owner = current_user_email` kết hợp các trạng thái nợ của `DEBTS` |
 | **Khách hàng / Mã HĐ** | `DEBTS.customer_id`, `DEBTS.contract_id` | Hiển thị Tên Khách hàng và Mã Hợp đồng lấy trực tiếp từ DB ERP |
 | **Sản phẩm** | `DEBTS.product_name` | Hiển thị Tên sản phẩm được lưu trực tiếp tại bảng `DEBTS` của ERP sau khi đồng bộ |
 | **Kỳ cước** | `DEBTS.billing_cycle` | Định dạng hiển thị `MM/YYYY` |

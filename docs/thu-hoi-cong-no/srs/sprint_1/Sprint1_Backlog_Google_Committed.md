@@ -42,9 +42,14 @@ Xây dựng và kiểm thử thông suốt **100% Quy trình Thu hồi Công n�
 * **Mô tả chi tiết (User Story Detail):**
   > Là một Kế toán doanh thu, tôi muốn dễ dàng xem danh sách các khách hàng dùng gói Google Workspace Cam kết (Committed) sắp đến đợt thanh toán, mở xem thông tin hợp đồng để đối chiếu khi cần và bấm xuất hàng loạt file Đề nghị thanh toán (Word hoặc PDF), để kịp thời gửi chứng từ thu tiền cho khách đúng hạn mà không phải soạn thủ công từng file.
 * **Tiêu chí nghiệm thu (Acceptance Criteria / DoD):**
-  - **AC1:** Kết nối thành công danh sách khách hàng GWS Committed đến hạn thanh toán từ hệ thống CM.
-  - **AC2:** Tự động sinh và tải về hàng loạt Đề nghị thanh toán (.docx/PDF) cho danh sách khách được chọn.
-  - **AC3:** Xem chi tiết thông tin hợp đồng, thời hạn, số lượng tài khoản và file đính kèm từ hệ thống CM (tra cứu hợp đồng là để đối chiếu khi cần).
+  - **AC1:** Kế toán bấm nút "Đồng bộ dữ liệu CM" → Hệ thống gọi `POST /api/authen/login` lấy JWT, sau đó gọi `GET /api/payment-request/all` với filter `productId=GWS_COMMITTED_ID`, `status=COMPLETED`, `startDate/endDate` tương ứng kỳ cước hiện tại → Lấy DS ĐNTT đã hoàn thành từ CM.
+  - **AC2:** Với mỗi payment-request từ AC1, hệ thống gọi `GET /api/payment-request/presigned?key=<document.key>` để lấy presigned URL download file .docx → Lưu thông tin file vào bảng `documents` local ERP.
+  - **AC3:** Hệ thống gọi `GET /api/contract/allNotPaging` + `GET /api/contract/:id` cho từng contractId của payment-request để lấy `contract_number` (từ `legal[].contract_code`), `sign_date` (từ `legal[].sign_date`) → map vào `CONTRACTS.contract_number`, `CONTRACTS.sign_date`. Đồng thời gọi `GET /api/common/allDataSelect` để lấy `legalEntity.taxNumber` → map vào `CONTRACTS.tax_code`.
+  - **AC4:** Hệ thống gọi `GET /api/customer/allNotPaging` để lấy `customer.id`, `customer.name` → map vào `CUSTOMERS.id`, `CUSTOMERS.customer_name`. Gọi `GET /api/customer/:id` để lấy `legalEntity.address` → gợi ý cho `CUSTOMERS.address` (Kế toán xác nhận trước khi lưu).
+  - **AC5:** Hệ thống gọi `GET /api/user/allNotPaging` để lấy danh sách user → map `sale_owner` (email) phục vụ phân quyền màn hình Sales AM.
+  - **AC6:** Hệ thống map các field từ CM response sang bảng `DEBTS` theo mapping tại `AI_docs/Database_ERD.md` mục 6.1: `paymentRequest._id` → `dntt_cm_id`, `product.name` → `product_name`, `paymentRequest.usageDate` → `billing_cycle`, `sale_owner` → `sale_owner`, `customerId` → `customer_id`, `contractIds[0]` → `contract_id`. Field `total_principal` tạm thời parse từ nội dung file .docx đã download (do CM chưa expose field này).
+  - **AC7:** Kế toán chọn 1+ dòng, bấm "Tải file ĐNTT" → Hệ thống dùng presigned URL đã lưu để tải file .docx về máy. Mỗi file hiển thị đúng tên gốc từ CM (`document.name`).
+  - **AC8:** Lần đầu sử dụng, Kế toán nhập `payment_term_days` (số ngày được nợ) vào `CONTRACTS` và `penalty_rate` (% lãi phạt/ngày) vào `DEBTS` qua `PATCH /api/debts/:id/config`.
 
 
 
@@ -55,9 +60,9 @@ Xây dựng và kiểm thử thông suốt **100% Quy trình Thu hồi Công n�
 * **Mô tả chi tiết (User Story Detail):**
   > Là một Quản lý/Kế toán trưởng, tôi muốn hệ thống ghi nhật ký audit trail cho mọi thao tác cước, phân quyền chặt chẽ theo vai trò và tự động sinh báo cáo kiểm toán dữ liệu cước hàng tháng.
 * **Tiêu chí nghiệm thu (Acceptance Criteria / DoD):**
-  - **AC1:** Tự động ghi nhật ký kiểm toán (Audit Trail) cho mọi thao tác tính toán & chỉnh sửa cước.
+  - **AC1:** Mọi thao tác (sync CM, đóng dấu, gửi mail, duyệt khóa...) đều tự động ghi 1 bản ghi vào `DEBT_AUDIT_LOGS`. Audit trail hiển thị được timeline của từng khoản nợ qua `GET /api/debts/:id/audit-logs`.
   - **AC2:** Phân quyền chi tiết chức năng tính cước theo vai trò người dùng (Kế toán, Sales, Admin).
-  - **AC3:** Tự động sinh báo cáo kiểm toán dữ liệu cước hàng tháng cho Kế toán trưởng.
+  - **AC3:** Hệ thống gọi `GET /api/audit-logs` để render global audit trail trên Executive Dashboard.
 
 ---
 
@@ -68,10 +73,10 @@ Xây dựng và kiểm thử thông suốt **100% Quy trình Thu hồi Công n�
 * **Mô tả chi tiết (User Story Detail):**
   > Là một Kế toán / Hành chính nhân sự, tôi muốn Kế toán đóng dấu đỏ ĐNTT và báo HCNS đi gửi bưu điện, sau khi HCNS xác nhận phát thành công thì hệ thống tự động xác định mốc hạn thanh toán Ngày X dựa trên ngày giao nhận thực tế và mở khóa nút gửi email.
 * **Tiêu chí nghiệm thu (Acceptance Criteria / DoD):**
-  - **AC1:** Kế toán in bản cứng ĐNTT, trình ký đóng dấu đỏ công ty và bấm xác nhận trên hệ thống để gửi thông báo cho HCNS sang nhận thư.
-  - **AC2:** HCNS nhận phong bì thư, gửi chuyển phát và cập nhật mã vận đơn / xác nhận ngày khách nhận bản cứng thành công.
-  - **AC3:** Hệ thống tự động tính toán và lưu mốc Ngày X = Ngày khách nhận bản cứng + số ngày được nợ theo điều khoản hợp đồng.
-  - **AC4:** **Ràng buộc bắt buộc:** Nút gửi email ĐNTT điện tử CHỈ ĐƯỢC MỞ KHÓA khi HCNS bấm xác nhận khách đã nhận bản cứng thành công (cảnh báo nếu quá 48h chưa có cập nhật).
+  - **AC1:** Kế toán in bản cứng ĐNTT, trình ký đóng dấu đỏ → bấm nút "Đã đóng dấu" → gọi `PATCH /api/debts/:id/delivery/stamp` (hardcopy_status=STAMPED). Hệ thống ghi audit log.
+  - **AC2:** HCNS nhận phong bì, gửi chuyển phát → nhập mã vận đơn → gọi `PATCH /api/debts/:id/delivery/post` (hardcopy_status=POSTED, tracking_code). Khi khách nhận được → bấm xác nhận → gọi `PATCH /api/debts/:id/delivery/deliver` (hardcopy_status=DELIVERED, delivered_at).
+  - **AC3:** Khi `PATCH /api/debts/:id/delivery/deliver` được gọi, hệ thống đọc `CONTRACTS.payment_term_days` (đã nhập ở BD-09 AC8) qua liên kết `DEBTS.contract_id`, tự động tính `ngay_x = delivered_at + payment_term_days` và cập nhật `debt_status=IN_TERM`.
+  - **AC4:** **Ràng buộc:** Nút "Gửi email ĐNTT" chỉ enabled khi `hardcopy_status=DELIVERED`. Gọi `POST /api/debts/:id/send-email` → nếu chưa deliver thì trả về lỗi. Cảnh báo nếu quá 48h chưa có cập nhật.
 
 ---
 
@@ -82,11 +87,19 @@ Xây dựng và kiểm thử thông suốt **100% Quy trình Thu hồi Công n�
 * **Mô tả chi tiết (User Story Detail):**
   > Là một Kế toán doanh thu, tôi muốn khách hàng nhận email thông báo nhắc nợ trước 2 ngày khi sắp đến hạn thanh toán và tự động nhận email đôn đốc hàng ngày khi đã quá hạn (có thông báo rõ các mốc dừng dịch vụ và hủy hợp đồng), để hỗ trợ khách thanh toán đúng hạn.
 * **Tiêu chí nghiệm thu (Acceptance Criteria / DoD):**
-  - **AC1:** Hệ thống cảnh báo và Kế toán duyệt gửi email trước hạn vào Ngày X-2 (CC Sales AM).
-  - **AC2:** Tự động kích hoạt luồng nhắc nợ khi quá Ngày X chưa thanh toán.
-  - **AC3:** Hệ thống lên danh sách nhắc nợ hàng ngày để Kế toán duyệt gửi cho khách quá hạn (từ Ngày X+1).
-  - **AC4:** Soạn nội dung email nhắc nợ đầy đủ: nợ gốc, lãi chậm, mốc dừng DV (X+4), mốc hủy HĐ (X+30).
+  - **AC1:** Thực hiện luồng gửi email đôn đốc trước hạn (countdown) tự động kể từ khi nhận bản cứng:
+    * Kể từ ngày nhận bản cứng (tại ngày `ngay_x - CONTRACTS.payment_term_days` hoặc ngay khi cập nhật `DELIVERED`) cho đến hết ngày X-3: Hệ thống tự động gọi `POST /api/debts/:id/send-email` với template `REMINDER_DELIVERED` vào lúc 08:30 hàng ngày.
+    * Vào Ngày X-2: Hệ thống tự động gọi `POST /api/debts/:id/send-email` với template `REMINDER_X_MINUS_2` vào lúc 08:30.
+    * Vào Ngày X-1: Hệ thống tự động gọi `POST /api/debts/:id/send-email` với template `REMINDER_X_MINUS_1` vào lúc 08:30.
+    * Vào Đúng Ngày X: Hệ thống tự động gọi `POST /api/debts/:id/send-email` với template `REMINDER_X` vào lúc 08:30.
+    * *(Tất cả email trên đều gửi trực tiếp đến Khách hàng và CC cho Sales AM phụ trách)*
+  - **AC2:** Từ ngày `ngay_x + 1` (`debt_status=OVERDUE`), cronjob kiểm tra danh sách quá hạn hàng ngày. Kế toán duyệt → gọi `POST /api/debts/:id/send-email` với template `REMINDER_X_PLUS_1` (xem `mailTemplate/Templates.md` mục 2).
+  - **AC3:** Hệ thống lên danh sách nhắc nợ hàng ngày để Kế toán duyệt gửi cho khách quá hạn (từ ngày `ngay_x + 1`).
+  - **AC4:** Nội dung email render từ template: `[customer_name]`, `[total_principal]`, `[total_penalty]`, các mốc X+N.
   - **AC5:** Hỗ trợ luồng nhắc nợ tự động riêng cho GWS Committed.
+  - **AC6: Ràng buộc kỹ thuật về Luồng Mail (Email Threading):** Tất cả các email gửi cho khách hàng liên quan đến cùng một khoản nợ (từ thông báo nhận bản cứng `REMINDER_DELIVERED`, các email đếm ngược trước hạn, email nhắc nợ quá hạn `REMINDER_X_PLUS_1`, đến email cảnh báo dừng dịch vụ `SUSPEND_WARNING_X_PLUS_4`) bắt buộc phải nằm chung trong **một luồng mail duy nhất (single thread)**. 
+    * Backend cần lưu lại `Message-ID` của email đầu tiên được gửi đi (`REMINDER_DELIVERED`) vào trường `DEBT_COLLECTIONS.first_email_message_id`.
+    * Các email gửi đi tiếp theo cho khoản nợ đó phải set header `In-Reply-To` và `References` trỏ về `Message-ID` của email đầu tiên, đồng thời tiêu đề email (Subject) phải giữ nguyên cấu trúc hoặc có tiền tố `Re:` (ví dụ: `Re: Thông báo bàn giao hồ sơ thanh toán cước tháng...`) để các trình quản lý thư (Gmail, Outlook...) nhóm chung vào 1 luồng duy nhất cho khách dễ theo dõi.
 
 ---
 
@@ -95,11 +108,11 @@ Xây dựng và kiểm thử thông suốt **100% Quy trình Thu hồi Công n�
 * **Bộ phận:** Kế toán doanh thu & Sales AM / Quản lý
 * **Tên ngắn:** `DC-05: Cấu hình luồng nhắc nợ & tính lãi chậm thanh toán`
 * **Mô tả chi tiết (User Story Detail):**
-  > Là một Kế toán doanh thu / Quản lý, tôi muốn duyệt trước nội dung email nhắc nợ (hoặc chuyển Sales AM duyệt) trước khi gửi cho khách và tự động tính tiền lãi chậm thanh toán cộng dồn hàng ngày theo hợp đồng, để đôn đốc công nợ chính xác.
+  > Là một Kế toán doanh thu / Quản lý, tôi muốn duyệt trước nội dung email nhắc nợ trước khi gửi cho khách và tự động tính tiền lãi chậm thanh toán cộng dồn hàng ngày theo hợp đồng, để đôn đốc công nợ chính xác.
 * **Tiêu chí nghiệm thu (Acceptance Criteria / DoD):**
-  - **AC1:** Cấu hình luồng duyệt email nhắc nợ: gửi tự động hoặc tạo nháp gửi Sales AM duyệt trước.
-  - **AC2:** Tự động tính lãi chậm thanh toán = `% lãi trả chậm quy định theo hợp đồng × số ngày trả chậm × nợ gốc (tiền cước phải trả kỳ đó)`.
-  - **AC3:** Cấu hình tỷ lệ % lãi chậm thanh toán riêng cho từng hợp đồng.
+  - **AC1:** Kế toán cấu hình luồng duyệt email (tự động gửi / tạo nháp để Kế toán duyệt và gửi) → lưu vào `DOCUMENT_TEMPLATES` qua `PUT /api/document-templates/:id`. Kế toán sẽ là người trực tiếp duyệt và thực hiện gửi email.
+  - **AC2:** Cronjob hàng ngày gọi `POST /api/cron/calculate-penalty`. Công thức: `penalty_amount = penalty_rate × days_overdue × total_principal`. Insert vào `DEBT_PENALTY_LOGS`, cập nhật `DEBTS.total_penalty`.
+  - **AC3:** Kế toán cấu hình `penalty_rate` riêng cho từng hợp đồng qua `PATCH /api/debts/:id/config`.
 
 ---
 
@@ -110,8 +123,8 @@ Xây dựng và kiểm thử thông suốt **100% Quy trình Thu hồi Công n�
 * **Mô tả chi tiết (User Story Detail):**
   > Là một Sales Quản lý tài khoản (Sales AM), tôi muốn xem danh sách các khách hàng quá hạn do mình phụ trách và ghi nhận lại lịch sử đôn đốc (gọi điện, nhắn tin, ngày khách hẹn trả tiền), để phối hợp với Kế toán theo dõi và thu hồi nợ.
 * **Tiêu chí nghiệm thu (Acceptance Criteria / DoD):**
-  - **AC1:** Dashboard công nợ dành riêng cho Sales AM hiển thị danh sách khách quá hạn thuộc quyền quản lý.
-  - **AC2:** Cung cấp giao diện cho Sales AM ghi nhận nhật ký đôn đốc khách (gọi điện/chat, ngày hẹn trả tiền).
+  - **AC1:** Dashboard gọi `GET /api/debts?debt_status=OVERDUE&sale_owner=<current_user>` để lấy danh sách khách quá hạn của Sales AM đang đăng nhập. Kèm KPI cards từ `GET /api/debts/summary`.
+  - **AC2:** Sales AM bấm "Log Call" → popup ghi nhận hình thức, nội dung → gọi `POST /api/debts/:id/call-logs`. Lịch sử cũ hiển thị qua `GET /api/debts/:id/call-logs`.
 
 ---
 
@@ -122,9 +135,9 @@ Xây dựng và kiểm thử thông suốt **100% Quy trình Thu hồi Công n�
 * **Mô tả chi tiết (User Story Detail):**
   > Là một Kế toán / Sales AM, tôi muốn nhận thông báo cảnh báo khi khách quá hạn 4 ngày và chỉ thực hiện dừng dịch vụ khi có phê duyệt xác nhận chính thức từ Sales AM, để tránh dừng nhầm dịch vụ của khách hàng quan trọng.
 * **Tiêu chí nghiệm thu (Acceptance Criteria / DoD):**
-  - **AC1:** Gửi email cảnh báo dừng dịch vụ đến khách hàng vào Ngày X+4.
-  - **AC2:** Tạo yêu cầu dừng dịch vụ gửi Sales AM phê duyệt (từ chối bắt buộc ghi lý do commercial).
-  - **AC3:** **Ràng buộc cứng:** Chặn tuyệt đối thao tác dừng dịch vụ nếu chưa có xác nhận từ Sales AM.
+  - **AC1:** Vào ngày `ngay_x + 4`, cronjob gọi `POST /api/debts/:id/send-email` với template `SUSPEND_WARNING_X_PLUS_4` (xem `mailTemplate/Templates.md` mục 3). Email gửi đến khách hàng, CC Sales AM và Trưởng phòng Sales.
+  - **AC2:** Sales AM vào dashboard → thấy nút "Duyệt Khóa" / "Từ chối". Bấm "Duyệt" → gọi `PATCH /api/debts/:id/suspend/approve` (suspend_status=WAITING_PROCUREMENT). Bấm "Từ chối" → gọi `PATCH /api/debts/:id/suspend/reject` (kèm lý do, suspend_status=NONE).
+  - **AC3:** **Ràng buộc cứng:** Mọi API thay đổi suspend_status đều kiểm tra: nếu chưa có approve từ Sales AM thì không cho chuyển sang WAITING_PROCUREMENT. Trả về 403 nếu vi phạm.
 
 ---
 
@@ -135,10 +148,10 @@ Xây dựng và kiểm thử thông suốt **100% Quy trình Thu hồi Công n�
 * **Mô tả chi tiết (User Story Detail):**
   > Là một Nhân viên Phòng Mua (Procurement), tôi muốn nhận yêu cầu sau khi Sales AM đã duyệt dừng/mở dịch vụ, thao tác tạm khóa hoặc mở lại dịch vụ trên trang quản trị của Google/hãng và thông báo kết quả cho các bên liên quan.
 * **Tiêu chí nghiệm thu (Acceptance Criteria / DoD):**
-  - **AC1:** Tự động chuyển task cho Phòng Mua sau khi Sales AM đã xác nhận dừng DV.
-  - **AC2:** Phòng Mua thực thi Suspend/Unsuspend trên trang quản trị dịch vụ hãng và cập nhật trạng thái lên ERP.
-  - **AC3:** Hệ thống sinh thư nháp, nhân sự duyệt gửi email thông báo kết quả dừng/khôi phục DV cho Kế toán, Sales AM, Legal.
-  - **AC4:** Ghi lịch sử dừng DV: tự động yêu cầu khách đặt cọc trước khi khôi phục nếu bị dừng lần 2.
+  - **AC1:** Khi `suspend_status=WAITING_PROCUREMENT`, màn hình Phòng Mua gọi `GET /api/debts?suspend_status=WAITING_PROCUREMENT` để hiển thị danh sách yêu cầu khóa.
+  - **AC2:** Phòng Mua thao tác khóa trên Google Admin Console → quay lại ERP bấm "Xác nhận đã Khóa" → gọi `PATCH /api/debts/:id/suspend/execute` (suspend_status=SUSPENDED). Tương tự cho mở: gọi `PATCH /api/debts/:id/unsuspend/execute` (suspend_status=UNSUSPENDED).
+  - **AC3:** Sau khi execute, hệ thống gọi `POST /api/debts/:id/send-email` với template `SUSPEND_RESULT` (xem `mailTemplate/Templates.md` mục 7). Email gửi thông báo kết quả cho Kế toán, Sales AM, Legal.
+  - **AC4:** Khi gọi `PATCH /api/debts/:id/unsuspend/request`, hệ thống kiểm tra số lần suspend trong lịch sử → nếu >= 2 thì yêu cầu khách đặt cọc trước khi mở.
 
 ---
 
@@ -150,9 +163,9 @@ Xây dựng và kiểm thử thông suốt **100% Quy trình Thu hồi Công n�
 * **Mô tả chi tiết (User Story Detail):**
   > Là một Nhân viên Pháp lý (Legal), tôi muốn xem danh sách khách hàng quá hạn cần lập công văn (mốc X+15) và mốc chấm dứt hợp đồng (mốc X+30), để lập công văn theo mẫu và làm thủ tục đơn phương chấm dứt hợp đồng hoặc khởi kiện đúng quy định.
 * **Tiêu chí nghiệm thu (Acceptance Criteria / DoD):**
-  - **AC1:** Giao diện danh sách dành riêng cho bộ phận Pháp lý (Legal) xem các khách hàng quá hạn chạm mốc X+15 (cần lập công văn) và mốc X+30 (cần chấm dứt HĐ / khởi kiện).
-  - **AC2:** Mẫu công văn pháp lý tự động điền (tên khách hàng, số hợp đồng, tổng nợ gốc, tiền lãi phạt) để Legal duyệt và xuất file (Word/PDF) gửi bản cứng/email cho khách.
-  - **AC3:** Kích hoạt nút thực hiện đơn phương chấm dứt hợp đồng trên hệ thống và ghi nhận trạng thái hồ sơ khởi kiện vào mốc Ngày X+30.
+  - **AC1:** Màn hình Legal gọi `GET /api/debts?debt_status=OVERDUE&ngay_x_lte=<today-15>` để lấy DS khách quá hạn >= X+15. Tab "Chuẩn bị kiện" filter `ngay_x_lte=<today-30>`.
+  - **AC2:** Legal bấm "Soạn Công văn" → hệ thống gọi `GET /api/document-templates?template_code=LEGAL_X_15` lấy template (xem `mailTemplate/Templates.md` mục 5), fill biến `[customer_name]`, `[contract_number]`, `[total_principal]`, `[total_penalty]`, `[legal_locked_penalty]` từ DB. Legal duyệt → bấm "Lưu & Xuất PDF" → gọi `POST /api/debts/:id/legal-documents` (legal_status=PREPARING, file_url, publish_date, termination_date, locked_penalty).
+  - **AC3:** Vào ngày `ngay_x + 30`, cronjob gửi email nội bộ với template `SUE_NOTIFY_X_PLUS_30` (xem `mailTemplate/Templates.md` mục 6) cho Ban Giám đốc và Phòng Pháp lý. Legal bấm "Khởi kiện" → gọi `PATCH /api/debts/:id/legal-documents/:legalId/sue` (legal_status=SUED). Hệ thống ghi audit log.
 
 ---
 
@@ -163,6 +176,10 @@ Xây dựng và kiểm thử thông suốt **100% Quy trình Thu hồi Công n�
 * **Mô tả chi tiết (User Story Detail):**
   > Là một Kế toán trưởng / Ban Quản lý, tôi muốn xem báo cáo tổng quan tình hình công nợ quá hạn của toàn công ty, tra cứu lịch sử thao tác của các bộ phận và nhận cảnh báo khi khách hàng chạm các mốc nợ khẩn cấp, để chỉ đạo xử lý kịp thời.
 * **Tiêu chí nghiệm thu (Acceptance Criteria / DoD):**
-  - **AC1:** Nhật ký kiểm toán (Audit Trail) lưu trữ toàn bộ lịch sử quy trình thu hồi công nợ.
-  - **AC2:** Executive Dashboard hiển thị tổng nợ quá hạn, số khách nợ, phân loại theo mốc giai đoạn.
-  - **AC3:** Cảnh báo tự động đến các bên liên quan khi khách chạm các mốc khẩn cấp (X+4, X+15, X+30).
+  - **AC1:** Dashboard gọi `GET /api/audit-logs` để render timeline toàn hệ thống. Mỗi dòng hiển thị: thời gian, người thực hiện, hành động, mô tả.
+  - **AC2:** Dashboard gọi `GET /api/dashboard/kpi` để hiển thị 5 thẻ KPI (tổng nợ, nợ quá hạn, lãi phạt, khách bị khóa, khách bị kiện). Gọi `GET /api/dashboard/top-debt` cho bảng xếp hạng top 10. Gọi `GET /api/dashboard/charts` cho biểu đồ phân bổ.
+  - **AC3:** Dashboard hiển thị cảnh báo (alert banner) khi phát hiện khoản nợ chạm mốc dựa trên `ngay_x`:
+    - `ngay_x + 4`: banner đỏ "Khách hàng đến mốc X+4 — cần Sales AM duyệt khóa DV".
+    - `ngay_x + 15`: banner cam "Khách hàng đến mốc X+15 — Pháp lý cần soạn công văn".
+    - `ngay_x + 30`: banner đỏ "Khách hàng đến mốc X+30 — chuẩn bị hồ sơ khởi kiện".
+    Người dùng bấm vào banner để chuyển đến màn hình xử lý tương ứng. Hệ thống không tự động gửi email hay thực thi hành động.

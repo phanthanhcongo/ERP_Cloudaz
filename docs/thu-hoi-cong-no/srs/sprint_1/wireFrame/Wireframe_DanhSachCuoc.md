@@ -136,7 +136,7 @@ Khi Kế toán nhấn nút **"Đồng bộ dữ liệu CM"** hoặc khi hệ th�
 | `paymentRequest.usageDate` | `billing_cycle` | Chuyển đổi từ `Date` của CM thành chuỗi Kỳ cước định dạng `MM/YYYY` (ví dụ: `08/2026`). |
 | `contract.customerId` | `customer_id` | ID của Khách hàng ký hợp đồng (lấy từ hợp đồng chính liên kết với DNTT). |
 | `paymentRequest.contractIds[0]` | `contract_id` | ID của hợp đồng áp dụng (trong trường hợp DNTT liên kết nhiều hợp đồng, mặc định lấy hợp đồng chính). |
-| `contract.sales_incharge` | `pic_id` | ID của Sales AM phụ trách hợp đồng để phân quyền màn hình đôn đốc nợ cho Sales. |
+| `sale_owner` | `sale_owner` | Email của Sales AM phụ trách hợp đồng để phân quyền màn hình đôn đốc nợ cho Sales (Dùng làm identity). |
 | Dữ liệu tính toán từ CM | `total_principal` | Lấy số tiền nợ gốc đã được CM chốt cước (Giá trị số thập phân). |
 | *Mặc định khởi tạo* | `total_penalty` | Mặc định khởi tạo bằng `0` (Sẽ được tính lãi phạt quá hạn sau bởi Cronjob ERP). |
 | *Mặc định khởi tạo* | `delivered_at` | Khởi tạo bằng `null` (Hành chính nhân sự sẽ cập nhật khi chuyển phát thành công). |
