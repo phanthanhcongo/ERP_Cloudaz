@@ -151,7 +151,7 @@ Sprint 1 làm **trọn 10 US trong một đợt** (PO chốt, không tách 1a/1b
     * *(Tất cả email trên đều gửi trực tiếp đến Khách hàng và CC cho Sales AM phụ trách)*
     * **Ràng buộc tần suất — tối đa 1 email/ngày cho mỗi khoản nợ:** Backend kiểm tra trước khi gửi, nếu khoản nợ đó **đã có email gửi đi trong ngày hôm nay** thì bỏ qua, trả `429 FIN_DEBT_EMAIL_RATE_LIMIT`. Áp dụng cho **toàn bộ** email của luồng công nợ (trước hạn, quá hạn, cảnh báo khóa), tính chung một hạn mức — kể cả khi nhiều điều kiện cùng khớp trong 1 ngày, hoặc Kế toán gửi tay sau khi cron đã gửi tự động.
     * **Thứ tự ưu tiên khi nhiều template cùng khớp trong một ngày:** `SUSPEND_WARNING_X_PLUS_4` > `REMINDER_X_PLUS_1` > `REMINDER_X` > `REMINDER_X_MINUS_1` > `REMINDER_X_MINUS_2` > `REMINDER_DELIVERED`. Chỉ template ưu tiên cao nhất được gửi.
-  - **AC2:** Từ ngày `ngay_x + 1` (`debt_status=OVERDUE`), `DebtReminderSweepJob` quét danh sách quá hạn hàng ngày và enqueue template `REMINDER_X_PLUS_1` (xem `mailTemplate/Templates.md` mục 2). Nếu template cấu hình `approval_mode = MANUAL` thì job **chỉ tạo nháp**, Kế toán duyệt rồi bấm gửi tay qua `POST /api/v1/fin/debts/:id/send-email`.
+  - **AC2:** Từ ngày `ngay_x + 1` (`debt_status=OVERDUE`), `DebtReminderSweepJob` quét danh sách quá hạn hàng ngày và enqueue template `REMINDER_X_PLUS_1` (xem `mailTemplate/reminder_x_plus_1.gohtml`). Nếu template cấu hình `approval_mode = MANUAL` thì job **chỉ tạo nháp**, Kế toán duyệt rồi bấm gửi tay qua `POST /api/v1/fin/debts/:id/send-email`.
   - **AC3:** Hệ thống lên danh sách nhắc nợ hàng ngày để Kế toán duyệt gửi cho khách quá hạn (từ ngày `ngay_x + 1`).
   - **AC4:** Nội dung email render từ template: `[customer_name]`, `[total_principal]`, `[total_penalty]`, các mốc X+N.
   - **AC5 (Kịch bản kiểm thử đầu-cuối luồng nhắc nợ):** Viết lại ở dạng Given/When/Then để QA kiểm chứng được:
@@ -370,7 +370,7 @@ Sprint 1 làm **trọn 10 US trong một đợt** (PO chốt, không tách 1a/1b
 * **Mô tả chi tiết (User Story Detail):**
   > Là một Kế toán / Sales AM, tôi muốn nhận thông báo cảnh báo khi khách quá hạn 4 ngày và chỉ thực hiện dừng dịch vụ khi có phê duyệt xác nhận chính thức từ Sales AM, để tránh dừng nhầm dịch vụ của khách hàng quan trọng.
 * **Tiêu chí nghiệm thu (Acceptance Criteria / DoD):**
-  - **AC1:** Vào ngày `ngay_x + suspend_milestone_days` (mặc định X+4), job **`DebtReminderSweepJob`** enqueue template `SUSPEND_WARNING_X_PLUS_4` (xem `mailTemplate/Templates.md` mục 3). Email gửi đến khách hàng, CC Sales AM và Trưởng phòng Sales.
+  - **AC1:** Vào ngày `ngay_x + suspend_milestone_days` (mặc định X+4), job **`DebtReminderSweepJob`** enqueue template `SUSPEND_WARNING_X_PLUS_4` (xem `mailTemplate/suspend_warning_x_plus_4.gohtml`). Email gửi đến khách hàng, CC Sales AM và Trưởng phòng Sales.
     * **Nguồn email Trưởng phòng Sales:** lấy từ **cây tổ chức trong hệ thống ERP**, không hardcode và không cấu hình rời. Đường truy 5 bước:
       ```
       DEBTS.sale_owner (email) → users.email → users.id
@@ -465,7 +465,7 @@ Sprint 1 làm **trọn 10 US trong một đợt** (PO chốt, không tách 1a/1b
     | Chạm mốc X+30 (Chuẩn bị Khởi kiện) | `legal_status = SENT` **và** `ngay_x_lte = today-30` |
     | Đang khởi kiện | `legal_status = SUED` |
 
-  - **AC2:** Legal bấm "Soạn Công văn" → hệ thống gọi `GET /api/v1/fin/document-templates?template_code=LEGAL_X_15` lấy template (xem `mailTemplate/Templates.md` mục 5), fill biến `[customer_name]`, `[contract_number]`, `[total_principal]`, `[total_penalty]`, `[legal_locked_penalty]` từ DB. Legal duyệt → bấm "Lưu & Xuất PDF" → gọi `POST /api/v1/fin/debts/:id/legal-documents` (**legal_status=PREPARING**, file_url, document_number, publish_date, termination_date, locked_penalty). Trạng thái `PREPARING` nghĩa là **"Đã lập công văn, chưa gửi"**.
+  - **AC2:** Legal bấm "Soạn Công văn" → hệ thống gọi `GET /api/v1/fin/document-templates?template_code=LEGAL_X_15` lấy template (xem `mailTemplate/legal_x_15.gohtml`), fill biến `[customer_name]`, `[contract_number]`, `[total_principal]`, `[total_penalty]`, `[legal_locked_penalty]` từ DB. Legal duyệt → bấm "Lưu & Xuất PDF" → gọi `POST /api/v1/fin/debts/:id/legal-documents` (**legal_status=PREPARING**, file_url, document_number, publish_date, termination_date, locked_penalty). Trạng thái `PREPARING` nghĩa là **"Đã lập công văn, chưa gửi"**.
     * Nếu thiếu `rep_name` / `rep_address` / `customer_code` / `tax_code` → `422 FIN_DEBT_MISSING_LEGAL_INFO`.
   - **AC2b (Gửi công văn — ba đường):** Legal bấm `[📮 Xác nhận đã gửi]` → chọn `delivery_method` → gọi `PATCH /api/v1/fin/debts/:id/legal-documents/:legalId/send`, ghi audit log.
 
@@ -488,7 +488,7 @@ Sprint 1 làm **trọn 10 US trong một đợt** (PO chốt, không tách 1a/1b
     * **Vì sao phải lọc ở `GET` chứ không chỉ chặn ở `POST`:** Kế toán thấy badge "23 thư chờ duyệt", bấm `[Gửi tất cả]`, nhận 2 dòng lỗi mỗi ngày mà không hiểu vì sao. Lọc từ đầu thì badge luôn đúng bằng số việc họ làm được.
     * **Nháp làn `LEGAL` không hết hạn cuối ngày.** `DebtDraftExpireJob` chỉ dọn làn `REMINDER`. `locked_penalty` trong công văn là ảnh chụp đã chốt, in trên giấy đã ký — không đổi theo ngày, không cần soạn lại.
     * `DRAFT_PENDING_DIGEST` đếm và gửi **theo từng làn**: Kế toán nhận *"Có N thư nhắc nợ chờ duyệt"*, Pháp lý nhận *"Có M công văn chờ gửi"*.
-  - **AC3:** Job **`DebtLegalNotifyJob`** (Go background job, 08:30 hàng ngày, **chỉ enqueue** không gọi HTTP): vào ngày `ngay_x + legal_notice_milestone_days` (mặc định X+15) enqueue template `LEGAL_NOTIFY_X_PLUS_15` cho Phòng Pháp lý (CC Kế toán trưởng, Sales AM, Ban Giám đốc). Vào ngày `ngay_x + legal_sue_milestone_days` (mặc định X+30), enqueue template `SUE_NOTIFY_X_PLUS_30` (xem `mailTemplate/Templates.md` mục 6) cho Ban Giám đốc và Phòng Pháp lý. Legal bấm "Khởi kiện" → gọi `PATCH /api/v1/fin/debts/:id/legal-documents/:legalId/sue` (legal_status=SUED). Hệ thống ghi audit log.
+  - **AC3:** Job **`DebtLegalNotifyJob`** (Go background job, 08:30 hàng ngày, **chỉ enqueue** không gọi HTTP): vào ngày `ngay_x + legal_notice_milestone_days` (mặc định X+15) enqueue template `LEGAL_NOTIFY_X_PLUS_15` cho Phòng Pháp lý (CC Kế toán trưởng, Sales AM, Ban Giám đốc). Vào ngày `ngay_x + legal_sue_milestone_days` (mặc định X+30), enqueue template `SUE_NOTIFY_X_PLUS_30` (xem `mailTemplate/sue_notify_x_plus_30.gohtml`) cho Ban Giám đốc và Phòng Pháp lý. Legal bấm "Khởi kiện" → gọi `PATCH /api/v1/fin/debts/:id/legal-documents/:legalId/sue` (legal_status=SUED). Hệ thống ghi audit log.
     * **Lưu ý:** `debt_status` **giữ nguyên `OVERDUE`** khi bị kiện, và lãi phạt **vẫn tiếp tục cộng dồn** (xem DC-05 AC5).
 
   - **AC4 (Văn bản chấm dứt hợp đồng — ngoài phạm vi hệ thống):** Hệ thống **không sinh** văn bản đơn phương chấm dứt hợp đồng. Đây là văn bản pháp lý do Phòng Pháp lý tự soạn ngoài ERP.

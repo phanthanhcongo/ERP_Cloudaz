@@ -664,51 +664,51 @@ Chi tiết cài đặt: `Database_Schema.md` mục *Ba cột neo luồng thư* v
 
 ## Danh sách biến số (Variables)
 
-| Biến | Nguồn | Mô tả |
+| Biến (trong Templates.md) | Go template (trong .gohtml) | Nguồn | Mô tả |
 |------|-------|-------|
-| `[customer_name]` | `CUSTOMERS.customer_name` | Tên khách hàng |
-| `[customer_address]` | `CUSTOMERS.address` | Địa chỉ khách hàng |
-| `[rep_name]` | `CUSTOMERS.rep_name` | Người đại diện PL |
-| `[rep_address]` | `CUSTOMERS.rep_address` | Địa chỉ người đại diện |
-| `[tax_code]` | `CONTRACTS.tax_code` | Mã số thuế |
-| `[contract_number]` | `CONTRACTS.contract_number` | Số hợp đồng |
-| `[contract_sign_date]` | `CONTRACTS.sign_date` | Ngày ký HĐ |
-| `[product_name]` | `DEBTS.product_name` | Tên sản phẩm |
-| `[billing_cycle]` | `DEBTS.billing_cycle` | Kỳ cước (MM/YYYY) |
-| `[total_principal]` | `DEBTS.total_principal` | Nợ gốc (format tiền) |
-| `[total_penalty]` | `DEBTS.total_penalty` | Lãi phạt (format tiền) |
-| `[total_amount]` | = `total_principal` + `total_penalty` | Tổng nợ |
-| `[total_amount_in_words]` | Helper function | Tổng nợ bằng chữ |
-| `[penalty_rate]` | `DEBTS.penalty_rate` | % lãi phạt/ngày |
-| `[ngay_x]` | `DEBTS.ngay_x` | Hạn chót (dd/mm/yyyy) |
-| `[ngay_x+4]` | Derived = `ngay_x` + `debt_product_configs.suspend_milestone_days` | Mốc khóa DV (mặc định 4) — **đọc từ cấu hình, không hardcode** |
-| `[ngay_x+5]` | Derived = `ngay_x` + `suspend_milestone_days` + 1 | Ngày dịch vụ **thực sự bị khóa** — dùng trong `SUSPEND_WARNING_X_PLUS_4` để báo khách "sẽ bị khóa kể từ ngày…" |
-| `[ngay_x+15]` | Derived = `ngay_x` + `debt_product_configs.legal_notice_milestone_days` | Mốc lập công văn (mặc định 15) |
-| `[ngay_x+30]` | Derived = `ngay_x` + `debt_product_configs.legal_sue_milestone_days` | Mốc khởi kiện (mặc định 30) |
-| `[days_overdue]` | Derived = today - ngay_x | Số ngày quá hạn |
-| `[sale_owner_name]` | User map từ `DEBTS.sale_owner` | Tên Sales AM |
-| `[today]` | System | Ngày hiện tại |
-| `[delivered_at]` | `DEBT_DELIVERIES.delivered_at` | Ngày khách ký nhận bản cứng |
-| `[receiver_name]` | `DEBT_DELIVERIES.receiver_name` | Người ký nhận bản cứng (HCNS nhập tại `PATCH /delivery/deliver`) |
-| `[payment_term_days]` | `CONTRACTS.payment_term_days` | Số ngày ân hạn theo HĐ |
-| `[ngay_x_minus_2]` | Derived = `ngay_x` − 2 | Ngày đã gửi thông báo sắp đến hạn |
-| `[customer_code]` | `CUSTOMERS.customer_code` | Mã KH viết tắt, dùng sinh `[document_number]` |
-| `[publish_day]` / `[publish_month]` / `[publish_year]` | Tách từ `DEBT_LEGAL_ACTIONS.publish_date` | Ngày/tháng/năm ký công văn |
-| `[start_billing_month]` / `[end_billing_month]` / `[billing_year]` | Parse từ `DEBTS.billing_cycle` | Khoảng kỳ cước trong Bảng đối soát |
-| `[document_number]` | `DEBT_LEGAL_ACTIONS.document_number` | Số công văn, sinh tự động theo format `01-[YYYYMMDD]/CV/CLOUDAZ-[customer_code]`, **unique toàn hệ thống** |
-| `[legal_publish_date]` | `DEBT_LEGAL_ACTIONS.publish_date` | Ngày ký công văn |
-| `[legal_sent_at]` | `DEBT_LEGAL_ACTIONS.sent_at` | Ngày thực gửi công văn (mốc đếm `grace_period_days`) |
-| `[reject_reason]` | `debt_events.description` | Lý do Sales AM bảo lãnh, từ chối khóa DV |
-| `[expected_payment_date]` | Input popup Từ chối khóa | Ngày khách cam kết thanh toán |
-| `[appendix_number]` | `DOCUMENT_TEMPLATES.appendix_number` | Số phụ lục cấu hình cho biểu mẫu |
-| `[legal_locked_penalty]` | `DEBT_LEGAL_ACTIONS.locked_penalty` | Lãi phạt chốt tại ngày ký |
-| `[legal_termination_date]` | `DEBT_LEGAL_ACTIONS.termination_date` | Ngày chấm dứt HĐ |
-| `[payment_term_clause]` | `DOCUMENT_TEMPLATES.payment_term_clause` | Điều khoản TT |
-| `[penalty_clause]` | `DOCUMENT_TEMPLATES.penalty_clause` | Điều khoản phạt |
-| `[grace_period_days]` | `DOCUMENT_TEMPLATES.grace_period_days` | Số ngày gia hạn |
-| `[action]` | Dynamic: "khóa" / "mở" | Hành động |
-| `[suspend_status]` | `DEBTS.suspend_status` | Trạng thái sau khi thực thi |
-| `[paid_at]` | `DEBTS.paid_at` | Ngày Kế toán xác nhận tiền về |
-| `[paid_amount]` | `DEBTS.paid_amount` | Số tiền thực thu (format tiền) |
-| `[executed_at]` | `debt_events.created_at` | Thời gian thực thi |
-| `[executed_by]` | `debt_events.action_by` | Người thực thi |
+| `[customer_name]` | `{{.customer_name}}` | `CUSTOMERS.customer_name` | Tên khách hàng |
+| `[customer_address]` | `{{.customer_address}}` | `CUSTOMERS.address` | Địa chỉ khách hàng |
+| `[rep_name]` | `{{.rep_name}}` | `CUSTOMERS.rep_name` | Người đại diện PL |
+| `[rep_address]` | `{{.rep_address}}` | `CUSTOMERS.rep_address` | Địa chỉ người đại diện |
+| `[tax_code]` | `{{.tax_code}}` | `CONTRACTS.tax_code` | Mã số thuế |
+| `[contract_number]` | `{{.contract_number}}` | `CONTRACTS.contract_number` | Số hợp đồng |
+| `[contract_sign_date]` | `{{date .contract_sign_date}}` | `CONTRACTS.sign_date` | Ngày ký HĐ |
+| `[product_name]` | `{{.product_name}}` | `DEBTS.product_name` | Tên sản phẩm |
+| `[billing_cycle]` | `{{.billing_cycle}}` | `DEBTS.billing_cycle` | Kỳ cước (MM/YYYY) |
+| `[total_principal]` | `{{money .total_principal}}` | `DEBTS.total_principal` | Nợ gốc (format tiền) |
+| `[total_penalty]` | `{{money .total_penalty}}` | `DEBTS.total_penalty` | Lãi phạt (format tiền) |
+| `[total_amount]` | `{{money .total_amount}}` | = `total_principal` + `total_penalty` | Tổng nợ |
+| `[total_amount_in_words]` | `{{words .total_amount}}` | Helper function | Tổng nợ bằng chữ |
+| `[penalty_rate]` | `{{pct .penalty_rate}}` | `DEBTS.penalty_rate` | % lãi phạt/ngày |
+| `[ngay_x]` | `{{date .ngay_x}}` | `DEBTS.ngay_x` | Hạn chót (dd/mm/yyyy) |
+| `[ngay_x+4]` | `{{date (plus .ngay_x 4)}}` | Derived = `ngay_x` + `debt_product_configs.suspend_milestone_days` | Mốc khóa DV (mặc định 4) |
+| `[ngay_x+5]` | `{{date (plus .ngay_x 5)}}` | Derived = `ngay_x` + `suspend_milestone_days` + 1 | Ngày DV thực sự bị khóa |
+| `[ngay_x+15]` | `{{date (plus .ngay_x 15)}}` | Derived = `ngay_x` + `debt_product_configs.legal_notice_milestone_days` | Mốc lập công văn (mặc định 15) |
+| `[ngay_x+30]` | `{{date (plus .ngay_x 30)}}` | Derived = `ngay_x` + `debt_product_configs.legal_sue_milestone_days` | Mốc khởi kiện (mặc định 30) |
+| `[days_overdue]` | `{{.days_overdue}}` | Derived = today - ngay_x | Số ngày quá hạn |
+| `[sale_owner_name]` | `{{.sale_owner_name}}` | User map từ `DEBTS.sale_owner` | Tên Sales AM |
+| `[today]` | `{{.today}}` | System | Ngày hiện tại |
+| `[delivered_at]` | `{{date .delivered_at}}` | `DEBT_DELIVERIES.delivered_at` | Ngày khách ký nhận bản cứng |
+| `[receiver_name]` | `{{.receiver_name}}` | `DEBT_DELIVERIES.receiver_name` | Người ký nhận bản cứng |
+| `[payment_term_days]` | `{{.payment_term_days}}` | `CONTRACTS.payment_term_days` | Số ngày ân hạn theo HĐ |
+| `[ngay_x_minus_2]` | `{{date (minus .ngay_x 2)}}` | Derived = `ngay_x` − 2 | Ngày đã gửi thông báo sắp đến hạn |
+| `[customer_code]` | `{{.customer_code}}` | `CUSTOMERS.customer_code` | Mã KH viết tắt |
+| `[publish_day]` / `[publish_month]` / `[publish_year]` | `{{day .publish_date}}` / `{{month .publish_date}}` / `{{year .publish_date}}` | Tách từ `DEBT_LEGAL_ACTIONS.publish_date` | Ngày/tháng/năm ký công văn |
+| `[start_billing_month]` / `[end_billing_month]` / `[billing_year]` | `{{.start_billing_month}}` / `{{.end_billing_month}}` / `{{.billing_year}}` | Parse từ `DEBTS.billing_cycle` | Khoảng kỳ cước |
+| `[document_number]` | `{{.document_number}}` | `DEBT_LEGAL_ACTIONS.document_number` | Số công văn |
+| `[legal_publish_date]` | `{{date .legal_publish_date}}` | `DEBT_LEGAL_ACTIONS.publish_date` | Ngày ký công văn |
+| `[legal_sent_at]` | `{{date .legal_sent_at}}` | `DEBT_LEGAL_ACTIONS.sent_at` | Ngày thực gửi công văn |
+| `[reject_reason]` | `{{.reject_reason}}` | `debt_events.description` | Lý do Sales AM bảo lãnh |
+| `[expected_payment_date]` | `{{date .expected_payment_date}}` | Input popup Từ chối khóa | Ngày khách cam kết thanh toán |
+| `[appendix_number]` | `{{.appendix_number}}` | `DOCUMENT_TEMPLATES.appendix_number` | Số phụ lục |
+| `[legal_locked_penalty]` | `{{money .legal_locked_penalty}}` | `DEBT_LEGAL_ACTIONS.locked_penalty` | Lãi phạt chốt tại ngày ký |
+| `[legal_termination_date]` | `{{date .legal_termination_date}}` | `DEBT_LEGAL_ACTIONS.termination_date` | Ngày chấm dứt HĐ |
+| `[payment_term_clause]` | `{{.payment_term_clause}}` | `DOCUMENT_TEMPLATES.payment_term_clause` | Điều khoản TT |
+| `[penalty_clause]` | `{{.penalty_clause}}` | `DOCUMENT_TEMPLATES.penalty_clause` | Điều khoản phạt |
+| `[grace_period_days]` | `{{.grace_period_days}}` | `DOCUMENT_TEMPLATES.grace_period_days` | Số ngày gia hạn |
+| `[action]` | `{{.action}}` | Dynamic: "khóa" / "mở" | Hành động |
+| `[suspend_status]` | `{{.suspend_status}}` | `DEBTS.suspend_status` | Trạng thái sau khi thực thi |
+| `[paid_at]` | `{{date .paid_at}}` | `DEBTS.paid_at` | Ngày Kế toán xác nhận tiền về |
+| `[paid_amount]` | `{{money .paid_amount}}` | `DEBTS.paid_amount` | Số tiền thực thu |
+| `[executed_at]` | `{{.executed_at}}` | `debt_events.created_at` | Thời gian thực thi |
+| `[executed_by]` | `{{.executed_by}}` | `debt_events.action_by` | Người thực thi |

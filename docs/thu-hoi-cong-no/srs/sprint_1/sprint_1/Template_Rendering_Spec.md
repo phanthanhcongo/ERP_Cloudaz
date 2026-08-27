@@ -62,7 +62,7 @@ Không để dev tự format ở từng chỗ — đăng ký một `FuncMap` dù
 Không nhét HTML dài vào file `.sql`. Làm theo đúng tiền lệ **`SyncStaticPermissions`** đã có trong codebase (được nhắc tại `000168_fin_module_scaffold.up.sql:4`):
 
 ```
-internal/modules/fin/templates/
+mailTemplate/
 ├── reminder_delivered.gohtml
 ├── reminder_x_minus_2.gohtml
 ├── reminder_x_minus_1.gohtml
@@ -175,7 +175,7 @@ Riêng `debt_reminder_drain` lấy đúng tham số mặc định của `ticket_
 
 ## 9. Việc cần làm
 
-- [ ] Tạo các file `.gohtml` từ nội dung trong `mailTemplate/Templates.md`
+- [x] Tạo các file `.gohtml` từ nội dung trong `mailTemplate/Templates.md`
 - [ ] Đăng ký `FuncMap` 8 hàm (`money`, `words`, `date`, `day`, `month`, `year`, `pct`, `plus`)
 - [ ] Viết `SyncStaticTemplates` theo khuôn `SyncStaticPermissions`
 - [ ] Thêm cột `is_customized` vào `document_templates`
