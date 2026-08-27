@@ -44,19 +44,16 @@
 
 ---
 
-## 15 file (14 tài liệu + README), mỗi file một vai trò
+## Cấu trúc thư mục — 25 files
 
-**Yêu cầu (1)** — `Sprint1_Backlog_GWS_Standard.md`
-
-**Kỹ thuật (5)** — `Database_Schema.md` · `ERP_API.md` · `API.md` · `ERP_Platform_Integration.md` · `Template_Rendering_Spec.md`
-
-**Phi chức năng (1)** — `NFR_Sprint1.md`
-
-**Giao diện (6)** — `wireFrame/UI_Wireframes.md` (chuẩn chung) + 5 wireframe theo vai trò
-
-**Nội dung (1)** — `mailTemplate/*.gohtml` (16 mẫu)
-
-**Chỉ mục + nhật ký quyết định (1)** — `README.md` (file này)
+| Nhóm | Files | Vai trò |
+|---|---|---|
+| **Yêu cầu (1)** | `Sprint1_Backlog_GWS_Standard.md` | 10 US, 58 AC — nguồn duy nhất cho dev/QA |
+| **Kỹ thuật (5)** | `Database_Schema.md` · `ERP_API.md` · `API.md` · `ERP_Platform_Integration.md` · `Template_Rendering_Spec.md` | Schema, API, tích hợp, render |
+| **Phi chức năng (1)** | `NFR_Sprint1.md` | Retry, hiệu năng, bảo mật, job |
+| **Giao diện (6)** | `wireFrame/UI_Wireframes.md` (chuẩn chung) + 5 wireframe theo vai trò | Layout, validation, empty state |
+| **Nội dung (17)** | `mailTemplate/*.gohtml` (17 file `.gohtml` + 1 `Templates.md` nghiệp vụ) | Nội dung email & công văn |
+| **Chỉ mục (1)** | `README.md` (file này) | Bản đồ tài liệu + nhật ký quyết định |
 
 ---
 
@@ -150,7 +147,7 @@ Mỗi thông tin chỉ có **một nơi làm chủ**. Nơi khác cần thì tr�
 | Nội dung thư | `mailTemplate/*.gohtml` | 16 mẫu — xem bảng dưới |
 | Quyết định nghiệp vụ | README này, mục "Quyết định đã chốt" |
 
-## Danh mục file `.gohtml` — 17 mẫu
+## Danh mục file `.gohtml` — 17 mẫu (16 file seed DB + 1 file định nghĩa trong code)
 
 | File | Template code | Loại | Mô tả |
 |------|--------------|------|-------|
@@ -165,8 +162,8 @@ Mỗi thông tin chỉ có **một nơi làm chủ**. Nơi khác cần thì tr�
 | `legal_doc_cover.gohtml` | `LEGAL_DOC_COVER` | EMAIL LEGAL gửi khách | Thư ngỏ kèm PDF công văn |
 | `sue_notify_x_plus_30.gohtml` | `SUE_NOTIFY_X_PLUS_30` | EMAIL nội bộ | Thông báo khởi kiện X+30 |
 | `suspend_rejected.gohtml` | `SUSPEND_REJECTED` | EMAIL nội bộ | Sales AM từ chối khóa DV |
-| `draft_pending_digest.gohtml` | `DRAFT_PENDING_DIGEST` | EMAIL nội bộ | Nhắc duyệt thư nháp (Kế toán) |
-| `legal_draft_pending_digest.gohtml` | `DRAFT_PENDING_DIGEST` | EMAIL nội bộ | Nhắc duyệt thư nháp (Pháp lý) |
+| `draft_pending_digest.gohtml` | `DRAFT_PENDING_DIGEST` | EMAIL nội bộ | Nhắc duyệt thư nháp (Kế toán) — nội dung lưu DB |
+| `legal_draft_pending_digest.gohtml` | `DRAFT_PENDING_DIGEST` | EMAIL nội bộ | Nhắc duyệt thư nháp (Pháp lý) — **định nghĩa trong code** (không seed vào DB, vì nội dung ngắn 5 dòng, khác hẳn bản Kế toán) |
 | `suspend_result.gohtml` | `SUSPEND_RESULT` | EMAIL nội bộ | Kết quả khóa/mở dịch vụ |
 | `suspend_notice_customer.gohtml` | `SUSPEND_NOTICE_CUSTOMER` | EMAIL gửi khách | Đã khóa dịch vụ |
 | `unsuspend_notice_customer.gohtml` | `UNSUSPEND_NOTICE_CUSTOMER` | EMAIL gửi khách | Đã khôi phục dịch vụ |

@@ -406,7 +406,7 @@ Sprint 1 làm **trọn 10 US trong một đợt** (PO chốt, không tách 1a/1b
 * **Tiêu chí nghiệm thu (Acceptance Criteria / DoD):**
   - **AC1:** Khi `suspend_status=WAITING_PROCUREMENT`, màn hình Phòng Mua gọi `GET /api/v1/fin/debts?suspend_status=WAITING_PROCUREMENT` để hiển thị danh sách yêu cầu khóa.
   - **AC2:** Phòng Mua thao tác khóa trên Google Admin Console → quay lại ERP bấm "Xác nhận đã Khóa" → gọi `PATCH /api/v1/fin/debts/:id/suspend/execute` (suspend_status=SUSPENDED), có thể đính kèm ảnh chụp màn hình Google Admin làm bằng chứng (upload qua `POST /api/v1/fin/debts/uploads`, lưu vào `debt_events.file_url`). Tương tự cho mở: gọi `PATCH /api/v1/fin/debts/:id/unsuspend/execute` (suspend_status=UNSUSPENDED).
-  - **AC3 (Gửi 2 email — nội bộ và khách hàng):** Sau khi execute, service gọi thẳng `POST /api/v1/fin/debts/:id/send-email` **hai lần** — đây là hành động do **người dùng bấm nút** nên gửi đồng bộ, không qua outbox:
+  - **AC3 (Gửi 2 email — nội bộ và khách hàng):** Sau khi execute, service gọi `POST /api/v1/fin/debts/:id/send-email` **hai lần** — mỗi lần 1 thư nên gửi đồng bộ (đường nhanh, xem `ERP_API.md` §6.1 bước 5), trả `sent_at` ngay trong response:
     * **Nội bộ** — template `SUSPEND_RESULT` (Templates mục 7), gửi Kế toán, Sales AM, Legal.
     * **Khách hàng** — template `SUSPEND_NOTICE_CUSTOMER` khi khóa (Templates mục 8) hoặc `UNSUSPEND_NOTICE_CUSTOMER` khi mở (mục 9), gửi khách, CC Sales AM.
 

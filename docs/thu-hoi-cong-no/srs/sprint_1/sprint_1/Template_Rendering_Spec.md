@@ -73,7 +73,8 @@ mailTemplate/
 ├── unsuspend_notice_customer.gohtml
 ├── payment_confirmed.gohtml
 ├── suspend_rejected.gohtml
-├── draft_pending_digest.gohtml
+├── draft_pending_digest.gohtml         <!-- Kế toán, seed vào DB -->
+├── legal_draft_pending_digest.gohtml   <!-- Pháp lý, KHÔNG seed DB — định nghĩa trong code -->
 ├── suspend_result.gohtml
 ├── legal_notify_x_plus_15.gohtml
 ├── sue_notify_x_plus_30.gohtml

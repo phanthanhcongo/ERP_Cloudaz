@@ -236,6 +236,8 @@ erDiagram
 
 Phục vụ auto-fill vào mẫu công văn. Đồng bộ `id`, `customer_name` từ CM; `address` CM gợi ý và Kế toán xác nhận; `rep_name` / `rep_address` / `customer_code` CM không có nên nhập tay.
 
+> **`customer_code` cho phép `NULL` lúc mới tạo nhưng bắt buộc có trước khi Pháp lý soạn công văn** (`422 FIN_DEBT_MISSING_LEGAL_INFO` nếu thiếu). Dùng sinh số công văn theo mẫu `01-[YYYYMMDD]/CV/CLOUDAZ-[customer_code]`. Tab Legal hiển thị banner đỏ cảnh báo nếu `config_missing = true` (xem `ERP_API.md` §3.1).
+
 > **Về `address` — đơn giản hóa có chủ đích.** Bên CM, địa chỉ thuộc **legal entity của từng hợp đồng**, nên một khách hàng ký nhiều pháp nhân sẽ có nhiều địa chỉ. ERP **cố ý** chỉ giữ **một địa chỉ chung cho mỗi khách hàng** — PO đã chốt chỉ quan tâm `tax_code` gắn đúng theo hợp đồng (đã đặt ở `contracts`, xem §3).
 > **Hệ quả cần biết:** biến `[customer_address]` trong công văn pháp lý dùng địa chỉ chung này, không đổi theo pháp nhân ký hợp đồng. Với khách nhiều pháp nhân, Pháp lý phải tự sửa lại địa chỉ trong bản nháp công văn trước khi xuất PDF (popup đã cho sửa tay). Nếu sau này thành vấn đề thì chuyển `address` xuống `contracts` như `tax_code`.
 
@@ -1022,6 +1024,8 @@ CREATE TABLE IF NOT EXISTS document_templates (
 | Công văn | `LEGAL_X_15` — `template_type = LEGAL_DOC` | *(không phải email — xuất PDF)* |
 
 Trừ dòng `LEGAL_DOC_COVER` và nhóm *Nội bộ*, toàn bộ thư gửi khách thuộc làn `REMINDER`.
+
+> **`DRAFT_PENDING_DIGEST` có 2 file `.gohtml` (`draft_pending_digest.gohtml` cho Kế toán, `legal_draft_pending_digest.gohtml` cho Pháp lý) nhưng chung 1 `template_code`.** Đây không phải trùng — cùng loại thông báo "nhắc duyệt", khác người nhận và khác dữ liệu render. `content` trong DB là template chung, `SyncStaticTemplates` ghi nội dung của file Kế toán. File riêng cho Pháp lý nằm ngoài DB vì nội dung ngắn (5 dòng, không có bảng số liệu), được định nghĩa cứng trong code của `DebtReminderSweepJob` — job biết gửi cho ai và render content tương ứng. Xem `ERP_API.md` §6.3.
 
 > **Migration chỉ seed metadata, `content` để rỗng.** Nội dung HTML nằm trong các file `.gohtml` của repo, được `SyncStaticTemplates` nạp khi khởi động (theo tiền lệ `SyncStaticPermissions`) với `ON CONFLICT DO NOTHING`, bỏ qua mọi dòng `is_customized = true`. Cú pháp render `{{.customer_name}}`, FuncMap và cách kiểm tra biến: xem **[`Template_Rendering_Spec.md`](./Template_Rendering_Spec.md)**.
 

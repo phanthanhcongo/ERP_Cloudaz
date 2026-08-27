@@ -307,7 +307,7 @@ Retry 3 lần backoff 2/4/8s — `NFR_Sprint1.md` §2.
     "last_call_note": "Khách hứa thứ 2 trả",
     "document": { "id": "d01", "name": "[GWS Standard][Công ty B][08-2026]", "extension": ".docx" },
     "sale_owner": "am.a@cloudaz.io",
-    "config_missing": false,
+    "config_missing": false,    <!-- true khi thiếu penalty_rate, payment_term_days, customer_code, rep_name, rep_address, tax_code -->
     "allowed_actions": ["LOG_CALL", "SUSPEND_APPROVE", "SUSPEND_REJECT"]
 } ], "total": 42 }
 ```
@@ -319,6 +319,8 @@ Retry 3 lần backoff 2/4/8s — `NFR_Sprint1.md` §2.
 - `email_stage_label` lấy từ `document_templates.stage_label` của `last_template_code`
 
 Frontend hiển thị `"{email_stage_label} (Lần {email_sent_count})"`, ví dụ *"Nhắc quá hạn (Lần 3)"*. Thêm giai đoạn mới chỉ cần insert template kèm `stage_label`, không sửa Frontend.
+
+`config_missing` = `true` khi thiếu 1 trong: `penalty_rate` (trên `debts`), `payment_term_days` (trên `contracts`), `customer_code` / `rep_name` / `rep_address` (trên `customers`), `tax_code` (trên `contracts`). Grid Kế toán hiển thị cảnh báo đỏ *"Thiếu cấu hình"* ở cột **Alert**. Tab Legal (DC-09) cũng kiểm tra trường này — nếu `config_missing` thì hiển thị banner đỏ *"Khách hàng thiếu thông tin — cần Kế toán nhập `customer_code` / `rep_name` / `rep_address` trước khi soạn công văn"*, nút "Soạn Công văn" vẫn enabled nhưng khi bấm sẽ trả `422 FIN_DEBT_MISSING_LEGAL_INFO`.
 
 ### 3.2 `GET /api/v1/fin/debts/:id` — soft-gate
 
@@ -427,15 +429,21 @@ Lỗi: `409 FIN_DEBT_INVALID_TRANSITION`, `422 FIN_DEBT_MISSING_CONFIG`, `400` (
 2. Template nhóm ĐNTT/nhắc nợ mà `hardcopy_status != DELIVERED` → `422 FIN_DEBT_HARDCOPY_NOT_DELIVERED`
 3. Dựng người nhận từ `customer_contacts`; `To` rỗng → `422 FIN_DEBT_NO_RECIPIENT`, **không** tăng `email_sent_count`
 4. `last_email_sent_date = hôm nay` → `429 FIN_DEBT_EMAIL_RATE_LIMIT` *(ngưỡng lấy từ `debt_product_configs.max_email_per_day`)*
-5. **Enqueue, không gửi đồng bộ trong request:** 1 dòng `debt_email_logs` với `mail_track = 'REMINDER'`, `send_status = 'queued'` và `approved_by` = email actor *(người bấm nút chính là người duyệt)* + 1 dòng `debt_reminder_outbox` cho Sales AM + 1 dòng `notifications` của nền tảng
+5. **Hai đường gửi, chọn theo ngữ cảnh:**
+    * **Đường nhanh (gửi 1 thư đơn lẻ do người dùng bấm nút):** gọi Gmail API đồng bộ trong request, trả `sent_at` + `message_id`. Dùng cho DC-08 AC3 (gửi kết quả khóa/mở), gửi tay từ hộp thư nháp, hoặc bất kỳ chỗ nào chỉ gửi 1-2 thư sau thao tác thủ công. Với đường này, người bấm nút là `approved_by`, không cần qua drain job.
+    * **Đường hàng đợi (batch nhiều thư):** tạo 1 dòng `debt_email_logs` với `send_status = 'queued'`, drain job mới gửi thật. Dùng cho `send-batch` nhiều thư cùng lúc.
+
+    **Cách phân luồng:** backend tự quyết dựa trên số thư trong request — 1 thư → gửi luôn, > 1 thư → enqueue. Frontend không cần biết.
+
 6. **Threading: dùng đúng trình tự của §6.1d** — dựng `References` từ các hàng `sent`, `In-Reply-To` = `parent_message_id`, Subject = `"Re: " + thread_subject`, gán `sequence_step` lúc gửi, đọc lại `Message-ID` từ response Gmail. Thư đầu tiên thì lưu `thread_subject` + `gmail_thread_id`
 
 ```json
-{ "data": { "queued": true, "email_log_id": 4411, "lark_outbox_id": 118, "notification_id": 9902,
+{ "data": { "queued": false, "sent": true, "email_log_id": 4411, "sent_at": "2026-09-05T08:31:00+07:00",
+            "message_id": "<abc123@mail.gmail.com>",
             "to": ["ketoan@epic.vn"], "cc": ["am.a@cloudaz.io"],
             "email_sent_count": 4, "is_thread_root": false } }
 ```
-Trả `queued`, không trả `sent_at` — thời điểm gửi thật do drain job ghi. Tra kết quả qua `GET /debts/:id/notifications`.
+Trả `sent: true` + `sent_at` nếu gửi đồng bộ (đường nhanh), trả `queued: true` nếu enqueue. Tra kết quả qua `GET /debts/:id/notifications`.
 
 ### 6.1a ⭐ Hai làn thư — luật chung cho toàn bộ mục 6.1x
 

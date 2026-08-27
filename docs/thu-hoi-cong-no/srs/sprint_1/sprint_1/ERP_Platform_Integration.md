@@ -140,7 +140,7 @@ Codebase dùng **`module:action`** (`fin_param:read`, `project_cost:create`, `ti
 | `debt:sync` | Đồng bộ dữ liệu từ CM | Accountant, Chief Accountant |
 | `debt:confirm` | Xác nhận/loại bản ghi đồng bộ (`sync_status`) | Accountant, Chief Accountant |
 | `debt:config` | Nhập `penalty_rate`, `payment_term_days` | Accountant, Chief Accountant |
-| `debt:delivery` | Đóng dấu / gửi bưu điện / xác nhận phát | Accountant (stamp), HRA (post, deliver) |
+| `debt:delivery` | Đóng dấu / gửi bưu điện / xác nhận phát | Accountant (stamp), Chief Accountant, HRA (post, deliver) |
 | `debt:send_email` | Gửi email nhắc nợ | Accountant, Chief Accountant |
 | `debt:settle` | Xác nhận thanh toán, tất toán | Accountant, Chief Accountant |
 | `debt:suspend_approve` | Duyệt / từ chối khóa dịch vụ | Sales, Sales Leader |
