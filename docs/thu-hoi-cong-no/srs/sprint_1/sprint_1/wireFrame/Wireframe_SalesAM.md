@@ -21,9 +21,9 @@ Bảng điều khiển dành riêng cho từng Sales AM. Hệ thống tự độ
 
 | Khách hàng / Mã HĐ | Sản phẩm | Kỳ cước | Tổng Nợ (Gốc + Lãi) | Số ngày trễ | Đôn đốc (Sales AM) | Trạng thái (Alert) | Trạng thái Khóa DV | Thao tác |
 |---|---|---|---|---|---|---|---|---|
-| **Công ty TNHH B**<br>HĐ: EPIC-02 | GWS Plus | 08/2026 | `40,500,000` | 🔴 Trễ 4 ngày | 📞 Đã gọi lần 1<br>*(Khách hứa thứ 2 trả)* | 🟠 Chờ duyệt khóa (X+4) | `WAITING_SALES` | `[Duyệt Khóa]`<br>`[Từ chối]`<br>`[📞 Log Call]` |
+| **Công ty TNHH B**<br>HĐ: EPIC-02 | GWS Standard | 08/2026 | `40,500,000` | 🔴 Trễ 4 ngày | 📞 Đã gọi lần 1<br>*(Khách hứa thứ 2 trả)* | 🟠 Chờ duyệt khóa (X+4) | `WAITING_SALES` | `[Duyệt Khóa]`<br>`[Từ chối]`<br>`[📞 Log Call]` |
 | **Công ty XYZ**<br>HĐ: GWS-2590 | GWS Standard | 07/2026 | `54,000,000` | 🔴 Trễ 32 ngày | 📞 Đã gọi lần 2<br>*(Khách chây ỳ)* | 🔴 Chuyển Pháp lý | `SUSPENDED` | `[📞 Log Call]` |
-| **Tập đoàn C**<br>HĐ: PANDA-03 | GWS Enterprise | 08/2026 | `120,000,000` | ⏳ Còn 2 ngày | ⚪ Chưa gọi | 🟢 Bình thường | `NONE` | `[📞 Log Call]` |
+| **Tập đoàn C**<br>HĐ: PANDA-03 | GWS Standard | 08/2026 | `120,000,000` | ⏳ Còn 2 ngày | ⚪ Chưa gọi | 🟢 Bình thường | `NONE` | `[📞 Log Call]` |
 
 *Ghi chú về cột **Đôn đốc (Sales AM)**:*
 - **Dòng chính (Bold):** Hiển thị số lần đã gọi (Ví dụ: `📞 Đã gọi lần 1` tương ứng số phần tử trong mảng `call_logs`).
@@ -46,18 +46,32 @@ Khi Sales thực hiện gọi điện (hoặc liên hệ bằng tay) đòi nợ 
 
 **Logic Backend khi Lưu:**
 1. Đọc mảng `call_logs` hiện tại, lấy độ dài mảng (length) để tự động gán `call_index = length + 1` (Ví dụ: Đã có 1 log thì log tiếp theo là Lần 2).
-2. Append (thêm mới) một object `{ call_index: N, type: 'CALL/ZALO/MEETING', note: '...', created_at: '...' }` vào mảng `call_logs` trong bảng `DEBT_COLLECTIONS`.
-3. Tạo 1 bản ghi log chi tiết trong bảng `DEBT_AUDIT_LOGS` để làm bằng chứng lịch sử (Ví dụ: `Sales Nguyễn Văn A đã gọi đôn đốc lần N, nội dung: ...`).
+2. Append (thêm mới) một object vào mảng `call_logs` trong bảng `DEBT_COLLECTIONS` — **đủ 5 khóa** theo `Database_Schema.md` mục *Đôn đốc & email*:
+   ```json
+   { "call_index": 2, "type": "ZALO", "note": "...",
+     "created_by": "am.a@cloudaz.io", "created_at": "2026-09-18T14:20:00+07:00" }
+   ```
+   `call_index` và `created_at` do **backend tự gán**, không nhận từ client. `created_by` là email người ghi — cần cho tooltip *"Lần 2 (18/09/2026 — Sales A)"* ở mục 6.
+3. Tạo 1 bản ghi log chi tiết trong bảng `debt_events` để làm bằng chứng lịch sử (Ví dụ: `Sales Nguyễn Văn A đã gọi đôn đốc lần N, nội dung: ...`).
 
 ---
 
 ## 5. Popup: Duyệt Yêu cầu Khóa Dịch vụ
 Khi Sales bấm `[Duyệt Khóa]` hoặc `[Từ chối]` đối với khách hàng đang ở mốc X+4.
 
+> **Yêu cầu duyệt khóa đến từ đâu?** Dòng có nút `[Duyệt Khóa]` / `[Từ chối]` chỉ xuất hiện khi `suspend_status = WAITING_SALES`, và trạng thái này **do cronjob sinh ra**, không phải Sales AM tự tạo:
+> - **08:25 hàng ngày**, Go background job **`DebtSuspendRequestJob`** quét các khoản nợ thỏa đồng thời `sync_status = CONFIRMED`, `debt_status = OVERDUE`, `today >= ngay_x + suspend_milestone_days` *(đọc từ `debt_product_configs`, mặc định 4)*, `suspend_status = NONE`, `paid_at = null` → set `WAITING_SALES` + đẩy notification cho Sales AM phụ trách (Backlog DC-07 AC4).
+> - **08:30** cron gửi email `SUSPEND_WARNING_X_PLUS_4` cho khách (CC Sales AM + Trưởng phòng Sales).
+> - Sau khi Sales AM bấm `[Từ chối]`, cron **không tạo lại** yêu cầu trong cùng kỳ cước `billing_cycle` — tránh mỗi sáng lại hiện lại một yêu cầu đã bảo lãnh (DC-07 AC5).
+
 **Popup UI (Từ chối khóa):**
-- **Cảnh báo:** Bạn đang từ chối yêu cầu khóa dịch vụ của Kế toán. Vui lòng ghi rõ lý do bảo lãnh cho khách hàng này.
-- **Lý do bảo lãnh:** `[ Textarea bắt buộc nhập ]`
-- `[ Xác nhận Từ chối ]` ➔ Trạng thái quay về `NONE` (Kèm log audit).
+- **Cảnh báo:** Bạn đang bảo lãnh cho khách hàng này tiếp tục nợ. Lý do sẽ được **gửi email cho Kế toán, Kế toán trưởng và Trưởng phòng Sales**, đồng thời hiển thị công khai trên Audit Trail toàn hệ thống.
+- **Lý do bảo lãnh:** `[ Textarea — BẮT BUỘC, tối thiểu 20 ký tự ]`
+- **Ngày khách cam kết thanh toán:** `[ DatePicker — bắt buộc, phải sau hôm nay ]`
+  → lưu vào cột **`DEBTS.promised_payment_date`**. Khách hứa lại lần nữa thì ghi đè, lịch sử các lần hứa trước vẫn còn trong `debt_events`.
+- `[ Xác nhận Từ chối ]` ➔ gọi `PATCH /api/v1/fin/debts/:id/suspend/reject`, trạng thái quay về `NONE`, ghi audit log + gửi email `SUSPEND_REJECTED`.
+
+*Ghi chú:* Sau khi từ chối, cron X+4 **không tạo lại** yêu cầu trong cùng kỳ cước. Muốn khóa lại phải do Kế toán/KTT yêu cầu thủ công — lúc đó lý do bảo lãnh đã lưu là căn cứ đối chất.
 
 **Popup UI (Duyệt khóa):**
 - **Xác nhận:** Bạn chắc chắn muốn duyệt khóa dịch vụ của khách hàng này? Yêu cầu sẽ được đẩy sang Phòng Mua thực thi.
@@ -100,7 +114,7 @@ Khi Sales bấm `[Duyệt Khóa]` hoặc `[Từ chối]` đối với khách hà
 | **Số ngày trễ** | Derived từ `DEBTS.ngay_x` | Hiển thị `Trễ (current_date - ngay_x) ngày` nếu nợ đã quá hạn |
 | **Đôn đốc (Sales AM)** | `DEBT_COLLECTIONS.call_logs` | - **Số lần:** bằng độ dài mảng `call_logs.length`. <br>- **Nội dung cuộc gần nhất:** Lấy field `note` của phần tử cuối cùng trong `call_logs` mảng JSONB |
 | **Trạng thái Khóa DV** | `DEBTS.suspend_status` | Hiển thị `WAITING_SALES`, `SUSPENDED`, `NONE`... |
-| **Popup Log Call (Submit)** | `DEBT_COLLECTIONS.call_logs` & `DEBT_AUDIT_LOGS` | - Append object mới vào `DEBT_COLLECTIONS.call_logs`<br>- Insert 1 dòng audit log mới vào `DEBT_AUDIT_LOGS` |
-| **Popup Duyệt Khóa (Submit)** | `DEBTS.suspend_status` & `DEBT_AUDIT_LOGS` | - **Duyệt:** `suspend_status = WAITING_PROCUREMENT`<br>- **Từ chối:** `suspend_status = NONE`<br>- Lưu lý do bảo lãnh vào `DEBT_AUDIT_LOGS.description` |
+| **Popup Log Call (Submit)** | `DEBT_COLLECTIONS.call_logs` & `debt_events` | - Append object mới vào `DEBT_COLLECTIONS.call_logs`<br>- Insert 1 dòng audit log mới vào `debt_events` |
+| **Popup Duyệt Khóa (Submit)** | `DEBTS.suspend_status` & `debt_events` | - **Duyệt:** `suspend_status = WAITING_PROCUREMENT`<br>- **Từ chối:** `suspend_status = NONE`<br>- Lưu lý do bảo lãnh vào `debt_events.description` |
 
 

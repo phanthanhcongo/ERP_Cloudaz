@@ -42,7 +42,7 @@ Ban quản lý cần biết ai đang nợ nhiều nhất để "gõ đầu" Sale
 ---
 
 ## 4. Nhật Ký Toàn Hệ Thống (Global Audit Trail)
-Khu vực này giống như một "Bảng tin Facebook", liệt kê tất cả mọi hành động đòi nợ/khóa dịch vụ/chuyển pháp lý diễn ra theo thời gian thực (Real-time). Dữ liệu lấy từ bảng `DEBT_AUDIT_LOGS`.
+Khu vực này giống như một "Bảng tin Facebook", liệt kê tất cả mọi hành động đòi nợ/khóa dịch vụ/chuyển pháp lý diễn ra theo thời gian thực (Real-time). Dữ liệu lấy từ bảng `debt_events`.
 
 **Timeline UI:**
 - **[Hôm nay - 14:05] 🔴 Phòng Mua (Trần C)**: Đã thực thi Khóa dịch vụ Google đối với HĐ `EPIC-02` (Công ty TNHH B).
@@ -54,13 +54,13 @@ Khu vực này giống như một "Bảng tin Facebook", liệt kê tất cả m
 
 ## 5. Đặc tả nguồn dữ liệu hiển thị (Mapping to DB)
 
-| UI Element / Block | Database Field (`DEBTS`, `DEBT_AUDIT_LOGS` & related) | Mô tả & Cách tính toán hiển thị |
+| UI Element / Block | Database Field (`DEBTS`, `debt_events` & related) | Mô tả & Cách tính toán hiển thị |
 |---|---|---|
 | **Tổng Nợ Cần Thu** | `DEBTS` (Tổng hợp) | SUM(`total_principal` + `total_penalty`) WHERE `debt_status != PAID` |
 | **Tổng Nợ Quá Hạn** | `DEBTS` (Tổng hợp) | SUM(`total_principal` + `total_penalty`) WHERE `debt_status = OVERDUE` |
 | **Tổng Lãi Phạt Dự Kiến** | `DEBTS` (Tổng hợp) | SUM(`total_penalty`) WHERE `debt_status != PAID` |
 | **Khách Hàng Bị Khóa DV** | `DEBTS` (Tổng hợp) | COUNT(`id`) WHERE `suspend_status = SUSPENDED` |
 | **Khách Hàng Đang Bị Kiện** | `DEBT_LEGAL_ACTIONS` (Tổng hợp) | COUNT(`id`) WHERE `legal_status = SUED` |
-| **Bảng xếp hạng Top 10** | `DEBTS` & `DEBT_LEGAL_ACTIONS` | Query `SELECT * FROM DEBTS WHERE debt_status = OVERDUE ORDER BY (total_principal + total_penalty) DESC LIMIT 10`. <br>- Trạng thái hiện tại lấy từ `debt_status` và `DEBT_LEGAL_ACTIONS.legal_status`. <br>- Lịch sử gần nhất: Query log mới nhất từ `DEBT_AUDIT_LOGS` |
-| **Nhật ký toàn hệ thống** | `DEBT_AUDIT_LOGS` | Query `SELECT * FROM DEBT_AUDIT_LOGS ORDER BY created_at DESC LIMIT 50` |
+| **Bảng xếp hạng Top 10** | `DEBTS` & `DEBT_LEGAL_ACTIONS` | Query `SELECT * FROM debts WHERE debt_status = 'OVERDUE' ORDER BY (total_principal + total_penalty) DESC LIMIT 10`. <br>- Trạng thái hiện tại lấy từ `debt_status` và `DEBT_LEGAL_ACTIONS.legal_status`. <br>- Lịch sử gần nhất: Query log mới nhất từ `debt_events` |
+| **Nhật ký toàn hệ thống** | `debt_events` | Query `SELECT * FROM debt_events ORDER BY created_at DESC LIMIT 50` |
 
