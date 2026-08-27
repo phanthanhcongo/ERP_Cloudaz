@@ -44,7 +44,7 @@
 
 ---
 
-## Cấu trúc thư mục — 25 files
+## Cấu trúc thư mục
 
 | Nhóm | Files | Vai trò |
 |---|---|---|
@@ -52,7 +52,7 @@
 | **Kỹ thuật (5)** | `Database_Schema.md` · `ERP_API.md` · `API.md` · `ERP_Platform_Integration.md` · `Template_Rendering_Spec.md` | Schema, API, tích hợp, render |
 | **Phi chức năng (1)** | `NFR_Sprint1.md` | Retry, hiệu năng, bảo mật, job |
 | **Giao diện (6)** | `wireFrame/UI_Wireframes.md` (chuẩn chung) + 5 wireframe theo vai trò | Layout, validation, empty state |
-| **Nội dung (17)** | `mailTemplate/*.gohtml` (17 file `.gohtml` + 1 `Templates.md` nghiệp vụ) | Nội dung email & công văn |
+| **Nội dung (18)** | 17 file `.gohtml` + `Templates.md` | Nội dung email & công văn |
 | **Chỉ mục (1)** | `README.md` (file này) | Bản đồ tài liệu + nhật ký quyết định |
 
 ---

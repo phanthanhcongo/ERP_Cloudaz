@@ -50,6 +50,7 @@ Không để dev tự format ở từng chỗ — đăng ký một `FuncMap` dù
 | `day` `month` `year` | `2026-09-16` | `16` / `09` / `2026` | Phần "Hà Nội, ngày… tháng… năm…" |
 | `pct` | `0.0005` | `0,05` | `[penalty_rate]` — **lưu tỉ lệ, hiển thị phần trăm** |
 | `plus` | `(ngay_x, 4)` | `05/09/2026` | `[ngay_x+4]`, `[ngay_x+15]`, `[ngay_x+30]` |
+| `minus` | `(ngay_x, 2)` | `30/08/2026` | `[ngay_x_minus_2]` |
 
 `pct` quan trọng: DB lưu `0.000500`, khách phải đọc thấy `0,05%/ngày`. Không có hàm này thì sớm muộn có người in `0.0005%` vào công văn.
 
