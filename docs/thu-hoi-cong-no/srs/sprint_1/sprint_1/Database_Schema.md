@@ -91,9 +91,14 @@ erDiagram
         int suspend_milestone_days "Mặc định 4"
         int legal_notice_milestone_days "Mặc định 15"
         int legal_sue_milestone_days "Mặc định 30"
+        int reminder_before_due_days "Mảng [2,1,0]"
+        boolean reminder_daily_after_delivered "Mặc định true"
         int max_email_per_day "Mặc định 1"
         jsonb template_set "Bộ template theo mốc"
+        string sales_lead_email_override "Ghi đè email trưởng phòng"
         boolean is_active
+        datetime created_at
+        datetime updated_at
     }
 
     DEBTS {
@@ -364,8 +369,10 @@ CREATE TABLE IF NOT EXISTS debt_product_configs (
 );
 
 INSERT INTO debt_product_configs
-    (product_name, default_penalty_rate, default_payment_term_days, template_set)
-VALUES ('GWS Standard', 0.000500, 7, '{
+    (product_name, default_penalty_rate, default_payment_term_days,
+     reminder_before_due_days, reminder_daily_after_delivered, template_set)
+VALUES ('GWS Standard', 0.000500, 7,
+        '{2,1,0}'::smallint[], TRUE, '{
     "delivered":       "REMINDER_DELIVERED",
     "before_due":      ["REMINDER_X_MINUS_2","REMINDER_X_MINUS_1","REMINDER_X"],
     "overdue":         "REMINDER_X_PLUS_1",

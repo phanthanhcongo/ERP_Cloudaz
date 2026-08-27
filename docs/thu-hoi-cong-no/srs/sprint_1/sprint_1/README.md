@@ -21,7 +21,7 @@
 | Mã lỗi và câu tiếng Việt tương ứng | `ERP_API.md` §0.5 + `wireFrame/UI_Wireframes.md` §2.4 |
 | API của hệ thống CM (bên ngoài) | `API.md` | Toàn bộ |
 | ERP đã có sẵn gì (auth, role, Lark, notification) | **`ERP_Platform_Integration.md`** | §2–5 |
-| Nội dung email/công văn gửi khách | `mailTemplate/Templates.md` | Toàn bộ |
+| Nội dung email/công văn gửi khách | `mailTemplate/*.gohtml` | 16 mẫu email + 1 công văn |
 | Thư nào vào chung luồng, ai được duyệt gửi | **`Database_Schema.md`** | mục *Hai làn thư* — **nguồn duy nhất** |
 | Gửi mail bằng gì, cấu hình ra sao | **`ERP_Platform_Integration.md`** | mục *Kênh 1 — Email* — **nguồn duy nhất** |
 | Render biến `{{.customer_name}}` thế nào | `Template_Rendering_Spec.md` | §2–6 |
@@ -54,7 +54,7 @@
 
 **Giao diện (6)** — `wireFrame/UI_Wireframes.md` (chuẩn chung) + 5 wireframe theo vai trò
 
-**Nội dung (1)** — `mailTemplate/Templates.md`
+**Nội dung (1)** — `mailTemplate/*.gohtml` (16 mẫu)
 
 **Chỉ mục + nhật ký quyết định (1)** — `README.md` (file này)
 
@@ -147,7 +147,29 @@ Mỗi thông tin chỉ có **một nơi làm chủ**. Nơi khác cần thì tr�
 | Mốc X+4 / X+15 / X+30 | Bảng `debt_product_configs` (dữ liệu, không phải hằng số) |
 | Cấu trúc bảng và ràng buộc | `Database_Schema.md` |
 | Danh sách endpoint | `ERP_API.md` |
-| Nội dung thư | `mailTemplate/Templates.md` |
+| Nội dung thư | `mailTemplate/*.gohtml` | 16 mẫu — xem bảng dưới |
 | Quyết định nghiệp vụ | README này, mục "Quyết định đã chốt" |
+
+## Danh mục file `.gohtml` — 17 mẫu
+
+| File | Template code | Loại | Mô tả |
+|------|--------------|------|-------|
+| `reminder_delivered.gohtml` | `REMINDER_DELIVERED` | EMAIL gửi khách | Xác nhận giao hồ sơ thanh toán thành công |
+| `reminder_x_minus_2.gohtml` | `REMINDER_X_MINUS_2` | EMAIL gửi khách | Nhắc nợ trước hạn X-2 |
+| `reminder_x_minus_1.gohtml` | `REMINDER_X_MINUS_1` | EMAIL gửi khách | Nhắc nợ trước hạn X-1 |
+| `reminder_x.gohtml` | `REMINDER_X` | EMAIL gửi khách | Nhắc nợ đúng hạn X |
+| `reminder_x_plus_1.gohtml` | `REMINDER_X_PLUS_1` | EMAIL gửi khách | Nhắc nợ quá hạn X+1 |
+| `suspend_warning_x_plus_4.gohtml` | `SUSPEND_WARNING_X_PLUS_4` | EMAIL gửi khách | Cảnh báo khóa DV X+4 |
+| `legal_notify_x_plus_15.gohtml` | `LEGAL_NOTIFY_X_PLUS_15` | EMAIL nội bộ | Thông báo chuyển Pháp lý X+15 |
+| `legal_x_15.gohtml` | `LEGAL_X_15` | LEGAL_DOC | Công văn pháp lý X+15 |
+| `legal_doc_cover.gohtml` | `LEGAL_DOC_COVER` | EMAIL LEGAL gửi khách | Thư ngỏ kèm PDF công văn |
+| `sue_notify_x_plus_30.gohtml` | `SUE_NOTIFY_X_PLUS_30` | EMAIL nội bộ | Thông báo khởi kiện X+30 |
+| `suspend_rejected.gohtml` | `SUSPEND_REJECTED` | EMAIL nội bộ | Sales AM từ chối khóa DV |
+| `draft_pending_digest.gohtml` | `DRAFT_PENDING_DIGEST` | EMAIL nội bộ | Nhắc duyệt thư nháp (Kế toán) |
+| `legal_draft_pending_digest.gohtml` | `DRAFT_PENDING_DIGEST` | EMAIL nội bộ | Nhắc duyệt thư nháp (Pháp lý) |
+| `suspend_result.gohtml` | `SUSPEND_RESULT` | EMAIL nội bộ | Kết quả khóa/mở dịch vụ |
+| `suspend_notice_customer.gohtml` | `SUSPEND_NOTICE_CUSTOMER` | EMAIL gửi khách | Đã khóa dịch vụ |
+| `unsuspend_notice_customer.gohtml` | `UNSUSPEND_NOTICE_CUSTOMER` | EMAIL gửi khách | Đã khôi phục dịch vụ |
+| `payment_confirmed.gohtml` | `PAYMENT_CONFIRMED` | EMAIL gửi khách | Xác nhận đã nhận thanh toán |
 
 Các file đã gộp/thay thế và **đã xóa**: `Database_ERD.md`, `Database_Schema_DDL.md`, `Remediation_Plan_Sprint1.md`, `Review_Findings_Sprint1.md`, `BRD_GWS_Committed_2026-08-25.md`, `Sprint1_Backlog_Google_Committed.md`.

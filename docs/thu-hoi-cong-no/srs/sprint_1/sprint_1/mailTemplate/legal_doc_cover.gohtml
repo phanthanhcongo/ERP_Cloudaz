@@ -1,0 +1,6 @@
+<p>Kính gửi Quý Công ty <strong>{{.customer_name}}</strong>,</p>
+<p>CÔNG TY CỔ PHẦN PHÁT TRIỂN DỊCH VỤ ĐÁM MÂY CLOUDAZ trân trọng gửi tới Quý Công ty <strong>Công văn số {{.document_number}}</strong> ngày {{date .legal_publish_date}} về việc giải quyết, thanh toán công nợ dịch vụ {{.product_name}} kỳ {{.billing_cycle}} theo Hợp đồng {{.contract_number}}.</p>
+<p>Tổng số tiền phải thanh toán tính đến ngày {{date .legal_publish_date}} là <strong>{{money .total_amount}} VNĐ</strong> <em>({{words .total_amount}})</em>, đề nghị Quý Công ty thanh toán trong vòng <strong>{{.grace_period_days}} ngày</strong> kể từ ngày nhận được công văn.</p>
+<p><strong>Văn bản có giá trị pháp lý là bản Công văn đính kèm đã được ký và đóng dấu.</strong> Thư điện tử này chỉ nhằm mục đích thông báo sớm; bản cứng đang được gửi tới Quý Công ty theo đường bưu điện.</p>
+<p>Mọi vướng mắc xin liên hệ {{.sale_owner_name}} hoặc phản hồi trực tiếp thư này.</p>
+<p>Trân trọng.</p>

@@ -1,0 +1,15 @@
+<h3 style="color: #cc0000;">CẢNH BÁO — DỊCH VỤ SẼ BỊ TẠM KHÓA TỪ NGÀY {{date (plus .ngay_x 5)}}</h3>
+<p>Kính gửi {{.customer_name}},</p>
+<p>CloudAZ đã nhiều lần gửi thông báo nhắc nợ nhưng đến nay Quý Công ty vẫn chưa thực hiện thanh toán cho kỳ cước {{.billing_cycle}}.</p>
+<p>Căn cứ theo {{.penalty_clause}} của Hợp đồng {{.contract_number}} hai bên đã ký kết, {{.customer_name}} sẽ phải chịu lãi suất thanh toán trễ hạn là {{pct .penalty_rate}}/ngày trên dư nợ chưa thanh toán. CloudAZ xin gửi chi tiết công nợ kèm lãi chậm trả theo bảng dưới đây:</p>
+<table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
+<tr><th>Tên doanh nghiệp</th><th>Dịch vụ</th><th>Kỳ cước</th><th>Hạn thanh toán (Ngày X)</th><th>Số tiền gốc</th><th>Số ngày quá hạn</th><th>Lãi phạt chậm trả ({{pct .penalty_rate}}/ngày)</th><th>Tổng thanh toán</th></tr>
+<tr>
+<td>{{.customer_name}}</td><td>{{.product_name}}</td><td>{{.billing_cycle}}</td><td>{{date .ngay_x}}</td>
+<td>{{money .total_principal}}</td><td>{{.days_overdue}}</td><td>{{money .total_penalty}}</td>
+<td><strong>{{money .total_amount}}</strong></td>
+</tr>
+</table>
+<p>CloudAZ xin thông báo: Dịch vụ {{.product_name}} của Quý Công ty sẽ bị <strong>tạm khóa</strong> kể từ ngày {{date (plus .ngay_x 5)}} nếu CloudAZ không nhận được thanh toán.</p>
+<p>Đề nghị Quý Công ty liên hệ ngay với Sales AM phụ trách ({{.sale_owner_name}}) để làm việc.</p>
+<p>Trân trọng,<br><strong>Phòng Kế toán — Công ty CP Phát triển Dịch vụ Đám mây CloudAZ</strong></p>

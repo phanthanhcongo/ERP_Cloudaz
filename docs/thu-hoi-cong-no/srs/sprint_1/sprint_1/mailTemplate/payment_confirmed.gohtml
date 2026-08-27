@@ -1,0 +1,12 @@
+<p>Kính gửi {{.customer_name}},</p>
+<p>CloudAZ xác nhận <strong>đã nhận đủ khoản thanh toán</strong> cho kỳ cước tháng {{.billing_cycle}} theo Hợp đồng số {{.contract_number}}.</p>
+<p><strong>Chi tiết ghi nhận:</strong></p>
+<ul>
+<li>Ngày nhận thanh toán: {{date .paid_at}}</li>
+<li>Số tiền đã nhận: <strong>{{money .paid_amount}} VNĐ</strong></li>
+<li>Trong đó, phí dịch vụ: {{money .total_principal}} VNĐ</li>
+<li>Lãi chậm thanh toán: {{money .total_penalty}} VNĐ</li>
+</ul>
+<p>Hồ sơ công nợ kỳ cước này đã được <strong>tất toán</strong>. Lãi chậm thanh toán ngừng phát sinh kể từ ngày {{date .paid_at}}.</p>
+<p>CloudAZ trân trọng cảm ơn Quý Công ty và rất mong tiếp tục được đồng hành trong các kỳ cước tiếp theo.</p>
+<p>Trân trọng,<br><strong>Phòng Kế toán — Công ty CP Phát triển Dịch vụ Đám mây CloudAZ</strong></p>

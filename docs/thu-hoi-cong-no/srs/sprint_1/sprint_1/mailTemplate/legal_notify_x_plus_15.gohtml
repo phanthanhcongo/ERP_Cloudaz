@@ -1,0 +1,13 @@
+<p>Kính gửi Phòng Pháp lý,</p>
+<p>Hệ thống xin chuyển hồ sơ khách hàng quá hạn nghiêm trọng sang bộ phận Pháp lý để xử lý theo quy trình:</p>
+<ul>
+<li>Khách hàng: {{.customer_name}}</li>
+<li>Hợp đồng: {{.contract_number}}</li>
+<li>Nợ gốc: {{money .total_principal}} VNĐ</li>
+<li>Lãi phạt: {{money .total_penalty}} VNĐ</li>
+<li>Tổng nợ: {{money .total_amount}} VNĐ</li>
+<li>Số ngày quá hạn: {{.days_overdue}} ngày</li>
+<li>Hạn chót trước khởi kiện: {{date (plus .ngay_x 30)}}</li>
+</ul>
+<p>Đề nghị Phòng Pháp lý lập công văn yêu cầu thanh toán theo mẫu và gửi đến khách hàng.</p>
+<p>Trân trọng,<br><strong>Hệ thống Quản lý Công nợ — CloudAZ</strong></p>

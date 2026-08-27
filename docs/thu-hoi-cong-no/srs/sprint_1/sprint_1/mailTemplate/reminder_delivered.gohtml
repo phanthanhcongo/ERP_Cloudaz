@@ -1,0 +1,10 @@
+<p>Kính gửi {{.customer_name}},</p>
+<p>CloudAZ xin trân trọng cảm ơn Quý Công ty đã tin tưởng sử dụng dịch vụ {{.product_name}} theo Hợp đồng số {{.contract_number}}.</p>
+<p>Hệ thống kế toán CloudAZ xin thông báo: Hồ sơ thanh toán của Quý Công ty cho kỳ cước tháng {{.billing_cycle}} đã được chuyển phát bản cứng thành công theo thông tin sau:</p>
+<ul>
+<li><strong>Ngày chuyển phát thành công:</strong> {{date .delivered_at}}</li>
+<li><strong>Người ký nhận:</strong> {{.receiver_name}}</li>
+</ul>
+<p>Căn cứ theo điều khoản thanh toán, hạn thanh toán của kỳ cước này là ngày {{date .ngay_x}} (trong vòng {{.payment_term_days}} ngày kể từ khi nhận bản cứng).</p>
+<p>Quý Công ty vui lòng kiểm tra tình trạng hồ sơ và lưu ý lịch thanh toán cho CloudAZ.</p>
+<p>Trân trọng,<br><strong>Phòng Kế toán — Công ty CP Phát triển Dịch vụ Đám mây CloudAZ</strong></p>

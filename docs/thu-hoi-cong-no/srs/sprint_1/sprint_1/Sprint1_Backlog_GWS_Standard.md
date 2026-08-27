@@ -129,7 +129,7 @@ Sprint 1 làm **trọn 10 US trong một đợt** (PO chốt, không tách 1a/1b
   - **AC1:** Kế toán in bản cứng ĐNTT, trình ký đóng dấu đỏ → bấm nút "Đã đóng dấu" → gọi `PATCH /api/v1/fin/debts/:id/delivery/stamp` (hardcopy_status=STAMPED). Hệ thống ghi audit log và gửi notification cho HCNS sang nhận thư đi gửi bưu điện.
     * **Ràng buộc:** chỉ thao tác được khi `sync_status = CONFIRMED` (BD-09 AC1b), vi phạm → `422 FIN_DEBT_NOT_CONFIRMED`.
   - **AC2:** HCNS nhận phong bì, gửi chuyển phát → nhập mã vận đơn → gọi `PATCH /api/v1/fin/debts/:id/delivery/post` (hardcopy_status=POSTED, tracking_code). Khi khách nhận được → bấm xác nhận → gọi `PATCH /api/v1/fin/debts/:id/delivery/deliver` (hardcopy_status=DELIVERED, delivered_at, **receiver_name** — người ký nhận, dùng cho biến `[receiver_name]` trong template mail).
-  - **AC3:** Khi `PATCH /api/v1/fin/debts/:id/delivery/deliver` được gọi, hệ thống đọc `CONTRACTS.payment_term_days` (đã nhập ở BD-09 AC8) qua liên kết `DEBTS.contract_id`, tự động tính `ngay_x = delivered_at + payment_term_days` và cập nhật `debt_status=IN_TERM`.
+  - **AC3:** Khi `PATCH /api/v1/fin/debts/:id/delivery/deliver` được gọi, hệ thống đọc `CONTRACTS.payment_term_days` (đã nhập ở BD-09 AC8) qua liên kết `DEBTS.contract_id`, tự động tính `ngay_x = delivered_at + payment_term_days`, cập nhật `debt_status=IN_TERM` và ghi `debt_events` với `action_type = 'NGAY_X_SET'`.
   - **AC4:** **Ràng buộc:** Nút "Gửi email ĐNTT" chỉ enabled khi `hardcopy_status=DELIVERED`. Gọi `POST /api/v1/fin/debts/:id/send-email` → nếu chưa deliver thì trả về `422 FIN_DEBT_HARDCOPY_NOT_DELIVERED`. Cảnh báo nếu quá 48h chưa có cập nhật.
 
 ---

@@ -1,0 +1,13 @@
+<p>Kính gửi các anh/chị,</p>
+<p>Yêu cầu khóa dịch vụ tại mốc X+4 đối với khách hàng dưới đây đã bị Sales AM <strong>từ chối</strong>:</p>
+<ul>
+<li>Khách hàng: {{.customer_name}}</li>
+<li>Hợp đồng: {{.contract_number}} — kỳ cước {{.billing_cycle}}</li>
+<li>Tổng dư nợ: {{money .total_amount}} VNĐ (gốc {{money .total_principal}} + lãi {{money .total_penalty}})</li>
+<li>Số ngày quá hạn: {{.days_overdue}} ngày</li>
+<li><strong>Người từ chối:</strong> {{.sale_owner_name}}</li>
+<li><strong>Lý do bảo lãnh:</strong> {{.reject_reason}}</li>
+<li><strong>Ngày khách cam kết thanh toán:</strong> {{date .expected_payment_date}}</li>
+</ul>
+<p>Hệ thống sẽ <strong>không tự tạo lại</strong> yêu cầu khóa cho kỳ cước này. Nếu đến ngày cam kết mà khách chưa thanh toán, đề nghị Kế toán trưởng xem xét yêu cầu khóa thủ công.</p>
+<p>Trân trọng,<br><strong>Hệ thống Quản lý Công nợ — CloudAZ</strong></p>

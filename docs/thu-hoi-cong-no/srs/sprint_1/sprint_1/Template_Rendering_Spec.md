@@ -124,9 +124,12 @@ Toàn bộ biến trong `mailTemplate/Templates.md` chuyển theo quy tắc: `[t
 | `[ngay_x+5]` | `{{date (plus .ngay_x 5)}}` |
 | `[ngay_x+15]` | `{{date (plus .ngay_x 15)}}` |
 | `[ngay_x+30]` | `{{date (plus .ngay_x 30)}}` |
+| `[ngay_x_minus_2]` | `{{date (minus .ngay_x 2)}}` |
 | `[delivered_at]` | `{{date .delivered_at}}` |
 | `[publish_day]` / `[publish_month]` / `[publish_year]` | `{{day .publish_date}}` / `{{month .publish_date}}` / `{{year .publish_date}}` |
 | `[days_overdue]` | `{{.days_overdue}}` |
+| `[sale_owner_name]` | `{{.sale_owner_name}}` — resolve từ `DEBTS.sale_owner` (email) → users.name |
+| `[legal_locked_penalty]` | `{{money .legal_locked_penalty}}` |
 | Còn lại | `{{.tên_biến}}` |
 
 `mailTemplate/Templates.md` **giữ nguyên ký hiệu `[…]`** — đó là tài liệu nghiệp vụ cho BA và Kế toán đọc. File `.gohtml` là bản thi công.

@@ -1,0 +1,11 @@
+<p>Kính gửi Ban Giám đốc và Phòng Pháp lý,</p>
+<p>Khách hàng {{.customer_name}} (HĐ {{.contract_number}}) đã quá hạn thanh toán {{.days_overdue}} ngày với tổng dư nợ {{money .total_amount}} VNĐ.</p>
+<p>Phòng Pháp lý đã gửi công văn yêu cầu thanh toán ngày {{date .legal_publish_date}} nhưng chưa nhận được phản hồi.</p>
+<p><strong>⚠️ Việc Phòng Pháp lý cần làm — hệ thống KHÔNG tự sinh:</strong></p>
+<ol>
+<li><strong>Soạn và gửi văn bản đơn phương chấm dứt Hợp đồng</strong> cho khách hàng theo mẫu của Phòng Pháp lý. Tại email nhắc nợ mốc X+1, CloudAZ <strong>đã thông báo trước</strong> với khách rằng sẽ chấm dứt hợp đồng ở mốc này — nếu không gửi văn bản chấm dứt thì việc chấm dứt <strong>không có hiệu lực pháp lý</strong>, và khách có căn cứ phản bác trước tòa.</li>
+<li>Gửi bản cứng qua bưu điện, giữ lại mã vận đơn làm bằng chứng đã gửi.</li>
+<li>Sau khi gửi xong, vào ERP bấm <strong>"Hủy HĐ & Kiện"</strong> để ghi nhận <code>termination_date</code> và chuyển trạng thái hồ sơ sang <em>Đang khởi kiện</em>.</li>
+</ol>
+<p>Đề nghị Ban Giám đốc phê duyệt khởi kiện để bảo vệ quyền lợi của CloudAZ.</p>
+<p>Trân trọng,<br><strong>Hệ thống Quản lý Công nợ — CloudAZ</strong></p>

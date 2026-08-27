@@ -1,0 +1,57 @@
+<table width="100%" style="border: none; margin-bottom: 20px;">
+  <tr style="border: none;">
+    <td width="50%" align="center" valign="top" style="border: none;">
+      <strong>CÔNG TY CỔ PHẦN PHÁT TRIỂN<br>DỊCH VỤ ĐÁM MÂY CLOUDAZ</strong><br>
+      Số: {{.document_number}}<br>
+      <em>V/v: Giải quyết, thanh toán công nợ.</em>
+    </td>
+    <td width="50%" align="center" valign="top" style="border: none;">
+      <strong>CỘNG HOÀ XÃ HỘI CHỦ NGHĨA VIỆT NAM<br>Độc lập – Tự do – Hạnh phúc</strong><br>
+      <br>
+      <em>Hà Nội, ngày {{day .publish_date}} tháng {{month .publish_date}} năm {{year .publish_date}}</em>
+    </td>
+  </tr>
+</table>
+<p><strong>Kính gửi:</strong> {{.customer_name}}</p>
+<p>Đại diện theo pháp luật: Ông/Bà {{.rep_name}}</p>
+<p>Mã số doanh nghiệp: {{.tax_code}}</p>
+<p>Địa chỉ: {{.customer_address}}</p>
+<p>Địa chỉ người đại diện pháp luật: {{.rep_address}}</p>
+<p><em>(Sau đây gọi tắt là "Công ty")</em></p>
+<p>Công ty Cổ phần Phát triển Dịch vụ Đám mây CloudAZ ("CloudAZ") xin gửi lời chào trân trọng và lời chúc sức khỏe tới Quý Công ty.</p>
+<ol>
+<li>Căn cứ theo Hợp đồng cung cấp phần mềm điện toán đám mây {{.product_name}} số {{.contract_number}} ký kết ngày {{date .contract_sign_date}} giữa CloudAZ và Công ty (Sau đây gọi là "Hợp đồng"); CloudAZ đã thực hiện cung cấp dịch vụ theo đúng thỏa thuận, đồng thời gửi bảng kê và hóa đơn phí dịch vụ hàng tháng đến Công ty.</li>
+<li>Căn cứ theo Điều {{.payment_term_clause}} điều khoản thanh toán Hợp đồng đã ký kết giữa hai bên, Công ty phải thanh toán Phí dịch vụ hàng tháng cho CloudAZ theo hình thức chuyển khoản. Trường hợp Công ty thanh toán chậm so với thời hạn quy định, Công ty phải chịu lãi suất thanh toán trễ hạn là {{pct .penalty_rate}}/ngày/dư nợ chưa thanh toán. Tuy nhiên, đến nay đã quá thời hạn thanh toán mà Công ty vẫn không thanh toán đúng theo như quy định tại Hợp đồng và đồng thời phía CloudAZ cũng không nhận được thông báo trao đổi về việc chậm trễ thanh toán này.</li>
+<li>Tổng chi phí dịch vụ đã sử dụng Quý công ty phải thanh toán cho CloudAZ tới ngày {{date .legal_publish_date}} là: <strong>{{money .total_amount}} VND</strong> <em>(bao gồm phí dịch vụ chưa thanh toán và khoản phạt quá hạn)</em>.</li>
+</ol>
+<p>Vì vậy bằng văn bản này, CloudAZ đề nghị Quý Công ty thực hiện thanh toán công nợ theo đúng số tiền được thống kê tại <strong>Bảng đối soát</strong> đính kèm văn bản này. Sau {{.grace_period_days}} ngày kể từ ngày CloudAZ gửi thông báo này, nếu Công ty không thực hiện nghĩa vụ thanh toán, CloudAZ sẽ có những hành động pháp lý tố tụng quyết liệt hơn để yêu cầu Quý công ty thực hiện nghĩa vụ và bảo vệ quyền, lợi ích hợp pháp của mình.</p>
+<p>Nhằm giải quyết vụ việc trên cơ sở hiểu biết và thiện chí, CloudAZ sẵn sàng làm việc, trao đổi với đại diện hợp pháp của Công ty. Trường hợp CloudAZ không nhận được phản hồi từ Quý Công ty, CloudAZ mặc định hiểu rằng Quý công ty đã đồng ý và chấp thuận về các thông tin, bảng kê đối soát được nêu tại văn bản này.</p>
+<p>Mọi thông tin liên hệ và phản hồi xin vui lòng gửi về:</p>
+<p><strong>CÔNG TY CỔ PHẦN PHÁT TRIỂN DỊCH VỤ ĐÁM MÂY CLOUDAZ</strong></p>
+<p>Địa chỉ: Số 03, ngõ 04 Phố Nghĩa Đô, Phường Nghĩa Tân, Quận Cầu Giấy, Thành phố Hà Nội, Việt Nam.</p>
+<p>Phụ trách pháp lý: Ông Lê Tiến Đức</p>
+<p>Số điện thoại: 0383438889</p>
+<p>Email: legal@cloudaz.io</p>
+<p>Rất mong nhận được sự phản hồi và hợp tác từ Quý Công ty.</p>
+<p>Trân trọng./.</p>
+<table width="100%" style="border: none; margin-top: 20px;">
+  <tr style="border: none;">
+    <td width="50%" valign="top" style="border: none;">
+      <em>Nơi nhận:</em><br>
+      - <em>Như trên;</em><br>
+      - <em>Lưu: VP, PC.</em>
+    </td>
+    <td width="50%" align="center" valign="top" style="border: none;">
+      <strong>CÔNG TY CỔ PHẦN PHÁT TRIỂN<br>DỊCH VỤ ĐÁM MÂY CLOUDAZ</strong>
+    </td>
+  </tr>
+</table>
+<h3>BẢNG ĐỐI SOÁT</h3>
+<p><em>(đính kèm công văn số: {{.document_number}})</em></p>
+<table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
+<tr><th>STT</th><th>Nội dung</th><th>Số tiền (VNĐ)</th></tr>
+<tr><td>01</td><td>Chi phí dịch vụ {{.product_name}} kỳ {{.billing_cycle}} theo HĐ {{.contract_number}}</td><td>{{money .total_principal}}</td></tr>
+<tr><td>02</td><td>Phạt chậm thanh toán (tính đến ngày {{date .legal_publish_date}})</td><td>{{money .legal_locked_penalty}}</td></tr>
+<tr><td colspan="2"><strong>Tổng cộng</strong></td><td><strong>{{money .total_amount}}</strong></td></tr>
+<tr><td colspan="2"><em>Bằng chữ</em></td><td><em>{{words .total_amount}}</em></td></tr>
+</table>

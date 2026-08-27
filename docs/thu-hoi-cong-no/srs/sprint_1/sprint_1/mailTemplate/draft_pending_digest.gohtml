@@ -1,0 +1,20 @@
+<p>Kính gửi Phòng Kế toán,</p>
+<h3>📬 Hôm nay: {{.draft_count}} thư chờ duyệt gửi</h3>
+<table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
+<tr><th>Giai đoạn</th><th>Số thư</th></tr>
+<tr><td>Nhắc trước hạn</td><td>{{.count_before_due}}</td></tr>
+<tr><td>Nhắc quá hạn</td><td>{{.count_overdue}}</td></tr>
+<tr><td>Cảnh báo khóa dịch vụ</td><td>{{.count_suspend_warning}}</td></tr>
+</table>
+<p>👉 <a href="{{.draft_inbox_url}}">Mở Hộp thư chờ gửi</a> để rà và bấm gửi.</p>
+<p><strong>Lưu ý:</strong> nháp chỉ có hiệu lực trong ngày. Sau 00:05 đêm nay, thư chưa gửi sẽ <strong>hết hạn</strong> vì số tiền lãi trong đó không còn đúng — hệ thống soạn lại bản mới vào sáng mai.</p>
+{{if gt .expired_count 0}}
+<hr>
+<h3 style="color: #cc0000;">Hôm qua: {{.expired_count}} thư CHƯA DUYỆT và đã hết hạn</h3>
+<table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
+<tr><th>Khách hàng</th><th>Hợp đồng</th><th>Loại thư</th><th>Số ngày quá hạn</th></tr>
+<tr><td>{{.customer_name}}</td><td>{{.contract_number}}</td><td>{{.stage_label}}</td><td>{{.days_overdue}}</td></tr>
+</table>
+<p><strong>{{.expired_count}} khách hàng này đã không nhận được thư nhắc nợ ngày hôm qua.</strong> Với các khoản đang tới gần mốc khóa dịch vụ hoặc mốc pháp lý, việc thiếu một lần nhắc có thể ảnh hưởng tới cơ sở pháp lý khi cần đối chất.</p>
+{{end}}
+<p>Trân trọng,<br><strong>Hệ thống Quản lý Công nợ — CloudAZ</strong></p>

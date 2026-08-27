@@ -1,0 +1,14 @@
+<h3 style="color: #cc0000;">⛔ DỊCH VỤ ĐÃ ĐƯỢC TẠM KHÓA</h3>
+<p>Kính gửi {{.customer_name}},</p>
+<p>CloudAZ đã nhiều lần gửi thông báo nhắc nợ đối với kỳ cước {{.billing_cycle}} nhưng đến nay vẫn chưa nhận được thanh toán từ Quý Công ty.</p>
+<p>Căn cứ theo Hợp đồng số {{.contract_number}}, CloudAZ xin thông báo dịch vụ {{.product_name}} của Quý Công ty <strong>đã được tạm khóa</strong> kể từ {{.executed_at}}.</p>
+<p><strong>Tình trạng công nợ:</strong></p>
+<ul>
+<li>Nợ gốc: {{money .total_principal}} VNĐ</li>
+<li>Lãi phạt tính đến ngày {{.today}}: {{money .total_penalty}} VNĐ</li>
+<li>Tổng phải thanh toán: <strong>{{money .total_amount}} VNĐ</strong></li>
+<li>Số ngày quá hạn: {{.days_overdue}} ngày</li>
+</ul>
+<p><strong>Lưu ý:</strong> Trong thời gian tạm khóa, <strong>lãi chậm thanh toán vẫn tiếp tục phát sinh</strong> theo điều khoản hợp đồng. Dịch vụ sẽ được khôi phục ngay sau khi CloudAZ ghi nhận đủ khoản thanh toán.</p>
+<p>Quý Công ty vui lòng liên hệ Sales AM phụ trách ({{.sale_owner_name}}) để được hỗ trợ xử lý.</p>
+<p>Trân trọng,<br><strong>Phòng Kế toán — Công ty CP Phát triển Dịch vụ Đám mây CloudAZ</strong></p>

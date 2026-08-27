@@ -1,0 +1,18 @@
+<h3 style="color: #cc0000;">THÔNG BÁO KHẨN — QUÁ HẠN THANH TOÁN {{.days_overdue}} NGÀY</h3>
+<p>Kính gửi {{.customer_name}},</p>
+<p>CloudAZ đã gửi thông báo đến hạn vào ngày {{date (minus .ngay_x 2)}}, tuy nhiên đến nay CloudAZ vẫn chưa nhận được thanh toán cho kỳ cước {{.billing_cycle}}.</p>
+<p><strong>Tình trạng hiện tại:</strong></p>
+<ul>
+<li>Nợ gốc: {{money .total_principal}} VNĐ</li>
+<li>Lãi phạt tạm tính đến ngày {{.today}}: {{money .total_penalty}} VNĐ</li>
+<li>Tổng cộng: {{money .total_amount}} VNĐ</li>
+<li>Số ngày quá hạn: {{.days_overdue}} ngày</li>
+</ul>
+<p><strong>Các mốc xử lý:</strong></p>
+<ul>
+<li>{{date (plus .ngay_x 4)}} (X+4): Dịch vụ sẽ bị tạm khóa nếu chưa thanh toán.</li>
+<li>{{date (plus .ngay_x 15)}} (X+15): Hồ sơ sẽ được chuyển sang Phòng Pháp lý để lập công văn yêu cầu thanh toán.</li>
+<li>{{date (plus .ngay_x 30)}} (X+30): CloudAZ sẽ đơn phương chấm dứt Hợp đồng và khởi kiện tại Tòa án.</li>
+</ul>
+<p>Đề nghị Quý Công ty khẩn trương thanh toán để tránh các biện pháp xử lý không mong muốn.</p>
+<p>Trân trọng,<br><strong>Phòng Kế toán — Công ty CP Phát triển Dịch vụ Đám mây CloudAZ</strong></p>
