@@ -89,3 +89,5 @@ gws-saleflow-website-repo/.git
 tmp/
 temp/
 *.ER
+
+.claude
