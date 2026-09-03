@@ -2,9 +2,9 @@
 
 > **Dự án**: ERP Cloudaz — Phân hệ Tính cước & Đối soát chi phí dịch vụ Google (GCP / GMap / Google Workspace)
 > **Khách hàng / Bên yêu cầu**: Phòng Kế toán — Cloudaz (nhà phân phối/reseller dịch vụ Cloud)
-> **Nguồn đầu vào**: 5 bản ghi phỏng vấn kế toán (`audio/b1.md` → `audio/b5.md`)
+> **Nguồn đầu vào**: 5 bản ghi phỏng vấn kế toán — `docs/1_tinh_cuoc/Google/transcripts/b1.md` → `b5.md`
 > **Ngày tạo**: 2026-09-03
-> **Phiên bản**: 1.0
+> **Phiên bản**: 1.1
 
 > ⚠️ **Lưu ý về nguồn**: transcript được tạo tự động, chất lượng nhận dạng thấp (nhiều đoạn lặp/sai chính tả: "con sô/con xô" = Console, "đít cao" = discount, "cóc/cóp" = copy, "biu" = bill, "Resellmozine" = Reseller margin, "chức/chết" = check). Những chỗ suy luận đã được đánh dấu `[CẦN XÁC NHẬN]`.
 
@@ -15,6 +15,7 @@
 | Phiên bản | Ngày | Tác giả | Mô tả |
 | :--- | :--- | :--- | :--- |
 | 1.0 | 2026-09-03 | BA Team | Khởi tạo BRD từ transcript phỏng vấn kế toán (b1–b5) |
+| 1.1 | 2026-09-03 | BA Team | Rà soát đối chiếu lại transcript: sửa 2 điểm sai (phương thức Workspace Commit, phạm vi đối chiếu invoice hãng); bổ sung 8 nội dung còn thiếu (đối chiếu chéo 2 bảng, discount theo năm hợp đồng, xử lý project mới phát sinh, đặc thù GMap, ràng buộc định dạng export, vai trò kinh nghiệm kế toán, Q-14, D-05) |
 
 ---
 
@@ -58,6 +59,9 @@ Không có cách biết trước tháng nào khách được chạy credit. Kế
 **1.9. Thời gian xử lý kéo dài**
 Thời gian lý tưởng để tính bill là **1 ngày làm việc** (gồm lấy số Console + xử lý trên CM). Hiện tại do phải tách Gemini và tính tay nhiều, thời gian tăng lên **~1,5 ngày**, khiến việc gửi mail đối soát cho khách bị đẩy sang sáng hôm sau thay vì cuối ngày như trước.
 
+**1.10. Kiểm soát chất lượng phụ thuộc kinh nghiệm cá nhân**
+Việc phát hiện số liệu bất thường hiện dựa vào kinh nghiệm của kế toán — *"mình đang quen, mình sẽ nhìn được là có cái gì nó bị lệch hoặc nó bị thiếu"*. Kế toán chỉ kiểm tra lại khi "thấy con nào bất thường". Đây là rủi ro vận hành: tri thức không được hệ thống hóa, không chuyển giao được cho người mới, và là lý do kế toán yêu cầu ERP phải có cơ chế đối chiếu số tự động trước khi chấp nhận bỏ bảng tính tay.
+
 ---
 
 ## 2. Giải pháp Đề xuất
@@ -83,13 +87,13 @@ Xây dựng **phân hệ Tính cước & Đối soát chi phí** trong ERP Cloud
 | **Google Cloud Console (Billing)** | Nguồn số gốc GCP: cost table, group by project/service, promotion credit, reseller margin |
 | **Google Maps Platform Console (GMap / ONI)** | Nguồn số GMap; ONI là hãng xuất hóa đơn cho GMap |
 | **Google Workspace Admin / Reseller Console** | Nguồn file CSV Flex/Commit theo domain |
-| **CM (Cost Management)** — hệ thống nội bộ do đội Tech xây | Nơi lưu hợp đồng, phương thức tính (GCP Resale, Gmap Resale, Workspace Resale/Collect, AWS Commit), nhập tỷ giá, gen bảng đối soát |
+| **CM (Cost Management)** — hệ thống nội bộ do đội Tech xây | Nơi lưu hợp đồng, phương thức tính (GCP Resale, Gmap Resale, Workspace Resale/Collect, Workspace Commit), nhập tỷ giá, gen bảng đối soát |
 | **ERP Cloudaz** | Hệ thống đích: tính cước, đối soát, xuất hóa đơn, công nợ |
 | **Hệ thống hóa đơn điện tử** | Xuất hóa đơn sau khi khách xác nhận `[CẦN XÁC NHẬN: MISA meInvoice — theo tài liệu docs/2_thu-hoi-cong-no]` |
 | **Email / Google Drive / Sheets** | Kênh gửi bảng đối soát cho khách; nơi lưu file tính, bảng đối soát, hóa đơn theo từng khách |
 | **Hệ thống hợp đồng / SSC** | Nguồn thay đổi hợp đồng, phụ lục, pháp nhân, công thức tính |
 
-**Ngoài phạm vi đợt này** (đã có tài liệu riêng): AWS, DigitalOcean — *"Flex/AWS Commit thì đơn giản hơn, để sau cũng được"*.
+**Ngoài phạm vi đợt này**: AWS và DigitalOcean (đã có tài liệu phân tích riêng trong `docs/1_tinh_cuoc/Aws/` và `docs/1_tinh_cuoc/DigitalOcean/`; CM hiện cũng không hỗ trợ AWS). Google Workspace **Commit** được ghi nhận nhưng ưu tiên sau — *"Flex thì nó đơn giản hơn... chị nghĩ để sau cũng được"*.
 
 ---
 
@@ -100,6 +104,7 @@ Xây dựng **phân hệ Tính cước & Đối soát chi phí** trong ERP Cloud
 - **D-02 — Công thức tính trên CM**: Kế toán không nắm chi tiết công thức, cần làm việc với **đội Tech** để lấy đặc tả các phương thức tính hiện có.
 - **D-03 — Quy tắc map dữ liệu của CM**: Cần đội Tech giải thích quy tắc gộp Billing ID → dòng đối soát, và lý do CM bỏ qua một số dòng dữ liệu.
 - **D-04 — Dữ liệu hợp đồng trên CM**: Bảng đối soát chỉ gen được khi admin đã cập nhật hợp đồng lên CM.
+- **D-05 — File mẫu chưa nhận**: Kế toán đã đồng ý gửi bộ file mẫu một kỳ tính cước (file tính GCP, file tính GMap, file upload lên CM, bảng đối soát chi phí gửi khách). **Chưa nhận được tại thời điểm lập BRD** — cần có để đặc tả chính xác cấu trúc dữ liệu và công thức.
 
 **Giả định:**
 - **A-01**: Hợp đồng, phụ lục, công thức tính, tỷ lệ discount, pháp nhân xuất hóa đơn được quản lý tập trung trong ERP (kế thừa/di trú từ CM).
@@ -107,6 +112,7 @@ Xây dựng **phân hệ Tính cước & Đối soát chi phí** trong ERP Cloud
 - **A-03**: Nguyên tắc tính: giá bán cho khách là **giá gốc của hãng**; phần discount/margin thuộc về Cloudaz (ví dụ GCP hãng cho 10%). Số gửi khách là số **đã bỏ Reseller margin**.
 - **A-04**: Gemini API **không được discount** cho toàn bộ khách hàng, không có ngoại lệ.
 - **A-05**: Giai đoạn đầu ERP chạy **song song** với quy trình thủ công để đối chiếu, chưa thay thế ngay.
+- **A-06**: Google Console chỉ hỗ trợ export **PDF và CSV**; nếu ERP lấy dữ liệu qua UI/export thì bị giới hạn ở 2 định dạng này. Phương án API/BigQuery (D-01) không bị ràng buộc này.
 
 ---
 
@@ -124,6 +130,8 @@ Xây dựng **phân hệ Tính cước & Đối soát chi phí** trong ERP Cloud
 - **5.1.8** Hệ thống lưu **ảnh chụp / báo cáo bằng chứng lượng dùng** của từng khách để đính kèm khi gửi đối soát *(hiện kế toán chụp màn hình tay từng khách)*. *[CẦN XÁC NHẬN: chấp nhận thay ảnh chụp bằng báo cáo PDF do ERP sinh hay bắt buộc giữ screenshot Console]*
 - **5.1.9** Hệ thống cho phép cấu hình **lịch thu thập theo từng dịch vụ**, theo chu kỳ phát hành invoice của hãng: GCP ~ngày 02, GMap ~ngày 05–08 (có tháng đến ngày 09), Workspace ~ngày 01–02.
 - **5.1.10** Hệ thống lấy số **sau invoice của hãng tối thiểu 1 ngày** (thực tế kế toán chờ đến ngày 03 dù ngày 02 đã có invoice), vì dữ liệu lấy quá sớm chưa chuẩn. *[CẦN XÁC NHẬN: có cấu hình được độ trễ này không]*
+- **5.1.11** Hệ thống cảnh báo khi phát hiện **project mới chưa được gán cho khách hàng nào**, để kế toán tra soát nguồn gốc (mail / Drive / hệ thống order của admin) xem admin có order thêm project cho khách hiện hữu hay không, rồi gán về đúng khách. *(Hiện kế toán tự phát hiện bằng cách so sánh với kỳ trước rồi tra tay trên mail và Drive; nếu đúng là project mới của khách cũ thì tách thành 2 dòng nhưng vẫn gộp vào một khách.)*
+- **5.1.12** Hệ thống ghi nhận dữ liệu GMap chỉ gồm **lượng dùng và phí dịch vụ**, không có chi tiết theo SKU như GCP (chi tiết chỉ áp dụng cho khách rất lớn, hiện không có khách nào thuộc nhóm này).
 
 ### 5.2 Xử lý Gemini API (dịch vụ không discount)
 
@@ -153,7 +161,7 @@ Xây dựng **phân hệ Tính cước & Đối soát chi phí** trong ERP Cloud
 ### 5.5 Tính cước theo hợp đồng
 
 - **5.5.1** Hệ thống lưu trữ **hợp đồng và phụ lục** của từng khách, bao gồm: pháp nhân xuất hóa đơn, phương thức tính, tỷ lệ discount, hiệu lực theo tháng.
-- **5.5.2** Hệ thống hỗ trợ các **phương thức tính** hiện có trên CM: GCP Resale, Gmap Resale, Google Workspace Resale, Workspace Collect, AWS Commit `[phạm vi sau]`.
+- **5.5.2** Hệ thống hỗ trợ các **phương thức tính** hiện có trên CM: GCP Resale, Gmap Resale, Google Workspace Resale, Workspace Collect, và **Google Workspace Commit**. Riêng Workspace Commit là hợp đồng **dài hạn, trả trước**, không tính theo chu kỳ thường quy như resale của GCP/GMap — có thể ghi nhận phân bổ dần theo kỳ `[CẦN XÁC NHẬN cách phân bổ]`. CM **không hỗ trợ AWS**.
 - **5.5.3** Hệ thống cho phép nhập **tỷ giá theo kỳ** và áp tự động cho toàn bộ khách, đồng thời cho phép **ghi đè tỷ giá riêng** cho khách có thỏa thuận đặc biệt.
 - **5.5.4** Hệ thống áp dụng **quy tắc làm tròn đến hàng nghìn VND** cho số tiền cuối cùng. *(Đây là lỗi tồn đọng của CM mà kế toán đã phản ánh nhiều lần và vẫn phải sửa tay.)*
 - **5.5.5** Hệ thống tự động **cộng gộp nhiều Billing Account / nhiều project** của cùng một khách vào một dòng đối soát, thay cho việc cộng tay hiện nay.
@@ -161,16 +169,18 @@ Xây dựng **phân hệ Tính cước & Đối soát chi phí** trong ERP Cloud
 - **5.5.7** Hệ thống cảnh báo khi khách **thay đổi pháp nhân xuất hóa đơn** giữa các kỳ (ký hợp đồng mới, không phải ủy quyền), đảm bảo giữ nguyên số liệu sử dụng nhưng đổi thông tin xuất hóa đơn.
 - **5.5.8** Hệ thống **thông báo cho kế toán** khi có thay đổi hợp đồng / phụ lục / công thức tính từ luồng ký kết (SSC), kèm tháng bắt đầu hiệu lực. *(Giải quyết trực tiếp pain point "chả có ai thông báo cả".)*
 - **5.5.9** Hệ thống cảnh báo các khách **chưa có hợp đồng trên hệ thống** hoặc thiếu dữ liệu công thức, không thể tính cước, để kế toán yêu cầu admin bổ sung.
+- **5.5.10** Hệ thống theo dõi **mức discount thay đổi theo năm hợp đồng** của khách. Ghi nhận từ phỏng vấn: khách bước sang **năm thứ 2 ("F2")** được hưởng mức discount khác (kế toán nêu khoảng **20%**) — hiện kế toán phải tự kiểm tra mới biết khách đã đổi mức. Hệ thống cần tự động áp đúng mức theo mốc thời gian hiệu lực và cảnh báo trước kỳ chuyển mức. *[CẦN XÁC NHẬN: bảng mức discount theo từng năm hợp đồng]*
 
 ### 5.6 Đối soát & Kiểm soát chất lượng số liệu
 
 - **5.6.1** Hệ thống **sinh bảng đối soát chi phí cuối cùng** cho toàn bộ khách hàng và cho từng khách, kèm chi tiết theo project/service.
 - **5.6.2** Hệ thống cho phép kế toán **upload bảng tính tay** của mình và **tự động so sánh** với số do ERP tính, hiển thị **danh sách các dòng lệch** kèm giá trị chênh lệch. *(Yêu cầu do kế toán nêu trực tiếp như điều kiện chấp nhận hệ thống.)*
-- **5.6.3** Hệ thống đối chiếu **tổng chi phí gồm reseller margin với invoice tổng của hãng** và cảnh báo khi lệch.
+- **5.6.3** Hệ thống đối chiếu **tổng chi phí gồm reseller margin với invoice tổng của hãng**. *Lưu ý phạm vi: hiện kế toán **không** cộng tổng số của khách để so với invoice hãng ở bước tính cước hàng tháng (vì có khách thiếu dữ liệu và có khách tính trên sheet riêng); việc khớp với invoice hãng chỉ **bắt buộc khi lập báo cáo RA**. ERP nên thực hiện đối chiếu này ở mức cảnh báo tham khảo cho bước tính cước, và bắt buộc cho báo cáo RA.* `[CẦN XÁC NHẬN quy trình báo cáo RA]`
 - **5.6.4** Hệ thống cảnh báo các dòng **không map được về khách hàng / hợp đồng** thay vì bỏ qua âm thầm. *(Hiện CM bỏ qua một số dòng mà không giải thích được lý do, gây thiếu tiền.)*
 - **5.6.5** Hệ thống cho phép kế toán **sửa tay số liệu** trên bảng đối soát trước khi chốt, kèm ghi nhận lý do và lưu vết chỉnh sửa.
 - **5.6.6** Hệ thống xuất bảng đối soát ra **file Excel** cho toàn bộ khách hàng.
 - **5.6.7** Hệ thống hiển thị **trạng thái tính cước theo từng khách** trong kỳ (chưa lấy số / đã tính / đã đối soát / đã gửi khách / khách đã xác nhận / đã xuất hóa đơn).
+- **5.6.8** Hệ thống **đối chiếu chéo hai bảng dữ liệu nguồn** — bảng tổng hợp theo **Project** và bảng tổng hợp theo **Billing ID** — và cảnh báo khi tổng của hai bảng không khớp. *(Kế toán khẳng định đây là một bước kiểm soát bắt buộc: "Hai cái này phải khớp nhau nhé" — một bảng lấy data theo project, một bảng theo billing của từng khách.)*
 
 ### 5.7 Gửi khách hàng & Xác nhận
 
@@ -212,6 +222,8 @@ Xây dựng **phân hệ Tính cước & Đối soát chi phí** trong ERP Cloud
 | Q-11 | Hệ thống hóa đơn điện tử tích hợp là MISA meInvoice (theo tài liệu công nợ hiện có) hay hệ thống khác? | Kế toán | Chờ xác nhận |
 | Q-12 | Cơ chế thông báo thay đổi hợp đồng/phụ lục: ERP nhận từ hệ thống SSC qua tích hợp, hay admin nhập tay vào ERP? | SSC / Admin | Chờ xác nhận |
 | Q-13 | Quy tắc xử lý khi một view link GMap chứa project của nhiều khách khác nhau — map bằng project ID hay bằng dữ liệu order từ admin? | Kế toán / Admin | Chờ xác nhận |
+| Q-14 | Phỏng vấn bổ sung **anh Phong (tầng 3)** về cách lấy số hiện tại — kế toán đề nghị hỏi thêm để nắm đầy đủ nguồn dữ liệu | Anh Phong | Chưa phỏng vấn |
+| Q-15 | Bảng mức discount theo năm hợp đồng (năm 1 / năm 2 "F2" / các năm sau) áp dụng cho những dịch vụ nào? | Kế toán / Sale | Chờ xác nhận |
 
 ---
 
