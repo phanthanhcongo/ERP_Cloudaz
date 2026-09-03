@@ -16,11 +16,19 @@ Tài liệu này hướng dẫn chi tiết từng bước (Step-by-step) để c
 
 ### 2. Đối với GWS Channel Services Export (Xuất cước GWS Reseller)
 *   **Trên Partner Sales Console (Trang quản lý đại lý của Google):** Bạn cần có vai trò **Google Cloud Reseller administrator** (Quản trị viên đại lý Google Cloud) để thiết lập đích xuất dữ liệu.
+*   **Trên Google Workspace:** Bạn còn phải có quyền **Google Workspace Reseller Admin** hoặc **Billing**. Thiếu quyền này thì vào được màn hình cấu hình nhưng **không chọn được nguồn dữ liệu Google Workspace** khi bật export.
 *   **Trên Google Cloud Project chứa BigQuery Dataset:**
     *   Bạn cần vai trò **BigQuery User** (`roles/bigquery.user`) trên dự án để có thể chỉ định dự án nhận dữ liệu, hoặc **BigQuery Data Owner** nếu dataset đã tồn tại.
     *   Phải kích hoạt API **BigQuery Data Transfer Service API** trên dự án.
     *   Phải cấp quyền **BigQuery Data Editor** (`roles/bigquery.dataEditor`) cho tài khoản dịch vụ hệ thống của Google:
         `cloud-channel-billing-reporting-rebilling@system.gserviceaccount.com` (như hướng dẫn chi tiết tại Bước 3.1).
+*   **Cho hệ thống ERP đọc dữ liệu:** tạo một service account riêng của ERP với quyền **BigQuery Data Viewer** (`roles/bigquery.dataViewer`) + **BigQuery Job User** (`roles/bigquery.jobUser`) trên dataset. **Không cấp quyền ghi** — ERP chỉ đọc.
+
+> 🔴 **Quyết định phải chốt trước khi tạo dataset cho GWS: vị trí (Location).**
+> Dataset **multi-region** (`US` hoặc `EU`) được Google hồi tố dữ liệu **từ đầu tháng trước**.
+> Dataset **regional** (kể cả `asia-southeast1`) **chỉ có dữ liệu từ ngày bật export trở đi**.
+> Chọn sai là mất trắng dữ liệu kỳ cước đang chạy và **không có cách vá** — Google không backfill.
+> Ngoài ra, export của **offline order chỉ hỗ trợ multi-region**. Xem chi tiết ở Phần 1 và Phần 4.
 
 ---
 
@@ -32,8 +40,17 @@ Trước khi bật tính năng Export từ bất kỳ dịch vụ nào, bạn c�
 3. Bật **BigQuery API** cho project này.
 4. Điều hướng tới menu **BigQuery**.
 5. Ở bảng điều khiển Explorer (bên trái), nhấp vào dấu 3 chấm cạnh tên Project của bạn -> Chọn **Create dataset** (Tạo tập dữ liệu).
-6. Điền `Dataset ID` (ví dụ: `gcp_billing_export`), chọn `Location` (nên chọn multi-region `US` hoặc `asia-southeast1`), rồi bấm **CREATE DATASET**.
+6. Điền `Dataset ID` (ví dụ: `gcp_billing_export`), chọn `Location`, rồi bấm **CREATE DATASET**.
    > *Mẹo: Nên tạo 2 Dataset riêng biệt (ví dụ `gcp_billing_export` và `gws_channel_export`) để dữ liệu 2 dịch vụ không bị lẫn lộn.*
+
+   **Chọn Location theo bảng sau — đây là lựa chọn không sửa được về sau:**
+
+   | Dataset | Location | Lý do |
+   |---|---|---|
+   | `gws_channel_export` (Channel Services) | 🔴 **Bắt buộc multi-region `US` hoặc `EU`** | Chỉ multi-region mới được hồi tố dữ liệu từ đầu tháng trước. Chọn regional (`asia-southeast1`…) thì chỉ có dữ liệu từ ngày bật, mất kỳ đang chạy |
+   | `gcp_billing_export` (Cloud Billing) | Multi-region `US` / `EU`, hoặc regional tùy nhu cầu | Cloud Billing export **không đổ dữ liệu quá khứ** ở mọi vị trí, nên vị trí không ảnh hưởng phạm vi dữ liệu |
+
+   > *Không đổi được Location sau khi tạo dataset. Muốn đổi phải tạo dataset mới và bật lại export — mà bật lại thì thủng dữ liệu khoảng thời gian ở giữa (xem Phần 4).*
 
 ---
 
@@ -65,8 +82,66 @@ Việc xuất dữ liệu của GWS yêu cầu cấu hình phức tạp hơn m�
 
 ### Bước 3.2: Bật Export trên Partner Sales Console
 1. Mở tab mới, đăng nhập vào [Partner Sales Console](https://partner.cloud.google.com/) bằng tài khoản Reseller Admin.
-2. Nhấp vào biểu tượng Bánh răng (Settings / Cài đặt) ở góc trên bên phải để vào phần cài đặt. (Hoặc tìm kiếm mục cấu hình Billing Export).
-3. Tìm đến phần **Channel Services Data Export** (Xuất dữ liệu dịch vụ kênh).
-4. Hệ thống sẽ yêu cầu nhập Dataset ID. Bạn nhập theo định dạng: `tên-project-id:tên-dataset` (ví dụ: `cloudaz-billing-warehouse:gws_channel_export`).
-5. Lưu cấu hình. 
+2. Vào trang **Billing** (Thanh toán) của Partner Sales Console, chọn mục **Billing export** (Xuất dữ liệu thanh toán).
+   > *Nếu giao diện của bạn khác, thử biểu tượng Bánh răng (Settings) ở góc trên bên phải, hoặc tìm kiếm mục **Channel Services Data Export**.*
+3. Nhập Dataset ID theo định dạng `PROJECT_ID:DATASET_NAME` (ví dụ: `cloudaz-billing-warehouse:gws_channel_export`).
+4. **Chọn nguồn dữ liệu (data sources):** tick **Google Workspace** (và **Google Cloud** nếu muốn gộp chung). ⚠️ Nếu không thấy tùy chọn Google Workspace, tài khoản của bạn đang thiếu quyền **Workspace Reseller Admin / Billing** — xem Phần 0 mục 2.
+5. Nhấn **Update** và xác nhận các hộp thoại cấp quyền.
    > *Hệ thống Google sẽ tự động tạo ra một bảng có tên `reseller_billing_detailed_export_v1` trong Dataset đó và cập nhật số liệu của tất cả khách hàng GWS hàng ngày.*
+   > *Bảng **chưa xuất hiện ngay** — chỉ được tạo sau lần export đầu tiên chạy. Đừng vội tạo tay bảng này.*
+
+---
+
+## Phần 4: Lưu ý vận hành sau khi bật (bắt buộc đọc)
+
+Phần này áp cho **Channel Services Export (GWS)**. Sai một trong các điểm dưới đây thì export **dừng âm thầm** — không báo lỗi, chỉ là dữ liệu ngừng về.
+
+### 4.1 Bốn thao tác cấm tuyệt đối trên dataset/bảng export
+
+| Thao tác | Hậu quả |
+|---|---|
+| Sửa cấu trúc bảng `reseller_billing_detailed_export_v1` (thêm/xóa/đổi cột) | Export **fail** |
+| Gỡ quyền của `cloud-channel-billing-reporting-rebilling@system.gserviceaccount.com` | Google không ghi được → **mất dữ liệu** |
+| Bật **row-level access control** hoặc **column-level access control** trên bảng | Export **fail** |
+| Tắt export rồi bật lại | **Không có backfill** — thủng vĩnh viễn dữ liệu khoảng thời gian đã tắt |
+
+> **Hệ quả thiết kế:** ERP **không đọc trực tiếp bảng gốc**. Tạo `VIEW` chuẩn hóa trên bảng gốc và cho ERP đọc view. Bảng gốc coi như chỉ-đọc, không ai được đụng vào.
+
+### 4.2 Đặc tính của bảng export
+
+| Hạng mục | Giá trị |
+|---|---|
+| Tên bảng | `PROJECT_ID.DATASET_NAME.reseller_billing_detailed_export_v1` |
+| Partition key | **`export_time`** |
+| Cluster key | **`payer_billing_account_id`** |
+| Tần suất nạp | **Incremental hằng ngày** |
+| Thời điểm xuất hiện | Sau lần export đầu tiên chạy |
+
+> 💰 **Tối ưu chi phí truy vấn — bắt buộc:** mọi truy vấn phải có điều kiện lọc trên **`export_time`**. Truy vấn không lọc partition sẽ quét toàn bảng, và chi phí tăng dần theo từng tháng dữ liệu tích lũy.
+
+### 4.3 Giám sát
+
+Export chết thì không có thông báo nào từ Google. Phải tự giám sát:
+
+```sql
+-- Mốc dữ liệu mới nhất đã về. Chạy định kỳ, cảnh báo nếu quá 36 giờ không đổi.
+SELECT MAX(export_time) AS lan_nap_gan_nhat
+FROM `PROJECT_ID.DATASET_NAME.reseller_billing_detailed_export_v1`
+```
+
+Đề xuất: job `gws_export_health` chạy mỗi 6 giờ, cảnh báo Quản trị viên khi `MAX(export_time)` cách hiện tại quá **36 giờ**.
+
+### 4.4 Ghi chú về API báo cáo
+
+**Không dùng `CloudChannelReportsService` (`runReportJob` / `fetchReportResults`) cho việc lấy số cước.** API này **đã bị Google deprecated**, và tài liệu chính thống chỉ định thay thế bằng đúng BigQuery Export đang hướng dẫn ở đây. BigQuery Export là đường duy nhất còn được hỗ trợ lâu dài.
+
+### 4.5 Tài liệu chính thống
+
+| Nội dung | Đường dẫn |
+|---|---|
+| Cấu hình export, quyền, vị trí dataset, giới hạn, lược đồ bảng | https://docs.cloud.google.com/channel/docs/rebilling/export-data-to-bigquery |
+| Truy vấn mẫu, cách đọc `system_labels`, đối soát invoice | https://docs.cloud.google.com/channel/docs/rebilling/example-export-queries |
+| Xử lý sự cố export | https://docs.cloud.google.com/channel/docs/troubleshoot/troubleshoot-exports |
+| Ghi chú deprecated của `CloudChannelReportsService` | https://docs.cloud.google.com/channel/docs/reference/rpc/google.cloud.channel.v1 |
+
+> Cách ERP dùng dữ liệu này (view chuẩn hóa, luật lọc dòng Commit, cảnh báo lẻ tháng, đối soát invoice): xem [BRD Tính cước GWS Flex](../GWS_Flex/BRD_TinhCuoc_GWS_Flex_2026-09-03.md) mục 6.

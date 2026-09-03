@@ -216,6 +216,8 @@ Xây dựng **phân hệ Tính cước & Đối soát chi phí** trong ERP Cloud
 
 ## 6. Câu hỏi còn Mở — Cần xác nhận với khách hàng
 
+> 📋 **Sổ câu hỏi tổng hợp**: các câu hỏi dưới đây đã được gom vào [`CauHoi_CanGiaiDap_2026-09-03.md`](../CauHoi_CanGiaiDap_2026-09-03.md) — khử trùng lặp với các BRD khác, gắn người trả lời và mức độ ưu tiên. **Khi có câu trả lời, cập nhật ở cả hai nơi.**
+
 | Mã | Vấn đề cần xác nhận | Người trả lời | Trạng thái |
 | :--- | :--- | :--- | :--- |
 | Q-01 | ERP/đội phát triển có được cấp quyền truy cập Google Cloud Console hoặc Billing Export (BigQuery) để lấy số tự động không? **Đây là điều kiện tiên quyết của toàn bộ giải pháp.** | Đội Tech / chị Phương | Chờ xác nhận |
