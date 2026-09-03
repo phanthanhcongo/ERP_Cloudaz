@@ -14,4 +14,3 @@
 5.  Chọn tên tài khoản thanh toán cụ thể cần lấy hóa đơn từ danh sách.
 6.  Nhấp vào nút **VIEW INVOICES** (Xem hóa đơn) ở phía trên đầu trang.
 7.  Danh sách hóa đơn sẽ hiển thị. Nhấp vào **biểu tượng tải xuống** (download icon) bên cạnh hóa đơn tương ứng để tải về máy tính dưới dạng PDF/CSV.
-

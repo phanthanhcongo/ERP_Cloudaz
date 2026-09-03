@@ -28,4 +28,3 @@ Hóa đơn PDF chính của Google chỉ hiển thị tổng số tiền. Để 
 
 > [!TIP]
 > Đối với đối tác quản lý số lượng lớn dự án hoặc cần tự động hóa đối soát, Google khuyến nghị cấu hình xuất dữ liệu thanh toán tự động sang **BigQuery** (**Billing export > BigQuery export**) thay vì tải thủ công CSV từ Cost Table.
-

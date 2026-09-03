@@ -181,4 +181,3 @@ Hàng tháng (ví dụ từ ngày 3 đến ngày 5, khi AWS đã chốt bill ch�
 3.  **Lưu kết quả & Phát hành đối soát:**
     *   Lưu trữ kết quả tính toán chi tiết (Itemized Bill) vào DB của ERP để làm dữ liệu lịch sử.
     *   Tạo bản nháp đề nghị thanh toán (Draft Invoice) và gửi thông báo cho Kế toán doanh thu xem xét phê duyệt trên Dashboard của ERP.
-

@@ -21,7 +21,7 @@ AWS đã loại bỏ các quyền IAM cũ (`aws-portal:*`). Để xem, tải hó
 ---
 
 ## 2. Các bước thực hiện trên Console (UI Steps)
-Để tải hóa đơn định kỳ hàng tháng cho mục đích đối soát thủ công:
+Để tải hóa đơn định kỳ hàng tháng cho mục đối soát thủ công:
 1.  Đăng nhập vào [AWS Management Console](https://console.aws.amazon.com/).
 2.  Tìm kiếm dịch vụ **Billing and Cost Management** hoặc truy cập trực tiếp [AWS Billing Console](https://console.aws.amazon.com/billing/home).
 3.  Tại menu bên trái, chọn **Invoices** (Hóa đơn).

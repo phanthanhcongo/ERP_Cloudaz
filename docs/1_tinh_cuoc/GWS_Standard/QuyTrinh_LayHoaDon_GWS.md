@@ -25,4 +25,3 @@
 
 > [!TIP]
 > Google cũng cung cấp tính năng tự động xuất dữ liệu thanh toán kênh đối tác (**Channel Services billing data export**) sang **BigQuery** để phục vụ việc tự động hóa đối soát và tích hợp hệ thống ở quy mô lớn.
-
