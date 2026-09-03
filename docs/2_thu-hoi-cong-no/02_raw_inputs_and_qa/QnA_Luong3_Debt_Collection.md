@@ -23,15 +23,6 @@
 | **11** | **Legal: Hoạt động từ X+15 đến X+30** | • Từ ngày X+15 đến X+30, ngoài soạn văn bản chấm dứt HĐ, Legal còn làm gì (gửi công văn cho khách, liên hệ đối tác thu nợ...)?<br>• Văn bản chấm dứt HĐ được gửi cho khách qua kênh nào (chuyển phát nhanh, email có ký số)? | Phức tạp | Legal | Sau khi soạn VB thông báo chấm dứt HĐ thì sẽ gửi KH bằng đường chuyển phát nhanh, thời điểm gửi sẽ tùy theo từng dịch vụ và từng điều khoản chấm dứt trong HĐ của từng KH, sẽ dao động trong ngày X + 15 đến X + 25 |
 | **12** | **Sau chấm dứt HĐ — Khách muốn quay lại** | • Sau khi HĐ bị chấm dứt (Ngày X+30), nếu khách muốn thanh toán lại để tiếp tục sử dụng dịch vụ thì có được không?<br>• Nếu được, quy trình xử lý ra sao (ký HĐ mới với điều khoản khác, hay hủy chấm dứt HĐ cũ)? | Phức tạp | Legal / Sales AM | Legal: khi HĐ chấm dứt thì nếu KH muốn sử dụng lại sẽ cần ký kết HĐ mới |
 | **13** | **Ghi nhận lịch sử vi phạm** | • Hệ thống ERP có cần lưu lại lịch sử "số lần quá hạn" của từng khách không (để áp dụng chính sách đặt cọc lần 2)?<br>• Ai được phép tra cứu lịch sử này (chỉ Kế toán, hay cả Sales AM)? | Phức tạp | Kế toán / Sales AM | - Hệ thống nên lưu lại lịch sử " số lần quá hạn" của từng khách<br>- Cả kế toán lẫn sale AM đều nên nắm được lịch sử này |
-
----
-
-## Câu hỏi Bổ sung – Vòng 2
-
-> **Mục đích:** Đào sâu vào cách số hóa các thao tác thủ công hiện tại lên hệ thống ERP, loại bỏ các điểm mâu thuẫn trong câu trả lời (như "gửi tay tự động") và xác định quy trình phê duyệt trên hệ thống.
-
-| STT | Nhóm vấn đề | Nội dung chi tiết cần hỏi / làm rõ | Độ phức tạp | Đối tượng trả lời | Câu trả lời / Phản hồi |
-| :--- | :--- | :--- | :--- | :--- | :--- |
 | **14** | **Phương thức cập nhật tiền về lên ERP** | • Từ thực trạng đang dùng file Excel, Kế toán mong muốn chuyển đổi sang ERP theo hướng nào: Nhập tay từng khoản thanh toán, Upload file sao kê ngân hàng lên ERP, hay kỳ vọng tích hợp ngân hàng tự động? | Trung bình | Kế toán | Trong trường hợp việc tích hợp ngân hàng tự động là khả thi thì có thể triển khai, nếu không được thì có thể upload file sao kê lên ERP |
 | **15** | **Mức độ tự động hóa gửi email nhắc nợ** | • Chi tiết về "gửi tay tự động": Kế toán kỳ vọng ERP tự động gửi 100% (cứ đến 10h sáng là tự bắn thư đi), hay ERP chỉ soạn nháp sẵn rồi Kế toán vào kiểm tra và bấm "Gửi" từng khách một? | Cơ bản | Kế toán | Vì mỗi khách một tính chất và nội dung mail gửi đi có sự khác nhau, nên mục này hiện tại kế toán muốn check lại thư rồi mới gửi cho khách hàng |
 | **16** | **Xử lý ngày nghỉ, Lễ / Tết** | • Nếu lịch nhắc nợ (hoặc lịch dừng dịch vụ) rơi vào Thứ 7, Chủ Nhật, nghỉ Lễ thì email/thao tác sẽ thực hiện ngay trong ngày nghỉ đó, hay lùi sang ngày làm việc tiếp theo? | Trung bình | Kế toán trưởng | Nên lùi sang ngày làm việc tiếp theo để kế toán có thể check trước nội dung mail rồi mới gửi cho khách |
