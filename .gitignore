@@ -91,3 +91,5 @@ temp/
 *.ER
 
 .claude
+
+*.Projects
