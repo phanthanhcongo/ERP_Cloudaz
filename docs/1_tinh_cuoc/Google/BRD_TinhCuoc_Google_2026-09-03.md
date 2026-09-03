@@ -1,10 +1,10 @@
 # TÀI LIỆU YÊU CẦU NGHIỆP VỤ (BRD)
 
-> **Dự án**: ERP Cloudaz — Phân hệ Tính cước & Đối soát chi phí dịch vụ Google (GCP / GMap / Google Workspace)
+> **Dự án**: ERP Cloudaz — Phân hệ Tính cước & Đối soát chi phí dịch vụ Google (GCP / GMap = Google Cloud Marketplace / Google Workspace)
 > **Khách hàng / Bên yêu cầu**: Phòng Kế toán — Cloudaz (nhà phân phối/reseller dịch vụ Cloud)
 > **Nguồn đầu vào**: 5 bản ghi phỏng vấn kế toán — `docs/1_tinh_cuoc/Google/transcripts/b1.md` → `b5.md`
 > **Ngày tạo**: 2026-09-03
-> **Phiên bản**: 1.1
+> **Phiên bản**: 1.3
 
 > ⚠️ **Lưu ý về nguồn**: transcript được tạo tự động, chất lượng nhận dạng thấp (nhiều đoạn lặp/sai chính tả: "con sô/con xô" = Console, "đít cao" = discount, "cóc/cóp" = copy, "biu" = bill, "Resellmozine" = Reseller margin, "chức/chết" = check). Những chỗ suy luận đã được đánh dấu `[CẦN XÁC NHẬN]`.
 
@@ -15,6 +15,8 @@
 | Phiên bản | Ngày | Tác giả | Mô tả |
 | :--- | :--- | :--- | :--- |
 | 1.0 | 2026-09-03 | BA Team | Khởi tạo BRD từ transcript phỏng vấn kế toán (b1–b5) |
+| 1.3 | 2026-09-03 | BA Team | Đính chính theo xác nhận của khách hàng: luồng GWS là **tải CSV thủ công từ Console → upload CM → CM gen bảng tổng hợp chi phí**; **bước đối soát chỉ áp dụng cho GCP và GMap**, GWS không có bảng đối soát. Cập nhật 5.1.7, 5.4.5, 5.4.6 và phạm vi mục 5.6 |
+| 1.2 | 2026-09-03 | BA Team | Đính chính theo xác nhận của khách hàng: **GMap = Google Cloud Marketplace** (không phải Google Maps Platform). Cập nhật mục 3, viết lại 5.2.5 và 5.3.5 theo quy tắc gốc mới 5.5.11 (giao dịch Marketplace không hưởng chiết khấu/credit của Google) |
 | 1.1 | 2026-09-03 | BA Team | Rà soát đối chiếu lại transcript: sửa 2 điểm sai (phương thức Workspace Commit, phạm vi đối chiếu invoice hãng); bổ sung 8 nội dung còn thiếu (đối chiếu chéo 2 bảng, discount theo năm hợp đồng, xử lý project mới phát sinh, đặc thù GMap, ràng buộc định dạng export, vai trò kinh nghiệm kế toán, Q-14, D-05) |
 
 ---
@@ -85,7 +87,7 @@ Xây dựng **phân hệ Tính cước & Đối soát chi phí** trong ERP Cloud
 | Hệ thống / Nền tảng | Vai trò trong quy trình |
 | :--- | :--- |
 | **Google Cloud Console (Billing)** | Nguồn số gốc GCP: cost table, group by project/service, promotion credit, reseller margin |
-| **Google Maps Platform Console (GMap / ONI)** | Nguồn số GMap; ONI là hãng xuất hóa đơn cho GMap |
+| **Google Cloud Marketplace (GMap)** | Nguồn số GMap — dịch vụ của bên thứ ba (ISV) bán qua Marketplace, tính cước trên chính Cloud Billing account của GCP. **ONI là ISV/nhà bán trên Marketplace**, không phải Google |
 | **Google Workspace Admin / Reseller Console** | Nguồn file CSV Flex/Commit theo domain |
 | **CM (Cost Management)** — hệ thống nội bộ do đội Tech xây | Nơi lưu hợp đồng, phương thức tính (GCP Resale, Gmap Resale, Workspace Resale/Collect, Workspace Commit), nhập tỷ giá, gen bảng đối soát |
 | **ERP Cloudaz** | Hệ thống đích: tính cước, đối soát, xuất hóa đơn, công nợ |
@@ -126,12 +128,12 @@ Xây dựng **phân hệ Tính cước & Đối soát chi phí** trong ERP Cloud
 - **5.1.4** Hệ thống lấy được **bảng theo Billing ID** (mỗi billing một dòng) và **bảng theo Project** (một khách nhiều project → nhiều dòng), tương ứng 2 file dữ liệu hiện đang đẩy lên CM.
 - **5.1.5** Hệ thống lấy được số **trước và sau khi trừ Reseller margin**: số của khách (đã bỏ margin) dùng để tính cước; số gồm margin dùng để đối chiếu với invoice tổng của hãng.
 - **5.1.6** Hệ thống thu thập dữ liệu GMap theo **view link**, hỗ trợ trường hợp một view link chứa nhiều project của nhiều khách khác nhau (ghi nhận thực tế: 1 view link có 23 project).
-- **5.1.7** Hệ thống thu thập file dữ liệu Google Workspace (Flex) theo **domain** từ Console (định dạng CSV) và tự chuyển đổi định dạng để xử lý.
+- **5.1.7** Hệ thống thu thập dữ liệu Google Workspace (Flex) theo **domain**. *Quy trình hiện tại (AS-IS): kế toán **tải file CSV thủ công từ Console** (Console chỉ xuất được PDF hoặc CSV) → chuyển sang Excel/Google Sheets → **upload nguyên file lên CM** → CM gen ra **bảng tổng hợp chi phí**. Đây là luồng thủ công cần tự động hóa, nhưng có độ ưu tiên thấp hơn GCP/GMap (xem 5.4.6).*
 - **5.1.8** Hệ thống lưu **ảnh chụp / báo cáo bằng chứng lượng dùng** của từng khách để đính kèm khi gửi đối soát *(hiện kế toán chụp màn hình tay từng khách)*. *[CẦN XÁC NHẬN: chấp nhận thay ảnh chụp bằng báo cáo PDF do ERP sinh hay bắt buộc giữ screenshot Console]*
 - **5.1.9** Hệ thống cho phép cấu hình **lịch thu thập theo từng dịch vụ**, theo chu kỳ phát hành invoice của hãng: GCP ~ngày 02, GMap ~ngày 05–08 (có tháng đến ngày 09), Workspace ~ngày 01–02.
 - **5.1.10** Hệ thống lấy số **sau invoice của hãng tối thiểu 1 ngày** (thực tế kế toán chờ đến ngày 03 dù ngày 02 đã có invoice), vì dữ liệu lấy quá sớm chưa chuẩn. *[CẦN XÁC NHẬN: có cấu hình được độ trễ này không]*
 - **5.1.11** Hệ thống cảnh báo khi phát hiện **project mới chưa được gán cho khách hàng nào**, để kế toán tra soát nguồn gốc (mail / Drive / hệ thống order của admin) xem admin có order thêm project cho khách hiện hữu hay không, rồi gán về đúng khách. *(Hiện kế toán tự phát hiện bằng cách so sánh với kỳ trước rồi tra tay trên mail và Drive; nếu đúng là project mới của khách cũ thì tách thành 2 dòng nhưng vẫn gộp vào một khách.)*
-- **5.1.12** Hệ thống ghi nhận dữ liệu GMap chỉ gồm **lượng dùng và phí dịch vụ**, không có chi tiết theo SKU như GCP (chi tiết chỉ áp dụng cho khách rất lớn, hiện không có khách nào thuộc nhóm này).
+- **5.1.12** Hệ thống ghi nhận dữ liệu GMap chỉ gồm **lượng dùng và phí dịch vụ**, không có chi tiết theo SKU như GCP (chi tiết chỉ áp dụng cho khách rất lớn, hiện không có khách nào thuộc nhóm này) — phù hợp với bản chất giao dịch mua dịch vụ của ISV qua Marketplace.
 
 ### 5.2 Xử lý Gemini API (dịch vụ không discount)
 
@@ -139,7 +141,7 @@ Xây dựng **phân hệ Tính cước & Đối soát chi phí** trong ERP Cloud
 - **5.2.2** Hệ thống áp công thức discount **chỉ trên phần chi phí không bao gồm Gemini**, sau đó cộng nguyên giá phần Gemini vào tổng cuối: `Số cuối = (Tổng − Gemini) × công thức + Gemini`.
 - **5.2.3** Hệ thống bỏ qua việc tách riêng khi giá trị Gemini nhỏ hơn ngưỡng cấu hình (kế toán nêu khoảng **0,07 USD**), tính gộp vào chi phí chung. *[CẦN XÁC NHẬN — kế toán nói "thật ra không có mức đâu, chỉ là linh hoạt"; cần chốt ngưỡng cứng]*
 - **5.2.4** Hệ thống xuất **báo cáo tổng hợp lượng dùng Gemini API của toàn bộ khách hàng theo tháng**, để kế toán không phải kiểm tra từng khách. *(Đây là yêu cầu tự động hóa số 1 mà kế toán nêu trực tiếp: "Chị muốn nhìn phát là biết được từng khách một có lượng dùng Gemini API như nào, mà không cần phải bấm vào Console.")*
-- **5.2.5** Hệ thống ghi nhận Gemini **không áp dụng cho GMap và Workspace** (chỉ phát sinh trên GCP).
+- **5.2.5** Hệ thống ghi nhận việc tách Gemini **chỉ áp dụng trong luồng tính cước GCP**; luồng GMap và Workspace không phải thực hiện bước này (GMap lấy số từ nguồn riêng, Workspace tính theo domain). *Lý do gốc Gemini không được chiết khấu xem quy tắc **5.5.11**.*
 
 ### 5.3 Xử lý Credit / Promotion
 
@@ -147,7 +149,7 @@ Xây dựng **phân hệ Tính cước & Đối soát chi phí** trong ERP Cloud
 - **5.3.2** Hệ thống xuất **báo cáo danh sách khách có credit trong tháng** kèm số tiền credit, để kế toán gửi Sale / Sale admin / CEO xác nhận.
 - **5.3.3** Hệ thống cho phép Sale/CEO **phân loại credit** theo 3 trạng thái: *toàn bộ của khách / toàn bộ của Cloudaz / chia một phần* (ví dụ hãng cấp 4.000 credit, cho khách 2.500, Cloudaz giữ 1.500).
 - **5.3.4** Hệ thống áp phần credit thuộc về khách vào bảng đối soát của khách; phần thuộc Cloudaz chỉ ghi nhận nội bộ cho kế toán, không tính cho khách.
-- **5.3.5** Hệ thống ghi nhận GMap **không có credit** nên bỏ qua bước này với dịch vụ GMap.
+- **5.3.5** Hệ thống ghi nhận GMap **không có promotion credit** nên bỏ qua bước này với dịch vụ GMap — hệ quả của quy tắc **5.5.11** (giao dịch Marketplace không hưởng credit của Google).
 - **5.3.6** Hệ thống lưu vết người xác nhận và thời điểm xác nhận phân loại credit. *[CẦN XÁC NHẬN]*
 
 ### 5.4 Xử lý Google Workspace (Flex / Commit)
@@ -156,7 +158,8 @@ Xây dựng **phân hệ Tính cước & Đối soát chi phí** trong ERP Cloud
 - **5.4.2** Hệ thống phân biệt 2 loại dòng theo mô tả: **User/Usage** (lượng dùng thực tế, tính theo tháng) và **Commit** (license bán trước 1 năm, trả trước).
 - **5.4.3** Hệ thống **chỉ tính dòng User/Usage** vào bảng đối soát tháng và loại bỏ dòng Commit khi cùng một domain phát sinh cả hai loại. *(Hiện kế toán phải xóa tay.)*
 - **5.4.4** Hệ thống kiểm tra **End date** của dòng dữ liệu; nếu không phải ngày cuối tháng (khách dùng giữa tháng) thì cảnh báo để kế toán đối chiếu lại với file CSV gốc.
-- **5.4.5** Hệ thống ghi nhận Workspace/Flex có **độ tin cậy cao**, không bắt buộc đối soát tay — kế toán chỉ kiểm tra khi có dấu hiệu bất thường.
+- **5.4.5** Hệ thống ghi nhận Workspace/Flex **không có bước đối soát**: kế toán không lập bảng tính tay riêng và không so số với CM — chỉ lấy kết quả CM gen ra. *("Cái này chị không đối soát nhé... cái này là lấy thôi" — lý do: dữ liệu map theo **domain** nên dễ và chính xác, khác với GCP/GMap phải map qua billing account/project.)* Kế toán chỉ kiểm tra lại khi thấy dấu hiệu bất thường.
+- **5.4.6** Hệ thống ghi nhận **độ ưu tiên tự động hóa của Workspace thấp hơn GCP và GMap**: đây là luồng đơn giản nhất, đã được kế toán tin tưởng và không tốn thời gian đối soát. Nguồn tốn thời gian thực sự (~1,5 ngày/tháng) nằm ở GCP và GMap.
 
 ### 5.5 Tính cước theo hợp đồng
 
@@ -170,8 +173,14 @@ Xây dựng **phân hệ Tính cước & Đối soát chi phí** trong ERP Cloud
 - **5.5.8** Hệ thống **thông báo cho kế toán** khi có thay đổi hợp đồng / phụ lục / công thức tính từ luồng ký kết (SSC), kèm tháng bắt đầu hiệu lực. *(Giải quyết trực tiếp pain point "chả có ai thông báo cả".)*
 - **5.5.9** Hệ thống cảnh báo các khách **chưa có hợp đồng trên hệ thống** hoặc thiếu dữ liệu công thức, không thể tính cước, để kế toán yêu cầu admin bổ sung.
 - **5.5.10** Hệ thống theo dõi **mức discount thay đổi theo năm hợp đồng** của khách. Ghi nhận từ phỏng vấn: khách bước sang **năm thứ 2 ("F2")** được hưởng mức discount khác (kế toán nêu khoảng **20%**) — hiện kế toán phải tự kiểm tra mới biết khách đã đổi mức. Hệ thống cần tự động áp đúng mức theo mốc thời gian hiệu lực và cảnh báo trước kỳ chuyển mức. *[CẦN XÁC NHẬN: bảng mức discount theo từng năm hợp đồng]*
+- **5.5.11** Hệ thống nhận diện **giao dịch qua Google Cloud Marketplace** (dịch vụ do bên thứ ba/ISV bán, không phải Google bán trực tiếp) và **không áp chiết khấu, không áp promotion credit** của Google lên các giao dịch này — tính nguyên giá cho khách.
+  - *Đây là **quy tắc gốc** thống nhất 3 luật đang rời rạc trong tài liệu: Gemini API không được discount (5.2), GMap hiện không khách nào có discount, GMap không có credit (5.3.5).*
+  - *Yêu cầu thiết kế: dùng **một cờ chung** (ví dụ `is_marketplace`, hoặc điều kiện bên bán ≠ Google) thay vì hardcode từng dịch vụ — để khi phát sinh dịch vụ Marketplace mới, hệ thống tự động xử lý đúng, tránh lặp lại tình huống phải tách tay như Gemini đầu năm 2026.*
+  - *[CẦN XÁC NHẬN: Gemini API và GMap cùng thuộc Marketplace nhưng hiện đi 2 luồng lấy số khác nhau — cần làm rõ tiêu chí phân luồng]*
 
 ### 5.6 Đối soát & Kiểm soát chất lượng số liệu
+
+> **Phạm vi áp dụng**: toàn bộ nhóm yêu cầu 5.6 **chỉ áp dụng cho GCP và GMap** — là hai dịch vụ hiện có bảng đối soát (kế toán lập bảng tính tay riêng rồi so với bảng CM gen). **Google Workspace không thuộc phạm vi này**: chỉ có bảng tổng hợp chi phí do CM gen ra, không có bước đối soát (xem 5.4.5).
 
 - **5.6.1** Hệ thống **sinh bảng đối soát chi phí cuối cùng** cho toàn bộ khách hàng và cho từng khách, kèm chi tiết theo project/service.
 - **5.6.2** Hệ thống cho phép kế toán **upload bảng tính tay** của mình và **tự động so sánh** với số do ERP tính, hiển thị **danh sách các dòng lệch** kèm giá trị chênh lệch. *(Yêu cầu do kế toán nêu trực tiếp như điều kiện chấp nhận hệ thống.)*
