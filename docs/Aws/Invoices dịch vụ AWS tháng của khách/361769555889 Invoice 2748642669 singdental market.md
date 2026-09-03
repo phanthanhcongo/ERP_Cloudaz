@@ -1,0 +1,197 @@
+# 361769555889 Invoice 2748642669 singdental market
+
+> **Nguồn:** `361769555889 Invoice 2748642669 singdental market.pdf`  
+> **Nhà cung cấp:** Amazon Web Services  
+> **Dung lượng / số trang:** 53,609 bytes / 4 trang  
+> **Chuyển đổi:** `pdftotext -layout` (chạy offline) — 2026-08-28  
+> **Lưu ý:** đây là bản chuyển đổi tự động. Khi cần chứng từ pháp lý, dùng file PDF gốc.
+
+---
+
+## Trường khóa (bóc tách tự động)
+
+| Trường | Giá trị |
+|---|---|
+| Account number | `361769555889` |
+| Invoice Number | `2748642669` |
+| Payment due on | `August 31 , 2026` |
+| TOTAL AMOUNT DUE (USD) | `74.40` |
+| Kỳ cước | `July 1 - July 31 , 2026` |
+| Summary (USD) | `74.40` |
+
+> *Cách bóc tách: AWS: chi tiết khoản mục nằm lệch dòng trong PDF — chỉ bóc trường khớp chắc chắn, phần còn lại xem toàn văn.*
+
+---
+
+## Toàn văn hóa đơn (giữ nguyên bố cục)
+
+```text
+Account number:                                             Amazon Web Services, Inc. Invoice
+
+361769555889                                                Email or talk to us about your AWS account or bill, visit aws.amazon.com/contact-us/
+                                                            Submit feedback on your Invoice Experience here.
+Bill to Address:
+CLOUDAZ CLOUD SERVICE DEVELOPMENT                           Invoice Summary
+JSC
+ATTN: Tax code 0108598593                                   Invoice Number:                                                                                     2748642669
+No. 03, Lane 04 Nghia Do Street, Nghia Do                   Invoice Date:                                Please include this invoice number with your payment
+Ward,
+Ha Noi, Ha Noi, 100000, VN                                                                                                                                 August 1 , 2026
+
+                                                            TOTAL AMOUNT DUE ON August 31 , 2026                                              USD 74.40
+
+This invoice is for the billing period July 1 - July 31 , 2026
+
+Greetings from Amazon Web Services, we're writing to provide you with an electronic invoice of your transactions on the AWS Marketplace. Additional
+information about your bill, individual service charge details, and your account history are available on the Account Activity Page.
+
+Summary                                                                                                                                       USD 74.40
+
+   AWS Marketplace Charges                                                                                                                       USD 74.40
+                                                                                                                                                   USD 0.00
+       Charges                                                                                                                                     USD 0.00
+       Credits
+       Tax                                                                                                                                    USD 74.40
+
+Total for this invoice
+
+Detail for Consolidated Bill                                                                                                                  USD 74.40
+
+   Oracle Linux Server 10 | Support by ProComputers sold by ProComputers                                                                         USD 74.40
+                                                                                                                                                   USD 0.00
+       Charges                                                                                                                                     USD 0.00
+       VAT **                                                                                                                                      USD 0.00
+       GST                                                                                                                                         USD 0.00
+       Estimated US sales tax to be collected
+       CT
+
+* May include estimated US sales tax, VAT, ST, GST and CT.                                               Electronic funds transfer details:
+
+Amazon Web Services, Inc. is registered under the Singapore GST Overseas Vendor Registration Pay- Account Name: Amazon Web Services, Inc.
+
+Only Regime and GST registration number is M90373009E                                                    Checking Account Number: 4121350227
+
+AWS, Inc. is a "Registered Foreign Supplier" under Japanese Consumption Tax Law and therefore AWS, Wire Routing Number: 121000248
+
+Inc. is required to declare and pay consumption tax in respect of this transaction (as a “Digital Service”) to Bank Address:
+
+the Japan Tax Authority.                                                                                 420 Montgomery Street
+
+** This is not a VAT, ST or GST invoice. Related tax invoices can be accessed by going to San Francisco CA 94104
+                                                                                                         Bank Name: Wells Fargo NA
+the Bills page on your Billing Management Console.                                                       ABA Routing Number: 121000248
+**** Please reference the tax invoice for a breakout of the Canadian taxes by type                       SWIFT Code: WFBIUS6SXXX
+† Usage and recurring charges for this statement period will be charged on your next billing date. The
+
+amount of your actual charges for this statement period may differ from the charges shown on this        or Mail payment to:
+page. The charges shown on this page do not include any additional usage charges accrued during this     Amazon Web Services, Inc.
+statement period after the date you are viewing this page. Also, one-time fees and subscription charges  PO BOX 84023
+are assessed separately, on the date that they occur.                                                    Seattle, WA 98124-8423, US
+All charges and prices are in US Dollars
+
+All AWS Services are sold by Amazon Web Services, Inc.
+
+Amazon Web Services, Inc’s US Federal Tax Identification Number is: 20-4938068.
+
+                                                                                                                                                                            1
+
+------------------------------------------------------------------------------
+Please remit payment to Amazon Web Services:
+
+Preferred method of payment is by Electronic Funds Transfer (EFT). Please ensure to reference the invoice number in the descriptive text field of your
+electronic funds transfer payment.
+
+If you have any questions regarding payment for this invoice, please email aws-globalreceivables@email.amazon.com
+
+Electronic funds transfer details:            or Mail payment to:
+
+Account Name: Amazon Web Services, Inc.       Amazon Web Services, Inc.
+Checking Account Number: 4121350227           PO BOX 84023
+Wire Routing Number: 121000248                Seattle, WA 98124-8423, US
+Bank Address:
+420 Montgomery Street
+San Francisco CA 94104
+Bank Name: Wells Fargo NA
+ABA Routing Number: 121000248
+SWIFT Code: WFBIUS6SXXX
+
+All web services are sold by Amazon Web Services, Inc.
+
+The above charges include charges incurred by your account as well as by all accounts you are responsible for through Consolidated Billing.
+
+Thank you for using Amazon Web Services.
+
+Sincerely,
+The Amazon Web Services Team
+
+This message was produced and distributed by Amazon Web Services, Inc., 410 Terry Avenue North, Seattle, Washington 98109-5210. AWS will not be bound by, and
+specifically objects to, any term, condition or other provision which is different from or in addition to the provisions of the AWS Customer Agreement or AWS Enterprise
+Agreement between AWS and you (whether or not it would materially alter such AWS Customer Agreement or AWS Enterprise Agreement) and which is submitted in any
+order, receipt, acceptance, confirmation, correspondence or otherwise, unless AWS specifically agrees to such provision in a written instrument signed by AWS.
+
+                                                                                                                                                                                                          2
+
+------------------------------------------------------------------------------
+Account number                                                                            USD 74.40
+
+361769555889                                                                                 USD 74.40
+                                                                                               USD 0.00
+LINKED ACCOUNT ALLOCATION                                                                      USD 0.00
+
+To learn more about how charges are allocated across linked accounts visit                USD 74.40
+https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/con-bill-blended-rates.html
+
+Activity By Account
+
+    DevTest Nha Khoa Sing (205930626141)
+
+        Charges
+        Credits
+        VAT **
+
+ Total allocated for this invoice
+
+For line item details, please visit the Account Activity Page aws.amazon.com
+* May include estimated US sales tax, VAT, ST, GST and CT.
+Amazon Web Services, Inc. is registered under the Singapore GST Overseas Vendor Registration Pay-Only Regime and GST registration number is M90373009E
+AWS, Inc. is a "Registered Foreign Supplier" under Japanese Consumption Tax Law and therefore AWS, Inc. is required to declare and pay consumption tax in respect of this
+transaction (as a “Digital Service”) to the Japan Tax Authority.
+** This is not a VAT, ST or GST invoice. Related tax invoices can be accessed by going to the Bills page on your Billing Management Console.
+**** Please reference the tax invoice for a breakout of the Canadian taxes by type
+
+                                                                                                                                                                                                          3
+
+------------------------------------------------------------------------------
+Account number                                                             USD 74.40
+
+361769555889                                                                  USD 74.40
+                                                                                USD 0.00
+Summary for Linked Account                                                      USD 0.00
+
+    DevTest Nha Khoa Sing (205930626141)                                   USD 74.40
+
+        Charges                                                            USD 74.40
+        Credits
+        VAT **                                                                USD 74.40
+                                                                                USD 0.00
+ Account 205930626141 total allocated for this invoice
+
+Detail for Linked Account
+
+    Oracle Linux Server 10 | Support by ProComputers sold by ProComputers
+
+        Charges
+        VAT **
+
+For line item details, please visit the Account Activity Page aws.amazon.com
+* May include estimated US sales tax, VAT, ST, GST and CT.
+Amazon Web Services, Inc. is registered under the Singapore GST Overseas Vendor Registration Pay-Only Regime and GST registration number is M90373009E
+AWS, Inc. is a "Registered Foreign Supplier" under Japanese Consumption Tax Law and therefore AWS, Inc. is required to declare and pay consumption tax in respect of this
+transaction (as a “Digital Service”) to the Japan Tax Authority.
+** This is not a VAT, ST or GST invoice. Related tax invoices can be accessed by going to the Bills page on your Billing Management Console.
+**** Please reference the tax invoice for a breakout of the Canadian taxes by type
+
+                                                                                                                                                                                                          4
+
+------------------------------------------------------------------------------
+```
