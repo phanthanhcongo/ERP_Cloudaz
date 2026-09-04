@@ -90,6 +90,7 @@ tmp/
 temp/
 *.ER
 
-.claude
-
 *.Projects
+
+# ── Project source code ─────────────────────────────────
+ERP_ClouAZ_Project/
