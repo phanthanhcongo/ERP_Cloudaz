@@ -1,4 +1,4 @@
-# Đặc tả màn hình: {Tên màn hình}
+= Đặc tả màn hình: {Tên màn hình}
 
 | Thông tin | Giá trị |
 |-----------|---------|
@@ -29,14 +29,14 @@
 
 ### Bảng phân quyền
 
-> Cột của bảng này phải khớp **đúng danh sách hành động** liệt kê ở mục 5.5.
-> Thêm/bớt cột theo màn thực tế (ví dụ: Gửi duyệt, Từ chối, Hủy, Xuất Excel, In, Đóng kỳ).
-> **Không hardcode mã B-xx** ở đây — mã được gán khi viết mục 5.5.
+> Cột phải khớp các **hành động cần phân quyền riêng** (tạo, sửa, xóa, duyệt, xuất...).
+> Hành động UI thuần (hủy/quay lại, lưu nháp khi đã có quyền sửa) không cần cột riêng.
+> Thêm/bớt cột theo màn thực tế. **Không hardcode mã B-xx** ở đây.
 
-| Vai trò | Xem | Tạo | Sửa | Xóa | {Thêm cột theo hành động thực tế ở S5.5} | Ghi chú |
-|---------|-----|-----|-----|-----|---|---------|
-| {Role 1} | Có | Có | Có | Không | {Có/Không} | {Ghi chú nếu có} |
-| {Role 2} | Có | Không | Không | Không | {Có/Không} | {Ghi chú nếu có} |
+| Vai trò | Xem | Tạo/Sửa | {Thêm cột theo hành động cần phân quyền} | Ghi chú |
+|---------|-----|---------|---|---------|
+| {Role 1} | Có | Có | {Có/Không} | {Ghi chú nếu có} |
+| {Role 2} | Có | Không | {Có/Không} | {Ghi chú nếu có} |
 
 ### Phạm vi dữ liệu
 
@@ -185,7 +185,8 @@
 | B-02 | {Ví dụ: Hủy} | {Vị trí} | Tất cả | Luôn hiển thị | Luôn enable | {Mô tả} | Không |
 | B-03 | {Nút 3} | {Vị trí} | {Role} | {ĐK} | {ĐK} | {Mô tả} | {Có/Không} |
 
-> Mỗi hành động ở bảng này phải có một cột tương ứng trong bảng phân quyền mục 2.
+> Hành động **cần phân quyền riêng** phải có cột tương ứng trong bảng phân quyền mục 2.
+> Hành động UI thuần (hủy, lưu nháp khi đã có quyền sửa) không cần cột riêng.
 
 ---
 
@@ -393,10 +394,11 @@
 
 *(Ghi "Không áp dụng — {lý do}" nếu entity không có trạng thái)*
 
-| Trạng thái | Chuyển từ | Chuyển sang | Điều kiện chuyển | Ai được chuyển | Tác động |
-|------------|-----------|-------------|-----------------|----------------|---------|
-| {Status 1 — ví dụ: Nháp} | — | {Status 2} | {ĐK — ví dụ: Bấm "Gửi duyệt" (B-0x)} | {Role} | {Gửi thông báo N-01} |
-| {Status 2 — ví dụ: Chờ duyệt} | {Status 1} | {Status 3} hoặc {Status 4} | {ĐK} | {Role} | {Cập nhật tồn kho nếu duyệt} |
+| Từ trạng thái | Hành động | Sang trạng thái | Điều kiện | Ai được chuyển | Tác động |
+|---------------|-----------|-----------------|-----------|----------------|---------|
+| {Nháp} | {Gửi duyệt (B-0x)} | {Chờ duyệt} | {ĐK — ví dụ: Form hợp lệ} | {Role} | {Gửi thông báo N-01} |
+| {Chờ duyệt} | {Duyệt (B-0x)} | {Đã duyệt} | {ĐK} | {Role} | {Cập nhật tồn kho} |
+| {Chờ duyệt} | {Từ chối (B-0x)} | {Nháp (trả về)} | {Nhập lý do} | {Role} | {Gửi thông báo N-02} |
 
 ### 9.2 Thông báo gửi ra ngoài màn *(ghi "Không áp dụng — {lý do}" nếu không có)*
 
@@ -478,10 +480,11 @@
 
 > **Quy ước trạng thái trong tài liệu — hai trục độc lập, không dùng lẫn ký hiệu:**
 >
-> **Trục 1 — Độ tin cậy nội dung** (dùng inline ở mọi section):
+> **Trục 1 — Độ tin cậy nội dung** (đánh dấu cho nội dung suy luận hoặc chưa xác nhận):
 > - ✅ Đã chốt — User/stakeholder xác nhận
 > - ⚠️ [ĐỀ XUẤT] — BA suy luận hợp lý, cần review
 > - 🔴 [CHƯA XÁC NHẬN] — Thiếu thông tin, không thể suy luận
+> - *Nội dung đã có nguồn rõ không bắt buộc prefix ✅ từng dòng. Chỉ bắt buộc ⚠️ và 🔴.*
 >
 > **Trục 2 — Vòng đời câu hỏi** (chỉ dùng trong bảng mục 12):
 > - 🟡 Đang chờ — Đã hỏi, chưa có trả lời

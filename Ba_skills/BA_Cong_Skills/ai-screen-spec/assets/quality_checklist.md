@@ -21,7 +21,7 @@
 | # | Kiểm tra | Cách verify | Pass/Fail |
 |---|----------|-------------|-----------|
 | 5 | Tất cả section S1–S12 đều có nội dung | Mỗi section có nội dung hoặc "Không áp dụng — {lý do}" | |
-| 6 | Bảng phân quyền S2 có đủ cột tương ứng **mọi hành động** ở S5.5 | Đếm cột S2 = số hành động ở S5.5 | |
+| 6 | Bảng phân quyền S2 có đủ cột cho hành động **cần phân quyền riêng** | Cột S2 khớp hành động nghiệp vụ (tạo, sửa, duyệt, xuất...); hành động UI thuần (hủy, lưu nháp) không cần cột | |
 | 7 | Luồng thao tác S4 có điểm vào, bước đầu, bước cuối, điểm ra | Kiểm tra 4 mục con S4 không rỗng | |
 | 8 | Mỗi trường/cột/nút/popup ở S5 đều **có mã** (F-/C-/B-/P-) và có nguồn dữ liệu | Scan bảng S5, mỗi dòng có cột mã + nguồn DL ≠ rỗng | |
 | 9 | Trường số/tiền/ngày ở S5 có ghi định dạng, đơn vị, quy tắc làm tròn | Kiểm tra cột "Định dạng / Đơn vị" cho các trường số/tiền/ngày | |
@@ -48,7 +48,7 @@
 
 | # | Kiểm tra | Cách verify | Pass/Fail |
 |---|----------|-------------|-----------|
-| 19 | Ký hiệu trạng thái dùng đúng 2 trục | Trục 1 (✅/⚠️/🔴) inline ở mọi section; Trục 2 (🟡/🔵/✅) chỉ trong S12 | |
+| 19 | Ký hiệu trạng thái dùng đúng 2 trục | Trục 1: ⚠️/🔴 bắt buộc đánh dấu cho nội dung suy luận/chưa chốt; ✅ không bắt buộc prefix mọi dòng. Trục 2 (🟡/🔵/✅) chỉ trong S12 | |
 | 20 | Boolean dùng text, **không dùng ✅/❌** | Cột quyền/bắt buộc/retry/ghi log dùng Có/Không, Bắt buộc/Tùy chọn | |
 | 21 | Markdown render đúng | Bảng, heading, code block không bị vỡ cấu trúc | |
 | 22 | Không còn data mẫu từ template | Không chứa `{Role 1}`, `{Term 1}`, `{field_a}`, `{Data 1}` | |

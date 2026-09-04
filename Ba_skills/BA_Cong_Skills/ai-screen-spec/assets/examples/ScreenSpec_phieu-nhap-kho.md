@@ -27,15 +27,15 @@
 
 ### Bảng phân quyền
 
-> Cột của bảng này phải khớp **đúng danh sách hành động** liệt kê ở mục 5.5.
-> Thêm/bớt cột theo màn thực tế.
-> **Không hardcode mã B-xx** ở đây — mã được gán khi viết mục 5.5.
+> Cột phải khớp các **hành động cần phân quyền riêng**.
+> Hành động UI thuần (hủy/quay lại, lưu nháp khi đã có quyền sửa) không cần cột riêng.
+> **Không hardcode mã B-xx** ở đây.
 
-| Vai trò | Xem | Tạo | Sửa | Xóa | Gửi duyệt | Duyệt | Từ chối | Xuất Excel | Ghi chú |
-|---------|-----|-----|-----|-----|-----------|-------|---------|-----------|---------|
-| Thủ kho | Có | Có | Có | Có | Có | Không | Không | Có | Chỉ phiếu mình tạo |
-| Quản lý kho | Có | Không | Không | Không | Không | Có | Có | Có | Xem tất cả phiếu trong kho quản lý |
-| Kế toán | Có | Không | Không | Không | Không | Không | Không | Có | Chỉ xem, không thao tác |
+| Vai trò | Xem | Tạo/Sửa | Gửi duyệt | Duyệt | Từ chối | Xuất Excel | Ghi chú |
+|---------|-----|---------|-----------|-------|---------|-----------|--------|
+| Thủ kho | Có | Có | Có | Không | Không | Có | Chỉ phiếu mình tạo |
+| Quản lý kho | Có | Không | Không | Có | Có | Có | Xem tất cả phiếu trong kho quản lý |
+| Kế toán | Có | Không | Không | Không | Không | Có | Chỉ xem, không thao tác |
 
 ### Phạm vi dữ liệu
 
@@ -183,7 +183,8 @@ Màn form chi tiết, không có bộ lọc.
 | B-06 | Từ chối | Footer form | Quản lý kho | Mode Duyệt | Luôn | Mở popup nhập lý do → chuyển → Nháp, gửi N-03 | Có — Popup nhập lý do |
 | B-07 | Xuất Excel | Toolbar | Thủ kho, QL kho, Kế toán | Luôn hiển thị | Có dữ liệu | Xuất file chi tiết phiếu | Không |
 
-> Mỗi hành động ở bảng này phải có một cột tương ứng trong bảng phân quyền mục 2.
+> Hành động **cần phân quyền riêng** phải có cột tương ứng trong bảng phân quyền mục 2.
+> Hành động UI thuần (hủy, lưu nháp khi đã có quyền sửa) không cần cột riêng.
 
 ---
 
@@ -286,11 +287,11 @@ Không áp dụng — Phiếu nhập kho không tích hợp hệ thống ngoài.
 
 ### 9.1 Chuyển trạng thái
 
-| Trạng thái | Chuyển từ | Chuyển sang | Điều kiện chuyển | Ai được chuyển | Tác động |
-|------------|-----------|-------------|-----------------|----------------|---------|
-| Nháp | — | Chờ duyệt | Bấm B-03, form hợp lệ | Thủ kho | Gửi N-01 cho QL kho |
-| Chờ duyệt | Nháp | Đã duyệt | Bấm B-05 | Quản lý kho | Cập nhật tồn kho + gửi N-02 |
-| Chờ duyệt | Nháp | Nháp (trả về) | Bấm B-06 + nhập lý do | Quản lý kho | Gửi N-03 cho thủ kho |
+| Từ trạng thái | Hành động | Sang trạng thái | Điều kiện | Ai được chuyển | Tác động |
+|---------------|-----------|-----------------|-----------|----------------|---------|
+| Nháp | Gửi duyệt (B-03) | Chờ duyệt | Form hợp lệ | Thủ kho | Gửi N-01 cho QL kho |
+| Chờ duyệt | Duyệt (B-05) | Đã duyệt | — | Quản lý kho | Cập nhật tồn kho + gửi N-02 |
+| Chờ duyệt | Từ chối (B-06) | Nháp (trả về) | Nhập lý do | Quản lý kho | Gửi N-03 cho thủ kho |
 
 ### 9.2 Thông báo gửi ra ngoài màn
 
@@ -371,10 +372,11 @@ Không áp dụng — Phiếu nhập kho không tích hợp hệ thống ngoài.
 
 > **Quy ước trạng thái trong tài liệu — hai trục độc lập, không dùng lẫn ký hiệu:**
 >
-> **Trục 1 — Độ tin cậy nội dung** (dùng inline ở mọi section):
+> **Trục 1 — Độ tin cậy nội dung** (đánh dấu cho nội dung suy luận hoặc chưa xác nhận):
 > - ✅ Đã chốt — User/stakeholder xác nhận
 > - ⚠️ [ĐỀ XUẤT] — BA suy luận hợp lý, cần review
 > - 🔴 [CHƯA XÁC NHẬN] — Thiếu thông tin, không thể suy luận
+> - *Nội dung đã có nguồn rõ không bắt buộc prefix ✅ từng dòng. Chỉ bắt buộc ⚠️ và 🔴.*
 >
 > **Trục 2 — Vòng đời câu hỏi** (chỉ dùng trong bảng mục 12):
 > - 🟡 Đang chờ — Đã hỏi, chưa có trả lời

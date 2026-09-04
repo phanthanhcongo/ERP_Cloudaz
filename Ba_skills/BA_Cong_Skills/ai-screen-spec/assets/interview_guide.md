@@ -3,6 +3,9 @@
 > File này chứa danh sách câu hỏi phỏng vấn để thu thập thông tin đặc tả màn hình.
 > Hỏi theo nhóm nhỏ, ưu tiên những điểm ảnh hưởng hành vi và kết quả nghiệp vụ.
 > **Chỉ hỏi phần chưa biết từ input.**
+>
+> **Quy tắc chốt**: Bắt buộc chốt nhóm 1 (mục tiêu + luồng). Nhóm 2-4 có thể hỏi gộp
+> và chốt chung, trừ khi có mâu thuẫn nghiệp vụ cần làm rõ từng nhóm.
 
 ---
 
@@ -13,7 +16,7 @@
 - Luồng chính từ khi mở màn đến khi hoàn tất thao tác là gì?
 - Có điều kiện nào để vào được màn này không? Xong rồi thì đi đâu?
 
-> **Chốt nhóm 1**: Tóm tắt lại mục tiêu, actor chính, điểm vào, luồng chính,
+> **Chốt nhóm 1** (⭐ BẮt buộc): Tóm tắt lại mục tiêu, actor chính, điểm vào, luồng chính,
 > và hỏi: *"Anh/chị xác nhận những điểm trên rồi em chuyển sang nhóm tiếp nhé?"*
 
 ---
@@ -29,8 +32,8 @@
 - Số tiền và số lượng hiển thị theo định dạng nào? Làm tròn mấy chữ số?
 - Màn hình có bao nhiêu chế độ? (Tạo mới, Sửa, Xem, Duyệt, Khóa kỳ?)
 
-> **Chốt nhóm 2**: Tóm tắt lại danh sách khu vực, trường/cột chính, popup, chế độ màn hình,
-> và hỏi: *"Cấu trúc giao diện như trên đã đủ chưa? Có khu vực/popup nào thiếu không?"*
+> **Chốt nhóm 2** (Tùy chọn — có thể gộp với nhóm 3-4 nếu không có mâu thuẫn):
+> Tóm tắt danh sách khu vực, popup, chế độ màn hình.
 
 ---
 
@@ -41,8 +44,7 @@
 - Dữ liệu nhận về dùng cho thông tin gì? Hiển thị ở đâu?
 - Nếu API lỗi hoặc chậm thì màn xử lý ra sao? Có dùng dữ liệu đã lưu trước đó không?
 
-> **Chốt nhóm 3**: Tóm tắt lại hệ thống tích hợp, thời điểm gọi, dữ liệu sử dụng,
-> và hỏi: *"Tích hợp như trên đã đủ chưa? Có hệ thống nào khác cần kết nối không?"*
+> **Chốt nhóm 3** (Tùy chọn): Tóm tắt hệ thống tích hợp, thời điểm gọi, dữ liệu sử dụng.
 
 ---
 
@@ -54,8 +56,7 @@
 - Hai người cùng sửa một bản ghi thì xử lý thế nào?
 - Có cần lưu lịch sử thay đổi / gửi thông báo cho ai không?
 
-> **Chốt nhóm 4**: Tóm tắt lại phân quyền, rule chính, xung đột, thông báo,
-> và hỏi: *"Quy tắc và phân quyền như trên đã đúng chưa? Có gì cần bổ sung không?"*
+> **Chốt nhóm 4** (Tùy chọn): Tóm tắt phân quyền, rule chính, xung đột, thông báo.
 
 ---
 

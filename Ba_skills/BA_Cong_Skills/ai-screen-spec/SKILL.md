@@ -58,13 +58,16 @@ agent được:
 
 Hai trục độc lập, **không dùng lẫn ký hiệu giữa hai trục**:
 
-**Trục 1 — Độ tin cậy của nội dung** (đánh dấu inline ở mọi section):
+**Trục 1 — Độ tin cậy của nội dung** (đánh dấu cho nội dung suy luận hoặc chưa xác nhận):
 
 | Ký hiệu | Nghĩa |
 |---------|-------|
 | ✅ | Đã chốt — user/stakeholder xác nhận |
 | ⚠️ [ĐỀ XUẤT] — *in nghiêng* | BA suy luận hợp lý, cần review |
 | 🔴 [CHƯA XÁC NHẬN] — **in đậm** | Thiếu thông tin, không thể suy luận |
+
+> Nội dung đã có nguồn rõ ràng hoặc stakeholder đã chốt **không bắt buộc** prefix `✅` từng dòng.
+> Chỉ bắt buộc đánh dấu `⚠️ [ĐỀ XUẤT]` và `🔴 [CHƯA XÁC NHẬN]`.
 
 **Trục 2 — Vòng đời câu hỏi** (chỉ dùng trong bảng Section 12):
 
@@ -134,6 +137,7 @@ Xem checklist chi tiết: `assets/quality_checklist.md`
 ### Step 5 — Present & xin review
 1. **Xác nhận nơi lưu trước khi ghi file** *(trừ fast-draft mode)*.
    Mặc định: `docs/{module}/{feature}/ScreenSpec_{slug}.md`
+   Fallback (nếu chưa biết module/feature): `docs/screen-specs/ScreenSpec_{slug}.md`
 2. Trình: *"Đặc tả màn {Tên} đã xong! Có {X} điểm cần xác nhận (xem Section 12)."*
 3. Chờ feedback.
 
