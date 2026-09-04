@@ -1,4 +1,4 @@
-= Đặc tả màn hình: {Tên màn hình}
+# Đặc tả màn hình: {Tên màn hình}
 
 | Thông tin | Giá trị |
 |-----------|---------|

@@ -62,7 +62,7 @@
 **Kỳ vọng**:
 - Agent **kích hoạt fast-draft mode**.
 - Bỏ qua Step 2.5 (chốt bản đồ) và confirmation Step 5 (nơi lưu).
-- Sinh file nháp ngay, gắn `⚠️/🔴` cho phần chưa chắc.
+- Sinh file nháp ngay, gắn `⚠️ [ĐỀ XUẤT]` và `🔴 [CHƯA XÁC NHẬN]` cho phần chưa chắc.
 - Section 12 liệt kê đầy đủ các Q-xx cho phần thiếu.
 - Trình bày: *"Đặc tả bản nháp đã xong! Có {X} điểm cần xác nhận."*
 

@@ -71,6 +71,7 @@ Hai trục độc lập, **không dùng lẫn ký hiệu giữa hai trục**:
 
 > Nội dung đã chốt **không bắt buộc** prefix `✅ [ĐÃ CHỐT]` từng dòng.
 > Chỉ bắt buộc đánh dấu `⚠️ [ĐỀ XUẤT]` và `🔴 [CHƯA XÁC NHẬN]`.
+> Cột Trạng thái ở Section 11 (AC) được phép ghi dạng rút gọn: `✅ Đã chốt`, `⚠️ [ĐỀ XUẤT]`, `🔴 [CHƯA XÁC NHẬN]` (hoặc `⚠️ Phụ thuộc Q-xx`).
 
 **Trục 2 — Vòng đời câu hỏi** (chỉ dùng trong bảng Section 12):
 
@@ -150,7 +151,7 @@ Chờ user chốt rồi mới sang Step 3.
 5. Mỗi nội dung ⚠️ [ĐỀ XUẤT] hoặc 🔴 [CHƯA XÁC NHẬN] phải có Q-xx tương ứng trong Section 12.
 6. **Xóa toàn bộ placeholder template** (dạng `{Tên BA}`, `{Role 1}`) trước khi xuất.
    Biến runtime (dạng `PNK-{YYYYMM}`, `"Phiếu {mã}"`) được phép giữ.
-   Trường thiếu → ghi `[CHƯA XÁC NHẬN]`.
+   Trường thiếu → ghi `🔴 [CHƯA XÁC NHẬN]`.
 
 **Filename**: `ScreenSpec_{slug-tên-màn}.md` — slug không dấu, viết thường, nối `-`.
 **Ngôn ngữ**: Tiếng Việt. Giữ tiếng Anh cho thuật ngữ kỹ thuật.
