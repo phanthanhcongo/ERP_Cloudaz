@@ -3,16 +3,17 @@
 | Thông tin | Giá trị |
 |-----------|---------|
 | **Phiên bản** | v1.0 |
-| **Trạng thái** | 📝 Bản nháp / 🔍 Đang review / ✅ Đã chốt |
+| **Trạng thái** | Bản nháp / Đang review / ✅ Đã chốt |
 | **Ngày cập nhật** | {YYYY-MM-DD} |
 | **Tác giả** | {Tên BA} |
 | **Module** | {Tên module} |
 | **Feature** | {Tên feature / epic} |
 | **Yêu cầu BRD liên quan** | {Mã yêu cầu, ví dụ: 5.1.2, 5.1.3 — hoặc "Không có BRD"} |
 
-> ⚠️ **HƯỚNG DẪN DÙNG TEMPLATE**: Xóa **toàn bộ dòng mẫu** (chứa `{...}`, `Role 1`,
-> `Term 1`, `field_a`) trước khi xuất. Không giữ placeholder `{...}` trong file output.
-> Trường thiếu thông tin → ghi `🔴 [CHƯA XÁC NHẬN]` kèm ghi chú ngắn, đồng thời
+> **HƯỚNG DẪN DÙNG TEMPLATE**: Xóa **toàn bộ dòng mẫu** (chứa placeholder như `{Tên BA}`,
+> `{Role 1}`, `{Term 1}`, `{field_a}`) trước khi xuất.
+> Biến runtime trong mẫu mã/thông báo như `PNK-{YYYYMM}-{seq}`, `"Phiếu {mã}..."` được phép giữ.
+> Trường thiếu thông tin → ghi `[CHƯA XÁC NHẬN]` kèm ghi chú ngắn, đồng thời
 > tạo câu hỏi Q-xx trong Section 12.
 
 ---
@@ -463,8 +464,8 @@
 
 | Mã | Câu hỏi | Phần bị ảnh hưởng | Trạng thái | Câu trả lời / Quyết định | Người quyết định | Ngày hỏi | Ngày trả lời |
 |----|---------|-------------------|-----------|--------------------------|------------------|----------|-------------|
-| Q-01 | {Nội dung câu hỏi} | C-02, AC-03 | 🟡 Đang chờ | — | — | {date} | — |
-| Q-02 | {Nội dung câu hỏi} | BR-03, F-08 | 🔵 Đã trả lời | {Nội dung quyết định} | {Tên} | {date} | {date} |
+| Q-01 | {Nội dung câu hỏi} | C-02, AC-03 | Đang chờ | — | — | {date} | — |
+| Q-02 | {Nội dung câu hỏi} | BR-03, F-08 | Đã trả lời | {Nội dung quyết định} | {Tên} | {date} | {date} |
 | Q-03 | {Nội dung câu hỏi} | B-04 | ✅ Đã đóng | {Nội dung quyết định} | {Tên} | {date} | {date} |
 
 ---
@@ -481,14 +482,14 @@
 > **Quy ước trạng thái trong tài liệu — hai trục độc lập, không dùng lẫn ký hiệu:**
 >
 > **Trục 1 — Độ tin cậy nội dung** (đánh dấu cho nội dung suy luận hoặc chưa xác nhận):
-> - ✅ Đã chốt — User/stakeholder xác nhận
+> - ✅ [ĐÃ CHỐT] — User/stakeholder xác nhận
 > - ⚠️ [ĐỀ XUẤT] — BA suy luận hợp lý, cần review
 > - 🔴 [CHƯA XÁC NHẬN] — Thiếu thông tin, không thể suy luận
-> - *Nội dung đã có nguồn rõ không bắt buộc prefix ✅ từng dòng. Chỉ bắt buộc ⚠️ và 🔴.*
+> - *Nội dung đã chốt không bắt buộc prefix ✅ [ĐÃ CHỐT] từng dòng. Chỉ bắt buộc ⚠️ và 🔴.*
 >
 > **Trục 2 — Vòng đời câu hỏi** (chỉ dùng trong bảng mục 12):
-> - 🟡 Đang chờ — Đã hỏi, chưa có trả lời
-> - 🔵 Đã trả lời — Có quyết định, chưa cập nhật hết vào tài liệu
+> - Đang chờ — Đã hỏi, chưa có trả lời
+> - Đã trả lời — Có quyết định, chưa cập nhật hết vào tài liệu
 > - ✅ Đã đóng — Đã trả lời và đã cập nhật vào các section liên quan
 >
 > **Quy ước mã**: `F-xx` trường · `C-xx` cột · `B-xx` nút · `P-xx` popup · `N-xx` thông báo ·
@@ -496,4 +497,4 @@
 >
 > **Quy ước boolean**: Các cột boolean (quyền, bắt buộc, retry, ghi log, xác nhận trước...)
 > dùng text: `Có/Không`, `Bắt buộc/Tùy chọn`, `Cho phép/Không cho phép`.
-> **Không dùng ✅/❌** cho giá trị boolean — ✅ chỉ dành cho Trục 1 (độ tin cậy nội dung).
+> **Không dùng icon** cho giá trị boolean.

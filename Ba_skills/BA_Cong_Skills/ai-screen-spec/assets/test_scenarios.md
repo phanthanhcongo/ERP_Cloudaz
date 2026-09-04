@@ -50,7 +50,7 @@
 - Mã F-xx, C-xx, B-xx đánh liên tục theo từng tiền tố, không reset theo tab.
 
 **Điểm chú ý**:
-- Bảng phân quyền S2 có cột cho MỌI hành động ở S5.5 (nhiều hơn thông thường).
+- Bảng phân quyền S2 có cột cho **hành động cần phân quyền riêng** (nhiều hơn thông thường). Hành động UI thuần (hủy, lưu nháp) không cần cột.
 - Section 5.8 (screen mode) cần cover nhiều mode phức tạp.
 
 ---

@@ -30,11 +30,14 @@ phục vụ BA/PM đọc, review và chốt yêu cầu.
 
 ## Fast-draft mode
 
-Nếu user yêu cầu "tạo file/spec/draft ngay" hoặc cung cấp đủ thông tin rõ ràng,
-agent được:
+Chỉ kích hoạt khi user **nói rõ** muốn draft nhanh, ví dụ: "tạo draft luôn", "viết spec ngay",
+"draft trước rồi review sau". Agent được:
 - Bỏ qua Step 2.5 (chốt bản đồ) và confirmation Step 5 (nơi lưu)
-- Sinh file nháp, đánh dấu `⚠️/🔴` cho phần chưa chắc
+- Sinh file nháp, đánh dấu `⚠️ [ĐỀ XUẤT]`/`🔴 [CHƯA XÁC NHẬN]` cho phần chưa chắc
 - Trình Section 12 cho user review sau
+
+> "Cung cấp đủ thông tin" **không tự kích hoạt** fast-draft — chỉ cho phép rút gọn interview.
+> Step 2.5 và Step 5 vẫn bắt buộc trong normal mode.
 
 ---
 
@@ -62,71 +65,92 @@ Hai trục độc lập, **không dùng lẫn ký hiệu giữa hai trục**:
 
 | Ký hiệu | Nghĩa |
 |---------|-------|
-| ✅ | Đã chốt — user/stakeholder xác nhận |
-| ⚠️ [ĐỀ XUẤT] — *in nghiêng* | BA suy luận hợp lý, cần review |
-| 🔴 [CHƯA XÁC NHẬN] — **in đậm** | Thiếu thông tin, không thể suy luận |
+| ✅ [ĐÃ CHỐT] | Đã chốt — user/stakeholder xác nhận |
+| ⚠️ [ĐỀ XUẤT] | BA suy luận hợp lý, cần review |
+| 🔴 [CHƯA XÁC NHẬN] | Thiếu thông tin, không thể suy luận |
 
-> Nội dung đã có nguồn rõ ràng hoặc stakeholder đã chốt **không bắt buộc** prefix `✅` từng dòng.
+> Nội dung đã chốt **không bắt buộc** prefix `✅ [ĐÃ CHỐT]` từng dòng.
 > Chỉ bắt buộc đánh dấu `⚠️ [ĐỀ XUẤT]` và `🔴 [CHƯA XÁC NHẬN]`.
 
 **Trục 2 — Vòng đời câu hỏi** (chỉ dùng trong bảng Section 12):
 
 | Ký hiệu | Nghĩa |
 |---------|-------|
-| 🟡 Đang chờ | Đã hỏi, chưa có trả lời |
-| 🔵 Đã trả lời | Có quyết định, chưa cập nhật hết vào tài liệu |
+| Đang chờ | Đã hỏi, chưa có trả lời |
+| Đã trả lời | Có quyết định, chưa cập nhật hết vào tài liệu |
 | ✅ Đã đóng | Đã trả lời và đã cập nhật vào các section liên quan |
 
 **Quy ước boolean**: Các cột boolean (quyền, bắt buộc, retry, ghi log, xác nhận trước...)
-dùng text: `Có/Không`, `Bắt buộc/Tùy chọn`. **Không dùng ✅/❌** cho giá trị boolean.
+dùng text: `Có/Không`, `Bắt buộc/Tùy chọn`. Không dùng icon cho giá trị boolean.
 
 ---
 
 ## Quy ước mã định danh
 
 Mọi nội dung có thể được tham chiếu đều phải có mã, để truy vết hai chiều
-giữa giao diện ↔ quy tắc ↔ nghiệm thu ↔ câu hỏi.
+từ BRD → Spec → Dev/Test.
 
-| Tiền tố | Đối tượng | Ví dụ |
-|---------|-----------|-------|
-| `F-xx` | Trường nhập / trường hiển thị / trường lọc | F-01 Ngày chứng từ |
-| `C-xx` | Cột trong bảng danh sách | C-03 Thành tiền |
-| `B-xx` | Nút bấm / hành động | B-01 Lưu |
-| `P-xx` | Popup / modal | P-01 Popup chọn sản phẩm |
-| `N-xx` | Thông báo gửi ra ngoài màn (in-app/email/Zalo) | N-01 |
-| `BR-xx` | Quy tắc nghiệp vụ | BR-02 |
-| `AC-xx` | Tiêu chí nghiệm thu | AC-05 |
-| `Q-xx` | Câu hỏi / quyết định chưa chốt | Q-01 |
+| Tiền tố | Dùng cho | Ví dụ | Quy tắc gán mã |
+|---------|----------|-------|----------------|
+| **F-** | Field / Trường thông tin | F-01, F-02 | Gán cho từng input/field ở form |
+| **C-** | Column / Cột dữ liệu bảng | C-01, C-02 | Gán cho từng cột của table |
+| **B-** | Button / Action | B-01, B-02 | Gán cho từng nút/hành động |
+| **P-** | Popup / Modal / Drawer | P-01, P-02 | Gán cho từng màn phụ |
+| **N-** | Notification / Thông báo | N-01, N-02 | Gán cho thông báo gửi ra ngoài màn |
+| **BR-** | Business Rule | BR-01, BR-02 | Gán cho quy tắc nghiệp vụ |
+| **AC-** | Acceptance Criteria | AC-01, AC-02 | Gán cho tiêu chí nghiệm thu |
+| **Q-** | Question / Điểm chưa chốt | Q-01, Q-02 | Gán cho câu hỏi trong Section 12 |
 
-Mã đánh số liên tục **theo từng tiền tố** trên toàn tài liệu.
-Ví dụ: F-01..F-12 cho tất cả trường, C-01..C-08 cho tất cả cột, B-01..B-06 cho tất cả nút.
-Không reset về 01 khi sang section mới. Không tái sử dụng mã đã xóa.
+> **Quy tắc gán mã**:
+> - Mã đánh số liên tục theo từng tiền tố (F-01, F-02... C-01, C-02... B-01, B-02...).
+> - **Không reset mã** khi sang section / tab / popup mới.
+> - Mỗi phần tử có **đúng 1 mã duy nhất** trong toàn bộ tài liệu.
 
 ---
 
-## Workflow
+## Quy trình 6 bước
 
-### Step 1 — Thu thập & đọc input
-Xác định loại input → đọc hết tài liệu → liệt kê đã biết vs còn thiếu.
-Nếu có ảnh: liệt kê UI, trình user xác nhận. Nội dung chỉ suy ra từ ảnh gắn ⚠️ [ĐỀ XUẤT].
+```
+Step 1: Thu thập thông tin đầu vào
+  └─► Step 2: Phỏng vấn bổ sung (nếu thiếu)
+        └─► Step 2.5: Chốt "bản đồ màn hình" với user
+              └─► Step 3: Sinh đặc tả theo template
+                    └─► Step 4: Quality Check
+                          └─► Step 5: Present & xin review
+                                └─► Step 6: Cập nhật theo feedback
+```
 
-### Step 2 — Hỏi làm rõ (Interview)
-Xem chi tiết câu hỏi theo nhóm: `assets/interview_guide.md`
+### Step 1 — Thu thập & phân tích đầu vào
+- Đọc tất cả file/ảnh/link user cung cấp.
+- Liệt kê các điểm **đã biết** và các điểm **chưa biết / mâu thuẫn**.
+- Nếu có ảnh UI: dùng vision phân tích từng khu vực (header, table, form, footer),
+  trích xuất danh sách trường/cột/nút bấm.
 
-### Step 2.5 — Chốt bản đồ màn hình *(BẮT BUỘC trừ fast-draft mode)*
-Trình bản đồ ngắn cho user xác nhận: khu vực, nút, popup, trạng thái, tích hợp.
-Chỉ viết chi tiết sau khi user xác nhận.
-- Nếu > 2 tab: đánh số theo tab.
-- Nếu > 4 popup: mỗi popup tiểu mục riêng.
-- Nếu ước tính > ~600 dòng: đề xuất tách file — **hỏi user trước khi tách**.
+### Step 2 — Phỏng vấn bổ sung (nếu thiếu thông tin)
+- Xem hướng dẫn chi tiết: `assets/interview_guide.md`
+- **Không hỏi dàn trải**. Chỉ hỏi phần **chưa biết từ input** và ảnh hưởng lớn đến nghiệp vụ.
+- Bắt buộc chốt nhóm 1 (mục tiêu + luồng). Nhóm 2-4 có thể gộp hoặc tùy chọn.
+
+### Step 2.5 — Chốt "bản đồ màn hình" với user
+Trước khi viết chi tiết spec dài 300-500 dòng, **bắt buộc trình bản đồ cấu trúc**:
+
+> *"Em đề xuất cấu trúc màn hình như sau:
+> - Màn chính: Header, Bộ lọc, Bảng danh sách phiếu, Footer.
+> - Popup P-01: Chọn đơn mua hàng (mở khi bấm B-01).
+> - Popup P-02: Xác nhận hủy phiếu (mở khi bấm B-04).
+> Anh/chị chốt cấu trúc này chưa để em sinh đặc tả chi tiết?"*
+
+Chờ user chốt rồi mới sang Step 3.
 
 ### Step 3 — Sinh đặc tả
 1. Dùng template từ `assets/screen_spec_template.md`.
 2. Điền phần đã biết từ input + interview.
 3. Gán mã cho mọi trường/cột/nút/popup theo quy ước mã định danh.
-4. Đánh dấu trạng thái theo Trục 1.
-5. Mỗi nội dung `⚠️` hoặc `🔴` phải đồng thời xuất hiện trong Section 12.
-6. **Xóa toàn bộ dòng mẫu** từ template trước khi xuất. Trường thiếu → ghi `🔴`.
+4. Đánh dấu trạng thái theo Trục 1 (✅ [ĐÃ CHỐT], ⚠️ [ĐỀ XUẤT], 🔴 [CHƯA XÁC NHẬN]).
+5. Mỗi nội dung ⚠️ [ĐỀ XUẤT] hoặc 🔴 [CHƯA XÁC NHẬN] phải có Q-xx tương ứng trong Section 12.
+6. **Xóa toàn bộ placeholder template** (dạng `{Tên BA}`, `{Role 1}`) trước khi xuất.
+   Biến runtime (dạng `PNK-{YYYYMM}`, `"Phiếu {mã}"`) được phép giữ.
+   Trường thiếu → ghi `[CHƯA XÁC NHẬN]`.
 
 **Filename**: `ScreenSpec_{slug-tên-màn}.md` — slug không dấu, viết thường, nối `-`.
 **Ngôn ngữ**: Tiếng Việt. Giữ tiếng Anh cho thuật ngữ kỹ thuật.
@@ -143,7 +167,7 @@ Xem checklist chi tiết: `assets/quality_checklist.md`
 
 ### Step 6 — Cập nhật theo feedback
 1. Sửa trực tiếp trên file (không tạo file mới, không đổi tên).
-2. Chuyển ⚠️/🔴 → ✅, ghi nội dung + người quyết định vào Section 12.
+2. Chuyển [ĐỀ XUẤT]/[CHƯA XÁC NHẬN] → [ĐÃ CHỐT], ghi nội dung + người quyết định vào Section 12.
 3. Tăng phiên bản (v1.0 → v1.1) và ghi lịch sử phiên bản.
 4. Chỉ ghi "Đã chốt" khi user xác nhận rõ ràng.
 

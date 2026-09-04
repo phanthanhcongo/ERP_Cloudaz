@@ -16,7 +16,7 @@
 - Luồng chính từ khi mở màn đến khi hoàn tất thao tác là gì?
 - Có điều kiện nào để vào được màn này không? Xong rồi thì đi đâu?
 
-> **Chốt nhóm 1** (⭐ BẮt buộc): Tóm tắt lại mục tiêu, actor chính, điểm vào, luồng chính,
+> **Chốt nhóm 1** (Bắt buộc): Tóm tắt lại mục tiêu, actor chính, điểm vào, luồng chính,
 > và hỏi: *"Anh/chị xác nhận những điểm trên rồi em chuyển sang nhóm tiếp nhé?"*
 
 ---

@@ -39,7 +39,7 @@
 | 14 | Mỗi vai trò trong S2 có ≥ 1 AC về phân quyền | Tìm tên role trong cột "Điều kiện (Given)" hoặc "Liên quan" S11 | |
 | 15 | Mỗi luồng lỗi ở S4 có ≥ 1 AC | Tìm exception flow trong S11 | |
 | 16 | Mỗi AC S11 có điều kiện + thao tác + kết quả kiểm chứng được, và cột "Liên quan" | Scan bảng S11, không có ô rỗng ở 4 cột chính | |
-| 17 | Tất cả ⚠️/🔴 đều xuất hiện trong bảng Section 12 | Đếm ⚠️/🔴 toàn doc, đối chiếu danh sách S12 | |
+| 17 | Mọi `⚠️ [ĐỀ XUẤT]` và `🔴 [CHƯA XÁC NHẬN]` đều có Q-xx tương ứng trong S12 | Đếm marker đúng dạng `⚠️ [ĐỀ XUẤT]` và `🔴 [CHƯA XÁC NHẬN]` toàn doc (không đếm `📌`), đối chiếu S12 | |
 | 18 | Mọi mã tham chiếu trong tài liệu đều tồn tại (không trỏ tới mã đã xóa) | Collect mã trong cột "Liên quan", verify mỗi mã có định nghĩa trong doc | |
 
 ---
@@ -48,7 +48,7 @@
 
 | # | Kiểm tra | Cách verify | Pass/Fail |
 |---|----------|-------------|-----------|
-| 19 | Ký hiệu trạng thái dùng đúng 2 trục | Trục 1: ⚠️/🔴 bắt buộc đánh dấu cho nội dung suy luận/chưa chốt; ✅ không bắt buộc prefix mọi dòng. Trục 2 (🟡/🔵/✅) chỉ trong S12 | |
+| 19 | Ký hiệu trạng thái dùng đúng 2 trục | Trục 1 (✅ [ĐÃ CHỐT], ⚠️ [ĐỀ XUẤT], 🔴 [CHƯA XÁC NHẬN]); Trục 2 (Đang chờ, Đã trả lời, ✅ Đã đóng) chỉ trong S12. ✅ không bắt buộc prefix từng dòng nội dung đã chốt. | |
 | 20 | Boolean dùng text, **không dùng ✅/❌** | Cột quyền/bắt buộc/retry/ghi log dùng Có/Không, Bắt buộc/Tùy chọn | |
 | 21 | Markdown render đúng | Bảng, heading, code block không bị vỡ cấu trúc | |
 | 22 | Không còn data mẫu từ template | Không chứa `{Role 1}`, `{Term 1}`, `{field_a}`, `{Data 1}` | |

@@ -3,14 +3,14 @@
 | Thông tin | Giá trị |
 |-----------|---------|
 | **Phiên bản** | v1.0 |
-| **Trạng thái** | 📝 Bản nháp |
+| **Trạng thái** | Bản nháp |
 | **Ngày cập nhật** | 2026-09-04 |
 | **Tác giả** | BA Công |
 | **Module** | Kho vận |
 | **Feature** | Nhập kho từ đơn mua hàng |
 | **Yêu cầu BRD liên quan** | 5.2.1, 5.2.3 |
 
-> ⚠️ **HƯỚNG DẪN DÙNG TEMPLATE**: File này là **ví dụ mẫu** để minh họa cách viết
+>  **HƯỚNG DẪN DÙNG TEMPLATE**: File này là **ví dụ mẫu** để minh họa cách viết
 > screen spec theo đúng convention. Tham khảo khi viết spec mới.
 
 ---
@@ -227,7 +227,7 @@ Nhập file / Đính kèm: Không áp dụng — phiếu nhập kho không có c
 - **Điều kiện xử lý**: Chỉ lấy ĐMH trạng thái "Đã duyệt" và số lượng đã nhập < số lượng đặt.
 - **Kết quả mong đợi**: Hiển thị danh sách ĐMH trong popup P-01; tải chi tiết sản phẩm khi chọn.
 
-> ⚠️ **Lưu ý**: Không đặc tả endpoint, request/response, ERD, tên bảng/cột cho ERP nội bộ.
+>  **Lưu ý**: Không đặc tả endpoint, request/response, ERD, tên bảng/cột cho ERP nội bộ.
 
 ### 6.2 API hệ thống ngoài
 
@@ -358,7 +358,7 @@ Không áp dụng — Phiếu nhập kho không tích hợp hệ thống ngoài.
 
 | Mã | Câu hỏi | Phần bị ảnh hưởng | Trạng thái | Câu trả lời / Quyết định | Người quyết định | Ngày hỏi | Ngày trả lời |
 |----|---------|-------------------|-----------|--------------------------|------------------|----------|-------------|
-| Q-01 | Khi SL thực nhập vượt quá SL đặt, có cho phép lưu không? Nếu có, cần nhập lý do? | BR-03, AC-07, C-07 | 🟡 Đang chờ | — | — | 2026-09-04 | — |
+| Q-01 | Khi SL thực nhập vượt quá SL đặt, có cho phép lưu không? Nếu có, cần nhập lý do? | BR-03, AC-07, C-07 | Đang chờ | — | — | 2026-09-04 | — |
 
 ---
 
@@ -373,14 +373,14 @@ Không áp dụng — Phiếu nhập kho không tích hợp hệ thống ngoài.
 > **Quy ước trạng thái trong tài liệu — hai trục độc lập, không dùng lẫn ký hiệu:**
 >
 > **Trục 1 — Độ tin cậy nội dung** (đánh dấu cho nội dung suy luận hoặc chưa xác nhận):
-> - ✅ Đã chốt — User/stakeholder xác nhận
+> - ✅ [ĐÃ CHỐT] — User/stakeholder xác nhận
 > - ⚠️ [ĐỀ XUẤT] — BA suy luận hợp lý, cần review
 > - 🔴 [CHƯA XÁC NHẬN] — Thiếu thông tin, không thể suy luận
-> - *Nội dung đã có nguồn rõ không bắt buộc prefix ✅ từng dòng. Chỉ bắt buộc ⚠️ và 🔴.*
+> - *Nội dung đã chốt không bắt buộc prefix ✅ [ĐÃ CHỐT] từng dòng. Chỉ bắt buộc ⚠️ [ĐỀ XUẤT] và 🔴 [CHƯA XÁC NHẬN].*
 >
 > **Trục 2 — Vòng đời câu hỏi** (chỉ dùng trong bảng mục 12):
-> - 🟡 Đang chờ — Đã hỏi, chưa có trả lời
-> - 🔵 Đã trả lời — Có quyết định, chưa cập nhật hết vào tài liệu
+> - Đang chờ — Đã hỏi, chưa có trả lời
+> - Đã trả lời — Có quyết định, chưa cập nhật hết vào tài liệu
 > - ✅ Đã đóng — Đã trả lời và đã cập nhật vào các section liên quan
 >
 > **Quy ước mã**: `F-xx` trường · `C-xx` cột · `B-xx` nút · `P-xx` popup · `N-xx` thông báo ·
@@ -388,4 +388,4 @@ Không áp dụng — Phiếu nhập kho không tích hợp hệ thống ngoài.
 >
 > **Quy ước boolean**: Các cột boolean (quyền, bắt buộc, retry, ghi log, xác nhận trước...)
 > dùng text: `Có/Không`, `Bắt buộc/Tùy chọn`, `Cho phép/Không cho phép`.
-> **Không dùng ✅/❌** cho giá trị boolean — ✅ chỉ dành cho Trục 1 (độ tin cậy nội dung).
+> **Không dùng icon** cho giá trị boolean.
