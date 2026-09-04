@@ -10,6 +10,11 @@
 | **Feature** | {Tên feature / epic} |
 | **Yêu cầu BRD liên quan** | {Mã yêu cầu, ví dụ: 5.1.2, 5.1.3 — hoặc "Không có BRD"} |
 
+> ⚠️ **HƯỚNG DẪN DÙNG TEMPLATE**: Xóa **toàn bộ dòng mẫu** (chứa `{...}`, `Role 1`,
+> `Term 1`, `field_a`) trước khi xuất. Không giữ placeholder `{...}` trong file output.
+> Trường thiếu thông tin → ghi `🔴 [CHƯA XÁC NHẬN]` kèm ghi chú ngắn, đồng thời
+> tạo câu hỏi Q-xx trong Section 12.
+
 ---
 
 ## 1. Mục tiêu & Phạm vi
@@ -26,11 +31,12 @@
 
 > Cột của bảng này phải khớp **đúng danh sách hành động** liệt kê ở mục 5.5.
 > Thêm/bớt cột theo màn thực tế (ví dụ: Gửi duyệt, Từ chối, Hủy, Xuất Excel, In, Đóng kỳ).
+> **Không hardcode mã B-xx** ở đây — mã được gán khi viết mục 5.5.
 
-| Vai trò | Xem | Tạo (B-01) | Sửa (B-02) | Xóa (B-03) | Duyệt (B-04) | Xuất Excel (B-05) | Ghi chú |
-|---------|:---:|:---:|:---:|:---:|:---:|:---:|---------|
-| {Role 1} | ✅ | ✅ | ✅ | ❌ | ❌ | ✅ | {Ghi chú nếu có} |
-| {Role 2} | ✅ | ❌ | ❌ | ❌ | ✅ | ✅ | {Ghi chú nếu có} |
+| Vai trò | Xem | Tạo | Sửa | Xóa | {Thêm cột theo hành động thực tế ở S5.5} | Ghi chú |
+|---------|-----|-----|-----|-----|---|---------|
+| {Role 1} | Có | Có | Có | Không | {Có/Không} | {Ghi chú nếu có} |
+| {Role 2} | Có | Không | Không | Không | {Có/Không} | {Ghi chú nếu có} |
 
 ### Phạm vi dữ liệu
 
@@ -133,7 +139,7 @@
 
 | Mã | Hành động hàng loạt | ĐK cho phép | Số dòng tối đa | Hành vi khi một phần thất bại | Xác nhận trước? |
 |----|---------------------|-------------|----------------|-------------------------------|:---------------:|
-| B-0x | {Ví dụ: Duyệt nhiều phiếu} | {Chỉ dòng ở trạng thái Chờ duyệt} | {Số} | {Xem mục 8.2 — thành công một phần} | ✅ Popup confirm |
+| B-0x | {Ví dụ: Duyệt nhiều phiếu} | {Chỉ dòng ở trạng thái Chờ duyệt} | {Số} | {Xem mục 8.2 — thành công một phần} | Có — Popup confirm |
 
 #### Sửa trực tiếp trên bảng (Inline edit) *(bỏ mục này nếu không có)*
 
@@ -162,10 +168,10 @@
 **Cách đóng**: {Nút Đóng / Esc / click ra ngoài — có cảnh báo mất dữ liệu không}
 
 | Mã | Trường | Bắt buộc | Kiểu | Validation | Mặc định | Định dạng / Đơn vị | Ghi chú |
-|----|--------|:--------:|------|------------|----------|--------------------|---------|
-| F-07 | {Trường 1} | ✅ | Text | Max 100 ký tự, không ký tự đặc biệt | — | — | |
-| F-08 | {Trường 2} | ❌ | Number | ≥ 0, max 999.999 | 0 | 2 chữ số thập phân | |
-| F-09 | {Trường 3} | ✅ | Dropdown | Phải chọn 1 giá trị | {Giá trị mặc định} | — | Nguồn: {API/danh sách} |
+|----|--------|----------|------|------------|----------|--------------------|---------|
+| F-07 | {Trường 1} | Bắt buộc | Text | Max 100 ký tự, không ký tự đặc biệt | — | — | |
+| F-08 | {Trường 2} | Tùy chọn | Number | ≥ 0, max 999.999 | 0 | 2 chữ số thập phân | |
+| F-09 | {Trường 3} | Bắt buộc | Dropdown | Phải chọn 1 giá trị | {Giá trị mặc định} | — | Nguồn: {API/danh sách} |
 
 **Hành vi phím**: {Enter = submit / xuống dòng; Esc = đóng popup — ghi rõ nếu có quy định}
 
@@ -174,9 +180,9 @@
 ### 5.5 Nút bấm & Hành động
 
 | Mã | Nút | Vị trí | Vai trò được dùng | ĐK hiển thị | ĐK enable | Hành vi khi bấm | Xác nhận trước? |
-|----|-----|--------|-------------------|-------------|-----------|-----------------|:---------------:|
-| B-01 | {Ví dụ: Lưu} | {Vị trí} | {Role 1} | {ĐK} | {ĐK} | {Mô tả hành vi} | ✅ Popup confirm |
-| B-02 | {Ví dụ: Hủy} | {Vị trí} | Tất cả | Luôn hiển thị | Luôn enable | {Mô tả} | ❌ |
+|----|-----|--------|-------------------|-------------|-----------|-----------------|----------------|
+| B-01 | {Ví dụ: Lưu} | {Vị trí} | {Role 1} | {ĐK} | {ĐK} | {Mô tả hành vi} | Có — Popup confirm |
+| B-02 | {Ví dụ: Hủy} | {Vị trí} | Tất cả | Luôn hiển thị | Luôn enable | {Mô tả} | Không |
 | B-03 | {Nút 3} | {Vị trí} | {Role} | {ĐK} | {ĐK} | {Mô tả} | {Có/Không} |
 
 > Mỗi hành động ở bảng này phải có một cột tương ứng trong bảng phân quyền mục 2.
@@ -211,6 +217,21 @@
 | Số tiền | Phân tách hàng nghìn bằng `.`, đơn vị {VNĐ} | Quy tắc làm tròn: {…} |
 | Tỷ lệ phần trăm | {n} chữ số thập phân, hậu tố `%` | |
 | Văn bản dài | Cắt ngắn sau {n} ký tự, hiển thị đầy đủ khi rê chuột | |
+
+---
+
+### 5.8 Chế độ màn hình & hành vi theo mode *(ghi "Không áp dụng" nếu màn chỉ có 1 mode)*
+
+> Mô tả hành vi của trường và nút theo từng chế độ màn hình.
+> Dùng mã F-xx, C-xx, B-xx đã định nghĩa ở các mục trên.
+
+| Mode | Điều kiện vào | Trường editable | Trường readonly | Trường hidden | Nút hiển thị |
+|------|---------------|-----------------|-----------------|---------------|--------------|
+| {Tạo mới} | {ĐK — ví dụ: Bấm nút "Tạo mới"} | {Danh sách mã F-xx} | {Danh sách mã} | {Danh sách mã} | {Danh sách mã B-xx} |
+| {Sửa} | {ĐK — ví dụ: Click dòng, trạng thái Nháp} | {Danh sách mã} | {Danh sách mã} | {Danh sách mã} | {Danh sách mã} |
+| {Xem} | {ĐK — ví dụ: Click dòng, trạng thái Đã duyệt} | — | Tất cả | — | {Danh sách mã} |
+| {Duyệt} | {ĐK} | {Danh sách mã} | {Danh sách mã} | — | {Danh sách mã} |
+| {Khóa kỳ} | {ĐK — ví dụ: Kỳ kế toán đã đóng} | — | Tất cả | — | — |
 
 ---
 
@@ -280,9 +301,9 @@
 #### Cách sử dụng dữ liệu nhận về
 
 | Field nhận | Dùng cho thông tin | Hiển thị ở (mã) | Cách tính / xử lý | Nếu thiếu / null | Cần ghi nhận? |
-|------------|-------------------|-----------------|-------------------|------------------|:-------------:|
-| {field_a} | {Thông tin nghiệp vụ gì} | {C-02} | {Trực tiếp / công thức / mapping} | {Hiển thị "—" / chặn lưu / dùng giá trị mặc định} | ✅ / ❌ |
-| {field_b} | {Thông tin nghiệp vụ gì} | {F-05} | {Trực tiếp / công thức} | {Hành vi} | ✅ / ❌ |
+|------------|-------------------|-----------------|-------------------|------------------|---------------|
+| {field_a} | {Thông tin nghiệp vụ gì} | {C-02} | {Trực tiếp / công thức / mapping} | {Hiển thị "—" / chặn lưu / dùng giá trị mặc định} | Có / Không |
+| {field_b} | {Thông tin nghiệp vụ gì} | {F-05} | {Trực tiếp / công thức} | {Hành vi} | Có / Không |
 
 #### Dữ liệu tạm & hành vi khi hệ thống ngoài không sẵn sàng
 
@@ -298,19 +319,19 @@
 **Lỗi theo HTTP status**
 
 | Error code | Ý nghĩa | Hành vi UI | Retry? |
-|------------|---------|-----------|:------:|
-| 400 | {Mô tả theo docs} | {Toast lỗi: "..."} | ❌ |
-| 401 | {Mô tả} | {Redirect login / thông báo} | ❌ |
-| 404 | {Mô tả} | {Empty state / thông báo} | ❌ |
-| 429 | {Vượt rate limit} | {Thông báo + chờ} | ✅ {Sau X giây} |
-| 500 | {Mô tả} | {Thông báo lỗi hệ thống + fallback} | ✅ {Sau X giây, tối đa Y lần} |
-| Timeout | Không phản hồi trong {X}s | {Thông báo + cho phép retry thủ công} | ✅ |
+|------------|---------|-----------|--------|
+| 400 | {Mô tả theo docs} | {Toast lỗi: "..."} | Không |
+| 401 | {Mô tả} | {Redirect login / thông báo} | Không |
+| 404 | {Mô tả} | {Empty state / thông báo} | Không |
+| 429 | {Vượt rate limit} | {Thông báo + chờ} | Có — sau X giây |
+| 500 | {Mô tả} | {Thông báo lỗi hệ thống + fallback} | Có — sau X giây, tối đa Y lần |
+| Timeout | Không phản hồi trong {X}s | {Thông báo + cho phép retry thủ công} | Có |
 
 **Lỗi nghiệp vụ trả trong body khi HTTP 200** *(nhiều API trả 200 kèm mã lỗi — bỏ bảng nếu không áp dụng)*
 
 | Mã lỗi trong body | Ý nghĩa theo docs | Hành vi UI | Retry? |
-|-------------------|-------------------|-----------|:------:|
-| {code_1} | {Mô tả} | {Thông báo: "..."} | ❌ |
+|-------------------|-------------------|-----------|--------|
+| {code_1} | {Mô tả} | {Thông báo: "..."} | Không |
 | {code_2} | {Mô tả} | {Hành vi} | {Có/Không} |
 
 > ⚠️ **Lưu ý**: Không ghi API key / token thật. Chỉ mô tả cơ chế xác thực.
@@ -333,9 +354,9 @@
 ### 8.1 Dữ liệu ghi nhận
 
 | Dữ liệu | Nguồn | Thời điểm ghi | Bắt buộc | Ghi chú |
-|----------|-------|---------------|:--------:|---------|
-| {Data 1} | {User nhập / API response / tự động tính} | {Khi submit / realtime} | ✅ | |
-| {Data 2} | {Nguồn} | {Thời điểm} | ❌ | |
+|----------|-------|---------------|----------|---------|
+| {Data 1} | {User nhập / API response / tự động tính} | {Khi submit / realtime} | Bắt buộc | |
+| {Data 2} | {Nguồn} | {Thời điểm} | Tùy chọn | |
 
 ### 8.2 Xử lý đặc biệt *(nếu có)*
 
@@ -348,11 +369,11 @@
 ### 8.3 Vết kiểm toán (Audit trail) *(ghi "Không áp dụng — {lý do}" nếu không yêu cầu)*
 
 | Hành động | Có ghi log? | Thông tin lưu | Người dùng xem được trên màn? |
-|-----------|:-----------:|---------------|:-----------------------------:|
-| {Tạo mới} | ✅ | Người thực hiện, thời điểm | ❌ |
-| {Sửa} | ✅ | Người thực hiện, thời điểm, trường thay đổi, giá trị cũ → giá trị mới | ✅ {Tab Lịch sử} |
-| {Duyệt / Từ chối} | ✅ | Người duyệt, thời điểm, lý do | ✅ |
-| {Xóa} | ✅ | Người thực hiện, thời điểm, lý do | {Có/Không} |
+|-----------|-------------|---------------|-------------------------------|
+| {Tạo mới} | Có | Người thực hiện, thời điểm | Không |
+| {Sửa} | Có | Người thực hiện, thời điểm, trường thay đổi, giá trị cũ → giá trị mới | Có — Tab Lịch sử |
+| {Duyệt / Từ chối} | Có | Người duyệt, thời điểm, lý do | Có |
+| {Xóa} | Có | Người thực hiện, thời điểm, lý do | {Có/Không} |
 
 **Trường theo dõi thay đổi**: {Danh sách mã trường cần lưu giá trị cũ — hoặc "toàn bộ"}
 
@@ -469,3 +490,7 @@
 >
 > **Quy ước mã**: `F-xx` trường · `C-xx` cột · `B-xx` nút · `P-xx` popup · `N-xx` thông báo ·
 > `BR-xx` quy tắc · `AC-xx` nghiệm thu · `Q-xx` câu hỏi.
+>
+> **Quy ước boolean**: Các cột boolean (quyền, bắt buộc, retry, ghi log, xác nhận trước...)
+> dùng text: `Có/Không`, `Bắt buộc/Tùy chọn`, `Cho phép/Không cho phép`.
+> **Không dùng ✅/❌** cho giá trị boolean — ✅ chỉ dành cho Trục 1 (độ tin cậy nội dung).
