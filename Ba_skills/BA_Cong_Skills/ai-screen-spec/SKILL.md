@@ -108,6 +108,19 @@ từ BRD → Spec → Dev/Test.
 
 ---
 
+## Quy tắc tách file
+
+1. **Popup / Modal / Drawer**: luôn mô tả trong cùng file, dùng mã P-xx.
+   Không tách thành file riêng.
+2. **Danh sách + Form chi tiết**: viết chung 1 file nếu luồng gắn chặt
+   (ví dụ: click dòng danh sách → mở form). Tách nếu mỗi phần đã > 300 dòng.
+3. **Màn có nhiều tab**: viết chung. Mỗi tab là 1 sub-section (5.1, 5.2...).
+   Mã F-xx, C-xx, B-xx đánh liên tục qua các tab.
+4. **Ngưỡng tách**: nếu ước tính spec > ~600 dòng → **đề xuất tách** cho user,
+   nêu rõ cách chia và cách liên kết mã giữa các file. Chờ user chốt.
+
+---
+
 ## Quy trình 6 bước
 
 ```

@@ -31,6 +31,10 @@
 - Có xuất Excel/PDF, in, hoặc nhập file đính kèm không?
 - Số tiền và số lượng hiển thị theo định dạng nào? Làm tròn mấy chữ số?
 - Màn hình có bao nhiêu chế độ? (Tạo mới, Sửa, Xem, Duyệt, Khóa kỳ?)
+- Validation chạy khi nào? (ngay khi nhập/rời ô — hay chỉ khi bấm Lưu/Submit?)
+- Có auto-save / lưu nháp tự động không?
+- Khi validation fail: chặn thao tác luôn hay chỉ cảnh báo cho tiếp tục?
+- Có validation nào cần gọi server kiểm tra không? (ví dụ: kiểm tra mã trùng, tồn kho thực tế)
 
 > **Chốt nhóm 2** (Tùy chọn — có thể gộp với nhóm 3-4 nếu không có mâu thuẫn):
 > Tóm tắt danh sách khu vực, popup, chế độ màn hình.
