@@ -23,7 +23,6 @@ phục vụ BA/PM đọc, review và chốt yêu cầu.
 |-----------|---------------|
 | Đặc tả chi tiết **1 màn** hình (giao diện + nghiệp vụ + tích hợp) | → `ai-screen-spec` ✅ |
 | Tổng quan toàn dự án, liệt kê yêu cầu nghiệp vụ | → `ba-brd` |
-| Mô tả nghiệp vụ thuần, không có giao diện | → `template-all-in-one` (business-only) |
 | Chưa có BRD, chưa rõ scope | → Dùng `ba-brd` trước, rồi `ai-screen-spec` cho từng màn |
 
 ---
