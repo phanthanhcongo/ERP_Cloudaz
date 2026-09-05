@@ -1,0 +1,4656 @@
+[{
+  "billing_account_id": "C044ckp10",
+  "payer_billing_account_id": "1-30173-04006",
+  "invoice": {
+    "month": "202603"
+  },
+  "cost_type": "tax",
+  "service": {
+    "id": "A656-35D2-EF7F",
+    "description": "Invoice"
+  },
+  "sku": {
+    "id": "A1A2-4711-B376",
+    "description": "Tax"
+  },
+  "usage_start_time": "2026-03-01 08:00:00.000000 UTC",
+  "usage_end_time": "2026-04-01 07:00:00.000000 UTC",
+  "project": {
+    "number": null,
+    "id": null,
+    "name": null,
+    "labels": [],
+    "ancestry_numbers": null
+  },
+  "labels": [],
+  "system_labels": [{
+    "key": "workspace.googleapis.com/domain_name",
+    "value": "sub.mycolor.biz"
+  }, {
+    "key": "workspace.googleapis.com/order_id",
+    "value": "6913111197-15"
+  }, {
+    "key": "workspace.googleapis.com/subscription_id",
+    "value": "6913111197"
+  }, {
+    "key": "workspace.googleapis.com/usage_type",
+    "value": "COMMITMENT_MONTHLY_ITEM"
+  }],
+  "location": {
+    "location": null,
+    "country": null,
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": null,
+    "global_name": null
+  },
+  "cost": "-10.35",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "-1",
+    "unit": "count",
+    "amount_in_pricing_unit": "-1",
+    "pricing_unit": "count"
+  },
+  "credits": [],
+  "adjustment_info": {
+    "adjustment_id": null,
+    "adjustment_description": null,
+    "adjustment_type": null,
+    "adjustment_mode": null
+  },
+  "export_time": "2026-03-02 07:40:06.834763 UTC",
+  "entitlement_name": "accounts/C01473oln/customers/S4YrmSROd7CzfY/entitlements/S4gP4Zh9AMVv2f",
+  "channel_partner_name": "accounts/C01473oln/channelPartnerLinks/",
+  "channel_partner_cost": null,
+  "customer_name": "accounts/C01473oln/customers/S4YrmSROd7CzfY",
+  "customer_cost": null,
+  "cost_at_list": null,
+  "customer_repricing_config_name": null,
+  "channel_partner_repricing_config_name": null,
+  "tags": [],
+  "customer_correlation_id": "",
+  "price": {
+    "effective_price": null,
+    "tier_start_amount": null,
+    "unit": "count",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": null,
+  "seller_name": null,
+  "subscription": {
+    "instance_id": null
+  },
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": {
+    "id": null,
+    "description": null
+  }
+}, {
+  "billing_account_id": "C044ckp10",
+  "payer_billing_account_id": "1-30173-04006",
+  "invoice": {
+    "month": "202603"
+  },
+  "cost_type": "tax",
+  "service": {
+    "id": "A656-35D2-EF7F",
+    "description": "Invoice"
+  },
+  "sku": {
+    "id": "A1A2-4711-B376",
+    "description": "Tax"
+  },
+  "usage_start_time": "2026-03-01 08:00:00.000000 UTC",
+  "usage_end_time": "2026-04-01 07:00:00.000000 UTC",
+  "project": {
+    "number": null,
+    "id": null,
+    "name": null,
+    "labels": [],
+    "ancestry_numbers": null
+  },
+  "labels": [],
+  "system_labels": [{
+    "key": "workspace.googleapis.com/domain_name",
+    "value": "sub.mycolor.biz"
+  }, {
+    "key": "workspace.googleapis.com/order_id",
+    "value": "6913111197-16"
+  }, {
+    "key": "workspace.googleapis.com/subscription_id",
+    "value": "6913111197"
+  }, {
+    "key": "workspace.googleapis.com/usage_type",
+    "value": "COMMITMENT_MONTHLY_ITEM"
+  }],
+  "location": {
+    "location": null,
+    "country": null,
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": null,
+    "global_name": null
+  },
+  "cost": "10.89",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "1",
+    "unit": "count",
+    "amount_in_pricing_unit": "1",
+    "pricing_unit": "count"
+  },
+  "credits": [],
+  "adjustment_info": {
+    "adjustment_id": null,
+    "adjustment_description": null,
+    "adjustment_type": null,
+    "adjustment_mode": null
+  },
+  "export_time": "2026-03-02 07:40:06.834763 UTC",
+  "entitlement_name": "accounts/C01473oln/customers/S4YrmSROd7CzfY/entitlements/S4gP4Zh9AMVv2f",
+  "channel_partner_name": "accounts/C01473oln/channelPartnerLinks/",
+  "channel_partner_cost": null,
+  "customer_name": "accounts/C01473oln/customers/S4YrmSROd7CzfY",
+  "customer_cost": null,
+  "cost_at_list": null,
+  "customer_repricing_config_name": null,
+  "channel_partner_repricing_config_name": null,
+  "tags": [],
+  "customer_correlation_id": "",
+  "price": {
+    "effective_price": null,
+    "tier_start_amount": null,
+    "unit": "count",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": null,
+  "seller_name": null,
+  "subscription": {
+    "instance_id": null
+  },
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": {
+    "id": null,
+    "description": null
+  }
+}, {
+  "billing_account_id": "C044ckp10",
+  "payer_billing_account_id": "1-30173-04006",
+  "invoice": {
+    "month": "202603"
+  },
+  "cost_type": "regular",
+  "service": {
+    "id": "Google-Apps",
+    "description": "Google Workspace"
+  },
+  "sku": {
+    "id": "1010020027",
+    "description": "Google Workspace Business Starter"
+  },
+  "usage_start_time": "2026-03-01 08:00:00.000000 UTC",
+  "usage_end_time": "2026-04-01 07:00:00.000000 UTC",
+  "project": {
+    "number": null,
+    "id": null,
+    "name": null,
+    "labels": [],
+    "ancestry_numbers": null
+  },
+  "labels": [],
+  "system_labels": [{
+    "key": "workspace.googleapis.com/domain_name",
+    "value": "sub.mycolor.biz"
+  }, {
+    "key": "workspace.googleapis.com/order_id",
+    "value": "6913111197-15"
+  }, {
+    "key": "workspace.googleapis.com/subscription_id",
+    "value": "6913111197"
+  }, {
+    "key": "workspace.googleapis.com/usage_type",
+    "value": "COMMITMENT_MONTHLY_ITEM"
+  }],
+  "location": {
+    "location": null,
+    "country": null,
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": null,
+    "global_name": null
+  },
+  "cost": "-93.1",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "-19",
+    "unit": "count",
+    "amount_in_pricing_unit": "-19",
+    "pricing_unit": "count"
+  },
+  "credits": [],
+  "adjustment_info": {
+    "adjustment_id": null,
+    "adjustment_description": null,
+    "adjustment_type": null,
+    "adjustment_mode": null
+  },
+  "export_time": "2026-03-02 07:40:06.834763 UTC",
+  "entitlement_name": "accounts/C01473oln/customers/S4YrmSROd7CzfY/entitlements/S4gP4Zh9AMVv2f",
+  "channel_partner_name": "accounts/C01473oln/channelPartnerLinks/",
+  "channel_partner_cost": null,
+  "customer_name": "accounts/C01473oln/customers/S4YrmSROd7CzfY",
+  "customer_cost": "-93.1",
+  "cost_at_list": "-133",
+  "customer_repricing_config_name": "accounts/C01473oln/customers/S4YrmSROd7CzfY/customerRepricingConfigs/",
+  "channel_partner_repricing_config_name": null,
+  "tags": [],
+  "customer_correlation_id": "",
+  "price": {
+    "effective_price": null,
+    "tier_start_amount": null,
+    "unit": "count",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": null,
+  "seller_name": null,
+  "subscription": {
+    "instance_id": null
+  },
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": {
+    "id": null,
+    "description": null
+  }
+}, {
+  "billing_account_id": "C044ckp10",
+  "payer_billing_account_id": "1-30173-04006",
+  "invoice": {
+    "month": "202603"
+  },
+  "cost_type": "regular",
+  "service": {
+    "id": "Google-Apps",
+    "description": "Google Workspace"
+  },
+  "sku": {
+    "id": "1010020027",
+    "description": "Google Workspace Business Starter"
+  },
+  "usage_start_time": "2026-03-01 08:00:00.000000 UTC",
+  "usage_end_time": "2026-04-01 07:00:00.000000 UTC",
+  "project": {
+    "number": null,
+    "id": null,
+    "name": null,
+    "labels": [],
+    "ancestry_numbers": null
+  },
+  "labels": [],
+  "system_labels": [{
+    "key": "workspace.googleapis.com/domain_name",
+    "value": "sub.mycolor.biz"
+  }, {
+    "key": "workspace.googleapis.com/order_id",
+    "value": "6913111197-16"
+  }, {
+    "key": "workspace.googleapis.com/subscription_id",
+    "value": "6913111197"
+  }, {
+    "key": "workspace.googleapis.com/usage_type",
+    "value": "COMMITMENT_MONTHLY_ITEM"
+  }],
+  "location": {
+    "location": null,
+    "country": null,
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": null,
+    "global_name": null
+  },
+  "cost": "98",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "20",
+    "unit": "count",
+    "amount_in_pricing_unit": "20",
+    "pricing_unit": "count"
+  },
+  "credits": [],
+  "adjustment_info": {
+    "adjustment_id": null,
+    "adjustment_description": null,
+    "adjustment_type": null,
+    "adjustment_mode": null
+  },
+  "export_time": "2026-03-02 07:40:06.834763 UTC",
+  "entitlement_name": "accounts/C01473oln/customers/S4YrmSROd7CzfY/entitlements/S4gP4Zh9AMVv2f",
+  "channel_partner_name": "accounts/C01473oln/channelPartnerLinks/",
+  "channel_partner_cost": null,
+  "customer_name": "accounts/C01473oln/customers/S4YrmSROd7CzfY",
+  "customer_cost": "98",
+  "cost_at_list": "140",
+  "customer_repricing_config_name": "accounts/C01473oln/customers/S4YrmSROd7CzfY/customerRepricingConfigs/",
+  "channel_partner_repricing_config_name": null,
+  "tags": [],
+  "customer_correlation_id": "",
+  "price": {
+    "effective_price": null,
+    "tier_start_amount": null,
+    "unit": "count",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": null,
+  "seller_name": null,
+  "subscription": {
+    "instance_id": null
+  },
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": {
+    "id": null,
+    "description": null
+  }
+}, {
+  "billing_account_id": "C01olj81h",
+  "payer_billing_account_id": "1-30173-04006",
+  "invoice": {
+    "month": "202603"
+  },
+  "cost_type": "tax",
+  "service": {
+    "id": "A656-35D2-EF7F",
+    "description": "Invoice"
+  },
+  "sku": {
+    "id": "A1A2-4711-B376",
+    "description": "Tax"
+  },
+  "usage_start_time": "2026-03-01 08:00:00.000000 UTC",
+  "usage_end_time": "2026-04-01 07:00:00.000000 UTC",
+  "project": {
+    "number": null,
+    "id": null,
+    "name": null,
+    "labels": [],
+    "ancestry_numbers": null
+  },
+  "labels": [],
+  "system_labels": [{
+    "key": "workspace.googleapis.com/domain_name",
+    "value": "castalk.com"
+  }, {
+    "key": "workspace.googleapis.com/order_id",
+    "value": "9656449517-09"
+  }, {
+    "key": "workspace.googleapis.com/subscription_id",
+    "value": "9656449517"
+  }, {
+    "key": "workspace.googleapis.com/usage_type",
+    "value": "COMMITMENT_MONTHLY_ITEM"
+  }],
+  "location": {
+    "location": null,
+    "country": null,
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": null,
+    "global_name": null
+  },
+  "cost": "-302.35",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "-1",
+    "unit": "count",
+    "amount_in_pricing_unit": "-1",
+    "pricing_unit": "count"
+  },
+  "credits": [],
+  "adjustment_info": {
+    "adjustment_id": null,
+    "adjustment_description": null,
+    "adjustment_type": null,
+    "adjustment_mode": null
+  },
+  "export_time": "2026-03-02 09:19:27.394212 UTC",
+  "entitlement_name": "accounts/C01473oln/customers/SoGhRxzGRVSVyl/entitlements/SinhQHn1i2g8aG",
+  "channel_partner_name": "accounts/C01473oln/channelPartnerLinks/",
+  "channel_partner_cost": null,
+  "customer_name": "accounts/C01473oln/customers/SoGhRxzGRVSVyl",
+  "customer_cost": null,
+  "cost_at_list": null,
+  "customer_repricing_config_name": null,
+  "channel_partner_repricing_config_name": null,
+  "tags": [],
+  "customer_correlation_id": "",
+  "price": {
+    "effective_price": null,
+    "tier_start_amount": null,
+    "unit": "count",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": null,
+  "seller_name": null,
+  "subscription": {
+    "instance_id": null
+  },
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": {
+    "id": null,
+    "description": null
+  }
+}, {
+  "billing_account_id": "C01xm6ku6",
+  "payer_billing_account_id": "1-30173-04006",
+  "invoice": {
+    "month": "202603"
+  },
+  "cost_type": "tax",
+  "service": {
+    "id": "A656-35D2-EF7F",
+    "description": "Invoice"
+  },
+  "sku": {
+    "id": "A1A2-4711-B376",
+    "description": "Tax"
+  },
+  "usage_start_time": "2026-03-01 08:00:00.000000 UTC",
+  "usage_end_time": "2026-04-01 07:00:00.000000 UTC",
+  "project": {
+    "number": null,
+    "id": null,
+    "name": null,
+    "labels": [],
+    "ancestry_numbers": null
+  },
+  "labels": [],
+  "system_labels": [{
+    "key": "workspace.googleapis.com/domain_name",
+    "value": "sub.comem.vn"
+  }, {
+    "key": "workspace.googleapis.com/order_id",
+    "value": "4264900188-15"
+  }, {
+    "key": "workspace.googleapis.com/subscription_id",
+    "value": "4264900188"
+  }, {
+    "key": "workspace.googleapis.com/usage_type",
+    "value": "COMMITMENT_MONTHLY_ITEM"
+  }],
+  "location": {
+    "location": null,
+    "country": null,
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": null,
+    "global_name": null
+  },
+  "cost": "-78.94",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "-1",
+    "unit": "count",
+    "amount_in_pricing_unit": "-1",
+    "pricing_unit": "count"
+  },
+  "credits": [],
+  "adjustment_info": {
+    "adjustment_id": null,
+    "adjustment_description": null,
+    "adjustment_type": null,
+    "adjustment_mode": null
+  },
+  "export_time": "2026-03-02 09:19:27.394212 UTC",
+  "entitlement_name": "accounts/C01473oln/customers/SwQ4ZpaKOds2pY/entitlements/Swp3PKuVLRHJcr",
+  "channel_partner_name": "accounts/C01473oln/channelPartnerLinks/",
+  "channel_partner_cost": null,
+  "customer_name": "accounts/C01473oln/customers/SwQ4ZpaKOds2pY",
+  "customer_cost": null,
+  "cost_at_list": null,
+  "customer_repricing_config_name": null,
+  "channel_partner_repricing_config_name": null,
+  "tags": [],
+  "customer_correlation_id": "",
+  "price": {
+    "effective_price": null,
+    "tier_start_amount": null,
+    "unit": "count",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": null,
+  "seller_name": null,
+  "subscription": {
+    "instance_id": null
+  },
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": {
+    "id": null,
+    "description": null
+  }
+}, {
+  "billing_account_id": "C01330q88",
+  "payer_billing_account_id": "1-30173-04006",
+  "invoice": {
+    "month": "202603"
+  },
+  "cost_type": "tax",
+  "service": {
+    "id": "A656-35D2-EF7F",
+    "description": "Invoice"
+  },
+  "sku": {
+    "id": "A1A2-4711-B376",
+    "description": "Tax"
+  },
+  "usage_start_time": "2026-03-01 08:00:00.000000 UTC",
+  "usage_end_time": "2026-04-01 07:00:00.000000 UTC",
+  "project": {
+    "number": null,
+    "id": null,
+    "name": null,
+    "labels": [],
+    "ancestry_numbers": null
+  },
+  "labels": [],
+  "system_labels": [{
+    "key": "workspace.googleapis.com/domain_name",
+    "value": "vntmedical.com"
+  }, {
+    "key": "workspace.googleapis.com/order_id",
+    "value": "2468613410-25"
+  }, {
+    "key": "workspace.googleapis.com/subscription_id",
+    "value": "2468613410"
+  }, {
+    "key": "workspace.googleapis.com/usage_type",
+    "value": "COMMITMENT_MONTHLY_ITEM"
+  }],
+  "location": {
+    "location": null,
+    "country": null,
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": null,
+    "global_name": null
+  },
+  "cost": "-10.89",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "-1",
+    "unit": "count",
+    "amount_in_pricing_unit": "-1",
+    "pricing_unit": "count"
+  },
+  "credits": [],
+  "adjustment_info": {
+    "adjustment_id": null,
+    "adjustment_description": null,
+    "adjustment_type": null,
+    "adjustment_mode": null
+  },
+  "export_time": "2026-03-02 09:19:27.394212 UTC",
+  "entitlement_name": "accounts/C01473oln/customers/SFsvGkqivz3gM9/entitlements/SrQKUwE33SZf2r",
+  "channel_partner_name": "accounts/C01473oln/channelPartnerLinks/",
+  "channel_partner_cost": null,
+  "customer_name": "accounts/C01473oln/customers/SFsvGkqivz3gM9",
+  "customer_cost": null,
+  "cost_at_list": null,
+  "customer_repricing_config_name": null,
+  "channel_partner_repricing_config_name": null,
+  "tags": [],
+  "customer_correlation_id": "",
+  "price": {
+    "effective_price": null,
+    "tier_start_amount": null,
+    "unit": "count",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": null,
+  "seller_name": null,
+  "subscription": {
+    "instance_id": null
+  },
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": {
+    "id": null,
+    "description": null
+  }
+}, {
+  "billing_account_id": "C01xm6ku6",
+  "payer_billing_account_id": "1-30173-04006",
+  "invoice": {
+    "month": "202603"
+  },
+  "cost_type": "tax",
+  "service": {
+    "id": "A656-35D2-EF7F",
+    "description": "Invoice"
+  },
+  "sku": {
+    "id": "A1A2-4711-B376",
+    "description": "Tax"
+  },
+  "usage_start_time": "2026-03-01 08:00:00.000000 UTC",
+  "usage_end_time": "2026-04-01 07:00:00.000000 UTC",
+  "project": {
+    "number": null,
+    "id": null,
+    "name": null,
+    "labels": [],
+    "ancestry_numbers": null
+  },
+  "labels": [],
+  "system_labels": [{
+    "key": "workspace.googleapis.com/domain_name",
+    "value": "sub.comem.vn"
+  }, {
+    "key": "workspace.googleapis.com/order_id",
+    "value": "4264900188-17"
+  }, {
+    "key": "workspace.googleapis.com/subscription_id",
+    "value": "4264900188"
+  }, {
+    "key": "workspace.googleapis.com/usage_type",
+    "value": "COMMITMENT_MONTHLY_ITEM"
+  }],
+  "location": {
+    "location": null,
+    "country": null,
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": null,
+    "global_name": null
+  },
+  "cost": "84.38",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "1",
+    "unit": "count",
+    "amount_in_pricing_unit": "1",
+    "pricing_unit": "count"
+  },
+  "credits": [],
+  "adjustment_info": {
+    "adjustment_id": null,
+    "adjustment_description": null,
+    "adjustment_type": null,
+    "adjustment_mode": null
+  },
+  "export_time": "2026-03-02 09:19:27.394212 UTC",
+  "entitlement_name": "accounts/C01473oln/customers/SwQ4ZpaKOds2pY/entitlements/Swp3PKuVLRHJcr",
+  "channel_partner_name": "accounts/C01473oln/channelPartnerLinks/",
+  "channel_partner_cost": null,
+  "customer_name": "accounts/C01473oln/customers/SwQ4ZpaKOds2pY",
+  "customer_cost": null,
+  "cost_at_list": null,
+  "customer_repricing_config_name": null,
+  "channel_partner_repricing_config_name": null,
+  "tags": [],
+  "customer_correlation_id": "",
+  "price": {
+    "effective_price": null,
+    "tier_start_amount": null,
+    "unit": "count",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": null,
+  "seller_name": null,
+  "subscription": {
+    "instance_id": null
+  },
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": {
+    "id": null,
+    "description": null
+  }
+}, {
+  "billing_account_id": "C01330q88",
+  "payer_billing_account_id": "1-30173-04006",
+  "invoice": {
+    "month": "202603"
+  },
+  "cost_type": "tax",
+  "service": {
+    "id": "A656-35D2-EF7F",
+    "description": "Invoice"
+  },
+  "sku": {
+    "id": "A1A2-4711-B376",
+    "description": "Tax"
+  },
+  "usage_start_time": "2026-03-01 08:00:00.000000 UTC",
+  "usage_end_time": "2026-04-01 07:00:00.000000 UTC",
+  "project": {
+    "number": null,
+    "id": null,
+    "name": null,
+    "labels": [],
+    "ancestry_numbers": null
+  },
+  "labels": [],
+  "system_labels": [{
+    "key": "workspace.googleapis.com/domain_name",
+    "value": "vntmedical.com"
+  }, {
+    "key": "workspace.googleapis.com/order_id",
+    "value": "2468613410-27"
+  }, {
+    "key": "workspace.googleapis.com/subscription_id",
+    "value": "2468613410"
+  }, {
+    "key": "workspace.googleapis.com/usage_type",
+    "value": "COMMITMENT_MONTHLY_ITEM"
+  }],
+  "location": {
+    "location": null,
+    "country": null,
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": null,
+    "global_name": null
+  },
+  "cost": "11.44",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "1",
+    "unit": "count",
+    "amount_in_pricing_unit": "1",
+    "pricing_unit": "count"
+  },
+  "credits": [],
+  "adjustment_info": {
+    "adjustment_id": null,
+    "adjustment_description": null,
+    "adjustment_type": null,
+    "adjustment_mode": null
+  },
+  "export_time": "2026-03-02 09:19:27.394212 UTC",
+  "entitlement_name": "accounts/C01473oln/customers/SFsvGkqivz3gM9/entitlements/SrQKUwE33SZf2r",
+  "channel_partner_name": "accounts/C01473oln/channelPartnerLinks/",
+  "channel_partner_cost": null,
+  "customer_name": "accounts/C01473oln/customers/SFsvGkqivz3gM9",
+  "customer_cost": null,
+  "cost_at_list": null,
+  "customer_repricing_config_name": null,
+  "channel_partner_repricing_config_name": null,
+  "tags": [],
+  "customer_correlation_id": "",
+  "price": {
+    "effective_price": null,
+    "tier_start_amount": null,
+    "unit": "count",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": null,
+  "seller_name": null,
+  "subscription": {
+    "instance_id": null
+  },
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": {
+    "id": null,
+    "description": null
+  }
+}, {
+  "billing_account_id": "C01olj81h",
+  "payer_billing_account_id": "1-30173-04006",
+  "invoice": {
+    "month": "202603"
+  },
+  "cost_type": "tax",
+  "service": {
+    "id": "A656-35D2-EF7F",
+    "description": "Invoice"
+  },
+  "sku": {
+    "id": "A1A2-4711-B376",
+    "description": "Tax"
+  },
+  "usage_start_time": "2026-03-01 08:00:00.000000 UTC",
+  "usage_end_time": "2026-04-01 07:00:00.000000 UTC",
+  "project": {
+    "number": null,
+    "id": null,
+    "name": null,
+    "labels": [],
+    "ancestry_numbers": null
+  },
+  "labels": [],
+  "system_labels": [{
+    "key": "workspace.googleapis.com/domain_name",
+    "value": "castalk.com"
+  }, {
+    "key": "workspace.googleapis.com/order_id",
+    "value": "9656449517-10"
+  }, {
+    "key": "workspace.googleapis.com/subscription_id",
+    "value": "9656449517"
+  }, {
+    "key": "workspace.googleapis.com/usage_type",
+    "value": "COMMITMENT_MONTHLY_ITEM"
+  }],
+  "location": {
+    "location": null,
+    "country": null,
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": null,
+    "global_name": null
+  },
+  "cost": "318.61",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "1",
+    "unit": "count",
+    "amount_in_pricing_unit": "1",
+    "pricing_unit": "count"
+  },
+  "credits": [],
+  "adjustment_info": {
+    "adjustment_id": null,
+    "adjustment_description": null,
+    "adjustment_type": null,
+    "adjustment_mode": null
+  },
+  "export_time": "2026-03-02 09:19:27.394212 UTC",
+  "entitlement_name": "accounts/C01473oln/customers/SoGhRxzGRVSVyl/entitlements/SinhQHn1i2g8aG",
+  "channel_partner_name": "accounts/C01473oln/channelPartnerLinks/",
+  "channel_partner_cost": null,
+  "customer_name": "accounts/C01473oln/customers/SoGhRxzGRVSVyl",
+  "customer_cost": null,
+  "cost_at_list": null,
+  "customer_repricing_config_name": null,
+  "channel_partner_repricing_config_name": null,
+  "tags": [],
+  "customer_correlation_id": "",
+  "price": {
+    "effective_price": null,
+    "tier_start_amount": null,
+    "unit": "count",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": null,
+  "seller_name": null,
+  "subscription": {
+    "instance_id": null
+  },
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": {
+    "id": null,
+    "description": null
+  }
+}, {
+  "billing_account_id": "C010punqc",
+  "payer_billing_account_id": "1-30173-04006",
+  "invoice": {
+    "month": "202603"
+  },
+  "cost_type": "tax",
+  "service": {
+    "id": "A656-35D2-EF7F",
+    "description": "Invoice"
+  },
+  "sku": {
+    "id": "A1A2-4711-B376",
+    "description": "Tax"
+  },
+  "usage_start_time": "2026-03-01 08:00:00.000000 UTC",
+  "usage_end_time": "2026-04-01 07:00:00.000000 UTC",
+  "project": {
+    "number": null,
+    "id": null,
+    "name": null,
+    "labels": [],
+    "ancestry_numbers": null
+  },
+  "labels": [],
+  "system_labels": [{
+    "key": "workspace.googleapis.com/domain_name",
+    "value": "dalis.edu.vn"
+  }, {
+    "key": "workspace.googleapis.com/order_id",
+    "value": "9803219512-08"
+  }, {
+    "key": "workspace.googleapis.com/subscription_id",
+    "value": "9803219512"
+  }, {
+    "key": "workspace.googleapis.com/usage_type",
+    "value": "COMMITMENT_MONTHLY_ITEM"
+  }],
+  "location": {
+    "location": null,
+    "country": null,
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": null,
+    "global_name": null
+  },
+  "cost": "1.96",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "1",
+    "unit": "count",
+    "amount_in_pricing_unit": "1",
+    "pricing_unit": "count"
+  },
+  "credits": [],
+  "adjustment_info": {
+    "adjustment_id": null,
+    "adjustment_description": null,
+    "adjustment_type": null,
+    "adjustment_mode": null
+  },
+  "export_time": "2026-03-02 09:19:27.394212 UTC",
+  "entitlement_name": "accounts/C01473oln/customers/SpqYzuTzWLGlZW/entitlements/SHzSzmxzJZ1E6f",
+  "channel_partner_name": "accounts/C01473oln/channelPartnerLinks/",
+  "channel_partner_cost": null,
+  "customer_name": "accounts/C01473oln/customers/SpqYzuTzWLGlZW",
+  "customer_cost": null,
+  "cost_at_list": null,
+  "customer_repricing_config_name": null,
+  "channel_partner_repricing_config_name": null,
+  "tags": [],
+  "customer_correlation_id": "",
+  "price": {
+    "effective_price": null,
+    "tier_start_amount": null,
+    "unit": "count",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": null,
+  "seller_name": null,
+  "subscription": {
+    "instance_id": null
+  },
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": {
+    "id": null,
+    "description": null
+  }
+}, {
+  "billing_account_id": "C010punqc",
+  "payer_billing_account_id": "1-30173-04006",
+  "invoice": {
+    "month": "202603"
+  },
+  "cost_type": "tax",
+  "service": {
+    "id": "A656-35D2-EF7F",
+    "description": "Invoice"
+  },
+  "sku": {
+    "id": "A1A2-4711-B376",
+    "description": "Tax"
+  },
+  "usage_start_time": "2026-03-01 08:00:00.000000 UTC",
+  "usage_end_time": "2026-04-01 07:00:00.000000 UTC",
+  "project": {
+    "number": null,
+    "id": null,
+    "name": null,
+    "labels": [],
+    "ancestry_numbers": null
+  },
+  "labels": [],
+  "system_labels": [{
+    "key": "workspace.googleapis.com/domain_name",
+    "value": "dalis.edu.vn"
+  }, {
+    "key": "workspace.googleapis.com/order_id",
+    "value": "9803219512-07"
+  }, {
+    "key": "workspace.googleapis.com/subscription_id",
+    "value": "9803219512"
+  }, {
+    "key": "workspace.googleapis.com/usage_type",
+    "value": "COMMITMENT_MONTHLY_ITEM"
+  }],
+  "location": {
+    "location": null,
+    "country": null,
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": null,
+    "global_name": null
+  },
+  "cost": "-1.31",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "-1",
+    "unit": "count",
+    "amount_in_pricing_unit": "-1",
+    "pricing_unit": "count"
+  },
+  "credits": [],
+  "adjustment_info": {
+    "adjustment_id": null,
+    "adjustment_description": null,
+    "adjustment_type": null,
+    "adjustment_mode": null
+  },
+  "export_time": "2026-03-02 09:19:27.394212 UTC",
+  "entitlement_name": "accounts/C01473oln/customers/SpqYzuTzWLGlZW/entitlements/SHzSzmxzJZ1E6f",
+  "channel_partner_name": "accounts/C01473oln/channelPartnerLinks/",
+  "channel_partner_cost": null,
+  "customer_name": "accounts/C01473oln/customers/SpqYzuTzWLGlZW",
+  "customer_cost": null,
+  "cost_at_list": null,
+  "customer_repricing_config_name": null,
+  "channel_partner_repricing_config_name": null,
+  "tags": [],
+  "customer_correlation_id": "",
+  "price": {
+    "effective_price": null,
+    "tier_start_amount": null,
+    "unit": "count",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": null,
+  "seller_name": null,
+  "subscription": {
+    "instance_id": null
+  },
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": {
+    "id": null,
+    "description": null
+  }
+}, {
+  "billing_account_id": "C01330q88",
+  "payer_billing_account_id": "1-30173-04006",
+  "invoice": {
+    "month": "202603"
+  },
+  "cost_type": "regular",
+  "service": {
+    "id": "Google-Apps",
+    "description": "Google Workspace"
+  },
+  "sku": {
+    "id": "1010020027",
+    "description": "Google Workspace Business Starter"
+  },
+  "usage_start_time": "2026-03-01 08:00:00.000000 UTC",
+  "usage_end_time": "2026-04-01 07:00:00.000000 UTC",
+  "project": {
+    "number": null,
+    "id": null,
+    "name": null,
+    "labels": [],
+    "ancestry_numbers": null
+  },
+  "labels": [],
+  "system_labels": [{
+    "key": "workspace.googleapis.com/domain_name",
+    "value": "vntmedical.com"
+  }, {
+    "key": "workspace.googleapis.com/order_id",
+    "value": "2468613410-27"
+  }, {
+    "key": "workspace.googleapis.com/subscription_id",
+    "value": "2468613410"
+  }, {
+    "key": "workspace.googleapis.com/usage_type",
+    "value": "COMMITMENT_MONTHLY_ITEM"
+  }],
+  "location": {
+    "location": null,
+    "country": null,
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": null,
+    "global_name": null
+  },
+  "cost": "102.9",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "21",
+    "unit": "count",
+    "amount_in_pricing_unit": "21",
+    "pricing_unit": "count"
+  },
+  "credits": [],
+  "adjustment_info": {
+    "adjustment_id": null,
+    "adjustment_description": null,
+    "adjustment_type": null,
+    "adjustment_mode": null
+  },
+  "export_time": "2026-03-02 09:19:27.394212 UTC",
+  "entitlement_name": "accounts/C01473oln/customers/SFsvGkqivz3gM9/entitlements/SrQKUwE33SZf2r",
+  "channel_partner_name": "accounts/C01473oln/channelPartnerLinks/",
+  "channel_partner_cost": null,
+  "customer_name": "accounts/C01473oln/customers/SFsvGkqivz3gM9",
+  "customer_cost": "102.9",
+  "cost_at_list": "147",
+  "customer_repricing_config_name": "accounts/C01473oln/customers/SFsvGkqivz3gM9/customerRepricingConfigs/",
+  "channel_partner_repricing_config_name": null,
+  "tags": [],
+  "customer_correlation_id": "",
+  "price": {
+    "effective_price": null,
+    "tier_start_amount": null,
+    "unit": "count",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": null,
+  "seller_name": null,
+  "subscription": {
+    "instance_id": null
+  },
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": {
+    "id": null,
+    "description": null
+  }
+}, {
+  "billing_account_id": "C01330q88",
+  "payer_billing_account_id": "1-30173-04006",
+  "invoice": {
+    "month": "202603"
+  },
+  "cost_type": "regular",
+  "service": {
+    "id": "Google-Apps",
+    "description": "Google Workspace"
+  },
+  "sku": {
+    "id": "1010020027",
+    "description": "Google Workspace Business Starter"
+  },
+  "usage_start_time": "2026-03-01 08:00:00.000000 UTC",
+  "usage_end_time": "2026-04-01 07:00:00.000000 UTC",
+  "project": {
+    "number": null,
+    "id": null,
+    "name": null,
+    "labels": [],
+    "ancestry_numbers": null
+  },
+  "labels": [],
+  "system_labels": [{
+    "key": "workspace.googleapis.com/domain_name",
+    "value": "vntmedical.com"
+  }, {
+    "key": "workspace.googleapis.com/order_id",
+    "value": "2468613410-25"
+  }, {
+    "key": "workspace.googleapis.com/subscription_id",
+    "value": "2468613410"
+  }, {
+    "key": "workspace.googleapis.com/usage_type",
+    "value": "COMMITMENT_MONTHLY_ITEM"
+  }],
+  "location": {
+    "location": null,
+    "country": null,
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": null,
+    "global_name": null
+  },
+  "cost": "-98",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "-20",
+    "unit": "count",
+    "amount_in_pricing_unit": "-20",
+    "pricing_unit": "count"
+  },
+  "credits": [],
+  "adjustment_info": {
+    "adjustment_id": null,
+    "adjustment_description": null,
+    "adjustment_type": null,
+    "adjustment_mode": null
+  },
+  "export_time": "2026-03-02 09:19:27.394212 UTC",
+  "entitlement_name": "accounts/C01473oln/customers/SFsvGkqivz3gM9/entitlements/SrQKUwE33SZf2r",
+  "channel_partner_name": "accounts/C01473oln/channelPartnerLinks/",
+  "channel_partner_cost": null,
+  "customer_name": "accounts/C01473oln/customers/SFsvGkqivz3gM9",
+  "customer_cost": "-98",
+  "cost_at_list": "-140",
+  "customer_repricing_config_name": "accounts/C01473oln/customers/SFsvGkqivz3gM9/customerRepricingConfigs/",
+  "channel_partner_repricing_config_name": null,
+  "tags": [],
+  "customer_correlation_id": "",
+  "price": {
+    "effective_price": null,
+    "tier_start_amount": null,
+    "unit": "count",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": null,
+  "seller_name": null,
+  "subscription": {
+    "instance_id": null
+  },
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": {
+    "id": null,
+    "description": null
+  }
+}, {
+  "billing_account_id": "C01olj81h",
+  "payer_billing_account_id": "1-30173-04006",
+  "invoice": {
+    "month": "202603"
+  },
+  "cost_type": "regular",
+  "service": {
+    "id": "Google-Apps",
+    "description": "Google Workspace"
+  },
+  "sku": {
+    "id": "1010020029",
+    "description": "Google Workspace Enterprise Starter"
+  },
+  "usage_start_time": "2026-03-01 08:00:00.000000 UTC",
+  "usage_end_time": "2026-04-01 07:00:00.000000 UTC",
+  "project": {
+    "number": null,
+    "id": null,
+    "name": null,
+    "labels": [],
+    "ancestry_numbers": null
+  },
+  "labels": [],
+  "system_labels": [{
+    "key": "workspace.googleapis.com/domain_name",
+    "value": "castalk.com"
+  }, {
+    "key": "workspace.googleapis.com/order_id",
+    "value": "9656449517-10"
+  }, {
+    "key": "workspace.googleapis.com/subscription_id",
+    "value": "9656449517"
+  }, {
+    "key": "workspace.googleapis.com/usage_type",
+    "value": "COMMITMENT_MONTHLY_ITEM"
+  }],
+  "location": {
+    "location": null,
+    "country": null,
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": null,
+    "global_name": null
+  },
+  "cost": "2867.48",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "392",
+    "unit": "count",
+    "amount_in_pricing_unit": "392",
+    "pricing_unit": "count"
+  },
+  "credits": [],
+  "adjustment_info": {
+    "adjustment_id": null,
+    "adjustment_description": null,
+    "adjustment_type": null,
+    "adjustment_mode": null
+  },
+  "export_time": "2026-03-02 09:19:27.394212 UTC",
+  "entitlement_name": "accounts/C01473oln/customers/SoGhRxzGRVSVyl/entitlements/SinhQHn1i2g8aG",
+  "channel_partner_name": "accounts/C01473oln/channelPartnerLinks/",
+  "channel_partner_cost": null,
+  "customer_name": "accounts/C01473oln/customers/SoGhRxzGRVSVyl",
+  "customer_cost": "2867.48",
+  "cost_at_list": "4312",
+  "customer_repricing_config_name": "accounts/C01473oln/customers/SoGhRxzGRVSVyl/customerRepricingConfigs/",
+  "channel_partner_repricing_config_name": null,
+  "tags": [],
+  "customer_correlation_id": "",
+  "price": {
+    "effective_price": null,
+    "tier_start_amount": null,
+    "unit": "count",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": null,
+  "seller_name": null,
+  "subscription": {
+    "instance_id": null
+  },
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": {
+    "id": null,
+    "description": null
+  }
+}, {
+  "billing_account_id": "C01olj81h",
+  "payer_billing_account_id": "1-30173-04006",
+  "invoice": {
+    "month": "202603"
+  },
+  "cost_type": "regular",
+  "service": {
+    "id": "Google-Apps",
+    "description": "Google Workspace"
+  },
+  "sku": {
+    "id": "1010020029",
+    "description": "Google Workspace Enterprise Starter"
+  },
+  "usage_start_time": "2026-03-01 08:00:00.000000 UTC",
+  "usage_end_time": "2026-04-01 07:00:00.000000 UTC",
+  "project": {
+    "number": null,
+    "id": null,
+    "name": null,
+    "labels": [],
+    "ancestry_numbers": null
+  },
+  "labels": [],
+  "system_labels": [{
+    "key": "workspace.googleapis.com/domain_name",
+    "value": "castalk.com"
+  }, {
+    "key": "workspace.googleapis.com/order_id",
+    "value": "9656449517-09"
+  }, {
+    "key": "workspace.googleapis.com/subscription_id",
+    "value": "9656449517"
+  }, {
+    "key": "workspace.googleapis.com/usage_type",
+    "value": "COMMITMENT_MONTHLY_ITEM"
+  }],
+  "location": {
+    "location": null,
+    "country": null,
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": null,
+    "global_name": null
+  },
+  "cost": "-2721.18",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "-372",
+    "unit": "count",
+    "amount_in_pricing_unit": "-372",
+    "pricing_unit": "count"
+  },
+  "credits": [],
+  "adjustment_info": {
+    "adjustment_id": null,
+    "adjustment_description": null,
+    "adjustment_type": null,
+    "adjustment_mode": null
+  },
+  "export_time": "2026-03-02 09:19:27.394212 UTC",
+  "entitlement_name": "accounts/C01473oln/customers/SoGhRxzGRVSVyl/entitlements/SinhQHn1i2g8aG",
+  "channel_partner_name": "accounts/C01473oln/channelPartnerLinks/",
+  "channel_partner_cost": null,
+  "customer_name": "accounts/C01473oln/customers/SoGhRxzGRVSVyl",
+  "customer_cost": "-2721.18",
+  "cost_at_list": "-4092",
+  "customer_repricing_config_name": "accounts/C01473oln/customers/SoGhRxzGRVSVyl/customerRepricingConfigs/",
+  "channel_partner_repricing_config_name": null,
+  "tags": [],
+  "customer_correlation_id": "",
+  "price": {
+    "effective_price": null,
+    "tier_start_amount": null,
+    "unit": "count",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": null,
+  "seller_name": null,
+  "subscription": {
+    "instance_id": null
+  },
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": {
+    "id": null,
+    "description": null
+  }
+}, {
+  "billing_account_id": "C010punqc",
+  "payer_billing_account_id": "1-30173-04006",
+  "invoice": {
+    "month": "202603"
+  },
+  "cost_type": "regular",
+  "service": {
+    "id": "Google-Apps",
+    "description": "Google Workspace"
+  },
+  "sku": {
+    "id": "1010020028",
+    "description": "Google Workspace Business Standard"
+  },
+  "usage_start_time": "2026-03-01 08:00:00.000000 UTC",
+  "usage_end_time": "2026-04-01 07:00:00.000000 UTC",
+  "project": {
+    "number": null,
+    "id": null,
+    "name": null,
+    "labels": [],
+    "ancestry_numbers": null
+  },
+  "labels": [],
+  "system_labels": [{
+    "key": "workspace.googleapis.com/domain_name",
+    "value": "dalis.edu.vn"
+  }, {
+    "key": "workspace.googleapis.com/order_id",
+    "value": "9803219512-08"
+  }, {
+    "key": "workspace.googleapis.com/subscription_id",
+    "value": "9803219512"
+  }, {
+    "key": "workspace.googleapis.com/usage_type",
+    "value": "COMMITMENT_MONTHLY_ITEM"
+  }],
+  "location": {
+    "location": null,
+    "country": null,
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": null,
+    "global_name": null
+  },
+  "cost": "17.64",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "3",
+    "unit": "count",
+    "amount_in_pricing_unit": "3",
+    "pricing_unit": "count"
+  },
+  "credits": [],
+  "adjustment_info": {
+    "adjustment_id": null,
+    "adjustment_description": null,
+    "adjustment_type": null,
+    "adjustment_mode": null
+  },
+  "export_time": "2026-03-02 09:19:27.394212 UTC",
+  "entitlement_name": "accounts/C01473oln/customers/SpqYzuTzWLGlZW/entitlements/SHzSzmxzJZ1E6f",
+  "channel_partner_name": "accounts/C01473oln/channelPartnerLinks/",
+  "channel_partner_cost": null,
+  "customer_name": "accounts/C01473oln/customers/SpqYzuTzWLGlZW",
+  "customer_cost": "17.64",
+  "cost_at_list": "42",
+  "customer_repricing_config_name": "accounts/C01473oln/customers/SpqYzuTzWLGlZW/customerRepricingConfigs/",
+  "channel_partner_repricing_config_name": null,
+  "tags": [],
+  "customer_correlation_id": "",
+  "price": {
+    "effective_price": null,
+    "tier_start_amount": null,
+    "unit": "count",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": null,
+  "seller_name": null,
+  "subscription": {
+    "instance_id": null
+  },
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": {
+    "id": null,
+    "description": null
+  }
+}, {
+  "billing_account_id": "C010punqc",
+  "payer_billing_account_id": "1-30173-04006",
+  "invoice": {
+    "month": "202603"
+  },
+  "cost_type": "regular",
+  "service": {
+    "id": "Google-Apps",
+    "description": "Google Workspace"
+  },
+  "sku": {
+    "id": "1010020028",
+    "description": "Google Workspace Business Standard"
+  },
+  "usage_start_time": "2026-03-01 08:00:00.000000 UTC",
+  "usage_end_time": "2026-04-01 07:00:00.000000 UTC",
+  "project": {
+    "number": null,
+    "id": null,
+    "name": null,
+    "labels": [],
+    "ancestry_numbers": null
+  },
+  "labels": [],
+  "system_labels": [{
+    "key": "workspace.googleapis.com/domain_name",
+    "value": "dalis.edu.vn"
+  }, {
+    "key": "workspace.googleapis.com/order_id",
+    "value": "9803219512-07"
+  }, {
+    "key": "workspace.googleapis.com/subscription_id",
+    "value": "9803219512"
+  }, {
+    "key": "workspace.googleapis.com/usage_type",
+    "value": "COMMITMENT_MONTHLY_ITEM"
+  }],
+  "location": {
+    "location": null,
+    "country": null,
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": null,
+    "global_name": null
+  },
+  "cost": "-11.76",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "-2",
+    "unit": "count",
+    "amount_in_pricing_unit": "-2",
+    "pricing_unit": "count"
+  },
+  "credits": [],
+  "adjustment_info": {
+    "adjustment_id": null,
+    "adjustment_description": null,
+    "adjustment_type": null,
+    "adjustment_mode": null
+  },
+  "export_time": "2026-03-02 09:19:27.394212 UTC",
+  "entitlement_name": "accounts/C01473oln/customers/SpqYzuTzWLGlZW/entitlements/SHzSzmxzJZ1E6f",
+  "channel_partner_name": "accounts/C01473oln/channelPartnerLinks/",
+  "channel_partner_cost": null,
+  "customer_name": "accounts/C01473oln/customers/SpqYzuTzWLGlZW",
+  "customer_cost": "-11.76",
+  "cost_at_list": "-28",
+  "customer_repricing_config_name": "accounts/C01473oln/customers/SpqYzuTzWLGlZW/customerRepricingConfigs/",
+  "channel_partner_repricing_config_name": null,
+  "tags": [],
+  "customer_correlation_id": "",
+  "price": {
+    "effective_price": null,
+    "tier_start_amount": null,
+    "unit": "count",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": null,
+  "seller_name": null,
+  "subscription": {
+    "instance_id": null
+  },
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": {
+    "id": null,
+    "description": null
+  }
+}, {
+  "billing_account_id": "C01xm6ku6",
+  "payer_billing_account_id": "1-30173-04006",
+  "invoice": {
+    "month": "202603"
+  },
+  "cost_type": "regular",
+  "service": {
+    "id": "Google-Apps",
+    "description": "Google Workspace"
+  },
+  "sku": {
+    "id": "1010020027",
+    "description": "Google Workspace Business Starter"
+  },
+  "usage_start_time": "2026-03-01 08:00:00.000000 UTC",
+  "usage_end_time": "2026-04-01 07:00:00.000000 UTC",
+  "project": {
+    "number": null,
+    "id": null,
+    "name": null,
+    "labels": [],
+    "ancestry_numbers": null
+  },
+  "labels": [],
+  "system_labels": [{
+    "key": "workspace.googleapis.com/domain_name",
+    "value": "sub.comem.vn"
+  }, {
+    "key": "workspace.googleapis.com/order_id",
+    "value": "4264900188-15"
+  }, {
+    "key": "workspace.googleapis.com/subscription_id",
+    "value": "4264900188"
+  }, {
+    "key": "workspace.googleapis.com/usage_type",
+    "value": "COMMITMENT_MONTHLY_ITEM"
+  }],
+  "location": {
+    "location": null,
+    "country": null,
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": null,
+    "global_name": null
+  },
+  "cost": "-710.5",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "-145",
+    "unit": "count",
+    "amount_in_pricing_unit": "-145",
+    "pricing_unit": "count"
+  },
+  "credits": [],
+  "adjustment_info": {
+    "adjustment_id": null,
+    "adjustment_description": null,
+    "adjustment_type": null,
+    "adjustment_mode": null
+  },
+  "export_time": "2026-03-02 09:19:27.394212 UTC",
+  "entitlement_name": "accounts/C01473oln/customers/SwQ4ZpaKOds2pY/entitlements/Swp3PKuVLRHJcr",
+  "channel_partner_name": "accounts/C01473oln/channelPartnerLinks/",
+  "channel_partner_cost": null,
+  "customer_name": "accounts/C01473oln/customers/SwQ4ZpaKOds2pY",
+  "customer_cost": "-710.5",
+  "cost_at_list": "-1015",
+  "customer_repricing_config_name": "accounts/C01473oln/customers/SwQ4ZpaKOds2pY/customerRepricingConfigs/",
+  "channel_partner_repricing_config_name": null,
+  "tags": [],
+  "customer_correlation_id": "",
+  "price": {
+    "effective_price": null,
+    "tier_start_amount": null,
+    "unit": "count",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": null,
+  "seller_name": null,
+  "subscription": {
+    "instance_id": null
+  },
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": {
+    "id": null,
+    "description": null
+  }
+}, {
+  "billing_account_id": "C01xm6ku6",
+  "payer_billing_account_id": "1-30173-04006",
+  "invoice": {
+    "month": "202603"
+  },
+  "cost_type": "regular",
+  "service": {
+    "id": "Google-Apps",
+    "description": "Google Workspace"
+  },
+  "sku": {
+    "id": "1010020027",
+    "description": "Google Workspace Business Starter"
+  },
+  "usage_start_time": "2026-03-01 08:00:00.000000 UTC",
+  "usage_end_time": "2026-04-01 07:00:00.000000 UTC",
+  "project": {
+    "number": null,
+    "id": null,
+    "name": null,
+    "labels": [],
+    "ancestry_numbers": null
+  },
+  "labels": [],
+  "system_labels": [{
+    "key": "workspace.googleapis.com/domain_name",
+    "value": "sub.comem.vn"
+  }, {
+    "key": "workspace.googleapis.com/order_id",
+    "value": "4264900188-17"
+  }, {
+    "key": "workspace.googleapis.com/subscription_id",
+    "value": "4264900188"
+  }, {
+    "key": "workspace.googleapis.com/usage_type",
+    "value": "COMMITMENT_MONTHLY_ITEM"
+  }],
+  "location": {
+    "location": null,
+    "country": null,
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": null,
+    "global_name": null
+  },
+  "cost": "759.5",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "155",
+    "unit": "count",
+    "amount_in_pricing_unit": "155",
+    "pricing_unit": "count"
+  },
+  "credits": [],
+  "adjustment_info": {
+    "adjustment_id": null,
+    "adjustment_description": null,
+    "adjustment_type": null,
+    "adjustment_mode": null
+  },
+  "export_time": "2026-03-02 09:19:27.394212 UTC",
+  "entitlement_name": "accounts/C01473oln/customers/SwQ4ZpaKOds2pY/entitlements/Swp3PKuVLRHJcr",
+  "channel_partner_name": "accounts/C01473oln/channelPartnerLinks/",
+  "channel_partner_cost": null,
+  "customer_name": "accounts/C01473oln/customers/SwQ4ZpaKOds2pY",
+  "customer_cost": "759.5",
+  "cost_at_list": "1085",
+  "customer_repricing_config_name": "accounts/C01473oln/customers/SwQ4ZpaKOds2pY/customerRepricingConfigs/",
+  "channel_partner_repricing_config_name": null,
+  "tags": [],
+  "customer_correlation_id": "",
+  "price": {
+    "effective_price": null,
+    "tier_start_amount": null,
+    "unit": "count",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": null,
+  "seller_name": null,
+  "subscription": {
+    "instance_id": null
+  },
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": {
+    "id": null,
+    "description": null
+  }
+}, {
+  "billing_account_id": "C036ibad3",
+  "payer_billing_account_id": "1-30173-04006",
+  "invoice": {
+    "month": "202603"
+  },
+  "cost_type": "tax",
+  "service": {
+    "id": "A656-35D2-EF7F",
+    "description": "Invoice"
+  },
+  "sku": {
+    "id": "A1A2-4711-B376",
+    "description": "Tax"
+  },
+  "usage_start_time": "2026-03-01 08:00:00.000000 UTC",
+  "usage_end_time": "2026-04-01 07:00:00.000000 UTC",
+  "project": {
+    "number": null,
+    "id": null,
+    "name": null,
+    "labels": [],
+    "ancestry_numbers": null
+  },
+  "labels": [],
+  "system_labels": [{
+    "key": "workspace.googleapis.com/domain_name",
+    "value": "ielts1984.vn"
+  }, {
+    "key": "workspace.googleapis.com/order_id",
+    "value": "10578270790-02"
+  }, {
+    "key": "workspace.googleapis.com/subscription_id",
+    "value": "10578270790"
+  }, {
+    "key": "workspace.googleapis.com/usage_type",
+    "value": "COMMITMENT_TERM_START_ITEM"
+  }],
+  "location": {
+    "location": null,
+    "country": null,
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": null,
+    "global_name": null
+  },
+  "cost": "6.96",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "1",
+    "unit": "count",
+    "amount_in_pricing_unit": "1",
+    "pricing_unit": "count"
+  },
+  "credits": [],
+  "adjustment_info": {
+    "adjustment_id": null,
+    "adjustment_description": null,
+    "adjustment_type": null,
+    "adjustment_mode": null
+  },
+  "export_time": "2026-03-02 12:58:21.431026 UTC",
+  "entitlement_name": "accounts/C01473oln/customers/SerIPnSTRe3z18/entitlements/Sa5Q1Pwwrq2oPJ",
+  "channel_partner_name": "accounts/C01473oln/channelPartnerLinks/",
+  "channel_partner_cost": null,
+  "customer_name": "accounts/C01473oln/customers/SerIPnSTRe3z18",
+  "customer_cost": null,
+  "cost_at_list": null,
+  "customer_repricing_config_name": null,
+  "channel_partner_repricing_config_name": null,
+  "tags": [],
+  "customer_correlation_id": "",
+  "price": {
+    "effective_price": null,
+    "tier_start_amount": null,
+    "unit": "count",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": null,
+  "seller_name": null,
+  "subscription": {
+    "instance_id": null
+  },
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": {
+    "id": null,
+    "description": null
+  }
+}, {
+  "billing_account_id": "C01876f5h",
+  "payer_billing_account_id": "1-30173-04006",
+  "invoice": {
+    "month": "202603"
+  },
+  "cost_type": "tax",
+  "service": {
+    "id": "A656-35D2-EF7F",
+    "description": "Invoice"
+  },
+  "sku": {
+    "id": "A1A2-4711-B376",
+    "description": "Tax"
+  },
+  "usage_start_time": "2026-03-01 08:00:00.000000 UTC",
+  "usage_end_time": "2026-04-01 07:00:00.000000 UTC",
+  "project": {
+    "number": null,
+    "id": null,
+    "name": null,
+    "labels": [],
+    "ancestry_numbers": null
+  },
+  "labels": [],
+  "system_labels": [{
+    "key": "workspace.googleapis.com/domain_name",
+    "value": "youpass.vn"
+  }, {
+    "key": "workspace.googleapis.com/order_id",
+    "value": "10578337388-02"
+  }, {
+    "key": "workspace.googleapis.com/subscription_id",
+    "value": "10578337388"
+  }, {
+    "key": "workspace.googleapis.com/usage_type",
+    "value": "COMMITMENT_TERM_START_ITEM"
+  }],
+  "location": {
+    "location": null,
+    "country": null,
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": null,
+    "global_name": null
+  },
+  "cost": "2.22",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "1",
+    "unit": "count",
+    "amount_in_pricing_unit": "1",
+    "pricing_unit": "count"
+  },
+  "credits": [],
+  "adjustment_info": {
+    "adjustment_id": null,
+    "adjustment_description": null,
+    "adjustment_type": null,
+    "adjustment_mode": null
+  },
+  "export_time": "2026-03-02 12:58:21.431026 UTC",
+  "entitlement_name": "accounts/C01473oln/customers/S8n93Lq610FuhU/entitlements/SmpL3T2DPXhzsl",
+  "channel_partner_name": "accounts/C01473oln/channelPartnerLinks/",
+  "channel_partner_cost": null,
+  "customer_name": "accounts/C01473oln/customers/S8n93Lq610FuhU",
+  "customer_cost": null,
+  "cost_at_list": null,
+  "customer_repricing_config_name": null,
+  "channel_partner_repricing_config_name": null,
+  "tags": [],
+  "customer_correlation_id": "",
+  "price": {
+    "effective_price": null,
+    "tier_start_amount": null,
+    "unit": "count",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": null,
+  "seller_name": null,
+  "subscription": {
+    "instance_id": null
+  },
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": {
+    "id": null,
+    "description": null
+  }
+}, {
+  "billing_account_id": "C011mgspw",
+  "payer_billing_account_id": "1-30173-04006",
+  "invoice": {
+    "month": "202603"
+  },
+  "cost_type": "tax",
+  "service": {
+    "id": "A656-35D2-EF7F",
+    "description": "Invoice"
+  },
+  "sku": {
+    "id": "A1A2-4711-B376",
+    "description": "Tax"
+  },
+  "usage_start_time": "2026-03-02 08:00:00.000000 UTC",
+  "usage_end_time": "2026-03-02 08:00:00.001000 UTC",
+  "project": {
+    "number": null,
+    "id": null,
+    "name": null,
+    "labels": [],
+    "ancestry_numbers": null
+  },
+  "labels": [],
+  "system_labels": [{
+    "key": "workspace.googleapis.com/domain_name",
+    "value": "enterprise.io.vn"
+  }, {
+    "key": "workspace.googleapis.com/order_id",
+    "value": "10577807832-02"
+  }, {
+    "key": "workspace.googleapis.com/subscription_id",
+    "value": "10577807832"
+  }, {
+    "key": "workspace.googleapis.com/usage_type",
+    "value": "FLEXIBLE_SEATS_ITEM"
+  }],
+  "location": {
+    "location": null,
+    "country": null,
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": null,
+    "global_name": null
+  },
+  "cost": "0",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "1",
+    "unit": "count",
+    "amount_in_pricing_unit": "1",
+    "pricing_unit": "count"
+  },
+  "credits": [],
+  "adjustment_info": {
+    "adjustment_id": null,
+    "adjustment_description": null,
+    "adjustment_type": null,
+    "adjustment_mode": null
+  },
+  "export_time": "2026-03-02 12:58:21.431026 UTC",
+  "entitlement_name": "accounts/C01473oln/customers/STeo7TZW2dgsNl/entitlements/Scd8Mgc23PTyPb",
+  "channel_partner_name": "accounts/C01473oln/channelPartnerLinks/",
+  "channel_partner_cost": null,
+  "customer_name": "accounts/C01473oln/customers/STeo7TZW2dgsNl",
+  "customer_cost": null,
+  "cost_at_list": null,
+  "customer_repricing_config_name": null,
+  "channel_partner_repricing_config_name": null,
+  "tags": [],
+  "customer_correlation_id": "",
+  "price": {
+    "effective_price": null,
+    "tier_start_amount": null,
+    "unit": "count",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": null,
+  "seller_name": null,
+  "subscription": {
+    "instance_id": null
+  },
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": {
+    "id": null,
+    "description": null
+  }
+}, {
+  "billing_account_id": "C049lrfrt",
+  "payer_billing_account_id": "1-30173-04006",
+  "invoice": {
+    "month": "202603"
+  },
+  "cost_type": "tax",
+  "service": {
+    "id": "A656-35D2-EF7F",
+    "description": "Invoice"
+  },
+  "sku": {
+    "id": "A1A2-4711-B376",
+    "description": "Tax"
+  },
+  "usage_start_time": "2026-03-02 08:00:00.000000 UTC",
+  "usage_end_time": "2026-04-01 07:00:00.000000 UTC",
+  "project": {
+    "number": null,
+    "id": null,
+    "name": null,
+    "labels": [],
+    "ancestry_numbers": null
+  },
+  "labels": [],
+  "system_labels": [{
+    "key": "workspace.googleapis.com/domain_name",
+    "value": "pixelcinema.vn"
+  }, {
+    "key": "workspace.googleapis.com/order_id",
+    "value": "7977199888-07"
+  }, {
+    "key": "workspace.googleapis.com/subscription_id",
+    "value": "7977199888"
+  }, {
+    "key": "workspace.googleapis.com/usage_type",
+    "value": "COMMITMENT_TERM_START_ITEM"
+  }],
+  "location": {
+    "location": null,
+    "country": null,
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": null,
+    "global_name": null
+  },
+  "cost": "1.58",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "1",
+    "unit": "count",
+    "amount_in_pricing_unit": "1",
+    "pricing_unit": "count"
+  },
+  "credits": [],
+  "adjustment_info": {
+    "adjustment_id": null,
+    "adjustment_description": null,
+    "adjustment_type": null,
+    "adjustment_mode": null
+  },
+  "export_time": "2026-03-02 12:58:21.431026 UTC",
+  "entitlement_name": "accounts/C01473oln/customers/S5dNht37LXzdVp/entitlements/SeINDNSR4mms32",
+  "channel_partner_name": "accounts/C01473oln/channelPartnerLinks/",
+  "channel_partner_cost": null,
+  "customer_name": "accounts/C01473oln/customers/S5dNht37LXzdVp",
+  "customer_cost": null,
+  "cost_at_list": null,
+  "customer_repricing_config_name": null,
+  "channel_partner_repricing_config_name": null,
+  "tags": [],
+  "customer_correlation_id": "",
+  "price": {
+    "effective_price": null,
+    "tier_start_amount": null,
+    "unit": "count",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": null,
+  "seller_name": null,
+  "subscription": {
+    "instance_id": null
+  },
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": {
+    "id": null,
+    "description": null
+  }
+}, {
+  "billing_account_id": "C049lrfrt",
+  "payer_billing_account_id": "1-30173-04006",
+  "invoice": {
+    "month": "202603"
+  },
+  "cost_type": "regular",
+  "service": {
+    "id": "Google-Apps",
+    "description": "Google Workspace"
+  },
+  "sku": {
+    "id": "1010020027",
+    "description": "Google Workspace Business Starter"
+  },
+  "usage_start_time": "2026-03-02 08:00:00.000000 UTC",
+  "usage_end_time": "2026-04-01 07:00:00.000000 UTC",
+  "project": {
+    "number": null,
+    "id": null,
+    "name": null,
+    "labels": [],
+    "ancestry_numbers": null
+  },
+  "labels": [],
+  "system_labels": [{
+    "key": "workspace.googleapis.com/domain_name",
+    "value": "pixelcinema.vn"
+  }, {
+    "key": "workspace.googleapis.com/order_id",
+    "value": "7977199888-07"
+  }, {
+    "key": "workspace.googleapis.com/subscription_id",
+    "value": "7977199888"
+  }, {
+    "key": "workspace.googleapis.com/usage_type",
+    "value": "COMMITMENT_TERM_START_ITEM"
+  }],
+  "location": {
+    "location": null,
+    "country": null,
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": null,
+    "global_name": null
+  },
+  "cost": "14.23",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "3",
+    "unit": "count",
+    "amount_in_pricing_unit": "3",
+    "pricing_unit": "count"
+  },
+  "credits": [],
+  "adjustment_info": {
+    "adjustment_id": null,
+    "adjustment_description": null,
+    "adjustment_type": null,
+    "adjustment_mode": null
+  },
+  "export_time": "2026-03-02 12:58:21.431026 UTC",
+  "entitlement_name": "accounts/C01473oln/customers/S5dNht37LXzdVp/entitlements/SeINDNSR4mms32",
+  "channel_partner_name": "accounts/C01473oln/channelPartnerLinks/",
+  "channel_partner_cost": null,
+  "customer_name": "accounts/C01473oln/customers/S5dNht37LXzdVp",
+  "customer_cost": "14.23",
+  "cost_at_list": "20.32",
+  "customer_repricing_config_name": "accounts/C01473oln/customers/S5dNht37LXzdVp/customerRepricingConfigs/",
+  "channel_partner_repricing_config_name": null,
+  "tags": [],
+  "customer_correlation_id": "",
+  "price": {
+    "effective_price": null,
+    "tier_start_amount": null,
+    "unit": "count",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": null,
+  "seller_name": null,
+  "subscription": {
+    "instance_id": null
+  },
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": {
+    "id": null,
+    "description": null
+  }
+}, {
+  "billing_account_id": "C01876f5h",
+  "payer_billing_account_id": "1-30173-04006",
+  "invoice": {
+    "month": "202603"
+  },
+  "cost_type": "regular",
+  "service": {
+    "id": "Google-Apps",
+    "description": "Google Workspace"
+  },
+  "sku": {
+    "id": "1010020027",
+    "description": "Google Workspace Business Starter"
+  },
+  "usage_start_time": "2026-03-01 08:00:00.000000 UTC",
+  "usage_end_time": "2026-04-01 07:00:00.000000 UTC",
+  "project": {
+    "number": null,
+    "id": null,
+    "name": null,
+    "labels": [],
+    "ancestry_numbers": null
+  },
+  "labels": [],
+  "system_labels": [{
+    "key": "workspace.googleapis.com/domain_name",
+    "value": "youpass.vn"
+  }, {
+    "key": "workspace.googleapis.com/order_id",
+    "value": "10578337388-02"
+  }, {
+    "key": "workspace.googleapis.com/subscription_id",
+    "value": "10578337388"
+  }, {
+    "key": "workspace.googleapis.com/usage_type",
+    "value": "COMMITMENT_TERM_START_ITEM"
+  }],
+  "location": {
+    "location": null,
+    "country": null,
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": null,
+    "global_name": null
+  },
+  "cost": "19.95",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "3",
+    "unit": "count",
+    "amount_in_pricing_unit": "3",
+    "pricing_unit": "count"
+  },
+  "credits": [],
+  "adjustment_info": {
+    "adjustment_id": null,
+    "adjustment_description": null,
+    "adjustment_type": null,
+    "adjustment_mode": null
+  },
+  "export_time": "2026-03-02 12:58:21.431026 UTC",
+  "entitlement_name": "accounts/C01473oln/customers/S8n93Lq610FuhU/entitlements/SmpL3T2DPXhzsl",
+  "channel_partner_name": "accounts/C01473oln/channelPartnerLinks/",
+  "channel_partner_cost": null,
+  "customer_name": "accounts/C01473oln/customers/S8n93Lq610FuhU",
+  "customer_cost": "19.95",
+  "cost_at_list": "21",
+  "customer_repricing_config_name": "accounts/C01473oln/customers/S8n93Lq610FuhU/customerRepricingConfigs/",
+  "channel_partner_repricing_config_name": null,
+  "tags": [],
+  "customer_correlation_id": "",
+  "price": {
+    "effective_price": null,
+    "tier_start_amount": null,
+    "unit": "count",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": null,
+  "seller_name": null,
+  "subscription": {
+    "instance_id": null
+  },
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": {
+    "id": null,
+    "description": null
+  }
+}, {
+  "billing_account_id": "C011mgspw",
+  "payer_billing_account_id": "1-30173-04006",
+  "invoice": {
+    "month": "202603"
+  },
+  "cost_type": "regular",
+  "service": {
+    "id": "Google-Apps",
+    "description": "Google Workspace"
+  },
+  "sku": {
+    "id": "1010020020",
+    "description": "Google Workspace Enterprise Plus"
+  },
+  "usage_start_time": "2026-03-02 08:00:00.000000 UTC",
+  "usage_end_time": "2026-03-02 08:00:00.001000 UTC",
+  "project": {
+    "number": null,
+    "id": null,
+    "name": null,
+    "labels": [],
+    "ancestry_numbers": null
+  },
+  "labels": [],
+  "system_labels": [{
+    "key": "workspace.googleapis.com/domain_name",
+    "value": "enterprise.io.vn"
+  }, {
+    "key": "workspace.googleapis.com/order_id",
+    "value": "10577807832-02"
+  }, {
+    "key": "workspace.googleapis.com/subscription_id",
+    "value": "10577807832"
+  }, {
+    "key": "workspace.googleapis.com/usage_type",
+    "value": "FLEXIBLE_SEATS_ITEM"
+  }],
+  "location": {
+    "location": null,
+    "country": null,
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": null,
+    "global_name": null
+  },
+  "cost": "0",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "6",
+    "unit": "count",
+    "amount_in_pricing_unit": "6",
+    "pricing_unit": "count"
+  },
+  "credits": [],
+  "adjustment_info": {
+    "adjustment_id": null,
+    "adjustment_description": null,
+    "adjustment_type": null,
+    "adjustment_mode": null
+  },
+  "export_time": "2026-03-02 12:58:21.431026 UTC",
+  "entitlement_name": "accounts/C01473oln/customers/STeo7TZW2dgsNl/entitlements/Scd8Mgc23PTyPb",
+  "channel_partner_name": "accounts/C01473oln/channelPartnerLinks/",
+  "channel_partner_cost": null,
+  "customer_name": "accounts/C01473oln/customers/STeo7TZW2dgsNl",
+  "customer_cost": "0",
+  "cost_at_list": "0",
+  "customer_repricing_config_name": "accounts/C01473oln/customers/STeo7TZW2dgsNl/customerRepricingConfigs/",
+  "channel_partner_repricing_config_name": null,
+  "tags": [],
+  "customer_correlation_id": "",
+  "price": {
+    "effective_price": null,
+    "tier_start_amount": null,
+    "unit": "count",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": null,
+  "seller_name": null,
+  "subscription": {
+    "instance_id": null
+  },
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": {
+    "id": null,
+    "description": null
+  }
+}, {
+  "billing_account_id": "C036ibad3",
+  "payer_billing_account_id": "1-30173-04006",
+  "invoice": {
+    "month": "202603"
+  },
+  "cost_type": "regular",
+  "service": {
+    "id": "Google-Apps",
+    "description": "Google Workspace"
+  },
+  "sku": {
+    "id": "1010020025",
+    "description": "Google Workspace Business Plus"
+  },
+  "usage_start_time": "2026-03-01 08:00:00.000000 UTC",
+  "usage_end_time": "2026-04-01 07:00:00.000000 UTC",
+  "project": {
+    "number": null,
+    "id": null,
+    "name": null,
+    "labels": [],
+    "ancestry_numbers": null
+  },
+  "labels": [],
+  "system_labels": [{
+    "key": "workspace.googleapis.com/domain_name",
+    "value": "ielts1984.vn"
+  }, {
+    "key": "workspace.googleapis.com/order_id",
+    "value": "10578270790-02"
+  }, {
+    "key": "workspace.googleapis.com/subscription_id",
+    "value": "10578270790"
+  }, {
+    "key": "workspace.googleapis.com/usage_type",
+    "value": "COMMITMENT_TERM_START_ITEM"
+  }],
+  "location": {
+    "location": null,
+    "country": null,
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": null,
+    "global_name": null
+  },
+  "cost": "62.7",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "3",
+    "unit": "count",
+    "amount_in_pricing_unit": "3",
+    "pricing_unit": "count"
+  },
+  "credits": [],
+  "adjustment_info": {
+    "adjustment_id": null,
+    "adjustment_description": null,
+    "adjustment_type": null,
+    "adjustment_mode": null
+  },
+  "export_time": "2026-03-02 12:58:21.431026 UTC",
+  "entitlement_name": "accounts/C01473oln/customers/SerIPnSTRe3z18/entitlements/Sa5Q1Pwwrq2oPJ",
+  "channel_partner_name": "accounts/C01473oln/channelPartnerLinks/",
+  "channel_partner_cost": null,
+  "customer_name": "accounts/C01473oln/customers/SerIPnSTRe3z18",
+  "customer_cost": "62.7",
+  "cost_at_list": "66",
+  "customer_repricing_config_name": "accounts/C01473oln/customers/SerIPnSTRe3z18/customerRepricingConfigs/",
+  "channel_partner_repricing_config_name": null,
+  "tags": [],
+  "customer_correlation_id": "",
+  "price": {
+    "effective_price": null,
+    "tier_start_amount": null,
+    "unit": "count",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": null,
+  "seller_name": null,
+  "subscription": {
+    "instance_id": null
+  },
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": {
+    "id": null,
+    "description": null
+  }
+}, {
+  "billing_account_id": "C039ocbdp",
+  "payer_billing_account_id": "1-30173-04006",
+  "invoice": {
+    "month": "202603"
+  },
+  "cost_type": "tax",
+  "service": {
+    "id": "A656-35D2-EF7F",
+    "description": "Invoice"
+  },
+  "sku": {
+    "id": "A1A2-4711-B376",
+    "description": "Tax"
+  },
+  "usage_start_time": "2026-03-01 08:00:00.000000 UTC",
+  "usage_end_time": "2026-03-03 08:00:00.000000 UTC",
+  "project": {
+    "number": null,
+    "id": null,
+    "name": null,
+    "labels": [],
+    "ancestry_numbers": null
+  },
+  "labels": [],
+  "system_labels": [{
+    "key": "workspace.googleapis.com/domain_name",
+    "value": "melosy.net"
+  }, {
+    "key": "workspace.googleapis.com/order_id",
+    "value": "4084688327-12"
+  }, {
+    "key": "workspace.googleapis.com/subscription_id",
+    "value": "4084688327"
+  }, {
+    "key": "workspace.googleapis.com/usage_type",
+    "value": "FLEXIBLE_SEATS_ITEM"
+  }],
+  "location": {
+    "location": null,
+    "country": null,
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": null,
+    "global_name": null
+  },
+  "cost": "1.39",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "1",
+    "unit": "count",
+    "amount_in_pricing_unit": "1",
+    "pricing_unit": "count"
+  },
+  "credits": [],
+  "adjustment_info": {
+    "adjustment_id": null,
+    "adjustment_description": null,
+    "adjustment_type": null,
+    "adjustment_mode": null
+  },
+  "export_time": "2026-03-02 14:59:17.978817 UTC",
+  "entitlement_name": "accounts/C01473oln/customers/SlwwEltvhpPjlS/entitlements/Si1qHLVf386Ve0",
+  "channel_partner_name": "accounts/C01473oln/channelPartnerLinks/",
+  "channel_partner_cost": null,
+  "customer_name": "accounts/C01473oln/customers/SlwwEltvhpPjlS",
+  "customer_cost": null,
+  "cost_at_list": null,
+  "customer_repricing_config_name": null,
+  "channel_partner_repricing_config_name": null,
+  "tags": [],
+  "customer_correlation_id": "",
+  "price": {
+    "effective_price": null,
+    "tier_start_amount": null,
+    "unit": "count",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": null,
+  "seller_name": null,
+  "subscription": {
+    "instance_id": null
+  },
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": {
+    "id": null,
+    "description": null
+  }
+}, {
+  "billing_account_id": "C021nk00m",
+  "payer_billing_account_id": "1-30173-04006",
+  "invoice": {
+    "month": "202603"
+  },
+  "cost_type": "tax",
+  "service": {
+    "id": "A656-35D2-EF7F",
+    "description": "Invoice"
+  },
+  "sku": {
+    "id": "A1A2-4711-B376",
+    "description": "Tax"
+  },
+  "usage_start_time": "2026-03-01 08:00:00.000000 UTC",
+  "usage_end_time": "2026-03-02 08:00:00.000000 UTC",
+  "project": {
+    "number": null,
+    "id": null,
+    "name": null,
+    "labels": [],
+    "ancestry_numbers": null
+  },
+  "labels": [],
+  "system_labels": [{
+    "key": "workspace.googleapis.com/domain_name",
+    "value": "vinhhungjsc.com"
+  }, {
+    "key": "workspace.googleapis.com/order_id",
+    "value": "3694439177-08"
+  }, {
+    "key": "workspace.googleapis.com/subscription_id",
+    "value": "3694439177"
+  }, {
+    "key": "workspace.googleapis.com/usage_type",
+    "value": "FLEXIBLE_SEATS_ITEM"
+  }],
+  "location": {
+    "location": null,
+    "country": null,
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": null,
+    "global_name": null
+  },
+  "cost": "-3.08",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "-1",
+    "unit": "count",
+    "amount_in_pricing_unit": "-1",
+    "pricing_unit": "count"
+  },
+  "credits": [],
+  "adjustment_info": {
+    "adjustment_id": null,
+    "adjustment_description": null,
+    "adjustment_type": null,
+    "adjustment_mode": null
+  },
+  "export_time": "2026-03-02 14:59:17.978817 UTC",
+  "entitlement_name": "accounts/C01473oln/customers/SsonIDGShOBPuM/entitlements/S9vi1nz0vm4xUD",
+  "channel_partner_name": "accounts/C01473oln/channelPartnerLinks/",
+  "channel_partner_cost": null,
+  "customer_name": "accounts/C01473oln/customers/SsonIDGShOBPuM",
+  "customer_cost": null,
+  "cost_at_list": null,
+  "customer_repricing_config_name": null,
+  "channel_partner_repricing_config_name": null,
+  "tags": [],
+  "customer_correlation_id": "",
+  "price": {
+    "effective_price": null,
+    "tier_start_amount": null,
+    "unit": "count",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": null,
+  "seller_name": null,
+  "subscription": {
+    "instance_id": null
+  },
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": {
+    "id": null,
+    "description": null
+  }
+}, {
+  "billing_account_id": "C00rd02yc",
+  "payer_billing_account_id": "1-30173-04006",
+  "invoice": {
+    "month": "202603"
+  },
+  "cost_type": "tax",
+  "service": {
+    "id": "A656-35D2-EF7F",
+    "description": "Invoice"
+  },
+  "sku": {
+    "id": "A1A2-4711-B376",
+    "description": "Tax"
+  },
+  "usage_start_time": "2026-03-01 08:00:00.000000 UTC",
+  "usage_end_time": "2026-03-03 08:00:00.000000 UTC",
+  "project": {
+    "number": null,
+    "id": null,
+    "name": null,
+    "labels": [],
+    "ancestry_numbers": null
+  },
+  "labels": [],
+  "system_labels": [{
+    "key": "workspace.googleapis.com/domain_name",
+    "value": "bbholding.com.vn"
+  }, {
+    "key": "workspace.googleapis.com/order_id",
+    "value": "4051845762-07"
+  }, {
+    "key": "workspace.googleapis.com/subscription_id",
+    "value": "4051845762"
+  }, {
+    "key": "workspace.googleapis.com/usage_type",
+    "value": "FLEXIBLE_SEATS_ITEM"
+  }],
+  "location": {
+    "location": null,
+    "country": null,
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": null,
+    "global_name": null
+  },
+  "cost": "0.84",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "1",
+    "unit": "count",
+    "amount_in_pricing_unit": "1",
+    "pricing_unit": "count"
+  },
+  "credits": [],
+  "adjustment_info": {
+    "adjustment_id": null,
+    "adjustment_description": null,
+    "adjustment_type": null,
+    "adjustment_mode": null
+  },
+  "export_time": "2026-03-02 14:59:17.978817 UTC",
+  "entitlement_name": "accounts/C01473oln/customers/SsNcp5I909S6cE/entitlements/SSi5vEaTpVp7at",
+  "channel_partner_name": "accounts/C01473oln/channelPartnerLinks/",
+  "channel_partner_cost": null,
+  "customer_name": "accounts/C01473oln/customers/SsNcp5I909S6cE",
+  "customer_cost": null,
+  "cost_at_list": null,
+  "customer_repricing_config_name": null,
+  "channel_partner_repricing_config_name": null,
+  "tags": [],
+  "customer_correlation_id": "",
+  "price": {
+    "effective_price": null,
+    "tier_start_amount": null,
+    "unit": "count",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": null,
+  "seller_name": null,
+  "subscription": {
+    "instance_id": null
+  },
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": {
+    "id": null,
+    "description": null
+  }
+}, {
+  "billing_account_id": "C02e40i8d",
+  "payer_billing_account_id": "1-30173-04006",
+  "invoice": {
+    "month": "202603"
+  },
+  "cost_type": "tax",
+  "service": {
+    "id": "A656-35D2-EF7F",
+    "description": "Invoice"
+  },
+  "sku": {
+    "id": "A1A2-4711-B376",
+    "description": "Tax"
+  },
+  "usage_start_time": "2026-03-01 08:00:00.000000 UTC",
+  "usage_end_time": "2026-03-02 08:00:00.000000 UTC",
+  "project": {
+    "number": null,
+    "id": null,
+    "name": null,
+    "labels": [],
+    "ancestry_numbers": null
+  },
+  "labels": [],
+  "system_labels": [{
+    "key": "workspace.googleapis.com/domain_name",
+    "value": "ecotekcorp.com"
+  }, {
+    "key": "workspace.googleapis.com/order_id",
+    "value": "3478776076-05"
+  }, {
+    "key": "workspace.googleapis.com/subscription_id",
+    "value": "3478776076"
+  }, {
+    "key": "workspace.googleapis.com/usage_type",
+    "value": "FLEXIBLE_SEATS_ITEM"
+  }],
+  "location": {
+    "location": null,
+    "country": null,
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": null,
+    "global_name": null
+  },
+  "cost": "-1.18",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "-1",
+    "unit": "count",
+    "amount_in_pricing_unit": "-1",
+    "pricing_unit": "count"
+  },
+  "credits": [],
+  "adjustment_info": {
+    "adjustment_id": null,
+    "adjustment_description": null,
+    "adjustment_type": null,
+    "adjustment_mode": null
+  },
+  "export_time": "2026-03-02 14:59:17.978817 UTC",
+  "entitlement_name": "accounts/C01473oln/customers/SB6wj8AQpsMa79/entitlements/SnUhuuItnK6sO8",
+  "channel_partner_name": "accounts/C01473oln/channelPartnerLinks/",
+  "channel_partner_cost": null,
+  "customer_name": "accounts/C01473oln/customers/SB6wj8AQpsMa79",
+  "customer_cost": null,
+  "cost_at_list": null,
+  "customer_repricing_config_name": null,
+  "channel_partner_repricing_config_name": null,
+  "tags": [],
+  "customer_correlation_id": "",
+  "price": {
+    "effective_price": null,
+    "tier_start_amount": null,
+    "unit": "count",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": null,
+  "seller_name": null,
+  "subscription": {
+    "instance_id": null
+  },
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": {
+    "id": null,
+    "description": null
+  }
+}, {
+  "billing_account_id": "C0388uoh0",
+  "payer_billing_account_id": "1-30173-04006",
+  "invoice": {
+    "month": "202603"
+  },
+  "cost_type": "tax",
+  "service": {
+    "id": "A656-35D2-EF7F",
+    "description": "Invoice"
+  },
+  "sku": {
+    "id": "A1A2-4711-B376",
+    "description": "Tax"
+  },
+  "usage_start_time": "2026-03-01 08:00:00.000000 UTC",
+  "usage_end_time": "2026-03-03 08:00:00.000000 UTC",
+  "project": {
+    "number": null,
+    "id": null,
+    "name": null,
+    "labels": [],
+    "ancestry_numbers": null
+  },
+  "labels": [],
+  "system_labels": [{
+    "key": "workspace.googleapis.com/domain_name",
+    "value": "data.vinhxuan.vn"
+  }, {
+    "key": "workspace.googleapis.com/order_id",
+    "value": "3478900139-12"
+  }, {
+    "key": "workspace.googleapis.com/subscription_id",
+    "value": "3478900139"
+  }, {
+    "key": "workspace.googleapis.com/usage_type",
+    "value": "FLEXIBLE_SEATS_ITEM"
+  }],
+  "location": {
+    "location": null,
+    "country": null,
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": null,
+    "global_name": null
+  },
+  "cost": "0.04",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "1",
+    "unit": "count",
+    "amount_in_pricing_unit": "1",
+    "pricing_unit": "count"
+  },
+  "credits": [],
+  "adjustment_info": {
+    "adjustment_id": null,
+    "adjustment_description": null,
+    "adjustment_type": null,
+    "adjustment_mode": null
+  },
+  "export_time": "2026-03-02 14:59:17.978817 UTC",
+  "entitlement_name": "accounts/C01473oln/customers/SV3befeEwaqNJW/entitlements/ScwpJSnypDEApT",
+  "channel_partner_name": "accounts/C01473oln/channelPartnerLinks/",
+  "channel_partner_cost": null,
+  "customer_name": "accounts/C01473oln/customers/SV3befeEwaqNJW",
+  "customer_cost": null,
+  "cost_at_list": null,
+  "customer_repricing_config_name": null,
+  "channel_partner_repricing_config_name": null,
+  "tags": [],
+  "customer_correlation_id": "",
+  "price": {
+    "effective_price": null,
+    "tier_start_amount": null,
+    "unit": "count",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": null,
+  "seller_name": null,
+  "subscription": {
+    "instance_id": null
+  },
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": {
+    "id": null,
+    "description": null
+  }
+}, {
+  "billing_account_id": "C01nevahz",
+  "payer_billing_account_id": "1-30173-04006",
+  "invoice": {
+    "month": "202603"
+  },
+  "cost_type": "tax",
+  "service": {
+    "id": "A656-35D2-EF7F",
+    "description": "Invoice"
+  },
+  "sku": {
+    "id": "A1A2-4711-B376",
+    "description": "Tax"
+  },
+  "usage_start_time": "2026-03-01 08:00:00.000000 UTC",
+  "usage_end_time": "2026-03-02 08:00:00.000000 UTC",
+  "project": {
+    "number": null,
+    "id": null,
+    "name": null,
+    "labels": [],
+    "ancestry_numbers": null
+  },
+  "labels": [],
+  "system_labels": [{
+    "key": "workspace.googleapis.com/domain_name",
+    "value": "vndgroup.info"
+  }, {
+    "key": "workspace.googleapis.com/order_id",
+    "value": "3812009822-08"
+  }, {
+    "key": "workspace.googleapis.com/subscription_id",
+    "value": "3812009822"
+  }, {
+    "key": "workspace.googleapis.com/usage_type",
+    "value": "FLEXIBLE_SEATS_ITEM"
+  }],
+  "location": {
+    "location": null,
+    "country": null,
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": null,
+    "global_name": null
+  },
+  "cost": "-0.04",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "-1",
+    "unit": "count",
+    "amount_in_pricing_unit": "-1",
+    "pricing_unit": "count"
+  },
+  "credits": [],
+  "adjustment_info": {
+    "adjustment_id": null,
+    "adjustment_description": null,
+    "adjustment_type": null,
+    "adjustment_mode": null
+  },
+  "export_time": "2026-03-02 14:59:17.978817 UTC",
+  "entitlement_name": "accounts/C01473oln/customers/SaglA83YMQ3RcE/entitlements/SKZI5Hh7Y9tfBl",
+  "channel_partner_name": "accounts/C01473oln/channelPartnerLinks/",
+  "channel_partner_cost": null,
+  "customer_name": "accounts/C01473oln/customers/SaglA83YMQ3RcE",
+  "customer_cost": null,
+  "cost_at_list": null,
+  "customer_repricing_config_name": null,
+  "channel_partner_repricing_config_name": null,
+  "tags": [],
+  "customer_correlation_id": "",
+  "price": {
+    "effective_price": null,
+    "tier_start_amount": null,
+    "unit": "count",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": null,
+  "seller_name": null,
+  "subscription": {
+    "instance_id": null
+  },
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": {
+    "id": null,
+    "description": null
+  }
+}, {
+  "billing_account_id": "C00qap6g1",
+  "payer_billing_account_id": "1-30173-04006",
+  "invoice": {
+    "month": "202603"
+  },
+  "cost_type": "tax",
+  "service": {
+    "id": "A656-35D2-EF7F",
+    "description": "Invoice"
+  },
+  "sku": {
+    "id": "A1A2-4711-B376",
+    "description": "Tax"
+  },
+  "usage_start_time": "2026-03-01 08:00:00.000000 UTC",
+  "usage_end_time": "2026-03-03 08:00:00.000000 UTC",
+  "project": {
+    "number": null,
+    "id": null,
+    "name": null,
+    "labels": [],
+    "ancestry_numbers": null
+  },
+  "labels": [],
+  "system_labels": [{
+    "key": "workspace.googleapis.com/domain_name",
+    "value": "starglobal3d.com"
+  }, {
+    "key": "workspace.googleapis.com/order_id",
+    "value": "5043165718-06"
+  }, {
+    "key": "workspace.googleapis.com/subscription_id",
+    "value": "5043165718"
+  }, {
+    "key": "workspace.googleapis.com/usage_type",
+    "value": "FLEXIBLE_SEATS_ITEM"
+  }],
+  "location": {
+    "location": null,
+    "country": null,
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": null,
+    "global_name": null
+  },
+  "cost": "1.72",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "1",
+    "unit": "count",
+    "amount_in_pricing_unit": "1",
+    "pricing_unit": "count"
+  },
+  "credits": [],
+  "adjustment_info": {
+    "adjustment_id": null,
+    "adjustment_description": null,
+    "adjustment_type": null,
+    "adjustment_mode": null
+  },
+  "export_time": "2026-03-02 14:59:17.978817 UTC",
+  "entitlement_name": "accounts/C01473oln/customers/S8useBTIfPq4uc/entitlements/SFBAXQbpwWc5n6",
+  "channel_partner_name": "accounts/C01473oln/channelPartnerLinks/",
+  "channel_partner_cost": null,
+  "customer_name": "accounts/C01473oln/customers/S8useBTIfPq4uc",
+  "customer_cost": null,
+  "cost_at_list": null,
+  "customer_repricing_config_name": null,
+  "channel_partner_repricing_config_name": null,
+  "tags": [],
+  "customer_correlation_id": "",
+  "price": {
+    "effective_price": null,
+    "tier_start_amount": null,
+    "unit": "count",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": null,
+  "seller_name": null,
+  "subscription": {
+    "instance_id": null
+  },
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": {
+    "id": null,
+    "description": null
+  }
+}, {
+  "billing_account_id": "C039ocbdp",
+  "payer_billing_account_id": "1-30173-04006",
+  "invoice": {
+    "month": "202603"
+  },
+  "cost_type": "tax",
+  "service": {
+    "id": "A656-35D2-EF7F",
+    "description": "Invoice"
+  },
+  "sku": {
+    "id": "A1A2-4711-B376",
+    "description": "Tax"
+  },
+  "usage_start_time": "2026-03-01 08:00:00.000000 UTC",
+  "usage_end_time": "2026-03-02 08:00:00.000000 UTC",
+  "project": {
+    "number": null,
+    "id": null,
+    "name": null,
+    "labels": [],
+    "ancestry_numbers": null
+  },
+  "labels": [],
+  "system_labels": [{
+    "key": "workspace.googleapis.com/domain_name",
+    "value": "melosy.net"
+  }, {
+    "key": "workspace.googleapis.com/order_id",
+    "value": "4084688327-12"
+  }, {
+    "key": "workspace.googleapis.com/subscription_id",
+    "value": "4084688327"
+  }, {
+    "key": "workspace.googleapis.com/usage_type",
+    "value": "FLEXIBLE_SEATS_ITEM"
+  }],
+  "location": {
+    "location": null,
+    "country": null,
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": null,
+    "global_name": null
+  },
+  "cost": "-0.69",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "-1",
+    "unit": "count",
+    "amount_in_pricing_unit": "-1",
+    "pricing_unit": "count"
+  },
+  "credits": [],
+  "adjustment_info": {
+    "adjustment_id": null,
+    "adjustment_description": null,
+    "adjustment_type": null,
+    "adjustment_mode": null
+  },
+  "export_time": "2026-03-02 14:59:17.978817 UTC",
+  "entitlement_name": "accounts/C01473oln/customers/SlwwEltvhpPjlS/entitlements/Si1qHLVf386Ve0",
+  "channel_partner_name": "accounts/C01473oln/channelPartnerLinks/",
+  "channel_partner_cost": null,
+  "customer_name": "accounts/C01473oln/customers/SlwwEltvhpPjlS",
+  "customer_cost": null,
+  "cost_at_list": null,
+  "customer_repricing_config_name": null,
+  "channel_partner_repricing_config_name": null,
+  "tags": [],
+  "customer_correlation_id": "",
+  "price": {
+    "effective_price": null,
+    "tier_start_amount": null,
+    "unit": "count",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": null,
+  "seller_name": null,
+  "subscription": {
+    "instance_id": null
+  },
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": {
+    "id": null,
+    "description": null
+  }
+}, {
+  "billing_account_id": "C021nk00m",
+  "payer_billing_account_id": "1-30173-04006",
+  "invoice": {
+    "month": "202603"
+  },
+  "cost_type": "tax",
+  "service": {
+    "id": "A656-35D2-EF7F",
+    "description": "Invoice"
+  },
+  "sku": {
+    "id": "A1A2-4711-B376",
+    "description": "Tax"
+  },
+  "usage_start_time": "2026-03-01 08:00:00.000000 UTC",
+  "usage_end_time": "2026-03-03 08:00:00.000000 UTC",
+  "project": {
+    "number": null,
+    "id": null,
+    "name": null,
+    "labels": [],
+    "ancestry_numbers": null
+  },
+  "labels": [],
+  "system_labels": [{
+    "key": "workspace.googleapis.com/domain_name",
+    "value": "vinhhungjsc.com"
+  }, {
+    "key": "workspace.googleapis.com/order_id",
+    "value": "3694439177-08"
+  }, {
+    "key": "workspace.googleapis.com/subscription_id",
+    "value": "3694439177"
+  }, {
+    "key": "workspace.googleapis.com/usage_type",
+    "value": "FLEXIBLE_SEATS_ITEM"
+  }],
+  "location": {
+    "location": null,
+    "country": null,
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": null,
+    "global_name": null
+  },
+  "cost": "6.15",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "1",
+    "unit": "count",
+    "amount_in_pricing_unit": "1",
+    "pricing_unit": "count"
+  },
+  "credits": [],
+  "adjustment_info": {
+    "adjustment_id": null,
+    "adjustment_description": null,
+    "adjustment_type": null,
+    "adjustment_mode": null
+  },
+  "export_time": "2026-03-02 14:59:17.978817 UTC",
+  "entitlement_name": "accounts/C01473oln/customers/SsonIDGShOBPuM/entitlements/S9vi1nz0vm4xUD",
+  "channel_partner_name": "accounts/C01473oln/channelPartnerLinks/",
+  "channel_partner_cost": null,
+  "customer_name": "accounts/C01473oln/customers/SsonIDGShOBPuM",
+  "customer_cost": null,
+  "cost_at_list": null,
+  "customer_repricing_config_name": null,
+  "channel_partner_repricing_config_name": null,
+  "tags": [],
+  "customer_correlation_id": "",
+  "price": {
+    "effective_price": null,
+    "tier_start_amount": null,
+    "unit": "count",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": null,
+  "seller_name": null,
+  "subscription": {
+    "instance_id": null
+  },
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": {
+    "id": null,
+    "description": null
+  }
+}, {
+  "billing_account_id": "C02jdeayh",
+  "payer_billing_account_id": "1-30173-04006",
+  "invoice": {
+    "month": "202603"
+  },
+  "cost_type": "tax",
+  "service": {
+    "id": "A656-35D2-EF7F",
+    "description": "Invoice"
+  },
+  "sku": {
+    "id": "A1A2-4711-B376",
+    "description": "Tax"
+  },
+  "usage_start_time": "2026-03-01 08:00:00.000000 UTC",
+  "usage_end_time": "2026-03-02 08:00:00.000000 UTC",
+  "project": {
+    "number": null,
+    "id": null,
+    "name": null,
+    "labels": [],
+    "ancestry_numbers": null
+  },
+  "labels": [],
+  "system_labels": [{
+    "key": "workspace.googleapis.com/domain_name",
+    "value": "fingroup.vn"
+  }, {
+    "key": "workspace.googleapis.com/order_id",
+    "value": "4360074022-17"
+  }, {
+    "key": "workspace.googleapis.com/subscription_id",
+    "value": "4360074022"
+  }, {
+    "key": "workspace.googleapis.com/usage_type",
+    "value": "FLEXIBLE_SEATS_ITEM"
+  }],
+  "location": {
+    "location": null,
+    "country": null,
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": null,
+    "global_name": null
+  },
+  "cost": "-0.06",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "-1",
+    "unit": "count",
+    "amount_in_pricing_unit": "-1",
+    "pricing_unit": "count"
+  },
+  "credits": [],
+  "adjustment_info": {
+    "adjustment_id": null,
+    "adjustment_description": null,
+    "adjustment_type": null,
+    "adjustment_mode": null
+  },
+  "export_time": "2026-03-02 14:59:17.978817 UTC",
+  "entitlement_name": "accounts/C01473oln/customers/ST8dK7uUJCbO8K/entitlements/S2AFybJrmqKzqX",
+  "channel_partner_name": "accounts/C01473oln/channelPartnerLinks/",
+  "channel_partner_cost": null,
+  "customer_name": "accounts/C01473oln/customers/ST8dK7uUJCbO8K",
+  "customer_cost": null,
+  "cost_at_list": null,
+  "customer_repricing_config_name": null,
+  "channel_partner_repricing_config_name": null,
+  "tags": [],
+  "customer_correlation_id": "",
+  "price": {
+    "effective_price": null,
+    "tier_start_amount": null,
+    "unit": "count",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": null,
+  "seller_name": null,
+  "subscription": {
+    "instance_id": null
+  },
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": {
+    "id": null,
+    "description": null
+  }
+}, {
+  "billing_account_id": "C00rd02yc",
+  "payer_billing_account_id": "1-30173-04006",
+  "invoice": {
+    "month": "202603"
+  },
+  "cost_type": "tax",
+  "service": {
+    "id": "A656-35D2-EF7F",
+    "description": "Invoice"
+  },
+  "sku": {
+    "id": "A1A2-4711-B376",
+    "description": "Tax"
+  },
+  "usage_start_time": "2026-03-01 08:00:00.000000 UTC",
+  "usage_end_time": "2026-03-02 08:00:00.000000 UTC",
+  "project": {
+    "number": null,
+    "id": null,
+    "name": null,
+    "labels": [],
+    "ancestry_numbers": null
+  },
+  "labels": [],
+  "system_labels": [{
+    "key": "workspace.googleapis.com/domain_name",
+    "value": "bbholding.com.vn"
+  }, {
+    "key": "workspace.googleapis.com/order_id",
+    "value": "4051845762-07"
+  }, {
+    "key": "workspace.googleapis.com/subscription_id",
+    "value": "4051845762"
+  }, {
+    "key": "workspace.googleapis.com/usage_type",
+    "value": "FLEXIBLE_SEATS_ITEM"
+  }],
+  "location": {
+    "location": null,
+    "country": null,
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": null,
+    "global_name": null
+  },
+  "cost": "-0.42",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "-1",
+    "unit": "count",
+    "amount_in_pricing_unit": "-1",
+    "pricing_unit": "count"
+  },
+  "credits": [],
+  "adjustment_info": {
+    "adjustment_id": null,
+    "adjustment_description": null,
+    "adjustment_type": null,
+    "adjustment_mode": null
+  },
+  "export_time": "2026-03-02 14:59:17.978817 UTC",
+  "entitlement_name": "accounts/C01473oln/customers/SsNcp5I909S6cE/entitlements/SSi5vEaTpVp7at",
+  "channel_partner_name": "accounts/C01473oln/channelPartnerLinks/",
+  "channel_partner_cost": null,
+  "customer_name": "accounts/C01473oln/customers/SsNcp5I909S6cE",
+  "customer_cost": null,
+  "cost_at_list": null,
+  "customer_repricing_config_name": null,
+  "channel_partner_repricing_config_name": null,
+  "tags": [],
+  "customer_correlation_id": "",
+  "price": {
+    "effective_price": null,
+    "tier_start_amount": null,
+    "unit": "count",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": null,
+  "seller_name": null,
+  "subscription": {
+    "instance_id": null
+  },
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": {
+    "id": null,
+    "description": null
+  }
+}, {
+  "billing_account_id": "C02jdeayh",
+  "payer_billing_account_id": "1-30173-04006",
+  "invoice": {
+    "month": "202603"
+  },
+  "cost_type": "tax",
+  "service": {
+    "id": "A656-35D2-EF7F",
+    "description": "Invoice"
+  },
+  "sku": {
+    "id": "A1A2-4711-B376",
+    "description": "Tax"
+  },
+  "usage_start_time": "2026-03-01 08:00:00.000000 UTC",
+  "usage_end_time": "2026-03-03 08:00:00.000000 UTC",
+  "project": {
+    "number": null,
+    "id": null,
+    "name": null,
+    "labels": [],
+    "ancestry_numbers": null
+  },
+  "labels": [],
+  "system_labels": [{
+    "key": "workspace.googleapis.com/domain_name",
+    "value": "fingroup.vn"
+  }, {
+    "key": "workspace.googleapis.com/order_id",
+    "value": "4360074022-17"
+  }, {
+    "key": "workspace.googleapis.com/subscription_id",
+    "value": "4360074022"
+  }, {
+    "key": "workspace.googleapis.com/usage_type",
+    "value": "FLEXIBLE_SEATS_ITEM"
+  }],
+  "location": {
+    "location": null,
+    "country": null,
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": null,
+    "global_name": null
+  },
+  "cost": "0.13",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "1",
+    "unit": "count",
+    "amount_in_pricing_unit": "1",
+    "pricing_unit": "count"
+  },
+  "credits": [],
+  "adjustment_info": {
+    "adjustment_id": null,
+    "adjustment_description": null,
+    "adjustment_type": null,
+    "adjustment_mode": null
+  },
+  "export_time": "2026-03-02 14:59:17.978817 UTC",
+  "entitlement_name": "accounts/C01473oln/customers/ST8dK7uUJCbO8K/entitlements/S2AFybJrmqKzqX",
+  "channel_partner_name": "accounts/C01473oln/channelPartnerLinks/",
+  "channel_partner_cost": null,
+  "customer_name": "accounts/C01473oln/customers/ST8dK7uUJCbO8K",
+  "customer_cost": null,
+  "cost_at_list": null,
+  "customer_repricing_config_name": null,
+  "channel_partner_repricing_config_name": null,
+  "tags": [],
+  "customer_correlation_id": "",
+  "price": {
+    "effective_price": null,
+    "tier_start_amount": null,
+    "unit": "count",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": null,
+  "seller_name": null,
+  "subscription": {
+    "instance_id": null
+  },
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": {
+    "id": null,
+    "description": null
+  }
+}, {
+  "billing_account_id": "C00qap6g1",
+  "payer_billing_account_id": "1-30173-04006",
+  "invoice": {
+    "month": "202603"
+  },
+  "cost_type": "tax",
+  "service": {
+    "id": "A656-35D2-EF7F",
+    "description": "Invoice"
+  },
+  "sku": {
+    "id": "A1A2-4711-B376",
+    "description": "Tax"
+  },
+  "usage_start_time": "2026-03-01 08:00:00.000000 UTC",
+  "usage_end_time": "2026-03-02 08:00:00.000000 UTC",
+  "project": {
+    "number": null,
+    "id": null,
+    "name": null,
+    "labels": [],
+    "ancestry_numbers": null
+  },
+  "labels": [],
+  "system_labels": [{
+    "key": "workspace.googleapis.com/domain_name",
+    "value": "starglobal3d.com"
+  }, {
+    "key": "workspace.googleapis.com/order_id",
+    "value": "5043165718-06"
+  }, {
+    "key": "workspace.googleapis.com/subscription_id",
+    "value": "5043165718"
+  }, {
+    "key": "workspace.googleapis.com/usage_type",
+    "value": "FLEXIBLE_SEATS_ITEM"
+  }],
+  "location": {
+    "location": null,
+    "country": null,
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": null,
+    "global_name": null
+  },
+  "cost": "-0.86",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "-1",
+    "unit": "count",
+    "amount_in_pricing_unit": "-1",
+    "pricing_unit": "count"
+  },
+  "credits": [],
+  "adjustment_info": {
+    "adjustment_id": null,
+    "adjustment_description": null,
+    "adjustment_type": null,
+    "adjustment_mode": null
+  },
+  "export_time": "2026-03-02 14:59:17.978817 UTC",
+  "entitlement_name": "accounts/C01473oln/customers/S8useBTIfPq4uc/entitlements/SFBAXQbpwWc5n6",
+  "channel_partner_name": "accounts/C01473oln/channelPartnerLinks/",
+  "channel_partner_cost": null,
+  "customer_name": "accounts/C01473oln/customers/S8useBTIfPq4uc",
+  "customer_cost": null,
+  "cost_at_list": null,
+  "customer_repricing_config_name": null,
+  "channel_partner_repricing_config_name": null,
+  "tags": [],
+  "customer_correlation_id": "",
+  "price": {
+    "effective_price": null,
+    "tier_start_amount": null,
+    "unit": "count",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": null,
+  "seller_name": null,
+  "subscription": {
+    "instance_id": null
+  },
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": {
+    "id": null,
+    "description": null
+  }
+}, {
+  "billing_account_id": "C01nevahz",
+  "payer_billing_account_id": "1-30173-04006",
+  "invoice": {
+    "month": "202603"
+  },
+  "cost_type": "tax",
+  "service": {
+    "id": "A656-35D2-EF7F",
+    "description": "Invoice"
+  },
+  "sku": {
+    "id": "A1A2-4711-B376",
+    "description": "Tax"
+  },
+  "usage_start_time": "2026-03-01 08:00:00.000000 UTC",
+  "usage_end_time": "2026-03-03 08:00:00.000000 UTC",
+  "project": {
+    "number": null,
+    "id": null,
+    "name": null,
+    "labels": [],
+    "ancestry_numbers": null
+  },
+  "labels": [],
+  "system_labels": [{
+    "key": "workspace.googleapis.com/domain_name",
+    "value": "vndgroup.info"
+  }, {
+    "key": "workspace.googleapis.com/order_id",
+    "value": "3812009822-08"
+  }, {
+    "key": "workspace.googleapis.com/subscription_id",
+    "value": "3812009822"
+  }, {
+    "key": "workspace.googleapis.com/usage_type",
+    "value": "FLEXIBLE_SEATS_ITEM"
+  }],
+  "location": {
+    "location": null,
+    "country": null,
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": null,
+    "global_name": null
+  },
+  "cost": "0.08",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "1",
+    "unit": "count",
+    "amount_in_pricing_unit": "1",
+    "pricing_unit": "count"
+  },
+  "credits": [],
+  "adjustment_info": {
+    "adjustment_id": null,
+    "adjustment_description": null,
+    "adjustment_type": null,
+    "adjustment_mode": null
+  },
+  "export_time": "2026-03-02 14:59:17.978817 UTC",
+  "entitlement_name": "accounts/C01473oln/customers/SaglA83YMQ3RcE/entitlements/SKZI5Hh7Y9tfBl",
+  "channel_partner_name": "accounts/C01473oln/channelPartnerLinks/",
+  "channel_partner_cost": null,
+  "customer_name": "accounts/C01473oln/customers/SaglA83YMQ3RcE",
+  "customer_cost": null,
+  "cost_at_list": null,
+  "customer_repricing_config_name": null,
+  "channel_partner_repricing_config_name": null,
+  "tags": [],
+  "customer_correlation_id": "",
+  "price": {
+    "effective_price": null,
+    "tier_start_amount": null,
+    "unit": "count",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": null,
+  "seller_name": null,
+  "subscription": {
+    "instance_id": null
+  },
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": {
+    "id": null,
+    "description": null
+  }
+}, {
+  "billing_account_id": "C0388uoh0",
+  "payer_billing_account_id": "1-30173-04006",
+  "invoice": {
+    "month": "202603"
+  },
+  "cost_type": "tax",
+  "service": {
+    "id": "A656-35D2-EF7F",
+    "description": "Invoice"
+  },
+  "sku": {
+    "id": "A1A2-4711-B376",
+    "description": "Tax"
+  },
+  "usage_start_time": "2026-03-01 08:00:00.000000 UTC",
+  "usage_end_time": "2026-03-02 08:00:00.000000 UTC",
+  "project": {
+    "number": null,
+    "id": null,
+    "name": null,
+    "labels": [],
+    "ancestry_numbers": null
+  },
+  "labels": [],
+  "system_labels": [{
+    "key": "workspace.googleapis.com/domain_name",
+    "value": "data.vinhxuan.vn"
+  }, {
+    "key": "workspace.googleapis.com/order_id",
+    "value": "3478900139-12"
+  }, {
+    "key": "workspace.googleapis.com/subscription_id",
+    "value": "3478900139"
+  }, {
+    "key": "workspace.googleapis.com/usage_type",
+    "value": "FLEXIBLE_SEATS_ITEM"
+  }],
+  "location": {
+    "location": null,
+    "country": null,
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": null,
+    "global_name": null
+  },
+  "cost": "-0.02",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "-1",
+    "unit": "count",
+    "amount_in_pricing_unit": "-1",
+    "pricing_unit": "count"
+  },
+  "credits": [],
+  "adjustment_info": {
+    "adjustment_id": null,
+    "adjustment_description": null,
+    "adjustment_type": null,
+    "adjustment_mode": null
+  },
+  "export_time": "2026-03-02 14:59:17.978817 UTC",
+  "entitlement_name": "accounts/C01473oln/customers/SV3befeEwaqNJW/entitlements/ScwpJSnypDEApT",
+  "channel_partner_name": "accounts/C01473oln/channelPartnerLinks/",
+  "channel_partner_cost": null,
+  "customer_name": "accounts/C01473oln/customers/SV3befeEwaqNJW",
+  "customer_cost": null,
+  "cost_at_list": null,
+  "customer_repricing_config_name": null,
+  "channel_partner_repricing_config_name": null,
+  "tags": [],
+  "customer_correlation_id": "",
+  "price": {
+    "effective_price": null,
+    "tier_start_amount": null,
+    "unit": "count",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": null,
+  "seller_name": null,
+  "subscription": {
+    "instance_id": null
+  },
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": {
+    "id": null,
+    "description": null
+  }
+}, {
+  "billing_account_id": "C01w8fj6t",
+  "payer_billing_account_id": "1-30173-04006",
+  "invoice": {
+    "month": "202603"
+  },
+  "cost_type": "tax",
+  "service": {
+    "id": "A656-35D2-EF7F",
+    "description": "Invoice"
+  },
+  "sku": {
+    "id": "A1A2-4711-B376",
+    "description": "Tax"
+  },
+  "usage_start_time": "2026-03-01 08:00:00.000000 UTC",
+  "usage_end_time": "2026-03-03 08:00:00.000000 UTC",
+  "project": {
+    "number": null,
+    "id": null,
+    "name": null,
+    "labels": [],
+    "ancestry_numbers": null
+  },
+  "labels": [],
+  "system_labels": [{
+    "key": "workspace.googleapis.com/domain_name",
+    "value": "vndgroup.vn"
+  }, {
+    "key": "workspace.googleapis.com/order_id",
+    "value": "2845945156-12"
+  }, {
+    "key": "workspace.googleapis.com/subscription_id",
+    "value": "2845945156"
+  }, {
+    "key": "workspace.googleapis.com/usage_type",
+    "value": "FLEXIBLE_SEATS_ITEM"
+  }],
+  "location": {
+    "location": null,
+    "country": null,
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": null,
+    "global_name": null
+  },
+  "cost": "0.13",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "1",
+    "unit": "count",
+    "amount_in_pricing_unit": "1",
+    "pricing_unit": "count"
+  },
+  "credits": [],
+  "adjustment_info": {
+    "adjustment_id": null,
+    "adjustment_description": null,
+    "adjustment_type": null,
+    "adjustment_mode": null
+  },
+  "export_time": "2026-03-02 14:59:17.978817 UTC",
+  "entitlement_name": "accounts/C01473oln/customers/SC4Vmu5g2QBxsQ/entitlements/SUjC6f4uRp0rr9",
+  "channel_partner_name": "accounts/C01473oln/channelPartnerLinks/",
+  "channel_partner_cost": null,
+  "customer_name": "accounts/C01473oln/customers/SC4Vmu5g2QBxsQ",
+  "customer_cost": null,
+  "cost_at_list": null,
+  "customer_repricing_config_name": null,
+  "channel_partner_repricing_config_name": null,
+  "tags": [],
+  "customer_correlation_id": "",
+  "price": {
+    "effective_price": null,
+    "tier_start_amount": null,
+    "unit": "count",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": null,
+  "seller_name": null,
+  "subscription": {
+    "instance_id": null
+  },
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": {
+    "id": null,
+    "description": null
+  }
+}, {
+  "billing_account_id": "C02e40i8d",
+  "payer_billing_account_id": "1-30173-04006",
+  "invoice": {
+    "month": "202603"
+  },
+  "cost_type": "tax",
+  "service": {
+    "id": "A656-35D2-EF7F",
+    "description": "Invoice"
+  },
+  "sku": {
+    "id": "A1A2-4711-B376",
+    "description": "Tax"
+  },
+  "usage_start_time": "2026-03-01 08:00:00.000000 UTC",
+  "usage_end_time": "2026-03-03 08:00:00.000000 UTC",
+  "project": {
+    "number": null,
+    "id": null,
+    "name": null,
+    "labels": [],
+    "ancestry_numbers": null
+  },
+  "labels": [],
+  "system_labels": [{
+    "key": "workspace.googleapis.com/domain_name",
+    "value": "ecotekcorp.com"
+  }, {
+    "key": "workspace.googleapis.com/order_id",
+    "value": "3478776076-05"
+  }, {
+    "key": "workspace.googleapis.com/subscription_id",
+    "value": "3478776076"
+  }, {
+    "key": "workspace.googleapis.com/usage_type",
+    "value": "FLEXIBLE_SEATS_ITEM"
+  }],
+  "location": {
+    "location": null,
+    "country": null,
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": null,
+    "global_name": null
+  },
+  "cost": "2.36",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "1",
+    "unit": "count",
+    "amount_in_pricing_unit": "1",
+    "pricing_unit": "count"
+  },
+  "credits": [],
+  "adjustment_info": {
+    "adjustment_id": null,
+    "adjustment_description": null,
+    "adjustment_type": null,
+    "adjustment_mode": null
+  },
+  "export_time": "2026-03-02 14:59:17.978817 UTC",
+  "entitlement_name": "accounts/C01473oln/customers/SB6wj8AQpsMa79/entitlements/SnUhuuItnK6sO8",
+  "channel_partner_name": "accounts/C01473oln/channelPartnerLinks/",
+  "channel_partner_cost": null,
+  "customer_name": "accounts/C01473oln/customers/SB6wj8AQpsMa79",
+  "customer_cost": null,
+  "cost_at_list": null,
+  "customer_repricing_config_name": null,
+  "channel_partner_repricing_config_name": null,
+  "tags": [],
+  "customer_correlation_id": "",
+  "price": {
+    "effective_price": null,
+    "tier_start_amount": null,
+    "unit": "count",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": null,
+  "seller_name": null,
+  "subscription": {
+    "instance_id": null
+  },
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": {
+    "id": null,
+    "description": null
+  }
+}, {
+  "billing_account_id": "C01w8fj6t",
+  "payer_billing_account_id": "1-30173-04006",
+  "invoice": {
+    "month": "202603"
+  },
+  "cost_type": "tax",
+  "service": {
+    "id": "A656-35D2-EF7F",
+    "description": "Invoice"
+  },
+  "sku": {
+    "id": "A1A2-4711-B376",
+    "description": "Tax"
+  },
+  "usage_start_time": "2026-03-01 08:00:00.000000 UTC",
+  "usage_end_time": "2026-03-02 08:00:00.000000 UTC",
+  "project": {
+    "number": null,
+    "id": null,
+    "name": null,
+    "labels": [],
+    "ancestry_numbers": null
+  },
+  "labels": [],
+  "system_labels": [{
+    "key": "workspace.googleapis.com/domain_name",
+    "value": "vndgroup.vn"
+  }, {
+    "key": "workspace.googleapis.com/order_id",
+    "value": "2845945156-12"
+  }, {
+    "key": "workspace.googleapis.com/subscription_id",
+    "value": "2845945156"
+  }, {
+    "key": "workspace.googleapis.com/usage_type",
+    "value": "FLEXIBLE_SEATS_ITEM"
+  }],
+  "location": {
+    "location": null,
+    "country": null,
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": null,
+    "global_name": null
+  },
+  "cost": "-0.06",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "-1",
+    "unit": "count",
+    "amount_in_pricing_unit": "-1",
+    "pricing_unit": "count"
+  },
+  "credits": [],
+  "adjustment_info": {
+    "adjustment_id": null,
+    "adjustment_description": null,
+    "adjustment_type": null,
+    "adjustment_mode": null
+  },
+  "export_time": "2026-03-02 14:59:17.978817 UTC",
+  "entitlement_name": "accounts/C01473oln/customers/SC4Vmu5g2QBxsQ/entitlements/SUjC6f4uRp0rr9",
+  "channel_partner_name": "accounts/C01473oln/channelPartnerLinks/",
+  "channel_partner_cost": null,
+  "customer_name": "accounts/C01473oln/customers/SC4Vmu5g2QBxsQ",
+  "customer_cost": null,
+  "cost_at_list": null,
+  "customer_repricing_config_name": null,
+  "channel_partner_repricing_config_name": null,
+  "tags": [],
+  "customer_correlation_id": "",
+  "price": {
+    "effective_price": null,
+    "tier_start_amount": null,
+    "unit": "count",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": null,
+  "seller_name": null,
+  "subscription": {
+    "instance_id": null
+  },
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": {
+    "id": null,
+    "description": null
+  }
+}, {
+  "billing_account_id": "C00qap6g1",
+  "payer_billing_account_id": "1-30173-04006",
+  "invoice": {
+    "month": "202603"
+  },
+  "cost_type": "regular",
+  "service": {
+    "id": "Google-Apps",
+    "description": "Google Workspace"
+  },
+  "sku": {
+    "id": "1010020025",
+    "description": "Google Workspace Business Plus"
+  },
+  "usage_start_time": "2026-03-01 08:00:00.000000 UTC",
+  "usage_end_time": "2026-03-03 08:00:00.000000 UTC",
+  "project": {
+    "number": null,
+    "id": null,
+    "name": null,
+    "labels": [],
+    "ancestry_numbers": null
+  },
+  "labels": [],
+  "system_labels": [{
+    "key": "workspace.googleapis.com/domain_name",
+    "value": "starglobal3d.com"
+  }, {
+    "key": "workspace.googleapis.com/order_id",
+    "value": "5043165718-06"
+  }, {
+    "key": "workspace.googleapis.com/subscription_id",
+    "value": "5043165718"
+  }, {
+    "key": "workspace.googleapis.com/usage_type",
+    "value": "FLEXIBLE_SEATS_ITEM"
+  }],
+  "location": {
+    "location": null,
+    "country": null,
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": null,
+    "global_name": null
+  },
+  "cost": "15.5",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "13",
+    "unit": "count",
+    "amount_in_pricing_unit": "13",
+    "pricing_unit": "count"
+  },
+  "credits": [],
+  "adjustment_info": {
+    "adjustment_id": null,
+    "adjustment_description": null,
+    "adjustment_type": null,
+    "adjustment_mode": null
+  },
+  "export_time": "2026-03-02 14:59:17.978817 UTC",
+  "entitlement_name": "accounts/C01473oln/customers/S8useBTIfPq4uc/entitlements/SFBAXQbpwWc5n6",
+  "channel_partner_name": "accounts/C01473oln/channelPartnerLinks/",
+  "channel_partner_cost": null,
+  "customer_name": "accounts/C01473oln/customers/S8useBTIfPq4uc",
+  "customer_cost": "15.5",
+  "cost_at_list": "22.14",
+  "customer_repricing_config_name": "accounts/C01473oln/customers/S8useBTIfPq4uc/customerRepricingConfigs/",
+  "channel_partner_repricing_config_name": null,
+  "tags": [],
+  "customer_correlation_id": "",
+  "price": {
+    "effective_price": null,
+    "tier_start_amount": null,
+    "unit": "count",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": null,
+  "seller_name": null,
+  "subscription": {
+    "instance_id": null
+  },
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": {
+    "id": null,
+    "description": null
+  }
+}, {
+  "billing_account_id": "C00qap6g1",
+  "payer_billing_account_id": "1-30173-04006",
+  "invoice": {
+    "month": "202603"
+  },
+  "cost_type": "regular",
+  "service": {
+    "id": "Google-Apps",
+    "description": "Google Workspace"
+  },
+  "sku": {
+    "id": "1010020025",
+    "description": "Google Workspace Business Plus"
+  },
+  "usage_start_time": "2026-03-01 08:00:00.000000 UTC",
+  "usage_end_time": "2026-03-02 08:00:00.000000 UTC",
+  "project": {
+    "number": null,
+    "id": null,
+    "name": null,
+    "labels": [],
+    "ancestry_numbers": null
+  },
+  "labels": [],
+  "system_labels": [{
+    "key": "workspace.googleapis.com/domain_name",
+    "value": "starglobal3d.com"
+  }, {
+    "key": "workspace.googleapis.com/order_id",
+    "value": "5043165718-06"
+  }, {
+    "key": "workspace.googleapis.com/subscription_id",
+    "value": "5043165718"
+  }, {
+    "key": "workspace.googleapis.com/usage_type",
+    "value": "FLEXIBLE_SEATS_ITEM"
+  }],
+  "location": {
+    "location": null,
+    "country": null,
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": null,
+    "global_name": null
+  },
+  "cost": "-7.75",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "-13",
+    "unit": "count",
+    "amount_in_pricing_unit": "-13",
+    "pricing_unit": "count"
+  },
+  "credits": [],
+  "adjustment_info": {
+    "adjustment_id": null,
+    "adjustment_description": null,
+    "adjustment_type": null,
+    "adjustment_mode": null
+  },
+  "export_time": "2026-03-02 14:59:17.978817 UTC",
+  "entitlement_name": "accounts/C01473oln/customers/S8useBTIfPq4uc/entitlements/SFBAXQbpwWc5n6",
+  "channel_partner_name": "accounts/C01473oln/channelPartnerLinks/",
+  "channel_partner_cost": null,
+  "customer_name": "accounts/C01473oln/customers/S8useBTIfPq4uc",
+  "customer_cost": "-7.75",
+  "cost_at_list": "-11.07",
+  "customer_repricing_config_name": "accounts/C01473oln/customers/S8useBTIfPq4uc/customerRepricingConfigs/",
+  "channel_partner_repricing_config_name": null,
+  "tags": [],
+  "customer_correlation_id": "",
+  "price": {
+    "effective_price": null,
+    "tier_start_amount": null,
+    "unit": "count",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": null,
+  "seller_name": null,
+  "subscription": {
+    "instance_id": null
+  },
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": {
+    "id": null,
+    "description": null
+  }
+}, {
+  "billing_account_id": "C02e40i8d",
+  "payer_billing_account_id": "1-30173-04006",
+  "invoice": {
+    "month": "202603"
+  },
+  "cost_type": "regular",
+  "service": {
+    "id": "Google-Apps",
+    "description": "Google Workspace"
+  },
+  "sku": {
+    "id": "1010020028",
+    "description": "Google Workspace Business Standard"
+  },
+  "usage_start_time": "2026-03-01 08:00:00.000000 UTC",
+  "usage_end_time": "2026-03-02 08:00:00.000000 UTC",
+  "project": {
+    "number": null,
+    "id": null,
+    "name": null,
+    "labels": [],
+    "ancestry_numbers": null
+  },
+  "labels": [],
+  "system_labels": [{
+    "key": "workspace.googleapis.com/domain_name",
+    "value": "ecotekcorp.com"
+  }, {
+    "key": "workspace.googleapis.com/order_id",
+    "value": "3478776076-05"
+  }, {
+    "key": "workspace.googleapis.com/subscription_id",
+    "value": "3478776076"
+  }, {
+    "key": "workspace.googleapis.com/usage_type",
+    "value": "FLEXIBLE_SEATS_ITEM"
+  }],
+  "location": {
+    "location": null,
+    "country": null,
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": null,
+    "global_name": null
+  },
+  "cost": "-10.62",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "-28",
+    "unit": "count",
+    "amount_in_pricing_unit": "-28",
+    "pricing_unit": "count"
+  },
+  "credits": [],
+  "adjustment_info": {
+    "adjustment_id": null,
+    "adjustment_description": null,
+    "adjustment_type": null,
+    "adjustment_mode": null
+  },
+  "export_time": "2026-03-02 14:59:17.978817 UTC",
+  "entitlement_name": "accounts/C01473oln/customers/SB6wj8AQpsMa79/entitlements/SnUhuuItnK6sO8",
+  "channel_partner_name": "accounts/C01473oln/channelPartnerLinks/",
+  "channel_partner_cost": null,
+  "customer_name": "accounts/C01473oln/customers/SB6wj8AQpsMa79",
+  "customer_cost": "-10.62",
+  "cost_at_list": "-15.17",
+  "customer_repricing_config_name": "accounts/C01473oln/customers/SB6wj8AQpsMa79/customerRepricingConfigs/",
+  "channel_partner_repricing_config_name": null,
+  "tags": [],
+  "customer_correlation_id": "",
+  "price": {
+    "effective_price": null,
+    "tier_start_amount": null,
+    "unit": "count",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": null,
+  "seller_name": null,
+  "subscription": {
+    "instance_id": null
+  },
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": {
+    "id": null,
+    "description": null
+  }
+}]

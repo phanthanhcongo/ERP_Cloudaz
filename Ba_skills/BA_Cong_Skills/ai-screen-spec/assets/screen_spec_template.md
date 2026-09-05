@@ -13,7 +13,7 @@
 > **HƯỚNG DẪN DÙNG TEMPLATE**: Xóa **toàn bộ dòng mẫu** (chứa placeholder như `{Tên BA}`,
 > `{Role 1}`, `{Term 1}`, `{field_a}`) trước khi xuất.
 > Biến runtime trong mẫu mã/thông báo như `PNK-{YYYYMM}-{seq}`, `"Phiếu {mã}..."` được phép giữ.
-> Trường thiếu thông tin → ghi `[CHƯA XÁC NHẬN]` kèm ghi chú ngắn, đồng thời
+> Trường thiếu thông tin → ghi `🔴 [CHƯA XÁC NHẬN]` kèm ghi chú ngắn, đồng thời
 > tạo câu hỏi Q-xx trong Section 12.
 
 ---
@@ -485,7 +485,7 @@
 > - ✅ [ĐÃ CHỐT] — User/stakeholder xác nhận
 > - ⚠️ [ĐỀ XUẤT] — BA suy luận hợp lý, cần review
 > - 🔴 [CHƯA XÁC NHẬN] — Thiếu thông tin, không thể suy luận
-> - *Nội dung đã chốt không bắt buộc prefix ✅ [ĐÃ CHỐT] từng dòng. Chỉ bắt buộc ⚠️ và 🔴.*
+> - *Nội dung đã chốt không bắt buộc prefix ✅ [ĐÃ CHỐT] từng dòng. Chỉ bắt buộc marker đầy đủ `⚠️ [ĐỀ XUẤT]` và `🔴 [CHƯA XÁC NHẬN]`.*
 >
 > **Trục 2 — Vòng đời câu hỏi** (chỉ dùng trong bảng mục 12):
 > - Đang chờ — Đã hỏi, chưa có trả lời

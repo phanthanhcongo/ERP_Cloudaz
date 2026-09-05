@@ -1,0 +1,4247 @@
+[{
+  "billing_account_id": "015773-F88AFC-053EC2",
+  "service": {
+    "id": "24E6-581D-38E5",
+    "description": "BigQuery"
+  },
+  "sku": {
+    "id": "947D-3B46-7781",
+    "description": "Active Logical Storage"
+  },
+  "usage_start_time": "2024-01-01 14:00:00.000000 UTC",
+  "usage_end_time": "2024-01-01 15:00:00.000000 UTC",
+  "project": {
+    "id": "anfin-prod",
+    "number": "283536558552",
+    "name": "anfin-prod",
+    "labels": [{
+      "key": "firebase",
+      "value": "enabled"
+    }],
+    "ancestry_numbers": "/159628161606/557591708778/",
+    "ancestors": [{
+      "resource_name": "projects/283536558552",
+      "display_name": "anfin-prod"
+    }, {
+      "resource_name": "folders/557591708778",
+      "display_name": "GKE-PCI"
+    }, {
+      "resource_name": "organizations/159628161606",
+      "display_name": "anfin.vn"
+    }]
+  },
+  "labels": [],
+  "system_labels": [],
+  "location": {
+    "location": "us",
+    "country": "US",
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": "dbt_sample",
+    "global_name": "//bigquery.googleapis.com/projects/anfin-prod/datasets/dbt_sample"
+  },
+  "tags": [],
+  "price": {
+    "effective_price": "0",
+    "tier_start_amount": "0",
+    "unit": "gibibyte month",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "export_time": "2024-01-02 08:02:24.398192 UTC",
+  "cost": "0.0",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "36700160.0",
+    "unit": "byte-seconds",
+    "amount_in_pricing_units": "1.3e-08",
+    "pricing_unit": "gibibyte month"
+  },
+  "credits": [],
+  "invoice": {
+    "month": "202401",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "cost_at_list": "0.0",
+  "subscription": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "019FF2-FC7DBC-4881CE",
+  "service": {
+    "id": "24E6-581D-38E5",
+    "description": "BigQuery"
+  },
+  "sku": {
+    "id": "947D-3B46-7781",
+    "description": "Active Logical Storage"
+  },
+  "usage_start_time": "2024-01-01 12:00:00.000000 UTC",
+  "usage_end_time": "2024-01-01 13:00:00.000000 UTC",
+  "project": {
+    "id": "aoe-apps",
+    "number": "794133004737",
+    "name": "AOE Apps",
+    "labels": [{
+      "key": "firebase",
+      "value": "enabled"
+    }],
+    "ancestry_numbers": null,
+    "ancestors": [{
+      "resource_name": "projects/794133004737",
+      "display_name": "AOE Apps"
+    }]
+  },
+  "labels": [],
+  "system_labels": [],
+  "location": {
+    "location": "us",
+    "country": "US",
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": "analytics_222216683",
+    "global_name": "//bigquery.googleapis.com/projects/aoe-apps/datasets/analytics_222216683"
+  },
+  "tags": [],
+  "price": {
+    "effective_price": "0",
+    "tier_start_amount": "0",
+    "unit": "gibibyte month",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "export_time": "2024-01-02 04:19:15.539521 UTC",
+  "cost": "0.0",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "618353374789632.0",
+    "unit": "byte-seconds",
+    "amount_in_pricing_units": "0.215011371",
+    "pricing_unit": "gibibyte month"
+  },
+  "credits": [],
+  "invoice": {
+    "month": "202401",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "cost_at_list": "0.0",
+  "subscription": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01AF45-CC490F-EEF29A",
+  "service": {
+    "id": "24E6-581D-38E5",
+    "description": "BigQuery"
+  },
+  "sku": {
+    "id": "947D-3B46-7781",
+    "description": "Active Logical Storage"
+  },
+  "usage_start_time": "2024-01-01 17:00:00.000000 UTC",
+  "usage_end_time": "2024-01-01 18:00:00.000000 UTC",
+  "project": {
+    "id": "billing-data-cloudaz-resell",
+    "number": "479063999532",
+    "name": "Billing Data CloudAZ Resell",
+    "labels": [{
+      "key": "firebase",
+      "value": "enabled"
+    }],
+    "ancestry_numbers": "/66691603437/",
+    "ancestors": [{
+      "resource_name": "projects/479063999532",
+      "display_name": "Billing Data CloudAZ Resell"
+    }, {
+      "resource_name": "organizations/66691603437",
+      "display_name": "gsuite.cloudaz.io"
+    }]
+  },
+  "labels": [],
+  "system_labels": [],
+  "location": {
+    "location": "us",
+    "country": "US",
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": "CloudAZ_Billing_AWS",
+    "global_name": "//bigquery.googleapis.com/projects/billing-data-cloudaz-resell/datasets/CloudAZ_Billing_AWS"
+  },
+  "tags": [],
+  "price": {
+    "effective_price": "0",
+    "tier_start_amount": "0",
+    "unit": "gibibyte month",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "export_time": "2024-01-02 08:02:24.398192 UTC",
+  "cost": "0.0",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "6728853749760.0",
+    "unit": "byte-seconds",
+    "amount_in_pricing_units": "0.00233973",
+    "pricing_unit": "gibibyte month"
+  },
+  "credits": [],
+  "invoice": {
+    "month": "202401",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "cost_at_list": "0.0",
+  "subscription": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01CC2A-45A382-C972A1",
+  "service": {
+    "id": "24E6-581D-38E5",
+    "description": "BigQuery"
+  },
+  "sku": {
+    "id": "947D-3B46-7781",
+    "description": "Active Logical Storage"
+  },
+  "usage_start_time": "2024-01-01 15:00:00.000000 UTC",
+  "usage_end_time": "2024-01-01 16:00:00.000000 UTC",
+  "project": {
+    "id": "business-engine-live",
+    "number": "88214358184",
+    "name": "bePOS Live",
+    "labels": [{
+      "key": "firebase",
+      "value": "enabled"
+    }],
+    "ancestry_numbers": "/442087971338/",
+    "ancestors": [{
+      "resource_name": "projects/88214358184",
+      "display_name": "bePOS Live"
+    }, {
+      "resource_name": "organizations/442087971338",
+      "display_name": "businessenginehq.com"
+    }]
+  },
+  "labels": [],
+  "system_labels": [],
+  "location": {
+    "location": "us",
+    "country": "US",
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": "firebase_crashlytics",
+    "global_name": "//bigquery.googleapis.com/projects/business-engine-live/datasets/firebase_crashlytics"
+  },
+  "tags": [],
+  "price": {
+    "effective_price": "0",
+    "tier_start_amount": "0",
+    "unit": "gibibyte month",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "export_time": "2024-01-02 10:06:32.142488 UTC",
+  "cost": "0.0",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "1049533349888.0",
+    "unit": "byte-seconds",
+    "amount_in_pricing_units": "0.00036494",
+    "pricing_unit": "gibibyte month"
+  },
+  "credits": [],
+  "invoice": {
+    "month": "202401",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "cost_at_list": "0.0",
+  "subscription": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01CC2A-45A382-C972A1",
+  "service": {
+    "id": "24E6-581D-38E5",
+    "description": "BigQuery"
+  },
+  "sku": {
+    "id": "947D-3B46-7781",
+    "description": "Active Logical Storage"
+  },
+  "usage_start_time": "2024-01-01 11:00:00.000000 UTC",
+  "usage_end_time": "2024-01-01 12:00:00.000000 UTC",
+  "project": {
+    "id": "business-engine-live",
+    "number": "88214358184",
+    "name": "bePOS Live",
+    "labels": [{
+      "key": "firebase",
+      "value": "enabled"
+    }],
+    "ancestry_numbers": "/442087971338/",
+    "ancestors": [{
+      "resource_name": "projects/88214358184",
+      "display_name": "bePOS Live"
+    }, {
+      "resource_name": "organizations/442087971338",
+      "display_name": "businessenginehq.com"
+    }]
+  },
+  "labels": [],
+  "system_labels": [],
+  "location": {
+    "location": "us",
+    "country": "US",
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": "firebase_messaging",
+    "global_name": "//bigquery.googleapis.com/projects/business-engine-live/datasets/firebase_messaging"
+  },
+  "tags": [],
+  "price": {
+    "effective_price": "0",
+    "tier_start_amount": "0",
+    "unit": "gibibyte month",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "export_time": "2024-01-02 05:30:30.733912 UTC",
+  "cost": "0.0",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "2300575744.0",
+    "unit": "byte-seconds",
+    "amount_in_pricing_units": "8e-07",
+    "pricing_unit": "gibibyte month"
+  },
+  "credits": [],
+  "invoice": {
+    "month": "202401",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "cost_at_list": "0.0",
+  "subscription": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "0177E6-6DBF23-4E1091",
+  "service": {
+    "id": "24E6-581D-38E5",
+    "description": "BigQuery"
+  },
+  "sku": {
+    "id": "947D-3B46-7781",
+    "description": "Active Logical Storage"
+  },
+  "usage_start_time": "2024-01-01 22:00:00.000000 UTC",
+  "usage_end_time": "2024-01-01 23:00:00.000000 UTC",
+  "project": {
+    "id": "chat-gpt-fb449",
+    "number": "170166682792",
+    "name": "ChatAI-Android",
+    "labels": [{
+      "key": "firebase",
+      "value": "enabled"
+    }],
+    "ancestry_numbers": null,
+    "ancestors": [{
+      "resource_name": "projects/170166682792",
+      "display_name": "ChatAI-Android"
+    }]
+  },
+  "labels": [],
+  "system_labels": [],
+  "location": {
+    "location": "us",
+    "country": "US",
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": "MyDataSetGoogleAds",
+    "global_name": "//bigquery.googleapis.com/projects/chat-gpt-fb449/datasets/MyDataSetGoogleAds"
+  },
+  "tags": [],
+  "price": {
+    "effective_price": "0.0182",
+    "tier_start_amount": "10",
+    "unit": "gibibyte month",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "export_time": "2024-01-02 14:20:17.294147 UTC",
+  "cost": "9.7e-05",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "15344125083648.0",
+    "unit": "byte-seconds",
+    "amount_in_pricing_units": "0.005335398",
+    "pricing_unit": "gibibyte month"
+  },
+  "credits": [{
+    "name": "2VGER9QNFL321NR4",
+    "amount": "-9.7e-05",
+    "full_name": "GTM Reseller Coupons jessali 216656476",
+    "id": "2VGER9QNFL321NR4",
+    "type": "PROMOTION"
+  }],
+  "invoice": {
+    "month": "202401",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "cost_at_list": "0.000106",
+  "subscription": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "0177E6-6DBF23-4E1091",
+  "service": {
+    "id": "24E6-581D-38E5",
+    "description": "BigQuery"
+  },
+  "sku": {
+    "id": "947D-3B46-7781",
+    "description": "Active Logical Storage"
+  },
+  "usage_start_time": "2024-01-01 18:00:00.000000 UTC",
+  "usage_end_time": "2024-01-01 19:00:00.000000 UTC",
+  "project": {
+    "id": "chat-gpt-fb449",
+    "number": "170166682792",
+    "name": "ChatAI-Android",
+    "labels": [{
+      "key": "firebase",
+      "value": "enabled"
+    }],
+    "ancestry_numbers": null,
+    "ancestors": [{
+      "resource_name": "projects/170166682792",
+      "display_name": "ChatAI-Android"
+    }]
+  },
+  "labels": [],
+  "system_labels": [],
+  "location": {
+    "location": "us",
+    "country": "US",
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": "OptimizedEvents",
+    "global_name": "//bigquery.googleapis.com/projects/chat-gpt-fb449/datasets/OptimizedEvents"
+  },
+  "tags": [],
+  "price": {
+    "effective_price": "0.0182",
+    "tier_start_amount": "10",
+    "unit": "gibibyte month",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "export_time": "2024-01-02 08:02:24.398192 UTC",
+  "cost": "0.001079",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "170591536545792.0",
+    "unit": "byte-seconds",
+    "amount_in_pricing_units": "0.059317409",
+    "pricing_unit": "gibibyte month"
+  },
+  "credits": [{
+    "name": "2VGER9QNFL321NR4",
+    "amount": "-0.001079",
+    "full_name": "GTM Reseller Coupons jessali 216656476",
+    "id": "2VGER9QNFL321NR4",
+    "type": "PROMOTION"
+  }],
+  "invoice": {
+    "month": "202401",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "cost_at_list": "0.001186",
+  "subscription": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01CC2A-45A382-C972A1",
+  "service": {
+    "id": "24E6-581D-38E5",
+    "description": "BigQuery"
+  },
+  "sku": {
+    "id": "947D-3B46-7781",
+    "description": "Active Logical Storage"
+  },
+  "usage_start_time": "2024-01-01 12:00:00.000000 UTC",
+  "usage_end_time": "2024-01-01 13:00:00.000000 UTC",
+  "project": {
+    "id": "csai-dev",
+    "number": "951562413828",
+    "name": "cs-prod",
+    "labels": [{
+      "key": "firebase",
+      "value": "enabled"
+    }],
+    "ancestry_numbers": "/510641606036/",
+    "ancestors": [{
+      "resource_name": "projects/951562413828",
+      "display_name": "cs-prod"
+    }, {
+      "resource_name": "organizations/510641606036",
+      "display_name": "bepos.io"
+    }]
+  },
+  "labels": [],
+  "system_labels": [],
+  "location": {
+    "location": "us",
+    "country": "US",
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": "_script03ed48748c7c8756e098849567a0e9237a2d4bc9",
+    "global_name": "//bigquery.googleapis.com/projects/csai-dev/datasets/_script03ed48748c7c8756e098849567a0e9237a2d4bc9"
+  },
+  "tags": [],
+  "price": {
+    "effective_price": "0",
+    "tier_start_amount": "0",
+    "unit": "gibibyte month",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "export_time": "2024-01-02 05:30:30.733912 UTC",
+  "cost": "0.0",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "16282288128.0",
+    "unit": "byte-seconds",
+    "amount_in_pricing_units": "5.662e-06",
+    "pricing_unit": "gibibyte month"
+  },
+  "credits": [],
+  "invoice": {
+    "month": "202401",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "cost_at_list": "0.0",
+  "subscription": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01CC2A-45A382-C972A1",
+  "service": {
+    "id": "24E6-581D-38E5",
+    "description": "BigQuery"
+  },
+  "sku": {
+    "id": "947D-3B46-7781",
+    "description": "Active Logical Storage"
+  },
+  "usage_start_time": "2024-01-01 23:00:00.000000 UTC",
+  "usage_end_time": "2024-01-02 00:00:00.000000 UTC",
+  "project": {
+    "id": "csai-dev",
+    "number": "951562413828",
+    "name": "cs-prod",
+    "labels": [{
+      "key": "firebase",
+      "value": "enabled"
+    }],
+    "ancestry_numbers": "/510641606036/",
+    "ancestors": [{
+      "resource_name": "projects/951562413828",
+      "display_name": "cs-prod"
+    }, {
+      "resource_name": "organizations/510641606036",
+      "display_name": "bepos.io"
+    }]
+  },
+  "labels": [],
+  "system_labels": [],
+  "location": {
+    "location": "us",
+    "country": "US",
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": "_script0427815cd88b55045f074a4c2659612fdbd46349",
+    "global_name": "//bigquery.googleapis.com/projects/csai-dev/datasets/_script0427815cd88b55045f074a4c2659612fdbd46349"
+  },
+  "tags": [],
+  "price": {
+    "effective_price": "0",
+    "tier_start_amount": "0",
+    "unit": "gibibyte month",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "export_time": "2024-01-02 14:20:17.294147 UTC",
+  "cost": "0.0",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "5457838080.0",
+    "unit": "byte-seconds",
+    "amount_in_pricing_units": "1.898e-06",
+    "pricing_unit": "gibibyte month"
+  },
+  "credits": [],
+  "invoice": {
+    "month": "202401",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "cost_at_list": "0.0",
+  "subscription": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01CC2A-45A382-C972A1",
+  "service": {
+    "id": "24E6-581D-38E5",
+    "description": "BigQuery"
+  },
+  "sku": {
+    "id": "947D-3B46-7781",
+    "description": "Active Logical Storage"
+  },
+  "usage_start_time": "2024-01-01 23:00:00.000000 UTC",
+  "usage_end_time": "2024-01-02 00:00:00.000000 UTC",
+  "project": {
+    "id": "csai-dev",
+    "number": "951562413828",
+    "name": "cs-prod",
+    "labels": [{
+      "key": "firebase",
+      "value": "enabled"
+    }],
+    "ancestry_numbers": "/510641606036/",
+    "ancestors": [{
+      "resource_name": "projects/951562413828",
+      "display_name": "cs-prod"
+    }, {
+      "resource_name": "organizations/510641606036",
+      "display_name": "bepos.io"
+    }]
+  },
+  "labels": [],
+  "system_labels": [],
+  "location": {
+    "location": "us",
+    "country": "US",
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": "_script09bc14d4e20af035933f7755ed511d3688e8e570",
+    "global_name": "//bigquery.googleapis.com/projects/csai-dev/datasets/_script09bc14d4e20af035933f7755ed511d3688e8e570"
+  },
+  "tags": [],
+  "price": {
+    "effective_price": "0",
+    "tier_start_amount": "0",
+    "unit": "gibibyte month",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "export_time": "2024-01-02 14:20:17.294147 UTC",
+  "cost": "0.0",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "16273899520.0",
+    "unit": "byte-seconds",
+    "amount_in_pricing_units": "5.659e-06",
+    "pricing_unit": "gibibyte month"
+  },
+  "credits": [],
+  "invoice": {
+    "month": "202401",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "cost_at_list": "0.0",
+  "subscription": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01CC2A-45A382-C972A1",
+  "service": {
+    "id": "24E6-581D-38E5",
+    "description": "BigQuery"
+  },
+  "sku": {
+    "id": "947D-3B46-7781",
+    "description": "Active Logical Storage"
+  },
+  "usage_start_time": "2024-01-01 17:00:00.000000 UTC",
+  "usage_end_time": "2024-01-01 18:00:00.000000 UTC",
+  "project": {
+    "id": "csai-dev",
+    "number": "951562413828",
+    "name": "cs-prod",
+    "labels": [{
+      "key": "firebase",
+      "value": "enabled"
+    }],
+    "ancestry_numbers": "/510641606036/",
+    "ancestors": [{
+      "resource_name": "projects/951562413828",
+      "display_name": "cs-prod"
+    }, {
+      "resource_name": "organizations/510641606036",
+      "display_name": "bepos.io"
+    }]
+  },
+  "labels": [],
+  "system_labels": [],
+  "location": {
+    "location": "us",
+    "country": "US",
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": "_script0b18c7b8e40dd16682c1c9bbc8f326897e9a9b05",
+    "global_name": "//bigquery.googleapis.com/projects/csai-dev/datasets/_script0b18c7b8e40dd16682c1c9bbc8f326897e9a9b05"
+  },
+  "tags": [],
+  "price": {
+    "effective_price": "0",
+    "tier_start_amount": "0",
+    "unit": "gibibyte month",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "export_time": "2024-01-02 08:02:24.398192 UTC",
+  "cost": "0.0",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "8967421952.0",
+    "unit": "byte-seconds",
+    "amount_in_pricing_units": "3.118e-06",
+    "pricing_unit": "gibibyte month"
+  },
+  "credits": [],
+  "invoice": {
+    "month": "202401",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "cost_at_list": "0.0",
+  "subscription": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01CC2A-45A382-C972A1",
+  "service": {
+    "id": "24E6-581D-38E5",
+    "description": "BigQuery"
+  },
+  "sku": {
+    "id": "947D-3B46-7781",
+    "description": "Active Logical Storage"
+  },
+  "usage_start_time": "2024-01-01 13:00:00.000000 UTC",
+  "usage_end_time": "2024-01-01 14:00:00.000000 UTC",
+  "project": {
+    "id": "csai-dev",
+    "number": "951562413828",
+    "name": "cs-prod",
+    "labels": [{
+      "key": "firebase",
+      "value": "enabled"
+    }],
+    "ancestry_numbers": "/510641606036/",
+    "ancestors": [{
+      "resource_name": "projects/951562413828",
+      "display_name": "cs-prod"
+    }, {
+      "resource_name": "organizations/510641606036",
+      "display_name": "bepos.io"
+    }]
+  },
+  "labels": [],
+  "system_labels": [],
+  "location": {
+    "location": "us",
+    "country": "US",
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": "_script162322448f5f12ff25f78dd12045a7cbe0041a1e",
+    "global_name": "//bigquery.googleapis.com/projects/csai-dev/datasets/_script162322448f5f12ff25f78dd12045a7cbe0041a1e"
+  },
+  "tags": [],
+  "price": {
+    "effective_price": "0",
+    "tier_start_amount": "0",
+    "unit": "gibibyte month",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "export_time": "2024-01-02 05:30:30.733912 UTC",
+  "cost": "0.0",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "16344154112.0",
+    "unit": "byte-seconds",
+    "amount_in_pricing_units": "5.683e-06",
+    "pricing_unit": "gibibyte month"
+  },
+  "credits": [],
+  "invoice": {
+    "month": "202401",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "cost_at_list": "0.0",
+  "subscription": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01CC2A-45A382-C972A1",
+  "service": {
+    "id": "24E6-581D-38E5",
+    "description": "BigQuery"
+  },
+  "sku": {
+    "id": "947D-3B46-7781",
+    "description": "Active Logical Storage"
+  },
+  "usage_start_time": "2024-01-02 01:00:00.000000 UTC",
+  "usage_end_time": "2024-01-02 02:00:00.000000 UTC",
+  "project": {
+    "id": "csai-dev",
+    "number": "951562413828",
+    "name": "cs-prod",
+    "labels": [{
+      "key": "firebase",
+      "value": "enabled"
+    }],
+    "ancestry_numbers": "/510641606036/",
+    "ancestors": [{
+      "resource_name": "projects/951562413828",
+      "display_name": "cs-prod"
+    }, {
+      "resource_name": "organizations/510641606036",
+      "display_name": "bepos.io"
+    }]
+  },
+  "labels": [],
+  "system_labels": [],
+  "location": {
+    "location": "us",
+    "country": "US",
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": "_script1794196c788ad4e8208d40ba2a0698fc48646ccf",
+    "global_name": "//bigquery.googleapis.com/projects/csai-dev/datasets/_script1794196c788ad4e8208d40ba2a0698fc48646ccf"
+  },
+  "tags": [],
+  "price": {
+    "effective_price": "0",
+    "tier_start_amount": "0",
+    "unit": "gibibyte month",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "export_time": "2024-01-02 14:20:17.294147 UTC",
+  "cost": "0.0",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "16342056960.0",
+    "unit": "byte-seconds",
+    "amount_in_pricing_units": "5.682e-06",
+    "pricing_unit": "gibibyte month"
+  },
+  "credits": [],
+  "invoice": {
+    "month": "202401",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "cost_at_list": "0.0",
+  "subscription": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01CC2A-45A382-C972A1",
+  "service": {
+    "id": "24E6-581D-38E5",
+    "description": "BigQuery"
+  },
+  "sku": {
+    "id": "947D-3B46-7781",
+    "description": "Active Logical Storage"
+  },
+  "usage_start_time": "2024-01-01 09:00:00.000000 UTC",
+  "usage_end_time": "2024-01-01 10:00:00.000000 UTC",
+  "project": {
+    "id": "csai-dev",
+    "number": "951562413828",
+    "name": "cs-prod",
+    "labels": [{
+      "key": "firebase",
+      "value": "enabled"
+    }],
+    "ancestry_numbers": "/510641606036/",
+    "ancestors": [{
+      "resource_name": "projects/951562413828",
+      "display_name": "cs-prod"
+    }, {
+      "resource_name": "organizations/510641606036",
+      "display_name": "bepos.io"
+    }]
+  },
+  "labels": [],
+  "system_labels": [],
+  "location": {
+    "location": "us",
+    "country": "US",
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": "_script186f1e3955607d2509d3c7f8a64646fc8779c27f",
+    "global_name": "//bigquery.googleapis.com/projects/csai-dev/datasets/_script186f1e3955607d2509d3c7f8a64646fc8779c27f"
+  },
+  "tags": [],
+  "price": {
+    "effective_price": "0",
+    "tier_start_amount": "0",
+    "unit": "gibibyte month",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "export_time": "2024-01-02 05:30:30.733912 UTC",
+  "cost": "0.0",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "5434769408.0",
+    "unit": "byte-seconds",
+    "amount_in_pricing_units": "1.89e-06",
+    "pricing_unit": "gibibyte month"
+  },
+  "credits": [],
+  "invoice": {
+    "month": "202401",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "cost_at_list": "0.0",
+  "subscription": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01CC2A-45A382-C972A1",
+  "service": {
+    "id": "24E6-581D-38E5",
+    "description": "BigQuery"
+  },
+  "sku": {
+    "id": "947D-3B46-7781",
+    "description": "Active Logical Storage"
+  },
+  "usage_start_time": "2024-01-01 16:00:00.000000 UTC",
+  "usage_end_time": "2024-01-01 17:00:00.000000 UTC",
+  "project": {
+    "id": "csai-dev",
+    "number": "951562413828",
+    "name": "cs-prod",
+    "labels": [{
+      "key": "firebase",
+      "value": "enabled"
+    }],
+    "ancestry_numbers": "/510641606036/",
+    "ancestors": [{
+      "resource_name": "projects/951562413828",
+      "display_name": "cs-prod"
+    }, {
+      "resource_name": "organizations/510641606036",
+      "display_name": "bepos.io"
+    }]
+  },
+  "labels": [],
+  "system_labels": [],
+  "location": {
+    "location": "us",
+    "country": "US",
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": "_script18fbeb97d290ff331a2e618a462f2db3a7f2bb95",
+    "global_name": "//bigquery.googleapis.com/projects/csai-dev/datasets/_script18fbeb97d290ff331a2e618a462f2db3a7f2bb95"
+  },
+  "tags": [],
+  "price": {
+    "effective_price": "0",
+    "tier_start_amount": "0",
+    "unit": "gibibyte month",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "export_time": "2024-01-02 08:02:24.398192 UTC",
+  "cost": "0.0",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "2432696320.0",
+    "unit": "byte-seconds",
+    "amount_in_pricing_units": "8.46e-07",
+    "pricing_unit": "gibibyte month"
+  },
+  "credits": [],
+  "invoice": {
+    "month": "202401",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "cost_at_list": "0.0",
+  "subscription": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01CC2A-45A382-C972A1",
+  "service": {
+    "id": "24E6-581D-38E5",
+    "description": "BigQuery"
+  },
+  "sku": {
+    "id": "947D-3B46-7781",
+    "description": "Active Logical Storage"
+  },
+  "usage_start_time": "2024-01-01 17:00:00.000000 UTC",
+  "usage_end_time": "2024-01-01 18:00:00.000000 UTC",
+  "project": {
+    "id": "csai-dev",
+    "number": "951562413828",
+    "name": "cs-prod",
+    "labels": [{
+      "key": "firebase",
+      "value": "enabled"
+    }],
+    "ancestry_numbers": "/510641606036/",
+    "ancestors": [{
+      "resource_name": "projects/951562413828",
+      "display_name": "cs-prod"
+    }, {
+      "resource_name": "organizations/510641606036",
+      "display_name": "bepos.io"
+    }]
+  },
+  "labels": [],
+  "system_labels": [],
+  "location": {
+    "location": "us",
+    "country": "US",
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": "_script1a4acf3c361abd7006529bedb21c5f392f9be89e",
+    "global_name": "//bigquery.googleapis.com/projects/csai-dev/datasets/_script1a4acf3c361abd7006529bedb21c5f392f9be89e"
+  },
+  "tags": [],
+  "price": {
+    "effective_price": "0",
+    "tier_start_amount": "0",
+    "unit": "gibibyte month",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "export_time": "2024-01-02 08:02:24.398192 UTC",
+  "cost": "0.0",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "15586033664.0",
+    "unit": "byte-seconds",
+    "amount_in_pricing_units": "5.42e-06",
+    "pricing_unit": "gibibyte month"
+  },
+  "credits": [],
+  "invoice": {
+    "month": "202401",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "cost_at_list": "0.0",
+  "subscription": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01CC2A-45A382-C972A1",
+  "service": {
+    "id": "24E6-581D-38E5",
+    "description": "BigQuery"
+  },
+  "sku": {
+    "id": "947D-3B46-7781",
+    "description": "Active Logical Storage"
+  },
+  "usage_start_time": "2024-01-01 18:00:00.000000 UTC",
+  "usage_end_time": "2024-01-01 19:00:00.000000 UTC",
+  "project": {
+    "id": "csai-dev",
+    "number": "951562413828",
+    "name": "cs-prod",
+    "labels": [{
+      "key": "firebase",
+      "value": "enabled"
+    }],
+    "ancestry_numbers": "/510641606036/",
+    "ancestors": [{
+      "resource_name": "projects/951562413828",
+      "display_name": "cs-prod"
+    }, {
+      "resource_name": "organizations/510641606036",
+      "display_name": "bepos.io"
+    }]
+  },
+  "labels": [],
+  "system_labels": [],
+  "location": {
+    "location": "us",
+    "country": "US",
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": "_script1dc066285676cb2f38c8e6f4ad315167961a4e83",
+    "global_name": "//bigquery.googleapis.com/projects/csai-dev/datasets/_script1dc066285676cb2f38c8e6f4ad315167961a4e83"
+  },
+  "tags": [],
+  "price": {
+    "effective_price": "0",
+    "tier_start_amount": "0",
+    "unit": "gibibyte month",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "export_time": "2024-01-02 08:02:24.398192 UTC",
+  "cost": "0.0",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "5457838080.0",
+    "unit": "byte-seconds",
+    "amount_in_pricing_units": "1.898e-06",
+    "pricing_unit": "gibibyte month"
+  },
+  "credits": [],
+  "invoice": {
+    "month": "202401",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "cost_at_list": "0.0",
+  "subscription": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01CC2A-45A382-C972A1",
+  "service": {
+    "id": "24E6-581D-38E5",
+    "description": "BigQuery"
+  },
+  "sku": {
+    "id": "947D-3B46-7781",
+    "description": "Active Logical Storage"
+  },
+  "usage_start_time": "2024-01-01 20:00:00.000000 UTC",
+  "usage_end_time": "2024-01-01 21:00:00.000000 UTC",
+  "project": {
+    "id": "csai-dev",
+    "number": "951562413828",
+    "name": "cs-prod",
+    "labels": [{
+      "key": "firebase",
+      "value": "enabled"
+    }],
+    "ancestry_numbers": "/510641606036/",
+    "ancestors": [{
+      "resource_name": "projects/951562413828",
+      "display_name": "cs-prod"
+    }, {
+      "resource_name": "organizations/510641606036",
+      "display_name": "bepos.io"
+    }]
+  },
+  "labels": [],
+  "system_labels": [],
+  "location": {
+    "location": "us",
+    "country": "US",
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": "_script1dc066285676cb2f38c8e6f4ad315167961a4e83",
+    "global_name": "//bigquery.googleapis.com/projects/csai-dev/datasets/_script1dc066285676cb2f38c8e6f4ad315167961a4e83"
+  },
+  "tags": [],
+  "price": {
+    "effective_price": "0",
+    "tier_start_amount": "0",
+    "unit": "gibibyte month",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "export_time": "2024-01-02 14:20:17.294147 UTC",
+  "cost": "0.0",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "5457838080.0",
+    "unit": "byte-seconds",
+    "amount_in_pricing_units": "1.898e-06",
+    "pricing_unit": "gibibyte month"
+  },
+  "credits": [],
+  "invoice": {
+    "month": "202401",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "cost_at_list": "0.0",
+  "subscription": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01CC2A-45A382-C972A1",
+  "service": {
+    "id": "24E6-581D-38E5",
+    "description": "BigQuery"
+  },
+  "sku": {
+    "id": "947D-3B46-7781",
+    "description": "Active Logical Storage"
+  },
+  "usage_start_time": "2024-01-01 20:00:00.000000 UTC",
+  "usage_end_time": "2024-01-01 21:00:00.000000 UTC",
+  "project": {
+    "id": "csai-dev",
+    "number": "951562413828",
+    "name": "cs-prod",
+    "labels": [{
+      "key": "firebase",
+      "value": "enabled"
+    }],
+    "ancestry_numbers": "/510641606036/",
+    "ancestors": [{
+      "resource_name": "projects/951562413828",
+      "display_name": "cs-prod"
+    }, {
+      "resource_name": "organizations/510641606036",
+      "display_name": "bepos.io"
+    }]
+  },
+  "labels": [],
+  "system_labels": [],
+  "location": {
+    "location": "us",
+    "country": "US",
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": "_script1de95ecf9f6f13bd379df820edf24d2beab8c1bf",
+    "global_name": "//bigquery.googleapis.com/projects/csai-dev/datasets/_script1de95ecf9f6f13bd379df820edf24d2beab8c1bf"
+  },
+  "tags": [],
+  "price": {
+    "effective_price": "0",
+    "tier_start_amount": "0",
+    "unit": "gibibyte month",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "export_time": "2024-01-02 14:20:17.294147 UTC",
+  "cost": "0.0",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "5434769408.0",
+    "unit": "byte-seconds",
+    "amount_in_pricing_units": "1.89e-06",
+    "pricing_unit": "gibibyte month"
+  },
+  "credits": [],
+  "invoice": {
+    "month": "202401",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "cost_at_list": "0.0",
+  "subscription": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01CC2A-45A382-C972A1",
+  "service": {
+    "id": "24E6-581D-38E5",
+    "description": "BigQuery"
+  },
+  "sku": {
+    "id": "947D-3B46-7781",
+    "description": "Active Logical Storage"
+  },
+  "usage_start_time": "2024-01-01 09:00:00.000000 UTC",
+  "usage_end_time": "2024-01-01 10:00:00.000000 UTC",
+  "project": {
+    "id": "csai-dev",
+    "number": "951562413828",
+    "name": "cs-prod",
+    "labels": [{
+      "key": "firebase",
+      "value": "enabled"
+    }],
+    "ancestry_numbers": "/510641606036/",
+    "ancestors": [{
+      "resource_name": "projects/951562413828",
+      "display_name": "cs-prod"
+    }, {
+      "resource_name": "organizations/510641606036",
+      "display_name": "bepos.io"
+    }]
+  },
+  "labels": [],
+  "system_labels": [],
+  "location": {
+    "location": "us",
+    "country": "US",
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": "_script20e55430fe788e16451ea28b057abe2eb7cac94a",
+    "global_name": "//bigquery.googleapis.com/projects/csai-dev/datasets/_script20e55430fe788e16451ea28b057abe2eb7cac94a"
+  },
+  "tags": [],
+  "price": {
+    "effective_price": "0",
+    "tier_start_amount": "0",
+    "unit": "gibibyte month",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "export_time": "2024-01-02 05:30:30.733912 UTC",
+  "cost": "0.0",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "15380512768.0",
+    "unit": "byte-seconds",
+    "amount_in_pricing_units": "5.348e-06",
+    "pricing_unit": "gibibyte month"
+  },
+  "credits": [],
+  "invoice": {
+    "month": "202401",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "cost_at_list": "0.0",
+  "subscription": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01CC2A-45A382-C972A1",
+  "service": {
+    "id": "24E6-581D-38E5",
+    "description": "BigQuery"
+  },
+  "sku": {
+    "id": "947D-3B46-7781",
+    "description": "Active Logical Storage"
+  },
+  "usage_start_time": "2024-01-01 19:00:00.000000 UTC",
+  "usage_end_time": "2024-01-01 20:00:00.000000 UTC",
+  "project": {
+    "id": "csai-dev",
+    "number": "951562413828",
+    "name": "cs-prod",
+    "labels": [{
+      "key": "firebase",
+      "value": "enabled"
+    }],
+    "ancestry_numbers": "/510641606036/",
+    "ancestors": [{
+      "resource_name": "projects/951562413828",
+      "display_name": "cs-prod"
+    }, {
+      "resource_name": "organizations/510641606036",
+      "display_name": "bepos.io"
+    }]
+  },
+  "labels": [],
+  "system_labels": [],
+  "location": {
+    "location": "us",
+    "country": "US",
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": "_script2181e77e8ac44f7ff3762285c1890d0aa427aedb",
+    "global_name": "//bigquery.googleapis.com/projects/csai-dev/datasets/_script2181e77e8ac44f7ff3762285c1890d0aa427aedb"
+  },
+  "tags": [],
+  "price": {
+    "effective_price": "0",
+    "tier_start_amount": "0",
+    "unit": "gibibyte month",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "export_time": "2024-01-02 08:02:24.398192 UTC",
+  "cost": "0.0",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "16342056960.0",
+    "unit": "byte-seconds",
+    "amount_in_pricing_units": "5.682e-06",
+    "pricing_unit": "gibibyte month"
+  },
+  "credits": [],
+  "invoice": {
+    "month": "202401",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "cost_at_list": "0.0",
+  "subscription": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01CC2A-45A382-C972A1",
+  "service": {
+    "id": "24E6-581D-38E5",
+    "description": "BigQuery"
+  },
+  "sku": {
+    "id": "947D-3B46-7781",
+    "description": "Active Logical Storage"
+  },
+  "usage_start_time": "2024-01-01 10:00:00.000000 UTC",
+  "usage_end_time": "2024-01-01 11:00:00.000000 UTC",
+  "project": {
+    "id": "csai-dev",
+    "number": "951562413828",
+    "name": "cs-prod",
+    "labels": [{
+      "key": "firebase",
+      "value": "enabled"
+    }],
+    "ancestry_numbers": "/510641606036/",
+    "ancestors": [{
+      "resource_name": "projects/951562413828",
+      "display_name": "cs-prod"
+    }, {
+      "resource_name": "organizations/510641606036",
+      "display_name": "bepos.io"
+    }]
+  },
+  "labels": [],
+  "system_labels": [],
+  "location": {
+    "location": "us",
+    "country": "US",
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": "_script21e468cda7c3fa3d3283f003b72961a8dd887ae8",
+    "global_name": "//bigquery.googleapis.com/projects/csai-dev/datasets/_script21e468cda7c3fa3d3283f003b72961a8dd887ae8"
+  },
+  "tags": [],
+  "price": {
+    "effective_price": "0",
+    "tier_start_amount": "0",
+    "unit": "gibibyte month",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "export_time": "2024-01-02 05:30:30.733912 UTC",
+  "cost": "0.0",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "1163919360.0",
+    "unit": "byte-seconds",
+    "amount_in_pricing_units": "4.05e-07",
+    "pricing_unit": "gibibyte month"
+  },
+  "credits": [],
+  "invoice": {
+    "month": "202401",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "cost_at_list": "0.0",
+  "subscription": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01CC2A-45A382-C972A1",
+  "service": {
+    "id": "24E6-581D-38E5",
+    "description": "BigQuery"
+  },
+  "sku": {
+    "id": "947D-3B46-7781",
+    "description": "Active Logical Storage"
+  },
+  "usage_start_time": "2024-01-01 18:00:00.000000 UTC",
+  "usage_end_time": "2024-01-01 19:00:00.000000 UTC",
+  "project": {
+    "id": "csai-dev",
+    "number": "951562413828",
+    "name": "cs-prod",
+    "labels": [{
+      "key": "firebase",
+      "value": "enabled"
+    }],
+    "ancestry_numbers": "/510641606036/",
+    "ancestors": [{
+      "resource_name": "projects/951562413828",
+      "display_name": "cs-prod"
+    }, {
+      "resource_name": "organizations/510641606036",
+      "display_name": "bepos.io"
+    }]
+  },
+  "labels": [],
+  "system_labels": [],
+  "location": {
+    "location": "us",
+    "country": "US",
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": "_script223e09ac7c7513c2e215935998ab17ba634f3114",
+    "global_name": "//bigquery.googleapis.com/projects/csai-dev/datasets/_script223e09ac7c7513c2e215935998ab17ba634f3114"
+  },
+  "tags": [],
+  "price": {
+    "effective_price": "0",
+    "tier_start_amount": "0",
+    "unit": "gibibyte month",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "export_time": "2024-01-02 08:02:24.398192 UTC",
+  "cost": "0.0",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "16273899520.0",
+    "unit": "byte-seconds",
+    "amount_in_pricing_units": "5.659e-06",
+    "pricing_unit": "gibibyte month"
+  },
+  "credits": [],
+  "invoice": {
+    "month": "202401",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "cost_at_list": "0.0",
+  "subscription": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01CC2A-45A382-C972A1",
+  "service": {
+    "id": "24E6-581D-38E5",
+    "description": "BigQuery"
+  },
+  "sku": {
+    "id": "947D-3B46-7781",
+    "description": "Active Logical Storage"
+  },
+  "usage_start_time": "2024-01-02 00:00:00.000000 UTC",
+  "usage_end_time": "2024-01-02 01:00:00.000000 UTC",
+  "project": {
+    "id": "csai-dev",
+    "number": "951562413828",
+    "name": "cs-prod",
+    "labels": [{
+      "key": "firebase",
+      "value": "enabled"
+    }],
+    "ancestry_numbers": "/510641606036/",
+    "ancestors": [{
+      "resource_name": "projects/951562413828",
+      "display_name": "cs-prod"
+    }, {
+      "resource_name": "organizations/510641606036",
+      "display_name": "bepos.io"
+    }]
+  },
+  "labels": [],
+  "system_labels": [],
+  "location": {
+    "location": "us",
+    "country": "US",
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": "_script25a9a2fea891962851cf82f09d5591a711ce8434",
+    "global_name": "//bigquery.googleapis.com/projects/csai-dev/datasets/_script25a9a2fea891962851cf82f09d5591a711ce8434"
+  },
+  "tags": [],
+  "price": {
+    "effective_price": "0",
+    "tier_start_amount": "0",
+    "unit": "gibibyte month",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "export_time": "2024-01-02 15:57:48.649325 UTC",
+  "cost": "0.0",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "16273899520.0",
+    "unit": "byte-seconds",
+    "amount_in_pricing_units": "5.659e-06",
+    "pricing_unit": "gibibyte month"
+  },
+  "credits": [],
+  "invoice": {
+    "month": "202401",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "cost_at_list": "0.0",
+  "subscription": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01CC2A-45A382-C972A1",
+  "service": {
+    "id": "24E6-581D-38E5",
+    "description": "BigQuery"
+  },
+  "sku": {
+    "id": "947D-3B46-7781",
+    "description": "Active Logical Storage"
+  },
+  "usage_start_time": "2024-01-01 20:00:00.000000 UTC",
+  "usage_end_time": "2024-01-01 21:00:00.000000 UTC",
+  "project": {
+    "id": "csai-dev",
+    "number": "951562413828",
+    "name": "cs-prod",
+    "labels": [{
+      "key": "firebase",
+      "value": "enabled"
+    }],
+    "ancestry_numbers": "/510641606036/",
+    "ancestors": [{
+      "resource_name": "projects/951562413828",
+      "display_name": "cs-prod"
+    }, {
+      "resource_name": "organizations/510641606036",
+      "display_name": "bepos.io"
+    }]
+  },
+  "labels": [],
+  "system_labels": [],
+  "location": {
+    "location": "us",
+    "country": "US",
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": "_script268d88cf6d47bf322a6095ef7fbe61da68dac0fa",
+    "global_name": "//bigquery.googleapis.com/projects/csai-dev/datasets/_script268d88cf6d47bf322a6095ef7fbe61da68dac0fa"
+  },
+  "tags": [],
+  "price": {
+    "effective_price": "0",
+    "tier_start_amount": "0",
+    "unit": "gibibyte month",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "export_time": "2024-01-02 14:20:17.294147 UTC",
+  "cost": "0.0",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "16346251264.0",
+    "unit": "byte-seconds",
+    "amount_in_pricing_units": "5.684e-06",
+    "pricing_unit": "gibibyte month"
+  },
+  "credits": [],
+  "invoice": {
+    "month": "202401",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "cost_at_list": "0.0",
+  "subscription": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01CC2A-45A382-C972A1",
+  "service": {
+    "id": "24E6-581D-38E5",
+    "description": "BigQuery"
+  },
+  "sku": {
+    "id": "947D-3B46-7781",
+    "description": "Active Logical Storage"
+  },
+  "usage_start_time": "2024-01-01 13:00:00.000000 UTC",
+  "usage_end_time": "2024-01-01 14:00:00.000000 UTC",
+  "project": {
+    "id": "csai-dev",
+    "number": "951562413828",
+    "name": "cs-prod",
+    "labels": [{
+      "key": "firebase",
+      "value": "enabled"
+    }],
+    "ancestry_numbers": "/510641606036/",
+    "ancestors": [{
+      "resource_name": "projects/951562413828",
+      "display_name": "cs-prod"
+    }, {
+      "resource_name": "organizations/510641606036",
+      "display_name": "bepos.io"
+    }]
+  },
+  "labels": [],
+  "system_labels": [],
+  "location": {
+    "location": "us",
+    "country": "US",
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": "_script27fd872a704ba7fe9d4d1370aa99196b5e0b08fa",
+    "global_name": "//bigquery.googleapis.com/projects/csai-dev/datasets/_script27fd872a704ba7fe9d4d1370aa99196b5e0b08fa"
+  },
+  "tags": [],
+  "price": {
+    "effective_price": "0",
+    "tier_start_amount": "0",
+    "unit": "gibibyte month",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "export_time": "2024-01-02 05:30:30.733912 UTC",
+  "cost": "0.0",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "5434769408.0",
+    "unit": "byte-seconds",
+    "amount_in_pricing_units": "1.89e-06",
+    "pricing_unit": "gibibyte month"
+  },
+  "credits": [],
+  "invoice": {
+    "month": "202401",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "cost_at_list": "0.0",
+  "subscription": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01CC2A-45A382-C972A1",
+  "service": {
+    "id": "24E6-581D-38E5",
+    "description": "BigQuery"
+  },
+  "sku": {
+    "id": "947D-3B46-7781",
+    "description": "Active Logical Storage"
+  },
+  "usage_start_time": "2024-01-01 11:00:00.000000 UTC",
+  "usage_end_time": "2024-01-01 12:00:00.000000 UTC",
+  "project": {
+    "id": "csai-dev",
+    "number": "951562413828",
+    "name": "cs-prod",
+    "labels": [{
+      "key": "firebase",
+      "value": "enabled"
+    }],
+    "ancestry_numbers": "/510641606036/",
+    "ancestors": [{
+      "resource_name": "projects/951562413828",
+      "display_name": "cs-prod"
+    }, {
+      "resource_name": "organizations/510641606036",
+      "display_name": "bepos.io"
+    }]
+  },
+  "labels": [],
+  "system_labels": [],
+  "location": {
+    "location": "us",
+    "country": "US",
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": "_script2b79aa0eaff822725b6d60ca188dbc61faf1638f",
+    "global_name": "//bigquery.googleapis.com/projects/csai-dev/datasets/_script2b79aa0eaff822725b6d60ca188dbc61faf1638f"
+  },
+  "tags": [],
+  "price": {
+    "effective_price": "0",
+    "tier_start_amount": "0",
+    "unit": "gibibyte month",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "export_time": "2024-01-02 05:30:30.733912 UTC",
+  "cost": "0.0",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "16346251264.0",
+    "unit": "byte-seconds",
+    "amount_in_pricing_units": "5.684e-06",
+    "pricing_unit": "gibibyte month"
+  },
+  "credits": [],
+  "invoice": {
+    "month": "202401",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "cost_at_list": "0.0",
+  "subscription": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01CC2A-45A382-C972A1",
+  "service": {
+    "id": "24E6-581D-38E5",
+    "description": "BigQuery"
+  },
+  "sku": {
+    "id": "947D-3B46-7781",
+    "description": "Active Logical Storage"
+  },
+  "usage_start_time": "2024-01-01 16:00:00.000000 UTC",
+  "usage_end_time": "2024-01-01 17:00:00.000000 UTC",
+  "project": {
+    "id": "csai-dev",
+    "number": "951562413828",
+    "name": "cs-prod",
+    "labels": [{
+      "key": "firebase",
+      "value": "enabled"
+    }],
+    "ancestry_numbers": "/510641606036/",
+    "ancestors": [{
+      "resource_name": "projects/951562413828",
+      "display_name": "cs-prod"
+    }, {
+      "resource_name": "organizations/510641606036",
+      "display_name": "bepos.io"
+    }]
+  },
+  "labels": [],
+  "system_labels": [],
+  "location": {
+    "location": "us",
+    "country": "US",
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": "_script2e9bc1b7dde53bbab2c1316cc43f2d9bdc97c42c",
+    "global_name": "//bigquery.googleapis.com/projects/csai-dev/datasets/_script2e9bc1b7dde53bbab2c1316cc43f2d9bdc97c42c"
+  },
+  "tags": [],
+  "price": {
+    "effective_price": "0",
+    "tier_start_amount": "0",
+    "unit": "gibibyte month",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "export_time": "2024-01-02 08:02:24.398192 UTC",
+  "cost": "0.0",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "5414846464.0",
+    "unit": "byte-seconds",
+    "amount_in_pricing_units": "1.883e-06",
+    "pricing_unit": "gibibyte month"
+  },
+  "credits": [],
+  "invoice": {
+    "month": "202401",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "cost_at_list": "0.0",
+  "subscription": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01CC2A-45A382-C972A1",
+  "service": {
+    "id": "24E6-581D-38E5",
+    "description": "BigQuery"
+  },
+  "sku": {
+    "id": "947D-3B46-7781",
+    "description": "Active Logical Storage"
+  },
+  "usage_start_time": "2024-01-02 01:00:00.000000 UTC",
+  "usage_end_time": "2024-01-02 02:00:00.000000 UTC",
+  "project": {
+    "id": "csai-dev",
+    "number": "951562413828",
+    "name": "cs-prod",
+    "labels": [{
+      "key": "firebase",
+      "value": "enabled"
+    }],
+    "ancestry_numbers": "/510641606036/",
+    "ancestors": [{
+      "resource_name": "projects/951562413828",
+      "display_name": "cs-prod"
+    }, {
+      "resource_name": "organizations/510641606036",
+      "display_name": "bepos.io"
+    }]
+  },
+  "labels": [],
+  "system_labels": [],
+  "location": {
+    "location": "us",
+    "country": "US",
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": "_script300e004c556a232f182573b3a1bcd9f3e800b686",
+    "global_name": "//bigquery.googleapis.com/projects/csai-dev/datasets/_script300e004c556a232f182573b3a1bcd9f3e800b686"
+  },
+  "tags": [],
+  "price": {
+    "effective_price": "0",
+    "tier_start_amount": "0",
+    "unit": "gibibyte month",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "export_time": "2024-01-02 14:20:17.294147 UTC",
+  "cost": "0.0",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "2429550592.0",
+    "unit": "byte-seconds",
+    "amount_in_pricing_units": "8.45e-07",
+    "pricing_unit": "gibibyte month"
+  },
+  "credits": [],
+  "invoice": {
+    "month": "202401",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "cost_at_list": "0.0",
+  "subscription": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01CC2A-45A382-C972A1",
+  "service": {
+    "id": "24E6-581D-38E5",
+    "description": "BigQuery"
+  },
+  "sku": {
+    "id": "947D-3B46-7781",
+    "description": "Active Logical Storage"
+  },
+  "usage_start_time": "2024-01-01 11:00:00.000000 UTC",
+  "usage_end_time": "2024-01-01 12:00:00.000000 UTC",
+  "project": {
+    "id": "csai-dev",
+    "number": "951562413828",
+    "name": "cs-prod",
+    "labels": [{
+      "key": "firebase",
+      "value": "enabled"
+    }],
+    "ancestry_numbers": "/510641606036/",
+    "ancestors": [{
+      "resource_name": "projects/951562413828",
+      "display_name": "cs-prod"
+    }, {
+      "resource_name": "organizations/510641606036",
+      "display_name": "bepos.io"
+    }]
+  },
+  "labels": [],
+  "system_labels": [],
+  "location": {
+    "location": "us",
+    "country": "US",
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": "_script310cbef7a726aa59413311b4f8efd509ac646e33",
+    "global_name": "//bigquery.googleapis.com/projects/csai-dev/datasets/_script310cbef7a726aa59413311b4f8efd509ac646e33"
+  },
+  "tags": [],
+  "price": {
+    "effective_price": "0",
+    "tier_start_amount": "0",
+    "unit": "gibibyte month",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "export_time": "2024-01-02 05:30:30.733912 UTC",
+  "cost": "0.0",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "16273899520.0",
+    "unit": "byte-seconds",
+    "amount_in_pricing_units": "5.659e-06",
+    "pricing_unit": "gibibyte month"
+  },
+  "credits": [],
+  "invoice": {
+    "month": "202401",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "cost_at_list": "0.0",
+  "subscription": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01CC2A-45A382-C972A1",
+  "service": {
+    "id": "24E6-581D-38E5",
+    "description": "BigQuery"
+  },
+  "sku": {
+    "id": "947D-3B46-7781",
+    "description": "Active Logical Storage"
+  },
+  "usage_start_time": "2024-01-01 12:00:00.000000 UTC",
+  "usage_end_time": "2024-01-01 13:00:00.000000 UTC",
+  "project": {
+    "id": "csai-dev",
+    "number": "951562413828",
+    "name": "cs-prod",
+    "labels": [{
+      "key": "firebase",
+      "value": "enabled"
+    }],
+    "ancestry_numbers": "/510641606036/",
+    "ancestors": [{
+      "resource_name": "projects/951562413828",
+      "display_name": "cs-prod"
+    }, {
+      "resource_name": "organizations/510641606036",
+      "display_name": "bepos.io"
+    }]
+  },
+  "labels": [],
+  "system_labels": [],
+  "location": {
+    "location": "us",
+    "country": "US",
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": "_script310cbef7a726aa59413311b4f8efd509ac646e33",
+    "global_name": "//bigquery.googleapis.com/projects/csai-dev/datasets/_script310cbef7a726aa59413311b4f8efd509ac646e33"
+  },
+  "tags": [],
+  "price": {
+    "effective_price": "0",
+    "tier_start_amount": "0",
+    "unit": "gibibyte month",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "export_time": "2024-01-02 05:30:30.733912 UTC",
+  "cost": "0.0",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "16273899520.0",
+    "unit": "byte-seconds",
+    "amount_in_pricing_units": "5.659e-06",
+    "pricing_unit": "gibibyte month"
+  },
+  "credits": [],
+  "invoice": {
+    "month": "202401",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "cost_at_list": "0.0",
+  "subscription": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01CC2A-45A382-C972A1",
+  "service": {
+    "id": "24E6-581D-38E5",
+    "description": "BigQuery"
+  },
+  "sku": {
+    "id": "947D-3B46-7781",
+    "description": "Active Logical Storage"
+  },
+  "usage_start_time": "2024-01-01 12:00:00.000000 UTC",
+  "usage_end_time": "2024-01-01 13:00:00.000000 UTC",
+  "project": {
+    "id": "csai-dev",
+    "number": "951562413828",
+    "name": "cs-prod",
+    "labels": [{
+      "key": "firebase",
+      "value": "enabled"
+    }],
+    "ancestry_numbers": "/510641606036/",
+    "ancestors": [{
+      "resource_name": "projects/951562413828",
+      "display_name": "cs-prod"
+    }, {
+      "resource_name": "organizations/510641606036",
+      "display_name": "bepos.io"
+    }]
+  },
+  "labels": [],
+  "system_labels": [],
+  "location": {
+    "location": "us",
+    "country": "US",
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": "_script31d2feec5bbc551f6fe4168261e44b295fb97f20",
+    "global_name": "//bigquery.googleapis.com/projects/csai-dev/datasets/_script31d2feec5bbc551f6fe4168261e44b295fb97f20"
+  },
+  "tags": [],
+  "price": {
+    "effective_price": "0",
+    "tier_start_amount": "0",
+    "unit": "gibibyte month",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "export_time": "2024-01-02 05:30:30.733912 UTC",
+  "cost": "0.0",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "5434769408.0",
+    "unit": "byte-seconds",
+    "amount_in_pricing_units": "1.89e-06",
+    "pricing_unit": "gibibyte month"
+  },
+  "credits": [],
+  "invoice": {
+    "month": "202401",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "cost_at_list": "0.0",
+  "subscription": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01CC2A-45A382-C972A1",
+  "service": {
+    "id": "24E6-581D-38E5",
+    "description": "BigQuery"
+  },
+  "sku": {
+    "id": "947D-3B46-7781",
+    "description": "Active Logical Storage"
+  },
+  "usage_start_time": "2024-01-01 14:00:00.000000 UTC",
+  "usage_end_time": "2024-01-01 15:00:00.000000 UTC",
+  "project": {
+    "id": "csai-dev",
+    "number": "951562413828",
+    "name": "cs-prod",
+    "labels": [{
+      "key": "firebase",
+      "value": "enabled"
+    }],
+    "ancestry_numbers": "/510641606036/",
+    "ancestors": [{
+      "resource_name": "projects/951562413828",
+      "display_name": "cs-prod"
+    }, {
+      "resource_name": "organizations/510641606036",
+      "display_name": "bepos.io"
+    }]
+  },
+  "labels": [],
+  "system_labels": [],
+  "location": {
+    "location": "us",
+    "country": "US",
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": "_script350e40acf26f9ed8abee1de198d26f83d08ce6dd",
+    "global_name": "//bigquery.googleapis.com/projects/csai-dev/datasets/_script350e40acf26f9ed8abee1de198d26f83d08ce6dd"
+  },
+  "tags": [],
+  "price": {
+    "effective_price": "0",
+    "tier_start_amount": "0",
+    "unit": "gibibyte month",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "export_time": "2024-01-02 10:06:32.142488 UTC",
+  "cost": "0.0",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "16273899520.0",
+    "unit": "byte-seconds",
+    "amount_in_pricing_units": "5.659e-06",
+    "pricing_unit": "gibibyte month"
+  },
+  "credits": [],
+  "invoice": {
+    "month": "202401",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "cost_at_list": "0.0",
+  "subscription": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01CC2A-45A382-C972A1",
+  "service": {
+    "id": "24E6-581D-38E5",
+    "description": "BigQuery"
+  },
+  "sku": {
+    "id": "947D-3B46-7781",
+    "description": "Active Logical Storage"
+  },
+  "usage_start_time": "2024-01-01 22:00:00.000000 UTC",
+  "usage_end_time": "2024-01-01 23:00:00.000000 UTC",
+  "project": {
+    "id": "csai-dev",
+    "number": "951562413828",
+    "name": "cs-prod",
+    "labels": [{
+      "key": "firebase",
+      "value": "enabled"
+    }],
+    "ancestry_numbers": "/510641606036/",
+    "ancestors": [{
+      "resource_name": "projects/951562413828",
+      "display_name": "cs-prod"
+    }, {
+      "resource_name": "organizations/510641606036",
+      "display_name": "bepos.io"
+    }]
+  },
+  "labels": [],
+  "system_labels": [],
+  "location": {
+    "location": "us",
+    "country": "US",
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": "_script38eab8587c74c86995ff3ec38952a95d6e3716e7",
+    "global_name": "//bigquery.googleapis.com/projects/csai-dev/datasets/_script38eab8587c74c86995ff3ec38952a95d6e3716e7"
+  },
+  "tags": [],
+  "price": {
+    "effective_price": "0",
+    "tier_start_amount": "0",
+    "unit": "gibibyte month",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "export_time": "2024-01-02 14:20:17.294147 UTC",
+  "cost": "0.0",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "2692743168.0",
+    "unit": "byte-seconds",
+    "amount_in_pricing_units": "9.36e-07",
+    "pricing_unit": "gibibyte month"
+  },
+  "credits": [],
+  "invoice": {
+    "month": "202401",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "cost_at_list": "0.0",
+  "subscription": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01CC2A-45A382-C972A1",
+  "service": {
+    "id": "24E6-581D-38E5",
+    "description": "BigQuery"
+  },
+  "sku": {
+    "id": "947D-3B46-7781",
+    "description": "Active Logical Storage"
+  },
+  "usage_start_time": "2024-01-01 19:00:00.000000 UTC",
+  "usage_end_time": "2024-01-01 20:00:00.000000 UTC",
+  "project": {
+    "id": "csai-dev",
+    "number": "951562413828",
+    "name": "cs-prod",
+    "labels": [{
+      "key": "firebase",
+      "value": "enabled"
+    }],
+    "ancestry_numbers": "/510641606036/",
+    "ancestors": [{
+      "resource_name": "projects/951562413828",
+      "display_name": "cs-prod"
+    }, {
+      "resource_name": "organizations/510641606036",
+      "display_name": "bepos.io"
+    }]
+  },
+  "labels": [],
+  "system_labels": [],
+  "location": {
+    "location": "us",
+    "country": "US",
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": "_script38eab8587c74c86995ff3ec38952a95d6e3716e7",
+    "global_name": "//bigquery.googleapis.com/projects/csai-dev/datasets/_script38eab8587c74c86995ff3ec38952a95d6e3716e7"
+  },
+  "tags": [],
+  "price": {
+    "effective_price": "0",
+    "tier_start_amount": "0",
+    "unit": "gibibyte month",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "export_time": "2024-01-02 08:02:24.398192 UTC",
+  "cost": "0.0",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "2692743168.0",
+    "unit": "byte-seconds",
+    "amount_in_pricing_units": "9.36e-07",
+    "pricing_unit": "gibibyte month"
+  },
+  "credits": [],
+  "invoice": {
+    "month": "202401",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "cost_at_list": "0.0",
+  "subscription": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01CC2A-45A382-C972A1",
+  "service": {
+    "id": "24E6-581D-38E5",
+    "description": "BigQuery"
+  },
+  "sku": {
+    "id": "947D-3B46-7781",
+    "description": "Active Logical Storage"
+  },
+  "usage_start_time": "2024-01-01 10:00:00.000000 UTC",
+  "usage_end_time": "2024-01-01 11:00:00.000000 UTC",
+  "project": {
+    "id": "csai-dev",
+    "number": "951562413828",
+    "name": "cs-prod",
+    "labels": [{
+      "key": "firebase",
+      "value": "enabled"
+    }],
+    "ancestry_numbers": "/510641606036/",
+    "ancestors": [{
+      "resource_name": "projects/951562413828",
+      "display_name": "cs-prod"
+    }, {
+      "resource_name": "organizations/510641606036",
+      "display_name": "bepos.io"
+    }]
+  },
+  "labels": [],
+  "system_labels": [],
+  "location": {
+    "location": "us",
+    "country": "US",
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": "_script3e24daa443c7c01e4ea47116226be791a7093189",
+    "global_name": "//bigquery.googleapis.com/projects/csai-dev/datasets/_script3e24daa443c7c01e4ea47116226be791a7093189"
+  },
+  "tags": [],
+  "price": {
+    "effective_price": "0",
+    "tier_start_amount": "0",
+    "unit": "gibibyte month",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "export_time": "2024-01-02 05:30:30.733912 UTC",
+  "cost": "0.0",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "15796797440.0",
+    "unit": "byte-seconds",
+    "amount_in_pricing_units": "5.493e-06",
+    "pricing_unit": "gibibyte month"
+  },
+  "credits": [],
+  "invoice": {
+    "month": "202401",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "cost_at_list": "0.0",
+  "subscription": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01CC2A-45A382-C972A1",
+  "service": {
+    "id": "24E6-581D-38E5",
+    "description": "BigQuery"
+  },
+  "sku": {
+    "id": "947D-3B46-7781",
+    "description": "Active Logical Storage"
+  },
+  "usage_start_time": "2024-01-01 23:00:00.000000 UTC",
+  "usage_end_time": "2024-01-02 00:00:00.000000 UTC",
+  "project": {
+    "id": "csai-dev",
+    "number": "951562413828",
+    "name": "cs-prod",
+    "labels": [{
+      "key": "firebase",
+      "value": "enabled"
+    }],
+    "ancestry_numbers": "/510641606036/",
+    "ancestors": [{
+      "resource_name": "projects/951562413828",
+      "display_name": "cs-prod"
+    }, {
+      "resource_name": "organizations/510641606036",
+      "display_name": "bepos.io"
+    }]
+  },
+  "labels": [],
+  "system_labels": [],
+  "location": {
+    "location": "us",
+    "country": "US",
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": "_script3e70e73b3ca1e765c4b53e69b02c38493e15e485",
+    "global_name": "//bigquery.googleapis.com/projects/csai-dev/datasets/_script3e70e73b3ca1e765c4b53e69b02c38493e15e485"
+  },
+  "tags": [],
+  "price": {
+    "effective_price": "0",
+    "tier_start_amount": "0",
+    "unit": "gibibyte month",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "export_time": "2024-01-02 14:20:17.294147 UTC",
+  "cost": "0.0",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "5462032384.0",
+    "unit": "byte-seconds",
+    "amount_in_pricing_units": "1.899e-06",
+    "pricing_unit": "gibibyte month"
+  },
+  "credits": [],
+  "invoice": {
+    "month": "202401",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "cost_at_list": "0.0",
+  "subscription": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01CC2A-45A382-C972A1",
+  "service": {
+    "id": "24E6-581D-38E5",
+    "description": "BigQuery"
+  },
+  "sku": {
+    "id": "947D-3B46-7781",
+    "description": "Active Logical Storage"
+  },
+  "usage_start_time": "2024-01-01 23:00:00.000000 UTC",
+  "usage_end_time": "2024-01-02 00:00:00.000000 UTC",
+  "project": {
+    "id": "csai-dev",
+    "number": "951562413828",
+    "name": "cs-prod",
+    "labels": [{
+      "key": "firebase",
+      "value": "enabled"
+    }],
+    "ancestry_numbers": "/510641606036/",
+    "ancestors": [{
+      "resource_name": "projects/951562413828",
+      "display_name": "cs-prod"
+    }, {
+      "resource_name": "organizations/510641606036",
+      "display_name": "bepos.io"
+    }]
+  },
+  "labels": [],
+  "system_labels": [],
+  "location": {
+    "location": "us",
+    "country": "US",
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": "_script3f49d69640891812f11ca6b1c96e87e567b03f6a",
+    "global_name": "//bigquery.googleapis.com/projects/csai-dev/datasets/_script3f49d69640891812f11ca6b1c96e87e567b03f6a"
+  },
+  "tags": [],
+  "price": {
+    "effective_price": "0",
+    "tier_start_amount": "0",
+    "unit": "gibibyte month",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "export_time": "2024-01-02 14:20:17.294147 UTC",
+  "cost": "0.0",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "16274948096.0",
+    "unit": "byte-seconds",
+    "amount_in_pricing_units": "5.659e-06",
+    "pricing_unit": "gibibyte month"
+  },
+  "credits": [],
+  "invoice": {
+    "month": "202401",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "cost_at_list": "0.0",
+  "subscription": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01CC2A-45A382-C972A1",
+  "service": {
+    "id": "24E6-581D-38E5",
+    "description": "BigQuery"
+  },
+  "sku": {
+    "id": "947D-3B46-7781",
+    "description": "Active Logical Storage"
+  },
+  "usage_start_time": "2024-01-01 20:00:00.000000 UTC",
+  "usage_end_time": "2024-01-01 21:00:00.000000 UTC",
+  "project": {
+    "id": "csai-dev",
+    "number": "951562413828",
+    "name": "cs-prod",
+    "labels": [{
+      "key": "firebase",
+      "value": "enabled"
+    }],
+    "ancestry_numbers": "/510641606036/",
+    "ancestors": [{
+      "resource_name": "projects/951562413828",
+      "display_name": "cs-prod"
+    }, {
+      "resource_name": "organizations/510641606036",
+      "display_name": "bepos.io"
+    }]
+  },
+  "labels": [],
+  "system_labels": [],
+  "location": {
+    "location": "us",
+    "country": "US",
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": "_script3f74b88819adeb58f95d6598200d8143fd8e59a7",
+    "global_name": "//bigquery.googleapis.com/projects/csai-dev/datasets/_script3f74b88819adeb58f95d6598200d8143fd8e59a7"
+  },
+  "tags": [],
+  "price": {
+    "effective_price": "0",
+    "tier_start_amount": "0",
+    "unit": "gibibyte month",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "export_time": "2024-01-02 14:20:17.294147 UTC",
+  "cost": "0.0",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "15937306624.0",
+    "unit": "byte-seconds",
+    "amount_in_pricing_units": "5.542e-06",
+    "pricing_unit": "gibibyte month"
+  },
+  "credits": [],
+  "invoice": {
+    "month": "202401",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "cost_at_list": "0.0",
+  "subscription": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01CC2A-45A382-C972A1",
+  "service": {
+    "id": "24E6-581D-38E5",
+    "description": "BigQuery"
+  },
+  "sku": {
+    "id": "947D-3B46-7781",
+    "description": "Active Logical Storage"
+  },
+  "usage_start_time": "2024-01-01 14:00:00.000000 UTC",
+  "usage_end_time": "2024-01-01 15:00:00.000000 UTC",
+  "project": {
+    "id": "csai-dev",
+    "number": "951562413828",
+    "name": "cs-prod",
+    "labels": [{
+      "key": "firebase",
+      "value": "enabled"
+    }],
+    "ancestry_numbers": "/510641606036/",
+    "ancestors": [{
+      "resource_name": "projects/951562413828",
+      "display_name": "cs-prod"
+    }, {
+      "resource_name": "organizations/510641606036",
+      "display_name": "bepos.io"
+    }]
+  },
+  "labels": [],
+  "system_labels": [],
+  "location": {
+    "location": "us",
+    "country": "US",
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": "_script41b836342e1b045f5e95085ba663bd5b3862d2f1",
+    "global_name": "//bigquery.googleapis.com/projects/csai-dev/datasets/_script41b836342e1b045f5e95085ba663bd5b3862d2f1"
+  },
+  "tags": [],
+  "price": {
+    "effective_price": "0",
+    "tier_start_amount": "0",
+    "unit": "gibibyte month",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "export_time": "2024-01-02 10:06:32.142488 UTC",
+  "cost": "0.0",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "16280190976.0",
+    "unit": "byte-seconds",
+    "amount_in_pricing_units": "5.661e-06",
+    "pricing_unit": "gibibyte month"
+  },
+  "credits": [],
+  "invoice": {
+    "month": "202401",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "cost_at_list": "0.0",
+  "subscription": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01CC2A-45A382-C972A1",
+  "service": {
+    "id": "24E6-581D-38E5",
+    "description": "BigQuery"
+  },
+  "sku": {
+    "id": "947D-3B46-7781",
+    "description": "Active Logical Storage"
+  },
+  "usage_start_time": "2024-01-01 12:00:00.000000 UTC",
+  "usage_end_time": "2024-01-01 13:00:00.000000 UTC",
+  "project": {
+    "id": "csai-dev",
+    "number": "951562413828",
+    "name": "cs-prod",
+    "labels": [{
+      "key": "firebase",
+      "value": "enabled"
+    }],
+    "ancestry_numbers": "/510641606036/",
+    "ancestors": [{
+      "resource_name": "projects/951562413828",
+      "display_name": "cs-prod"
+    }, {
+      "resource_name": "organizations/510641606036",
+      "display_name": "bepos.io"
+    }]
+  },
+  "labels": [],
+  "system_labels": [],
+  "location": {
+    "location": "us",
+    "country": "US",
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": "_script41eb28047fde0c194ecb71918448eb93449d0a1b",
+    "global_name": "//bigquery.googleapis.com/projects/csai-dev/datasets/_script41eb28047fde0c194ecb71918448eb93449d0a1b"
+  },
+  "tags": [],
+  "price": {
+    "effective_price": "0",
+    "tier_start_amount": "0",
+    "unit": "gibibyte month",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "export_time": "2024-01-02 05:30:30.733912 UTC",
+  "cost": "0.0",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "5183111168.0",
+    "unit": "byte-seconds",
+    "amount_in_pricing_units": "1.802e-06",
+    "pricing_unit": "gibibyte month"
+  },
+  "credits": [],
+  "invoice": {
+    "month": "202401",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "cost_at_list": "0.0",
+  "subscription": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01CC2A-45A382-C972A1",
+  "service": {
+    "id": "24E6-581D-38E5",
+    "description": "BigQuery"
+  },
+  "sku": {
+    "id": "947D-3B46-7781",
+    "description": "Active Logical Storage"
+  },
+  "usage_start_time": "2024-01-01 21:00:00.000000 UTC",
+  "usage_end_time": "2024-01-01 22:00:00.000000 UTC",
+  "project": {
+    "id": "csai-dev",
+    "number": "951562413828",
+    "name": "cs-prod",
+    "labels": [{
+      "key": "firebase",
+      "value": "enabled"
+    }],
+    "ancestry_numbers": "/510641606036/",
+    "ancestors": [{
+      "resource_name": "projects/951562413828",
+      "display_name": "cs-prod"
+    }, {
+      "resource_name": "organizations/510641606036",
+      "display_name": "bepos.io"
+    }]
+  },
+  "labels": [],
+  "system_labels": [],
+  "location": {
+    "location": "us",
+    "country": "US",
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": "_script471984473fb6dcfacc2ad6fe8f99ac40deaf52f6",
+    "global_name": "//bigquery.googleapis.com/projects/csai-dev/datasets/_script471984473fb6dcfacc2ad6fe8f99ac40deaf52f6"
+  },
+  "tags": [],
+  "price": {
+    "effective_price": "0",
+    "tier_start_amount": "0",
+    "unit": "gibibyte month",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "export_time": "2024-01-02 14:20:17.294147 UTC",
+  "cost": "0.0",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "16348348416.0",
+    "unit": "byte-seconds",
+    "amount_in_pricing_units": "5.685e-06",
+    "pricing_unit": "gibibyte month"
+  },
+  "credits": [],
+  "invoice": {
+    "month": "202401",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "cost_at_list": "0.0",
+  "subscription": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01CC2A-45A382-C972A1",
+  "service": {
+    "id": "24E6-581D-38E5",
+    "description": "BigQuery"
+  },
+  "sku": {
+    "id": "947D-3B46-7781",
+    "description": "Active Logical Storage"
+  },
+  "usage_start_time": "2024-01-01 13:00:00.000000 UTC",
+  "usage_end_time": "2024-01-01 14:00:00.000000 UTC",
+  "project": {
+    "id": "csai-dev",
+    "number": "951562413828",
+    "name": "cs-prod",
+    "labels": [{
+      "key": "firebase",
+      "value": "enabled"
+    }],
+    "ancestry_numbers": "/510641606036/",
+    "ancestors": [{
+      "resource_name": "projects/951562413828",
+      "display_name": "cs-prod"
+    }, {
+      "resource_name": "organizations/510641606036",
+      "display_name": "bepos.io"
+    }]
+  },
+  "labels": [],
+  "system_labels": [],
+  "location": {
+    "location": "us",
+    "country": "US",
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": "_script4916b7539f4744e4948e67218f8a0c382c541284",
+    "global_name": "//bigquery.googleapis.com/projects/csai-dev/datasets/_script4916b7539f4744e4948e67218f8a0c382c541284"
+  },
+  "tags": [],
+  "price": {
+    "effective_price": "0",
+    "tier_start_amount": "0",
+    "unit": "gibibyte month",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "export_time": "2024-01-02 05:30:30.733912 UTC",
+  "cost": "0.0",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "15458107392.0",
+    "unit": "byte-seconds",
+    "amount_in_pricing_units": "5.375e-06",
+    "pricing_unit": "gibibyte month"
+  },
+  "credits": [],
+  "invoice": {
+    "month": "202401",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "cost_at_list": "0.0",
+  "subscription": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01CC2A-45A382-C972A1",
+  "service": {
+    "id": "24E6-581D-38E5",
+    "description": "BigQuery"
+  },
+  "sku": {
+    "id": "947D-3B46-7781",
+    "description": "Active Logical Storage"
+  },
+  "usage_start_time": "2024-01-01 13:00:00.000000 UTC",
+  "usage_end_time": "2024-01-01 14:00:00.000000 UTC",
+  "project": {
+    "id": "csai-dev",
+    "number": "951562413828",
+    "name": "cs-prod",
+    "labels": [{
+      "key": "firebase",
+      "value": "enabled"
+    }],
+    "ancestry_numbers": "/510641606036/",
+    "ancestors": [{
+      "resource_name": "projects/951562413828",
+      "display_name": "cs-prod"
+    }, {
+      "resource_name": "organizations/510641606036",
+      "display_name": "bepos.io"
+    }]
+  },
+  "labels": [],
+  "system_labels": [],
+  "location": {
+    "location": "us",
+    "country": "US",
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": "_script49adb1f90f30d5ab3507ad6418a4039e16b53a59",
+    "global_name": "//bigquery.googleapis.com/projects/csai-dev/datasets/_script49adb1f90f30d5ab3507ad6418a4039e16b53a59"
+  },
+  "tags": [],
+  "price": {
+    "effective_price": "0",
+    "tier_start_amount": "0",
+    "unit": "gibibyte month",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "export_time": "2024-01-02 05:30:30.733912 UTC",
+  "cost": "0.0",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "15519973376.0",
+    "unit": "byte-seconds",
+    "amount_in_pricing_units": "5.397e-06",
+    "pricing_unit": "gibibyte month"
+  },
+  "credits": [],
+  "invoice": {
+    "month": "202401",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "cost_at_list": "0.0",
+  "subscription": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01CC2A-45A382-C972A1",
+  "service": {
+    "id": "24E6-581D-38E5",
+    "description": "BigQuery"
+  },
+  "sku": {
+    "id": "947D-3B46-7781",
+    "description": "Active Logical Storage"
+  },
+  "usage_start_time": "2024-01-02 00:00:00.000000 UTC",
+  "usage_end_time": "2024-01-02 01:00:00.000000 UTC",
+  "project": {
+    "id": "csai-dev",
+    "number": "951562413828",
+    "name": "cs-prod",
+    "labels": [{
+      "key": "firebase",
+      "value": "enabled"
+    }],
+    "ancestry_numbers": "/510641606036/",
+    "ancestors": [{
+      "resource_name": "projects/951562413828",
+      "display_name": "cs-prod"
+    }, {
+      "resource_name": "organizations/510641606036",
+      "display_name": "bepos.io"
+    }]
+  },
+  "labels": [],
+  "system_labels": [],
+  "location": {
+    "location": "us",
+    "country": "US",
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": "_script4c8709c32de015ff40a8ece68ff72b379a9f8cd8",
+    "global_name": "//bigquery.googleapis.com/projects/csai-dev/datasets/_script4c8709c32de015ff40a8ece68ff72b379a9f8cd8"
+  },
+  "tags": [],
+  "price": {
+    "effective_price": "0",
+    "tier_start_amount": "0",
+    "unit": "gibibyte month",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "export_time": "2024-01-02 15:57:48.649325 UTC",
+  "cost": "0.0",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "16277045248.0",
+    "unit": "byte-seconds",
+    "amount_in_pricing_units": "5.66e-06",
+    "pricing_unit": "gibibyte month"
+  },
+  "credits": [],
+  "invoice": {
+    "month": "202401",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "cost_at_list": "0.0",
+  "subscription": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01CC2A-45A382-C972A1",
+  "service": {
+    "id": "24E6-581D-38E5",
+    "description": "BigQuery"
+  },
+  "sku": {
+    "id": "947D-3B46-7781",
+    "description": "Active Logical Storage"
+  },
+  "usage_start_time": "2024-01-01 12:00:00.000000 UTC",
+  "usage_end_time": "2024-01-01 13:00:00.000000 UTC",
+  "project": {
+    "id": "csai-dev",
+    "number": "951562413828",
+    "name": "cs-prod",
+    "labels": [{
+      "key": "firebase",
+      "value": "enabled"
+    }],
+    "ancestry_numbers": "/510641606036/",
+    "ancestors": [{
+      "resource_name": "projects/951562413828",
+      "display_name": "cs-prod"
+    }, {
+      "resource_name": "organizations/510641606036",
+      "display_name": "bepos.io"
+    }]
+  },
+  "labels": [],
+  "system_labels": [],
+  "location": {
+    "location": "us",
+    "country": "US",
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": "_script4cec29dd06766251674dcb83cc8fdf51d73ffa6e",
+    "global_name": "//bigquery.googleapis.com/projects/csai-dev/datasets/_script4cec29dd06766251674dcb83cc8fdf51d73ffa6e"
+  },
+  "tags": [],
+  "price": {
+    "effective_price": "0",
+    "tier_start_amount": "0",
+    "unit": "gibibyte month",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "export_time": "2024-01-02 05:30:30.733912 UTC",
+  "cost": "0.0",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "16270753792.0",
+    "unit": "byte-seconds",
+    "amount_in_pricing_units": "5.658e-06",
+    "pricing_unit": "gibibyte month"
+  },
+  "credits": [],
+  "invoice": {
+    "month": "202401",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "cost_at_list": "0.0",
+  "subscription": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01CC2A-45A382-C972A1",
+  "service": {
+    "id": "24E6-581D-38E5",
+    "description": "BigQuery"
+  },
+  "sku": {
+    "id": "947D-3B46-7781",
+    "description": "Active Logical Storage"
+  },
+  "usage_start_time": "2024-01-01 15:00:00.000000 UTC",
+  "usage_end_time": "2024-01-01 16:00:00.000000 UTC",
+  "project": {
+    "id": "csai-dev",
+    "number": "951562413828",
+    "name": "cs-prod",
+    "labels": [{
+      "key": "firebase",
+      "value": "enabled"
+    }],
+    "ancestry_numbers": "/510641606036/",
+    "ancestors": [{
+      "resource_name": "projects/951562413828",
+      "display_name": "cs-prod"
+    }, {
+      "resource_name": "organizations/510641606036",
+      "display_name": "bepos.io"
+    }]
+  },
+  "labels": [],
+  "system_labels": [],
+  "location": {
+    "location": "us",
+    "country": "US",
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": "_script506199a8f022920dc307134a6a2e16cb5e65aad3",
+    "global_name": "//bigquery.googleapis.com/projects/csai-dev/datasets/_script506199a8f022920dc307134a6a2e16cb5e65aad3"
+  },
+  "tags": [],
+  "price": {
+    "effective_price": "0",
+    "tier_start_amount": "0",
+    "unit": "gibibyte month",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "export_time": "2024-01-02 08:02:24.398192 UTC",
+  "cost": "0.0",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "16273899520.0",
+    "unit": "byte-seconds",
+    "amount_in_pricing_units": "5.659e-06",
+    "pricing_unit": "gibibyte month"
+  },
+  "credits": [],
+  "invoice": {
+    "month": "202401",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "cost_at_list": "0.0",
+  "subscription": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01CC2A-45A382-C972A1",
+  "service": {
+    "id": "24E6-581D-38E5",
+    "description": "BigQuery"
+  },
+  "sku": {
+    "id": "947D-3B46-7781",
+    "description": "Active Logical Storage"
+  },
+  "usage_start_time": "2024-01-01 21:00:00.000000 UTC",
+  "usage_end_time": "2024-01-01 22:00:00.000000 UTC",
+  "project": {
+    "id": "csai-dev",
+    "number": "951562413828",
+    "name": "cs-prod",
+    "labels": [{
+      "key": "firebase",
+      "value": "enabled"
+    }],
+    "ancestry_numbers": "/510641606036/",
+    "ancestors": [{
+      "resource_name": "projects/951562413828",
+      "display_name": "cs-prod"
+    }, {
+      "resource_name": "organizations/510641606036",
+      "display_name": "bepos.io"
+    }]
+  },
+  "labels": [],
+  "system_labels": [],
+  "location": {
+    "location": "us",
+    "country": "US",
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": "_script59eaae852512c7af899ee8ee52c491c71c33b4ef",
+    "global_name": "//bigquery.googleapis.com/projects/csai-dev/datasets/_script59eaae852512c7af899ee8ee52c491c71c33b4ef"
+  },
+  "tags": [],
+  "price": {
+    "effective_price": "0",
+    "tier_start_amount": "0",
+    "unit": "gibibyte month",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "export_time": "2024-01-02 14:20:17.294147 UTC",
+  "cost": "0.0",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "16351494144.0",
+    "unit": "byte-seconds",
+    "amount_in_pricing_units": "5.686e-06",
+    "pricing_unit": "gibibyte month"
+  },
+  "credits": [],
+  "invoice": {
+    "month": "202401",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "cost_at_list": "0.0",
+  "subscription": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01CC2A-45A382-C972A1",
+  "service": {
+    "id": "24E6-581D-38E5",
+    "description": "BigQuery"
+  },
+  "sku": {
+    "id": "947D-3B46-7781",
+    "description": "Active Logical Storage"
+  },
+  "usage_start_time": "2024-01-01 18:00:00.000000 UTC",
+  "usage_end_time": "2024-01-01 19:00:00.000000 UTC",
+  "project": {
+    "id": "csai-dev",
+    "number": "951562413828",
+    "name": "cs-prod",
+    "labels": [{
+      "key": "firebase",
+      "value": "enabled"
+    }],
+    "ancestry_numbers": "/510641606036/",
+    "ancestors": [{
+      "resource_name": "projects/951562413828",
+      "display_name": "cs-prod"
+    }, {
+      "resource_name": "organizations/510641606036",
+      "display_name": "bepos.io"
+    }]
+  },
+  "labels": [],
+  "system_labels": [],
+  "location": {
+    "location": "us",
+    "country": "US",
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": "_script5df31601bbcd2811a4eb642cfd38fc364427b8f0",
+    "global_name": "//bigquery.googleapis.com/projects/csai-dev/datasets/_script5df31601bbcd2811a4eb642cfd38fc364427b8f0"
+  },
+  "tags": [],
+  "price": {
+    "effective_price": "0",
+    "tier_start_amount": "0",
+    "unit": "gibibyte month",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "export_time": "2024-01-02 08:02:24.398192 UTC",
+  "cost": "0.0",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "5457838080.0",
+    "unit": "byte-seconds",
+    "amount_in_pricing_units": "1.898e-06",
+    "pricing_unit": "gibibyte month"
+  },
+  "credits": [],
+  "invoice": {
+    "month": "202401",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "cost_at_list": "0.0",
+  "subscription": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01CC2A-45A382-C972A1",
+  "service": {
+    "id": "24E6-581D-38E5",
+    "description": "BigQuery"
+  },
+  "sku": {
+    "id": "947D-3B46-7781",
+    "description": "Active Logical Storage"
+  },
+  "usage_start_time": "2024-01-01 16:00:00.000000 UTC",
+  "usage_end_time": "2024-01-01 17:00:00.000000 UTC",
+  "project": {
+    "id": "csai-dev",
+    "number": "951562413828",
+    "name": "cs-prod",
+    "labels": [{
+      "key": "firebase",
+      "value": "enabled"
+    }],
+    "ancestry_numbers": "/510641606036/",
+    "ancestors": [{
+      "resource_name": "projects/951562413828",
+      "display_name": "cs-prod"
+    }, {
+      "resource_name": "organizations/510641606036",
+      "display_name": "bepos.io"
+    }]
+  },
+  "labels": [],
+  "system_labels": [],
+  "location": {
+    "location": "us",
+    "country": "US",
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": "_script6054b42145ea7a7e2817163315c54df137d74fe0",
+    "global_name": "//bigquery.googleapis.com/projects/csai-dev/datasets/_script6054b42145ea7a7e2817163315c54df137d74fe0"
+  },
+  "tags": [],
+  "price": {
+    "effective_price": "0",
+    "tier_start_amount": "0",
+    "unit": "gibibyte month",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "export_time": "2024-01-02 08:02:24.398192 UTC",
+  "cost": "0.0",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "16272850944.0",
+    "unit": "byte-seconds",
+    "amount_in_pricing_units": "5.658e-06",
+    "pricing_unit": "gibibyte month"
+  },
+  "credits": [],
+  "invoice": {
+    "month": "202401",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "cost_at_list": "0.0",
+  "subscription": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01CC2A-45A382-C972A1",
+  "service": {
+    "id": "24E6-581D-38E5",
+    "description": "BigQuery"
+  },
+  "sku": {
+    "id": "947D-3B46-7781",
+    "description": "Active Logical Storage"
+  },
+  "usage_start_time": "2024-01-02 01:00:00.000000 UTC",
+  "usage_end_time": "2024-01-02 02:00:00.000000 UTC",
+  "project": {
+    "id": "csai-dev",
+    "number": "951562413828",
+    "name": "cs-prod",
+    "labels": [{
+      "key": "firebase",
+      "value": "enabled"
+    }],
+    "ancestry_numbers": "/510641606036/",
+    "ancestors": [{
+      "resource_name": "projects/951562413828",
+      "display_name": "cs-prod"
+    }, {
+      "resource_name": "organizations/510641606036",
+      "display_name": "bepos.io"
+    }]
+  },
+  "labels": [],
+  "system_labels": [],
+  "location": {
+    "location": "us",
+    "country": "US",
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": "_script653d7582f060f9d46ab3a3526e0344cb1afc0a86",
+    "global_name": "//bigquery.googleapis.com/projects/csai-dev/datasets/_script653d7582f060f9d46ab3a3526e0344cb1afc0a86"
+  },
+  "tags": [],
+  "price": {
+    "effective_price": "0",
+    "tier_start_amount": "0",
+    "unit": "gibibyte month",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "export_time": "2024-01-02 14:20:17.294147 UTC",
+  "cost": "0.0",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "16345202688.0",
+    "unit": "byte-seconds",
+    "amount_in_pricing_units": "5.683e-06",
+    "pricing_unit": "gibibyte month"
+  },
+  "credits": [],
+  "invoice": {
+    "month": "202401",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "cost_at_list": "0.0",
+  "subscription": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01CC2A-45A382-C972A1",
+  "service": {
+    "id": "24E6-581D-38E5",
+    "description": "BigQuery"
+  },
+  "sku": {
+    "id": "947D-3B46-7781",
+    "description": "Active Logical Storage"
+  },
+  "usage_start_time": "2024-01-01 15:00:00.000000 UTC",
+  "usage_end_time": "2024-01-01 16:00:00.000000 UTC",
+  "project": {
+    "id": "csai-dev",
+    "number": "951562413828",
+    "name": "cs-prod",
+    "labels": [{
+      "key": "firebase",
+      "value": "enabled"
+    }],
+    "ancestry_numbers": "/510641606036/",
+    "ancestors": [{
+      "resource_name": "projects/951562413828",
+      "display_name": "cs-prod"
+    }, {
+      "resource_name": "organizations/510641606036",
+      "display_name": "bepos.io"
+    }]
+  },
+  "labels": [],
+  "system_labels": [],
+  "location": {
+    "location": "us",
+    "country": "US",
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": "_script657ac2bb0de65bdaefd3c552fbf8ccbb151fcd26",
+    "global_name": "//bigquery.googleapis.com/projects/csai-dev/datasets/_script657ac2bb0de65bdaefd3c552fbf8ccbb151fcd26"
+  },
+  "tags": [],
+  "price": {
+    "effective_price": "0",
+    "tier_start_amount": "0",
+    "unit": "gibibyte month",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "export_time": "2024-01-02 08:02:24.398192 UTC",
+  "cost": "0.0",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "4877975552.0",
+    "unit": "byte-seconds",
+    "amount_in_pricing_units": "1.696e-06",
+    "pricing_unit": "gibibyte month"
+  },
+  "credits": [],
+  "invoice": {
+    "month": "202401",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "cost_at_list": "0.0",
+  "subscription": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01CC2A-45A382-C972A1",
+  "service": {
+    "id": "24E6-581D-38E5",
+    "description": "BigQuery"
+  },
+  "sku": {
+    "id": "947D-3B46-7781",
+    "description": "Active Logical Storage"
+  },
+  "usage_start_time": "2024-01-01 16:00:00.000000 UTC",
+  "usage_end_time": "2024-01-01 17:00:00.000000 UTC",
+  "project": {
+    "id": "csai-dev",
+    "number": "951562413828",
+    "name": "cs-prod",
+    "labels": [{
+      "key": "firebase",
+      "value": "enabled"
+    }],
+    "ancestry_numbers": "/510641606036/",
+    "ancestors": [{
+      "resource_name": "projects/951562413828",
+      "display_name": "cs-prod"
+    }, {
+      "resource_name": "organizations/510641606036",
+      "display_name": "bepos.io"
+    }]
+  },
+  "labels": [],
+  "system_labels": [],
+  "location": {
+    "location": "us",
+    "country": "US",
+    "region": null,
+    "zone": null
+  },
+  "resource": {
+    "name": "_script65d3606c0e6683f5172a6a7d295d9f5a829eb297",
+    "global_name": "//bigquery.googleapis.com/projects/csai-dev/datasets/_script65d3606c0e6683f5172a6a7d295d9f5a829eb297"
+  },
+  "tags": [],
+  "price": {
+    "effective_price": "0",
+    "tier_start_amount": "0",
+    "unit": "gibibyte month",
+    "pricing_unit_quantity": "1",
+    "list_price": null,
+    "effective_price_default": null,
+    "list_price_consumption_model": null
+  },
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "export_time": "2024-01-02 08:02:24.398192 UTC",
+  "cost": "0.0",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "5457838080.0",
+    "unit": "byte-seconds",
+    "amount_in_pricing_units": "1.898e-06",
+    "pricing_unit": "gibibyte month"
+  },
+  "credits": [],
+  "invoice": {
+    "month": "202401",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "cost_at_list": "0.0",
+  "subscription": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}]

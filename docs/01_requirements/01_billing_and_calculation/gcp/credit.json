@@ -1,0 +1,4978 @@
+[{
+  "invoice_month": "202503",
+  "project_name": "iKara - Yokara",
+  "service_description": "Firebase Realtime Database",
+  "sku_description": "Outgoing Bandwidth",
+  "gross_cost": "748.646555",
+  "row_credit_amount": "-748.646555",
+  "credit_info": "PROMOTION: SMB Credit - bbinh - 400312573",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202402",
+  "project_name": "kynaforkids-server-production",
+  "service_description": "Cloud Storage",
+  "sku_description": "Regional Archive Class A Operations",
+  "gross_cost": "3262.3149",
+  "row_credit_amount": "-391.480956",
+  "credit_info": "RESELLER_MARGIN: Discount on Total Spend",
+  "net_cost": "2870.833944"
+}, {
+  "invoice_month": "202402",
+  "project_name": "kynaforkids-server-production",
+  "service_description": "Cloud Storage",
+  "sku_description": "Regional Archive Class A Operations",
+  "gross_cost": "3262.3149",
+  "row_credit_amount": "-391.477807",
+  "credit_info": "RESELLER_MARGIN: Discount on Total Spend",
+  "net_cost": "2870.837093"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Storage Hong Kong",
+  "gross_cost": "324.776067",
+  "row_credit_amount": "-324.776081",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-1.4e-05"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Storage Hong Kong",
+  "gross_cost": "324.400974",
+  "row_credit_amount": "-324.400987",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-1.3e-05"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Storage Hong Kong",
+  "gross_cost": "324.041764",
+  "row_credit_amount": "-324.041777",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-1.3e-05"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Storage Hong Kong",
+  "gross_cost": "323.69986",
+  "row_credit_amount": "-323.699872",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-1.2e-05"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Storage Hong Kong",
+  "gross_cost": "323.392641",
+  "row_credit_amount": "-323.39266",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-1.9e-05"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Storage Hong Kong",
+  "gross_cost": "323.05041",
+  "row_credit_amount": "-323.050426",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-1.6e-05"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Storage Hong Kong",
+  "gross_cost": "322.793702",
+  "row_credit_amount": "-322.793715",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-1.3e-05"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Storage Hong Kong",
+  "gross_cost": "322.617084",
+  "row_credit_amount": "-322.617099",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-1.5e-05"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Storage Hong Kong",
+  "gross_cost": "322.455173",
+  "row_credit_amount": "-322.455187",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-1.4e-05"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Storage Hong Kong",
+  "gross_cost": "322.304895",
+  "row_credit_amount": "-322.304911",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-1.6e-05"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Storage Hong Kong",
+  "gross_cost": "322.176516",
+  "row_credit_amount": "-322.176533",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-1.7e-05"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Storage Hong Kong",
+  "gross_cost": "322.050071",
+  "row_credit_amount": "-322.050087",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-1.6e-05"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Storage Hong Kong",
+  "gross_cost": "321.801674",
+  "row_credit_amount": "-321.801687",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-1.3e-05"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Storage Hong Kong",
+  "gross_cost": "321.510243",
+  "row_credit_amount": "-321.51026",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-1.7e-05"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Storage Hong Kong",
+  "gross_cost": "321.189226",
+  "row_credit_amount": "-321.189237",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-1.1e-05"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Storage Hong Kong",
+  "gross_cost": "320.699301",
+  "row_credit_amount": "-320.699312",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-1.1e-05"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Storage Hong Kong",
+  "gross_cost": "320.210546",
+  "row_credit_amount": "-320.210559",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-1.3e-05"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Storage Hong Kong",
+  "gross_cost": "319.755439",
+  "row_credit_amount": "-319.755455",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-1.6e-05"
+}, {
+  "invoice_month": "202411",
+  "project_name": "teviapp",
+  "service_description": "Cloud Storage",
+  "sku_description": "Download APAC",
+  "gross_cost": "312.635543",
+  "row_credit_amount": "-312.635541",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - Scale Y1 ",
+  "net_cost": "2e-06"
+}, {
+  "invoice_month": "202603",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Storage Hong Kong",
+  "gross_cost": "294.599811",
+  "row_credit_amount": "-294.599821",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-1e-05"
+}, {
+  "invoice_month": "202603",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Storage Hong Kong",
+  "gross_cost": "294.195578",
+  "row_credit_amount": "-294.195587",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-9e-06"
+}, {
+  "invoice_month": "202601",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Storage Hong Kong",
+  "gross_cost": "284.607214",
+  "row_credit_amount": "-284.60723",
+  "credit_info": "PROMOTION: Vertex Gen AI - Mithra deal 1749190121795 conditional credit 1 -  2025-12",
+  "net_cost": "-1.6e-05"
+}, {
+  "invoice_month": "202311",
+  "project_name": "Printerval - LiveView",
+  "service_description": "Translate",
+  "sku_description": "Neural Translation Model Predictions In Translation V3",
+  "gross_cost": "2292.6238",
+  "row_credit_amount": "-275.114866",
+  "credit_info": "RESELLER_MARGIN: Discount on Total Spend",
+  "net_cost": "2017.508934"
+}, {
+  "invoice_month": "202512",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Storage Hong Kong",
+  "gross_cost": "269.358935",
+  "row_credit_amount": "-269.358947",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 3 - ",
+  "net_cost": "-1.2e-05"
+}, {
+  "invoice_month": "202512",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Storage Hong Kong",
+  "gross_cost": "268.978594",
+  "row_credit_amount": "-268.978608",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 3 - ",
+  "net_cost": "-1.4e-05"
+}, {
+  "invoice_month": "202512",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Storage Hong Kong",
+  "gross_cost": "268.604203",
+  "row_credit_amount": "-268.604214",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 3 - ",
+  "net_cost": "-1.1e-05"
+}, {
+  "invoice_month": "202512",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Storage Hong Kong",
+  "gross_cost": "268.205487",
+  "row_credit_amount": "-268.205498",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 3 - ",
+  "net_cost": "-1.1e-05"
+}, {
+  "invoice_month": "202512",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Storage Hong Kong",
+  "gross_cost": "267.823431",
+  "row_credit_amount": "-267.823442",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 3 - ",
+  "net_cost": "-1.1e-05"
+}, {
+  "invoice_month": "202512",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Storage Hong Kong",
+  "gross_cost": "267.501954",
+  "row_credit_amount": "-267.501974",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 3 - ",
+  "net_cost": "-2e-05"
+}, {
+  "invoice_month": "202512",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Storage Hong Kong",
+  "gross_cost": "267.102255",
+  "row_credit_amount": "-267.102268",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 3 - ",
+  "net_cost": "-1.3e-05"
+}, {
+  "invoice_month": "202512",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Storage Hong Kong",
+  "gross_cost": "266.607669",
+  "row_credit_amount": "-266.607683",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 3 - ",
+  "net_cost": "-1.4e-05"
+}, {
+  "invoice_month": "202512",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Storage Hong Kong",
+  "gross_cost": "266.100449",
+  "row_credit_amount": "-266.100464",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 3 - ",
+  "net_cost": "-1.5e-05"
+}, {
+  "invoice_month": "202512",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Storage Hong Kong",
+  "gross_cost": "265.648655",
+  "row_credit_amount": "-265.648672",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 3 - ",
+  "net_cost": "-1.7e-05"
+}, {
+  "invoice_month": "202507",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Storage Hong Kong",
+  "gross_cost": "222.646456",
+  "row_credit_amount": "-222.646456",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 2 - ",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202507",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Storage Hong Kong",
+  "gross_cost": "222.346893",
+  "row_credit_amount": "-222.346893",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 2 - ",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202507",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Storage Hong Kong",
+  "gross_cost": "222.088265",
+  "row_credit_amount": "-222.088265",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 2 - ",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202507",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Storage Hong Kong",
+  "gross_cost": "221.835392",
+  "row_credit_amount": "-221.835392",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 2 - ",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202507",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Storage Hong Kong",
+  "gross_cost": "221.54948",
+  "row_credit_amount": "-221.54948",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 2 - ",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202507",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Storage Hong Kong",
+  "gross_cost": "221.313697",
+  "row_credit_amount": "-221.313697",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 2 - ",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202507",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Storage Hong Kong",
+  "gross_cost": "221.119441",
+  "row_credit_amount": "-221.119441",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 2 - ",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202507",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Storage Hong Kong",
+  "gross_cost": "220.86045",
+  "row_credit_amount": "-220.86045",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 2 - ",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202507",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Storage Hong Kong",
+  "gross_cost": "220.614613",
+  "row_credit_amount": "-220.614613",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 2 - ",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202507",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Storage Hong Kong",
+  "gross_cost": "220.33391",
+  "row_credit_amount": "-220.33391",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 2 - ",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202507",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Storage Hong Kong",
+  "gross_cost": "220.015331",
+  "row_credit_amount": "-220.015331",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 2 - ",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202507",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Storage Hong Kong",
+  "gross_cost": "219.710082",
+  "row_credit_amount": "-219.710082",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 2 - ",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202507",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Storage Hong Kong",
+  "gross_cost": "219.466827",
+  "row_credit_amount": "-219.466827",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 2 - ",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202507",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Storage Hong Kong",
+  "gross_cost": "219.233158",
+  "row_credit_amount": "-219.233158",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 2 - ",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202411",
+  "project_name": "teviapp",
+  "service_description": "Cloud Storage",
+  "sku_description": "Download APAC",
+  "gross_cost": "214.325336",
+  "row_credit_amount": "-214.325334",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - Scale Y1 ",
+  "net_cost": "2e-06"
+}, {
+  "invoice_month": "202601",
+  "project_name": "igot-ai",
+  "service_description": "Vertex AI",
+  "sku_description": "Gemini 3.0 Pro Text Output - Batch Predictions",
+  "gross_cost": "202.396926",
+  "row_credit_amount": "-202.396926",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - Scale Y1",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202411",
+  "project_name": "teviapp",
+  "service_description": "Cloud Storage",
+  "sku_description": "Download APAC",
+  "gross_cost": "189.430479",
+  "row_credit_amount": "-189.430477",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - Scale Y1 ",
+  "net_cost": "2e-06"
+}, {
+  "invoice_month": "202411",
+  "project_name": "teviapp",
+  "service_description": "Cloud Storage",
+  "sku_description": "Download APAC",
+  "gross_cost": "185.112253",
+  "row_credit_amount": "-185.112251",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - Scale Y1 ",
+  "net_cost": "2e-06"
+}, {
+  "invoice_month": "202311",
+  "project_name": "Printerval - LiveView",
+  "service_description": "Translate",
+  "sku_description": "Neural Translation Model Predictions In Translation V3",
+  "gross_cost": "1529.15554",
+  "row_credit_amount": "-183.499039",
+  "credit_info": "RESELLER_MARGIN: Discount on Total Spend | DISCOUNT: Free tier discount for general model translation and language detection",
+  "net_cost": "1345.656501"
+}, {
+  "invoice_month": "202601",
+  "project_name": "igot-ai",
+  "service_description": "Vertex AI",
+  "sku_description": "Gemini 3.0 Pro Text Output - Batch Predictions",
+  "gross_cost": "181.417896",
+  "row_credit_amount": "-181.417896",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - Scale Y1",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202411",
+  "project_name": "teviapp",
+  "service_description": "Cloud Storage",
+  "sku_description": "Download APAC",
+  "gross_cost": "178.569586",
+  "row_credit_amount": "-178.569584",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - Scale Y1 ",
+  "net_cost": "2e-06"
+}, {
+  "invoice_month": "202501",
+  "project_name": "Use of mdb-gcp-marketplace-atl",
+  "service_description": "MongoDB Atlas (Private Offer)",
+  "sku_description": "MongoDB Atlas - Annual Commit with Monthly Invoicing Usage",
+  "gross_cost": "173.0",
+  "row_credit_amount": "-173.0",
+  "credit_info": "PROMOTION: Partner Award Letter - vargasporras - 382262106",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202501",
+  "project_name": "Use of mdb-gcp-marketplace-atl",
+  "service_description": "MongoDB Atlas (Private Offer)",
+  "sku_description": "MongoDB Atlas - Annual Commit with Monthly Invoicing Usage",
+  "gross_cost": "173.0",
+  "row_credit_amount": "-173.0",
+  "credit_info": "PROMOTION: Partner Award Letter - vargasporras - 382262106",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202412",
+  "project_name": "Use of mdb-gcp-marketplace-atl",
+  "service_description": "MongoDB Atlas (Private Offer)",
+  "sku_description": "MongoDB Atlas - Annual Commit with Monthly Invoicing Usage",
+  "gross_cost": "172.0",
+  "row_credit_amount": "-172.0",
+  "credit_info": "PROMOTION: Partner Award Letter - vargasporras - 382262106",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202501",
+  "project_name": "Use of mdb-gcp-marketplace-atl",
+  "service_description": "MongoDB Atlas (Private Offer)",
+  "sku_description": "MongoDB Atlas - Annual Commit with Monthly Invoicing Usage",
+  "gross_cost": "171.0",
+  "row_credit_amount": "-171.0",
+  "credit_info": "PROMOTION: Partner Award Letter - vargasporras - 382262106",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202412",
+  "project_name": "Use of mdb-gcp-marketplace-atl",
+  "service_description": "MongoDB Atlas (Private Offer)",
+  "sku_description": "MongoDB Atlas - Annual Commit with Monthly Invoicing Usage",
+  "gross_cost": "170.0",
+  "row_credit_amount": "-170.0",
+  "credit_info": "PROMOTION: Partner Award Letter - vargasporras - 382262106",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202412",
+  "project_name": "Use of mdb-gcp-marketplace-atl",
+  "service_description": "MongoDB Atlas (Private Offer)",
+  "sku_description": "MongoDB Atlas - Annual Commit with Monthly Invoicing Usage",
+  "gross_cost": "169.0",
+  "row_credit_amount": "-169.0",
+  "credit_info": "PROMOTION: Partner Award Letter - vargasporras - 382262106",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202501",
+  "project_name": "Use of mdb-gcp-marketplace-atl",
+  "service_description": "MongoDB Atlas (Private Offer)",
+  "sku_description": "MongoDB Atlas - Annual Commit with Monthly Invoicing Usage",
+  "gross_cost": "169.0",
+  "row_credit_amount": "-169.0",
+  "credit_info": "PROMOTION: Partner Award Letter - vargasporras - 382262106",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202501",
+  "project_name": "Use of mdb-gcp-marketplace-atl",
+  "service_description": "MongoDB Atlas (Private Offer)",
+  "sku_description": "MongoDB Atlas - Annual Commit with Monthly Invoicing Usage",
+  "gross_cost": "169.0",
+  "row_credit_amount": "-169.0",
+  "credit_info": "PROMOTION: Partner Award Letter - vargasporras - 382262106",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202412",
+  "project_name": "Use of mdb-gcp-marketplace-atl",
+  "service_description": "MongoDB Atlas (Private Offer)",
+  "sku_description": "MongoDB Atlas - Annual Commit with Monthly Invoicing Usage",
+  "gross_cost": "167.0",
+  "row_credit_amount": "-167.0",
+  "credit_info": "PROMOTION: Partner Award Letter - vargasporras - 382262106",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202411",
+  "project_name": "teviapp",
+  "service_description": "Cloud Storage",
+  "sku_description": "Download APAC",
+  "gross_cost": "166.967849",
+  "row_credit_amount": "-166.967846",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - Scale Y1 ",
+  "net_cost": "3e-06"
+}, {
+  "invoice_month": "202411",
+  "project_name": "teviapp",
+  "service_description": "Cloud Storage",
+  "sku_description": "Download APAC",
+  "gross_cost": "166.369307",
+  "row_credit_amount": "-166.369305",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - Scale Y1 ",
+  "net_cost": "2e-06"
+}, {
+  "invoice_month": "202503",
+  "project_name": "iKara - Yokara",
+  "service_description": "Firebase Realtime Database",
+  "sku_description": "Outgoing Bandwidth",
+  "gross_cost": "165.582636",
+  "row_credit_amount": "-165.582636",
+  "credit_info": "PROMOTION: SMB Credit - bbinh - 400312573",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202412",
+  "project_name": "Use of mdb-gcp-marketplace-atl",
+  "service_description": "MongoDB Atlas (Private Offer)",
+  "sku_description": "MongoDB Atlas - Annual Commit with Monthly Invoicing Usage",
+  "gross_cost": "165.0",
+  "row_credit_amount": "-165.0",
+  "credit_info": "PROMOTION: Partner Award Letter - vargasporras - 382262106",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202501",
+  "project_name": "Use of mdb-gcp-marketplace-atl",
+  "service_description": "MongoDB Atlas (Private Offer)",
+  "sku_description": "MongoDB Atlas - Annual Commit with Monthly Invoicing Usage",
+  "gross_cost": "163.0",
+  "row_credit_amount": "-163.0",
+  "credit_info": "PROMOTION: Partner Award Letter - vargasporras - 382262106",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202412",
+  "project_name": "Use of mdb-gcp-marketplace-atl",
+  "service_description": "MongoDB Atlas (Private Offer)",
+  "sku_description": "MongoDB Atlas - Annual Commit with Monthly Invoicing Usage",
+  "gross_cost": "163.0",
+  "row_credit_amount": "-163.0",
+  "credit_info": "PROMOTION: Partner Award Letter - vargasporras - 382262106",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202501",
+  "project_name": "Use of mdb-gcp-marketplace-atl",
+  "service_description": "MongoDB Atlas (Private Offer)",
+  "sku_description": "MongoDB Atlas - Annual Commit with Monthly Invoicing Usage",
+  "gross_cost": "163.0",
+  "row_credit_amount": "-163.0",
+  "credit_info": "PROMOTION: Partner Award Letter - vargasporras - 382262106",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202411",
+  "project_name": "teviapp",
+  "service_description": "Cloud Storage",
+  "sku_description": "Download APAC",
+  "gross_cost": "162.554388",
+  "row_credit_amount": "-162.554386",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - Scale Y1 ",
+  "net_cost": "2e-06"
+}, {
+  "invoice_month": "202412",
+  "project_name": "Use of mdb-gcp-marketplace-atl",
+  "service_description": "MongoDB Atlas (Private Offer)",
+  "sku_description": "MongoDB Atlas - Annual Commit with Monthly Invoicing Usage",
+  "gross_cost": "162.0",
+  "row_credit_amount": "-162.0",
+  "credit_info": "PROMOTION: Partner Award Letter - vargasporras - 382262106",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202412",
+  "project_name": "Use of mdb-gcp-marketplace-atl",
+  "service_description": "MongoDB Atlas (Private Offer)",
+  "sku_description": "MongoDB Atlas - Annual Commit with Monthly Invoicing Usage",
+  "gross_cost": "161.0",
+  "row_credit_amount": "-161.0",
+  "credit_info": "PROMOTION: Partner Award Letter - vargasporras - 382262106",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202412",
+  "project_name": "Use of mdb-gcp-marketplace-atl",
+  "service_description": "MongoDB Atlas (Private Offer)",
+  "sku_description": "MongoDB Atlas - Annual Commit with Monthly Invoicing Usage",
+  "gross_cost": "160.0",
+  "row_credit_amount": "-160.0",
+  "credit_info": "PROMOTION: Partner Award Letter - vargasporras - 382262106",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202412",
+  "project_name": "Use of mdb-gcp-marketplace-atl",
+  "service_description": "MongoDB Atlas (Private Offer)",
+  "sku_description": "MongoDB Atlas - Annual Commit with Monthly Invoicing Usage",
+  "gross_cost": "160.0",
+  "row_credit_amount": "-160.0",
+  "credit_info": "PROMOTION: Partner Award Letter - vargasporras - 382262106",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202412",
+  "project_name": "Use of mdb-gcp-marketplace-atl",
+  "service_description": "MongoDB Atlas (Private Offer)",
+  "sku_description": "MongoDB Atlas - Annual Commit with Monthly Invoicing Usage",
+  "gross_cost": "157.0",
+  "row_credit_amount": "-157.0",
+  "credit_info": "PROMOTION: Partner Award Letter - vargasporras - 382262106",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202501",
+  "project_name": "Use of mdb-gcp-marketplace-atl",
+  "service_description": "MongoDB Atlas (Private Offer)",
+  "sku_description": "MongoDB Atlas - Annual Commit with Monthly Invoicing Usage",
+  "gross_cost": "156.0",
+  "row_credit_amount": "-156.0",
+  "credit_info": "PROMOTION: Partner Award Letter - vargasporras - 382262106",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202501",
+  "project_name": "Use of mdb-gcp-marketplace-atl",
+  "service_description": "MongoDB Atlas (Private Offer)",
+  "sku_description": "MongoDB Atlas - Annual Commit with Monthly Invoicing Usage",
+  "gross_cost": "155.0",
+  "row_credit_amount": "-155.0",
+  "credit_info": "PROMOTION: Partner Award Letter - vargasporras - 382262106",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202412",
+  "project_name": "Use of mdb-gcp-marketplace-atl",
+  "service_description": "MongoDB Atlas (Private Offer)",
+  "sku_description": "MongoDB Atlas - Annual Commit with Monthly Invoicing Usage",
+  "gross_cost": "155.0",
+  "row_credit_amount": "-155.0",
+  "credit_info": "PROMOTION: Partner Award Letter - vargasporras - 382262106",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202501",
+  "project_name": "Use of mdb-gcp-marketplace-atl",
+  "service_description": "MongoDB Atlas (Private Offer)",
+  "sku_description": "MongoDB Atlas - Annual Commit with Monthly Invoicing Usage",
+  "gross_cost": "155.0",
+  "row_credit_amount": "-155.0",
+  "credit_info": "PROMOTION: Partner Award Letter - vargasporras - 382262106",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202412",
+  "project_name": "Use of mdb-gcp-marketplace-atl",
+  "service_description": "MongoDB Atlas (Private Offer)",
+  "sku_description": "MongoDB Atlas - Annual Commit with Monthly Invoicing Usage",
+  "gross_cost": "153.0",
+  "row_credit_amount": "-153.0",
+  "credit_info": "PROMOTION: Partner Award Letter - vargasporras - 382262106",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202412",
+  "project_name": "Use of mdb-gcp-marketplace-atl",
+  "service_description": "MongoDB Atlas (Private Offer)",
+  "sku_description": "MongoDB Atlas - Annual Commit with Monthly Invoicing Usage",
+  "gross_cost": "153.0",
+  "row_credit_amount": "-153.0",
+  "credit_info": "PROMOTION: Partner Award Letter - vargasporras - 382262106",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202501",
+  "project_name": "Use of mdb-gcp-marketplace-atl",
+  "service_description": "MongoDB Atlas (Private Offer)",
+  "sku_description": "MongoDB Atlas - Annual Commit with Monthly Invoicing Usage",
+  "gross_cost": "153.0",
+  "row_credit_amount": "-153.0",
+  "credit_info": "PROMOTION: Partner Award Letter - vargasporras - 382262106",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202412",
+  "project_name": "Use of mdb-gcp-marketplace-atl",
+  "service_description": "MongoDB Atlas (Private Offer)",
+  "sku_description": "MongoDB Atlas - Annual Commit with Monthly Invoicing Usage",
+  "gross_cost": "152.0",
+  "row_credit_amount": "-152.0",
+  "credit_info": "PROMOTION: Partner Award Letter - vargasporras - 382262106",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202412",
+  "project_name": "Use of mdb-gcp-marketplace-atl",
+  "service_description": "MongoDB Atlas (Private Offer)",
+  "sku_description": "MongoDB Atlas - Annual Commit with Monthly Invoicing Usage",
+  "gross_cost": "151.0",
+  "row_credit_amount": "-151.0",
+  "credit_info": "PROMOTION: Partner Award Letter - vargasporras - 382262106",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202412",
+  "project_name": "Use of mdb-gcp-marketplace-atl",
+  "service_description": "MongoDB Atlas (Private Offer)",
+  "sku_description": "MongoDB Atlas - Annual Commit with Monthly Invoicing Usage",
+  "gross_cost": "150.0",
+  "row_credit_amount": "-150.0",
+  "credit_info": "PROMOTION: Partner Award Letter - vargasporras - 382262106",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202412",
+  "project_name": "Use of mdb-gcp-marketplace-atl",
+  "service_description": "MongoDB Atlas (Private Offer)",
+  "sku_description": "MongoDB Atlas - Annual Commit with Monthly Invoicing Usage",
+  "gross_cost": "150.0",
+  "row_credit_amount": "-150.0",
+  "credit_info": "PROMOTION: Partner Award Letter - vargasporras - 382262106",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202412",
+  "project_name": "Use of mdb-gcp-marketplace-atl",
+  "service_description": "MongoDB Atlas (Private Offer)",
+  "sku_description": "MongoDB Atlas - Annual Commit with Monthly Invoicing Usage",
+  "gross_cost": "149.0",
+  "row_credit_amount": "-149.0",
+  "credit_info": "PROMOTION: Partner Award Letter - vargasporras - 382262106",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202412",
+  "project_name": "Use of mdb-gcp-marketplace-atl",
+  "service_description": "MongoDB Atlas (Private Offer)",
+  "sku_description": "MongoDB Atlas - Annual Commit with Monthly Invoicing Usage",
+  "gross_cost": "149.0",
+  "row_credit_amount": "-149.0",
+  "credit_info": "PROMOTION: Partner Award Letter - vargasporras - 382262106",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202412",
+  "project_name": "Use of mdb-gcp-marketplace-atl",
+  "service_description": "MongoDB Atlas (Private Offer)",
+  "sku_description": "MongoDB Atlas - Annual Commit with Monthly Invoicing Usage",
+  "gross_cost": "149.0",
+  "row_credit_amount": "-149.0",
+  "credit_info": "PROMOTION: Partner Award Letter - vargasporras - 382262106",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202412",
+  "project_name": "Use of mdb-gcp-marketplace-atl",
+  "service_description": "MongoDB Atlas (Private Offer)",
+  "sku_description": "MongoDB Atlas - Annual Commit with Monthly Invoicing Usage",
+  "gross_cost": "149.0",
+  "row_credit_amount": "-149.0",
+  "credit_info": "PROMOTION: Partner Award Letter - vargasporras - 382262106",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202507",
+  "project_name": "Printerval",
+  "service_description": "Cloud Storage",
+  "sku_description": "Autoclass Nearline Storage Oregon",
+  "gross_cost": "148.851252",
+  "row_credit_amount": "-148.297769",
+  "credit_info": "PROMOTION: Reseller Free Trial - jmalate - 362762916",
+  "net_cost": "0.553483"
+}, {
+  "invoice_month": "202412",
+  "project_name": "Use of mdb-gcp-marketplace-atl",
+  "service_description": "MongoDB Atlas (Private Offer)",
+  "sku_description": "MongoDB Atlas - Annual Commit with Monthly Invoicing Usage",
+  "gross_cost": "147.0",
+  "row_credit_amount": "-147.0",
+  "credit_info": "PROMOTION: Partner Award Letter - vargasporras - 382262106",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202411",
+  "project_name": "teviapp",
+  "service_description": "Cloud Storage",
+  "sku_description": "Download APAC",
+  "gross_cost": "145.690535",
+  "row_credit_amount": "-145.690533",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - Scale Y1 ",
+  "net_cost": "2e-06"
+}, {
+  "invoice_month": "202412",
+  "project_name": "Use of mdb-gcp-marketplace-atl",
+  "service_description": "MongoDB Atlas (Private Offer)",
+  "sku_description": "MongoDB Atlas - Annual Commit with Monthly Invoicing Usage",
+  "gross_cost": "144.0",
+  "row_credit_amount": "-144.0",
+  "credit_info": "PROMOTION: Partner Award Letter - vargasporras - 382262106",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202412",
+  "project_name": "Use of mdb-gcp-marketplace-atl",
+  "service_description": "MongoDB Atlas (Private Offer)",
+  "sku_description": "MongoDB Atlas - Annual Commit with Monthly Invoicing Usage",
+  "gross_cost": "143.0",
+  "row_credit_amount": "-143.0",
+  "credit_info": "PROMOTION: Partner Award Letter - vargasporras - 382262106",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202412",
+  "project_name": "Use of mdb-gcp-marketplace-atl",
+  "service_description": "MongoDB Atlas (Private Offer)",
+  "sku_description": "MongoDB Atlas - Annual Commit with Monthly Invoicing Usage",
+  "gross_cost": "143.0",
+  "row_credit_amount": "-143.0",
+  "credit_info": "PROMOTION: Partner Award Letter - vargasporras - 382262106",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202411",
+  "project_name": "teviapp",
+  "service_description": "Cloud Storage",
+  "sku_description": "Download APAC",
+  "gross_cost": "141.591312",
+  "row_credit_amount": "-141.59131",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - Scale Y1 ",
+  "net_cost": "2e-06"
+}, {
+  "invoice_month": "202601",
+  "project_name": "igot-ai",
+  "service_description": "Vertex AI",
+  "sku_description": "Gemini 3.0 Pro Text Output - Batch Predictions",
+  "gross_cost": "139.85571",
+  "row_credit_amount": "-139.855711",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - Scale Y1 | PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-1e-06"
+}, {
+  "invoice_month": "202311",
+  "project_name": "LocaMos",
+  "service_description": "Identity Platform",
+  "sku_description": "SMS messages sent in Region NG",
+  "gross_cost": "139.14",
+  "row_credit_amount": "-139.14",
+  "credit_info": "PROMOTION: SMB Credit - nguyennolan - 311598018",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202601",
+  "project_name": "igot-ai",
+  "service_description": "Vertex AI",
+  "sku_description": "Gemini 3.0 Pro Text Output - Batch Predictions",
+  "gross_cost": "138.22389",
+  "row_credit_amount": "-138.22389",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - Scale Y1 | PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202412",
+  "project_name": "Use of mdb-gcp-marketplace-atl",
+  "service_description": "MongoDB Atlas (Private Offer)",
+  "sku_description": "MongoDB Atlas - Annual Commit with Monthly Invoicing Usage",
+  "gross_cost": "138.0",
+  "row_credit_amount": "-138.0",
+  "credit_info": "PROMOTION: Partner Award Letter - vargasporras - 382262106",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202411",
+  "project_name": "teviapp",
+  "service_description": "Cloud Storage",
+  "sku_description": "Download APAC",
+  "gross_cost": "129.522896",
+  "row_credit_amount": "-129.522894",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - Scale Y1 ",
+  "net_cost": "2e-06"
+}, {
+  "invoice_month": "202411",
+  "project_name": "teviapp",
+  "service_description": "Cloud Storage",
+  "sku_description": "Download APAC",
+  "gross_cost": "128.769438",
+  "row_credit_amount": "-128.769437",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - Scale Y1 ",
+  "net_cost": "1e-06"
+}, {
+  "invoice_month": "202602",
+  "project_name": "THP-AI-Project-01",
+  "service_description": "Vertex AI",
+  "sku_description": "Veo 3 Audio Video Generation",
+  "gross_cost": "128.0",
+  "row_credit_amount": "-128.0",
+  "credit_info": "PROMOTION: SMB Credit - duongs - 465577675",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202503",
+  "project_name": "iKara - Yokara",
+  "service_description": "Firebase Realtime Database",
+  "sku_description": "Outgoing Bandwidth",
+  "gross_cost": "127.882202",
+  "row_credit_amount": "-127.882202",
+  "credit_info": "PROMOTION: SMB Credit - bbinh - 400312573",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "116.331869",
+  "row_credit_amount": "-116.331878",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-9e-06"
+}, {
+  "invoice_month": "202601",
+  "project_name": "igot-ai",
+  "service_description": "Vertex AI",
+  "sku_description": "Gemini 3.0 Pro Text Output - Batch Predictions",
+  "gross_cost": "113.850372",
+  "row_credit_amount": "-113.850372",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - Scale Y1",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202402",
+  "project_name": "Bizzi Home",
+  "service_description": "Cloud Storage",
+  "sku_description": "Regional Archive Class A Operations",
+  "gross_cost": "940.8788",
+  "row_credit_amount": "-112.905464",
+  "credit_info": "RESELLER_MARGIN: Discount on Total Spend",
+  "net_cost": "827.973336"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "Generate_content text input token count for gemini 3 flash",
+  "gross_cost": "108.016844",
+  "row_credit_amount": "-108.016857",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-1.3e-05"
+}, {
+  "invoice_month": "202601",
+  "project_name": "igot-ai",
+  "service_description": "Vertex AI",
+  "sku_description": "Gemini 3.0 Pro Text Output - Batch Predictions",
+  "gross_cost": "105.852828",
+  "row_credit_amount": "-105.852828",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - Scale Y1",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202411",
+  "project_name": "teviapp",
+  "service_description": "Cloud Storage",
+  "sku_description": "Download APAC",
+  "gross_cost": "105.458825",
+  "row_credit_amount": "-105.458823",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - Scale Y1 ",
+  "net_cost": "2e-06"
+}, {
+  "invoice_month": "202601",
+  "project_name": "igot-ai",
+  "service_description": "Vertex AI",
+  "sku_description": "Gemini 3.0 Pro Text Output - Batch Predictions",
+  "gross_cost": "103.894998",
+  "row_credit_amount": "-103.894998",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - Scale Y1",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "103.138248",
+  "row_credit_amount": "-103.138257",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-9e-06"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "102.326391",
+  "row_credit_amount": "-102.326404",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-1.3e-05"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "101.851422",
+  "row_credit_amount": "-101.851436",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-1.4e-05"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "101.494875",
+  "row_credit_amount": "-101.49489",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-1.5e-05"
+}, {
+  "invoice_month": "202411",
+  "project_name": "teviapp",
+  "service_description": "Cloud Storage",
+  "sku_description": "Download APAC",
+  "gross_cost": "101.130736",
+  "row_credit_amount": "-101.130734",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - Scale Y1 ",
+  "net_cost": "2e-06"
+}, {
+  "invoice_month": "202508",
+  "project_name": "prod-env",
+  "service_description": "Cloud Storage",
+  "sku_description": "Download APAC",
+  "gross_cost": "101.068765",
+  "row_credit_amount": "-101.068765",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "100.794256",
+  "row_credit_amount": "-100.794268",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-1.2e-05"
+}, {
+  "invoice_month": "202601",
+  "project_name": "igot-ai",
+  "service_description": "Vertex AI",
+  "sku_description": "Gemini 3.0 Pro Text Output - Batch Predictions",
+  "gross_cost": "100.63278",
+  "row_credit_amount": "-100.63278",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - Scale Y1",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "100.003778",
+  "row_credit_amount": "-100.003812",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-3.4e-05"
+}, {
+  "invoice_month": "202601",
+  "project_name": "igot-ai",
+  "service_description": "Vertex AI",
+  "sku_description": "Gemini 3.0 Pro Text Output - Batch Predictions",
+  "gross_cost": "99.994734",
+  "row_credit_amount": "-99.994734",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - Scale Y1 | PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202601",
+  "project_name": "igot-ai",
+  "service_description": "Vertex AI",
+  "sku_description": "Gemini 3.0 Pro Text Output - Batch Predictions",
+  "gross_cost": "99.625668",
+  "row_credit_amount": "-99.625668",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - Scale Y1",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202601",
+  "project_name": "igot-ai",
+  "service_description": "Vertex AI",
+  "sku_description": "Gemini 3.0 Pro Text Output - Batch Predictions",
+  "gross_cost": "99.095622",
+  "row_credit_amount": "-99.095622",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "98.91239",
+  "row_credit_amount": "-98.9124",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-1e-05"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "97.270273",
+  "row_credit_amount": "-97.270285",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-1.2e-05"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "97.139486",
+  "row_credit_amount": "-97.139499",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-1.3e-05"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "97.133838",
+  "row_credit_amount": "-97.133844",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-6e-06"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "96.561072",
+  "row_credit_amount": "-96.561079",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-7e-06"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "Generate_content text input token count for gemini 3 flash",
+  "gross_cost": "96.458636",
+  "row_credit_amount": "-96.458647",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-1.1e-05"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "95.98861",
+  "row_credit_amount": "-95.988623",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-1.3e-05"
+}, {
+  "invoice_month": "202508",
+  "project_name": "prod-env",
+  "service_description": "Cloud Storage",
+  "sku_description": "Download APAC",
+  "gross_cost": "95.888187",
+  "row_credit_amount": "-95.888187",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "95.548827",
+  "row_credit_amount": "-95.548835",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-8e-06"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "94.857455",
+  "row_credit_amount": "-94.857487",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-3.2e-05"
+}, {
+  "invoice_month": "202601",
+  "project_name": "igot-ai",
+  "service_description": "Vertex AI",
+  "sku_description": "Gemini 3.0 Pro Text Output - Batch Predictions",
+  "gross_cost": "94.31856",
+  "row_credit_amount": "-94.31856",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - Scale Y1",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "94.049913",
+  "row_credit_amount": "-94.049922",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-9e-06"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "93.615716",
+  "row_credit_amount": "-93.615726",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-1e-05"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "93.028188",
+  "row_credit_amount": "-93.028194",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-6e-06"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "92.905559",
+  "row_credit_amount": "-92.905571",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-1.2e-05"
+}, {
+  "invoice_month": "202601",
+  "project_name": "igot-ai",
+  "service_description": "Vertex AI",
+  "sku_description": "Gemini 3.0 Pro Text Output - Batch Predictions",
+  "gross_cost": "92.399094",
+  "row_credit_amount": "-92.399094",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - Scale Y1",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "92.114952",
+  "row_credit_amount": "-92.114965",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-1.3e-05"
+}, {
+  "invoice_month": "202602",
+  "project_name": "igot-ai",
+  "service_description": "Vertex AI",
+  "sku_description": "Gemini 3 Flash Text Output - Batch Predictions",
+  "gross_cost": "92.051442",
+  "row_credit_amount": "-92.051442",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "91.493227",
+  "row_credit_amount": "-91.493235",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-8e-06"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "91.464485",
+  "row_credit_amount": "-91.46449",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-5e-06"
+}, {
+  "invoice_month": "202601",
+  "project_name": "igot-ai",
+  "service_description": "Vertex AI",
+  "sku_description": "Gemini 3.0 Pro Text Output - Batch Predictions",
+  "gross_cost": "90.894522",
+  "row_credit_amount": "-90.894522",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - Scale Y1",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "90.865653",
+  "row_credit_amount": "-90.86566",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-7e-06"
+}, {
+  "invoice_month": "202601",
+  "project_name": "igot-ai",
+  "service_description": "Vertex AI",
+  "sku_description": "Gemini 3.0 Pro Text Output - Batch Predictions",
+  "gross_cost": "90.823044",
+  "row_credit_amount": "-90.823044",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202601",
+  "project_name": "igot-ai",
+  "service_description": "Vertex AI",
+  "sku_description": "Gemini 3.0 Pro Text Output - Batch Predictions",
+  "gross_cost": "89.828136",
+  "row_credit_amount": "-89.828136",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - Scale Y1 | PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "Cloud Storage",
+  "sku_description": "Network Data Transfer GAE/Firebase Storage",
+  "gross_cost": "88.961552",
+  "row_credit_amount": "-88.961564",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-1.2e-05"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "88.051925",
+  "row_credit_amount": "-88.051935",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-1e-05"
+}, {
+  "invoice_month": "202601",
+  "project_name": "igot-ai",
+  "service_description": "Vertex AI",
+  "sku_description": "Gemini 3.0 Pro Text Output - Batch Predictions",
+  "gross_cost": "87.202068",
+  "row_credit_amount": "-87.202068",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - Scale Y1",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202311",
+  "project_name": "Printerval - LiveView",
+  "service_description": "Translate",
+  "sku_description": "Neural Translation Model Predictions In Translation V3",
+  "gross_cost": "651.77942",
+  "row_credit_amount": "-86.803362",
+  "credit_info": "DISCOUNT: Free tier discount for general model translation and language detection | RESELLER_MARGIN: Discount on Total Spend",
+  "net_cost": "564.976058"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "Cloud Storage",
+  "sku_description": "Network Data Transfer GAE/Firebase Storage",
+  "gross_cost": "86.551453",
+  "row_credit_amount": "-86.551467",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-1.4e-05"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "86.547658",
+  "row_credit_amount": "-86.547664",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-6e-06"
+}, {
+  "invoice_month": "202601",
+  "project_name": "igot-ai",
+  "service_description": "Vertex AI",
+  "sku_description": "Gemini 3.0 Pro Text Output - Batch Predictions",
+  "gross_cost": "85.71669",
+  "row_credit_amount": "-85.71669",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - Scale Y1",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202507",
+  "project_name": "fundiin-analytics",
+  "service_description": "Vertex AI",
+  "sku_description": "Vertex AI: AutoML Structured Data Model Training",
+  "gross_cost": "85.008",
+  "row_credit_amount": "-85.008",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202601",
+  "project_name": "igot-ai",
+  "service_description": "Vertex AI",
+  "sku_description": "Gemini 3.0 Pro Text Output - Batch Predictions",
+  "gross_cost": "84.77853",
+  "row_credit_amount": "-84.77853",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - Scale Y1",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202601",
+  "project_name": "igot-ai",
+  "service_description": "Vertex AI",
+  "sku_description": "Gemini 3.0 Pro Text Output - Batch Predictions",
+  "gross_cost": "84.35256",
+  "row_credit_amount": "-84.352546",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI | PROMOTION: 2024 GFS Cloud Program - Scale Y1",
+  "net_cost": "1.4e-05"
+}, {
+  "invoice_month": "202512",
+  "project_name": "Neo - PROD",
+  "service_description": "Cloud Storage",
+  "sku_description": "Network Data Transfer GAE/Firebase Storage",
+  "gross_cost": "84.232639",
+  "row_credit_amount": "-84.232651",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 3 - ",
+  "net_cost": "-1.2e-05"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "84.181464",
+  "row_credit_amount": "-84.181471",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-7e-06"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "Generate_content text input token count for gemini 3 flash",
+  "gross_cost": "84.136231",
+  "row_credit_amount": "-84.136243",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-1.2e-05"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "Generate_content text input token count for gemini 3 flash",
+  "gross_cost": "83.078549",
+  "row_credit_amount": "-83.078561",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-1.2e-05"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "Cloud Storage",
+  "sku_description": "Network Data Transfer GAE/Firebase Storage",
+  "gross_cost": "82.619188",
+  "row_credit_amount": "-82.6192",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-1.2e-05"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "82.60497",
+  "row_credit_amount": "-82.604979",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-9e-06"
+}, {
+  "invoice_month": "202601",
+  "project_name": "igot-ai",
+  "service_description": "Cloud Storage",
+  "sku_description": "Regional Standard Class A Operations",
+  "gross_cost": "81.930835",
+  "row_credit_amount": "-81.924522",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - Scale Y1",
+  "net_cost": "0.006313"
+}, {
+  "invoice_month": "202601",
+  "project_name": "THP-AI-Project-01",
+  "service_description": "Vertex AI",
+  "sku_description": "Veo 3 Audio Video Generation",
+  "gross_cost": "80.0",
+  "row_credit_amount": "-80.0",
+  "credit_info": "PROMOTION: SMB Credit - duongs - 465577675",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "Cloud Storage",
+  "sku_description": "Network Data Transfer GAE/Firebase Storage",
+  "gross_cost": "79.655152",
+  "row_credit_amount": "-79.655163",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-1.1e-05"
+}, {
+  "invoice_month": "202602",
+  "project_name": "igot-ai",
+  "service_description": "Vertex AI",
+  "sku_description": "Gemini 3 Flash Text Output - Predictions",
+  "gross_cost": "79.652523",
+  "row_credit_amount": "-79.652523",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "Cloud Storage",
+  "sku_description": "Network Data Transfer GAE/Firebase Storage",
+  "gross_cost": "79.233545",
+  "row_credit_amount": "-79.233556",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-1.1e-05"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "79.151928",
+  "row_credit_amount": "-79.151938",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-1e-05"
+}, {
+  "invoice_month": "202512",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "77.723954",
+  "row_credit_amount": "-77.723963",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 3 - ",
+  "net_cost": "-9e-06"
+}, {
+  "invoice_month": "202601",
+  "project_name": "igot-ai",
+  "service_description": "Vertex AI",
+  "sku_description": "Gemini 3.0 Pro Text Output - Batch Predictions",
+  "gross_cost": "77.374206",
+  "row_credit_amount": "-77.374206",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - Scale Y1",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202602",
+  "project_name": "THP-AI-Project-01",
+  "service_description": "Vertex AI",
+  "sku_description": "Veo 3 Audio Video Generation",
+  "gross_cost": "76.8",
+  "row_credit_amount": "-76.8",
+  "credit_info": "PROMOTION: SMB Credit - duongs - 465577675",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202511",
+  "project_name": "Caz-agentspace-poc",
+  "service_description": "Vertex AI",
+  "sku_description": "Veo 3 Audio Video Generation",
+  "gross_cost": "76.8",
+  "row_credit_amount": "-76.8",
+  "credit_info": "PROMOTION: GCP Sandbox Credits",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202601",
+  "project_name": "THP-AI-Project-01",
+  "service_description": "Vertex AI",
+  "sku_description": "Veo 3 Audio Video Generation",
+  "gross_cost": "76.8",
+  "row_credit_amount": "-76.8",
+  "credit_info": "PROMOTION: SMB Credit - duongs - 465577675",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "76.684768",
+  "row_credit_amount": "-76.684777",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-9e-06"
+}, {
+  "invoice_month": "202601",
+  "project_name": "igot-ai",
+  "service_description": "Vertex AI",
+  "sku_description": "Gemini 3.0 Pro Text Output - Batch Predictions",
+  "gross_cost": "76.387674",
+  "row_credit_amount": "-76.387674",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - Scale Y1",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "75.817617",
+  "row_credit_amount": "-75.817626",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-9e-06"
+}, {
+  "invoice_month": "202602",
+  "project_name": "igot-ai",
+  "service_description": "Vertex AI",
+  "sku_description": "Gemini 3 Flash Text Output - Batch Predictions",
+  "gross_cost": "74.85027",
+  "row_credit_amount": "-74.85027",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202606",
+  "project_name": "Devplus",
+  "service_description": "Vertex AI",
+  "sku_description": "Gemini 3.0 Pro Image Output - Predictions",
+  "gross_cost": "74.6496",
+  "row_credit_amount": "-74.649604",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - Scale Y1",
+  "net_cost": "-4e-06"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "74.091226",
+  "row_credit_amount": "-74.091236",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-1e-05"
+}, {
+  "invoice_month": "202311",
+  "project_name": "Printerval",
+  "service_description": "Cloud Storage",
+  "sku_description": "Regional Standard Class A Operations",
+  "gross_cost": "615.10423",
+  "row_credit_amount": "-73.812517",
+  "credit_info": "RESELLER_MARGIN: Discount on Total Spend",
+  "net_cost": "541.291713"
+}, {
+  "invoice_month": "202506",
+  "project_name": "VCM-DWH",
+  "service_description": "Cloud Storage",
+  "sku_description": "Archive Data Retrieval",
+  "gross_cost": "612.35944",
+  "row_credit_amount": "-73.483135",
+  "credit_info": "RESELLER_MARGIN: Discount on Total Spend",
+  "net_cost": "538.876305"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "73.269887",
+  "row_credit_amount": "-73.269895",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-8e-06"
+}, {
+  "invoice_month": "202512",
+  "project_name": "Neo - PROD",
+  "service_description": "Cloud Storage",
+  "sku_description": "Network Data Transfer GAE/Firebase Storage",
+  "gross_cost": "72.503631",
+  "row_credit_amount": "-72.503643",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 3 - ",
+  "net_cost": "-1.2e-05"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "72.285358",
+  "row_credit_amount": "-72.285371",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-1.3e-05"
+}, {
+  "invoice_month": "202512",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Storage Hong Kong",
+  "gross_cost": "269.741349",
+  "row_credit_amount": "-72.243332",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 3 -  | RESELLER_MARGIN: Discount on Total Spend",
+  "net_cost": "197.498017"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "71.990093",
+  "row_credit_amount": "-71.990103",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-1e-05"
+}, {
+  "invoice_month": "202506",
+  "project_name": "VCM-DWH",
+  "service_description": "Cloud Storage",
+  "sku_description": "Download APAC",
+  "gross_cost": "593.979716",
+  "row_credit_amount": "-71.27757",
+  "credit_info": "RESELLER_MARGIN: Discount on Total Spend",
+  "net_cost": "522.702146"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "71.099173",
+  "row_credit_amount": "-71.099183",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-1e-05"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "70.987175",
+  "row_credit_amount": "-70.987184",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-9e-06"
+}, {
+  "invoice_month": "202601",
+  "project_name": "igot-ai",
+  "service_description": "Vertex AI",
+  "sku_description": "Gemini 3.0 Pro Text Output - Batch Predictions",
+  "gross_cost": "70.962168",
+  "row_credit_amount": "-70.962168",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - Scale Y1",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202504",
+  "project_name": "VCM-DWH",
+  "service_description": "BigQuery Storage API",
+  "sku_description": "BigQuery Storage API Network Internet Data Transfer Out AsiaPacfic to AsiaPacfic",
+  "gross_cost": "589.387214",
+  "row_credit_amount": "-70.726468",
+  "credit_info": "RESELLER_MARGIN: Discount on Total Spend",
+  "net_cost": "518.660746"
+}, {
+  "invoice_month": "202402",
+  "project_name": "kynaforkids-server-production",
+  "service_description": "Cloud Storage",
+  "sku_description": "Regional Archive Class A Operations",
+  "gross_cost": "588.5442",
+  "row_credit_amount": "-70.626276",
+  "credit_info": "RESELLER_MARGIN: Discount on Total Spend",
+  "net_cost": "517.917924"
+}, {
+  "invoice_month": "202402",
+  "project_name": "kynaforkids-server-production",
+  "service_description": "Cloud Storage",
+  "sku_description": "Regional Archive Class A Operations",
+  "gross_cost": "588.5442",
+  "row_credit_amount": "-70.625322",
+  "credit_info": "RESELLER_MARGIN: Discount on Total Spend",
+  "net_cost": "517.918878"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "70.6205",
+  "row_credit_amount": "-70.62051",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-1e-05"
+}, {
+  "invoice_month": "202512",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Storage Hong Kong",
+  "gross_cost": "273.813899",
+  "row_credit_amount": "-70.610169",
+  "credit_info": "RESELLER_MARGIN: Discount on Total Spend | PROMOTION: Vertex Gen AI - Mithra deal 1749190121795 conditional credit 1 -  2025-11",
+  "net_cost": "203.20373"
+}, {
+  "invoice_month": "202601",
+  "project_name": "igot-ai",
+  "service_description": "Vertex AI",
+  "sku_description": "Gemini 3.0 Pro Text Output - Batch Predictions",
+  "gross_cost": "70.277052",
+  "row_credit_amount": "-70.277052",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "70.017692",
+  "row_credit_amount": "-70.017697",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-5e-06"
+}, {
+  "invoice_month": "202603",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "69.907354",
+  "row_credit_amount": "-69.907361",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-7e-06"
+}, {
+  "invoice_month": "202506",
+  "project_name": "VCM-DWH",
+  "service_description": "Cloud Storage",
+  "sku_description": "Download APAC",
+  "gross_cost": "582.230454",
+  "row_credit_amount": "-69.867657",
+  "credit_info": "RESELLER_MARGIN: Discount on Total Spend",
+  "net_cost": "512.362797"
+}, {
+  "invoice_month": "202603",
+  "project_name": "igot-ai",
+  "service_description": "Gemini API",
+  "sku_description": "Generate_content text output token count for gemini 3 flash",
+  "gross_cost": "69.349734",
+  "row_credit_amount": "-69.349738",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-4e-06"
+}, {
+  "invoice_month": "202602",
+  "project_name": "igot-ai",
+  "service_description": "Vertex AI",
+  "sku_description": "Gemini 3 Flash Text Output - Predictions",
+  "gross_cost": "68.738202",
+  "row_credit_amount": "-68.738202",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "68.662797",
+  "row_credit_amount": "-68.662805",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-8e-06"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "68.341037",
+  "row_credit_amount": "-68.341047",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-1e-05"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "68.212189",
+  "row_credit_amount": "-68.212194",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-5e-06"
+}, {
+  "invoice_month": "202603",
+  "project_name": "igot-ai",
+  "service_description": "Gemini API",
+  "sku_description": "Generate_content text input token count for gemini 3 pro short",
+  "gross_cost": "67.423944",
+  "row_credit_amount": "-67.423948",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-4e-06"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "Cloud Storage",
+  "sku_description": "Network Data Transfer GAE/Firebase Storage",
+  "gross_cost": "67.24137",
+  "row_credit_amount": "-67.241383",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-1.3e-05"
+}, {
+  "invoice_month": "202602",
+  "project_name": "igot-ai",
+  "service_description": "Vertex AI",
+  "sku_description": "Gemini 3 Flash Text Output - Predictions",
+  "gross_cost": "67.220967",
+  "row_credit_amount": "-67.220967",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202601",
+  "project_name": "igot-ai",
+  "service_description": "Vertex AI",
+  "sku_description": "Gemini 3.0 Pro Text Output - Batch Predictions",
+  "gross_cost": "67.171992",
+  "row_credit_amount": "-67.171992",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - Scale Y1",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "66.895466",
+  "row_credit_amount": "-66.895476",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-1e-05"
+}, {
+  "invoice_month": "202506",
+  "project_name": "VCM-DWH",
+  "service_description": "Cloud Storage",
+  "sku_description": "Download APAC",
+  "gross_cost": "556.334774",
+  "row_credit_amount": "-66.760175",
+  "credit_info": "RESELLER_MARGIN: Discount on Total Spend",
+  "net_cost": "489.574599"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "66.635606",
+  "row_credit_amount": "-66.635618",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-1.2e-05"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "Generate_content text input token count for gemini 3 flash",
+  "gross_cost": "66.471211",
+  "row_credit_amount": "-66.471216",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-5e-06"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "66.410205",
+  "row_credit_amount": "-66.410213",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-8e-06"
+}, {
+  "invoice_month": "202412",
+  "project_name": "Printerval",
+  "service_description": "Cloud Storage",
+  "sku_description": "Autoclass Nearline Storage Oregon",
+  "gross_cost": "66.251623",
+  "row_credit_amount": "-66.251623",
+  "credit_info": "PROMOTION: Mithra deal 1711714534823 conditional credit 2 - ",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "66.167728",
+  "row_credit_amount": "-66.167733",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-5e-06"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "66.043577",
+  "row_credit_amount": "-66.043582",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-5e-06"
+}, {
+  "invoice_month": "202412",
+  "project_name": "Printerval",
+  "service_description": "Cloud Storage",
+  "sku_description": "Autoclass Nearline Storage Oregon",
+  "gross_cost": "66.006285",
+  "row_credit_amount": "-66.006285",
+  "credit_info": "PROMOTION: Mithra deal 1711714534823 conditional credit 2 - ",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "65.841271",
+  "row_credit_amount": "-65.841279",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-8e-06"
+}, {
+  "invoice_month": "202412",
+  "project_name": "Printerval",
+  "service_description": "Cloud Storage",
+  "sku_description": "Autoclass Nearline Storage Oregon",
+  "gross_cost": "65.57471",
+  "row_credit_amount": "-65.57471",
+  "credit_info": "PROMOTION: Mithra deal 1711714534823 conditional credit 2 - ",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202412",
+  "project_name": "Printerval",
+  "service_description": "Cloud Storage",
+  "sku_description": "Autoclass Nearline Storage Oregon",
+  "gross_cost": "65.182494",
+  "row_credit_amount": "-65.182494",
+  "credit_info": "PROMOTION: Mithra deal 1711714534823 conditional credit 2 - ",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202601",
+  "project_name": "igot-ai",
+  "service_description": "Vertex AI",
+  "sku_description": "Gemini 3.0 Pro Text Output - Batch Predictions",
+  "gross_cost": "64.781652",
+  "row_credit_amount": "-64.781652",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI | PROMOTION: 2024 GFS Cloud Program - Scale Y1",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "64.765396",
+  "row_credit_amount": "-64.765403",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-7e-06"
+}, {
+  "invoice_month": "202412",
+  "project_name": "Printerval",
+  "service_description": "Cloud Storage",
+  "sku_description": "Autoclass Nearline Storage Oregon",
+  "gross_cost": "64.752099",
+  "row_credit_amount": "-64.752099",
+  "credit_info": "PROMOTION: Mithra deal 1711714534823 conditional credit 2 - ",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "64.705552",
+  "row_credit_amount": "-64.705559",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-7e-06"
+}, {
+  "invoice_month": "202411",
+  "project_name": "teviapp",
+  "service_description": "Cloud Logging",
+  "sku_description": "Log Storage cost",
+  "gross_cost": "64.661802",
+  "row_credit_amount": "-64.661802",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - Scale Y1 ",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "64.584805",
+  "row_credit_amount": "-64.58481",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-5e-06"
+}, {
+  "invoice_month": "202601",
+  "project_name": "igot-ai",
+  "service_description": "Vertex AI",
+  "sku_description": "Gemini 3.0 Pro Text Output - Batch Predictions",
+  "gross_cost": "64.327134",
+  "row_credit_amount": "-64.327134",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - Scale Y1",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202412",
+  "project_name": "Printerval",
+  "service_description": "Cloud Storage",
+  "sku_description": "Autoclass Nearline Storage Oregon",
+  "gross_cost": "64.263398",
+  "row_credit_amount": "-64.263398",
+  "credit_info": "PROMOTION: Mithra deal 1711714534823 conditional credit 2 - ",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202603",
+  "project_name": "Neo - PROD",
+  "service_description": "Cloud Storage",
+  "sku_description": "Network Data Transfer GAE/Firebase Storage",
+  "gross_cost": "64.140522",
+  "row_credit_amount": "-64.140529",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-7e-06"
+}, {
+  "invoice_month": "202601",
+  "project_name": "THP-AI-Project-01",
+  "service_description": "Vertex AI",
+  "sku_description": "Veo 3 Audio Video Generation",
+  "gross_cost": "64.0",
+  "row_credit_amount": "-64.0",
+  "credit_info": "PROMOTION: SMB Credit - duongs - 465577675",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202412",
+  "project_name": "Printerval",
+  "service_description": "Cloud Storage",
+  "sku_description": "Autoclass Nearline Storage Oregon",
+  "gross_cost": "63.874072",
+  "row_credit_amount": "-63.874072",
+  "credit_info": "PROMOTION: Mithra deal 1711714534823 conditional credit 2 - ",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "63.829559",
+  "row_credit_amount": "-63.829565",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-6e-06"
+}, {
+  "invoice_month": "202505",
+  "project_name": "fundiin-analytics",
+  "service_description": "Vertex AI",
+  "sku_description": "Vertex AI: AutoML Structured Data Model Training",
+  "gross_cost": "63.756",
+  "row_credit_amount": "-63.756",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202505",
+  "project_name": "fundiin-analytics",
+  "service_description": "Vertex AI",
+  "sku_description": "Vertex AI: AutoML Structured Data Model Training",
+  "gross_cost": "63.756",
+  "row_credit_amount": "-63.756",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202508",
+  "project_name": "fundiin-analytics",
+  "service_description": "Vertex AI",
+  "sku_description": "Vertex AI: AutoML Structured Data Model Training",
+  "gross_cost": "63.756",
+  "row_credit_amount": "-63.756",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "63.573916",
+  "row_credit_amount": "-63.573926",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-1e-05"
+}, {
+  "invoice_month": "202412",
+  "project_name": "Printerval",
+  "service_description": "Cloud Storage",
+  "sku_description": "Autoclass Nearline Storage Oregon",
+  "gross_cost": "63.468775",
+  "row_credit_amount": "-63.468775",
+  "credit_info": "PROMOTION: Mithra deal 1711714534823 conditional credit 2 - ",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "63.383742",
+  "row_credit_amount": "-63.38375",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-8e-06"
+}, {
+  "invoice_month": "202606",
+  "project_name": "Devplus",
+  "service_description": "Vertex AI",
+  "sku_description": "Gemini 3.0 Pro Text Output - Predictions",
+  "gross_cost": "63.34926",
+  "row_credit_amount": "-63.34926",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - Scale Y1",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202601",
+  "project_name": "igot-ai",
+  "service_description": "Vertex AI",
+  "sku_description": "Gemini 3.0 Pro Text Output - Batch Predictions",
+  "gross_cost": "63.320256",
+  "row_credit_amount": "-63.320256",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - Scale Y1",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202601",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "63.300453",
+  "row_credit_amount": "-63.30046",
+  "credit_info": "PROMOTION: Vertex Gen AI - Mithra deal 1749190121795 conditional credit 1 -  2025-12",
+  "net_cost": "-7e-06"
+}, {
+  "invoice_month": "202603",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "63.239879",
+  "row_credit_amount": "-63.239886",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-7e-06"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "63.21356",
+  "row_credit_amount": "-63.213567",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-7e-06"
+}, {
+  "invoice_month": "202512",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "63.185921",
+  "row_credit_amount": "-63.185927",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 3 - ",
+  "net_cost": "-6e-06"
+}, {
+  "invoice_month": "202412",
+  "project_name": "Printerval",
+  "service_description": "Cloud Storage",
+  "sku_description": "Autoclass Nearline Storage Oregon",
+  "gross_cost": "63.092942",
+  "row_credit_amount": "-63.092942",
+  "credit_info": "PROMOTION: Mithra deal 1711714534823 conditional credit 2 - ",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202601",
+  "project_name": "igot-ai",
+  "service_description": "Vertex AI",
+  "sku_description": "Gemini 3.0 Pro Text Output - Batch Predictions",
+  "gross_cost": "63.049506",
+  "row_credit_amount": "-63.049506",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "Cloud Storage",
+  "sku_description": "Network Data Transfer GAE/Firebase Storage",
+  "gross_cost": "63.03019",
+  "row_credit_amount": "-63.030203",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-1.3e-05"
+}, {
+  "invoice_month": "202411",
+  "project_name": "teviapp",
+  "service_description": "Cloud Storage",
+  "sku_description": "Download APAC",
+  "gross_cost": "62.982886",
+  "row_credit_amount": "-62.982885",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - Scale Y1 ",
+  "net_cost": "1e-06"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "62.798682",
+  "row_credit_amount": "-62.79869",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-8e-06"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "Generate_content text input token count for gemini 3 flash",
+  "gross_cost": "62.786135",
+  "row_credit_amount": "-62.786145",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-1e-05"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "62.760438",
+  "row_credit_amount": "-62.760444",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-6e-06"
+}, {
+  "invoice_month": "202601",
+  "project_name": "igot-ai",
+  "service_description": "Vertex AI",
+  "sku_description": "Gemini 3.0 Pro Text Output - Batch Predictions",
+  "gross_cost": "62.739618",
+  "row_credit_amount": "-62.739618",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - Scale Y1",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202412",
+  "project_name": "teviapp",
+  "service_description": "Cloud Storage",
+  "sku_description": "APAC-based Storage Data Transfer Out via peered/interconnect network",
+  "gross_cost": "62.629833",
+  "row_credit_amount": "-62.629833",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "62.576904",
+  "row_credit_amount": "-62.576913",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-9e-06"
+}, {
+  "invoice_month": "202501",
+  "project_name": "tevi-ops",
+  "service_description": "Cloud Storage",
+  "sku_description": "Network Data Transfer GCP Multi-region within Asia",
+  "gross_cost": "62.518042",
+  "row_credit_amount": "-62.51804",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - Scale Y1",
+  "net_cost": "2e-06"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "62.460636",
+  "row_credit_amount": "-62.46064",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-4e-06"
+}, {
+  "invoice_month": "202603",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "62.322949",
+  "row_credit_amount": "-62.322956",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-7e-06"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "Cloud Storage",
+  "sku_description": "Network Data Transfer GAE/Firebase Storage",
+  "gross_cost": "62.115848",
+  "row_credit_amount": "-62.115862",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-1.4e-05"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "62.036312",
+  "row_credit_amount": "-62.036317",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-5e-06"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "61.977071",
+  "row_credit_amount": "-61.977077",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-6e-06"
+}, {
+  "invoice_month": "202411",
+  "project_name": "teviapp",
+  "service_description": "Cloud Storage",
+  "sku_description": "APAC-based Storage Data Transfer Out via peered/interconnect network",
+  "gross_cost": "61.881667",
+  "row_credit_amount": "-61.881666",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - Scale Y1 ",
+  "net_cost": "1e-06"
+}, {
+  "invoice_month": "202508",
+  "project_name": "prod-env",
+  "service_description": "Cloud Storage",
+  "sku_description": "Download APAC",
+  "gross_cost": "61.73237",
+  "row_credit_amount": "-61.73237",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "Cloud Storage",
+  "sku_description": "Network Data Transfer GAE/Firebase Storage",
+  "gross_cost": "61.669829",
+  "row_credit_amount": "-61.669839",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-1e-05"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "61.527686",
+  "row_credit_amount": "-61.527691",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-5e-06"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "61.475335",
+  "row_credit_amount": "-61.475344",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-9e-06"
+}, {
+  "invoice_month": "202601",
+  "project_name": "igot-ai",
+  "service_description": "Vertex AI",
+  "sku_description": "Gemini 3.0 Pro Text Output - Batch Predictions",
+  "gross_cost": "61.392972",
+  "row_credit_amount": "-61.392972",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "61.212398",
+  "row_credit_amount": "-61.212404",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-6e-06"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "61.102605",
+  "row_credit_amount": "-61.102615",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-1e-05"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "61.020513",
+  "row_credit_amount": "-61.02052",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-7e-06"
+}, {
+  "invoice_month": "202601",
+  "project_name": "igot-ai",
+  "service_description": "Vertex AI",
+  "sku_description": "Gemini 3.0 Pro Text Output - Batch Predictions",
+  "gross_cost": "60.97224",
+  "row_credit_amount": "-60.97224",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - Scale Y1",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202603",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "60.726906",
+  "row_credit_amount": "-60.726912",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-6e-06"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "60.722167",
+  "row_credit_amount": "-60.722172",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-5e-06"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "60.645424",
+  "row_credit_amount": "-60.645429",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-5e-06"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "60.602451",
+  "row_credit_amount": "-60.602457",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-6e-06"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "60.380988",
+  "row_credit_amount": "-60.380997",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-9e-06"
+}, {
+  "invoice_month": "202512",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "60.341758",
+  "row_credit_amount": "-60.341761",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 3 - ",
+  "net_cost": "-3e-06"
+}, {
+  "invoice_month": "202402",
+  "project_name": "Bizzi Home",
+  "service_description": "Cloud Storage",
+  "sku_description": "Regional Archive Class A Operations",
+  "gross_cost": "502.78295",
+  "row_credit_amount": "-60.333959",
+  "credit_info": "RESELLER_MARGIN: Discount on Total Spend",
+  "net_cost": "442.448991"
+}, {
+  "invoice_month": "202603",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "60.328027",
+  "row_credit_amount": "-60.328035",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-8e-06"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "60.289651",
+  "row_credit_amount": "-60.289662",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-1.1e-05"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "60.160834",
+  "row_credit_amount": "-60.160841",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-7e-06"
+}, {
+  "invoice_month": "202601",
+  "project_name": "igot-ai",
+  "service_description": "Vertex AI",
+  "sku_description": "Gemini 3 Flash Text Output - Predictions",
+  "gross_cost": "60.158748",
+  "row_credit_amount": "-60.158748",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - Scale Y1",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202602",
+  "project_name": "igot-ai",
+  "service_description": "Vertex AI",
+  "sku_description": "Gemini 3 Flash Text Output - Predictions",
+  "gross_cost": "60.011724",
+  "row_credit_amount": "-60.011726",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-2e-06"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "59.929503",
+  "row_credit_amount": "-59.92951",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-7e-06"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "59.928453",
+  "row_credit_amount": "-59.928463",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-1e-05"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "59.924411",
+  "row_credit_amount": "-59.924418",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-7e-06"
+}, {
+  "invoice_month": "202512",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "59.834482",
+  "row_credit_amount": "-59.834492",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 3 - ",
+  "net_cost": "-1e-05"
+}, {
+  "invoice_month": "202603",
+  "project_name": "Neo - PROD",
+  "service_description": "Cloud Storage",
+  "sku_description": "Network Data Transfer GAE/Firebase Storage",
+  "gross_cost": "59.822012",
+  "row_credit_amount": "-59.822021",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-9e-06"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "59.67502",
+  "row_credit_amount": "-59.675029",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-9e-06"
+}, {
+  "invoice_month": "202602",
+  "project_name": "igot-ai",
+  "service_description": "Vertex AI",
+  "sku_description": "Gemini 3 Flash Text Output - Predictions",
+  "gross_cost": "59.465664",
+  "row_credit_amount": "-59.465664",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "59.449268",
+  "row_credit_amount": "-59.449274",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-6e-06"
+}, {
+  "invoice_month": "202512",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "59.305305",
+  "row_credit_amount": "-59.305309",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 3 - ",
+  "net_cost": "-4e-06"
+}, {
+  "invoice_month": "202603",
+  "project_name": "igot-ai",
+  "service_description": "Gemini API",
+  "sku_description": "Generate_content text input token count for gemini 3 pro short",
+  "gross_cost": "59.22821",
+  "row_credit_amount": "-59.22821",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202601",
+  "project_name": "igot-ai",
+  "service_description": "Vertex AI",
+  "sku_description": "Gemini 3 Flash Text Output - Predictions",
+  "gross_cost": "59.070957",
+  "row_credit_amount": "-59.070957",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - Scale Y1",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202603",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "59.038684",
+  "row_credit_amount": "-59.038689",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-5e-06"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "59.027798",
+  "row_credit_amount": "-59.027804",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-6e-06"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "58.823141",
+  "row_credit_amount": "-58.823147",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-6e-06"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "58.698261",
+  "row_credit_amount": "-58.698267",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-6e-06"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "58.69696",
+  "row_credit_amount": "-58.696967",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-7e-06"
+}, {
+  "invoice_month": "202512",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "58.588115",
+  "row_credit_amount": "-58.588119",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 3 - ",
+  "net_cost": "-4e-06"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "Cloud Storage",
+  "sku_description": "Network Data Transfer GAE/Firebase Storage",
+  "gross_cost": "58.504397",
+  "row_credit_amount": "-58.504407",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-1e-05"
+}, {
+  "invoice_month": "202606",
+  "project_name": "Devplus",
+  "service_description": "Vertex AI",
+  "sku_description": "Gemini 3.0 Pro Image Output - Predictions",
+  "gross_cost": "58.4736",
+  "row_credit_amount": "-58.473601",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - Scale Y1",
+  "net_cost": "-1e-06"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "58.39026",
+  "row_credit_amount": "-58.390271",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-1.1e-05"
+}, {
+  "invoice_month": "202601",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "58.350233",
+  "row_credit_amount": "-58.350244",
+  "credit_info": "PROMOTION: Vertex Gen AI - Mithra deal 1749190121795 conditional credit 1 -  2025-12",
+  "net_cost": "-1.1e-05"
+}, {
+  "invoice_month": "202602",
+  "project_name": "igot-ai",
+  "service_description": "Vertex AI",
+  "sku_description": "Gemini 3 Flash Text Output - Batch Predictions",
+  "gross_cost": "58.253364",
+  "row_credit_amount": "-58.253364",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202603",
+  "project_name": "igot-ai",
+  "service_description": "Gemini API",
+  "sku_description": "Generate_content text input token count for gemini 3 flash",
+  "gross_cost": "58.233666",
+  "row_credit_amount": "-58.23367",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-4e-06"
+}, {
+  "invoice_month": "202512",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "58.216305",
+  "row_credit_amount": "-58.216311",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 3 - ",
+  "net_cost": "-6e-06"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "58.017428",
+  "row_credit_amount": "-58.017434",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-6e-06"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "58.010733",
+  "row_credit_amount": "-58.010739",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-6e-06"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "57.895491",
+  "row_credit_amount": "-57.895498",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-7e-06"
+}, {
+  "invoice_month": "202512",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "57.876324",
+  "row_credit_amount": "-57.876335",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 3 - ",
+  "net_cost": "-1.1e-05"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "57.725335",
+  "row_credit_amount": "-57.725343",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-8e-06"
+}, {
+  "invoice_month": "202512",
+  "project_name": "THP-AI-Project-01",
+  "service_description": "Vertex AI",
+  "sku_description": "Veo 3 Audio Video Generation",
+  "gross_cost": "57.6",
+  "row_credit_amount": "-57.6",
+  "credit_info": "PROMOTION: SMB Credit - duongs - 465577675",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "57.253674",
+  "row_credit_amount": "-57.25368",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-6e-06"
+}, {
+  "invoice_month": "202601",
+  "project_name": "igot-ai",
+  "service_description": "Vertex AI",
+  "sku_description": "Gemini 3.0 Pro Text Output - Batch Predictions",
+  "gross_cost": "57.080214",
+  "row_credit_amount": "-57.080214",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - Scale Y1",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "57.072947",
+  "row_credit_amount": "-57.072953",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-6e-06"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "56.959272",
+  "row_credit_amount": "-56.959281",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-9e-06"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "56.89508",
+  "row_credit_amount": "-56.895086",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-6e-06"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "56.87139",
+  "row_credit_amount": "-56.8714",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-1e-05"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "56.775448",
+  "row_credit_amount": "-56.775457",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-9e-06"
+}, {
+  "invoice_month": "202602",
+  "project_name": "igot-ai",
+  "service_description": "Vertex AI",
+  "sku_description": "Gemini 3 Flash Text Output - Predictions",
+  "gross_cost": "56.694402",
+  "row_credit_amount": "-56.694402",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202512",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "80.033692",
+  "row_credit_amount": "-56.590921",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 3 -  | RESELLER_MARGIN: Discount on Total Spend",
+  "net_cost": "23.442771"
+}, {
+  "invoice_month": "202512",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "56.568592",
+  "row_credit_amount": "-56.568601",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 3 - ",
+  "net_cost": "-9e-06"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "56.566515",
+  "row_credit_amount": "-56.56652",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-5e-06"
+}, {
+  "invoice_month": "202601",
+  "project_name": "igot-ai",
+  "service_description": "Vertex AI",
+  "sku_description": "Gemini 3.0 Pro Text Output - Batch Predictions",
+  "gross_cost": "56.486892",
+  "row_credit_amount": "-56.486884",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - Scale Y1 | PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "8e-06"
+}, {
+  "invoice_month": "202512",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "56.474112",
+  "row_credit_amount": "-56.474118",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 3 - ",
+  "net_cost": "-6e-06"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "Cloud Storage",
+  "sku_description": "Network Data Transfer GAE/Firebase Storage",
+  "gross_cost": "56.390377",
+  "row_credit_amount": "-56.390388",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-1.1e-05"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "56.343674",
+  "row_credit_amount": "-56.343681",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-7e-06"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "56.084471",
+  "row_credit_amount": "-56.084484",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-1.3e-05"
+}, {
+  "invoice_month": "202605",
+  "project_name": "locaith-education",
+  "service_description": "Gemini API",
+  "sku_description": "Veo Generation 720p with Audio",
+  "gross_cost": "56.0",
+  "row_credit_amount": "-56.0",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - Ecosystem Partner",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202509",
+  "project_name": "CloudAZ-GenAI-Lab",
+  "service_description": "Vertex AI",
+  "sku_description": "Veo 2 Video Generation",
+  "gross_cost": "56.0",
+  "row_credit_amount": "-56.0",
+  "credit_info": "PROMOTION: GCP Sandbox Credits",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202512",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "55.828982",
+  "row_credit_amount": "-55.828993",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 3 - ",
+  "net_cost": "-1.1e-05"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "55.788369",
+  "row_credit_amount": "-55.788376",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-7e-06"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "55.682223",
+  "row_credit_amount": "-55.68223",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-7e-06"
+}, {
+  "invoice_month": "202512",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "55.648743",
+  "row_credit_amount": "-55.648751",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 3 - ",
+  "net_cost": "-8e-06"
+}, {
+  "invoice_month": "202512",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "55.392684",
+  "row_credit_amount": "-55.392694",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 3 - ",
+  "net_cost": "-1e-05"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "55.331303",
+  "row_credit_amount": "-55.331316",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-1.3e-05"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "55.291984",
+  "row_credit_amount": "-55.291992",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-8e-06"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "Cloud Storage",
+  "sku_description": "Network Data Transfer GAE/Firebase Storage",
+  "gross_cost": "55.265538",
+  "row_credit_amount": "-55.26555",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-1.2e-05"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "55.223286",
+  "row_credit_amount": "-55.223295",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-9e-06"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "55.220245",
+  "row_credit_amount": "-55.22025",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-5e-06"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "55.185444",
+  "row_credit_amount": "-55.185452",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-8e-06"
+}, {
+  "invoice_month": "202601",
+  "project_name": "igot-ai",
+  "service_description": "Vertex AI",
+  "sku_description": "Gemini 3.0 Pro Text Output - Batch Predictions",
+  "gross_cost": "55.183782",
+  "row_credit_amount": "-55.183776",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI | PROMOTION: 2024 GFS Cloud Program - Scale Y1",
+  "net_cost": "6e-06"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "55.072933",
+  "row_credit_amount": "-55.072942",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-9e-06"
+}, {
+  "invoice_month": "202601",
+  "project_name": "igot-ai",
+  "service_description": "Vertex AI",
+  "sku_description": "Gemini 3 Flash Text Output - Predictions",
+  "gross_cost": "55.062084",
+  "row_credit_amount": "-55.062084",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - Scale Y1",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "Cloud Storage",
+  "sku_description": "Network Data Transfer GAE/Firebase Storage",
+  "gross_cost": "54.989791",
+  "row_credit_amount": "-54.989803",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-1.2e-05"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "54.964781",
+  "row_credit_amount": "-54.964792",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-1.1e-05"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "Cloud Storage",
+  "sku_description": "Network Data Transfer GAE/Firebase Storage",
+  "gross_cost": "54.872634",
+  "row_credit_amount": "-54.872643",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-9e-06"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "54.864698",
+  "row_credit_amount": "-54.864708",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-1e-05"
+}, {
+  "invoice_month": "202601",
+  "project_name": "igot-ai",
+  "service_description": "Vertex AI",
+  "sku_description": "Gemini 3.0 Pro Text Output - Batch Predictions",
+  "gross_cost": "54.82248",
+  "row_credit_amount": "-54.82248",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "54.71533",
+  "row_credit_amount": "-54.715337",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-7e-06"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "54.682422",
+  "row_credit_amount": "-54.682434",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-1.2e-05"
+}, {
+  "invoice_month": "202601",
+  "project_name": "igot-ai",
+  "service_description": "Vertex AI",
+  "sku_description": "Gemini 3 Flash Text Output - Predictions",
+  "gross_cost": "54.61524",
+  "row_credit_amount": "-54.61524",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - Scale Y1",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202512",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "54.529103",
+  "row_credit_amount": "-54.529109",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 3 - ",
+  "net_cost": "-6e-06"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "54.466784",
+  "row_credit_amount": "-54.46679",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-6e-06"
+}, {
+  "invoice_month": "202601",
+  "project_name": "igot-ai",
+  "service_description": "Vertex AI",
+  "sku_description": "Gemini 3.0 Pro Text Input - Batch Predictions",
+  "gross_cost": "54.434676",
+  "row_credit_amount": "-54.434676",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - Scale Y1",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "54.418235",
+  "row_credit_amount": "-54.418246",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-1.1e-05"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "54.345298",
+  "row_credit_amount": "-54.345305",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-7e-06"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "54.324817",
+  "row_credit_amount": "-54.324823",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-6e-06"
+}, {
+  "invoice_month": "202601",
+  "project_name": "igot-ai",
+  "service_description": "Vertex AI",
+  "sku_description": "Gemini 3.0 Pro Text Output - Batch Predictions",
+  "gross_cost": "54.300714",
+  "row_credit_amount": "-54.300714",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - Scale Y1",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202602",
+  "project_name": "igot-ai",
+  "service_description": "Vertex AI",
+  "sku_description": "Gemini 3 Flash Text Output - Predictions",
+  "gross_cost": "54.280815",
+  "row_credit_amount": "-54.280815",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202504",
+  "project_name": "VCM-DWH",
+  "service_description": "Cloud Storage",
+  "sku_description": "Download APAC",
+  "gross_cost": "452.314261",
+  "row_credit_amount": "-54.277717",
+  "credit_info": "RESELLER_MARGIN: Discount on Total Spend",
+  "net_cost": "398.036544"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "54.26675",
+  "row_credit_amount": "-54.266756",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-6e-06"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "54.184531",
+  "row_credit_amount": "-54.184537",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-6e-06"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "54.115922",
+  "row_credit_amount": "-54.11593",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-8e-06"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "54.103957",
+  "row_credit_amount": "-54.103965",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-8e-06"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "54.035793",
+  "row_credit_amount": "-54.035798",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-5e-06"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "53.953555",
+  "row_credit_amount": "-53.953563",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-8e-06"
+}, {
+  "invoice_month": "202601",
+  "project_name": "igot-ai",
+  "service_description": "Vertex AI",
+  "sku_description": "Gemini 3.0 Pro Text Output - Batch Predictions",
+  "gross_cost": "53.93043",
+  "row_credit_amount": "-53.93043",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "53.929089",
+  "row_credit_amount": "-53.929096",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-7e-06"
+}, {
+  "invoice_month": "202603",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "53.853569",
+  "row_credit_amount": "-53.853577",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-8e-06"
+}, {
+  "invoice_month": "202603",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "53.710122",
+  "row_credit_amount": "-53.710132",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-1e-05"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "Cloud Storage",
+  "sku_description": "Network Data Transfer GAE/Firebase Storage",
+  "gross_cost": "53.568436",
+  "row_credit_amount": "-53.568446",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-1e-05"
+}, {
+  "invoice_month": "202411",
+  "project_name": "bePOS Live",
+  "service_description": "Identity Platform",
+  "sku_description": "SMS messages sent in Region TG",
+  "gross_cost": "445.5",
+  "row_credit_amount": "-53.459512",
+  "credit_info": "RESELLER_MARGIN: Discount on Total Spend",
+  "net_cost": "392.040488"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "53.397052",
+  "row_credit_amount": "-53.39706",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-8e-06"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "Generate_content text input token count for gemini 3 flash",
+  "gross_cost": "53.358589",
+  "row_credit_amount": "-53.358596",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-7e-06"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "Generate_content text input token count for gemini 3 flash",
+  "gross_cost": "53.250376",
+  "row_credit_amount": "-53.250387",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-1.1e-05"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "53.132015",
+  "row_credit_amount": "-53.132024",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-9e-06"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "Generate_content text input token count for gemini 3 flash",
+  "gross_cost": "53.012983",
+  "row_credit_amount": "-53.01299",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-7e-06"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "Cloud Storage",
+  "sku_description": "Network Data Transfer GAE/Firebase Storage",
+  "gross_cost": "53.004777",
+  "row_credit_amount": "-53.004785",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-8e-06"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "52.981357",
+  "row_credit_amount": "-52.981365",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-8e-06"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "52.961567",
+  "row_credit_amount": "-52.961572",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-5e-06"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "52.932376",
+  "row_credit_amount": "-52.932382",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-6e-06"
+}, {
+  "invoice_month": "202512",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "52.701384",
+  "row_credit_amount": "-52.701391",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 3 - ",
+  "net_cost": "-7e-06"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "52.683175",
+  "row_credit_amount": "-52.683182",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-7e-06"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "Cloud Storage",
+  "sku_description": "Network Data Transfer GAE/Firebase Storage",
+  "gross_cost": "52.6688",
+  "row_credit_amount": "-52.668814",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-1.4e-05"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "Cloud Storage",
+  "sku_description": "Network Data Transfer GAE/Firebase Storage",
+  "gross_cost": "52.620263",
+  "row_credit_amount": "-52.620274",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-1.1e-05"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "52.555506",
+  "row_credit_amount": "-52.555512",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-6e-06"
+}, {
+  "invoice_month": "202601",
+  "project_name": "igot-ai",
+  "service_description": "Vertex AI",
+  "sku_description": "Gemini 3.0 Pro Text Output - Batch Predictions",
+  "gross_cost": "52.495662",
+  "row_credit_amount": "-52.495662",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - Scale Y1",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202506",
+  "project_name": "VCM-DWH",
+  "service_description": "Cloud Storage",
+  "sku_description": "Download APAC",
+  "gross_cost": "437.178896",
+  "row_credit_amount": "-52.461473",
+  "credit_info": "RESELLER_MARGIN: Discount on Total Spend",
+  "net_cost": "384.717423"
+}, {
+  "invoice_month": "202512",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "52.453716",
+  "row_credit_amount": "-52.453724",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 3 - ",
+  "net_cost": "-8e-06"
+}, {
+  "invoice_month": "202512",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "52.313406",
+  "row_credit_amount": "-52.313416",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 3 - ",
+  "net_cost": "-1e-05"
+}, {
+  "invoice_month": "202601",
+  "project_name": "igot-ai",
+  "service_description": "Vertex AI",
+  "sku_description": "Gemini 3.0 Pro Text Input - Batch Predictions",
+  "gross_cost": "52.281218",
+  "row_credit_amount": "-52.281218",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - Scale Y1",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202601",
+  "project_name": "igot-ai",
+  "service_description": "Vertex AI",
+  "sku_description": "Gemini 3 Flash Text Output - Predictions",
+  "gross_cost": "52.25424",
+  "row_credit_amount": "-52.25424",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - Scale Y1",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202601",
+  "project_name": "igot-ai",
+  "service_description": "Vertex AI",
+  "sku_description": "Gemini 3 Flash Text Output - Predictions",
+  "gross_cost": "52.208145",
+  "row_credit_amount": "-52.208145",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - Scale Y1",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202512",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "52.161631",
+  "row_credit_amount": "-52.161637",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 3 - ",
+  "net_cost": "-6e-06"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "Generate_content text input token count for gemini 3 flash",
+  "gross_cost": "52.157956",
+  "row_credit_amount": "-52.157978",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-2.2e-05"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "52.141319",
+  "row_credit_amount": "-52.141329",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-1e-05"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "52.134402",
+  "row_credit_amount": "-52.134408",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-6e-06"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "Cloud Storage",
+  "sku_description": "Network Data Transfer GAE/Firebase Storage",
+  "gross_cost": "52.059571",
+  "row_credit_amount": "-52.059582",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-1.1e-05"
+}, {
+  "invoice_month": "202512",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "51.972681",
+  "row_credit_amount": "-51.972689",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 3 - ",
+  "net_cost": "-8e-06"
+}, {
+  "invoice_month": "202601",
+  "project_name": "igot-ai",
+  "service_description": "Vertex AI",
+  "sku_description": "Gemini 3 Flash Text Output - Predictions",
+  "gross_cost": "51.926457",
+  "row_credit_amount": "-51.926457",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - Scale Y1",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "51.878018",
+  "row_credit_amount": "-51.878027",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-9e-06"
+}, {
+  "invoice_month": "202601",
+  "project_name": "igot-ai",
+  "service_description": "Vertex AI",
+  "sku_description": "Gemini 3.0 Pro Text Output - Batch Predictions",
+  "gross_cost": "51.862902",
+  "row_credit_amount": "-51.862902",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "51.792387",
+  "row_credit_amount": "-51.792393",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-6e-06"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "51.78325",
+  "row_credit_amount": "-51.783257",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-7e-06"
+}, {
+  "invoice_month": "202512",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "51.759898",
+  "row_credit_amount": "-51.759907",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 3 - ",
+  "net_cost": "-9e-06"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "51.759112",
+  "row_credit_amount": "-51.759117",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-5e-06"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "51.715287",
+  "row_credit_amount": "-51.715294",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-7e-06"
+}, {
+  "invoice_month": "202411",
+  "project_name": "teviapp",
+  "service_description": "Cloud Storage",
+  "sku_description": "APAC-based Storage Data Transfer Out via peered/interconnect network",
+  "gross_cost": "51.697139",
+  "row_credit_amount": "-51.697138",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - Scale Y1 ",
+  "net_cost": "1e-06"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "51.67754",
+  "row_credit_amount": "-51.677549",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-9e-06"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "51.543915",
+  "row_credit_amount": "-51.54392",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-5e-06"
+}, {
+  "invoice_month": "202408",
+  "project_name": "bePOS Dev",
+  "service_description": "Cloud Run Functions",
+  "sku_description": "Cloud Run Functions (1st Gen) CPU Time",
+  "gross_cost": "429.483492",
+  "row_credit_amount": "-51.538029",
+  "credit_info": "RESELLER_MARGIN: Discount on Total Spend",
+  "net_cost": "377.945463"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "Cloud Storage",
+  "sku_description": "Network Data Transfer GAE/Firebase Storage",
+  "gross_cost": "51.496988",
+  "row_credit_amount": "-51.496999",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-1.1e-05"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "Cloud Storage",
+  "sku_description": "Network Data Transfer GAE/Firebase Storage",
+  "gross_cost": "51.415338",
+  "row_credit_amount": "-51.41535",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-1.2e-05"
+}, {
+  "invoice_month": "202502",
+  "project_name": "Tevi Data",
+  "service_description": "BigQuery",
+  "sku_description": "Analysis (asia-southeast1)",
+  "gross_cost": "51.373657",
+  "row_credit_amount": "-51.373657",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - Scale Y1",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202506",
+  "project_name": "VCM-DWH",
+  "service_description": "Cloud Storage",
+  "sku_description": "Download APAC",
+  "gross_cost": "428.087017",
+  "row_credit_amount": "-51.370446",
+  "credit_info": "RESELLER_MARGIN: Discount on Total Spend",
+  "net_cost": "376.716571"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "51.359713",
+  "row_credit_amount": "-51.359721",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-8e-06"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "51.32373",
+  "row_credit_amount": "-51.323737",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-7e-06"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "Cloud Storage",
+  "sku_description": "Network Data Transfer GAE/Firebase Storage",
+  "gross_cost": "51.323232",
+  "row_credit_amount": "-51.323241",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-9e-06"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "51.276307",
+  "row_credit_amount": "-51.276313",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-6e-06"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "51.225578",
+  "row_credit_amount": "-51.225586",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-8e-06"
+}, {
+  "invoice_month": "202601",
+  "project_name": "THP-AI-Project-01",
+  "service_description": "Vertex AI",
+  "sku_description": "Veo 3 Audio Video Generation",
+  "gross_cost": "51.2",
+  "row_credit_amount": "-51.2",
+  "credit_info": "PROMOTION: SMB Credit - duongs - 465577675",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "Cloud Storage",
+  "sku_description": "Network Data Transfer GAE/Firebase Storage",
+  "gross_cost": "51.021114",
+  "row_credit_amount": "-51.021124",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-1e-05"
+}, {
+  "invoice_month": "202411",
+  "project_name": "teviapp",
+  "service_description": "Cloud Logging",
+  "sku_description": "Log Storage cost",
+  "gross_cost": "51.008824",
+  "row_credit_amount": "-51.008824",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - Scale Y1 ",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "50.965449",
+  "row_credit_amount": "-50.965454",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-5e-06"
+}, {
+  "invoice_month": "202603",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "50.883259",
+  "row_credit_amount": "-50.883267",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-8e-06"
+}, {
+  "invoice_month": "202601",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "50.703658",
+  "row_credit_amount": "-50.703666",
+  "credit_info": "PROMOTION: Vertex Gen AI - Mithra deal 1749190121795 conditional credit 1 -  2025-12",
+  "net_cost": "-8e-06"
+}, {
+  "invoice_month": "202502",
+  "project_name": "Tevi Data",
+  "service_description": "BigQuery",
+  "sku_description": "Analysis (asia-southeast1)",
+  "gross_cost": "50.673134",
+  "row_credit_amount": "-50.673133",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - Scale Y1",
+  "net_cost": "1e-06"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "50.583612",
+  "row_credit_amount": "-50.583622",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-1e-05"
+}, {
+  "invoice_month": "202602",
+  "project_name": "igot-ai",
+  "service_description": "Vertex AI",
+  "sku_description": "Gemini 3 Flash Text Output - Predictions",
+  "gross_cost": "50.540319",
+  "row_credit_amount": "-50.540319",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "50.537728",
+  "row_credit_amount": "-50.537737",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-9e-06"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "50.187593",
+  "row_credit_amount": "-50.1876",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-7e-06"
+}, {
+  "invoice_month": "202606",
+  "project_name": "Devplus",
+  "service_description": "Vertex AI",
+  "sku_description": "Gemini 3.0 Pro Image Output - Predictions",
+  "gross_cost": "50.1216",
+  "row_credit_amount": "-50.1216",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - Scale Y1",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202512",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "50.066813",
+  "row_credit_amount": "-50.066819",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 3 - ",
+  "net_cost": "-6e-06"
+}, {
+  "invoice_month": "202603",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "49.977584",
+  "row_credit_amount": "-49.977588",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-4e-06"
+}, {
+  "invoice_month": "202601",
+  "project_name": "igot-ai",
+  "service_description": "Vertex AI",
+  "sku_description": "Gemini 3 Flash Text Output - Predictions",
+  "gross_cost": "49.957281",
+  "row_credit_amount": "-49.957281",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - Scale Y1",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "49.954309",
+  "row_credit_amount": "-49.954316",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-7e-06"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "49.941456",
+  "row_credit_amount": "-49.941461",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-5e-06"
+}, {
+  "invoice_month": "202502",
+  "project_name": "Tevi Data",
+  "service_description": "BigQuery",
+  "sku_description": "Analysis (asia-southeast1)",
+  "gross_cost": "49.926657",
+  "row_credit_amount": "-49.926657",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - Scale Y1",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "49.809819",
+  "row_credit_amount": "-49.809825",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-6e-06"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "49.69243",
+  "row_credit_amount": "-49.692436",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-6e-06"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "49.673436",
+  "row_credit_amount": "-49.673444",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-8e-06"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "49.632959",
+  "row_credit_amount": "-49.632966",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-7e-06"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "49.492792",
+  "row_credit_amount": "-49.492801",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-9e-06"
+}, {
+  "invoice_month": "202601",
+  "project_name": "igot-ai",
+  "service_description": "Vertex AI",
+  "sku_description": "Gemini 3.0 Pro Text Output - Batch Predictions",
+  "gross_cost": "49.443036",
+  "row_credit_amount": "-49.443027",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - Scale Y1 | PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "9e-06"
+}, {
+  "invoice_month": "202512",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "86.801642",
+  "row_credit_amount": "-49.408779",
+  "credit_info": "PROMOTION: Vertex Gen AI - Mithra deal 1749190121795 conditional credit 1 -  2025-11 | RESELLER_MARGIN: Discount on Total Spend",
+  "net_cost": "37.392863"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "49.404726",
+  "row_credit_amount": "-49.404733",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-7e-06"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "49.248575",
+  "row_credit_amount": "-49.248581",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-6e-06"
+}, {
+  "invoice_month": "202502",
+  "project_name": "Tevi Data",
+  "service_description": "BigQuery",
+  "sku_description": "Analysis (asia-southeast1)",
+  "gross_cost": "49.203193",
+  "row_credit_amount": "-49.203193",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - Scale Y1",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "49.18929",
+  "row_credit_amount": "-49.189296",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-6e-06"
+}, {
+  "invoice_month": "202512",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "49.173179",
+  "row_credit_amount": "-49.173186",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 3 - ",
+  "net_cost": "-7e-06"
+}, {
+  "invoice_month": "202411",
+  "project_name": "teviapp",
+  "service_description": "Cloud Logging",
+  "sku_description": "Log Storage cost",
+  "gross_cost": "49.135051",
+  "row_credit_amount": "-49.135051",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - Scale Y1 ",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202512",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "49.077418",
+  "row_credit_amount": "-49.077428",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 3 - ",
+  "net_cost": "-1e-05"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "49.052597",
+  "row_credit_amount": "-49.052605",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-8e-06"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "49.042764",
+  "row_credit_amount": "-49.042771",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-7e-06"
+}, {
+  "invoice_month": "202512",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "48.953074",
+  "row_credit_amount": "-48.953083",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 3 - ",
+  "net_cost": "-9e-06"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "48.95278",
+  "row_credit_amount": "-48.952787",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-7e-06"
+}, {
+  "invoice_month": "202512",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "48.899399",
+  "row_credit_amount": "-48.899408",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 3 - ",
+  "net_cost": "-9e-06"
+}, {
+  "invoice_month": "202411",
+  "project_name": "teviapp",
+  "service_description": "Cloud Storage",
+  "sku_description": "Download APAC",
+  "gross_cost": "48.896459",
+  "row_credit_amount": "-48.896457",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - Scale Y1 ",
+  "net_cost": "2e-06"
+}, {
+  "invoice_month": "202512",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "48.871822",
+  "row_credit_amount": "-48.871836",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 3 - ",
+  "net_cost": "-1.4e-05"
+}, {
+  "invoice_month": "202411",
+  "project_name": "teviapp",
+  "service_description": "Cloud Storage",
+  "sku_description": "APAC-based Storage Data Transfer Out via peered/interconnect network",
+  "gross_cost": "48.866246",
+  "row_credit_amount": "-48.866246",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - Scale Y1 ",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "Generate_content text input token count for gemini 3 flash",
+  "gross_cost": "48.810687",
+  "row_credit_amount": "-48.810697",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-1e-05"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "48.803835",
+  "row_credit_amount": "-48.803841",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-6e-06"
+}, {
+  "invoice_month": "202602",
+  "project_name": "igot-ai",
+  "service_description": "Vertex AI",
+  "sku_description": "Gemini 3 Flash Text Output - Predictions",
+  "gross_cost": "48.773457",
+  "row_credit_amount": "-48.773457",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "48.769991",
+  "row_credit_amount": "-48.77",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-9e-06"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "48.741141",
+  "row_credit_amount": "-48.741147",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-6e-06"
+}, {
+  "invoice_month": "202512",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "48.732013",
+  "row_credit_amount": "-48.73202",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 3 - ",
+  "net_cost": "-7e-06"
+}, {
+  "invoice_month": "202601",
+  "project_name": "igot-ai",
+  "service_description": "Vertex AI",
+  "sku_description": "Gemini 3 Flash Text Output - Predictions",
+  "gross_cost": "48.718728",
+  "row_credit_amount": "-48.718728",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - Scale Y1",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202411",
+  "project_name": "teviapp",
+  "service_description": "Cloud Storage",
+  "sku_description": "Download APAC",
+  "gross_cost": "48.672942",
+  "row_credit_amount": "-48.672942",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - Scale Y1 ",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202601",
+  "project_name": "igot-ai",
+  "service_description": "Vertex AI",
+  "sku_description": "Gemini 3 Flash Text Output - Predictions",
+  "gross_cost": "48.646806",
+  "row_credit_amount": "-48.646806",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - Scale Y1",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202512",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "48.642049",
+  "row_credit_amount": "-48.642055",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 3 - ",
+  "net_cost": "-6e-06"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "48.625729",
+  "row_credit_amount": "-48.625737",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-8e-06"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "48.559241",
+  "row_credit_amount": "-48.559247",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-6e-06"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "48.523035",
+  "row_credit_amount": "-48.523041",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-6e-06"
+}, {
+  "invoice_month": "202502",
+  "project_name": "Tevi Data",
+  "service_description": "BigQuery",
+  "sku_description": "Analysis (asia-southeast1)",
+  "gross_cost": "48.492997",
+  "row_credit_amount": "-48.492997",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - Scale Y1",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "48.434489",
+  "row_credit_amount": "-48.434494",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-5e-06"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "48.402156",
+  "row_credit_amount": "-48.402162",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-6e-06"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "Generate_content text input token count for gemini 3 flash",
+  "gross_cost": "48.39577",
+  "row_credit_amount": "-48.395779",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-9e-06"
+}, {
+  "invoice_month": "202507",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "48.386166",
+  "row_credit_amount": "-48.386166",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 2 - ",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "48.326396",
+  "row_credit_amount": "-48.326401",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-5e-06"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "48.273716",
+  "row_credit_amount": "-48.273722",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-6e-06"
+}, {
+  "invoice_month": "202411",
+  "project_name": "teviapp",
+  "service_description": "Cloud Storage",
+  "sku_description": "APAC-based Storage Data Transfer Out via peered/interconnect network",
+  "gross_cost": "48.185045",
+  "row_credit_amount": "-48.185045",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - Scale Y1 ",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "48.127623",
+  "row_credit_amount": "-48.127627",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-4e-06"
+}, {
+  "invoice_month": "202508",
+  "project_name": "anfin-prod",
+  "service_description": "Vertex AI",
+  "sku_description": "Veo 2 Video Generation",
+  "gross_cost": "48.0",
+  "row_credit_amount": "-48.0",
+  "credit_info": "PROMOTION: Mithra deal 1722244420328 conditional credit 2 - ",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202508",
+  "project_name": "igot-ai",
+  "service_description": "Vertex AI",
+  "sku_description": "Veo 3 Video Generation",
+  "gross_cost": "48.0",
+  "row_credit_amount": "-48.0",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - Ecosystem Partner",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202601",
+  "project_name": "igot-ai",
+  "service_description": "Vertex AI",
+  "sku_description": "Gemini 3.0 Pro Text Output - Batch Predictions",
+  "gross_cost": "47.895954",
+  "row_credit_amount": "-47.895954",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - Scale Y1",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "Generate_content text input token count for gemini 3 flash",
+  "gross_cost": "47.845808",
+  "row_credit_amount": "-47.845823",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-1.5e-05"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "47.831366",
+  "row_credit_amount": "-47.83137",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-4e-06"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "Cloud Storage",
+  "sku_description": "Network Data Transfer GAE/Firebase Storage",
+  "gross_cost": "47.826287",
+  "row_credit_amount": "-47.826298",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-1.1e-05"
+}, {
+  "invoice_month": "202502",
+  "project_name": "Tevi Data",
+  "service_description": "BigQuery",
+  "sku_description": "Analysis (asia-southeast1)",
+  "gross_cost": "47.811987",
+  "row_credit_amount": "-47.811987",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - Scale Y1",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "47.73329",
+  "row_credit_amount": "-47.733299",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-9e-06"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "47.666202",
+  "row_credit_amount": "-47.666212",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-1e-05"
+}, {
+  "invoice_month": "202512",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "47.653844",
+  "row_credit_amount": "-47.653854",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 3 - ",
+  "net_cost": "-1e-05"
+}, {
+  "invoice_month": "202507",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "47.633177",
+  "row_credit_amount": "-47.633177",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 2 - ",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "47.626463",
+  "row_credit_amount": "-47.626474",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-1.1e-05"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "47.487965",
+  "row_credit_amount": "-47.48797",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-5e-06"
+}, {
+  "invoice_month": "202501",
+  "project_name": "joyme-production",
+  "service_description": "Cloud Text-to-Speech API",
+  "sku_description": "Count of characters for using wavenet voices",
+  "gross_cost": "47.484864",
+  "row_credit_amount": "-47.484864",
+  "credit_info": "PROMOTION: Mithra deal 1725853622298 conditional credit 2 - ",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202601",
+  "project_name": "igot-ai",
+  "service_description": "Vertex AI",
+  "sku_description": "Gemini 3.0 Pro Text Output - Batch Predictions",
+  "gross_cost": "47.464056",
+  "row_credit_amount": "-47.464056",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - Scale Y1",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202512",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "47.36042",
+  "row_credit_amount": "-47.360425",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 3 - ",
+  "net_cost": "-5e-06"
+}, {
+  "invoice_month": "202512",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "47.33759",
+  "row_credit_amount": "-47.3376",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 3 - ",
+  "net_cost": "-1e-05"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "47.296354",
+  "row_credit_amount": "-47.29636",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-6e-06"
+}, {
+  "invoice_month": "202603",
+  "project_name": "Neo - PROD",
+  "service_description": "Cloud Storage",
+  "sku_description": "Network Data Transfer GAE/Firebase Storage",
+  "gross_cost": "47.275903",
+  "row_credit_amount": "-47.275911",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-8e-06"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "47.231535",
+  "row_credit_amount": "-47.231542",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-7e-06"
+}, {
+  "invoice_month": "202603",
+  "project_name": "Neo - PROD",
+  "service_description": "Cloud Storage",
+  "sku_description": "Network Data Transfer GAE/Firebase Storage",
+  "gross_cost": "47.204615",
+  "row_credit_amount": "-47.204622",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-7e-06"
+}, {
+  "invoice_month": "202512",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "47.160435",
+  "row_credit_amount": "-47.160442",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 3 - ",
+  "net_cost": "-7e-06"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "47.06192",
+  "row_credit_amount": "-47.061928",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-8e-06"
+}, {
+  "invoice_month": "202512",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "47.054337",
+  "row_credit_amount": "-47.054348",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 3 - ",
+  "net_cost": "-1.1e-05"
+}, {
+  "invoice_month": "202601",
+  "project_name": "igot-ai",
+  "service_description": "Vertex AI",
+  "sku_description": "Gemini 3.0 Pro Text Output - Batch Predictions",
+  "gross_cost": "47.034654",
+  "row_credit_amount": "-47.034654",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - Scale Y1",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202507",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "47.031222",
+  "row_credit_amount": "-47.031222",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 2 - ",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "47.026129",
+  "row_credit_amount": "-47.026141",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-1.2e-05"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "Generate_content text input token count for gemini 3 flash",
+  "gross_cost": "47.009971",
+  "row_credit_amount": "-47.00998",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-9e-06"
+}, {
+  "invoice_month": "202512",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "46.989395",
+  "row_credit_amount": "-46.989407",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 3 - ",
+  "net_cost": "-1.2e-05"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "46.949522",
+  "row_credit_amount": "-46.949526",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-4e-06"
+}, {
+  "invoice_month": "202601",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "46.860154",
+  "row_credit_amount": "-46.860163",
+  "credit_info": "PROMOTION: Vertex Gen AI - Mithra deal 1749190121795 conditional credit 1 -  2025-12",
+  "net_cost": "-9e-06"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "46.81271",
+  "row_credit_amount": "-46.812717",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-7e-06"
+}, {
+  "invoice_month": "202502",
+  "project_name": "Tevi Data",
+  "service_description": "BigQuery",
+  "sku_description": "Analysis (asia-southeast1)",
+  "gross_cost": "46.808815",
+  "row_credit_amount": "-46.808815",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - Scale Y1",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202512",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "46.791121",
+  "row_credit_amount": "-46.791127",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 3 - ",
+  "net_cost": "-6e-06"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "46.66915",
+  "row_credit_amount": "-46.669156",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-6e-06"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "46.649627",
+  "row_credit_amount": "-46.649635",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-8e-06"
+}, {
+  "invoice_month": "202601",
+  "project_name": "igot-ai",
+  "service_description": "Vertex AI",
+  "sku_description": "Gemini 3 Flash Text Output - Predictions",
+  "gross_cost": "46.642713",
+  "row_credit_amount": "-46.642713",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - Scale Y1",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "46.538426",
+  "row_credit_amount": "-46.538431",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-5e-06"
+}, {
+  "invoice_month": "202606",
+  "project_name": "Caz-agentspace-poc",
+  "service_description": "Vertex AI",
+  "sku_description": " Gemini 2.5 Pro Input Text Caching Storage",
+  "gross_cost": "46.474848",
+  "row_credit_amount": "-46.47486",
+  "credit_info": "PROMOTION: GCP Sandbox Credits",
+  "net_cost": "-1.2e-05"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "46.471889",
+  "row_credit_amount": "-46.471901",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-1.2e-05"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "46.440243",
+  "row_credit_amount": "-46.440249",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-6e-06"
+}, {
+  "invoice_month": "202605",
+  "project_name": "locaith-education",
+  "service_description": "Gemini API",
+  "sku_description": "Veo Generation 720p with Audio",
+  "gross_cost": "46.4",
+  "row_credit_amount": "-46.4",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - Ecosystem Partner",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "46.341063",
+  "row_credit_amount": "-46.341069",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-6e-06"
+}, {
+  "invoice_month": "202411",
+  "project_name": "teviapp",
+  "service_description": "Cloud Storage",
+  "sku_description": "APAC-based Storage Data Transfer Out via peered/interconnect network",
+  "gross_cost": "46.324825",
+  "row_credit_amount": "-46.324825",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - Scale Y1 ",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "46.279951",
+  "row_credit_amount": "-46.279956",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-5e-06"
+}, {
+  "invoice_month": "202512",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "46.256471",
+  "row_credit_amount": "-46.25648",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 3 - ",
+  "net_cost": "-9e-06"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "46.199755",
+  "row_credit_amount": "-46.199762",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-7e-06"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "46.118388",
+  "row_credit_amount": "-46.118395",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-7e-06"
+}, {
+  "invoice_month": "202502",
+  "project_name": "Tevi Data",
+  "service_description": "BigQuery",
+  "sku_description": "Analysis (asia-southeast1)",
+  "gross_cost": "46.110511",
+  "row_credit_amount": "-46.110511",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - Scale Y1",
+  "net_cost": "0.0"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "46.091705",
+  "row_credit_amount": "-46.09171",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-5e-06"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "46.0874",
+  "row_credit_amount": "-46.08741",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-1e-05"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "46.026614",
+  "row_credit_amount": "-46.026622",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-8e-06"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "45.894399",
+  "row_credit_amount": "-45.894405",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-6e-06"
+}, {
+  "invoice_month": "202512",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "45.863818",
+  "row_credit_amount": "-45.863826",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 3 - ",
+  "net_cost": "-8e-06"
+}, {
+  "invoice_month": "202609",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Storage Hong Kong",
+  "gross_cost": "382.179918",
+  "row_credit_amount": "-45.861602",
+  "credit_info": "RESELLER_MARGIN: ",
+  "net_cost": "336.318316"
+}, {
+  "invoice_month": "202511",
+  "project_name": "igot-ai",
+  "service_description": "Vertex AI",
+  "sku_description": "Gemini 2.5 Pro Thinking Text Output - Predictions",
+  "gross_cost": "45.85266",
+  "row_credit_amount": "-45.852663",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - Scale Y1",
+  "net_cost": "-3e-06"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "45.82471",
+  "row_credit_amount": "-45.824717",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-7e-06"
+}, {
+  "invoice_month": "202609",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Storage Hong Kong",
+  "gross_cost": "381.692182",
+  "row_credit_amount": "-45.803071",
+  "credit_info": "RESELLER_MARGIN: ",
+  "net_cost": "335.889111"
+}, {
+  "invoice_month": "202512",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "45.786177",
+  "row_credit_amount": "-45.786182",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 3 - ",
+  "net_cost": "-5e-06"
+}, {
+  "invoice_month": "202609",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Storage Hong Kong",
+  "gross_cost": "381.26865",
+  "row_credit_amount": "-45.75225",
+  "credit_info": "RESELLER_MARGIN: ",
+  "net_cost": "335.5164"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "45.750601",
+  "row_credit_amount": "-45.750606",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-5e-06"
+}, {
+  "invoice_month": "202605",
+  "project_name": "igot-studio",
+  "service_description": "Gemini API",
+  "sku_description": "EmbedContent input token count for gemini-embedding-001",
+  "gross_cost": "45.71923",
+  "row_credit_amount": "-45.719236",
+  "credit_info": "PROMOTION: 2024 GFS Cloud Program - AI",
+  "net_cost": "-6e-06"
+}, {
+  "invoice_month": "202609",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Storage Hong Kong",
+  "gross_cost": "380.811046",
+  "row_credit_amount": "-45.697337",
+  "credit_info": "RESELLER_MARGIN: ",
+  "net_cost": "335.113709"
+}, {
+  "invoice_month": "202602",
+  "project_name": "Neo - PROD",
+  "service_description": "App Engine",
+  "sku_description": "Cloud Firestore Read Ops Hong Kong",
+  "gross_cost": "45.616097",
+  "row_credit_amount": "-45.616102",
+  "credit_info": "PROMOTION: Mithra deal 1749190121795 conditional credit 4 - ",
+  "net_cost": "-5e-06"
+}]
