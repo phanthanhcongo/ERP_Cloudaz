@@ -94,3 +94,5 @@ temp/
 
 # ── Project source code ─────────────────────────────────
 ERP_ClouAZ_Project/
+# Exception: gsd-knowledge is tracked
+!ERP_ClouAZ_Project/gsd-knowledge/
