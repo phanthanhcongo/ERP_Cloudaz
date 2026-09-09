@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "postgres": {
+      "command": "npx",
+      "args": ["postgres-mcp"],
+      "env": {
+        "DB_MAIN_HOST": "localhost",
+        "DB_MAIN_PORT": "5432",
+        "DB_MAIN_USER": "postgres",
+        "DB_MAIN_PASSWORD": "postgres",
+        "DB_MAIN_NAME": "pm_db",
+        "DB_ALIASES": "main"
+      }
+    }
+  }
+}

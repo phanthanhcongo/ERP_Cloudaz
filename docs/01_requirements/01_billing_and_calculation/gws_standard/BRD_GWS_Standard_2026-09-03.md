@@ -130,8 +130,7 @@ Xây dựng trên nền tảng ERP CloudAZ một **module Thu hồi Công nợ l
 - **5.3.2** Mỗi khách hàng phải có **đúng một** liên hệ chính và **ít nhất một** liên hệ vai trò `TO` đang hoạt động.
 - **5.3.3** **Ràng buộc cứng**: khi danh sách người nhận chính rỗng, hệ thống **từ chối gửi thư**, không ghi nhận là đã gửi và hiển thị cảnh báo đỏ trên grid.
 - **5.3.4** Người nhận mỗi thư được dựng tự động: `TO` = các liên hệ vai trò `TO`; `CC` = các liên hệ vai trò `CC` **cộng** email Sales AM phụ trách khoản nợ.
-- **5.3.5** Hệ thống **không xóa cứng** liên hệ — chỉ vô hiệu hóa, vì lịch sử gửi thư là bằng chứng pháp lý. Khách yêu cầu xóa dữ liệu thì **ẩn danh hóa** (giữ email, xóa tên và số điện thoại); thao tác này chỉ Quản trị viên làm được và có ghi nhật ký.
-- **5.3.6** Trên danh sách, email và số điện thoại được **che một phần**; chỉ màn hình chi tiết khách hàng hiện đầy đủ và **mỗi lần xem đầy đủ đều ghi nhật ký kiểm toán**.
+- **5.3.5** Hệ thống **không xóa cứng** liên hệ — chỉ vô hiệu hóa, vì lịch sử gửi thư là bằng chứng pháp lý.
 
 ### 5.4 Đóng dấu đỏ, chuyển phát bản cứng & xác định Ngày X
 
