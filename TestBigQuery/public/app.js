@@ -15,6 +15,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnClearSql = document.getElementById('btnClearSql');
   const btnRunQuery = document.getElementById('btnRunQuery');
 
+  // Month Picker
+  const monthPickerGroup = document.getElementById('monthPickerGroup');
+  const billingMonth = document.getElementById('billingMonth');
+  const btnApplyMonth = document.getElementById('btnApplyMonth');
+
   const statsSection = document.getElementById('statsSection');
   const statDuration = document.getElementById('statDuration');
   const statRows = document.getElementById('statRows');
@@ -37,9 +42,27 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnCopyJson = document.getElementById('btnCopyJson');
   const btnExportCsv = document.getElementById('btnExportCsv');
 
+  // Credential Gate (popup kiểm tra key trước khi vào app)
+  const credGate = document.getElementById('credGate');
+  const credGateIcon = document.getElementById('credGateIcon');
+  const credGateTitle = document.getElementById('credGateTitle');
+  const credGateDesc = document.getElementById('credGateDesc');
+  const credGateInfo = document.getElementById('credGateInfo');
+  const credInfoEmail = document.getElementById('credInfoEmail');
+  const credInfoProject = document.getElementById('credInfoProject');
+  const credInfoPath = document.getElementById('credInfoPath');
+  const credGateForm = document.getElementById('credGateForm');
+  const credGateJson = document.getElementById('credGateJson');
+  const credGateAlert = document.getElementById('credGateAlert');
+  const btnGateRetry = document.getElementById('btnGateRetry');
+  const btnGateSave = document.getElementById('btnGateSave');
+  const btnGateEnter = document.getElementById('btnGateEnter');
+  const btnGateSkip = document.getElementById('btnGateSkip');
+
   let currentRows = [];
   let currentColumns = [];
   let presetsData = [];
+  let currentPresetId = '';
 
   // 1. Thêm log vào Terminal
   function appendLog(message, level = 'info', timeStr = null) {
@@ -109,14 +132,49 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  // Helper: convert month input value (YYYY-MM) to YYYYMM
+  function getMonthValue() {
+    const val = billingMonth.value; // e.g. '2026-06'
+    return val ? val.replace('-', '') : '202606';
+  }
+
+  // Helper: replace {BILLING_MONTH} placeholder in SQL
+  function applyMonthToSql(sql) {
+    return sql.replace(/\{BILLING_MONTH\}/g, getMonthValue());
+  }
+
   // Khi chọn preset khác
   presetSelect.addEventListener('change', () => {
     const selected = presetsData.find(p => p.id === presetSelect.value);
     if (selected) {
-      sqlInput.value = selected.sql;
+      currentPresetId = selected.id;
+
+      // Show/hide month picker
+      if (selected.hasMonthPicker) {
+        monthPickerGroup.classList.remove('hidden');
+        sqlInput.value = applyMonthToSql(selected.sql);
+      } else {
+        monthPickerGroup.classList.add('hidden');
+        sqlInput.value = selected.sql;
+      }
+
       appendLog(`Đã tải mẫu query: ${selected.title}`, 'info');
+    } else {
+      monthPickerGroup.classList.add('hidden');
     }
   });
+
+  // Khi bấm "Áp dụng" tháng hoặc thay đổi tháng
+  function onMonthChange() {
+    const selected = presetsData.find(p => p.id === currentPresetId);
+    if (selected && selected.hasMonthPicker) {
+      sqlInput.value = applyMonthToSql(selected.sql);
+      appendLog(`Đã cập nhật kỳ cước: ${billingMonth.value}`, 'info');
+    }
+  }
+
+  btnApplyMonth.addEventListener('click', onMonthChange);
+  billingMonth.addEventListener('change', onMonthChange);
 
   // 4. Chạy Query
   async function executeQuery() {
@@ -291,7 +349,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 10. Modal Cấu hình Key
   btnOpenConfig.addEventListener('click', () => { configModal.classList.remove('hidden'); });
-  authStatusBadge.addEventListener('click', () => { configModal.classList.remove('hidden'); });
   btnCloseConfig.addEventListener('click', () => { configModal.classList.add('hidden'); });
 
   btnSaveKey.addEventListener('click', async () => {
@@ -330,7 +387,146 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Khởi động
+  // 11. Credential Gate - Kiểm tra Service Account Key TRƯỚC khi dùng app
+  let gateAutoTimer = null;
+
+  function showGateEls(list) {
+    [credGateInfo, credGateForm, btnGateRetry, btnGateSave, btnGateEnter, btnGateSkip]
+      .forEach(el => el.classList.add('hidden'));
+    list.forEach(el => el.classList.remove('hidden'));
+  }
+
+  function setGateIcon(state, symbol) {
+    credGateIcon.className = `cred-gate-icon state-${state}`;
+    credGateIcon.innerHTML = symbol || '<div class="spinner"></div>';
+  }
+
+  function openGate() {
+    clearTimeout(gateAutoTimer);
+    credGate.classList.remove('hidden', 'is-closing');
+    document.body.classList.add('gate-locked');
+  }
+
+  function closeGate() {
+    clearTimeout(gateAutoTimer);
+    credGate.classList.add('is-closing');
+    document.body.classList.remove('gate-locked');
+    setTimeout(() => credGate.classList.add('hidden'), 300);
+  }
+
+  function gateAlert(message, type) {
+    credGateAlert.classList.remove('hidden');
+    credGateAlert.className = `alert-box ${type}`;
+    credGateAlert.textContent = message;
+  }
+
+  async function checkCredential({ silent = false } = {}) {
+    if (!silent) {
+      openGate();
+      setGateIcon('checking');
+      credGateTitle.textContent = 'Đang kiểm tra Service Account Key...';
+      credGateDesc.textContent = 'Vui lòng chờ trong giây lát, hệ thống đang xác thực thông tin đăng nhập BigQuery.';
+      showGateEls([]);
+      credGateAlert.classList.add('hidden');
+    }
+
+    try {
+      const res = await fetch('/api/config');
+      if (!res.ok) throw new Error(`Máy chủ trả về mã ${res.status}`);
+      const data = await res.json();
+
+      const invalidJson = data.keyInfo && data.keyInfo.error;
+      const missingEmail = !data.keyInfo || !data.keyInfo.client_email;
+
+      // Trường hợp 1: Key hợp lệ
+      if (data.hasKeyFile && !invalidJson && !missingEmail) {
+        setGateIcon('success', '✔');
+        credGateTitle.textContent = 'Xác thực thành công';
+        credGateDesc.textContent = 'Service Account Key hợp lệ. Bạn có thể bắt đầu truy vấn BigQuery.';
+        credInfoEmail.textContent = data.keyInfo.client_email;
+        credInfoProject.textContent = data.keyInfo.project_id || data.defaultProject || '--';
+        credInfoPath.textContent = data.keyPath;
+        showGateEls([credGateInfo, btnGateEnter]);
+        gateAutoTimer = setTimeout(closeGate, 1600);
+        return true;
+      }
+
+      // Trường hợp 2: Có file nhưng JSON hỏng
+      if (data.hasKeyFile && invalidJson) {
+        setGateIcon('error', '⚠');
+        credGateTitle.textContent = 'File Key không hợp lệ';
+        credGateDesc.textContent = `File tại ${data.keyPath} không phải JSON hợp lệ. Vui lòng dán lại nội dung key bên dưới.`;
+      } else {
+        // Trường hợp 3: Chưa có key
+        setGateIcon('error', '🔑');
+        credGateTitle.textContent = 'Chưa có Service Account Key';
+        credGateDesc.textContent = `Không tìm thấy file key tại ${data.keyPath}. Dán nội dung file JSON để tiếp tục.`;
+      }
+
+      showGateEls([credGateForm, btnGateRetry, btnGateSave, btnGateSkip]);
+      return false;
+
+    } catch (err) {
+      setGateIcon('error', '⛔');
+      credGateTitle.textContent = 'Không kết nối được máy chủ';
+      credGateDesc.textContent = `Lỗi: ${err.message}. Kiểm tra lại server Node đã chạy chưa (npm start).`;
+      showGateEls([btnGateRetry, btnGateSkip]);
+      return false;
+    }
+  }
+
+  btnGateRetry.addEventListener('click', () => checkCredential());
+  btnGateEnter.addEventListener('click', closeGate);
+  btnGateSkip.addEventListener('click', closeGate);
+
+  btnGateSave.addEventListener('click', async () => {
+    const rawContent = credGateJson.value.trim();
+    if (!rawContent) {
+      gateAlert('Vui lòng dán nội dung file JSON trước khi lưu!', 'error');
+      return;
+    }
+
+    btnGateSave.disabled = true;
+    btnGateSave.textContent = '⏳ Đang lưu...';
+
+    try {
+      const res = await fetch('/api/save-key', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ keyJsonContent: rawContent })
+      });
+      const data = await res.json();
+
+      if (!res.ok) {
+        gateAlert(`Lỗi: ${data.error}`, 'error');
+        return;
+      }
+
+      gateAlert(`Đã lưu key của: ${data.client_email}`, 'success');
+      credGateJson.value = '';
+      appendLog(`Đã lưu Service Account Key mới: ${data.client_email}`, 'success');
+      await checkCredential();
+      loadConfig();
+    } catch (err) {
+      gateAlert(`Lỗi hệ thống: ${err.message}`, 'error');
+    } finally {
+      btnGateSave.disabled = false;
+      btnGateSave.innerHTML = '🔐 Lưu Key &amp; Xác thực';
+    }
+  });
+
+  // Đóng gate bằng phím Esc (chỉ khi đã xác thực xong)
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !credGate.classList.contains('hidden')) {
+      if (!btnGateEnter.classList.contains('hidden')) closeGate();
+    }
+  });
+
+  // Mở lại gate khi bấm badge trạng thái ở header
+  authStatusBadge.addEventListener('click', () => checkCredential());
+
+  // Khởi động: kiểm tra credential TRƯỚC, sau đó mới nạp phần còn lại
+  checkCredential();
   loadConfig();
   loadPresets();
 });

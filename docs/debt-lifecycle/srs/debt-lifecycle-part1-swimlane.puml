@@ -1,0 +1,106 @@
+@startuml
+!theme plain
+title Vòng đời khoản nợ — Phần 1: Từ phát sinh đến thanh toán trong hạn
+
+|Hệ thống|
+start
+:Tiếp nhận khoản nợ mới\ntừ đồng bộ hoặc nhập liệu;
+note right
+  Thông tin gồm: khách nợ, hợp đồng,
+  kỳ thanh toán, sản phẩm/dịch vụ,
+  số tiền gốc, Sale phụ trách,
+  thông tin liên hệ, thời hạn, chứng từ
+end note
+
+|Kế toán|
+:Kiểm tra dữ liệu khoản nợ;
+note right
+  Kiểm tra: đúng khách hàng, hợp đồng
+  còn hiệu lực, số tiền chính xác,
+  kỳ thanh toán đúng, chứng từ đầy đủ,
+  không bị trùng, thuộc phạm vi xử lý
+end note
+if (Khoản nợ hợp lệ?) then (Không)
+  :Nhập lý do loại trừ;
+  |Hệ thống|
+  :Loại khoản nợ khỏi hệ thống\nGhi lịch sử thay đổi;
+  :Dừng toàn bộ quy trình;
+  stop
+else (Có)
+  |Kế toán|
+  :Xác nhận khoản nợ chính thức;
+  |Hệ thống|
+  :Ghi nhận xác nhận;
+  note right
+    Cho phép: thiết lập tỷ lệ phạt,
+    bắt đầu xử lý hồ sơ,
+    đưa vào danh sách nhắc nợ
+  end note
+endif
+
+|HRA|
+:Kiểm tra và đóng dấu hồ sơ bản cứng;
+|Hệ thống|
+:Ghi nhận hồ sơ đã đóng dấu;
+
+|HRA|
+repeat
+  :Gửi hồ sơ qua đơn vị vận chuyển;
+  |Hệ thống|
+  :Ghi nhận đã gửi hồ sơ\nLưu mã vận đơn, ngày gửi, đơn vị vận chuyển;
+  |HRA|
+  backward :Giao thất bại, gửi lại hồ sơ;
+repeat while (Xác nhận giao hồ sơ thành công?) is (Không) not (Có)
+
+|HRA|
+:Cập nhật thông tin giao hồ sơ;
+note right
+  Ghi nhận: ngày giao, người nhận,
+  bằng chứng giao hàng
+end note
+
+|Hệ thống|
+:Ghi nhận hồ sơ đã giao thành công;
+:Tính ngày đến hạn thanh toán\ndựa trên ngày giao và thời hạn hợp đồng;
+:Đưa khoản nợ vào giai đoạn trong hạn;
+:Gửi mail xác nhận giao hồ sơ\ncho khách nợ, Kế toán, Sale, HRA;
+
+|Hệ thống|
+if (Đến mốc nhắc trước hạn?) then (Có)
+  :Gửi mail nhắc trước hạn\nSố ngày còn lại, số tiền, phạt nếu có;
+else (Chưa tới mốc)
+endif
+
+|Hệ thống|
+if (Đến ngày thanh toán?) then (Có)
+  :Gửi mail thông báo đến hạn hôm nay;
+else (Chưa tới)
+endif
+
+|Khách nợ|
+if (Thanh toán trước hoặc đúng hạn?) then (Có)
+  |Kế toán|
+  :Kiểm tra số tiền, chứng từ, đối tượng thanh toán;
+  if (Đủ điều kiện tất toán?) then (Có)
+    |Hệ thống|
+    :Ghi nhận thanh toán thành công\nKhóa tiền phạt tại ngày thanh toán\nGửi mail xác nhận\nDừng các mail nhắc nợ;
+    stop
+  else (Chưa đủ)
+    |Kế toán|
+    :Yêu cầu bổ sung, tiếp tục theo dõi;
+  endif
+else (Không thanh toán)
+endif
+
+|Hệ thống|
+if (Đã qua ngày đến hạn?) then (Có)
+  :Chuyển khoản nợ sang quá hạn\nBắt đầu tính lãi phạt chậm thanh toán;
+  note right
+    Tiếp tục xử lý ở
+    Phần 2 — Quá hạn đến Kết thúc
+  end note
+  stop
+else (Chưa quá hạn)
+  stop
+endif
+@enduml

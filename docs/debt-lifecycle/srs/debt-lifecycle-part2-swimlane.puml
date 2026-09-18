@@ -1,0 +1,112 @@
+@startuml
+!theme plain
+title Vòng đời khoản nợ — Phần 2: Quá hạn đến Kết thúc
+
+|Hệ thống|
+start
+:Khoản nợ đã quá hạn thanh toán;
+:Gửi mail nhắc nợ quá hạn định kỳ\ncho khách nợ, Sale, Kế toán;
+
+|Sale|
+:Liên hệ thu hồi công nợ\nGọi điện, gửi email, ghi lịch sử liên hệ;
+if (Khách nợ cam kết thanh toán?) then (Có)
+  :Lưu ngày hẹn trả, tiếp tục theo dõi;
+else (Không phản hồi hoặc không thực hiện)
+endif
+
+|Hệ thống|
+if (Quá hạn 4 ngày?) then (Có)
+  :Gửi mail cảnh báo khóa dịch vụ\nTạo yêu cầu khóa dịch vụ gửi Sale;
+else (Chưa tới mốc)
+endif
+
+|Sale|
+if (Phê duyệt yêu cầu khóa?) then (Từ chối)
+  :Nhập lý do từ chối;
+  |Hệ thống|
+  :Hủy yêu cầu khóa\nThông báo Kế toán, HRA, Phòng mua;
+else (Phê duyệt)
+  |Hệ thống|
+  :Chuyển yêu cầu cho Phòng mua;
+  |Phòng mua|
+  :Thực hiện khóa dịch vụ;
+  |Hệ thống|
+  :Ghi nhận dịch vụ đã bị khóa\nGửi mail thông báo khóa cho khách nợ\nTiếp tục tính phạt;
+endif
+
+|Khách nợ|
+if (Thanh toán sau khi bị khóa dịch vụ?) then (Có)
+  |Kế toán|
+  :Ghi nhận thanh toán;
+  |Hệ thống|
+  :Xác nhận thanh toán thành công\nKhóa tiền phạt\nGửi mail xác nhận\nDừng các mail nhắc nợ;
+  note right
+    Dịch vụ có thể được mở lại
+    theo quy trình riêng
+  end note
+  stop
+else (Không thanh toán)
+endif
+
+|Hệ thống|
+if (Quá hạn 15 ngày?) then (Có)
+  :Gửi mail yêu cầu chuyển xử lý pháp lý\ncho Legal, Kế toán, Sale;
+else (Chưa tới mốc)
+endif
+
+|Legal|
+:Kiểm tra thông tin bắt buộc\nPháp nhân, địa chỉ, mã số thuế, hợp đồng;
+if (Đủ thông tin để tạo hồ sơ pháp lý?) then (Không)
+  :Từ chối tạo hồ sơ, yêu cầu bổ sung;
+  stop
+else (Có)
+  :Tạo hồ sơ pháp lý\nTạo số văn bản, sinh dự thảo;
+endif
+
+|Legal|
+:Hoàn thiện văn bản\nKý, đóng dấu, upload bản đã ký;
+:Gửi văn bản chính thức cho khách nợ;
+|Hệ thống|
+:Ghi nhận văn bản pháp lý đã gửi\nThông báo Kế toán và Sale;
+
+|Khách nợ|
+if (Thanh toán trong quá trình xử lý pháp lý?) then (Có)
+  |Kế toán|
+  :Ghi nhận thanh toán;
+  |Hệ thống|
+  :Xác nhận thanh toán thành công\nKhóa tiền phạt\nGửi mail xác nhận\nĐánh dấu hồ sơ pháp lý cần dừng;
+  stop
+else (Không thanh toán)
+endif
+
+|Hệ thống|
+if (Quá hạn 30 ngày?) then (Có)
+  :Gửi mail đề xuất khởi kiện\ncho Legal, CEO, CFO;
+else (Chưa tới mốc)
+endif
+
+|Legal|
+:Thực hiện khởi kiện;
+|Hệ thống|
+:Ghi nhận đã khởi kiện\nTiền phạt tiếp tục tính;
+note right
+  Khởi kiện không đồng nghĩa
+  tất toán khoản nợ. Khoản nợ
+  chỉ kết thúc khi có thanh toán
+  hoặc được loại khỏi hệ thống.
+end note
+
+|Khách nợ|
+if (Thanh toán sau khởi kiện?) then (Có)
+  |Kế toán|
+  :Ghi nhận thanh toán;
+  |Hệ thống|
+  :Xác nhận thanh toán thành công\nKhóa tiền phạt\nGửi mail xác nhận\nKết thúc vòng đời khoản nợ;
+  stop
+else (Không thanh toán)
+  |Legal|
+  :Tiếp tục xử lý pháp lý\nChấm dứt hợp đồng nếu cần;
+  stop
+endif
+
+@enduml

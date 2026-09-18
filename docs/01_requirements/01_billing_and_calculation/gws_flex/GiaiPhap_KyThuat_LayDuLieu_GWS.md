@@ -68,9 +68,7 @@ Nếu ngày kết thúc (`End date`) của dòng cước không phải là ngày
 | `usage_end_time` | Cảnh báo nếu **không phải ngày cuối tháng** |
 | `plan.commitmentInterval.startTime` / `.endTime` *(Reseller API)* | Đối chiếu chéo với hai cột trên |
 
-> ⚠️ **Cần hiệu chỉnh sau kỳ chạy đầu tiên.** Tài liệu Google mô tả `usage_start_time` / `usage_end_time` là *"khung giờ sử dụng"* — với GCP đây là cửa sổ theo giờ. Với gói Workspace tính theo chỗ ngồi, khung này nhiều khả năng theo ngày hoặc theo chu kỳ subscription, nhưng **chưa có tài liệu khẳng định**. Sau kỳ đầu, đối chiếu kết quả với vài khách đã biết là dùng lẻ tháng rồi mới chốt điều kiện.
-
-Truy vấn mẫu và cách xử lý: xem [BRD Tính cước GWS Flex](BRD_TinhCuoc_GWS_Flex_2026-09-03.md) mục 6.6.
+Truy vấn mẫu, cách xử lý và **cảnh báo về việc phải hiệu chỉnh điều kiện sau kỳ chạy đầu tiên**: xem [BRD Tính cước GWS Flex](BRD_TinhCuoc_GWS_Flex_2026-09-03.md) mục 6.6.
 
 ---
 
@@ -97,29 +95,11 @@ Báo cáo cước & Hóa đơn khách hàng
 
 #### 🔴 Ba ràng buộc phải biết trước khi bật
 
-| # | Ràng buộc | Hậu quả nếu sai |
-|---|---|---|
-| 1 | Dataset phải là **multi-region** (`US` hoặc `EU`) | Multi-region được hồi tố dữ liệu **từ đầu tháng trước**; **regional chỉ có dữ liệu từ ngày bật**. Chọn sai là mất kỳ cước đang chạy, **không có cách vá** |
-| 2 | **Không sửa bảng export**, không gỡ service account `cloud-channel-billing-reporting-rebilling@system.gserviceaccount.com`, không bật row/column-level access control | Export **dừng âm thầm**, không báo lỗi |
-| 3 | **Không tắt export.** Google **không backfill** | Tắt rồi bật lại là thủng vĩnh viễn dữ liệu khoảng ở giữa |
+Dataset phải là **multi-region**, **không được sửa bảng export**, và **không được tắt export** (Google không backfill). Chi tiết hậu quả từng ràng buộc: xem [BRD Tính cước GWS Flex](BRD_TinhCuoc_GWS_Flex_2026-09-03.md) rủi ro **R-01**, **R-03**, **R-04** (mục 4.4) và bảng ràng buộc hạ tầng mục 6.2.
 
 > **Hệ quả với lộ trình:** dù GWS xếp ưu tiên 3/3, **riêng việc bật export nên làm ngay cùng lúc với GCP**. Chậm một tháng là mất một tháng dữ liệu hồi tố.
 
-#### Các cột then chốt của bảng `reseller_billing_detailed_export_v1`
-
-| Cột | Dùng để |
-|---|---|
-| `invoice.month` (`YYYYMM`) | Kỳ cước — khớp trực tiếp `billing_cycle` của module công nợ |
-| `system_labels` → `workspace.googleapis.com/domain_name` | **Map theo `domain`** — đúng đặc điểm nghiệp vụ GWS ở mục 2 |
-| `system_labels` → `workspace.googleapis.com/subscription_id` | Nối sang Reseller API để lấy `plan.planName` (luật §3.1) |
-| **`customer_correlation_id`** | **Mã khách hàng của CloudAZ** gắn sẵn trên hồ sơ customer phía Google (qua `correlationId` của Cloud Channel API). Bền hơn map theo domain: khách đổi tên miền hoặc có nhiều domain thì map theo domain vỡ, map theo mã này thì không |
-| `cost` / `customer_cost` | Giá CloudAZ trả Google / giá của khách sau khi áp `CustomerRepricingConfig` |
-| `credits.type = 'RESELLER_MARGIN'` | Biên reseller — phục vụ quy tắc "số gửi khách là số đã bỏ margin" |
-| `cost_type` (`regular` / `tax` / `adjustment` / `rounding error`) | Tách thuế và điều chỉnh khi đối soát với invoice hãng |
-| `usage_start_time` / `usage_end_time` | Luật cảnh báo lẻ tháng (§3.2) |
-| `export_time` | **Partition key** — mọi truy vấn bắt buộc lọc theo cột này để không quét toàn bảng |
-
-View chuẩn hóa, luật lọc, truy vấn đối soát: xem [BRD Tính cước GWS Flex](BRD_TinhCuoc_GWS_Flex_2026-09-03.md) mục 6.
+Danh sách cột cần dùng của bảng export, view chuẩn hóa, luật lọc và truy vấn đối soát: xem [BRD Tính cước GWS Flex](BRD_TinhCuoc_GWS_Flex_2026-09-03.md) mục 6.3–6.7.
 
 ---
 
@@ -129,7 +109,7 @@ View chuẩn hóa, luật lọc, truy vấn đối soát: xem [BRD Tính cước
 >
 > **Chưa xác nhận được với Partner Manager của CloudAZ thì không đưa phương án này vào thiết kế.** Phần mô tả bên dưới giữ nguyên để tham khảo, không phải để triển khai.
 >
-> **Kênh thủ công chính thống** (có tài liệu) là Admin Console → **Billing** → **Payment accounts** → **View invoices**, tải PDF/CSV. Lưu ý: **Console chỉ giữ lịch sử hóa đơn tối đa 12 tháng**, cũ hơn phải liên hệ hỗ trợ của Google — nên **ERP phải chủ động lưu bản sao ngay khi tải về**, không được coi Console là kho lưu trữ đối soát.
+> **Kênh thủ công chính thống** (có tài liệu) là Admin Console → Billing → Payment accounts → View invoices — các bước và giới hạn lưu trữ 12 tháng xem [QuyTrinh_LayHoaDon_GWS.md](QuyTrinh_LayHoaDon_GWS.md) mục 2.
 
 **Mô hình**: Google upload CSV sang SFTP Server (`partnerupload.google.com`) → ERP chạy Cronjob kết nối SFTP client tải file `.csv` → Parse CSV → Insert DB.
 
@@ -155,15 +135,6 @@ Giữ nguyên **hóa đơn PDF/CSV của hãng làm bản lưu trữ đối soá
 
 ---
 
-## 5. Tài liệu chính thống Google *(tra cứu 2026-09-03)*
+## 5. Tài liệu chính thống Google
 
-| Nội dung | Đường dẫn |
-|---|---|
-| Cấu hình export, quyền, vị trí dataset, giới hạn, lược đồ bảng | https://docs.cloud.google.com/channel/docs/rebilling/export-data-to-bigquery |
-| Truy vấn mẫu, cách đọc `system_labels`, đối soát invoice | https://docs.cloud.google.com/channel/docs/rebilling/example-export-queries |
-| `plan.planName`, seat, `commitmentInterval` — Reseller API | https://developers.google.com/workspace/admin/reseller/v1/how-tos/manage_subscriptions |
-| `correlationId` trên hồ sơ customer — Cloud Channel API | https://docs.cloud.google.com/channel/docs/reference/rest/v1alpha1/accounts.customers |
-| Các loại gói Workspace cho reseller | https://docs.cloud.google.com/channel/docs/concepts/workspace/products-skus |
-| Ghi chú deprecated của `CloudChannelReportsService` | https://docs.cloud.google.com/channel/docs/reference/rpc/google.cloud.channel.v1 |
-| Xử lý sự cố export | https://docs.cloud.google.com/channel/docs/troubleshoot/troubleshoot-exports |
-| Tải hóa đơn tháng, giới hạn lưu trữ 12 tháng | https://support.google.com/a/answer/6271108?hl=en |
+Danh mục đầy đủ các trang tài liệu Google đã tra cứu (cấu hình export, truy vấn mẫu, `plan.planName`, `correlationId`, ghi chú deprecated, xử lý sự cố, giới hạn lưu hóa đơn 12 tháng) được giữ tại một nơi duy nhất: [BRD Tính cước GWS Flex](BRD_TinhCuoc_GWS_Flex_2026-09-03.md) mục **10.2**.

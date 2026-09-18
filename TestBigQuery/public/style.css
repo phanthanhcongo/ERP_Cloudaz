@@ -616,4 +616,297 @@ body {
   margin-top: auto;
 }
 
+
+/* ============================================
+   CREDENTIAL GATE (Popup kiểm tra key trước)
+   ============================================ */
+.cred-gate {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  background: radial-gradient(circle at 50% 0%, rgba(59, 130, 246, 0.12), transparent 55%),
+              rgba(5, 8, 15, 0.92);
+  backdrop-filter: blur(10px);
+  animation: gateFadeIn 0.25s ease;
+}
+
+.cred-gate.is-closing {
+  animation: gateFadeOut 0.3s ease forwards;
+}
+
+.cred-gate.hidden { display: none !important; }
+
+/* Khoá cuộn trang khi gate đang mở */
+body.gate-locked { overflow: hidden; }
+
+.cred-gate-card {
+  width: 100%;
+  max-width: 520px;
+  max-height: 92vh;
+  overflow-y: auto;
+  background: linear-gradient(180deg, #151d2e 0%, #111827 100%);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 2rem 1.75rem 1.5rem;
+  text-align: center;
+  box-shadow: 0 25px 60px -12px rgba(0, 0, 0, 0.8);
+  animation: gateSlideUp 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cred-gate-card h2 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.5rem;
+}
+
+.cred-gate-desc {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0 auto;
+  max-width: 420px;
+}
+
+/* Icon trạng thái */
+.cred-gate-icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 1.1rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  border: 1px solid transparent;
+}
+
+.cred-gate-icon.state-checking {
+  background: rgba(59, 130, 246, 0.12);
+  border-color: rgba(59, 130, 246, 0.35);
+}
+
+.cred-gate-icon.state-success {
+  background: rgba(16, 185, 129, 0.14);
+  border-color: rgba(16, 185, 129, 0.4);
+  color: #34d399;
+  box-shadow: 0 0 25px rgba(16, 185, 129, 0.25);
+  animation: gatePop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.cred-gate-icon.state-error {
+  background: rgba(239, 68, 68, 0.14);
+  border-color: rgba(239, 68, 68, 0.4);
+  color: #f87171;
+  box-shadow: 0 0 25px rgba(239, 68, 68, 0.2);
+  animation: gateShake 0.45s ease;
+}
+
+.spinner {
+  width: 30px;
+  height: 30px;
+  border: 3px solid rgba(59, 130, 246, 0.2);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: gateSpin 0.8s linear infinite;
+}
+
+/* Bảng thông tin key hợp lệ */
+.cred-gate-info {
+  margin-top: 1.25rem;
+  text-align: left;
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.cred-info-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.65rem 0.9rem;
+  border-bottom: 1px solid rgba(55, 65, 81, 0.5);
+}
+
+.cred-info-row:last-child { border-bottom: none; }
+
+.cred-info-label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.cred-info-value {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: #7dd3fc;
+  text-align: right;
+  word-break: break-all;
+}
+
+.cred-info-value.mono-sm { font-size: 0.72rem; color: var(--text-secondary); }
+
+/* Form dán key */
+.cred-gate-form {
+  margin-top: 1.25rem;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.cred-gate-form label {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.cred-gate-form textarea {
+  resize: vertical;
+  min-height: 120px;
+  line-height: 1.5;
+}
+
+/* Nút hành động */
+.cred-gate-actions {
+  margin-top: 1.35rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+}
+
+.cred-gate-actions .btn { justify-content: center; }
+
+.btn-ghost {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.btn-ghost:hover { color: var(--text-secondary); }
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.cred-gate-foot {
+  margin-top: 1.25rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--border-color);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.cred-gate-foot code {
+  font-family: var(--font-mono);
+  background: rgba(59, 130, 246, 0.12);
+  color: #60a5fa;
+  padding: 0.1rem 0.35rem;
+  border-radius: 4px;
+}
+
+/* App bị mờ khi gate còn mở */
+body.gate-locked .app-header,
+body.gate-locked .main-container,
+body.gate-locked .app-footer {
+  filter: blur(3px);
+  pointer-events: none;
+  user-select: none;
+}
+
+@keyframes gateSpin { to { transform: rotate(360deg); } }
+
+@keyframes gateFadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+@keyframes gateFadeOut { from { opacity: 1; } to { opacity: 0; visibility: hidden; } }
+
+@keyframes gateSlideUp {
+  from { opacity: 0; transform: translateY(18px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes gatePop {
+  0% { transform: scale(0.4); opacity: 0; }
+  70% { transform: scale(1.12); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes gateShake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-8px); }
+  40% { transform: translateX(8px); }
+  60% { transform: translateX(-5px); }
+  80% { transform: translateX(5px); }
+}
+
+@media (max-width: 640px) {
+  .cred-gate-card { padding: 1.5rem 1.1rem 1.1rem; }
+  .cred-info-row { flex-direction: column; align-items: flex-start; gap: 0.25rem; }
+  .cred-info-value { text-align: left; }
+  .cred-gate-actions .btn { width: 100%; }
+}
+
+/* Month Picker Group */
+.month-picker-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.6rem 1rem;
+  background: rgba(59, 130, 246, 0.08);
+  border: 1px solid rgba(59, 130, 246, 0.25);
+  border-radius: var(--radius-sm);
+  animation: fadeIn 0.2s ease;
+}
+
+.month-picker-group label {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.month-input {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  padding: 0.45rem 0.75rem;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.month-input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+.month-input::-webkit-calendar-picker-indicator {
+  filter: invert(0.7);
+  cursor: pointer;
+}
+
+.btn-sm {
+  padding: 0.4rem 0.75rem;
+  font-size: 0.8rem;
+}
+
 .hidden { display: none !important; }
