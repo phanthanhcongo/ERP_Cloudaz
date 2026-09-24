@@ -26,10 +26,10 @@ Hãng Google phát hành **một invoice tổng** cho toàn bộ khách hàng (v
 2. **Bảng 2:** Vào **Billing Report** → **Group By: Sub-Account / Billing ID** → Chọn kỳ tháng → Bỏ tích `Reseller Margin` → Xuất (~94 dòng).
 3. Rà soát khoản **Promotion Credit**: nếu Credit thuộc về CloudAZ (Google tài trợ) thì xuất Excel xong phải trừ ở cột Credit và cộng bù vào thu/chi công ty; nếu thuộc Khách hàng thì giữ nguyên.
 4. Chi phí **Gemini API** (Marketplace — không được chiết khấu 0% Discount): bị Google gộp chung vào tổng chi phí dịch vụ GCP Reseller (không nằm riêng ở cột nào).
-   - **Khách KHÔNG có Gemini:** Dùng kết quả từ CRM gen bảng đối soát / DNTT / GWS data luôn (không cần chỉnh sửa).
-   - **Khách CÓ Gemini (~40-50%):** Kế toán phải mở Console/Project, lấy số tiền Gemini thực tế, bóc tách tay và chỉnh lại kết quả từ CRM gen ra.
-5. Upload 2 file/sheet dữ liệu thô này lên hệ thống CRM.
-6. Trên CRM: Gen **Bảng đối soát chi phí** → Tải Excel về sửa thủ công (tách Gemini API nếu khách có) → Gửi mail khách. Khách chốt → Gen **Đề nghị thanh toán (DNTT)** → Sửa thủ công số tiền → Xuất PDF gửi khách.
+   - **Khách KHÔNG có Gemini:** Dùng kết quả từ CM gen bảng đối soát / DNTT / GWS data luôn (không cần chỉnh sửa).
+   - **Khách CÓ Gemini (~40-50%):** Kế toán phải mở Console/Project, lấy số tiền Gemini thực tế, bóc tách tay và chỉnh lại kết quả từ CM gen ra.
+5. Upload 2 file/sheet dữ liệu thô này lên hệ thống CM.
+6. Trên CM: Gen **Bảng đối soát chi phí** → Tải Excel về sửa thủ công (tách Gemini API nếu khách có) → Gửi mail khách. Khách chốt → Gen **Đề nghị thanh toán (DNTT)** → Sửa thủ công số tiền → Xuất PDF gửi khách.
 
 **Quy mô**: ~70–80 khách hàng/tháng (~94 Billing Accounts, ~621 Projects).  
 **Invoice hãng**: Về khoảng ngày 02 hàng tháng; Kế toán bắt đầu lấy số từ ngày 03.
