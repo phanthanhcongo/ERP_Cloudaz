@@ -19,12 +19,22 @@
 7.  **Chụp ảnh màn hình (Screenshot):** Chụp lại màn hình console thể hiện chi tiết phần chi phí sử dụng thực tế của từng khách hàng để làm bằng chứng đối soát gửi kèm sau này.
 8.  **Cập nhật số liệu:** Điền số liệu thực tế vừa lấy từ console vào sheet tính toán cước chung của kế toán.
 
-## 3. Lấy chi tiết sử dụng theo SKU/Project (Cost Table)
-Hóa đơn PDF chính của Google chỉ hiển thị tổng số tiền. Để lấy chi tiết phân bổ chi phí theo từng Project, Service, hoặc SKU:
-1.  Trong menu **Billing**, chọn **Cost Table** (Bảng chi phí).
-2.  Chọn khoảng thời gian tương ứng với hóa đơn.
-3.  Chọn các cột dữ liệu cần thiết (Project ID, Service description, SKU, Cost...).
-4.  Nhấp vào nút **Download CSV** ở góc trên bảng để lưu file về máy tính.
+## 3. Lấy chi tiết sử dụng theo SKU/Project (Cost Table) & Upload CRM
+Hóa đơn PDF chính của Google chỉ hiển thị tổng số tiền. Để lấy chi tiết phân bổ chi phí theo từng Project và Billing Account để đẩy lên CRM:
+1. Trong menu **Billing**, chọn **Cost Table** (Bảng chi phí).
+2. Chọn đúng Billing Account của GCP Reseller và chọn kỳ cước (tháng) tương ứng với hóa đơn.
+3. **Cấu hình tùy chọn tích chọn (Checkbox) xuất dữ liệu:**
+   - **BỎ TÍCH:** `Reseller Margin` (để ra số chi phí thực tế).
+   - **BẮT BUỘC GIỮ TÍCH:** `Negotiated Savings` (tùy chọn chiết khấu riêng, không bỏ mục này).
+   - **BẮT BUỘC GIỮ TÍCH:** `Credit` / `Promotions & other credits`.
+4. Xuất 2 bảng dữ liệu Excel/CSV:
+   - Bảng 1: Nhóm theo **Project ID / Project Number** (cấp dự án).
+   - Bảng 2: Nhóm theo **Sub-Account / Billing ID** (cấp tài khoản thanh toán).
+5. **Tiền xử lý file Excel trước khi Upload lên CRM:**
+   - Xóa các dòng tiêu đề thừa ở trên cùng file Excel.
+   - Xóa cột `% so với tháng trước` (cột hiển thị tỷ lệ tăng/giảm ở ngoài cùng bên phải).
+6. Nhấp vào nút **Download CSV/Excel** ở góc trên bảng để lưu file về máy tính và tiến hành Upload 2 file lên CRM.
 
 > [!TIP]
-> Đối với đối tác quản lý số lượng lớn dự án hoặc cần tự động hóa đối soát, Google khuyến nghị cấu hình xuất dữ liệu thanh toán tự động sang **BigQuery** (**Billing export > BigQuery export**) thay vì tải thủ công CSV từ Cost Table.
+> Song song với luồng Upload Excel thủ công hiện tại, đối với đối tác quản lý số lượng lớn dự án, Google khuyến nghị cấu hình xuất dữ liệu thanh toán tự động sang **BigQuery** (**Billing export > BigQuery export**).
+
