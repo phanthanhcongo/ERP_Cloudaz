@@ -79,46 +79,122 @@ Báo cáo cước & Hóa đơn khách hàng
 
 Ba rắc rối lớn nhất của kế toán — **Reseller margin**, **Promotion credit**, và **Gemini API** — đều nằm trong bảng export của GCP, trong đó credit nằm ở dạng mảng lồng `credits` (`ARRAY<STRUCT>`).
 
+### Thông tin kết nối BigQuery đã xác nhận
+
+| Hạng mục | Giá trị |
+|---|---|
+| **Project** | `billing-data-cloudaz-resell` |
+| **Dataset (Standard)** | `CloudAZ_Billing_Standard_Dataset` |
+| **Bảng Standard** | `gcp_billing_export_v1_01AF45_CC490F_EEF29A` |
+| **Dataset (Detailed)** | `CloudAZ_Billing_Detailed_Dataset` |
+| **Bảng Detailed** | `gcp_billing_export_resource_v1_01AF45_CC490F_EEF29A` |
+
+> ⚠️ **Dùng bảng Standard** cho các query tổng hợp theo Project / Billing Account. Bảng Detailed (resource) chứa dữ liệu resource-level, GROUP BY project sẽ ra số **lệch** (cao hơn) so với Console.
+
+### Điều kiện filter bắt buộc
+
+Để kết quả query khớp 100% với Billing Report trên Console:
+
+1. **`invoice.month = 'YYYYMM'`** — filter theo kỳ tháng invoice, KHÔNG dùng `usage_start_time` (Console group theo billing period, không phải usage time).
+2. **`cost_type = 'regular'`** — loại bỏ dòng `tax` và `adjustment`. Console hiển thị Usage cost = chỉ `regular`. Nếu gộp cả `tax` thì số sẽ cao hơn (~10% VAT).
+3. **Bỏ Reseller Margin** — trong credits, filter `c.type != 'RESELLER_MARGIN'`.
+
 ### SQL để lấy 2 bảng dữ liệu (Project Level + Billing Account Level)
 
-**Bảng 1 — Project Level (~621 dòng):** GROUP BY Project ID
+**Bảng 1 — Project Level (8 cột, khớp Excel "DATA GCP NHẬP CMP"):** GROUP BY Project, Savings 8/9 bỏ Reseller Margin
 
 ```sql
 SELECT
-  billing_account_id,
+  project.name              AS project,
   project.id                AS project_id,
   project.number            AS project_number,
-  service.description       AS service_name,
-  SUM(cost)                 AS cost_goc,
-  SUM((SELECT COALESCE(SUM(c.amount), 0) 
-       FROM UNNEST(credits) c 
-       WHERE c.type = 'RESELLER_MARGIN')) AS reseller_margin,
-  SUM((SELECT COALESCE(SUM(c.amount), 0) 
-       FROM UNNEST(credits) c 
-       WHERE c.type = 'PROMOTION'))       AS promotion_credit
-FROM `<project>.<dataset>.gcp_billing_export_v1_XXXX`
-WHERE usage_start_time >= @tu_ngay AND usage_start_time < @den_ngay
-GROUP BY 1, 2, 3, 4
+  SUM(cost_at_list)         AS list_cost,
+  SUM(cost) - SUM(cost_at_list)
+                            AS negotiated_savings,
+  SUM((SELECT COALESCE(SUM(c.amount), 0)
+       FROM UNNEST(credits) c
+       WHERE c.type IN ('COMMITTED_USAGE_DISCOUNT', 'FEE_UTILIZATION_OFFSET')))
+                            AS discounts,
+  SUM((SELECT COALESCE(SUM(c.amount), 0)
+       FROM UNNEST(credits) c
+       WHERE c.type IN ('PROMOTION', 'DISCOUNT', 'SUSTAINED_USAGE_DISCOUNT')))
+                            AS promotions_and_others,
+  SUM(cost) + SUM((SELECT COALESCE(SUM(c.amount), 0)
+       FROM UNNEST(credits) c
+       WHERE c.type != 'RESELLER_MARGIN'))
+                            AS subtotal
+FROM `billing-data-cloudaz-resell.CloudAZ_Billing_Standard_Dataset.gcp_billing_export_v1_01AF45_CC490F_EEF29A`
+WHERE invoice.month = @thang    -- ví dụ '202606'
+  AND cost_type = 'regular'
+GROUP BY 1, 2, 3
+ORDER BY list_cost DESC
 ```
 
-**Bảng 2 — Billing Account Level (~94 dòng):** GROUP BY Billing Account ID
+> **Mapping cột Console → credit type (đã verify T06/2026):**
+> | Cột Console / Excel | Nguồn dữ liệu |
+> |---|---|
+> | **List cost** | `SUM(cost_at_list)` — giá công khai (public on-demand price) |
+> | **Negotiated savings** | `SUM(cost) - SUM(cost_at_list)` — chênh lệch giá đàm phán, KHÔNG phải credit |
+> | **Discounts** (Console: Savings programs) | credits type `COMMITTED_USAGE_DISCOUNT` + `FEE_UTILIZATION_OFFSET` |
+> | **Promotions & others** (Console: Other savings) | credits type `PROMOTION` + `DISCOUNT` (free tier) + `SUSTAINED_USAGE_DISCOUNT` |
+> | **Subtotal** | `SUM(cost)` + tổng credits trừ `RESELLER_MARGIN` |
+
+**Bảng 2 — Billing Account Level (7 cột, khớp Excel "DATA GCP TH2. Billing ID"):** GROUP BY Subaccount
 
 ```sql
 SELECT
-  billing_account_id,
-  SUM(cost)                 AS cost_goc,
-  SUM((SELECT COALESCE(SUM(c.amount), 0) 
-       FROM UNNEST(credits) c 
-       WHERE c.type = 'RESELLER_MARGIN')) AS reseller_margin,
-  SUM((SELECT COALESCE(SUM(c.amount), 0) 
-       FROM UNNEST(credits) c 
-       WHERE c.type = 'PROMOTION'))       AS promotion_credit
-FROM `<project>.<dataset>.gcp_billing_export_v1_XXXX`
-WHERE usage_start_time >= @tu_ngay AND usage_start_time < @den_ngay
-GROUP BY 1
+  sa.`Billing account name`   AS subaccount,
+  b.billing_account_id        AS subaccount_id,
+  SUM(cost_at_list)            AS list_cost,
+  SUM(cost) - SUM(cost_at_list) AS negotiated_savings,
+  SUM((SELECT COALESCE(SUM(c.amount), 0)
+       FROM UNNEST(credits) c
+       WHERE c.type IN ('COMMITTED_USAGE_DISCOUNT', 'FEE_UTILIZATION_OFFSET')))
+                            AS discounts,
+  SUM((SELECT COALESCE(SUM(c.amount), 0)
+       FROM UNNEST(credits) c
+       WHERE c.type IN ('PROMOTION', 'DISCOUNT', 'SUSTAINED_USAGE_DISCOUNT')))
+                            AS promotions_and_others,
+  SUM(cost) + SUM((SELECT COALESCE(SUM(c.amount), 0)
+       FROM UNNEST(credits) c
+       WHERE c.type != 'RESELLER_MARGIN'))
+                            AS subtotal
+FROM `billing-data-cloudaz-resell.CloudAZ_Billing_Standard_Dataset.gcp_billing_export_v1_01AF45_CC490F_EEF29A` b
+LEFT JOIN `billing-data-cloudaz-resell.GCP_Congno.TH2_Billing_Account_T06_2026` sa
+  ON b.billing_account_id = sa.`Billing account ID`
+WHERE b.invoice.month = @thang    -- ví dụ '202606'
+  AND b.cost_type = 'regular'
+GROUP BY 1, 2
+HAVING SUM(cost_at_list) != 0 OR SUM(cost) != 0
+ORDER BY list_cost DESC
 ```
 
+> **Lưu ý về Subaccount name:**
+> - Cột `Subaccount name` **không có** trong bảng Standard export của BigQuery.
+> - Hiện tại dùng **lookup table** (`TH2_Billing_Account_T06_2026`) được upload từ CSV Console vào dataset `GCP_Congno` (region `asia-southeast1`) để JOIN lấy tên.
+> - Lookup table cần xóa các dòng có `Billing account ID` = NULL trước khi dùng (gây nhân bản dòng).
+> - `HAVING` loại bỏ các billing account có cost = 0 (không phát sinh chi phí trong kỳ).
+> - **Cho production ERP**: nên dùng Cloud Billing API (`cloudbilling.billingAccounts.list`) hoặc bảng `resource_mapping` của ERP thay vì lookup table thủ công.
+
 > **⚠️ Verify:** Tổng cost của 2 bảng PHẢI khớp 100% (cả 2 queries lấy cùng dữ liệu, chỉ GROUP BY khác)
+
+### Kiểm tra các loại credit thực tế trên dataset
+
+Chạy câu này để verify tên `credits.type` thật trước khi tách savings ra nhiều cột:
+
+```sql
+SELECT DISTINCT c.type, c.name, COUNT(*) as cnt
+FROM `billing-data-cloudaz-resell.CloudAZ_Billing_Standard_Dataset.gcp_billing_export_v1_01AF45_CC490F_EEF29A`,
+UNNEST(credits) c
+WHERE invoice.month = @thang
+GROUP BY 1, 2
+ORDER BY 1
+```
+
+Kết quả sẽ cho biết chính xác type nào map vào cột nào trên Console:
+- **Negotiated savings** → CUD-related types
+- **Savings programs** → `DISCOUNT`, SUD
+- **Other savings** → `PROMOTION`, `FREE_TIER`, v.v.
 
 ### Xử lý Gemini API
 Gemini thuộc Marketplace nên **không được chiết khấu** (xem luật Marketplace tại GMP).

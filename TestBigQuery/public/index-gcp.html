@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GCP Billing Query - CloudAZ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0f19;
+      --bg-card: rgba(17, 24, 39, 0.92);
+      --bg-input: #111827;
+      --border: #374151;
+      --text: #f9fafb;
+      --text-dim: #9ca3af;
+      --text-muted: #6b7280;
+      --accent: #3b82f6;
+      --accent-hover: #2563eb;
+      --radius: 10px;
+      --font: 'Inter', system-ui, sans-serif;
+      --mono: 'Fira Code', monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      min-height: 100vh;
+      padding: 1.5rem;
+    }
+
+    .page-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .header-content h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #60a5fa, #3b82f6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.3rem;
+    }
+
+    .header-content p {
+      color: var(--text-dim);
+      font-size: 0.9rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.6rem 1.2rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: transparent;
+      color: var(--text-dim);
+      font-family: var(--font);
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+
+    .btn:hover {
+      border-color: var(--accent);
+      color: var(--text);
+      background: rgba(59, 130, 246, 0.1);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+      color: white;
+      border: none;
+    }
+
+    .btn-primary:hover {
+      background: linear-gradient(135deg, #2563eb, #1e40af);
+      transform: translateY(-1px);
+    }
+
+    .btn-primary:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      backdrop-filter: blur(8px);
+    }
+
+    .filter-bar {
+      display: flex;
+      align-items: flex-end;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .field label {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .field select, .field input {
+      background: var(--bg-input);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.6rem 0.85rem;
+      border-radius: 8px;
+      font-family: var(--mono);
+      font-size: 0.9rem;
+      transition: border-color 0.2s;
+    }
+
+    .field select:focus, .field input:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+    }
+
+    input[type="month"]::-webkit-calendar-picker-indicator {
+      filter: invert(0.7);
+      cursor: pointer;
+    }
+
+    .status-bar {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 1rem;
+      font-size: 0.85rem;
+      color: var(--text-dim);
+    }
+
+    .badge {
+      padding: 0.25rem 0.6rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    .badge-ok { background: rgba(16, 185, 129, 0.15); color: #34d399; }
+    .badge-err { background: rgba(239, 68, 68, 0.15); color: #f87171; }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 0.8rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .stat {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 0.8rem 1rem;
+      text-align: center;
+    }
+
+    .stat-label { font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; }
+    .stat-val { font-size: 1.3rem; font-weight: 700; margin-top: 0.2rem; color: #60a5fa; }
+
+    .table-wrap {
+      overflow-x: auto;
+      max-height: 65vh;
+      overflow-y: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.82rem;
+    }
+
+    thead th {
+      position: sticky;
+      top: 0;
+      background: #1e293b;
+      color: #94a3b8;
+      text-transform: uppercase;
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 0.7rem 0.8rem;
+      text-align: center;
+      border-bottom: 2px solid var(--border);
+      white-space: nowrap;
+    }
+
+    tbody tr {
+      border-bottom: 1px solid rgba(55, 65, 81, 0.4);
+      transition: background 0.15s;
+    }
+
+    tbody tr:hover { background: rgba(59, 130, 246, 0.06); }
+
+    tbody td {
+      padding: 0.55rem 0.8rem;
+      white-space: nowrap;
+      color: var(--text);
+      text-align: center;
+    }
+
+    td.num {
+      text-align: center;
+      font-family: var(--mono);
+      font-size: 0.82rem;
+    }
+
+    .actions-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.8rem;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .search-box {
+      background: var(--bg-input);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.5rem 0.8rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      width: 260px;
+      transition: border-color 0.2s;
+    }
+
+    .search-box:focus { outline: none; border-color: var(--accent); }
+
+    .empty-state {
+      text-align: center;
+      padding: 3rem;
+      color: var(--text-muted);
+    }
+
+    .empty-state .icon { font-size: 2.5rem; margin-bottom: 0.8rem; }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .spinner {
+      width: 18px;
+      height: 18px;
+      border: 2px solid rgba(255,255,255,0.2);
+      border-top-color: white;
+      border-radius: 50%;
+      animation: spin 0.6s linear infinite;
+      display: inline-block;
+    }
+
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+    .fade-in { animation: fadeIn 0.3s ease; }
+
+    .hidden { display: none !important; }
+  </style>
+</head>
+<body>
+
+  <div class="page-header">
+    <div class="header-content">
+      <h1>🔵 GCP Billing Analysis</h1>
+      <p>Phân tích chi phí Google Cloud Platform theo tháng</p>
+    </div>
+    <a href="/" class="btn">← Quay lại</a>
+  </div>
+
+  <!-- Query Selection -->
+  <div class="card">
+    <div class="filter-bar">
+      <div class="field">
+        <label>Chọn Loại Bảng</label>
+        <select id="tableSelect">
+          <option value="project_level">📈 Project Level (Chi tiết theo Project)</option>
+          <option value="billing_account">🏢 Billing Account Level (Tổng hợp theo BA)</option>
+          <option value="verification">✓ Verification (Kiểm tra dữ liệu)</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label>Chọn Tháng</label>
+        <input type="month" id="monthSelect">
+      </div>
+
+      <button id="btnRunQuery" class="btn btn-primary">▶ Truy vấn</button>
+    </div>
+
+    <div id="statusBar" class="status-bar hidden">
+      <span id="statusText">Đang truy vấn...</span>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <div id="statsRow" class="stats hidden fade-in">
+    <div class="stat">
+      <div class="stat-label">Thời gian</div>
+      <div class="stat-val" id="sTime">—</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Số dòng</div>
+      <div class="stat-val" id="sRows">—</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Dữ liệu quét</div>
+      <div class="stat-val" id="sBytes">—</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Cache</div>
+      <div class="stat-val" id="sCache">—</div>
+    </div>
+  </div>
+
+  <!-- Results -->
+  <div id="resultCard" class="card hidden fade-in">
+    <div class="actions-bar">
+      <div style="display:flex;gap:0.6rem;align-items:center;">
+        <input type="text" id="searchInput" class="search-box" placeholder="🔍 Lọc dữ liệu...">
+        <span id="filterCount" style="font-size:0.8rem;color:var(--text-muted);white-space:nowrap;"></span>
+      </div>
+      <div style="display:flex;gap:0.5rem;">
+        <button id="btnCopy" class="btn">📋 Copy JSON</button>
+        <button id="btnCsv" class="btn">⬇️ Xuất CSV</button>
+      </div>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead id="tHead"></thead>
+        <tbody id="tBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div id="emptyState" class="empty-state">
+    <div class="icon">📊</div>
+    <p>Chọn loại bảng và tháng, rồi bấm <strong>"Truy vấn"</strong></p>
+  </div>
+
+  <script>
+    (function() {
+      const tableSelect = document.getElementById('tableSelect');
+      const monthSelect = document.getElementById('monthSelect');
+      const btnRunQuery = document.getElementById('btnRunQuery');
+      const statusBar = document.getElementById('statusBar');
+      const statusText = document.getElementById('statusText');
+      const statsRow = document.getElementById('statsRow');
+      const sTime = document.getElementById('sTime');
+      const sRows = document.getElementById('sRows');
+      const sBytes = document.getElementById('sBytes');
+      const sCache = document.getElementById('sCache');
+      const resultCard = document.getElementById('resultCard');
+      const tHead = document.getElementById('tHead');
+      const tBody = document.getElementById('tBody');
+      const searchInput = document.getElementById('searchInput');
+      const filterCount = document.getElementById('filterCount');
+      const emptyState = document.getElementById('emptyState');
+      const btnCopy = document.getElementById('btnCopy');
+      const btnCsv = document.getElementById('btnCsv');
+
+      let allRows = [];
+      let columns = [];
+
+      // Set default month (current month)
+      const today = new Date();
+      const formatMonth = (date) => date.toISOString().substring(0, 7);
+      monthSelect.value = formatMonth(today);
+
+      // Build invoice month string YYYYMM from input value YYYY-MM
+      function toInvoiceMonth(monthStr) {
+        return monthStr.replace('-', '');
+      }
+
+      // Build query — Standard table, invoice.month filter, cost_at_list
+      function buildCustomQuery(type) {
+        if (!monthSelect.value) {
+          throw new Error('Vui lòng chọn tháng');
+        }
+
+        const invoiceMonth = toInvoiceMonth(monthSelect.value);
+        const T = '`billing-data-cloudaz-resell.CloudAZ_Billing_Standard_Dataset.gcp_billing_export_v1_01AF45_CC490F_EEF29A`';
+
+        if (type === 'project_level') {
+          return `SELECT
+  project.name              AS project,
+  project.id                AS project_id,
+  project.number            AS project_number,
+  SUM(cost_at_list)         AS list_cost,
+  SUM(cost) - SUM(cost_at_list) AS negotiated_savings,
+  SUM((SELECT COALESCE(SUM(c.amount), 0) FROM UNNEST(credits) c
+       WHERE c.type IN ('COMMITTED_USAGE_DISCOUNT', 'FEE_UTILIZATION_OFFSET'))) AS discounts,
+  SUM((SELECT COALESCE(SUM(c.amount), 0) FROM UNNEST(credits) c
+       WHERE c.type IN ('PROMOTION', 'DISCOUNT', 'SUSTAINED_USAGE_DISCOUNT'))) AS promotions_and_others,
+  SUM(cost) + SUM((SELECT COALESCE(SUM(c.amount), 0) FROM UNNEST(credits) c
+       WHERE c.type != 'RESELLER_MARGIN')) AS subtotal
+FROM ${T}
+WHERE invoice.month = '${invoiceMonth}' AND cost_type = 'regular'
+GROUP BY 1, 2, 3
+ORDER BY list_cost DESC`;
+        } else if (type === 'billing_account') {
+          return `SELECT
+  billing_account_id        AS subaccount_id,
+  SUM(cost_at_list)         AS list_cost,
+  SUM(cost) - SUM(cost_at_list) AS negotiated_savings,
+  SUM((SELECT COALESCE(SUM(c.amount), 0) FROM UNNEST(credits) c
+       WHERE c.type IN ('COMMITTED_USAGE_DISCOUNT', 'FEE_UTILIZATION_OFFSET'))) AS discounts,
+  SUM((SELECT COALESCE(SUM(c.amount), 0) FROM UNNEST(credits) c
+       WHERE c.type IN ('PROMOTION', 'DISCOUNT', 'SUSTAINED_USAGE_DISCOUNT'))) AS promotions_and_others,
+  SUM(cost) + SUM((SELECT COALESCE(SUM(c.amount), 0) FROM UNNEST(credits) c
+       WHERE c.type != 'RESELLER_MARGIN')) AS subtotal
+FROM ${T}
+WHERE invoice.month = '${invoiceMonth}' AND cost_type = 'regular'
+GROUP BY 1
+ORDER BY list_cost DESC`;
+        } else if (type === 'verification') {
+          return `WITH project_level AS (
+  SELECT SUM(cost) AS total_cost
+  FROM ${T}
+  WHERE invoice.month = '${invoiceMonth}' AND cost_type = 'regular'
+),
+billing_account_level AS (
+  SELECT SUM(cost) AS total_cost
+  FROM ${T}
+  WHERE invoice.month = '${invoiceMonth}' AND cost_type = 'regular'
+)
+SELECT
+  (SELECT total_cost FROM project_level) AS project_total,
+  (SELECT total_cost FROM billing_account_level) AS ba_total,
+  ABS((SELECT total_cost FROM project_level) - (SELECT total_cost FROM billing_account_level)) AS difference,
+  CASE
+    WHEN ABS((SELECT total_cost FROM project_level) - (SELECT total_cost FROM billing_account_level)) < 0.01
+    THEN 'PASS'
+    ELSE 'FAIL'
+  END AS verification_status`;
+        }
+      }
+
+      // Run query
+      async function runQuery() {
+        try {
+          const tableType = tableSelect.value;
+
+          btnRunQuery.disabled = true;
+          btnRunQuery.innerHTML = '<span class="spinner"></span> Đang truy vấn...';
+          statusBar.classList.remove('hidden');
+          statusText.innerHTML = '<span class="spinner"></span> Đang gửi lên BigQuery...';
+          emptyState.classList.add('hidden');
+
+          let result;
+
+          if (tableType === 'billing_account') {
+            const invoiceMonth = toInvoiceMonth(monthSelect.value);
+            statusText.innerHTML = '<span class="spinner"></span> Đang query BigQuery + gọi Billing API lấy tên subaccount...';
+            const res = await fetch(`/api/gcp-table2/${invoiceMonth}`);
+            const data = await res.json();
+            if (!data.success) throw new Error(data.error);
+            allRows = data.rows;
+            columns = allRows.length ? Object.keys(allRows[0]) : [];
+            statsRow.classList.remove('hidden');
+            sTime.textContent = '—';
+            sRows.textContent = data.totalRows.toLocaleString();
+            sBytes.textContent = '—';
+            sCache.textContent = '—';
+          } else {
+            const sql = buildCustomQuery(tableType);
+            const res = await fetch('/api/query', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ sql })
+            });
+            result = await res.json();
+            if (!result.success) throw new Error(result.error + (result.tip ? '\n' + result.tip : ''));
+            allRows = result.rows;
+            columns = result.columns;
+            statsRow.classList.remove('hidden');
+            sTime.textContent = result.meta.durationMs + ' ms';
+            sRows.textContent = allRows.length.toLocaleString();
+            sBytes.textContent = result.meta.bytesProcessed;
+            sCache.textContent = result.meta.cacheHit;
+          }
+
+          renderTable(allRows);
+          resultCard.classList.remove('hidden');
+          statusText.innerHTML = `<span class="badge badge-ok">✓</span> Hoàn thành — ${allRows.length.toLocaleString()} dòng`;
+
+        } catch (err) {
+          statusText.innerHTML = `<span class="badge badge-err">✗</span> Lỗi: ${esc(err.message)}`;
+          statsRow.classList.add('hidden');
+          resultCard.classList.add('hidden');
+        } finally {
+          btnRunQuery.disabled = false;
+          btnRunQuery.innerHTML = '▶ Truy vấn';
+        }
+      }
+
+      function renderTable(rows) {
+        const cols = columns.length ? columns : (rows.length ? Object.keys(rows[0]) : []);
+        tHead.innerHTML = '<tr><th>#</th>' + cols.map(c => `<th>${esc(c)}</th>`).join('') + '</tr>';
+
+        if (rows.length === 0) {
+          tBody.innerHTML = '<tr><td colspan="' + (cols.length + 1) + '" style="text-align:center;padding:2rem;color:var(--text-muted);">Không có dữ liệu</td></tr>';
+          return;
+        }
+
+        tBody.innerHTML = rows.map((row, idx) => {
+          return '<tr><td class="num" style="color:var(--text-muted)">' + (idx + 1) + '</td>' + cols.map(c => {
+            const v = row[c];
+            if (v === null || v === undefined) return '<td>—</td>';
+            if (typeof v === 'number') return `<td class="num">${v.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}</td>`;
+            return `<td>${esc(String(v))}</td>`;
+          }).join('') + '</tr>';
+        }).join('');
+      }
+
+      searchInput.addEventListener('input', () => {
+        const q = searchInput.value.toLowerCase().trim();
+        if (!q) {
+          renderTable(allRows);
+          filterCount.textContent = '';
+          return;
+        }
+        const filtered = allRows.filter(r => Object.values(r).some(v => String(v).toLowerCase().includes(q)));
+        renderTable(filtered);
+        filterCount.textContent = `${filtered.length} / ${allRows.length}`;
+      });
+
+      btnCopy.addEventListener('click', () => {
+        if (!allRows.length) return;
+        navigator.clipboard.writeText(JSON.stringify(allRows, null, 2));
+        btnCopy.textContent = '✅ Đã copy!';
+        setTimeout(() => { btnCopy.textContent = '📋 Copy JSON'; }, 2000);
+      });
+
+      btnCsv.addEventListener('click', () => {
+        if (!allRows.length) return;
+        const cols = columns.length ? columns : Object.keys(allRows[0]);
+        let csv = cols.join(',') + '\n';
+        allRows.forEach(row => {
+          csv += cols.map(c => {
+            let v = row[c] ?? '';
+            v = String(v).replace(/"/g, '""');
+            return `"${v}"`;
+          }).join(',') + '\n';
+        });
+        const blob = new Blob(['﻿' + csv], { type: 'text/csv;charset=utf-8;' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+
+        const tableType = tableSelect.value;
+        const filename = `gcp_billing_${tableType}_${monthSelect.value}.csv`;
+
+        a.download = filename;
+        a.click();
+        URL.revokeObjectURL(url);
+      });
+
+      btnRunQuery.addEventListener('click', runQuery);
+
+      function esc(text) {
+        return String(text).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+      }
+    })();
+  </script>
+</body>
+</html>

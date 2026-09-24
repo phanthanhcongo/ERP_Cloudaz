@@ -4,6 +4,9 @@ const path = require('path');
 const fs = require('fs');
 const dotenv = require('dotenv');
 const { BigQuery } = require('@google-cloud/bigquery');
+const { getGcpPresetQueries, getBillingAccountLevelQuery } = require('./queries-gcp');
+const { getGwsPresetQueries } = require('./queries-gws');
+const { google } = require('googleapis');
 
 dotenv.config();
 
@@ -62,138 +65,10 @@ const DEFAULT_DATASET = process.env.DATASET_ID || 'CloudAZ_GWS_billing_ds';
 const DEFAULT_TABLE = process.env.TABLE_ID || 'reseller_billing_detailed_export_v1';
 const FULL_TABLE_ID = `\`${DEFAULT_PROJECT}.${DEFAULT_DATASET}.${DEFAULT_TABLE}\``;
 
-const PRESET_QUERIES = [
-  {
-    id: 'recent_records',
-    title: '1. Xem 15 dòng mới nhất (Lọc 7 ngày gần nhất)',
-    description: 'Lấy các dòng log chi phí gần nhất để kiểm tra cấu trúc schema và dữ liệu.',
-    sql: `SELECT 
-  billing_account_id,
-  invoice.month AS invoice_month,
-  service.description AS service_name,
-  sku.description AS sku_name,
-  usage_start_time,
-  usage_end_time,
-  ROUND(cost, 4) AS cost,
-  currency,
-  project.name AS project_name
-FROM ${FULL_TABLE_ID}
-WHERE usage_start_time >= TIMESTAMP_SUB(CURRENT_TIMESTAMP(), INTERVAL 7 DAY)
-ORDER BY usage_start_time DESC
-LIMIT 15;`
-  },
-  {
-    id: 'top_sku_cost',
-    title: '2. Top dịch vụ & SKU phát sinh chi phí cao nhất (30 ngày)',
-    description: 'Thống kê tổng chi phí gom theo từng SKU / dịch vụ để xem dịch vụ nào dùng nhiều tiền nhất.',
-    sql: `SELECT 
-  service.description AS service_name,
-  sku.description AS sku_name,
-  currency,
-  ROUND(SUM(cost), 2) AS total_cost,
-  COUNT(1) AS record_count
-FROM ${FULL_TABLE_ID}
-WHERE usage_start_time >= TIMESTAMP_SUB(CURRENT_TIMESTAMP(), INTERVAL 30 DAY)
-GROUP BY service_name, sku_name, currency
-ORDER BY total_cost DESC
-LIMIT 20;`
-  },
-  {
-    id: 'top_customers',
-    title: '3. Top tài khoản khách hàng (Billing Account) chi phí cao nhất',
-    description: 'Thống kê tổng chi phí theo từng Billing Account ID trong tháng qua.',
-    sql: `SELECT 
-  billing_account_id,
-  currency,
-  ROUND(SUM(cost), 2) AS total_amount,
-  COUNT(DISTINCT project.id) AS project_count,
-  COUNT(1) AS total_usage_events
-FROM ${FULL_TABLE_ID}
-WHERE usage_start_time >= TIMESTAMP_SUB(CURRENT_TIMESTAMP(), INTERVAL 30 DAY)
-GROUP BY billing_account_id, currency
-ORDER BY total_amount DESC
-LIMIT 15;`
-  },
-  {
-    id: 'monthly_trend',
-    title: '4. Thống kê chi phí theo từng kỳ hoá đơn (Invoice Month)',
-    description: 'Nhóm chi phí theo tháng hoá đơn (invoice.month) để theo dõi xu hướng tăng giảm.',
-    sql: `SELECT 
-  invoice.month AS invoice_month,
-  currency,
-  ROUND(SUM(cost), 2) AS total_cost,
-  COUNT(1) AS total_records
-FROM ${FULL_TABLE_ID}
-WHERE invoice.month IS NOT NULL
-GROUP BY invoice_month, currency
-ORDER BY invoice_month DESC
-LIMIT 12;`
-  },
-  {
-    id: 'gws_flex_all',
-    title: '5. 📋 GWS Flex — Tất cả dòng cước theo kỳ (giống CSV)',
-    description: 'Lấy toàn bộ dòng cước GWS (Commitment + Usage) theo kỳ hóa đơn, gom giống dạng CSV kế toán tải từ Partner Sales Console.',
-    hasMonthPicker: true,
-    sql: `SELECT
-  (SELECT value FROM UNNEST(system_labels)
-     WHERE key = 'workspace.googleapis.com/domain_name')       AS domain_name,
-  sku.description                                              AS subscription,
-  COALESCE(
-    (SELECT value FROM UNNEST(system_labels)
-       WHERE key = 'workspace.googleapis.com/usage_type'),
-    cost_type
-  )                                                            AS description,
-  (SELECT value FROM UNNEST(system_labels)
-     WHERE key = 'workspace.googleapis.com/order_id')          AS order_name,
-  MIN(DATE(usage_start_time))                                  AS start_date,
-  MAX(DATE(usage_end_time))                                    AS end_date,
-  MAX(usage.amount)                                            AS quantity,
-  (SELECT value FROM UNNEST(system_labels)
-     WHERE key = 'workspace.googleapis.com/purchase_order_id') AS po_number,
-  ROUND(SUM(customer_cost), 2)                                 AS amount,
-  billing_account_id                                           AS customer_id,
-  sku.id                                                       AS sku_id
-FROM ${FULL_TABLE_ID}
-WHERE invoice.month = '{BILLING_MONTH}'
-  AND cost_type = 'regular'
-  AND LOWER(sku.description) != 'tax'
-GROUP BY domain_name, subscription, description, order_name, po_number, customer_id, sku_id
-ORDER BY domain_name, start_date ASC`
-  },
-  {
-    id: 'gws_flex_usage_only',
-    title: '6. 📋 GWS Flex — Chỉ dòng Usage (Flex) theo kỳ',
-    description: 'Chỉ lấy dòng Usage/Flex (FLEXIBLE_SEATS_ITEM), loại bỏ Commitment. Dùng để tính cước tháng theo BRD §5.2.',
-    hasMonthPicker: true,
-    sql: `SELECT
-  (SELECT value FROM UNNEST(system_labels)
-     WHERE key = 'workspace.googleapis.com/domain_name')       AS domain_name,
-  sku.description                                              AS subscription,
-  COALESCE(
-    (SELECT value FROM UNNEST(system_labels)
-       WHERE key = 'workspace.googleapis.com/usage_type'),
-    cost_type
-  )                                                            AS description,
-  (SELECT value FROM UNNEST(system_labels)
-     WHERE key = 'workspace.googleapis.com/order_id')          AS order_name,
-  MIN(DATE(usage_start_time))                                  AS start_date,
-  MAX(DATE(usage_end_time))                                    AS end_date,
-  MAX(usage.amount)                                            AS quantity,
-  (SELECT value FROM UNNEST(system_labels)
-     WHERE key = 'workspace.googleapis.com/purchase_order_id') AS po_number,
-  ROUND(SUM(customer_cost), 2)                                 AS amount,
-  billing_account_id                                           AS customer_id,
-  sku.id                                                       AS sku_id
-FROM ${FULL_TABLE_ID}
-WHERE invoice.month = '{BILLING_MONTH}'
-  AND cost_type = 'regular'
-  AND LOWER(sku.description) != 'tax'
-  AND (SELECT value FROM UNNEST(system_labels)
-       WHERE key = 'workspace.googleapis.com/usage_type') = 'FLEXIBLE_SEATS_ITEM'
-GROUP BY domain_name, subscription, description, order_name, po_number, customer_id, sku_id
-ORDER BY domain_name, start_date ASC`
-  }
-];
+// Kết hợp GCP + GWS Preset Queries
+const GCP_PRESET_QUERIES = getGcpPresetQueries();
+const GWS_PRESET_QUERIES = getGwsPresetQueries(FULL_TABLE_ID);
+const PRESET_QUERIES = [...GCP_PRESET_QUERIES, ...GWS_PRESET_QUERIES];
 
 // API: Kiểm tra trạng thái cấu hình & file key
 app.get('/api/config', (req, res) => {
@@ -226,9 +101,27 @@ app.get('/api/config', (req, res) => {
   });
 });
 
-// API: Lấy danh sách preset queries
+// API: Lấy danh sách preset queries (tất cả)
 app.get('/api/presets', (req, res) => {
   res.json(PRESET_QUERIES);
+});
+
+// API: Lấy danh sách GCP Preset Queries
+app.get('/api/queryGCP', (req, res) => {
+  res.json({
+    type: 'GCP',
+    description: 'GCP Billing Analysis Queries',
+    queries: GCP_PRESET_QUERIES
+  });
+});
+
+// API: Lấy danh sách GWS Preset Queries
+app.get('/api/queryGWS', (req, res) => {
+  res.json({
+    type: 'GWS',
+    description: 'Google Workspace Billing Queries',
+    queries: GWS_PRESET_QUERIES
+  });
 });
 
 // API: Upload / Dán nội dung JSON Key
@@ -297,7 +190,7 @@ app.post('/api/query', async (req, res) => {
     // Chạy query
     const [job] = await bigquery.createQueryJob({
       query: sql,
-      location: 'US', // BigQuery tự động điều phối hoặc dùng default US
+      location: 'asia-southeast1',
       useLegacySql: false
     });
 
@@ -381,9 +274,127 @@ app.post('/api/query', async (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
+// API: Lấy danh sách billing accounts (subaccount name) qua Cloud Billing API
+app.get('/api/billing-accounts', async (req, res) => {
+  try {
+    const keyPath = resolveKeyPath();
+    const auth = new google.auth.GoogleAuth({
+      keyFile: keyPath,
+      scopes: ['https://www.googleapis.com/auth/cloud-billing.readonly']
+    });
+    const authClient = await auth.getClient();
+    const billing = google.cloudbilling({ version: 'v1', auth: authClient });
+
+    const response = await billing.billingAccounts.list({ pageSize: 200 });
+    const accounts = response.data.billingAccounts || [];
+
+    const subaccounts = [];
+    for (const acct of accounts) {
+      if (acct.masterBillingAccount) {
+        subaccounts.push({
+          name: acct.displayName,
+          id: acct.name.replace('billingAccounts/', ''),
+          masterBillingAccount: acct.masterBillingAccount.replace('billingAccounts/', ''),
+          open: acct.open
+        });
+      }
+    }
+
+    res.json({
+      success: true,
+      totalAccounts: accounts.length,
+      subaccounts,
+      raw: accounts
+    });
+  } catch (error) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+// API: Lookup subaccount name theo billing account ID
+app.get('/api/billing-account/:id', async (req, res) => {
+  try {
+    const keyPath = resolveKeyPath();
+    const auth = new google.auth.GoogleAuth({
+      keyFile: keyPath,
+      scopes: ['https://www.googleapis.com/auth/cloud-billing.readonly']
+    });
+    const authClient = await auth.getClient();
+    const billing = google.cloudbilling({ version: 'v1', auth: authClient });
+
+    const response = await billing.billingAccounts.get({
+      name: `billingAccounts/${req.params.id}`
+    });
+
+    const acct = response.data;
+    res.json({
+      success: true,
+      id: req.params.id,
+      name: acct.displayName,
+      open: acct.open,
+      masterBillingAccount: acct.masterBillingAccount
+        ? acct.masterBillingAccount.replace('billingAccounts/', '')
+        : null
+    });
+  } catch (error) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+// API: Bảng 2 GCP — query BigQuery + JOIN lookup table lấy subaccount name
+app.get('/api/gcp-table2/:invoiceMonth', async (req, res) => {
+  const { invoiceMonth } = req.params;
+  try {
+    const { client: bigquery } = getBigQueryClient();
+    const sql = `
+SELECT
+  sa.\`Billing account name\`   AS subaccount,
+  b.billing_account_id        AS subaccount_id,
+  SUM(cost_at_list)            AS list_cost,
+  SUM(cost) - SUM(cost_at_list) AS negotiated_savings,
+  SUM((SELECT COALESCE(SUM(c.amount), 0) FROM UNNEST(credits) c
+       WHERE c.type IN ('COMMITTED_USAGE_DISCOUNT', 'FEE_UTILIZATION_OFFSET'))) AS discounts,
+  SUM((SELECT COALESCE(SUM(c.amount), 0) FROM UNNEST(credits) c
+       WHERE c.type IN ('PROMOTION', 'DISCOUNT', 'SUSTAINED_USAGE_DISCOUNT'))) AS promotions_and_others,
+  SUM(cost) + SUM((SELECT COALESCE(SUM(c.amount), 0) FROM UNNEST(credits) c
+       WHERE c.type != 'RESELLER_MARGIN')) AS subtotal
+FROM \`billing-data-cloudaz-resell.CloudAZ_Billing_Standard_Dataset.gcp_billing_export_v1_01AF45_CC490F_EEF29A\` b
+LEFT JOIN \`billing-data-cloudaz-resell.GCP_Congno.TH2_Billing_Account_T06_2026\` sa
+  ON b.billing_account_id = sa.\`Billing account ID\`
+WHERE b.invoice.month = '${invoiceMonth}'
+  AND b.cost_type = 'regular'
+GROUP BY 1, 2
+HAVING SUM(cost_at_list) != 0 OR SUM(cost) != 0
+ORDER BY list_cost DESC`;
+
+    const [job] = await bigquery.createQueryJob({ query: sql, useLegacySql: false, location: 'asia-southeast1' });
+    const [rows] = await job.getQueryResults();
+
+    res.json({ success: true, invoiceMonth, rows, totalRows: rows.length });
+  } catch (error) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+const server = app.listen(PORT, () => {
   console.log(`=======================================================`);
   console.log(` BigQuery Logger Dashboard is running!`);
   console.log(` 👉 Mở trình duyệt tại: http://localhost:${PORT}`);
   console.log(`=======================================================`);
+});
+
+// Giữ event loop sống — tránh process thoát do Express 5 / dotenv v17 unref server handle
+server.ref();
+
+server.on('error', (err) => {
+  if (err.code === 'EADDRINUSE') {
+    console.error(`❌ Port ${PORT} đang bị chiếm. Hãy tắt process cũ hoặc đổi port.`);
+  } else {
+    console.error('❌ Server error:', err);
+  }
+  process.exit(1);
+});
+
+server.on('close', () => {
+  console.log('⚠️ Server đã đóng.');
 });

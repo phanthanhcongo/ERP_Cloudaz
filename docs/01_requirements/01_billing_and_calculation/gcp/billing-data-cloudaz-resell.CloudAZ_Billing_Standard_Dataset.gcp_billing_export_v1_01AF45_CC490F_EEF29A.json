@@ -1,0 +1,4471 @@
+[{
+  "billing_account_id": "01AEDA-88691D-0FBD5D",
+  "service": {
+    "id": "6F81-5844-456A",
+    "description": "Compute Engine"
+  },
+  "sku": {
+    "id": "0465-D053-4176",
+    "description": "Commitment v1: E2 Cpu in Singapore for 3 Year"
+  },
+  "usage_start_time": "2023-12-18 20:00:00.000000 UTC",
+  "usage_end_time": "2023-12-18 21:00:00.000000 UTC",
+  "project": {
+    "id": "fun-giftcode",
+    "number": "151100406918",
+    "name": "fun-giftcode",
+    "labels": [],
+    "ancestry_numbers": "/156399356993/",
+    "ancestors": [{
+      "resource_name": "projects/151100406918",
+      "display_name": "fun-giftcode"
+    }, {
+      "resource_name": "organizations/156399356993",
+      "display_name": "mobgame.vn"
+    }]
+  },
+  "labels": [],
+  "system_labels": [{
+    "key": "compute.googleapis.com/cores",
+    "value": "2"
+  }, {
+    "key": "compute.googleapis.com/machine_spec",
+    "value": "e2-medium"
+  }, {
+    "key": "compute.googleapis.com/memory",
+    "value": "4096"
+  }],
+  "location": {
+    "location": "asia-southeast1",
+    "country": "SG",
+    "region": "asia-southeast1",
+    "zone": null
+  },
+  "export_time": "2023-12-19 05:07:48.162097 UTC",
+  "cost": "0.006753",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "2206.385789",
+    "unit": "seconds",
+    "amount_in_pricing_units": "0.612884943",
+    "pricing_unit": "hour"
+  },
+  "credits": [{
+    "name": "Discount on Total Spend",
+    "amount": "-0.000716",
+    "full_name": null,
+    "id": "Discount on Total Spend",
+    "type": "RESELLER_MARGIN"
+  }],
+  "invoice": {
+    "month": "202312",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "tags": [],
+  "cost_at_list": "0.007423",
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "price": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01AEDA-88691D-0FBD5D",
+  "service": {
+    "id": "6F81-5844-456A",
+    "description": "Compute Engine"
+  },
+  "sku": {
+    "id": "0A28-6329-2B56",
+    "description": "Custom Instance Core running in Singapore"
+  },
+  "usage_start_time": "2023-12-19 00:00:00.000000 UTC",
+  "usage_end_time": "2023-12-19 01:00:00.000000 UTC",
+  "project": {
+    "id": "fun-giftcode",
+    "number": "151100406918",
+    "name": "fun-giftcode",
+    "labels": [],
+    "ancestry_numbers": "/156399356993/",
+    "ancestors": [{
+      "resource_name": "projects/151100406918",
+      "display_name": "fun-giftcode"
+    }, {
+      "resource_name": "organizations/156399356993",
+      "display_name": "mobgame.vn"
+    }]
+  },
+  "labels": [],
+  "system_labels": [{
+    "key": "compute.googleapis.com/cores",
+    "value": "2"
+  }, {
+    "key": "compute.googleapis.com/machine_spec",
+    "value": "custom-2-4096"
+  }, {
+    "key": "compute.googleapis.com/memory",
+    "value": "4096"
+  }],
+  "location": {
+    "location": "asia-southeast1",
+    "country": "SG",
+    "region": "asia-southeast1",
+    "zone": null
+  },
+  "export_time": "2023-12-19 10:00:49.693925 UTC",
+  "cost": "0.049501",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "6260.0",
+    "unit": "seconds",
+    "amount_in_pricing_units": "1.738888889",
+    "pricing_unit": "hour"
+  },
+  "credits": [{
+    "name": "Committed Usage Discount: CPU",
+    "amount": "-0.037927",
+    "full_name": null,
+    "id": "Committed Usage Discount: CPU",
+    "type": "COMMITTED_USAGE_DISCOUNT"
+  }],
+  "invoice": {
+    "month": "202312",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "tags": [],
+  "cost_at_list": "0.067809",
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "price": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01AEDA-88691D-0FBD5D",
+  "service": {
+    "id": "6F81-5844-456A",
+    "description": "Compute Engine"
+  },
+  "sku": {
+    "id": "D642-ABDF-9932",
+    "description": "Licensing Fee for CentOS 7 (CPU cost)"
+  },
+  "usage_start_time": "2023-12-19 12:00:00.000000 UTC",
+  "usage_end_time": "2023-12-19 13:00:00.000000 UTC",
+  "project": {
+    "id": "fun-giftcode",
+    "number": "151100406918",
+    "name": "fun-giftcode",
+    "labels": [],
+    "ancestry_numbers": "/156399356993/",
+    "ancestors": [{
+      "resource_name": "projects/151100406918",
+      "display_name": "fun-giftcode"
+    }, {
+      "resource_name": "organizations/156399356993",
+      "display_name": "mobgame.vn"
+    }]
+  },
+  "labels": [],
+  "system_labels": [{
+    "key": "compute.googleapis.com/cores",
+    "value": "2"
+  }, {
+    "key": "compute.googleapis.com/machine_spec",
+    "value": "custom-2-4096"
+  }, {
+    "key": "compute.googleapis.com/memory",
+    "value": "4096"
+  }],
+  "location": {
+    "location": "asia-southeast1",
+    "country": "SG",
+    "region": "asia-southeast1",
+    "zone": null
+  },
+  "export_time": "2023-12-19 22:18:52.740475 UTC",
+  "cost": "0.0",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "2286.0",
+    "unit": "seconds",
+    "amount_in_pricing_units": "0.635",
+    "pricing_unit": "hour"
+  },
+  "credits": [],
+  "invoice": {
+    "month": "202312",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "tags": [],
+  "cost_at_list": "0.0",
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "price": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01AEDA-88691D-0FBD5D",
+  "service": {
+    "id": "A1E8-BE35-7EBC",
+    "description": "Cloud Pub/Sub"
+  },
+  "sku": {
+    "id": "027D-B6C7-CCA2",
+    "description": "Message Delivery Basic"
+  },
+  "usage_start_time": "2023-12-19 04:00:00.000000 UTC",
+  "usage_end_time": "2023-12-19 05:00:00.000000 UTC",
+  "project": {
+    "id": "fun-giftcode",
+    "number": "151100406918",
+    "name": "fun-giftcode",
+    "labels": [],
+    "ancestry_numbers": "/156399356993/",
+    "ancestors": [{
+      "resource_name": "projects/151100406918",
+      "display_name": "fun-giftcode"
+    }, {
+      "resource_name": "organizations/156399356993",
+      "display_name": "mobgame.vn"
+    }]
+  },
+  "labels": [],
+  "system_labels": [],
+  "location": {
+    "location": "asia-east2",
+    "country": "HK",
+    "region": "asia-east2",
+    "zone": null
+  },
+  "export_time": "2023-12-19 10:41:06.929698 UTC",
+  "cost": "8e-06",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "307027.0",
+    "unit": "bytes",
+    "amount_in_pricing_units": "2.79e-07",
+    "pricing_unit": "tebibyte"
+  },
+  "credits": [{
+    "name": "Discount on Total Spend",
+    "amount": "-1e-06",
+    "full_name": null,
+    "id": "Discount on Total Spend",
+    "type": "RESELLER_MARGIN"
+  }],
+  "invoice": {
+    "month": "202312",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "tags": [],
+  "cost_at_list": "9e-06",
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "price": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01AEDA-88691D-0FBD5D",
+  "service": {
+    "id": "6F81-5844-456A",
+    "description": "Compute Engine"
+  },
+  "sku": {
+    "id": "7ED6-57D6-C844",
+    "description": "N1 Predefined Instance Core running in Singapore"
+  },
+  "usage_start_time": "2023-12-19 13:00:00.000000 UTC",
+  "usage_end_time": "2023-12-19 14:00:00.000000 UTC",
+  "project": {
+    "id": "fun-giftcode",
+    "number": "151100406918",
+    "name": "fun-giftcode",
+    "labels": [],
+    "ancestry_numbers": "/156399356993/",
+    "ancestors": [{
+      "resource_name": "projects/151100406918",
+      "display_name": "fun-giftcode"
+    }, {
+      "resource_name": "organizations/156399356993",
+      "display_name": "mobgame.vn"
+    }]
+  },
+  "labels": [{
+    "key": "environment",
+    "value": "production"
+  }],
+  "system_labels": [{
+    "key": "compute.googleapis.com/cores",
+    "value": "1"
+  }, {
+    "key": "compute.googleapis.com/machine_spec",
+    "value": "n1-standard-1"
+  }, {
+    "key": "compute.googleapis.com/memory",
+    "value": "3840"
+  }],
+  "location": {
+    "location": "asia-southeast1",
+    "country": "SG",
+    "region": "asia-southeast1",
+    "zone": null
+  },
+  "export_time": "2023-12-19 22:18:52.740475 UTC",
+  "cost": "0.056939",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "7200.0",
+    "unit": "seconds",
+    "amount_in_pricing_units": "2.0",
+    "pricing_unit": "hour"
+  },
+  "credits": [{
+    "name": "Discount on Total Spend",
+    "amount": "-0.000134",
+    "full_name": null,
+    "id": "Discount on Total Spend",
+    "type": "RESELLER_MARGIN"
+  }, {
+    "name": "Committed Usage Discount: CPU",
+    "amount": "-0.012888",
+    "full_name": null,
+    "id": "Committed Usage Discount: CPU",
+    "type": "COMMITTED_USAGE_DISCOUNT"
+  }],
+  "invoice": {
+    "month": "202312",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "tags": [],
+  "cost_at_list": "0.077998",
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "price": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01AEDA-88691D-0FBD5D",
+  "service": {
+    "id": "6F81-5844-456A",
+    "description": "Compute Engine"
+  },
+  "sku": {
+    "id": "EA96-9836-7E58",
+    "description": "Network Data Transfer to Google Services from Singapore to Singapore"
+  },
+  "usage_start_time": "2023-12-18 16:00:00.000000 UTC",
+  "usage_end_time": "2023-12-18 17:00:00.000000 UTC",
+  "project": {
+    "id": "fun-giftcode",
+    "number": "151100406918",
+    "name": "fun-giftcode",
+    "labels": [],
+    "ancestry_numbers": "/156399356993/",
+    "ancestors": [{
+      "resource_name": "projects/151100406918",
+      "display_name": "fun-giftcode"
+    }, {
+      "resource_name": "organizations/156399356993",
+      "display_name": "mobgame.vn"
+    }]
+  },
+  "labels": [],
+  "system_labels": [],
+  "location": {
+    "location": "asia-southeast1",
+    "country": "SG",
+    "region": "asia-southeast1",
+    "zone": null
+  },
+  "export_time": "2023-12-19 03:49:50.560042 UTC",
+  "cost": "0.0",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "300471.0",
+    "unit": "bytes",
+    "amount_in_pricing_units": "0.000279836",
+    "pricing_unit": "gibibyte"
+  },
+  "credits": [],
+  "invoice": {
+    "month": "202312",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "tags": [],
+  "cost_at_list": "0.0",
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "price": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01AEDA-88691D-0FBD5D",
+  "service": {
+    "id": "6F81-5844-456A",
+    "description": "Compute Engine"
+  },
+  "sku": {
+    "id": "D0CC-50DF-59D2",
+    "description": "Network Inter Zone Data Transfer In"
+  },
+  "usage_start_time": "2023-12-19 06:00:00.000000 UTC",
+  "usage_end_time": "2023-12-19 07:00:00.000000 UTC",
+  "project": {
+    "id": "fun-giftcode",
+    "number": "151100406918",
+    "name": "fun-giftcode",
+    "labels": [],
+    "ancestry_numbers": "/156399356993/",
+    "ancestors": [{
+      "resource_name": "projects/151100406918",
+      "display_name": "fun-giftcode"
+    }, {
+      "resource_name": "organizations/156399356993",
+      "display_name": "mobgame.vn"
+    }]
+  },
+  "labels": [],
+  "system_labels": [],
+  "location": {
+    "location": "asia-southeast1",
+    "country": "SG",
+    "region": "asia-southeast1",
+    "zone": null
+  },
+  "export_time": "2023-12-19 16:24:50.065841 UTC",
+  "cost": "0.0",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "502174247.0",
+    "unit": "bytes",
+    "amount_in_pricing_units": "0.467686212",
+    "pricing_unit": "gibibyte"
+  },
+  "credits": [],
+  "invoice": {
+    "month": "202312",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "tags": [],
+  "cost_at_list": "0.0",
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "price": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01AEDA-88691D-0FBD5D",
+  "service": {
+    "id": "6F81-5844-456A",
+    "description": "Compute Engine"
+  },
+  "sku": {
+    "id": "FD99-2853-868C",
+    "description": "Network Internet Data Transfer In from EMEA to Singapore"
+  },
+  "usage_start_time": "2023-12-18 23:00:00.000000 UTC",
+  "usage_end_time": "2023-12-19 00:00:00.000000 UTC",
+  "project": {
+    "id": "fun-giftcode",
+    "number": "151100406918",
+    "name": "fun-giftcode",
+    "labels": [],
+    "ancestry_numbers": "/156399356993/",
+    "ancestors": [{
+      "resource_name": "projects/151100406918",
+      "display_name": "fun-giftcode"
+    }, {
+      "resource_name": "organizations/156399356993",
+      "display_name": "mobgame.vn"
+    }]
+  },
+  "labels": [{
+    "key": "environment",
+    "value": "production"
+  }],
+  "system_labels": [],
+  "location": {
+    "location": "asia-southeast1",
+    "country": "SG",
+    "region": "asia-southeast1",
+    "zone": null
+  },
+  "export_time": "2023-12-19 08:30:19.351357 UTC",
+  "cost": "0.0",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "13630.0",
+    "unit": "bytes",
+    "amount_in_pricing_units": "1.2694e-05",
+    "pricing_unit": "gibibyte"
+  },
+  "credits": [],
+  "invoice": {
+    "month": "202312",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "tags": [],
+  "cost_at_list": "0.0",
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "price": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01AEDA-88691D-0FBD5D",
+  "service": {
+    "id": "9662-B51E-5089",
+    "description": "Cloud SQL"
+  },
+  "sku": {
+    "id": "B814-444B-A5FA",
+    "description": "Network Internet Data Transfer Out from Singapore to Americas"
+  },
+  "usage_start_time": "2023-12-18 15:00:00.000000 UTC",
+  "usage_end_time": "2023-12-18 16:00:00.000000 UTC",
+  "project": {
+    "id": "fun-giftcode",
+    "number": "151100406918",
+    "name": "fun-giftcode",
+    "labels": [],
+    "ancestry_numbers": "/156399356993/",
+    "ancestors": [{
+      "resource_name": "projects/151100406918",
+      "display_name": "fun-giftcode"
+    }, {
+      "resource_name": "organizations/156399356993",
+      "display_name": "mobgame.vn"
+    }]
+  },
+  "labels": [{
+    "key": "cloud_sql_bill_to",
+    "value": "151100406918"
+  }, {
+    "key": "env",
+    "value": "production"
+  }, {
+    "key": "goog-dms-instance",
+    "value": "true"
+  }],
+  "system_labels": [],
+  "location": {
+    "location": "asia-southeast1",
+    "country": "SG",
+    "region": "asia-southeast1",
+    "zone": null
+  },
+  "export_time": "2023-12-19 00:53:05.873658 UTC",
+  "cost": "0.0",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "606.0",
+    "unit": "bytes",
+    "amount_in_pricing_units": "5.64e-07",
+    "pricing_unit": "gibibyte"
+  },
+  "credits": [],
+  "invoice": {
+    "month": "202312",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "tags": [],
+  "cost_at_list": "0.0",
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "price": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01AEDA-88691D-0FBD5D",
+  "service": {
+    "id": "6F81-5844-456A",
+    "description": "Compute Engine"
+  },
+  "sku": {
+    "id": "2DF7-CD55-4181",
+    "description": "Network Internet Data Transfer Out from Singapore to Americas"
+  },
+  "usage_start_time": "2023-12-19 16:00:00.000000 UTC",
+  "usage_end_time": "2023-12-19 17:00:00.000000 UTC",
+  "project": {
+    "id": "fun-giftcode",
+    "number": "151100406918",
+    "name": "fun-giftcode",
+    "labels": [],
+    "ancestry_numbers": "/156399356993/",
+    "ancestors": [{
+      "resource_name": "projects/151100406918",
+      "display_name": "fun-giftcode"
+    }, {
+      "resource_name": "organizations/156399356993",
+      "display_name": "mobgame.vn"
+    }]
+  },
+  "labels": [],
+  "system_labels": [],
+  "location": {
+    "location": "asia-southeast1",
+    "country": "SG",
+    "region": "asia-southeast1",
+    "zone": null
+  },
+  "export_time": "2023-12-19 23:36:45.162126 UTC",
+  "cost": "0.0",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "4363.0",
+    "unit": "bytes",
+    "amount_in_pricing_units": "4.063e-06",
+    "pricing_unit": "gibibyte"
+  },
+  "credits": [],
+  "invoice": {
+    "month": "202312",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "tags": [],
+  "cost_at_list": "0.0",
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "price": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01AEDA-88691D-0FBD5D",
+  "service": {
+    "id": "6F81-5844-456A",
+    "description": "Compute Engine"
+  },
+  "sku": {
+    "id": "B743-F532-7135",
+    "description": "Commitment v1: Cpu in APAC for 3 Year"
+  },
+  "usage_start_time": "2023-12-19 09:00:00.000000 UTC",
+  "usage_end_time": "2023-12-19 10:00:00.000000 UTC",
+  "project": {
+    "id": "fundev",
+    "number": "927077882459",
+    "name": "fundev",
+    "labels": [],
+    "ancestry_numbers": null,
+    "ancestors": [{
+      "resource_name": "projects/927077882459",
+      "display_name": "fundev"
+    }]
+  },
+  "labels": [],
+  "system_labels": [{
+    "key": "compute.googleapis.com/cores",
+    "value": "4"
+  }, {
+    "key": "compute.googleapis.com/machine_spec",
+    "value": "custom-4-8192"
+  }, {
+    "key": "compute.googleapis.com/memory",
+    "value": "8192"
+  }],
+  "location": {
+    "location": "asia-east1",
+    "country": "TW",
+    "region": "asia-east1",
+    "zone": null
+  },
+  "export_time": "2023-12-19 21:48:28.609683 UTC",
+  "cost": "0.059954",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "14400.028972",
+    "unit": "seconds",
+    "amount_in_pricing_units": "4.000008048",
+    "pricing_unit": "hour"
+  },
+  "credits": [{
+    "name": "Discount on Total Spend",
+    "amount": "-0.005996",
+    "full_name": null,
+    "id": "Discount on Total Spend",
+    "type": "RESELLER_MARGIN"
+  }],
+  "invoice": {
+    "month": "202312",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "tags": [],
+  "cost_at_list": "0.065884",
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "price": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01AEDA-88691D-0FBD5D",
+  "service": {
+    "id": "6F81-5844-456A",
+    "description": "Compute Engine"
+  },
+  "sku": {
+    "id": "AD5A-163C-B46D",
+    "description": "Custom Instance Core running in APAC"
+  },
+  "usage_start_time": "2023-12-18 23:00:00.000000 UTC",
+  "usage_end_time": "2023-12-19 00:00:00.000000 UTC",
+  "project": {
+    "id": "fundev",
+    "number": "927077882459",
+    "name": "fundev",
+    "labels": [],
+    "ancestry_numbers": null,
+    "ancestors": [{
+      "resource_name": "projects/927077882459",
+      "display_name": "fundev"
+    }]
+  },
+  "labels": [],
+  "system_labels": [{
+    "key": "compute.googleapis.com/cores",
+    "value": "4"
+  }, {
+    "key": "compute.googleapis.com/machine_spec",
+    "value": "custom-4-8192"
+  }, {
+    "key": "compute.googleapis.com/memory",
+    "value": "8192"
+  }],
+  "location": {
+    "location": "asia-east1",
+    "country": "TW",
+    "region": "asia-east1",
+    "zone": null
+  },
+  "export_time": "2023-12-19 08:30:19.351357 UTC",
+  "cost": "0.112157",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "14400.0",
+    "unit": "seconds",
+    "amount_in_pricing_units": "4.0",
+    "pricing_unit": "hour"
+  },
+  "credits": [{
+    "name": "Committed Usage Discount: CPU",
+    "amount": "-0.101376",
+    "full_name": null,
+    "id": "Committed Usage Discount: CPU",
+    "type": "COMMITTED_USAGE_DISCOUNT"
+  }],
+  "invoice": {
+    "month": "202312",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "tags": [],
+  "cost_at_list": "0.15364",
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "price": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01AEDA-88691D-0FBD5D",
+  "service": {
+    "id": "6F81-5844-456A",
+    "description": "Compute Engine"
+  },
+  "sku": {
+    "id": "C054-7F72-A02E",
+    "description": "External IP Charge on a Standard VM"
+  },
+  "usage_start_time": "2023-12-18 18:00:00.000000 UTC",
+  "usage_end_time": "2023-12-18 19:00:00.000000 UTC",
+  "project": {
+    "id": "fundev",
+    "number": "927077882459",
+    "name": "fundev",
+    "labels": [],
+    "ancestry_numbers": null,
+    "ancestors": [{
+      "resource_name": "projects/927077882459",
+      "display_name": "fundev"
+    }]
+  },
+  "labels": [],
+  "system_labels": [],
+  "location": {
+    "location": "asia-east1",
+    "country": "TW",
+    "region": "asia-east1",
+    "zone": null
+  },
+  "export_time": "2023-12-19 03:49:50.560042 UTC",
+  "cost": "0.0",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "0.0",
+    "unit": "seconds",
+    "amount_in_pricing_units": "0.0",
+    "pricing_unit": "hour"
+  },
+  "credits": [{
+    "name": "Discount on Total Spend",
+    "amount": "-6.1e-05",
+    "full_name": null,
+    "id": "Discount on Total Spend",
+    "type": "RESELLER_MARGIN"
+  }],
+  "invoice": {
+    "month": "202312",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "tags": [],
+  "cost_at_list": "0.0",
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "price": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01AEDA-88691D-0FBD5D",
+  "service": {
+    "id": "6F81-5844-456A",
+    "description": "Compute Engine"
+  },
+  "sku": {
+    "id": "9FB0-D8FF-0BAA",
+    "description": "Licensing Fee for CentOS 7 (RAM cost)"
+  },
+  "usage_start_time": "2023-12-18 17:00:00.000000 UTC",
+  "usage_end_time": "2023-12-18 18:00:00.000000 UTC",
+  "project": {
+    "id": "fundev",
+    "number": "927077882459",
+    "name": "fundev",
+    "labels": [],
+    "ancestry_numbers": null,
+    "ancestors": [{
+      "resource_name": "projects/927077882459",
+      "display_name": "fundev"
+    }]
+  },
+  "labels": [],
+  "system_labels": [{
+    "key": "compute.googleapis.com/cores",
+    "value": "4"
+  }, {
+    "key": "compute.googleapis.com/machine_spec",
+    "value": "custom-4-8192"
+  }, {
+    "key": "compute.googleapis.com/memory",
+    "value": "8192"
+  }],
+  "location": {
+    "location": "asia-east1",
+    "country": "TW",
+    "region": "asia-east1",
+    "zone": null
+  },
+  "export_time": "2023-12-19 01:44:18.897934 UTC",
+  "cost": "0.0",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "30923764531200.0",
+    "unit": "byte-seconds",
+    "amount_in_pricing_units": "8.0",
+    "pricing_unit": "gibibyte hour"
+  },
+  "credits": [],
+  "invoice": {
+    "month": "202312",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "tags": [],
+  "cost_at_list": "0.0",
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "price": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01AEDA-88691D-0FBD5D",
+  "service": {
+    "id": "6F81-5844-456A",
+    "description": "Compute Engine"
+  },
+  "sku": {
+    "id": "DE9E-AFBC-A15A",
+    "description": "Network Inter Zone Data Transfer Out"
+  },
+  "usage_start_time": "2023-12-18 15:00:00.000000 UTC",
+  "usage_end_time": "2023-12-18 16:00:00.000000 UTC",
+  "project": {
+    "id": "fundev",
+    "number": "927077882459",
+    "name": "fundev",
+    "labels": [],
+    "ancestry_numbers": null,
+    "ancestors": [{
+      "resource_name": "projects/927077882459",
+      "display_name": "fundev"
+    }]
+  },
+  "labels": [],
+  "system_labels": [],
+  "location": {
+    "location": "asia-east1",
+    "country": "TW",
+    "region": "asia-east1",
+    "zone": null
+  },
+  "export_time": "2023-12-19 05:07:48.162097 UTC",
+  "cost": "0.000411",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "49066729.0",
+    "unit": "bytes",
+    "amount_in_pricing_units": "0.045696953",
+    "pricing_unit": "gibibyte"
+  },
+  "credits": [{
+    "name": "Discount on Total Spend",
+    "amount": "-4.1e-05",
+    "full_name": null,
+    "id": "Discount on Total Spend",
+    "type": "RESELLER_MARGIN"
+  }],
+  "invoice": {
+    "month": "202312",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "tags": [],
+  "cost_at_list": "0.000456",
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "price": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01977C-118939-A4B635",
+  "service": {
+    "id": "1C58-CF90-9614",
+    "description": "Firebase Realtime Database"
+  },
+  "sku": {
+    "id": "04F2-6383-80BD",
+    "description": "Outgoing Bandwidth"
+  },
+  "usage_start_time": "2023-12-19 08:00:00.000000 UTC",
+  "usage_end_time": "2023-12-19 09:00:00.000000 UTC",
+  "project": {
+    "id": "gcasual-e3d11",
+    "number": "743936723063",
+    "name": "funtap-game",
+    "labels": [{
+      "key": "firebase",
+      "value": "enabled"
+    }],
+    "ancestry_numbers": "/156399356993/",
+    "ancestors": [{
+      "resource_name": "projects/743936723063",
+      "display_name": "funtap-game"
+    }, {
+      "resource_name": "organizations/156399356993",
+      "display_name": "mobgame.vn"
+    }]
+  },
+  "labels": [],
+  "system_labels": [],
+  "location": {
+    "location": "us-central1",
+    "country": "US",
+    "region": "us-central1",
+    "zone": null
+  },
+  "export_time": "2023-12-19 16:24:50.065841 UTC",
+  "cost": "0.0",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "46297.0",
+    "unit": "bytes",
+    "amount_in_pricing_units": "4.3118e-05",
+    "pricing_unit": "gibibyte"
+  },
+  "credits": [],
+  "invoice": {
+    "month": "202312",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "tags": [],
+  "cost_at_list": "0.0",
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "price": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01AEDA-88691D-0FBD5D",
+  "service": {
+    "id": "A1E8-BE35-7EBC",
+    "description": "Cloud Pub/Sub"
+  },
+  "sku": {
+    "id": "F315-C467-F954",
+    "description": "Internet data delivery from Asia Pacific to Asia Pacific"
+  },
+  "usage_start_time": "2023-12-18 22:00:00.000000 UTC",
+  "usage_end_time": "2023-12-18 23:00:00.000000 UTC",
+  "project": {
+    "id": "funtool",
+    "number": "800480476437",
+    "name": "funtool",
+    "labels": [],
+    "ancestry_numbers": null,
+    "ancestors": [{
+      "resource_name": "projects/800480476437",
+      "display_name": "funtool"
+    }]
+  },
+  "labels": [],
+  "system_labels": [],
+  "location": {
+    "location": "asia-east1",
+    "country": "TW",
+    "region": "asia-east1",
+    "zone": null
+  },
+  "export_time": "2023-12-19 06:13:46.126024 UTC",
+  "cost": "0.0",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "0.0",
+    "unit": "bytes",
+    "amount_in_pricing_units": "0.0",
+    "pricing_unit": "gibibyte"
+  },
+  "credits": [{
+    "name": "Discount on Total Spend",
+    "amount": "2e-06",
+    "full_name": null,
+    "id": "Discount on Total Spend",
+    "type": "RESELLER_MARGIN"
+  }],
+  "invoice": {
+    "month": "202312",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "tags": [],
+  "cost_at_list": "0.0",
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "price": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01AEDA-88691D-0FBD5D",
+  "service": {
+    "id": "6F81-5844-456A",
+    "description": "Compute Engine"
+  },
+  "sku": {
+    "id": "9428-46F3-3796",
+    "description": "Network Data Transfer Out via Carrier Peering Network - APAC Based"
+  },
+  "usage_start_time": "2023-12-19 13:00:00.000000 UTC",
+  "usage_end_time": "2023-12-19 14:00:00.000000 UTC",
+  "project": {
+    "id": "funtool",
+    "number": "800480476437",
+    "name": "funtool",
+    "labels": [],
+    "ancestry_numbers": null,
+    "ancestors": [{
+      "resource_name": "projects/800480476437",
+      "display_name": "funtool"
+    }]
+  },
+  "labels": [],
+  "system_labels": [],
+  "location": {
+    "location": "asia-southeast1",
+    "country": "SG",
+    "region": "asia-southeast1",
+    "zone": null
+  },
+  "export_time": "2023-12-19 23:36:45.162126 UTC",
+  "cost": "0.0",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "2648.0",
+    "unit": "bytes",
+    "amount_in_pricing_units": "2.466e-06",
+    "pricing_unit": "gibibyte"
+  },
+  "credits": [],
+  "invoice": {
+    "month": "202312",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "tags": [],
+  "cost_at_list": "0.0",
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "price": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01AEDA-88691D-0FBD5D",
+  "service": {
+    "id": "6F81-5844-456A",
+    "description": "Compute Engine"
+  },
+  "sku": {
+    "id": "D227-97EC-A38C",
+    "description": "Network Internet Data Transfer Out from Singapore to China"
+  },
+  "usage_start_time": "2023-12-19 08:00:00.000000 UTC",
+  "usage_end_time": "2023-12-19 09:00:00.000000 UTC",
+  "project": {
+    "id": "funtool",
+    "number": "800480476437",
+    "name": "funtool",
+    "labels": [],
+    "ancestry_numbers": null,
+    "ancestors": [{
+      "resource_name": "projects/800480476437",
+      "display_name": "funtool"
+    }]
+  },
+  "labels": [],
+  "system_labels": [],
+  "location": {
+    "location": "asia-southeast1",
+    "country": "SG",
+    "region": "asia-southeast1",
+    "zone": null
+  },
+  "export_time": "2023-12-19 21:48:28.609683 UTC",
+  "cost": "1e-06",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "12064.0",
+    "unit": "bytes",
+    "amount_in_pricing_units": "1.1236e-05",
+    "pricing_unit": "gibibyte"
+  },
+  "credits": [],
+  "invoice": {
+    "month": "202312",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "tags": [],
+  "cost_at_list": "1e-06",
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "price": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01AEDA-88691D-0FBD5D",
+  "service": {
+    "id": "9662-B51E-5089",
+    "description": "Cloud SQL"
+  },
+  "sku": {
+    "id": "5C0F-D226-757F",
+    "description": "Cloud SQL: Backups in Singapore"
+  },
+  "usage_start_time": "2023-12-19 00:00:00.000000 UTC",
+  "usage_end_time": "2023-12-19 01:00:00.000000 UTC",
+  "project": {
+    "id": "gip-adtech",
+    "number": "970586583147",
+    "name": "gip-adtech",
+    "labels": [],
+    "ancestry_numbers": "/156399356993/",
+    "ancestors": [{
+      "resource_name": "projects/970586583147",
+      "display_name": "gip-adtech"
+    }, {
+      "resource_name": "organizations/156399356993",
+      "display_name": "mobgame.vn"
+    }]
+  },
+  "labels": [],
+  "system_labels": [],
+  "location": {
+    "location": "asia-southeast1",
+    "country": "SG",
+    "region": "asia-southeast1",
+    "zone": null
+  },
+  "export_time": "2023-12-19 10:00:49.693925 UTC",
+  "cost": "0.001736",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "49545936061802.0",
+    "unit": "byte-seconds",
+    "amount_in_pricing_units": "0.017227914",
+    "pricing_unit": "gibibyte month"
+  },
+  "credits": [{
+    "name": "Discount on Total Spend",
+    "amount": "-0.000174",
+    "full_name": null,
+    "id": "Discount on Total Spend",
+    "type": "RESELLER_MARGIN"
+  }],
+  "invoice": {
+    "month": "202312",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "tags": [],
+  "cost_at_list": "0.001929",
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "price": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01AEDA-88691D-0FBD5D",
+  "service": {
+    "id": "6F81-5844-456A",
+    "description": "Compute Engine"
+  },
+  "sku": {
+    "id": "CBC5-8A9F-396B",
+    "description": "Commitment v1: Ram in Singapore for 3 Year"
+  },
+  "usage_start_time": "2023-12-18 18:00:00.000000 UTC",
+  "usage_end_time": "2023-12-18 19:00:00.000000 UTC",
+  "project": {
+    "id": "gip-adtech",
+    "number": "970586583147",
+    "name": "gip-adtech",
+    "labels": [],
+    "ancestry_numbers": "/156399356993/",
+    "ancestors": [{
+      "resource_name": "projects/970586583147",
+      "display_name": "gip-adtech"
+    }, {
+      "resource_name": "organizations/156399356993",
+      "display_name": "mobgame.vn"
+    }]
+  },
+  "labels": [],
+  "system_labels": [{
+    "key": "compute.googleapis.com/cores",
+    "value": "1"
+  }, {
+    "key": "compute.googleapis.com/machine_spec",
+    "value": "n1-standard-1"
+  }, {
+    "key": "compute.googleapis.com/memory",
+    "value": "3840"
+  }],
+  "location": {
+    "location": "asia-southeast1",
+    "country": "SG",
+    "region": "asia-southeast1",
+    "zone": null
+  },
+  "export_time": "2023-12-19 01:44:18.897934 UTC",
+  "cost": "0.00664",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "12055371863091.742",
+    "unit": "byte-seconds",
+    "amount_in_pricing_units": "3.118733321",
+    "pricing_unit": "gibibyte hour"
+  },
+  "credits": [{
+    "name": "Discount on Total Spend",
+    "amount": "-0.000644",
+    "full_name": null,
+    "id": "Discount on Total Spend",
+    "type": "RESELLER_MARGIN"
+  }],
+  "invoice": {
+    "month": "202312",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "tags": [],
+  "cost_at_list": "0.007336",
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "price": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01AEDA-88691D-0FBD5D",
+  "service": {
+    "id": "6F81-5844-456A",
+    "description": "Compute Engine"
+  },
+  "sku": {
+    "id": "7102-B9AA-2ACF",
+    "description": "E2 Instance Core running in Singapore"
+  },
+  "usage_start_time": "2023-12-18 16:00:00.000000 UTC",
+  "usage_end_time": "2023-12-18 17:00:00.000000 UTC",
+  "project": {
+    "id": "gip-adtech",
+    "number": "970586583147",
+    "name": "gip-adtech",
+    "labels": [],
+    "ancestry_numbers": "/156399356993/",
+    "ancestors": [{
+      "resource_name": "projects/970586583147",
+      "display_name": "gip-adtech"
+    }, {
+      "resource_name": "organizations/156399356993",
+      "display_name": "mobgame.vn"
+    }]
+  },
+  "labels": [],
+  "system_labels": [{
+    "key": "compute.googleapis.com/cores",
+    "value": "2"
+  }, {
+    "key": "compute.googleapis.com/machine_spec",
+    "value": "e2-medium"
+  }, {
+    "key": "compute.googleapis.com/memory",
+    "value": "4096"
+  }],
+  "location": {
+    "location": "asia-southeast1",
+    "country": "SG",
+    "region": "asia-southeast1",
+    "zone": null
+  },
+  "export_time": "2023-12-19 00:53:05.873658 UTC",
+  "cost": "0.018621",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "2768.0",
+    "unit": "seconds",
+    "amount_in_pricing_units": "0.768888889",
+    "pricing_unit": "hour"
+  },
+  "credits": [{
+    "name": "Committed Usage Discount: CPU",
+    "amount": "-0.018622",
+    "full_name": null,
+    "id": "Committed Usage Discount: CPU",
+    "type": "COMMITTED_USAGE_DISCOUNT"
+  }],
+  "invoice": {
+    "month": "202312",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "tags": [],
+  "cost_at_list": "0.02069",
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "price": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01AEDA-88691D-0FBD5D",
+  "service": {
+    "id": "6F81-5844-456A",
+    "description": "Compute Engine"
+  },
+  "sku": {
+    "id": "EA96-9836-7E58",
+    "description": "Network Data Transfer to Google Services from Singapore to Singapore"
+  },
+  "usage_start_time": "2023-12-19 04:00:00.000000 UTC",
+  "usage_end_time": "2023-12-19 05:00:00.000000 UTC",
+  "project": {
+    "id": "gip-adtech",
+    "number": "970586583147",
+    "name": "gip-adtech",
+    "labels": [],
+    "ancestry_numbers": "/156399356993/",
+    "ancestors": [{
+      "resource_name": "projects/970586583147",
+      "display_name": "gip-adtech"
+    }, {
+      "resource_name": "organizations/156399356993",
+      "display_name": "mobgame.vn"
+    }]
+  },
+  "labels": [],
+  "system_labels": [],
+  "location": {
+    "location": "asia-southeast1",
+    "country": "SG",
+    "region": "asia-southeast1",
+    "zone": null
+  },
+  "export_time": "2023-12-19 16:24:50.065841 UTC",
+  "cost": "0.0",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "3214636.0",
+    "unit": "bytes",
+    "amount_in_pricing_units": "0.002993863",
+    "pricing_unit": "gibibyte"
+  },
+  "credits": [],
+  "invoice": {
+    "month": "202312",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "tags": [],
+  "cost_at_list": "0.0",
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "price": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01AEDA-88691D-0FBD5D",
+  "service": {
+    "id": "6F81-5844-456A",
+    "description": "Compute Engine"
+  },
+  "sku": {
+    "id": "A518-8D8B-049B",
+    "description": "Network Inter Region Data Transfer In from London to Singapore"
+  },
+  "usage_start_time": "2023-12-19 03:00:00.000000 UTC",
+  "usage_end_time": "2023-12-19 04:00:00.000000 UTC",
+  "project": {
+    "id": "gip-adtech",
+    "number": "970586583147",
+    "name": "gip-adtech",
+    "labels": [],
+    "ancestry_numbers": "/156399356993/",
+    "ancestors": [{
+      "resource_name": "projects/970586583147",
+      "display_name": "gip-adtech"
+    }, {
+      "resource_name": "organizations/156399356993",
+      "display_name": "mobgame.vn"
+    }]
+  },
+  "labels": [],
+  "system_labels": [],
+  "location": {
+    "location": "asia-southeast1",
+    "country": "SG",
+    "region": "asia-southeast1",
+    "zone": null
+  },
+  "export_time": "2023-12-19 16:24:50.065841 UTC",
+  "cost": "0.0",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "9446.0",
+    "unit": "bytes",
+    "amount_in_pricing_units": "8.797e-06",
+    "pricing_unit": "gibibyte"
+  },
+  "credits": [],
+  "invoice": {
+    "month": "202312",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "tags": [],
+  "cost_at_list": "0.0",
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "price": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01AEDA-88691D-0FBD5D",
+  "service": {
+    "id": "95FF-2EF5-5EA1",
+    "description": "Cloud Storage"
+  },
+  "sku": {
+    "id": "4DBF-185F-A415",
+    "description": "Regional Standard Class A Operations"
+  },
+  "usage_start_time": "2023-12-19 05:00:00.000000 UTC",
+  "usage_end_time": "2023-12-19 06:00:00.000000 UTC",
+  "project": {
+    "id": "gip-core",
+    "number": "173650778317",
+    "name": "gip-core",
+    "labels": [],
+    "ancestry_numbers": "/156399356993/",
+    "ancestors": [{
+      "resource_name": "projects/173650778317",
+      "display_name": "gip-core"
+    }, {
+      "resource_name": "organizations/156399356993",
+      "display_name": "mobgame.vn"
+    }]
+  },
+  "labels": [],
+  "system_labels": [],
+  "location": {
+    "location": "asia-southeast1",
+    "country": "SG",
+    "region": "asia-southeast1",
+    "zone": null
+  },
+  "export_time": "2023-12-19 21:48:28.609683 UTC",
+  "cost": "0.000121",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "27.0",
+    "unit": "requests",
+    "amount_in_pricing_units": "27.0",
+    "pricing_unit": "count"
+  },
+  "credits": [{
+    "name": "Discount on Total Spend",
+    "amount": "-1.2e-05",
+    "full_name": null,
+    "id": "Discount on Total Spend",
+    "type": "RESELLER_MARGIN"
+  }],
+  "invoice": {
+    "month": "202312",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "tags": [],
+  "cost_at_list": "0.000135",
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "price": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01AEDA-88691D-0FBD5D",
+  "service": {
+    "id": "6F81-5844-456A",
+    "description": "Compute Engine"
+  },
+  "sku": {
+    "id": "B284-965D-355E",
+    "description": "Commitment v1: Cpu in Singapore for 3 Year"
+  },
+  "usage_start_time": "2023-12-18 21:00:00.000000 UTC",
+  "usage_end_time": "2023-12-18 22:00:00.000000 UTC",
+  "project": {
+    "id": "gip-nap",
+    "number": "716674960706",
+    "name": "gip-nap",
+    "labels": [],
+    "ancestry_numbers": "/156399356993/",
+    "ancestors": [{
+      "resource_name": "projects/716674960706",
+      "display_name": "gip-nap"
+    }, {
+      "resource_name": "organizations/156399356993",
+      "display_name": "mobgame.vn"
+    }]
+  },
+  "labels": [{
+    "key": "goog-gke-node",
+    "value": null
+  }, {
+    "key": "goog-k8s-cluster-location",
+    "value": "asia-southeast1"
+  }, {
+    "key": "goog-k8s-cluster-name",
+    "value": "prod-gke-gip-nap"
+  }, {
+    "key": "goog-k8s-node-pool-name",
+    "value": "node-system"
+  }],
+  "system_labels": [{
+    "key": "compute.googleapis.com/cores",
+    "value": "1"
+  }, {
+    "key": "compute.googleapis.com/machine_spec",
+    "value": "custom-1-2048"
+  }, {
+    "key": "compute.googleapis.com/memory",
+    "value": "2048"
+  }],
+  "location": {
+    "location": "asia-southeast1",
+    "country": "SG",
+    "region": "asia-southeast1",
+    "zone": null
+  },
+  "export_time": "2023-12-19 06:13:46.126024 UTC",
+  "cost": "0.012732",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "2884.017747",
+    "unit": "seconds",
+    "amount_in_pricing_units": "0.80111604",
+    "pricing_unit": "hour"
+  },
+  "credits": [{
+    "name": "Discount on Total Spend",
+    "amount": "-0.001272",
+    "full_name": null,
+    "id": "Discount on Total Spend",
+    "type": "RESELLER_MARGIN"
+  }],
+  "invoice": {
+    "month": "202312",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "tags": [],
+  "cost_at_list": "0.014057",
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "price": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01AEDA-88691D-0FBD5D",
+  "service": {
+    "id": "6F81-5844-456A",
+    "description": "Compute Engine"
+  },
+  "sku": {
+    "id": "7A71-9CF7-E88F",
+    "description": "Custom Instance Ram running in Singapore"
+  },
+  "usage_start_time": "2023-12-19 13:00:00.000000 UTC",
+  "usage_end_time": "2023-12-19 14:00:00.000000 UTC",
+  "project": {
+    "id": "gip-nap",
+    "number": "716674960706",
+    "name": "gip-nap",
+    "labels": [],
+    "ancestry_numbers": "/156399356993/",
+    "ancestors": [{
+      "resource_name": "projects/716674960706",
+      "display_name": "gip-nap"
+    }, {
+      "resource_name": "organizations/156399356993",
+      "display_name": "mobgame.vn"
+    }]
+  },
+  "labels": [{
+    "key": "goog-gke-node",
+    "value": null
+  }, {
+    "key": "goog-k8s-cluster-location",
+    "value": "asia-southeast1"
+  }, {
+    "key": "goog-k8s-cluster-name",
+    "value": "prod-gke-gip-nap"
+  }, {
+    "key": "goog-k8s-node-pool-name",
+    "value": "node-system"
+  }],
+  "system_labels": [{
+    "key": "compute.googleapis.com/cores",
+    "value": "1"
+  }, {
+    "key": "compute.googleapis.com/machine_spec",
+    "value": "custom-1-2048"
+  }, {
+    "key": "compute.googleapis.com/memory",
+    "value": "2048"
+  }],
+  "location": {
+    "location": "asia-southeast1",
+    "country": "SG",
+    "region": "asia-southeast1",
+    "zone": null
+  },
+  "export_time": "2023-12-19 22:18:52.740475 UTC",
+  "cost": "0.01526",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "15461882265600.0",
+    "unit": "byte-seconds",
+    "amount_in_pricing_units": "4.0",
+    "pricing_unit": "gibibyte hour"
+  },
+  "credits": [{
+    "name": "Committed Usage Discount: RAM",
+    "amount": "-0.013096",
+    "full_name": null,
+    "id": "Committed Usage Discount: RAM",
+    "type": "COMMITTED_USAGE_DISCOUNT"
+  }],
+  "invoice": {
+    "month": "202312",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "tags": [],
+  "cost_at_list": "0.020903",
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "price": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01AEDA-88691D-0FBD5D",
+  "service": {
+    "id": "6F81-5844-456A",
+    "description": "Compute Engine"
+  },
+  "sku": {
+    "id": "B039-706B-379F",
+    "description": "Licensing Fee for CentOS 7 on g1-small"
+  },
+  "usage_start_time": "2023-12-19 11:00:00.000000 UTC",
+  "usage_end_time": "2023-12-19 12:00:00.000000 UTC",
+  "project": {
+    "id": "gip-nap",
+    "number": "716674960706",
+    "name": "gip-nap",
+    "labels": [],
+    "ancestry_numbers": "/156399356993/",
+    "ancestors": [{
+      "resource_name": "projects/716674960706",
+      "display_name": "gip-nap"
+    }, {
+      "resource_name": "organizations/156399356993",
+      "display_name": "mobgame.vn"
+    }]
+  },
+  "labels": [],
+  "system_labels": [{
+    "key": "compute.googleapis.com/cores",
+    "value": "1"
+  }, {
+    "key": "compute.googleapis.com/machine_spec",
+    "value": "g1-small"
+  }, {
+    "key": "compute.googleapis.com/memory",
+    "value": "1740"
+  }],
+  "location": {
+    "location": "asia-east1",
+    "country": "TW",
+    "region": "asia-east1",
+    "zone": null
+  },
+  "export_time": "2023-12-19 21:48:28.609683 UTC",
+  "cost": "0.0",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "7200.0",
+    "unit": "seconds",
+    "amount_in_pricing_units": "2.0",
+    "pricing_unit": "hour"
+  },
+  "credits": [],
+  "invoice": {
+    "month": "202312",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "tags": [],
+  "cost_at_list": "0.0",
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "price": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01AEDA-88691D-0FBD5D",
+  "service": {
+    "id": "6F81-5844-456A",
+    "description": "Compute Engine"
+  },
+  "sku": {
+    "id": "ECCC-9EE4-AEE4",
+    "description": "Licensing Fee for Container-Optimized OS from Google (CPU cost)"
+  },
+  "usage_start_time": "2023-12-18 23:00:00.000000 UTC",
+  "usage_end_time": "2023-12-19 00:00:00.000000 UTC",
+  "project": {
+    "id": "gip-nap",
+    "number": "716674960706",
+    "name": "gip-nap",
+    "labels": [],
+    "ancestry_numbers": "/156399356993/",
+    "ancestors": [{
+      "resource_name": "projects/716674960706",
+      "display_name": "gip-nap"
+    }, {
+      "resource_name": "organizations/156399356993",
+      "display_name": "mobgame.vn"
+    }]
+  },
+  "labels": [{
+    "key": "goog-gke-node",
+    "value": null
+  }, {
+    "key": "goog-k8s-cluster-location",
+    "value": "asia-southeast1"
+  }, {
+    "key": "goog-k8s-cluster-name",
+    "value": "prod-gke-gip-nap"
+  }, {
+    "key": "goog-k8s-node-pool-name",
+    "value": "node-system"
+  }],
+  "system_labels": [{
+    "key": "compute.googleapis.com/cores",
+    "value": "1"
+  }, {
+    "key": "compute.googleapis.com/machine_spec",
+    "value": "custom-1-2048"
+  }, {
+    "key": "compute.googleapis.com/memory",
+    "value": "2048"
+  }],
+  "location": {
+    "location": "asia-southeast1",
+    "country": "SG",
+    "region": "asia-southeast1",
+    "zone": null
+  },
+  "export_time": "2023-12-19 08:30:19.351357 UTC",
+  "cost": "0.0",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "7200.0",
+    "unit": "seconds",
+    "amount_in_pricing_units": "2.0",
+    "pricing_unit": "hour"
+  },
+  "credits": [],
+  "invoice": {
+    "month": "202312",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "tags": [],
+  "cost_at_list": "0.0",
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "price": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01AEDA-88691D-0FBD5D",
+  "service": {
+    "id": "6F81-5844-456A",
+    "description": "Compute Engine"
+  },
+  "sku": {
+    "id": "6934-30E8-A65F",
+    "description": "Licensing Fee for Google Container Engine Node (CPU cost)"
+  },
+  "usage_start_time": "2023-12-18 19:00:00.000000 UTC",
+  "usage_end_time": "2023-12-18 20:00:00.000000 UTC",
+  "project": {
+    "id": "gip-nap",
+    "number": "716674960706",
+    "name": "gip-nap",
+    "labels": [],
+    "ancestry_numbers": "/156399356993/",
+    "ancestors": [{
+      "resource_name": "projects/716674960706",
+      "display_name": "gip-nap"
+    }, {
+      "resource_name": "organizations/156399356993",
+      "display_name": "mobgame.vn"
+    }]
+  },
+  "labels": [{
+    "key": "goog-gke-node",
+    "value": null
+  }, {
+    "key": "goog-k8s-cluster-location",
+    "value": "asia-southeast1"
+  }, {
+    "key": "goog-k8s-cluster-name",
+    "value": "dev-gip-cluster"
+  }, {
+    "key": "goog-k8s-node-pool-name",
+    "value": "worker-01"
+  }],
+  "system_labels": [{
+    "key": "compute.googleapis.com/cores",
+    "value": "2"
+  }, {
+    "key": "compute.googleapis.com/machine_spec",
+    "value": "e2-medium"
+  }, {
+    "key": "compute.googleapis.com/memory",
+    "value": "4096"
+  }],
+  "location": {
+    "location": "asia-southeast1",
+    "country": "SG",
+    "region": "asia-southeast1",
+    "zone": null
+  },
+  "export_time": "2023-12-19 05:07:48.162097 UTC",
+  "cost": "0.0",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "7938.0",
+    "unit": "seconds",
+    "amount_in_pricing_units": "2.205",
+    "pricing_unit": "hour"
+  },
+  "credits": [],
+  "invoice": {
+    "month": "202312",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "tags": [],
+  "cost_at_list": "0.0",
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "price": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01AEDA-88691D-0FBD5D",
+  "service": {
+    "id": "6F81-5844-456A",
+    "description": "Compute Engine"
+  },
+  "sku": {
+    "id": "C268-6D50-D598",
+    "description": "Licensing Fee for Google Container Engine Node (CPU cost)"
+  },
+  "usage_start_time": "2023-12-19 05:00:00.000000 UTC",
+  "usage_end_time": "2023-12-19 06:00:00.000000 UTC",
+  "project": {
+    "id": "gip-nap",
+    "number": "716674960706",
+    "name": "gip-nap",
+    "labels": [],
+    "ancestry_numbers": "/156399356993/",
+    "ancestors": [{
+      "resource_name": "projects/716674960706",
+      "display_name": "gip-nap"
+    }, {
+      "resource_name": "organizations/156399356993",
+      "display_name": "mobgame.vn"
+    }]
+  },
+  "labels": [{
+    "key": "goog-gke-node",
+    "value": null
+  }, {
+    "key": "goog-k8s-cluster-location",
+    "value": "asia-southeast1"
+  }, {
+    "key": "goog-k8s-cluster-name",
+    "value": "prod-gke-gip-nap"
+  }, {
+    "key": "goog-k8s-node-pool-name",
+    "value": "node-system"
+  }],
+  "system_labels": [{
+    "key": "compute.googleapis.com/cores",
+    "value": "1"
+  }, {
+    "key": "compute.googleapis.com/machine_spec",
+    "value": "custom-1-2048"
+  }, {
+    "key": "compute.googleapis.com/memory",
+    "value": "2048"
+  }],
+  "location": {
+    "location": "asia-southeast1",
+    "country": "SG",
+    "region": "asia-southeast1",
+    "zone": null
+  },
+  "export_time": "2023-12-19 12:17:20.985342 UTC",
+  "cost": "0.0",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "2502.0",
+    "unit": "seconds",
+    "amount_in_pricing_units": "0.695",
+    "pricing_unit": "hour"
+  },
+  "credits": [],
+  "invoice": {
+    "month": "202312",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "tags": [],
+  "cost_at_list": "0.0",
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "price": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01AEDA-88691D-0FBD5D",
+  "service": {
+    "id": "5490-F7B7-8DF6",
+    "description": "Cloud Logging"
+  },
+  "sku": {
+    "id": "143F-A1B0-E0BE",
+    "description": "Log Storage cost"
+  },
+  "usage_start_time": "2023-12-19 03:00:00.000000 UTC",
+  "usage_end_time": "2023-12-19 04:00:00.000000 UTC",
+  "project": {
+    "id": "gip-nap",
+    "number": "716674960706",
+    "name": "gip-nap",
+    "labels": [],
+    "ancestry_numbers": "/156399356993/",
+    "ancestors": [{
+      "resource_name": "projects/716674960706",
+      "display_name": "gip-nap"
+    }, {
+      "resource_name": "organizations/156399356993",
+      "display_name": "mobgame.vn"
+    }]
+  },
+  "labels": [{
+    "key": "goog-resource-type",
+    "value": "cloudsql_database"
+  }],
+  "system_labels": [],
+  "location": {
+    "location": "us",
+    "country": "US",
+    "region": null,
+    "zone": null
+  },
+  "export_time": "2023-12-19 10:00:49.693925 UTC",
+  "cost": "0.0",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "882896.0",
+    "unit": "bytes",
+    "amount_in_pricing_units": "0.00082226",
+    "pricing_unit": "gibibyte"
+  },
+  "credits": [],
+  "invoice": {
+    "month": "202312",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "tags": [],
+  "cost_at_list": "0.0",
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "price": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01AEDA-88691D-0FBD5D",
+  "service": {
+    "id": "6F81-5844-456A",
+    "description": "Compute Engine"
+  },
+  "sku": {
+    "id": "C60B-9B3C-B624",
+    "description": "Network Data Transfer In from Google Services from Singapore to Singapore"
+  },
+  "usage_start_time": "2023-12-18 23:00:00.000000 UTC",
+  "usage_end_time": "2023-12-19 00:00:00.000000 UTC",
+  "project": {
+    "id": "gip-nap",
+    "number": "716674960706",
+    "name": "gip-nap",
+    "labels": [],
+    "ancestry_numbers": "/156399356993/",
+    "ancestors": [{
+      "resource_name": "projects/716674960706",
+      "display_name": "gip-nap"
+    }, {
+      "resource_name": "organizations/156399356993",
+      "display_name": "mobgame.vn"
+    }]
+  },
+  "labels": [{
+    "key": "goog-gke-node",
+    "value": null
+  }, {
+    "key": "goog-k8s-cluster-location",
+    "value": "asia-southeast1"
+  }, {
+    "key": "goog-k8s-cluster-name",
+    "value": "prod-gke-gip-nap"
+  }, {
+    "key": "goog-k8s-node-pool-name",
+    "value": "web-spot-01"
+  }],
+  "system_labels": [],
+  "location": {
+    "location": "asia-southeast1",
+    "country": "SG",
+    "region": "asia-southeast1",
+    "zone": null
+  },
+  "export_time": "2023-12-19 10:41:06.929698 UTC",
+  "cost": "0.0",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "889375.0",
+    "unit": "bytes",
+    "amount_in_pricing_units": "0.000828295",
+    "pricing_unit": "gibibyte"
+  },
+  "credits": [],
+  "invoice": {
+    "month": "202312",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "tags": [],
+  "cost_at_list": "0.0",
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "price": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01AEDA-88691D-0FBD5D",
+  "service": {
+    "id": "6F81-5844-456A",
+    "description": "Compute Engine"
+  },
+  "sku": {
+    "id": "C60B-9B3C-B624",
+    "description": "Network Data Transfer In from Google Services from Singapore to Singapore"
+  },
+  "usage_start_time": "2023-12-19 00:00:00.000000 UTC",
+  "usage_end_time": "2023-12-19 01:00:00.000000 UTC",
+  "project": {
+    "id": "gip-nap",
+    "number": "716674960706",
+    "name": "gip-nap",
+    "labels": [],
+    "ancestry_numbers": "/156399356993/",
+    "ancestors": [{
+      "resource_name": "projects/716674960706",
+      "display_name": "gip-nap"
+    }, {
+      "resource_name": "organizations/156399356993",
+      "display_name": "mobgame.vn"
+    }]
+  },
+  "labels": [{
+    "key": "goog-gke-node",
+    "value": null
+  }, {
+    "key": "goog-k8s-cluster-location",
+    "value": "asia-southeast1"
+  }, {
+    "key": "goog-k8s-cluster-name",
+    "value": "prod-gke-gip-nap"
+  }, {
+    "key": "goog-k8s-node-pool-name",
+    "value": "node-system"
+  }],
+  "system_labels": [],
+  "location": {
+    "location": "asia-southeast1",
+    "country": "SG",
+    "region": "asia-southeast1",
+    "zone": null
+  },
+  "export_time": "2023-12-19 10:41:06.929698 UTC",
+  "cost": "0.0",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "1663615.0",
+    "unit": "bytes",
+    "amount_in_pricing_units": "0.001549362",
+    "pricing_unit": "gibibyte"
+  },
+  "credits": [],
+  "invoice": {
+    "month": "202312",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "tags": [],
+  "cost_at_list": "0.0",
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "price": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01AEDA-88691D-0FBD5D",
+  "service": {
+    "id": "6F81-5844-456A",
+    "description": "Compute Engine"
+  },
+  "sku": {
+    "id": "0B29-DA5B-5E84",
+    "description": "Network Data Transfer In via Carrier Peering Network - APAC Based"
+  },
+  "usage_start_time": "2023-12-19 00:00:00.000000 UTC",
+  "usage_end_time": "2023-12-19 01:00:00.000000 UTC",
+  "project": {
+    "id": "gip-nap",
+    "number": "716674960706",
+    "name": "gip-nap",
+    "labels": [],
+    "ancestry_numbers": "/156399356993/",
+    "ancestors": [{
+      "resource_name": "projects/716674960706",
+      "display_name": "gip-nap"
+    }, {
+      "resource_name": "organizations/156399356993",
+      "display_name": "mobgame.vn"
+    }]
+  },
+  "labels": [],
+  "system_labels": [],
+  "location": {
+    "location": "asia-southeast1",
+    "country": "SG",
+    "region": "asia-southeast1",
+    "zone": null
+  },
+  "export_time": "2023-12-19 08:30:19.351357 UTC",
+  "cost": "0.0",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "1317.0",
+    "unit": "bytes",
+    "amount_in_pricing_units": "1.227e-06",
+    "pricing_unit": "gibibyte"
+  },
+  "credits": [],
+  "invoice": {
+    "month": "202312",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "tags": [],
+  "cost_at_list": "0.0",
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "price": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01AEDA-88691D-0FBD5D",
+  "service": {
+    "id": "9662-B51E-5089",
+    "description": "Cloud SQL"
+  },
+  "sku": {
+    "id": "A7D3-CB24-4504",
+    "description": "Network Data Transfer to Google Services from Singapore to Singapore"
+  },
+  "usage_start_time": "2023-12-18 18:00:00.000000 UTC",
+  "usage_end_time": "2023-12-18 19:00:00.000000 UTC",
+  "project": {
+    "id": "gip-nap",
+    "number": "716674960706",
+    "name": "gip-nap",
+    "labels": [],
+    "ancestry_numbers": "/156399356993/",
+    "ancestors": [{
+      "resource_name": "projects/716674960706",
+      "display_name": "gip-nap"
+    }, {
+      "resource_name": "organizations/156399356993",
+      "display_name": "mobgame.vn"
+    }]
+  },
+  "labels": [{
+    "key": "cloud_sql_bill_to",
+    "value": "716674960706"
+  }],
+  "system_labels": [],
+  "location": {
+    "location": "asia-southeast1",
+    "country": "SG",
+    "region": "asia-southeast1",
+    "zone": null
+  },
+  "export_time": "2023-12-19 03:49:50.560042 UTC",
+  "cost": "0.0",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "822187.0",
+    "unit": "bytes",
+    "amount_in_pricing_units": "0.000765721",
+    "pricing_unit": "gibibyte"
+  },
+  "credits": [],
+  "invoice": {
+    "month": "202312",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "tags": [],
+  "cost_at_list": "0.0",
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "price": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01AEDA-88691D-0FBD5D",
+  "service": {
+    "id": "6F81-5844-456A",
+    "description": "Compute Engine"
+  },
+  "sku": {
+    "id": "761A-BA86-D467",
+    "description": "Network HTTP Load Balancing Data Transfer In from Load Balancer"
+  },
+  "usage_start_time": "2023-12-18 19:00:00.000000 UTC",
+  "usage_end_time": "2023-12-18 20:00:00.000000 UTC",
+  "project": {
+    "id": "gip-nap",
+    "number": "716674960706",
+    "name": "gip-nap",
+    "labels": [],
+    "ancestry_numbers": "/156399356993/",
+    "ancestors": [{
+      "resource_name": "projects/716674960706",
+      "display_name": "gip-nap"
+    }, {
+      "resource_name": "organizations/156399356993",
+      "display_name": "mobgame.vn"
+    }]
+  },
+  "labels": [{
+    "key": "goog-gke-node",
+    "value": null
+  }, {
+    "key": "goog-k8s-cluster-location",
+    "value": "asia-southeast1"
+  }, {
+    "key": "goog-k8s-cluster-name",
+    "value": "prod-gke-gip-nap"
+  }, {
+    "key": "goog-k8s-node-pool-name",
+    "value": "web-01"
+  }],
+  "system_labels": [],
+  "location": {
+    "location": "asia-southeast1",
+    "country": "SG",
+    "region": "asia-southeast1",
+    "zone": null
+  },
+  "export_time": "2023-12-19 08:30:19.351357 UTC",
+  "cost": "0.0",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "409915.0",
+    "unit": "bytes",
+    "amount_in_pricing_units": "0.000381763",
+    "pricing_unit": "gibibyte"
+  },
+  "credits": [],
+  "invoice": {
+    "month": "202312",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "tags": [],
+  "cost_at_list": "0.0",
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "price": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01AEDA-88691D-0FBD5D",
+  "service": {
+    "id": "6F81-5844-456A",
+    "description": "Compute Engine"
+  },
+  "sku": {
+    "id": "6C67-1253-BB04",
+    "description": "Network HTTP Load Balancing Data Transfer Out to Load Balancer"
+  },
+  "usage_start_time": "2023-12-19 15:00:00.000000 UTC",
+  "usage_end_time": "2023-12-19 16:00:00.000000 UTC",
+  "project": {
+    "id": "gip-nap",
+    "number": "716674960706",
+    "name": "gip-nap",
+    "labels": [],
+    "ancestry_numbers": "/156399356993/",
+    "ancestors": [{
+      "resource_name": "projects/716674960706",
+      "display_name": "gip-nap"
+    }, {
+      "resource_name": "organizations/156399356993",
+      "display_name": "mobgame.vn"
+    }]
+  },
+  "labels": [{
+    "key": "goog-gke-node",
+    "value": null
+  }, {
+    "key": "goog-k8s-cluster-location",
+    "value": "asia-southeast1"
+  }, {
+    "key": "goog-k8s-cluster-name",
+    "value": "dev-gip-cluster"
+  }, {
+    "key": "goog-k8s-node-pool-name",
+    "value": "system-pool"
+  }],
+  "system_labels": [],
+  "location": {
+    "location": "asia-southeast1",
+    "country": "SG",
+    "region": "asia-southeast1",
+    "zone": null
+  },
+  "export_time": "2023-12-19 23:36:45.162126 UTC",
+  "cost": "0.0",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "143537.0",
+    "unit": "bytes",
+    "amount_in_pricing_units": "0.000133679",
+    "pricing_unit": "gibibyte"
+  },
+  "credits": [],
+  "invoice": {
+    "month": "202312",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "tags": [],
+  "cost_at_list": "0.0",
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "price": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01AEDA-88691D-0FBD5D",
+  "service": {
+    "id": "E505-1604-58F8",
+    "description": "Networking"
+  },
+  "sku": {
+    "id": "9BF8-CD36-F9B8",
+    "description": "Network Intelligence Center Network Analyzer Resource Hours"
+  },
+  "usage_start_time": "2023-12-19 12:00:00.000000 UTC",
+  "usage_end_time": "2023-12-19 13:00:00.000000 UTC",
+  "project": {
+    "id": "gip-nap",
+    "number": "716674960706",
+    "name": "gip-nap",
+    "labels": [],
+    "ancestry_numbers": "/156399356993/",
+    "ancestors": [{
+      "resource_name": "projects/716674960706",
+      "display_name": "gip-nap"
+    }, {
+      "resource_name": "organizations/156399356993",
+      "display_name": "mobgame.vn"
+    }]
+  },
+  "labels": [],
+  "system_labels": [],
+  "location": {
+    "location": "asia-east1",
+    "country": "TW",
+    "region": "asia-east1",
+    "zone": null
+  },
+  "export_time": "2023-12-19 21:48:28.609683 UTC",
+  "cost": "0.00198",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "2.0",
+    "unit": "requests",
+    "amount_in_pricing_units": "2.0",
+    "pricing_unit": "count"
+  },
+  "credits": [{
+    "name": "100% discount for Network Intelligence Center Network Analyzer until billing comes into effect on October 1, 2023 (billing activated only if you have subscribed to the Network Analyzer SKU)",
+    "amount": "-0.00198",
+    "full_name": null,
+    "id": "100% discount for Network Intelligence Center Network Analyzer until billing comes into effect on October 1, 2023 (billing activated only if you have subscribed to the Network Analyzer SKU)",
+    "type": "DISCOUNT"
+  }],
+  "invoice": {
+    "month": "202312",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "tags": [],
+  "cost_at_list": "0.0022",
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "price": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01AEDA-88691D-0FBD5D",
+  "service": {
+    "id": "6F81-5844-456A",
+    "description": "Compute Engine"
+  },
+  "sku": {
+    "id": "81FA-4317-7266",
+    "description": "Network Inter Region Data Transfer In from Virginia to Singapore"
+  },
+  "usage_start_time": "2023-12-18 23:00:00.000000 UTC",
+  "usage_end_time": "2023-12-19 00:00:00.000000 UTC",
+  "project": {
+    "id": "gip-nap",
+    "number": "716674960706",
+    "name": "gip-nap",
+    "labels": [],
+    "ancestry_numbers": "/156399356993/",
+    "ancestors": [{
+      "resource_name": "projects/716674960706",
+      "display_name": "gip-nap"
+    }, {
+      "resource_name": "organizations/156399356993",
+      "display_name": "mobgame.vn"
+    }]
+  },
+  "labels": [],
+  "system_labels": [],
+  "location": {
+    "location": "asia-southeast1",
+    "country": "SG",
+    "region": "asia-southeast1",
+    "zone": null
+  },
+  "export_time": "2023-12-19 08:30:19.351357 UTC",
+  "cost": "0.0",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "12.0",
+    "unit": "bytes",
+    "amount_in_pricing_units": "1.1e-08",
+    "pricing_unit": "gibibyte"
+  },
+  "credits": [],
+  "invoice": {
+    "month": "202312",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "tags": [],
+  "cost_at_list": "0.0",
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "price": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01AEDA-88691D-0FBD5D",
+  "service": {
+    "id": "6F81-5844-456A",
+    "description": "Compute Engine"
+  },
+  "sku": {
+    "id": "6540-B94F-D381",
+    "description": "Network Inter Region Data Transfer Out from APAC to Singapore"
+  },
+  "usage_start_time": "2023-12-19 04:00:00.000000 UTC",
+  "usage_end_time": "2023-12-19 05:00:00.000000 UTC",
+  "project": {
+    "id": "gip-nap",
+    "number": "716674960706",
+    "name": "gip-nap",
+    "labels": [],
+    "ancestry_numbers": "/156399356993/",
+    "ancestors": [{
+      "resource_name": "projects/716674960706",
+      "display_name": "gip-nap"
+    }, {
+      "resource_name": "organizations/156399356993",
+      "display_name": "mobgame.vn"
+    }]
+  },
+  "labels": [],
+  "system_labels": [],
+  "location": {
+    "location": "asia-east1",
+    "country": "TW",
+    "region": "asia-east1",
+    "zone": null
+  },
+  "export_time": "2023-12-19 16:24:50.065841 UTC",
+  "cost": "0.017288",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "412537480.0",
+    "unit": "bytes",
+    "amount_in_pricing_units": "0.384205468",
+    "pricing_unit": "gibibyte"
+  },
+  "credits": [{
+    "name": "Discount on Total Spend",
+    "amount": "-0.001729",
+    "full_name": null,
+    "id": "Discount on Total Spend",
+    "type": "RESELLER_MARGIN"
+  }],
+  "invoice": {
+    "month": "202312",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "tags": [],
+  "cost_at_list": "0.019209",
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "price": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01AEDA-88691D-0FBD5D",
+  "service": {
+    "id": "6F81-5844-456A",
+    "description": "Compute Engine"
+  },
+  "sku": {
+    "id": "72F8-90AD-8752",
+    "description": "Network Inter Region Data Transfer Out from Singapore to Americas"
+  },
+  "usage_start_time": "2023-12-19 03:00:00.000000 UTC",
+  "usage_end_time": "2023-12-19 04:00:00.000000 UTC",
+  "project": {
+    "id": "gip-nap",
+    "number": "716674960706",
+    "name": "gip-nap",
+    "labels": [],
+    "ancestry_numbers": "/156399356993/",
+    "ancestors": [{
+      "resource_name": "projects/716674960706",
+      "display_name": "gip-nap"
+    }, {
+      "resource_name": "organizations/156399356993",
+      "display_name": "mobgame.vn"
+    }]
+  },
+  "labels": [],
+  "system_labels": [],
+  "location": {
+    "location": "asia-southeast1",
+    "country": "SG",
+    "region": "asia-southeast1",
+    "zone": null
+  },
+  "export_time": "2023-12-19 10:00:49.693925 UTC",
+  "cost": "0.0",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "252.0",
+    "unit": "bytes",
+    "amount_in_pricing_units": "2.35e-07",
+    "pricing_unit": "gibibyte"
+  },
+  "credits": [],
+  "invoice": {
+    "month": "202312",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "tags": [],
+  "cost_at_list": "0.0",
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "price": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01AEDA-88691D-0FBD5D",
+  "service": {
+    "id": "6F81-5844-456A",
+    "description": "Compute Engine"
+  },
+  "sku": {
+    "id": "ED97-5D52-D3CC",
+    "description": "Network Internet Data Transfer In from Australia to Singapore"
+  },
+  "usage_start_time": "2023-12-18 11:00:00.000000 UTC",
+  "usage_end_time": "2023-12-18 12:00:00.000000 UTC",
+  "project": {
+    "id": "gip-nap",
+    "number": "716674960706",
+    "name": "gip-nap",
+    "labels": [],
+    "ancestry_numbers": "/156399356993/",
+    "ancestors": [{
+      "resource_name": "projects/716674960706",
+      "display_name": "gip-nap"
+    }, {
+      "resource_name": "organizations/156399356993",
+      "display_name": "mobgame.vn"
+    }]
+  },
+  "labels": [],
+  "system_labels": [],
+  "location": {
+    "location": "asia-southeast1",
+    "country": "SG",
+    "region": "asia-southeast1",
+    "zone": null
+  },
+  "export_time": "2023-12-19 00:53:05.873658 UTC",
+  "cost": "0.0",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "42.0",
+    "unit": "bytes",
+    "amount_in_pricing_units": "3.9e-08",
+    "pricing_unit": "gibibyte"
+  },
+  "credits": [],
+  "invoice": {
+    "month": "202312",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "tags": [],
+  "cost_at_list": "0.0",
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "price": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01AEDA-88691D-0FBD5D",
+  "service": {
+    "id": "6F81-5844-456A",
+    "description": "Compute Engine"
+  },
+  "sku": {
+    "id": "36ED-8A88-4748",
+    "description": "Network Internet Data Transfer Out from Singapore to APAC"
+  },
+  "usage_start_time": "2023-12-18 19:00:00.000000 UTC",
+  "usage_end_time": "2023-12-18 20:00:00.000000 UTC",
+  "project": {
+    "id": "gip-nap",
+    "number": "716674960706",
+    "name": "gip-nap",
+    "labels": [],
+    "ancestry_numbers": "/156399356993/",
+    "ancestors": [{
+      "resource_name": "projects/716674960706",
+      "display_name": "gip-nap"
+    }, {
+      "resource_name": "organizations/156399356993",
+      "display_name": "mobgame.vn"
+    }]
+  },
+  "labels": [{
+    "key": "goog-gke-node",
+    "value": null
+  }, {
+    "key": "goog-k8s-cluster-location",
+    "value": "asia-southeast1"
+  }, {
+    "key": "goog-k8s-cluster-name",
+    "value": "prod-gke-gip-nap"
+  }, {
+    "key": "goog-k8s-node-pool-name",
+    "value": "web-01"
+  }],
+  "system_labels": [],
+  "location": {
+    "location": "asia-southeast1",
+    "country": "SG",
+    "region": "asia-southeast1",
+    "zone": null
+  },
+  "export_time": "2023-12-19 08:30:19.351357 UTC",
+  "cost": "3e-06",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "36494.0",
+    "unit": "bytes",
+    "amount_in_pricing_units": "3.3988e-05",
+    "pricing_unit": "gibibyte"
+  },
+  "credits": [],
+  "invoice": {
+    "month": "202312",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "tags": [],
+  "cost_at_list": "3e-06",
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "price": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01AEDA-88691D-0FBD5D",
+  "service": {
+    "id": "6F81-5844-456A",
+    "description": "Compute Engine"
+  },
+  "sku": {
+    "id": "9C76-A3FB-C60A",
+    "description": "Network Intra Zone Data Transfer In"
+  },
+  "usage_start_time": "2023-12-18 23:00:00.000000 UTC",
+  "usage_end_time": "2023-12-19 00:00:00.000000 UTC",
+  "project": {
+    "id": "gip-nap",
+    "number": "716674960706",
+    "name": "gip-nap",
+    "labels": [],
+    "ancestry_numbers": "/156399356993/",
+    "ancestors": [{
+      "resource_name": "projects/716674960706",
+      "display_name": "gip-nap"
+    }, {
+      "resource_name": "organizations/156399356993",
+      "display_name": "mobgame.vn"
+    }]
+  },
+  "labels": [],
+  "system_labels": [],
+  "location": {
+    "location": "asia-southeast1",
+    "country": "SG",
+    "region": "asia-southeast1",
+    "zone": null
+  },
+  "export_time": "2023-12-19 08:30:19.351357 UTC",
+  "cost": "0.0",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "5254084.0",
+    "unit": "bytes",
+    "amount_in_pricing_units": "0.004893247",
+    "pricing_unit": "gibibyte"
+  },
+  "credits": [],
+  "invoice": {
+    "month": "202312",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "tags": [],
+  "cost_at_list": "0.0",
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "price": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01AEDA-88691D-0FBD5D",
+  "service": {
+    "id": "6F81-5844-456A",
+    "description": "Compute Engine"
+  },
+  "sku": {
+    "id": "14F9-7705-2FD4",
+    "description": "Network Intra Zone Data Transfer Out"
+  },
+  "usage_start_time": "2023-12-19 11:00:00.000000 UTC",
+  "usage_end_time": "2023-12-19 12:00:00.000000 UTC",
+  "project": {
+    "id": "gip-nap",
+    "number": "716674960706",
+    "name": "gip-nap",
+    "labels": [],
+    "ancestry_numbers": "/156399356993/",
+    "ancestors": [{
+      "resource_name": "projects/716674960706",
+      "display_name": "gip-nap"
+    }, {
+      "resource_name": "organizations/156399356993",
+      "display_name": "mobgame.vn"
+    }]
+  },
+  "labels": [{
+    "key": "goog-gke-node",
+    "value": null
+  }, {
+    "key": "goog-k8s-cluster-location",
+    "value": "asia-southeast1"
+  }, {
+    "key": "goog-k8s-cluster-name",
+    "value": "prod-gke-gip-nap"
+  }, {
+    "key": "goog-k8s-node-pool-name",
+    "value": "worker"
+  }],
+  "system_labels": [],
+  "location": {
+    "location": "asia-southeast1",
+    "country": "SG",
+    "region": "asia-southeast1",
+    "zone": null
+  },
+  "export_time": "2023-12-19 21:48:28.609683 UTC",
+  "cost": "0.0",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "2861855.0",
+    "unit": "bytes",
+    "amount_in_pricing_units": "0.00266531",
+    "pricing_unit": "gibibyte"
+  },
+  "credits": [],
+  "invoice": {
+    "month": "202312",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "tags": [],
+  "cost_at_list": "0.0",
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "price": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01AEDA-88691D-0FBD5D",
+  "service": {
+    "id": "CCD8-9BF1-090E",
+    "description": "Kubernetes Engine"
+  },
+  "sku": {
+    "id": "B561-BFBD-1264",
+    "description": "Regional Kubernetes Clusters"
+  },
+  "usage_start_time": "2023-12-19 04:00:00.000000 UTC",
+  "usage_end_time": "2023-12-19 05:00:00.000000 UTC",
+  "project": {
+    "id": "gip-nap",
+    "number": "716674960706",
+    "name": "gip-nap",
+    "labels": [],
+    "ancestry_numbers": "/156399356993/",
+    "ancestors": [{
+      "resource_name": "projects/716674960706",
+      "display_name": "gip-nap"
+    }, {
+      "resource_name": "organizations/156399356993",
+      "display_name": "mobgame.vn"
+    }]
+  },
+  "labels": [{
+    "key": "goog-k8s-cluster-location",
+    "value": "asia-southeast1"
+  }, {
+    "key": "goog-k8s-cluster-name",
+    "value": "prod-gke-gip-nap"
+  }],
+  "system_labels": [],
+  "location": {
+    "location": "asia-southeast1",
+    "country": "SG",
+    "region": "asia-southeast1",
+    "zone": null
+  },
+  "export_time": "2023-12-19 12:17:20.985342 UTC",
+  "cost": "0.070624",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "2825.0",
+    "unit": "seconds",
+    "amount_in_pricing_units": "0.784722222",
+    "pricing_unit": "hour"
+  },
+  "credits": [{
+    "name": "Discount on Total Spend",
+    "amount": "-0.007082",
+    "full_name": null,
+    "id": "Discount on Total Spend",
+    "type": "RESELLER_MARGIN"
+  }],
+  "invoice": {
+    "month": "202312",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "tags": [],
+  "cost_at_list": "0.078472",
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "price": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01ADB9-9F4AA8-AC15D8",
+  "service": {
+    "id": "6F81-5844-456A",
+    "description": "Compute Engine"
+  },
+  "sku": {
+    "id": "CB4B-B875-93B4",
+    "description": "E2 Instance Ram running in Japan"
+  },
+  "usage_start_time": "2023-12-18 00:00:00.000000 UTC",
+  "usage_end_time": "2023-12-18 01:00:00.000000 UTC",
+  "project": {
+    "id": "hb2-omr",
+    "number": "169101813950",
+    "name": "hb2-omr",
+    "labels": [{
+      "key": "managedby",
+      "value": "infra"
+    }, {
+      "key": "namespace",
+      "value": "hbl_projects"
+    }],
+    "ancestry_numbers": "/950521428405/",
+    "ancestors": [{
+      "resource_name": "projects/169101813950",
+      "display_name": "hb2-omr"
+    }, {
+      "resource_name": "organizations/950521428405",
+      "display_name": "hblab.vn"
+    }]
+  },
+  "labels": [],
+  "system_labels": [{
+    "key": "compute.googleapis.com/cores",
+    "value": "2"
+  }, {
+    "key": "compute.googleapis.com/machine_spec",
+    "value": "e2-micro"
+  }, {
+    "key": "compute.googleapis.com/memory",
+    "value": "1024"
+  }],
+  "location": {
+    "location": "asia-northeast1",
+    "country": "JP",
+    "region": "asia-northeast1",
+    "zone": null
+  },
+  "export_time": "2023-12-19 15:00:19.424664 UTC",
+  "cost": "0.0",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "0.0",
+    "unit": "byte-seconds",
+    "amount_in_pricing_units": "0.0",
+    "pricing_unit": "gibibyte hour"
+  },
+  "credits": [{
+    "name": "Discount on Total Spend",
+    "amount": "1e-06",
+    "full_name": null,
+    "id": "Discount on Total Spend",
+    "type": "RESELLER_MARGIN"
+  }],
+  "invoice": {
+    "month": "202312",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "tags": [],
+  "cost_at_list": "0.0",
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "price": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01ADB9-9F4AA8-AC15D8",
+  "service": {
+    "id": "6F81-5844-456A",
+    "description": "Compute Engine"
+  },
+  "sku": {
+    "id": "C054-7F72-A02E",
+    "description": "External IP Charge on a Standard VM"
+  },
+  "usage_start_time": "2023-12-19 13:00:00.000000 UTC",
+  "usage_end_time": "2023-12-19 14:00:00.000000 UTC",
+  "project": {
+    "id": "hb2-omr",
+    "number": "169101813950",
+    "name": "hb2-omr",
+    "labels": [{
+      "key": "managedby",
+      "value": "infra"
+    }, {
+      "key": "namespace",
+      "value": "hbl_projects"
+    }],
+    "ancestry_numbers": "/950521428405/",
+    "ancestors": [{
+      "resource_name": "projects/169101813950",
+      "display_name": "hb2-omr"
+    }, {
+      "resource_name": "organizations/950521428405",
+      "display_name": "hblab.vn"
+    }]
+  },
+  "labels": [],
+  "system_labels": [],
+  "location": {
+    "location": "asia-northeast1",
+    "country": "JP",
+    "region": "asia-northeast1",
+    "zone": null
+  },
+  "export_time": "2023-12-19 22:18:52.740475 UTC",
+  "cost": "0.003999",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "3600.0",
+    "unit": "seconds",
+    "amount_in_pricing_units": "1.0",
+    "pricing_unit": "hour"
+  },
+  "credits": [{
+    "name": "Discount on Total Spend",
+    "amount": "-0.00048",
+    "full_name": null,
+    "id": "Discount on Total Spend",
+    "type": "RESELLER_MARGIN"
+  }],
+  "invoice": {
+    "month": "202312",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "tags": [],
+  "cost_at_list": "0.003999",
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "price": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01ADB9-9F4AA8-AC15D8",
+  "service": {
+    "id": "CCD8-9BF1-090E",
+    "description": "Kubernetes Engine"
+  },
+  "sku": {
+    "id": "559B-F81B-F33F",
+    "description": "Autopilot Pod Ephemeral Storage Requests (asia-northeast2)"
+  },
+  "usage_start_time": "2023-12-18 21:00:00.000000 UTC",
+  "usage_end_time": "2023-12-18 22:00:00.000000 UTC",
+  "project": {
+    "id": "hbl-shine",
+    "number": "170537168452",
+    "name": "hbl-shine",
+    "labels": [],
+    "ancestry_numbers": "/950521428405/465460949738/",
+    "ancestors": [{
+      "resource_name": "projects/170537168452",
+      "display_name": "hbl-shine"
+    }, {
+      "resource_name": "folders/465460949738",
+      "display_name": "HB1"
+    }, {
+      "resource_name": "organizations/950521428405",
+      "display_name": "hblab.vn"
+    }]
+  },
+  "labels": [{
+    "key": "goog-k8s-cluster-location",
+    "value": "asia-northeast2"
+  }, {
+    "key": "goog-k8s-cluster-name",
+    "value": "shinise-app"
+  }, {
+    "key": "goog-k8s-namespace",
+    "value": "mqs"
+  }, {
+    "key": "k8s-label/app",
+    "value": "rabbitmq"
+  }, {
+    "key": "k8s-label/controller-revision-hash",
+    "value": "rabbitmq-sts-5dc99c8b54"
+  }, {
+    "key": "k8s-label/statefulset.kubernetes.io/pod-name",
+    "value": "rabbitmq-sts-1"
+  }, {
+    "key": "k8s-namespace",
+    "value": "mqs"
+  }],
+  "system_labels": [],
+  "location": {
+    "location": "asia-northeast2",
+    "country": "JP",
+    "region": "asia-northeast2",
+    "zone": null
+  },
+  "export_time": "2023-12-19 03:49:50.560042 UTC",
+  "cost": "2e-05",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "1099511627776.0",
+    "unit": "byte-seconds",
+    "amount_in_pricing_units": "0.284444444",
+    "pricing_unit": "gibibyte hour"
+  },
+  "credits": [{
+    "name": "Discount on Total Spend",
+    "amount": "-2e-06",
+    "full_name": null,
+    "id": "Discount on Total Spend",
+    "type": "RESELLER_MARGIN"
+  }],
+  "invoice": {
+    "month": "202312",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "tags": [],
+  "cost_at_list": "2e-05",
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "price": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01ADB9-9F4AA8-AC15D8",
+  "service": {
+    "id": "CCD8-9BF1-090E",
+    "description": "Kubernetes Engine"
+  },
+  "sku": {
+    "id": "25E2-1654-1067",
+    "description": "Autopilot Pod Memory Requests (asia-northeast2)"
+  },
+  "usage_start_time": "2023-12-19 07:00:00.000000 UTC",
+  "usage_end_time": "2023-12-19 08:00:00.000000 UTC",
+  "project": {
+    "id": "hbl-shine",
+    "number": "170537168452",
+    "name": "hbl-shine",
+    "labels": [],
+    "ancestry_numbers": "/950521428405/465460949738/",
+    "ancestors": [{
+      "resource_name": "projects/170537168452",
+      "display_name": "hbl-shine"
+    }, {
+      "resource_name": "folders/465460949738",
+      "display_name": "HB1"
+    }, {
+      "resource_name": "organizations/950521428405",
+      "display_name": "hblab.vn"
+    }]
+  },
+  "labels": [{
+    "key": "goog-k8s-cluster-location",
+    "value": "asia-northeast2"
+  }, {
+    "key": "goog-k8s-cluster-name",
+    "value": "shinise-app"
+  }, {
+    "key": "goog-k8s-namespace",
+    "value": "mqs"
+  }, {
+    "key": "k8s-label/app",
+    "value": "rabbitmq"
+  }, {
+    "key": "k8s-label/controller-revision-hash",
+    "value": "rabbitmq-sts-5dc99c8b54"
+  }, {
+    "key": "k8s-label/statefulset.kubernetes.io/pod-name",
+    "value": "rabbitmq-sts-0"
+  }, {
+    "key": "k8s-namespace",
+    "value": "mqs"
+  }],
+  "system_labels": [],
+  "location": {
+    "location": "asia-northeast2",
+    "country": "JP",
+    "region": "asia-northeast2",
+    "zone": null
+  },
+  "export_time": "2023-12-19 15:00:19.424664 UTC",
+  "cost": "0.00542",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "3313567268864.0",
+    "unit": "byte-seconds",
+    "amount_in_pricing_units": "0.857222222",
+    "pricing_unit": "gibibyte hour"
+  },
+  "credits": [{
+    "name": "Discount on Total Spend",
+    "amount": "-0.000651",
+    "full_name": null,
+    "id": "Discount on Total Spend",
+    "type": "RESELLER_MARGIN"
+  }],
+  "invoice": {
+    "month": "202312",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "tags": [],
+  "cost_at_list": "0.00542",
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "price": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01ADB9-9F4AA8-AC15D8",
+  "service": {
+    "id": "CCD8-9BF1-090E",
+    "description": "Kubernetes Engine"
+  },
+  "sku": {
+    "id": "25E2-1654-1067",
+    "description": "Autopilot Pod Memory Requests (asia-northeast2)"
+  },
+  "usage_start_time": "2023-12-19 01:00:00.000000 UTC",
+  "usage_end_time": "2023-12-19 02:00:00.000000 UTC",
+  "project": {
+    "id": "hbl-shine",
+    "number": "170537168452",
+    "name": "hbl-shine",
+    "labels": [],
+    "ancestry_numbers": "/950521428405/465460949738/",
+    "ancestors": [{
+      "resource_name": "projects/170537168452",
+      "display_name": "hbl-shine"
+    }, {
+      "resource_name": "folders/465460949738",
+      "display_name": "HB1"
+    }, {
+      "resource_name": "organizations/950521428405",
+      "display_name": "hblab.vn"
+    }]
+  },
+  "labels": [{
+    "key": "goog-k8s-cluster-location",
+    "value": "asia-northeast2"
+  }, {
+    "key": "goog-k8s-cluster-name",
+    "value": "shinise-app"
+  }, {
+    "key": "goog-k8s-namespace",
+    "value": "db"
+  }, {
+    "key": "k8s-label/application",
+    "value": "shinise-db"
+  }, {
+    "key": "k8s-label/cluster-name",
+    "value": "shinise-db-cluster"
+  }, {
+    "key": "k8s-label/controller-revision-hash",
+    "value": "shinise-db-stateful-5c7ffdccbb"
+  }, {
+    "key": "k8s-label/statefulset.kubernetes.io/pod-name",
+    "value": "shinise-db-stateful-1"
+  }, {
+    "key": "k8s-namespace",
+    "value": "db"
+  }],
+  "system_labels": [],
+  "location": {
+    "location": "asia-northeast2",
+    "country": "JP",
+    "region": "asia-northeast2",
+    "zone": null
+  },
+  "export_time": "2023-12-19 08:30:19.351357 UTC",
+  "cost": "0.001377",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "841813590016.0",
+    "unit": "byte-seconds",
+    "amount_in_pricing_units": "0.217777778",
+    "pricing_unit": "gibibyte hour"
+  },
+  "credits": [{
+    "name": "Discount on Total Spend",
+    "amount": "-0.000165",
+    "full_name": null,
+    "id": "Discount on Total Spend",
+    "type": "RESELLER_MARGIN"
+  }],
+  "invoice": {
+    "month": "202312",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "tags": [],
+  "cost_at_list": "0.001377",
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "price": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01ADB9-9F4AA8-AC15D8",
+  "service": {
+    "id": "CCD8-9BF1-090E",
+    "description": "Kubernetes Engine"
+  },
+  "sku": {
+    "id": "A985-7642-0C8A",
+    "description": "Autopilot Pod mCPU Requests (asia-northeast2)"
+  },
+  "usage_start_time": "2023-12-19 10:00:00.000000 UTC",
+  "usage_end_time": "2023-12-19 11:00:00.000000 UTC",
+  "project": {
+    "id": "hbl-shine",
+    "number": "170537168452",
+    "name": "hbl-shine",
+    "labels": [],
+    "ancestry_numbers": "/950521428405/465460949738/",
+    "ancestors": [{
+      "resource_name": "projects/170537168452",
+      "display_name": "hbl-shine"
+    }, {
+      "resource_name": "folders/465460949738",
+      "display_name": "HB1"
+    }, {
+      "resource_name": "organizations/950521428405",
+      "display_name": "hblab.vn"
+    }]
+  },
+  "labels": [{
+    "key": "goog-k8s-cluster-location",
+    "value": "asia-northeast2"
+  }, {
+    "key": "goog-k8s-cluster-name",
+    "value": "shinise-app"
+  }, {
+    "key": "goog-k8s-namespace",
+    "value": "db"
+  }, {
+    "key": "k8s-label/application",
+    "value": "shinise-db"
+  }, {
+    "key": "k8s-label/cluster-name",
+    "value": "shinise-db-cluster"
+  }, {
+    "key": "k8s-label/controller-revision-hash",
+    "value": "shinise-db-stateful-5c7ffdccbb"
+  }, {
+    "key": "k8s-label/statefulset.kubernetes.io/pod-name",
+    "value": "shinise-db-stateful-1"
+  }, {
+    "key": "k8s-namespace",
+    "value": "db"
+  }],
+  "system_labels": [],
+  "location": {
+    "location": "asia-northeast2",
+    "country": "JP",
+    "region": "asia-northeast2",
+    "zone": null
+  },
+  "export_time": "2023-12-19 21:48:28.609683 UTC",
+  "cost": "0.0",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "0.0",
+    "unit": "seconds",
+    "amount_in_pricing_units": "0.0",
+    "pricing_unit": "hour"
+  },
+  "credits": [{
+    "name": "Discount on Total Spend",
+    "amount": "0.0",
+    "full_name": null,
+    "id": "Discount on Total Spend",
+    "type": "RESELLER_MARGIN"
+  }],
+  "invoice": {
+    "month": "202312",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "tags": [],
+  "cost_at_list": "0.0",
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "price": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01ADB9-9F4AA8-AC15D8",
+  "service": {
+    "id": "CCD8-9BF1-090E",
+    "description": "Kubernetes Engine"
+  },
+  "sku": {
+    "id": "A985-7642-0C8A",
+    "description": "Autopilot Pod mCPU Requests (asia-northeast2)"
+  },
+  "usage_start_time": "2023-12-18 19:00:00.000000 UTC",
+  "usage_end_time": "2023-12-18 20:00:00.000000 UTC",
+  "project": {
+    "id": "hbl-shine",
+    "number": "170537168452",
+    "name": "hbl-shine",
+    "labels": [],
+    "ancestry_numbers": "/950521428405/465460949738/",
+    "ancestors": [{
+      "resource_name": "projects/170537168452",
+      "display_name": "hbl-shine"
+    }, {
+      "resource_name": "folders/465460949738",
+      "display_name": "HB1"
+    }, {
+      "resource_name": "organizations/950521428405",
+      "display_name": "hblab.vn"
+    }]
+  },
+  "labels": [{
+    "key": "goog-k8s-cluster-location",
+    "value": "asia-northeast2"
+  }, {
+    "key": "goog-k8s-cluster-name",
+    "value": "shinise-app"
+  }, {
+    "key": "goog-k8s-namespace",
+    "value": "consumer"
+  }, {
+    "key": "k8s-label/app",
+    "value": "shinise-consumer"
+  }, {
+    "key": "k8s-label/pod-template-hash",
+    "value": "569fb976c6"
+  }, {
+    "key": "k8s-namespace",
+    "value": "consumer"
+  }],
+  "system_labels": [],
+  "location": {
+    "location": "asia-northeast2",
+    "country": "JP",
+    "region": "asia-northeast2",
+    "zone": null
+  },
+  "export_time": "2023-12-19 03:49:50.560042 UTC",
+  "cost": "0.013807",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "870500.0",
+    "unit": "seconds",
+    "amount_in_pricing_units": "241.805555556",
+    "pricing_unit": "hour"
+  },
+  "credits": [{
+    "name": "Discount on Total Spend",
+    "amount": "-0.001657",
+    "full_name": null,
+    "id": "Discount on Total Spend",
+    "type": "RESELLER_MARGIN"
+  }],
+  "invoice": {
+    "month": "202312",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "tags": [],
+  "cost_at_list": "0.013807",
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "price": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01ADB9-9F4AA8-AC15D8",
+  "service": {
+    "id": "6F81-5844-456A",
+    "description": "Compute Engine"
+  },
+  "sku": {
+    "id": "FA27-F4A0-3EE3",
+    "description": "Licensing Fee for Container-Optimized OS from Google (CPU cost)"
+  },
+  "usage_start_time": "2023-12-19 01:00:00.000000 UTC",
+  "usage_end_time": "2023-12-19 02:00:00.000000 UTC",
+  "project": {
+    "id": "hbl-shine",
+    "number": "170537168452",
+    "name": "hbl-shine",
+    "labels": [],
+    "ancestry_numbers": "/950521428405/465460949738/",
+    "ancestors": [{
+      "resource_name": "projects/170537168452",
+      "display_name": "hbl-shine"
+    }, {
+      "resource_name": "folders/465460949738",
+      "display_name": "HB1"
+    }, {
+      "resource_name": "organizations/950521428405",
+      "display_name": "hblab.vn"
+    }]
+  },
+  "labels": [{
+    "key": "goog-gke-node",
+    "value": null
+  }, {
+    "key": "goog-k8s-cluster-location",
+    "value": "asia-northeast2"
+  }, {
+    "key": "goog-k8s-cluster-name",
+    "value": "shinise-app"
+  }, {
+    "key": "goog-k8s-node-pool-name",
+    "value": "nap-683p1wje"
+  }],
+  "system_labels": [{
+    "key": "compute.googleapis.com/cores",
+    "value": "2"
+  }, {
+    "key": "compute.googleapis.com/machine_spec",
+    "value": "e2-standard-2"
+  }, {
+    "key": "compute.googleapis.com/memory",
+    "value": "8192"
+  }],
+  "location": {
+    "location": "asia-northeast2",
+    "country": "JP",
+    "region": "asia-northeast2",
+    "zone": null
+  },
+  "export_time": "2023-12-19 10:41:06.929698 UTC",
+  "cost": "0.0",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "19630.0",
+    "unit": "seconds",
+    "amount_in_pricing_units": "5.45277778",
+    "pricing_unit": "hour"
+  },
+  "credits": [],
+  "invoice": {
+    "month": "202312",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "tags": [],
+  "cost_at_list": "0.0",
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "price": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01ADB9-9F4AA8-AC15D8",
+  "service": {
+    "id": "5490-F7B7-8DF6",
+    "description": "Cloud Logging"
+  },
+  "sku": {
+    "id": "143F-A1B0-E0BE",
+    "description": "Log Storage cost"
+  },
+  "usage_start_time": "2023-12-19 01:00:00.000000 UTC",
+  "usage_end_time": "2023-12-19 02:00:00.000000 UTC",
+  "project": {
+    "id": "hbl-shine",
+    "number": "170537168452",
+    "name": "hbl-shine",
+    "labels": [],
+    "ancestry_numbers": "/950521428405/465460949738/",
+    "ancestors": [{
+      "resource_name": "projects/170537168452",
+      "display_name": "hbl-shine"
+    }, {
+      "resource_name": "folders/465460949738",
+      "display_name": "HB1"
+    }, {
+      "resource_name": "organizations/950521428405",
+      "display_name": "hblab.vn"
+    }]
+  },
+  "labels": [{
+    "key": "goog-resource-type",
+    "value": "k8s_container"
+  }],
+  "system_labels": [],
+  "location": {
+    "location": "us",
+    "country": "US",
+    "region": null,
+    "zone": null
+  },
+  "export_time": "2023-12-19 08:30:19.351357 UTC",
+  "cost": "0.0",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "27941549.0",
+    "unit": "bytes",
+    "amount_in_pricing_units": "0.026022596",
+    "pricing_unit": "gibibyte"
+  },
+  "credits": [],
+  "invoice": {
+    "month": "202312",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "tags": [],
+  "cost_at_list": "0.0",
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "price": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01ADB9-9F4AA8-AC15D8",
+  "service": {
+    "id": "5490-F7B7-8DF6",
+    "description": "Cloud Logging"
+  },
+  "sku": {
+    "id": "143F-A1B0-E0BE",
+    "description": "Log Storage cost"
+  },
+  "usage_start_time": "2023-12-19 09:00:00.000000 UTC",
+  "usage_end_time": "2023-12-19 10:00:00.000000 UTC",
+  "project": {
+    "id": "hbl-shine",
+    "number": "170537168452",
+    "name": "hbl-shine",
+    "labels": [],
+    "ancestry_numbers": "/950521428405/465460949738/",
+    "ancestors": [{
+      "resource_name": "projects/170537168452",
+      "display_name": "hbl-shine"
+    }, {
+      "resource_name": "folders/465460949738",
+      "display_name": "HB1"
+    }, {
+      "resource_name": "organizations/950521428405",
+      "display_name": "hblab.vn"
+    }]
+  },
+  "labels": [{
+    "key": "goog-resource-type",
+    "value": "http_load_balancer"
+  }],
+  "system_labels": [],
+  "location": {
+    "location": "us",
+    "country": "US",
+    "region": null,
+    "zone": null
+  },
+  "export_time": "2023-12-19 16:24:50.065841 UTC",
+  "cost": "0.0",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "9306.0",
+    "unit": "bytes",
+    "amount_in_pricing_units": "8.667e-06",
+    "pricing_unit": "gibibyte"
+  },
+  "credits": [],
+  "invoice": {
+    "month": "202312",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "tags": [],
+  "cost_at_list": "0.0",
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "price": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01ADB9-9F4AA8-AC15D8",
+  "service": {
+    "id": "5490-F7B7-8DF6",
+    "description": "Cloud Logging"
+  },
+  "sku": {
+    "id": "143F-A1B0-E0BE",
+    "description": "Log Storage cost"
+  },
+  "usage_start_time": "2023-12-18 20:00:00.000000 UTC",
+  "usage_end_time": "2023-12-18 21:00:00.000000 UTC",
+  "project": {
+    "id": "hbl-shine",
+    "number": "170537168452",
+    "name": "hbl-shine",
+    "labels": [],
+    "ancestry_numbers": "/950521428405/465460949738/",
+    "ancestors": [{
+      "resource_name": "projects/170537168452",
+      "display_name": "hbl-shine"
+    }, {
+      "resource_name": "folders/465460949738",
+      "display_name": "HB1"
+    }, {
+      "resource_name": "organizations/950521428405",
+      "display_name": "hblab.vn"
+    }]
+  },
+  "labels": [{
+    "key": "goog-resource-type",
+    "value": "k8s_node"
+  }],
+  "system_labels": [],
+  "location": {
+    "location": "us",
+    "country": "US",
+    "region": null,
+    "zone": null
+  },
+  "export_time": "2023-12-19 03:49:50.560042 UTC",
+  "cost": "0.0",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "3063079.0",
+    "unit": "bytes",
+    "amount_in_pricing_units": "0.002852715",
+    "pricing_unit": "gibibyte"
+  },
+  "credits": [],
+  "invoice": {
+    "month": "202312",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "tags": [],
+  "cost_at_list": "0.0",
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "price": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01ADB9-9F4AA8-AC15D8",
+  "service": {
+    "id": "5490-F7B7-8DF6",
+    "description": "Cloud Logging"
+  },
+  "sku": {
+    "id": "143F-A1B0-E0BE",
+    "description": "Log Storage cost"
+  },
+  "usage_start_time": "2023-12-19 06:00:00.000000 UTC",
+  "usage_end_time": "2023-12-19 07:00:00.000000 UTC",
+  "project": {
+    "id": "hbl-shine",
+    "number": "170537168452",
+    "name": "hbl-shine",
+    "labels": [],
+    "ancestry_numbers": "/950521428405/465460949738/",
+    "ancestors": [{
+      "resource_name": "projects/170537168452",
+      "display_name": "hbl-shine"
+    }, {
+      "resource_name": "folders/465460949738",
+      "display_name": "HB1"
+    }, {
+      "resource_name": "organizations/950521428405",
+      "display_name": "hblab.vn"
+    }]
+  },
+  "labels": [{
+    "key": "goog-resource-type",
+    "value": "k8s_node"
+  }],
+  "system_labels": [],
+  "location": {
+    "location": "us",
+    "country": "US",
+    "region": null,
+    "zone": null
+  },
+  "export_time": "2023-12-19 15:00:19.424664 UTC",
+  "cost": "0.0",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "71767.0",
+    "unit": "bytes",
+    "amount_in_pricing_units": "6.6838e-05",
+    "pricing_unit": "gibibyte"
+  },
+  "credits": [],
+  "invoice": {
+    "month": "202312",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "tags": [],
+  "cost_at_list": "0.0",
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "price": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}, {
+  "billing_account_id": "01ADB9-9F4AA8-AC15D8",
+  "service": {
+    "id": "E505-1604-58F8",
+    "description": "Networking"
+  },
+  "sku": {
+    "id": "6882-BFB0-B7E5",
+    "description": "Networking Private Service Connect Partner Select End Point"
+  },
+  "usage_start_time": "2023-12-19 04:00:00.000000 UTC",
+  "usage_end_time": "2023-12-19 05:00:00.000000 UTC",
+  "project": {
+    "id": "hbl-shine",
+    "number": "170537168452",
+    "name": "hbl-shine",
+    "labels": [],
+    "ancestry_numbers": "/950521428405/465460949738/",
+    "ancestors": [{
+      "resource_name": "projects/170537168452",
+      "display_name": "hbl-shine"
+    }, {
+      "resource_name": "folders/465460949738",
+      "display_name": "HB1"
+    }, {
+      "resource_name": "organizations/950521428405",
+      "display_name": "hblab.vn"
+    }]
+  },
+  "labels": [],
+  "system_labels": [],
+  "location": {
+    "location": "asia-northeast2",
+    "country": "JP",
+    "region": "asia-northeast2",
+    "zone": null
+  },
+  "export_time": "2023-12-19 12:17:20.985342 UTC",
+  "cost": "0.007847",
+  "currency": "USD",
+  "currency_conversion_rate": "1.0",
+  "usage": {
+    "amount": "2825.0",
+    "unit": "seconds",
+    "amount_in_pricing_units": "0.784722222",
+    "pricing_unit": "hour"
+  },
+  "credits": [{
+    "name": "100% discount for Networking Private Service Connect Partner Select End Point.",
+    "amount": "-0.007847",
+    "full_name": null,
+    "id": "100% discount for Networking Private Service Connect Partner Select End Point.",
+    "type": "DISCOUNT"
+  }],
+  "invoice": {
+    "month": "202312",
+    "publisher_type": null
+  },
+  "cost_type": "regular",
+  "adjustment_info": {
+    "id": null,
+    "description": null,
+    "mode": null,
+    "type": null
+  },
+  "tags": [],
+  "cost_at_list": "0.007847",
+  "transaction_type": "GOOGLE",
+  "seller_name": null,
+  "price": null,
+  "cost_at_effective_price_default": null,
+  "cost_at_list_consumption_model": null,
+  "consumption_model": null
+}]
