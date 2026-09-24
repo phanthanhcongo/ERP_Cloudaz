@@ -4,7 +4,8 @@
 > **Nguồn dữ liệu thực tế**: GCP Project `billing-data-cloudaz-resell`  
 > **Dataset & Bảng khảo sát**: `CloudAZ_Billing_Detailed_Dataset.gcp_billing_export_resource_v1_01AF45_CC490F_EEF29A`  
 > **File dữ liệu mẫu**: [`gcp/credit.json`](credit.json) (553 bản ghi) & [`gcp/data.json`](data.json)  
-> **Ngày cập nhật**: 2026-09-05  
+> **Khảo sát ban đầu**: 2026-09-05  
+> **Cập nhật checkbox UI**: 2026-09-24 (khớp biên bản họp xác nhận & BRD v2.1)  
 
 ---
 
@@ -24,9 +25,10 @@
 2. **Nhóm theo dữ liệu (Group by)**:
    - **`Group by: Project`**: Lấy số liệu tổng hợp theo Project để tính tiền cho khách.
    - **`Group by: Service`**: Lấy số liệu phân loại theo dịch vụ để **tách riêng chi phí Gemini API** (Gemini không có discount).
-3. **Bỏ tích Reseller Margin**:
-   - Trên giao diện Console mới, nhãn này được hiển thị là **`Negotiated savings`** trong mục menu `Savings`.
-   - Gạt TẮT công tắc `Negotiated savings` để loại bỏ phần chiết khấu của CloudAZ, đưa màn hình về đúng giá tính cho khách.
+3. **Cấu hình tích chọn (Checkbox)**:
+   - **BỎ TÍCH duy nhất: `Reseller Margin`** (đây là chiết khấu riêng của CloudAZ, không tính cho khách).
+   - **GIỮ TÍCH: `Negotiated Savings`** (đây là chiết khấu hợp lệ của khách hàng theo hợp đồng, bắt buộc giữ).
+   - **GIỮ TÍCH: `Credit` / `Promotional credits`** (bắt buộc giữ để kiểm tra xem khách có phát sinh credit không).
 4. **Kiểm tra Promotion Credit**:
    - Gạt TẮT/BẬT thử công tắc **`Promotional credits`** để so sánh số chênh lệch trước và sau khi gạt. Nếu số tiền thay đổi $\rightarrow$ Khách có phát sinh Credit trong tháng.
 

@@ -1,8 +1,9 @@
 # Giải pháp kỹ thuật & Kiến trúc tính cước — GCP (Google Cloud Platform)
 
 > **Ưu tiên triển khai**: 1/3 — chiếm phần lớn thời gian tính cước thủ công hiện tại (~1,5 ngày/tháng)  
+> **Cập nhật gần nhất**: 2026-09-24 (khớp biên bản họp xác nhận & BRD v2.1)  
 > **Nghiệp vụ gốc**: [BRD Tính cước Google](../Google/BRD_TinhCuoc_Google_2026-09-03.md)  
-> **Tài liệu liên quan trong thư mục**: [QuyTrinh_LayHoaDon_GCP.md](QuyTrinh_LayHoaDon_GCP.md) · [setup_bigquery_export.md](setup_bigquery_export.md)
+> **Tài liệu liên quan trong thư mục**: [BRD_GCP_2026-09-23.md](BRD_GCP_2026-09-23.md) · [QuyTrinh_LayHoaDon_GCP.md](QuyTrinh_LayHoaDon_GCP.md) · [setup_bigquery_export.md](setup_bigquery_export.md)
 
 ---
 
@@ -21,15 +22,15 @@
 
 Hãng Google phát hành **một invoice tổng** cho toàn bộ khách hàng (ví dụ: >600.000 USD gộp 70–80 khách hàng), không tách chi tiết theo từng khách. Với từng khách hàng, kế toán phải mở link billing riêng trên Console rồi thao tác thủ công:
 
-1. Lọc đúng tháng (Console mặc định có thể lệch khoảng ngày theo múi giờ).
-2. Chọn đúng hãng, `group by project`.
-3. **Bỏ tích Reseller margin** để ra số thực dùng của khách.
-4. **Bật/tắt tích promotion credit** để so số chênh lệch, dò xem khách có credit hay không.
-5. Chuyển sang `group by service` — chỉ ở chế độ này mới nhìn thấy **Gemini API**.
-6. Chụp màn hình lượng dùng làm bằng chứng gửi khách hàng.
-7. Copy tay 2 bảng dữ liệu lên hệ thống CM: bảng theo **Billing ID** (~94 dòng) và bảng theo **Project** (~621 dòng), copy thủ công lần lượt qua hàng chục trang.
+1. Chọn đúng Billing Account Reseller, lọc đúng kỳ cước (tháng).
+2. Tải 2 bảng dữ liệu Excel xuất từ Console: Bảng theo **Project ID / Project Number** (~621 dòng) và Bảng theo **Sub-Account / Billing ID** (~94 dòng).
+3. **Bỏ tích duy nhất `Reseller Margin`** khi xuất file (lưu ý: `Reseller Margin` và `Negotiated Savings` là 2 checkbox khác nhau; bắt buộc **GIỮ TÍCH `Negotiated Savings`** và **GIỮ TÍCH `Credit`**).
+4. Rà soát khoản **Promotion Credit**: nếu Credit thuộc về CloudAZ (Google tài trợ) thì xuất Excel xong phải trừ ở cột Credit và cộng bù vào thu/chi công ty; nếu thuộc Khách hàng thì giữ nguyên.
+5. Chi phí **Gemini API** (Marketplace — không được chiết khấu 0% Discount): bị Google gộp chung vào tổng chi phí dịch vụ GCP Reseller (không nằm riêng ở cột nào). Kế toán phải mở trang Console/Project của từng khách hàng có dùng Gemini API (~40-50% số lượng khách) để lấy số tiền thực tế và bóc tách tay trước khi tính chiết khấu GCP.
+6. Upload 2 file/sheet dữ liệu thô này lên hệ thống CRM.
+7. Trên CRM: Gen **Bảng đối soát chi phí** -> Tải Excel về sửa thủ công (tách Gemini API & Credit cty) -> Gửi mail khách. Khách chốt -> Gen **Đề nghị thanh toán (DNTT)** -> Sửa thủ công số tiền -> Xuất PDF gửi khách.
 
-**Quy mô**: ~70–80 khách hàng/tháng.  
+**Quy mô**: ~70–80 khách hàng/tháng (~94 Billing Accounts, ~621 Projects).  
 **Invoice hãng**: Về khoảng ngày 02 hàng tháng; Kế toán bắt đầu lấy số từ ngày 03.
 
 ---
@@ -105,18 +106,17 @@ Gemini thuộc Marketplace nên **không được chiết khấu** (xem luật M
 - **Công thức tính cước GCP có Gemini**:
   $$\text{Số tiền cuối} = (\text{Tổng chi phí} - \text{Chi phí Gemini}) \times \text{Công thức hợp đồng} + \text{Chi phí Gemini}$$
 - Lọc tách dòng Gemini dựa vào `service.description` chứa keywords Gemini API.
-- Bỏ qua bóc tách riêng nếu chi phí Gemini dưới ngưỡng cấu hình (ví dụ: < 0.07 USD).
+- Bỏ qua bóc tách riêng nếu chi phí Gemini dưới ngưỡng cấu hình (ví dụ: < 0.05 USD; ngoài lệ dưới $0.05–$0.1 có thể bỏ qua).
 - **Tính năng tự động hóa**: ERP xuất báo cáo tổng hợp lượng dùng Gemini của toàn bộ khách hàng theo tháng (yêu cầu số 1 của kế toán).
 
 ### Quy trình phân loại Credit / Promotion trong ERP
-SQL BigQuery trả về số tiền credit phát sinh. Quyết định **credit thuộc về ai** được thực hiện trên ERP theo quy trình:
-1. ERP xuất danh sách khách hàng phát sinh credit trong tháng.
-2. Kế toán gửi Sales / Sale Admin / CEO xác nhận.
-3. Phân loại 3 trạng thái:
-   - *Toàn bộ thuộc khách hàng*: Trừ trực tiếp vào cước khách.
-   - *Toàn bộ thuộc Cloudaz*: Ghi nhận doanh thu/nội bộ Cloudaz.
-   - *Chia sẻ một phần*: Ví dụ hãng cấp 4.000 USD credit, cho khách 2.500 USD, Cloudaz giữ 1.500 USD.
-4. Ghi nhận thời điểm và ID người phê duyệt vào Audit Log.
+SQL BigQuery trả về số tiền credit phát sinh. Quyết định **credit thuộc về ai** được thực hiện trên ERP theo quy trình rà soát:
+1. ERP gắn cờ khách hàng / Billing Account phát sinh credit trong tháng (`has_promo_credit = TRUE`).
+2. ERP xuất danh sách Credit cần rà soát cho Kế toán / Sale Admin.
+3. Kế toán xác định 2 nhánh phân bổ:
+   - **Credit thuộc về Khách hàng**: Trừ trực tiếp vào cước khách hàng (được hưởng chiết khấu).
+   - **Credit thuộc về CloudAZ** (Google tài trợ): Ghi nhận riêng, cộng bù vào thu chi công ty (không được hưởng chiết khấu).
+4. Ghi nhận thời điểm, ID người xác nhận, và lý do phân bổ vào Audit Log.
 
 ---
 
