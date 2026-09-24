@@ -79,28 +79,46 @@ Báo cáo cước & Hóa đơn khách hàng
 
 Ba rắc rối lớn nhất của kế toán — **Reseller margin**, **Promotion credit**, và **Gemini API** — đều nằm trong bảng export của GCP, trong đó credit nằm ở dạng mảng lồng `credits` (`ARRAY<STRUCT>`).
 
-### Câu SQL tổng hợp bóc tách credit chuẩn:
+### SQL để lấy 2 bảng dữ liệu (Project Level + Billing Account Level)
+
+**Bảng 1 — Project Level (~621 dòng):** GROUP BY Project ID
 
 ```sql
 SELECT
   billing_account_id,
   project.id                AS project_id,
+  project.number            AS project_number,
   service.description       AS service_name,
-  seller_name,
   SUM(cost)                 AS cost_goc,
-  -- Bóc tách Reseller Margin
   SUM((SELECT COALESCE(SUM(c.amount), 0) 
        FROM UNNEST(credits) c 
        WHERE c.type = 'RESELLER_MARGIN')) AS reseller_margin,
-  -- Bóc tách Promotion Credit
   SUM((SELECT COALESCE(SUM(c.amount), 0) 
        FROM UNNEST(credits) c 
        WHERE c.type = 'PROMOTION'))       AS promotion_credit
-FROM `<your-project-id>.<your-dataset-id>.gcp_billing_export_v1_XXXX`
-WHERE usage_start_time >= @tu_ngay
-  AND usage_start_time <  @den_ngay
+FROM `<project>.<dataset>.gcp_billing_export_v1_XXXX`
+WHERE usage_start_time >= @tu_ngay AND usage_start_time < @den_ngay
 GROUP BY 1, 2, 3, 4
 ```
+
+**Bảng 2 — Billing Account Level (~94 dòng):** GROUP BY Billing Account ID
+
+```sql
+SELECT
+  billing_account_id,
+  SUM(cost)                 AS cost_goc,
+  SUM((SELECT COALESCE(SUM(c.amount), 0) 
+       FROM UNNEST(credits) c 
+       WHERE c.type = 'RESELLER_MARGIN')) AS reseller_margin,
+  SUM((SELECT COALESCE(SUM(c.amount), 0) 
+       FROM UNNEST(credits) c 
+       WHERE c.type = 'PROMOTION'))       AS promotion_credit
+FROM `<project>.<dataset>.gcp_billing_export_v1_XXXX`
+WHERE usage_start_time >= @tu_ngay AND usage_start_time < @den_ngay
+GROUP BY 1
+```
+
+> **⚠️ Verify:** Tổng cost của 2 bảng PHẢI khớp 100% (cả 2 queries lấy cùng dữ liệu, chỉ GROUP BY khác)
 
 ### Xử lý Gemini API
 Gemini thuộc Marketplace nên **không được chiết khấu** (xem luật Marketplace tại GMP).
