@@ -22,10 +22,8 @@
 
 Hãng Google phát hành **một invoice tổng** cho toàn bộ khách hàng (ví dụ: >600.000 USD gộp 70–80 khách hàng), không tách chi tiết theo từng khách. Với từng khách hàng, kế toán phải mở link billing riêng trên Console rồi thao tác thủ công:
 
-1. Vào **Billing** → **Cost Table**, chọn đúng **Billing Account Reseller** và **kỳ cước (tháng)**.
-2. Xuất **2 bảng dữ liệu riêng** bằng cách thay đổi **Group By**:
-   - **Bảng 1 (Project Level):** Group By **Project ID / Project Number** (~621 dòng).
-   - **Bảng 2 (Sub-Account Level):** Group By **Sub-Account / Billing ID** (~94 dòng).
+1. **Bảng 1:** Vào **Billing Report** → **Group By: Project** → Chọn kỳ tháng → Bỏ tích `Reseller Margin` → Xuất (~621 dòng).
+2. **Bảng 2:** Vào **Billing Report** → **Group By: Sub-Account / Billing ID** → Chọn kỳ tháng → Bỏ tích `Reseller Margin` → Xuất (~94 dòng).
 3. **Bỏ tích duy nhất `Reseller Margin`** khi xuất file (lưu ý: `Reseller Margin` và `Negotiated Savings` là 2 checkbox khác nhau; bắt buộc **GIỮ TÍCH `Negotiated Savings`** và **GIỮ TÍCH `Credit`**).
 4. Rà soát khoản **Promotion Credit**: nếu Credit thuộc về CloudAZ (Google tài trợ) thì xuất Excel xong phải trừ ở cột Credit và cộng bù vào thu/chi công ty; nếu thuộc Khách hàng thì giữ nguyên.
 5. Chi phí **Gemini API** (Marketplace — không được chiết khấu 0% Discount): bị Google gộp chung vào tổng chi phí dịch vụ GCP Reseller (không nằm riêng ở cột nào). Kế toán phải mở trang Console/Project của từng khách hàng có dùng Gemini API (~40-50% số lượng khách) để lấy số tiền thực tế và bóc tách tay trước khi tính chiết khấu GCP.
