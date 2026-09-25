@@ -204,6 +204,42 @@ Gemini thuộc Marketplace nên **không được chiết khấu** (xem luật M
 - Bỏ qua bóc tách riêng nếu chi phí Gemini dưới ngưỡng cấu hình (ví dụ: < 0.05 USD; ngoài lệ dưới $0.05–$0.1 có thể bỏ qua).
 - **Tính năng tự động hóa**: ERP xuất báo cáo tổng hợp lượng dùng Gemini của toàn bộ khách hàng theo tháng (yêu cầu số 1 của kế toán).
 
+### Query lấy danh sách Billing Account phát sinh Credit Promotion
+
+```sql
+SELECT
+  billing_account_id,
+  COUNT(DISTINCT c.name) AS so_loai_promotion,
+  ROUND(SUM(c.amount), 2) AS tong_credit_promotion
+FROM `billing-data-cloudaz-resell.CloudAZ_Billing_Standard_Dataset.gcp_billing_export_v1_01AF45_CC490F_EEF29A`,
+UNNEST(credits) c
+WHERE invoice.month = @thang    -- ví dụ '202606'
+  AND cost_type = 'regular'
+  AND c.type = 'PROMOTION'
+GROUP BY 1
+HAVING SUM(c.amount) != 0
+ORDER BY tong_credit_promotion ASC
+```
+
+> Kết quả: mỗi billing account có promotion credit, số loại promotion và tổng tiền. Dùng để kế toán rà soát credit thuộc về khách hay CloudAZ.
+
+### Query lấy danh sách Billing Account phát sinh Gemini API
+
+```sql
+SELECT
+  billing_account_id,
+  ROUND(SUM(cost), 2) AS tong_chi_phi_gemini
+FROM `billing-data-cloudaz-resell.CloudAZ_Billing_Standard_Dataset.gcp_billing_export_v1_01AF45_CC490F_EEF29A`
+WHERE invoice.month = @thang    -- ví dụ '202606'
+  AND cost_type = 'regular'
+  AND service.description LIKE '%Gemini%'
+GROUP BY 1
+HAVING SUM(cost) != 0
+ORDER BY tong_chi_phi_gemini DESC
+```
+
+> Kết quả: mỗi billing account có phát sinh chi phí Gemini API và tổng tiền. Dùng để kế toán tách riêng Gemini khi tính cước (Gemini không được chiết khấu).
+
 ### Quy trình phân loại Credit / Promotion trong ERP
 SQL BigQuery trả về số tiền credit phát sinh. Quyết định **credit thuộc về ai** được thực hiện trên ERP theo quy trình rà soát:
 1. ERP gắn cờ khách hàng / Billing Account phát sinh credit trong tháng (`has_promo_credit = TRUE`).

@@ -295,6 +295,8 @@
         <select id="tableSelect">
           <option value="project_level">📈 Project Level (Chi tiết theo Project)</option>
           <option value="billing_account">🏢 Billing Account Level (Tổng hợp theo BA)</option>
+          <option value="promotion_credit">🎁 Promotion Credit (Billing có Credit Promotion)</option>
+          <option value="gemini_api">🤖 Gemini API (Billing có phát sinh Gemini)</option>
           <option value="verification">✓ Verification (Kiểm tra dữ liệu)</option>
         </select>
       </div>
@@ -433,6 +435,29 @@ FROM ${T}
 WHERE invoice.month = '${invoiceMonth}' AND cost_type = 'regular'
 GROUP BY 1
 ORDER BY list_cost DESC`;
+        } else if (type === 'gemini_api') {
+          return `SELECT
+  billing_account_id,
+  ROUND(SUM(cost), 2) AS tong_chi_phi_gemini
+FROM ${T}
+WHERE invoice.month = '${invoiceMonth}'
+  AND cost_type = 'regular'
+  AND service.description LIKE '%Gemini%'
+GROUP BY 1
+HAVING SUM(cost) != 0
+ORDER BY tong_chi_phi_gemini DESC`;
+        } else if (type === 'promotion_credit') {
+          return `SELECT
+  billing_account_id,
+  ROUND(SUM(c.amount), 2) AS tong_credit_promotion
+FROM ${T},
+UNNEST(credits) c
+WHERE invoice.month = '${invoiceMonth}'
+  AND cost_type = 'regular'
+  AND c.type = 'PROMOTION'
+GROUP BY 1
+HAVING SUM(c.amount) != 0
+ORDER BY tong_credit_promotion ASC`;
         } else if (type === 'verification') {
           return `WITH project_level AS (
   SELECT SUM(cost) AS total_cost
