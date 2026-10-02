@@ -26,6 +26,10 @@ SELECT
        FROM UNNEST(credits) c
        WHERE c.type IN ('PROMOTION', 'DISCOUNT', 'SUSTAINED_USAGE_DISCOUNT')))
                             AS promotions_and_others,
+  SUM((SELECT COALESCE(SUM(c.amount), 0)
+       FROM UNNEST(credits) c
+       WHERE c.type = 'PROMOTION'))
+                            AS promotional_credits,
   SUM(cost) + SUM((SELECT COALESCE(SUM(c.amount), 0)
        FROM UNNEST(credits) c
        WHERE c.type != 'RESELLER_MARGIN'))
@@ -52,6 +56,10 @@ SELECT
        FROM UNNEST(credits) c
        WHERE c.type IN ('PROMOTION', 'DISCOUNT', 'SUSTAINED_USAGE_DISCOUNT')))
                             AS promotions_and_others,
+  SUM((SELECT COALESCE(SUM(c.amount), 0)
+       FROM UNNEST(credits) c
+       WHERE c.type = 'PROMOTION'))
+                            AS promotional_credits,
   SUM(cost) + SUM((SELECT COALESCE(SUM(c.amount), 0)
        FROM UNNEST(credits) c
        WHERE c.type != 'RESELLER_MARGIN'))

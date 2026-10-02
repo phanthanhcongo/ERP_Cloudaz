@@ -1,9 +1,9 @@
 # Giải pháp kỹ thuật & Kiến trúc tính cước — GCP (Google Cloud Platform)
 
 > **Ưu tiên triển khai**: 1/3 — chiếm phần lớn thời gian tính cước thủ công hiện tại (~1,5 ngày/tháng)  
-> **Cập nhật gần nhất**: 2026-09-24 (khớp biên bản họp xác nhận & BRD v2.1)  
-> **Nghiệp vụ gốc**: [BRD Tính cước Google](../Google/BRD_TinhCuoc_Google_2026-09-03.md)  
-> **Tài liệu liên quan trong thư mục**: [BRD_GCP_2026-09-23.md](BRD_GCP_2026-09-23.md) · [QuyTrinh_LayHoaDon_GCP.md](QuyTrinh_LayHoaDon_GCP.md) · [setup_bigquery_export.md](setup_bigquery_export.md)
+> **Cập nhật gần nhất**: 2026-09-25 (khớp BRD v2.2 — bổ sung Gemini per billing, shared billing rule, tích hợp CM)  
+> **Nghiệp vụ gốc**: [BRD_GCP_2026-09-23.md](BRD_GCP_2026-09-23.md) (v2.2)  
+> **Tài liệu liên quan**: [CM_Change_Request_Gemini.md](CM_Change_Request_Gemini.md) · [setup_bigquery_export.md](setup_bigquery_export.md)
 
 ---
 
@@ -42,11 +42,19 @@ Hãng Google phát hành **một invoice tổng** cho toàn bộ khách hàng (v
 ```
 GCP Billing / Channel Services 
     ↓ (Tự động Billing Export)
-Google BigQuery Dataset
-    ↓ (ERP backend dùng BigQuery SDK / REST API gửi SQL query)
-Nhận về JSON kết quả đã aggregation
-    ↓ (ERP xử lý mapping, công thức hợp đồng, tỷ giá, thuế, đối soát)
-Báo cáo cước & Hóa đơn khách hàng
+Google BigQuery Dataset (Standard Export)
+    ↓ (ERP backend — BigQuery SDK — gửi SQL query)
+JSON kết quả đã aggregation (cost, credits, gemini)
+    ↓
+    ↓   Cloud Billing API (cloudbilling.billingAccounts.list)
+    ↓       ↓ (lấy billing_account_id → displayName)
+    ↓       ↓
+ERP ghép dữ liệu: cost data + tên subaccount + gemini per billing
+    ↓ (ERP xử lý: mapping, công thức, tỷ giá, thuế, đối soát)
+    ↓
+    ├─→ ERP gen Excel (2 sheet + cột Gemini API) → upload CM
+    ├─→ CM gen Bảng đối soát + DNTT (đọc cột Gemini, áp đúng discount)
+    └─→ ERP Dashboard: đối soát, cảnh báo, báo cáo Gemini
 ```
 
 ### Ranh giới trách nhiệm
@@ -64,11 +72,11 @@ Báo cáo cước & Hóa đơn khách hàng
 ## 4. Bốn tầng xử lý dữ liệu
 
 ```
-[1] Thu thập          Cloud Billing Export → BigQuery (Detailed usage cost data)
+[1] Thu thập          Cloud Billing Export → BigQuery (Standard usage cost data for phase 1102)
         ↓
-[2] Tổng hợp          SQL trên BigQuery: GROUP BY + UNNEST(credits)
-        ↓             → Bảng tổng hợp theo tháng (Materialized View / Scheduled Query)
-[3] Ánh xạ            ERP: resource_mapping (project_id → customer_id → contract_id)
+[2] Tổng hợp          Hai query dữ liệu trên BigQuery: theo project và billing account
+        ↓             → Gemini tổng hợp trong query billing account; credit phân loại bằng UNNEST
+[3] Lưu & ánh xạ      ERP: lưu snapshot theo invoice month; resource_mapping (project_id → customer_id → contract_id)
         ↓
 [4] Tính & Đối soát   ERP: Công thức giá, chiết khấu, Gemini, thuế, tỷ giá → Bảng đối soát
 ```
@@ -119,6 +127,10 @@ SELECT
        FROM UNNEST(credits) c
        WHERE c.type IN ('PROMOTION', 'DISCOUNT', 'SUSTAINED_USAGE_DISCOUNT')))
                             AS promotions_and_others,
+  SUM((SELECT COALESCE(SUM(c.amount), 0)
+       FROM UNNEST(credits) c
+       WHERE c.type = 'PROMOTION'))
+                            AS promotional_credits,
   SUM(cost) + SUM((SELECT COALESCE(SUM(c.amount), 0)
        FROM UNNEST(credits) c
        WHERE c.type != 'RESELLER_MARGIN'))
@@ -136,15 +148,15 @@ ORDER BY list_cost DESC
 > | **List cost** | `SUM(cost_at_list)` — giá công khai (public on-demand price) |
 > | **Negotiated savings** | `SUM(cost) - SUM(cost_at_list)` — chênh lệch giá đàm phán, KHÔNG phải credit |
 > | **Discounts** (Console: Savings programs) | credits type `COMMITTED_USAGE_DISCOUNT` + `FEE_UTILIZATION_OFFSET` |
-> | **Promotions & others** (Console: Other savings) | credits type `PROMOTION` + `DISCOUNT` (free tier) + `SUSTAINED_USAGE_DISCOUNT` |
+> | **Promotions & others** (Console: Other savings) | credits type `PROMOTION` + `DISCOUNT` (free tier) + `SUSTAINED_USAGE_DISCOUNT` — **gộp nhiều loại** |
+> | **Promotional credits** *(tách riêng)* | credits type `PROMOTION` only — coupon/ưu đãi Google, cần Sales/CEO xác nhận phân bổ |
 > | **Subtotal** | `SUM(cost)` + tổng credits trừ `RESELLER_MARGIN` |
 
 **Bảng 2 — Billing Account Level (7 cột, khớp Excel "DATA GCP TH2. Billing ID"):** GROUP BY Subaccount
 
 ```sql
 SELECT
-  sa.`Billing account name`   AS subaccount,
-  b.billing_account_id        AS subaccount_id,
+  billing_account_id        AS subaccount_id,
   SUM(cost_at_list)            AS list_cost,
   SUM(cost) - SUM(cost_at_list) AS negotiated_savings,
   SUM((SELECT COALESCE(SUM(c.amount), 0)
@@ -155,26 +167,29 @@ SELECT
        FROM UNNEST(credits) c
        WHERE c.type IN ('PROMOTION', 'DISCOUNT', 'SUSTAINED_USAGE_DISCOUNT')))
                             AS promotions_and_others,
+  SUM((SELECT COALESCE(SUM(c.amount), 0)
+       FROM UNNEST(credits) c
+       WHERE c.type = 'PROMOTION'))
+                            AS promotional_credits,
   SUM(cost) + SUM((SELECT COALESCE(SUM(c.amount), 0)
        FROM UNNEST(credits) c
        WHERE c.type != 'RESELLER_MARGIN'))
                             AS subtotal
-FROM `billing-data-cloudaz-resell.CloudAZ_Billing_Standard_Dataset.gcp_billing_export_v1_01AF45_CC490F_EEF29A` b
-LEFT JOIN `billing-data-cloudaz-resell.GCP_Congno.TH2_Billing_Account_T06_2026` sa
-  ON b.billing_account_id = sa.`Billing account ID`
-WHERE b.invoice.month = @thang    -- ví dụ '202606'
-  AND b.cost_type = 'regular'
-GROUP BY 1, 2
+FROM `billing-data-cloudaz-resell.CloudAZ_Billing_Standard_Dataset.gcp_billing_export_v1_01AF45_CC490F_EEF29A`
+WHERE invoice.month = @thang    -- ví dụ '202606'
+  AND cost_type = 'regular'
+GROUP BY 1
 HAVING SUM(cost_at_list) != 0 OR SUM(cost) != 0
 ORDER BY list_cost DESC
 ```
 
 > **Lưu ý về Subaccount name:**
 > - Cột `Subaccount name` **không có** trong bảng Standard export của BigQuery.
-> - Hiện tại dùng **lookup table** (`TH2_Billing_Account_T06_2026`) được upload từ CSV Console vào dataset `GCP_Congno` (region `asia-southeast1`) để JOIN lấy tên.
-> - Lookup table cần xóa các dòng có `Billing account ID` = NULL trước khi dùng (gây nhân bản dòng).
+> - Tên subaccount được lấy qua **Cloud Billing API** (`cloudbilling.billingAccounts.list`) và ghép ở tầng application (server-side) sau khi query BigQuery xong.
+> - Service account cần quyền **Billing Account Viewer** (`roles/billing.viewer`) ở cấp **Organization** (`organizations/66691603437`) để thấy toàn bộ ~287 subaccounts.
+> - Server cache danh sách tên 5 phút, query BigQuery và gọi API chạy song song (`Promise.all`) để tối ưu tốc độ.
 > - `HAVING` loại bỏ các billing account có cost = 0 (không phát sinh chi phí trong kỳ).
-> - **Cho production ERP**: nên dùng Cloud Billing API (`cloudbilling.billingAccounts.list`) hoặc bảng `resource_mapping` của ERP thay vì lookup table thủ công.
+> - Không còn dùng lookup table JOIN — đã thay hoàn toàn bằng Cloud Billing API.
 
 > **⚠️ Verify:** Tổng cost của 2 bảng PHẢI khớp 100% (cả 2 queries lấy cùng dữ liệu, chỉ GROUP BY khác)
 
@@ -196,12 +211,25 @@ Kết quả sẽ cho biết chính xác type nào map vào cột nào trên Cons
 - **Savings programs** → `DISCOUNT`, SUD
 - **Other savings** → `PROMOTION`, `FREE_TIER`, v.v.
 
-### Xử lý Gemini API
+### Xử lý Gemini API *(xác nhận bởi KT doanh thu — Nguyễn Thị Hằng, 25/09/2026)*
+
 Gemini thuộc Marketplace nên **không được chiết khấu** (xem luật Marketplace tại GMP).
-- **Công thức tính cước GCP có Gemini**:
-  $$\text{Số tiền cuối} = (\text{Tổng chi phí} - \text{Chi phí Gemini}) \times \text{Công thức hợp đồng} + \text{Chi phí Gemini}$$
-- Lọc tách dòng Gemini dựa vào `service.description` chứa keywords Gemini API.
-- Bỏ qua bóc tách riêng nếu chi phí Gemini dưới ngưỡng cấu hình (ví dụ: < 0.05 USD; ngoài lệ dưới $0.05–$0.1 có thể bỏ qua).
+
+**Quy tắc nghiệp vụ đã xác nhận:**
+- Gemini API phát sinh theo **từng billing account**, không tách theo project.
+- Cột `Gemini API` nằm ở **Sheet 2** (by Billing ID), ngay sau cột `Subtotal`.
+- `Gemini API` = phần tiền Gemini **nằm trong** Subtotal → phần được discount = `Subtotal − Gemini API`.
+- **Billing chung có Gemini**: dồn Gemini vào **1 khách** do Sales chỉ định, không tách. Khách còn lại match theo project (Sheet 1, không có cột Gemini → gemini = 0).
+
+**Công thức tính cước GCP có Gemini:**
+```
+discount_amount = (subTotal − geminiTotal) × discount%
+```
+*(chi tiết code change: xem [CM_Change_Request_Gemini.md](CM_Change_Request_Gemini.md))*
+
+**BigQuery — lọc tách Gemini:**
+- Dùng `service.description LIKE '%Gemini%'` để tách dòng Gemini từ BigQuery.
+- Không áp dụng ngưỡng tối thiểu: ghi nhận mọi khoản Gemini phát sinh, kể cả khoản dưới $0.01 như $0.004. Không dùng số đã làm tròn để lưu; nếu khoản nào vượt precision/range đã xác minh, từ chối toàn bộ kỳ và giữ snapshot cũ thay vì bỏ riêng khoản đó.
 - **Tính năng tự động hóa**: ERP xuất báo cáo tổng hợp lượng dùng Gemini của toàn bộ khách hàng theo tháng (yêu cầu số 1 của kế toán).
 
 ### Query lấy danh sách Billing Account phát sinh Credit Promotion
@@ -223,6 +251,22 @@ ORDER BY tong_credit_promotion ASC
 
 > Kết quả: mỗi billing account có promotion credit, số loại promotion và tổng tiền. Dùng để kế toán rà soát credit thuộc về khách hay CloudAZ.
 
+> **⚠️ Phân biệt `Promotions & others` vs `Promotional Credits`** *(verify Coderpush T08-2026)*:
+> - Cột `Promotions & others` trong Excel export **gộp 3 loại**: `PROMOTION` + `DISCOUNT` (free tier) + `SUSTAINED_USAGE_DISCOUNT` (ví dụ: -$15.90).
+> - **Promotional Credits** (toggle riêng trên Console) chỉ là `credits.type = 'PROMOTION'` (ví dụ: -$0.68).
+> - Query trên đã filter đúng `type = 'PROMOTION'` → ra số Promotional Credits thật, không lẫn free tier / SUD.
+> - Cột `promotional_credits` cũng đã được thêm vào Bảng 1 và Bảng 2 (mục 5 ở trên) để hiển thị song song với `promotions_and_others`.
+> - Mặc định `promotions_and_others` **đã bao gồm** promotional credits (trừ sẵn trong Subtotal). Sau khi Sales/CEO xác nhận 3 nhánh: credit thuộc **khách 100%** → giữ nguyên cả 2 cột; credit thuộc **CloudAZ 100%** → **trừ ở `promotions_and_others` và cộng vào `subtotal`**; **chia một phần** → làm đúng theo phần của CloudAZ.
+>
+> **Công thức điều chỉnh** *(xác nhận KT doanh thu 2026-09-25)* — gọi `X` = phần credit thuộc CloudAZ, credit trong BigQuery mang giá trị **âm**:
+>
+> ```
+> promotions_and_others_sau = promotions_and_others_gốc + X
+> subtotal_sau              = subtotal_gốc              − X
+> ```
+>
+> Ví dụ: billing có `promotions_and_others` = −$4,000 và `subtotal` = $10,000, credit $4,000 là của CloudAZ (`X` = −4,000) ⇒ cột promotion về **$0**, subtotal lên **$14,000**. Khách trả $14,000 — không được hưởng khoản credit không phải của mình. Chia đôi ($2,000/bên) ⇒ promotion = −$2,000, subtotal = $12,000.
+
 ### Query lấy danh sách Billing Account phát sinh Gemini API
 
 ```sql
@@ -241,9 +285,14 @@ ORDER BY tong_chi_phi_gemini DESC
 > Kết quả: mỗi billing account có phát sinh chi phí Gemini API và tổng tiền. Dùng để kế toán tách riêng Gemini khi tính cước (Gemini không được chiết khấu).
 
 ### Quy trình phân loại Credit / Promotion trong ERP
+
+**Promotion Credit phát sinh theo billing account** *(xác nhận 25/09/2026)* — không theo project. Khi billing chung (2+ khách), không biết credit thuộc khách nào → cần Sales/CEO xác nhận (cùng pattern với Gemini API).
+
 SQL BigQuery trả về số tiền credit phát sinh. Quyết định **credit thuộc về ai** được thực hiện trên ERP theo quy trình rà soát:
-1. ERP gắn cờ khách hàng / Billing Account phát sinh credit trong tháng (`has_promo_credit = TRUE`).
-2. ERP xuất danh sách Credit cần rà soát cho Kế toán / Sale Admin.
+1. ERP gắn cờ Billing Account phát sinh credit trong tháng (`has_promo_credit = TRUE`).
+2. ERP kiểm tra billing đó có **nhiều khách** (chung billing) không:
+   - **Billing riêng** (1 khách): credit gán thẳng → chuyển bước 3.
+   - **Billing chung** (2+ khách): ERP đánh dấu cần **Sales/CEO xác nhận phân bổ** (khách nào hưởng, tỷ lệ bao nhiêu).
 3. Kế toán xác định 2 nhánh phân bổ:
    - **Credit thuộc về Khách hàng**: Trừ trực tiếp vào cước khách hàng (được hưởng chiết khấu).
    - **Credit thuộc về CloudAZ** (Google tài trợ): Ghi nhận riêng, cộng bù vào thu chi công ty (không được hưởng chiết khấu).
@@ -295,17 +344,17 @@ Bảng đối soát là **điều kiện nghiệm thu bắt buộc** cho GCP.
 ### Lịch chốt số
 - Invoice GCP về khoảng **ngày 02**. Kế toán bắt đầu lấy số từ **ngày 03**.
 - **Ràng buộc cứng**: 2 khách hàng ưu tiên (BitVN, Masan City) phải xuất số trước **ngày 07**.
-- **Cơ chế kiểm tra ổn định dữ liệu (Data Stability Check)**: Chạy tổng tự động 2 lần liên tiếp (cách nhau N giờ). Chỉ chốt kỳ cước khi số liệu 2 lần chạy không có thay đổi (tránh trường hợp Google cập nhật số muộn).
+- **Data Stability Check và khóa kỳ: không áp dụng.** Kế toán có thể truy vấn lại; từ phase 1102e, hệ thống hiển thị chênh lệch để kế toán duyệt trước khi thay dữ liệu.
 
 ### Tối ưu chi phí & Bảo mật BigQuery
-- **Partitioning**: Bắt buộc query theo `usage_start_time`.
-- **Clustering**: Cluster theo `billing_account_id` để tối ưu quét dữ liệu khi lọc.
-- **Materialized View / Scheduled Query**: ERP chỉ đọc từ bảng tổng hợp tháng, **không bao giờ quét trực tiếp bảng thô (raw detailed export)**.
-- **`maximum_bytes_billed`**: Cấu hình giới hạn dung lượng quét tối đa cho mọi câu query từ ERP để phòng ngừa SQL lỗi gây tốn chi phí.
+- Phase 1102 đọc bảng GCP Standard Export đã chỉ định, lọc theo `invoice.month` và `cost_type = 'regular'`; không dùng `usage_start_time` thay cho kỳ invoice.
+- Không bắt buộc Materialized View/Scheduled Query và không đặt `maximum_bytes_billed` cho phase này. Không giả định partition/cluster thay cho điều kiện lọc kỳ đã chốt.
 
 ---
 
 ## 9. Liên kết hướng dẫn kỹ thuật
 
 - Hướng dẫn cấu hình xuất dữ liệu cước từ Console sang BigQuery: [setup_bigquery_export.md](setup_bigquery_export.md)
-- Quy trình lấy hóa đơn thủ công trên Console (dùng khi cần đối chiếu): [QuyTrinh_LayHoaDon_GCP.md](QuyTrinh_LayHoaDon_GCP.md)
+- Yêu cầu chỉnh sửa CM cho Gemini API: [CM_Change_Request_Gemini.md](CM_Change_Request_Gemini.md)
+- Khảo sát & ánh xạ credit thực tế từ BigQuery: [BQ_Mapping_GCP_Empirical.md](BQ_Mapping_GCP_Empirical.md)
+- BRD nghiệp vụ (v2.2): [BRD_GCP_2026-09-23.md](BRD_GCP_2026-09-23.md)

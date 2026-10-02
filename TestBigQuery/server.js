@@ -285,8 +285,13 @@ app.get('/api/billing-accounts', async (req, res) => {
     const authClient = await auth.getClient();
     const billing = google.cloudbilling({ version: 'v1', auth: authClient });
 
-    const response = await billing.billingAccounts.list({ pageSize: 200 });
-    const accounts = response.data.billingAccounts || [];
+    let accounts = [];
+    let pageToken = undefined;
+    do {
+      const response = await billing.billingAccounts.list({ pageSize: 200, pageToken });
+      accounts = accounts.concat(response.data.billingAccounts || []);
+      pageToken = response.data.nextPageToken;
+    } while (pageToken);
 
     const subaccounts = [];
     for (const acct of accounts) {
@@ -341,36 +346,73 @@ app.get('/api/billing-account/:id', async (req, res) => {
   }
 });
 
-// API: Bảng 2 GCP — query BigQuery + JOIN lookup table lấy subaccount name
+// Helper: lấy map billing_account_id → displayName từ Cloud Billing API (có cache 5 phút)
+let billingNameCache = { data: null, expiry: 0 };
+async function getBillingNameMap() {
+  if (billingNameCache.data && Date.now() < billingNameCache.expiry) {
+    return billingNameCache.data;
+  }
+  const keyPath = resolveKeyPath();
+  const auth = new google.auth.GoogleAuth({
+    keyFile: keyPath,
+    scopes: ['https://www.googleapis.com/auth/cloud-billing.readonly']
+  });
+  const authClient = await auth.getClient();
+  const billing = google.cloudbilling({ version: 'v1', auth: authClient });
+
+  const map = {};
+  let pageToken = undefined;
+  do {
+    const response = await billing.billingAccounts.list({ pageSize: 200, pageToken });
+    for (const acct of (response.data.billingAccounts || [])) {
+      const id = acct.name.replace('billingAccounts/', '');
+      map[id] = acct.displayName;
+    }
+    pageToken = response.data.nextPageToken;
+  } while (pageToken);
+
+  billingNameCache = { data: map, expiry: Date.now() + 5 * 60 * 1000 };
+  return map;
+}
+
+// API: Bảng 2 GCP — query BigQuery + Cloud Billing API lấy subaccount name
 app.get('/api/gcp-table2/:invoiceMonth', async (req, res) => {
   const { invoiceMonth } = req.params;
   try {
     const { client: bigquery } = getBigQueryClient();
     const sql = `
 SELECT
-  sa.\`Billing account name\`   AS subaccount,
-  b.billing_account_id        AS subaccount_id,
+  billing_account_id        AS subaccount_id,
   SUM(cost_at_list)            AS list_cost,
   SUM(cost) - SUM(cost_at_list) AS negotiated_savings,
   SUM((SELECT COALESCE(SUM(c.amount), 0) FROM UNNEST(credits) c
        WHERE c.type IN ('COMMITTED_USAGE_DISCOUNT', 'FEE_UTILIZATION_OFFSET'))) AS discounts,
   SUM((SELECT COALESCE(SUM(c.amount), 0) FROM UNNEST(credits) c
        WHERE c.type IN ('PROMOTION', 'DISCOUNT', 'SUSTAINED_USAGE_DISCOUNT'))) AS promotions_and_others,
+  SUM((SELECT COALESCE(SUM(c.amount), 0) FROM UNNEST(credits) c
+       WHERE c.type = 'PROMOTION')) AS promotional_credits,
   SUM(cost) + SUM((SELECT COALESCE(SUM(c.amount), 0) FROM UNNEST(credits) c
        WHERE c.type != 'RESELLER_MARGIN')) AS subtotal
-FROM \`billing-data-cloudaz-resell.CloudAZ_Billing_Standard_Dataset.gcp_billing_export_v1_01AF45_CC490F_EEF29A\` b
-LEFT JOIN \`billing-data-cloudaz-resell.GCP_Congno.TH2_Billing_Account_T06_2026\` sa
-  ON b.billing_account_id = sa.\`Billing account ID\`
-WHERE b.invoice.month = '${invoiceMonth}'
-  AND b.cost_type = 'regular'
-GROUP BY 1, 2
+FROM \`billing-data-cloudaz-resell.CloudAZ_Billing_Standard_Dataset.gcp_billing_export_v1_01AF45_CC490F_EEF29A\`
+WHERE invoice.month = '${invoiceMonth}'
+  AND cost_type = 'regular'
+GROUP BY 1
 HAVING SUM(cost_at_list) != 0 OR SUM(cost) != 0
 ORDER BY list_cost DESC`;
 
-    const [job] = await bigquery.createQueryJob({ query: sql, useLegacySql: false, location: 'asia-southeast1' });
+    const [nameMapPromise, jobPromise] = [
+      getBillingNameMap(),
+      bigquery.createQueryJob({ query: sql, useLegacySql: false, location: 'asia-southeast1' })
+    ];
+    const [nameMap, [job]] = await Promise.all([nameMapPromise, jobPromise]);
     const [rows] = await job.getQueryResults();
 
-    res.json({ success: true, invoiceMonth, rows, totalRows: rows.length });
+    const enrichedRows = rows.map(row => ({
+      subaccount: nameMap[row.subaccount_id] || row.subaccount_id,
+      ...row
+    }));
+
+    res.json({ success: true, invoiceMonth, rows: enrichedRows, totalRows: enrichedRows.length });
   } catch (error) {
     res.status(500).json({ success: false, error: error.message });
   }

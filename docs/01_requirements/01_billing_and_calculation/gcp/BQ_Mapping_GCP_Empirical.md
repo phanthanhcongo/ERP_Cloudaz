@@ -2,7 +2,8 @@
 
 > **Dự án**: ERP CloudAZ — Phân hệ Tính cước · Sản phẩm Google Cloud Platform (GCP)  
 > **Nguồn dữ liệu thực tế**: GCP Project `billing-data-cloudaz-resell`  
-> **Dataset & Bảng khảo sát**: `CloudAZ_Billing_Detailed_Dataset.gcp_billing_export_resource_v1_01AF45_CC490F_EEF29A`  
+> **Dataset & Bảng khảo sát credit**: `CloudAZ_Billing_Detailed_Dataset.gcp_billing_export_resource_v1_01AF45_CC490F_EEF29A` (Detailed Export)  
+> **Dataset & Bảng tính cước production**: `CloudAZ_Billing_Standard_Dataset.gcp_billing_export_v1_01AF45_CC490F_EEF29A` (Standard Export)  
 > **File dữ liệu mẫu**: [`gcp/credit.json`](credit.json) (553 bản ghi) & [`gcp/data.json`](data.json)  
 > **Khảo sát ban đầu**: 2026-09-05  
 > **Cập nhật checkbox UI**: 2026-09-24 (khớp biên bản họp xác nhận & BRD v2.1)  
@@ -12,9 +13,12 @@
 ## 1. Tổng quan Nguồn dữ liệu & Bảng BigQuery Export
 
 - **Project ID**: `billing-data-cloudaz-resell`
-- **Dataset**: `CloudAZ_Billing_Detailed_Dataset`
+- **Dataset khảo sát credit**: `CloudAZ_Billing_Detailed_Dataset` (Detailed Export — có resource-level detail, dùng cho phân tích credit chi tiết)
+- **Dataset tính cước**: `CloudAZ_Billing_Standard_Dataset` (Standard Export — dùng cho query Bảng 1, Bảng 2 production)
 - **Bảng Billing Export chi tiết**: `gcp_billing_export_resource_v1_01AF45_CC490F_EEF29A`
-- **Đặc điểm Cấu trúc**: Cấu trúc mảng `credits` chuẩn (`REPEATED STRUCT`) chứa thông tin chi tiết về từng khoản giảm giá (`type`, `name`, `full_name`, `amount`).
+- **Bảng Billing Export chuẩn**: `gcp_billing_export_v1_01AF45_CC490F_EEF29A`
+- **Đặc điểm Cấu trúc**: Cấu trúc mảng `credits` chuẩn (`REPEATED STRUCT`) chứa thông tin chi tiết về từng khoản giảm giá (`type`, `name`, `full_name`, `amount`). Cả 2 bảng đều có cấu trúc `credits` giống nhau.
+- **Lấy tên Subaccount**: Dùng **Cloud Billing API** (`cloudbilling.billingAccounts.list`) — service account cần quyền `roles/billing.viewer` ở cấp Organization (`organizations/66691603437`). Không dùng lookup table nữa.
 
 ---
 
@@ -100,3 +104,5 @@ Dựa trên dữ liệu khảo sát thực tế từ file [`credit.json`](credit
 | 🎁 **Trong đó: PROMOTION CREDIT (529 dòng)** | **-$48,707.82 USD** | **~-$1,239,614,000 VNĐ** (~1.24 tỷ đồng) |
 | 🏢 **Trong đó: RESELLER MARGIN (28 dòng)** | **-$2,763.87 USD** | **~-$70,340,000 VNĐ** (~70 triệu đồng) |
 | **Tổng chi phí thực trả (`net_cost`)** | **$18,833.93 USD** | **~479,323,000 VNĐ** |
+
+> **Lưu ý:** Số liệu trên là snapshot tại thời điểm khảo sát (2026-09-05) từ bảng **Detailed Export**. Dữ liệu có thể thay đổi nếu chạy lại query do Google cập nhật billing data retroactively.

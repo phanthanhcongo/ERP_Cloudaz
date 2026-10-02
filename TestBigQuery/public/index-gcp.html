@@ -414,6 +414,8 @@
        WHERE c.type IN ('COMMITTED_USAGE_DISCOUNT', 'FEE_UTILIZATION_OFFSET'))) AS discounts,
   SUM((SELECT COALESCE(SUM(c.amount), 0) FROM UNNEST(credits) c
        WHERE c.type IN ('PROMOTION', 'DISCOUNT', 'SUSTAINED_USAGE_DISCOUNT'))) AS promotions_and_others,
+  SUM((SELECT COALESCE(SUM(c.amount), 0) FROM UNNEST(credits) c
+       WHERE c.type = 'PROMOTION')) AS promotional_credits,
   SUM(cost) + SUM((SELECT COALESCE(SUM(c.amount), 0) FROM UNNEST(credits) c
        WHERE c.type != 'RESELLER_MARGIN')) AS subtotal
 FROM ${T}
@@ -429,6 +431,8 @@ ORDER BY list_cost DESC`;
        WHERE c.type IN ('COMMITTED_USAGE_DISCOUNT', 'FEE_UTILIZATION_OFFSET'))) AS discounts,
   SUM((SELECT COALESCE(SUM(c.amount), 0) FROM UNNEST(credits) c
        WHERE c.type IN ('PROMOTION', 'DISCOUNT', 'SUSTAINED_USAGE_DISCOUNT'))) AS promotions_and_others,
+  SUM((SELECT COALESCE(SUM(c.amount), 0) FROM UNNEST(credits) c
+       WHERE c.type = 'PROMOTION')) AS promotional_credits,
   SUM(cost) + SUM((SELECT COALESCE(SUM(c.amount), 0) FROM UNNEST(credits) c
        WHERE c.type != 'RESELLER_MARGIN')) AS subtotal
 FROM ${T}
