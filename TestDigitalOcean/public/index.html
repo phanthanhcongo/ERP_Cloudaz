@@ -1,0 +1,641 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DO Billing Test</title>
+<style>
+  /* ── Design tokens ─────────────────────────────────── */
+  :root{
+    --bg:#f7f8fa; --card:#fff; --sunk:#f3f5f8;
+    --bd:#e2e6eb; --bd2:#eef0f4; --bd3:#f1f3f6;
+    --fg:#111822; --fg2:#3c4654; --mut:#6b7684; --mut2:#949db0;
+    --ac:#0062ff; --ac-h:#0052d6; --ac-sf:#eaf2ff; --ac-bd:#b9d4ff;
+    --ok:#0a7d4a; --ok-sf:#e7f7ef; --err:#c0303c; --err-sf:#fdecee;
+    --warn:#8a6100; --warn-sf:#fff6e0;
+    --sh1:0 1px 2px rgba(17,24,34,.05);
+    --sh2:0 1px 3px rgba(17,24,34,.07), 0 4px 12px -2px rgba(17,24,34,.06);
+    --sh-pop:0 8px 28px -6px rgba(17,24,34,.18);
+    --r:10px; --r-sm:7px;
+    --ff:ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,sans-serif;
+    --fm:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+  }
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme=light]){
+      --bg:#0c0f14; --card:#151a21; --sunk:#1b212a;
+      --bd:#293038; --bd2:#222831; --bd3:#1d232b;
+      --fg:#e8ecf2; --fg2:#c3cad4; --mut:#8f99a8; --mut2:#6e7886;
+      --ac:#5c9dff; --ac-h:#7db0ff; --ac-sf:#13233c; --ac-bd:#2b4a7a;
+      --ok:#48c98a; --ok-sf:#0f2a1e; --err:#ff8a93; --err-sf:#2e1518;
+      --warn:#e0b341; --warn-sf:#2b2210;
+      --sh1:0 1px 2px rgba(0,0,0,.5);
+      --sh2:0 1px 3px rgba(0,0,0,.5), 0 4px 14px -4px rgba(0,0,0,.5);
+      --sh-pop:0 10px 32px -8px rgba(0,0,0,.7);
+    }
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0;background:var(--bg);color:var(--fg);font:14.5px/1.55 var(--ff);
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  :focus-visible{outline:2px solid var(--ac);outline-offset:2px;border-radius:4px}
+  ::selection{background:var(--ac-sf);color:var(--fg)}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+  /* ── Header ────────────────────────────────────────── */
+  header{position:sticky;top:0;z-index:30;display:flex;align-items:center;gap:11px;
+    padding:0 20px;height:54px;background:color-mix(in srgb,var(--card) 88%,transparent);
+    backdrop-filter:saturate(1.6) blur(10px);border-bottom:1px solid var(--bd)}
+  header .mark{width:26px;height:26px;border-radius:7px;flex:0 0 auto;
+    background:linear-gradient(145deg,#2f8bff,#0062ff);color:#fff;
+    display:grid;place-items:center;font:700 12.5px/1 var(--ff);letter-spacing:-.03em;
+    box-shadow:0 2px 6px -1px rgba(0,98,255,.5)}
+  header h1{margin:0;font-size:14.5px;font-weight:600;letter-spacing:-.012em}
+  header h1 small{display:block;font-size:11.5px;font-weight:450;color:var(--mut);
+    letter-spacing:0;margin-top:1px}
+  header .right{margin-left:auto;display:flex;align-items:center;gap:9px}
+  .pill{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:550;
+    padding:4px 10px;border-radius:999px;border:1px solid var(--bd);color:var(--mut);
+    background:var(--card);white-space:nowrap}
+  .pill i{width:6px;height:6px;border-radius:50%;background:var(--mut2);flex:0 0 auto}
+  .pill.y{color:var(--ok);border-color:color-mix(in srgb,var(--ok) 35%,var(--bd));background:var(--ok-sf)}
+  .pill.y i{background:var(--ok)}
+  .pill.n{color:var(--warn);border-color:color-mix(in srgb,var(--warn) 35%,var(--bd));background:var(--warn-sf)}
+  .pill.n i{background:var(--warn)}
+
+  main{max-width:1240px;margin:0 auto;padding:20px 20px 80px}
+
+  /* ── Card ──────────────────────────────────────────── */
+  .card{background:var(--card);border:1px solid var(--bd);border-radius:var(--r);
+    box-shadow:var(--sh1);padding:16px 18px;margin-bottom:16px}
+  .card.lift{box-shadow:var(--sh2)}
+  h2{margin:0 0 14px;font-size:11px;font-weight:650;letter-spacing:.07em;
+    text-transform:uppercase;color:var(--mut);display:flex;align-items:center;
+    gap:9px;flex-wrap:wrap}
+
+  /* ── Form ──────────────────────────────────────────── */
+  label{display:block;font-size:11.5px;font-weight:600;color:var(--fg2);
+    margin-bottom:6px;letter-spacing:.005em}
+  label .hint{font-weight:450;color:var(--mut2)}
+  input,select{width:100%;height:38px;padding:0 11px;border:1px solid var(--bd);
+    border-radius:var(--r-sm);background:var(--card);color:var(--fg);
+    font:inherit;transition:border-color .13s,box-shadow .13s,background .13s}
+  input::placeholder{color:var(--mut2)}
+  input:hover,select:hover{border-color:var(--mut2)}
+  input:focus,select:focus{outline:none;border-color:var(--ac);
+    box-shadow:0 0 0 3.5px var(--ac-sf)}
+  input[type=month]{min-width:148px}
+  .row{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end}
+  .row>.f{flex:1 1 220px;min-width:0}
+  .row>.fx{flex:0 0 auto}
+
+  /* ── Button ────────────────────────────────────────── */
+  button{display:inline-flex;align-items:center;justify-content:center;gap:7px;
+    height:38px;padding:0 14px;border:1px solid var(--bd);background:var(--card);
+    color:var(--fg2);border-radius:var(--r-sm);cursor:pointer;
+    font:550 13.5px/1 var(--ff);white-space:nowrap;box-shadow:var(--sh1);
+    transition:background .13s,border-color .13s,color .13s,box-shadow .13s,transform .08s}
+  button:hover{background:var(--sunk);border-color:var(--mut2);color:var(--fg)}
+  button:active{transform:translateY(1px);box-shadow:none}
+  button.p{background:var(--ac);border-color:var(--ac);color:#fff;font-weight:600;
+    box-shadow:0 1px 2px rgba(0,98,255,.3)}
+  button.p:hover{background:var(--ac-h);border-color:var(--ac-h);color:#fff}
+  button.on{background:var(--ac-sf);border-color:var(--ac-bd);color:var(--ac);font-weight:650}
+  button:disabled{opacity:.45;cursor:not-allowed;transform:none;box-shadow:var(--sh1)}
+  button:disabled:hover{background:var(--card);border-color:var(--bd);color:var(--fg2)}
+  .btns{display:flex;gap:8px;flex-wrap:wrap}
+
+  /* ── Thanh filter kỳ ───────────────────────────────── */
+  .filter{display:flex;gap:14px;flex-wrap:wrap;align-items:flex-end}
+  .stepper{display:inline-flex;height:38px;border:1px solid var(--bd);
+    border-radius:var(--r-sm);overflow:hidden;background:var(--card);box-shadow:var(--sh1)}
+  .stepper button{height:100%;border:0;border-radius:0;box-shadow:none;width:34px;padding:0;
+    font-size:17px;color:var(--mut)}
+  .stepper button:hover{color:var(--ac);background:var(--ac-sf)}
+  .stepper input{height:100%;border:0;border-left:1px solid var(--bd);
+    border-right:1px solid var(--bd);border-radius:0;text-align:center;
+    font-weight:600;font-variant-numeric:tabular-nums}
+  .stepper input:focus{box-shadow:none;background:var(--ac-sf)}
+  .seg{display:inline-flex;height:38px;padding:3px;gap:2px;background:var(--card);
+    border:1px solid var(--bd);border-radius:var(--r-sm);box-shadow:var(--sh1)}
+  .seg button{height:100%;border:0;border-radius:5px;box-shadow:none;padding:0 12px;
+    font-size:13px;background:none;color:var(--mut)}
+  .seg button:hover{background:var(--sunk);color:var(--fg)}
+  .seg button.on{background:var(--ac);color:#fff;font-weight:600}
+  .seg button.on:hover{background:var(--ac-h);color:#fff}
+  .chip{display:inline-flex;align-items:center;gap:5px;background:var(--ac-sf);
+    color:var(--ac);border:1px solid var(--ac-bd);border-radius:999px;
+    padding:3px 5px 3px 11px;font:650 12px/1.4 var(--ff);text-transform:none;letter-spacing:0}
+  .chip button{width:18px;height:18px;padding:0;border:0;border-radius:50%;
+    background:none;box-shadow:none;color:inherit;font-size:14px}
+  .chip button:hover{background:color-mix(in srgb,var(--ac) 18%,transparent);color:var(--ac)}
+
+  /* ── Status ────────────────────────────────────────── */
+  .st{display:flex;align-items:center;gap:8px;min-height:21px;font-size:13px;
+    color:var(--mut);margin-top:15px;padding-top:13px;border-top:1px solid var(--bd2)}
+  .st code{font:12px var(--fm);background:var(--sunk);padding:1.5px 5px;
+    border-radius:4px;border:1px solid var(--bd2)}
+  .st .sp{width:13px;height:13px;flex:0 0 auto;border:2px solid var(--bd);
+    border-top-color:var(--ac);border-radius:50%;animation:spin .55s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .st.e{color:var(--err)} .st.o{color:var(--ok)}
+  .st.e::before,.st.o::before{font-weight:700}
+  .st.e::before{content:"✕"} .st.o::before{content:"✓"}
+  .rl{margin-left:auto;font:11.5px/1 var(--fm);color:var(--mut2);
+    background:var(--sunk);border:1px solid var(--bd2);padding:4px 8px;border-radius:5px}
+
+  /* ── KPI ───────────────────────────────────────────── */
+  .kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(172px,1fr));gap:12px}
+  .kpi>div{position:relative;padding:12px 13px;border:1px solid var(--bd);
+    border-radius:9px;background:linear-gradient(180deg,var(--card),var(--sunk));
+    overflow:hidden}
+  .kpi>div::after{content:"";position:absolute;inset:0 auto 0 0;width:3px;background:var(--ac-bd)}
+  .kpi span{display:block;font-size:10.5px;font-weight:650;color:var(--mut);
+    text-transform:uppercase;letter-spacing:.06em}
+  .kpi b{display:block;margin-top:5px;font-size:21px;font-weight:650;
+    letter-spacing:-.025em;font-variant-numeric:tabular-nums;
+    overflow-wrap:anywhere;line-height:1.2}
+
+  /* ── Table ─────────────────────────────────────────── */
+  .tw{overflow:auto;max-height:66vh;border:1px solid var(--bd);border-radius:9px;
+    background:var(--card);-webkit-overflow-scrolling:touch}
+  .tw::-webkit-scrollbar{width:11px;height:11px}
+  .tw::-webkit-scrollbar-thumb{background:var(--bd);border-radius:6px;
+    border:3px solid var(--card)}
+  .tw::-webkit-scrollbar-thumb:hover{background:var(--mut2)}
+  table{width:100%;border-collapse:separate;border-spacing:0;font-size:13.5px}
+  th,td{padding:8px 11px;text-align:left;white-space:nowrap;
+    border-bottom:1px solid var(--bd3)}
+  th{position:sticky;top:0;z-index:1;background:var(--sunk);color:var(--mut);
+    font:650 10.5px/1.5 var(--ff);text-transform:uppercase;letter-spacing:.06em;
+    border-bottom:1px solid var(--bd)}
+  tbody tr:nth-child(even) td{background:color-mix(in srgb,var(--sunk) 45%,transparent)}
+  tbody tr:last-child td{border-bottom:0}
+  td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
+  td.mono{font:12.5px var(--fm);color:var(--mut)}
+  tbody tr.clk{cursor:pointer}
+  tbody tr.clk:hover td{background:var(--ac-sf);color:var(--fg)}
+  tbody tr.clk:hover td:first-child{box-shadow:inset 3px 0 0 var(--ac)}
+  tfoot td{position:sticky;bottom:0;font-weight:650;background:var(--sunk);
+    border-top:1px solid var(--bd);border-bottom:0}
+
+  /* ── Hóa đơn ───────────────────────────────────────── */
+  .inv .sec{display:flex;align-items:center;gap:10px;margin:26px 0 11px;
+    font:650 11px/1 var(--ff);letter-spacing:.07em;text-transform:uppercase;color:var(--mut)}
+  .inv .sec::after{content:"";flex:1;height:1px;background:var(--bd)}
+  .inv .sec:first-child{margin-top:0}
+  .inv h3{display:flex;align-items:baseline;gap:9px;margin:20px 0 9px;
+    font-size:14px;font-weight:650;letter-spacing:-.01em;
+    padding-bottom:7px;border-bottom:1px solid var(--bd)}
+  .inv h3 .amt{margin-left:auto;font:600 14px/1 var(--fm);color:var(--mut)}
+  .sum{max-width:520px;border:1px solid var(--bd);border-radius:9px;overflow:hidden}
+  .sum td{padding:9px 13px;border-bottom:1px solid var(--bd3)}
+  .sum td:first-child{color:var(--fg2)}
+  .sum td.n{font-variant-numeric:tabular-nums}
+  .sum tr:last-child td{border-bottom:0}
+  .sum tr.due td{background:var(--sunk);font-weight:700;font-size:16px;
+    border-top:2px solid var(--fg);border-bottom:0;padding:11px 13px}
+  .sum td.neg{color:var(--ok);font-weight:600}
+  .ck{display:inline-flex;align-items:center;gap:5px;padding:2px 8px;border-radius:999px;
+    font:650 11.5px/1.6 var(--ff)}
+  .ck.y{color:var(--ok);background:var(--ok-sf)}
+  .ck.n{color:var(--err);background:var(--err-sf)}
+  .bar{height:6px;min-width:64px;border-radius:999px;background:var(--bd2);overflow:hidden}
+  .bar i{display:block;height:100%;border-radius:999px;
+    background:linear-gradient(90deg,var(--ac),#5c9dff)}
+
+  /* ── Misc ──────────────────────────────────────────── */
+  pre{margin:0;padding:13px 14px;border-radius:9px;overflow:auto;max-height:400px;
+    background:#0b0f15;color:#cfd8e3;font:12.5px/1.55 var(--fm);
+    border:1px solid #1d2530}
+  a{color:var(--ac);text-decoration-color:color-mix(in srgb,var(--ac) 35%,transparent);
+    text-underline-offset:2px}
+  a:hover{color:var(--ac-h)}
+  .empty{padding:36px 20px;text-align:center;color:var(--mut)}
+  .empty b{display:block;color:var(--fg2);font-size:14px;margin-bottom:4px}
+  .empty span{font-size:13px}
+  details>summary{cursor:pointer;display:flex;align-items:center;gap:7px;
+    font:650 11px/1 var(--ff);letter-spacing:.07em;text-transform:uppercase;
+    color:var(--mut);list-style:none;padding:2px 0}
+  details>summary::-webkit-details-marker{display:none}
+  details>summary::before{content:"▸";font-size:11px;transition:transform .15s}
+  details[open]>summary::before{transform:rotate(90deg)}
+  details>summary:hover{color:var(--fg)}
+  .skel{height:13px;border-radius:4px;background:linear-gradient(90deg,
+    var(--bd3) 25%,var(--bd2) 37%,var(--bd3) 63%);background-size:400% 100%;
+    animation:sh 1.3s ease-in-out infinite}
+  @keyframes sh{0%{background-position:100% 0}100%{background-position:0 0}}
+
+  @media (max-width:720px){
+    header{padding:0 14px;height:50px}
+    header h1 small{display:none}
+    main{padding:14px 12px 64px}
+    .card{padding:14px;border-radius:9px}
+    .row>.f{flex:1 1 100%}
+    .filter{gap:11px;padding:12px}
+    .filter>.fx{flex:1 1 100%}
+    .stepper,.seg{width:100%}
+    .stepper input{flex:1}
+    .seg button{flex:1}
+    .btns button{flex:1 1 auto}
+    .kpi{grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:9px}
+    .kpi b{font-size:18px}
+    th,td{padding:7px 9px}
+  }
+  @media print{
+    header,.filter,.btns,details,#status{display:none!important}
+    body{background:#fff}
+    .card{box-shadow:none;border:0;padding:0;margin-bottom:18px}
+    .tw{max-height:none;overflow:visible;border-color:#ccc}
+    th{background:#f3f3f3}
+  }
+</style>
+</head>
+<body>
+<header>
+  <span class="mark">DO</span>
+  <h1>Billing Explorer<small>DigitalOcean · test lấy dữ liệu cước</small></h1>
+  <div class="right">
+    <span class="pill" id="envPill"><i></i>đang kiểm tra…</span>
+  </div>
+</header>
+
+<main>
+  <div class="card lift">
+    <div class="filter">
+      <div class="fx">
+        <label for="month">Kỳ cước</label>
+        <div class="stepper">
+          <button id="prev" type="button" title="Tháng trước" aria-label="Tháng trước">‹</button>
+          <input type="month" id="month" aria-label="Chọn kỳ cước">
+          <button id="next" type="button" title="Tháng sau" aria-label="Tháng sau">›</button>
+        </div>
+      </div>
+      <div class="fx">
+        <label>Chọn nhanh</label>
+        <div class="seg" role="group" aria-label="Chọn nhanh kỳ cước">
+          <button data-q="0" type="button">Tháng này</button>
+          <button data-q="1" type="button">Tháng trước</button>
+          <button data-q="all" type="button">Tất cả</button>
+        </div>
+      </div>
+      <div class="fx" style="flex:1 1 320px">
+        <label>Nguồn dữ liệu</label>
+        <div class="btns">
+          <button class="p" data-ep="/api/month" type="button">Tổng hợp tháng</button>
+          <button data-ep="/api/invoices" type="button">Invoices</button>
+          <button data-ep="/api/insights" type="button">Insights</button>
+          <button data-ep="/api/billing-history" type="button">Lịch sử</button>
+          <button data-ep="/api/balance" type="button">Số dư</button>
+          <button data-ep="/api/account" type="button">Account</button>
+        </div>
+      </div>
+    </div>
+    <div class="st" id="status">Chọn kỳ cước và một nguồn dữ liệu để bắt đầu.</div>
+  </div>
+
+  <div class="card" id="kpiCard" hidden><h2 id="kpiTitle">Tổng quan</h2><div class="kpi" id="kpi"></div></div>
+
+  <div class="card" id="tblCard" hidden>
+    <h2 style="display:flex;align-items:center;gap:9px;flex-wrap:wrap">
+      <span id="tblTitle"></span><span id="tblChip"></span>
+    </h2>
+    <div id="tbl"></div>
+  </div>
+
+  <div class="card">
+    <details><summary>JSON thô</summary><pre id="raw" style="margin-top:11px">—</pre></details>
+  </div>
+</main>
+
+<script>
+const $ = (s) => document.querySelector(s);
+const monthEl = $('#month');
+let lastEp = null;
+
+// Badge trạng thái kết nối (cấu hình nằm ở server, không hiển thị ra UI)
+fetch('/health').then((r) => r.json()).then((h) => {
+  const el = $('#envPill');
+  el.className = 'pill ' + (h.tokenFromEnv ? 'y' : 'n');
+  el.innerHTML = '<i></i>' + (h.tokenFromEnv ? 'đã kết nối' : 'chưa cấu hình');
+  if (!h.tokenFromEnv) status('Server chưa được cấu hình để truy cập DigitalOcean.', 'e');
+}).catch(() => {});
+
+// ── Filter tháng ────────────────────────────────────────
+const ym = (d) => d.toISOString().slice(0, 7);
+function shiftMonth(back) {
+  const d = new Date();
+  return ym(new Date(d.getFullYear(), d.getMonth() - back, 1));
+}
+monthEl.value = localStorage.getItem('do_month') || shiftMonth(0);
+monthEl.max = shiftMonth(0);
+
+function period() { return monthEl.value || null; }      // 'YYYY-MM' hoặc null = tất cả
+function syncMonth() {
+  localStorage.setItem('do_month', monthEl.value);
+  const p = period();
+  document.querySelectorAll('.seg button').forEach((b) => {
+    const want = b.dataset.q === 'all' ? null : shiftMonth(Number(b.dataset.q));
+    b.classList.toggle('on', want === p);
+  });
+  if (lastEp) call(lastEp);     // đổi tháng thì gọi lại endpoint hiện tại
+}
+monthEl.onchange = syncMonth;
+$('#prev').onclick = () => { stepMonth(-1); };
+$('#next').onclick = () => { stepMonth(1); };
+function stepMonth(delta) {
+  const p = period() || shiftMonth(0);
+  const [y, m] = p.split('-').map(Number);
+  const d = new Date(y, m - 1 + delta, 1);
+  const v = ym(d);
+  if (v > monthEl.max) return;
+  monthEl.value = v; syncMonth();
+}
+document.querySelectorAll('.seg button').forEach((b) => {
+  b.onclick = () => {
+    monthEl.value = b.dataset.q === 'all' ? '' : shiftMonth(Number(b.dataset.q));
+    syncMonth();
+  };
+});
+
+// ── Gọi API ─────────────────────────────────────────────
+function status(msg, cls, rl) {
+  const el = $('#status');
+  el.className = 'st' + (cls ? ' ' + cls : '');
+  el.innerHTML = (cls === 'load' ? '<span class="sp"></span>' : '') + msg
+    + (rl && rl.remaining ? '<span class="rl">rate limit ' + rl.remaining + '/' + rl.limit + '</span>' : '');
+}
+const esc = (v) => v === null || v === undefined ? ''
+  : String(v).replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]));
+const money = (v) => v === null || v === undefined || v === '' ? ''
+  : Number(v).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+async function call(ep, opts = {}) {
+  if (!opts.drill) lastEp = ep;
+  let url = ep;
+  const p = period();
+  const NEED = ['/api/month', '/api/insights'];          // buộc phải có kỳ
+  const BY_MONTH = [...NEED, '/api/invoices', '/api/billing-history'];
+  if (NEED.includes(ep) && !p) {
+    status('Endpoint này cần một tháng cụ thể — chọn kỳ ở trên trước.', 'e');
+    return;
+  }
+  if (ep === '/api/month') url += '/' + p;                // kỳ nằm trong path
+  else if (p && BY_MONTH.includes(ep)) url += '?month=' + p;
+  status('Đang gọi <code>' + esc(url) + '</code> …', 'load');
+  $('#kpiCard').hidden = true; $('#tblCard').hidden = true; $('#tblChip').innerHTML = '';
+  document.querySelectorAll('button[data-ep]').forEach((b) => { b.disabled = true; });
+  try {
+    const res = await fetch(url);   // xác thực do server xử lý
+    const json = await res.json();
+    $('#raw').textContent = JSON.stringify(json, null, 2);
+    if (!json.success) { status('Lỗi: ' + esc(json.error), 'e'); return; }
+    status('OK', 'o', json.rateLimit);
+    render(json);
+  } catch (e) {
+    status('Lỗi mạng: ' + esc(e.message), 'e');
+  } finally {
+    document.querySelectorAll('button[data-ep]').forEach((b) => { b.disabled = false; });
+  }
+}
+
+// ── Render ──────────────────────────────────────────────
+function kpis(title, pairs) {
+  $('#kpiTitle').textContent = title;
+  $('#kpi').innerHTML = pairs.map((p) =>
+    '<div><span>' + esc(p[0]) + '</span><b>' + esc(p[1] ?? '—') + '</b></div>').join('');
+  $('#kpiCard').hidden = false;
+}
+
+function render(j) {
+  const p = period();
+
+  if (j.balance) {
+    const b = j.balance;
+    kpis('Số dư tài khoản', [
+      ['Account balance', '$' + money(b.account_balance)],
+      ['Month-to-date balance', '$' + money(b.month_to_date_balance)],
+      ['Month-to-date usage', '$' + money(b.month_to_date_usage)],
+      ['Generated at', (b.generated_at || '').replace('T', ' ').replace('Z', '')],
+    ]);
+    return;
+  }
+
+  if (j.report) { invoice(j.report); return; }
+
+  if (j.by_product && j.range) {            // /api/month — tổng hợp 1 kỳ
+    kpis('Tổng hợp kỳ ' + j.month + (j.is_preview ? ' (bản preview, chưa chốt)' : ''), [
+      ['Kỳ', j.month],
+      ['Khoảng ngày', j.range.start + ' → ' + j.range.end],
+      ['Số invoice', j.invoices.length],
+      ['Số dòng item', j.count],
+      ['Tổng (USD)', '$' + money(j.total)],
+    ]);
+    chip('kỳ ' + j.month);
+    table(j.by_product, [
+      ['key', 'Product'], ['amount', 'Số tiền (USD)', 'n'], ['count', 'Số dòng', 'n'],
+    ], { title: 'Gom theo product', total: { col: 'amount', value: j.total } });
+    return;
+  }
+
+  if (j.invoices) {
+    const rows = j.invoices;
+    kpis('Invoices' + (j.month ? ' — kỳ ' + j.month : ' — tất cả kỳ'), [
+      ['Số invoice', j.count + (j.month ? ' / ' + j.total_all : '')],
+      ['Tổng tiền', '$' + money(j.total)],
+      ['Preview tháng chạy', j.preview ? '$' + money(j.preview.amount) : '—'],
+    ]);
+    chip(j.month ? 'kỳ ' + j.month : null);
+    table(rows, [
+      ['invoice_period', 'Kỳ'], ['amount', 'Số tiền (USD)', 'n'],
+      ['invoice_uuid', 'Invoice UUID', 'mono'], ['updated_at', 'Cập nhật'],
+    ], { total: { col: 'amount', value: j.total }, onClick: (r) => call('/api/invoices/' + r.invoice_uuid + '/report', { drill: true }) });
+    return;
+  }
+
+  if (j.billing_history) {
+    kpis('Billing history' + (j.month ? ' — kỳ ' + j.month : ' — tất cả kỳ'), [
+      ['Số bản ghi', j.count + (j.month ? ' / ' + j.total_all : '')],
+      ['Tổng amount', '$' + money(j.total)],
+    ]);
+    chip(j.month ? 'kỳ ' + j.month : null);
+    table(rows2(j.billing_history), [
+      ['date', 'Ngày'], ['type', 'Loại'], ['amount', 'Số tiền', 'n'],
+      ['description', 'Diễn giải'], ['invoice_uuid', 'Invoice UUID', 'mono'],
+    ], { total: { col: 'amount', value: j.total } });
+    return;
+  }
+
+  if (j.by_product) {
+    kpis('Chi tiết invoice', [
+      ['Invoice', j.invoice_uuid.slice(0, 13) + '…'],
+      ['Số dòng', j.count],
+      ['Tổng (USD)', '$' + money(j.total)],
+    ]);
+    $('#tblChip').innerHTML = '<a href="/api/invoices/' + esc(j.invoice_uuid)
+      + '/csv">tải CSV</a> · <a href="#" id="back">‹ về danh sách</a>';
+    const back = $('#back'); if (back) back.onclick = (e) => { e.preventDefault(); call('/api/invoices'); };
+    table(j.by_product, [
+      ['key', 'Product'], ['amount', 'Số tiền (USD)', 'n'], ['count', 'Số dòng', 'n'],
+    ], { title: 'Gom theo product', total: { col: 'amount', value: j.total } });
+    return;
+  }
+
+  if (j.insights) {
+    const d = j.insights;
+    const rows = d.resources || d.insights || d.items || [];
+    kpis('Insights — kỳ ' + (j.month || '') , [
+      ['Khoảng ngày', j.start + ' → ' + j.end],
+      ['Số dòng', Array.isArray(rows) ? rows.length : '—'],
+    ]);
+    if (Array.isArray(rows) && rows.length) {
+      const cols = Object.keys(rows[0]).slice(0, 7)
+        .map((k) => [k, k, typeof rows[0][k] === 'number' ? 'n' : '']);
+      chip(j.start + ' → ' + j.end);
+      table(rows, cols, { title: 'Usage theo ngày / resource' });
+    } else {
+      $('#tblCard').hidden = true;
+      status('Insights trả về cấu trúc khác dự kiến — xem JSON thô bên dưới.', 'o');
+    }
+    return;
+  }
+
+  if (j.account) {
+    const a = j.account;
+    kpis('Account', [
+      ['Email', a.email], ['Status', a.status], ['UUID', a.uuid],
+      ['Droplet limit', a.droplet_limit], ['Team', a.team && a.team.name],
+    ]);
+  }
+}
+
+// ── Render hóa đơn theo bố cục PDF đối soát ─────────────
+function invoice(r) {
+  const s = r.summary, inf = r.info;
+  kpis('Hóa đơn ' + (inf.period || '') + (inf.invoice_id ? ' · #' + inf.invoice_id : ''), [
+    ['Kỳ cước', inf.period],
+    ['Total usage charges', '$' + money(s.usage_charges)],
+    ['Điều chỉnh / giảm giá', (s.adjustments_total < 0 ? '-$' : '$') + money(Math.abs(s.adjustments_total))],
+    ['Total due', '$' + money(s.amount_due)],
+    ['Đối chiếu', r.all_ok ? 'Khớp toàn bộ' : 'Có lệch'],
+  ]);
+
+  $('#tblTitle').textContent = 'Chi tiết hóa đơn';
+  $('#tblChip').innerHTML = '<a href="/api/invoices/' + esc(r.invoice_uuid) + '/report.md">tải .md</a>'
+    + ' · <a href="/api/invoices/' + esc(r.invoice_uuid) + '/csv">tải CSV</a>'
+    + ' · <a href="#" id="back">‹ về danh sách</a>';
+  const bk = $('#back'); if (bk) bk.onclick = (e) => { e.preventDefault(); call('/api/invoices'); };
+
+  const H = [];
+  H.push('<div class="inv">');
+
+  // 1. Thông tin hóa đơn
+  H.push('<div class="sec">1. Thông tin hóa đơn</div>');
+  H.push('<table class="sum"><tbody>');
+  [['Kỳ cước', inf.period], ['Invoice number', inf.invoice_id],
+   ['Invoice UUID', r.invoice_uuid], ['Khách hàng', inf.user_company || inf.user_name],
+   ['Cập nhật', inf.updated_at]].forEach((x) => {
+    if (x[1]) H.push('<tr><td style="color:var(--mut)">' + esc(x[0])
+      + '</td><td' + (x[0].includes('UUID') ? ' class="mono"' : '') + '>' + esc(x[1]) + '</td></tr>');
+  });
+  H.push('</tbody></table>');
+
+  // 3. Tổng hợp
+  H.push('<div class="sec">3. Tổng hợp (Summary)</div>');
+  H.push('<table class="sum"><tbody>');
+  H.push('<tr><td>Total usage charges</td><td class="n">$' + money(s.usage_charges) + '</td></tr>');
+  if (s.overages) H.push('<tr><td>Overages</td><td class="n">$' + money(s.overages) + '</td></tr>');
+  s.adjustments.forEach((a) => {
+    const neg = Number(a.amount) < 0;
+    H.push('<tr><td>' + esc(a.name) + '</td><td class="n' + (neg ? ' neg' : '') + '">'
+      + (neg ? '-$' : '$') + money(Math.abs(a.amount)) + '</td></tr>');
+  });
+  H.push('<tr class="due"><td>Total due</td><td class="n">$' + money(s.amount_due) + '</td></tr>');
+  H.push('</tbody></table>');
+
+  // 4. Chi phí theo sản phẩm
+  H.push('<div class="sec">4. Chi phí theo sản phẩm (Product Usage Charges)</div>');
+  const max = Math.max(...r.groups.map((g) => Math.abs(g.subtotal)), 1);
+  H.push('<div class="tw" style="max-height:none"><table><thead><tr><th>Nhóm sản phẩm</th>'
+    + '<th class="n">Số hạng mục</th><th class="n">Subtotal</th><th style="width:110px"></th></tr></thead><tbody>');
+  r.groups.forEach((g) => {
+    H.push('<tr><td>' + esc(g.name) + '</td><td class="n">' + g.count
+      + '</td><td class="n">$' + money(g.subtotal) + '</td><td><div class="bar"><i style="width:'
+      + (Math.abs(g.subtotal) / max * 100).toFixed(1) + '%"></i></div></td></tr>');
+  });
+  H.push('<tr style="font-weight:650;border-top:1px solid var(--bd)"><td>Tổng</td><td class="n">'
+    + r.totals.items_count + '</td><td class="n">$' + money(r.totals.groups_total) + '</td><td></td></tr>');
+  H.push('</tbody></table></div>');
+
+  // Từng nhóm -> bảng hạng mục
+  r.groups.forEach((g) => {
+    H.push('<h3>' + esc(g.name) + '<span class="amt">$' + money(g.subtotal) + '</span></h3>');
+    H.push('<div class="tw" style="max-height:none"><table><thead><tr><th>Hạng mục</th>'
+      + '<th class="n">Hours</th><th>Start</th><th>End</th><th class="n">Amount</th></tr></thead><tbody>');
+    g.lines.forEach((l) => {
+      H.push('<tr><td style="white-space:normal">' + esc(l.description) + '</td><td class="n">'
+        + esc(l.hours) + '</td><td class="mono">' + esc(l.start) + '</td><td class="mono">'
+        + esc(l.end) + '</td><td class="n">$' + money(l.amount) + '</td></tr>');
+    });
+    H.push('</tbody></table></div>');
+  });
+
+  // 5. Đối chiếu tự động
+  H.push('<div class="sec">5. Đối chiếu tự động</div>');
+  H.push('<div class="tw" style="max-height:none"><table><thead><tr><th>Kiểm tra</th>'
+    + '<th class="n">Giá trị</th><th>Kết quả</th></tr></thead><tbody>');
+  r.checks.forEach((c) => {
+    H.push('<tr><td>' + esc(c.label) + '</td><td class="n">$' + money(c.value)
+      + '</td><td><span class="ck ' + (c.ok ? 'y' : 'n') + '">' + (c.ok ? '✓ khớp' : '✗ LỆCH')
+      + '</span> <span style="color:var(--mut);font-size:12px">' + esc(c.note) + '</span></td></tr>');
+  });
+  H.push('</tbody></table></div></div>');
+
+  $('#tbl').innerHTML = H.join('');
+  $('#tblCard').hidden = false;
+}
+
+const rows2 = (r) => r || [];
+
+function chip(text) {
+  $('#tblChip').innerHTML = text
+    ? '<span class="chip">' + esc(text) + '<button id="clr" title="Bỏ lọc tháng">×</button></span>' : '';
+  const c = $('#clr');
+  if (c) c.onclick = () => { monthEl.value = ''; syncMonth(); };
+}
+
+function table(rows, cols, o = {}) {
+  if (o.title) $('#tblTitle').textContent = o.title;
+  else $('#tblTitle').textContent = 'Dữ liệu (' + rows.length + ' dòng)';
+  if (!rows.length) {
+    $('#tbl').innerHTML = '<div class="empty"><b>Không có dữ liệu</b>'
+      + '<span>Kỳ đã chọn không có bản ghi nào. Thử kỳ khác hoặc bấm “Tất cả”.</span></div>';
+    $('#tblCard').hidden = false; return;
+  }
+  const head = '<tr>' + cols.map((c) =>
+    '<th class="' + (c[2] === 'n' ? 'n' : '') + '">' + esc(c[1]) + '</th>').join('') + '</tr>';
+  const body = rows.slice(0, 1000).map((r, i) =>
+    '<tr class="' + (o.onClick ? 'clk' : '') + '" data-i="' + i + '">'
+    + cols.map((c) => '<td class="' + (c[2] || '') + '">'
+      + esc(c[2] === 'n' && c[0] !== 'count' ? money(r[c[0]]) : r[c[0]]) + '</td>').join('')
+    + '</tr>').join('');
+  let foot = '';
+  if (o.total) {
+    foot = '<tfoot><tr>' + cols.map((c, i) => '<td class="' + (c[2] === 'n' ? 'n' : '') + '">'
+      + (i === 0 ? 'Tổng' : c[0] === o.total.col ? '$' + money(o.total.value) : '')
+      + '</td>').join('') + '</tr></tfoot>';
+  }
+  $('#tbl').innerHTML = '<div class="tw"><table><thead>' + head + '</thead><tbody>'
+    + body + '</tbody>' + foot + '</table></div>';
+  if (o.onClick) {
+    $('#tbl').querySelectorAll('tr.clk').forEach((tr) => {
+      tr.onclick = () => o.onClick(rows[Number(tr.dataset.i)]);
+    });
+  }
+  $('#tblCard').hidden = false;
+}
+
+document.querySelectorAll('button[data-ep]').forEach((b) => { b.onclick = () => call(b.dataset.ep); });
+syncMonth();
+</script>
+</body>
+</html>

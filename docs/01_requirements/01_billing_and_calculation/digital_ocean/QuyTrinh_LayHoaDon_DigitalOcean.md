@@ -1,5 +1,12 @@
 # Quy trình lấy hóa đơn DigitalOcean (DO)
 
+> [!IMPORTANT]
+> **62 team của CloudAZ là độc lập, không thuộc một organization chung.**
+> Mỗi team là một tài khoản billing riêng, thuộc org của từng khách hàng.
+> Vì vậy **mỗi team cần một Personal Access Token riêng** — không có token
+> dùng chung đọc được billing nhiều team.
+> Chi tiết kiểm chứng: [GiaiPhap_KyThuat_LayDuLieu_DO.md](GiaiPhap_KyThuat_LayDuLieu_DO.md#mô-hình-truy-cập-62-team-độc-lập-không-thuộc-một-organization)
+
 ## 1. Quyền hạn yêu cầu (Permissions)
 Để xem và tải hóa đơn trên DigitalOcean, tài khoản cần được phân vai trò (Team Role) tương ứng trên **Team Account**:
 *   **Owner** (Chủ sở hữu - có toàn quyền quản trị và thanh toán).
@@ -43,7 +50,13 @@ Nếu viết script tự động hóa dạng shell script, có thể dùng công
     ```
 
 ### Cách 3.2: Tích hợp trực tiếp qua API (Khuyên dùng cho ERP Backend)
-ERP Backend (NodeJS/Python) có thể gọi các API Endpoint chính thức của DigitalOcean bằng cách sử dụng **Personal Access Token** có quyền đọc (Read-only):
+ERP Backend (NodeJS/Python) có thể gọi các API Endpoint chính thức của DigitalOcean bằng cách sử dụng **Personal Access Token** có quyền đọc (Read-only).
+
+> [!WARNING]
+> Token phải tạo **riêng cho từng team** (`billing:read` + `account:read`).
+> Mọi endpoint `/v2/customers/my/*` chỉ trả dữ liệu của đúng team mà token
+> thuộc về. Không có tham số nào chuyển được ngữ cảnh sang team khác —
+> `?team_uuid=` trả HTTP 200 nhưng **bị bỏ qua**, vẫn ra dữ liệu team gốc.
 
 1.  **Lấy danh sách hóa đơn:**
     *   `GET https://api.digitalocean.com/v2/customers/my/invoices`
@@ -54,3 +67,17 @@ ERP Backend (NodeJS/Python) có thể gọi các API Endpoint chính thức củ
 3.  **Tải file hóa đơn (PDF):**
     *   `GET https://api.digitalocean.com/v2/customers/my/invoices/{invoice_uuid}/pdf`
     *   Trả về file PDF để ERP lưu trữ và gửi email tự động cho khách hàng.
+4.  **Lấy tổng hợp để đối soát (thay cho parse CSV):**
+    *   `GET https://api.digitalocean.com/v2/customers/my/invoices/{invoice_uuid}`
+        → `invoice_items`: từng dòng cước, có `group_description`, `duration`,
+        `start_time`, `end_time`, `project_name`, `resource_uuid`.
+    *   `GET https://api.digitalocean.com/v2/customers/my/invoices/{invoice_uuid}/summary`
+        → `product_charges`, `overages`, `taxes`, `credits_and_adjustments`.
+
+### Cách 3.3: Liệt kê danh sách team (phục vụ ánh xạ khách hàng)
+
+*   `GET https://api.digitalocean.com/v2/teams?per_page=200`
+*   Trả về 62 team với `uuid`, `name`, `email`, `user_role`. **Không có dữ liệu
+    billing** — chỉ dùng để nạp danh mục team vào DB.
+*   Lưu ý: 15/62 team trùng tên `"My Team"` (tên mặc định của DO). Ánh xạ
+    khách hàng phải dựa vào `uuid`, dùng `email` làm gợi ý nhận diện.
