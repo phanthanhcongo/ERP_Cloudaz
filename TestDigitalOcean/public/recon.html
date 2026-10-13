@@ -1,0 +1,410 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Đối soát DigitalOcean — CloudAZ</title>
+<meta name="description" content="Sinh, kiểm tra, chỉnh và xuất bảng đối soát chi phí DigitalOcean theo kỳ cho từng khách hàng.">
+<style>
+  :root{
+    --bg:#f6f7fb; --card:#fff; --sunk:#f2f4f8; --bd:#e1e5ec; --bd2:#eef0f5;
+    --fg:#111822; --fg2:#3c4654; --mut:#6b7684;
+    --ac:#2f5bea; --ac-h:#2249c9; --ac-sf:#ecf1ff; --ac-bd:#bccbff;
+    --ok:#0a7d4a; --ok-sf:#e6f6ee; --err:#c0303c; --err-sf:#fdecee; --warn:#8a6100; --warn-sf:#fff5dc;
+    --vio:#6d3fd6; --vio-sf:#f1ebff;
+    --sh1:0 1px 2px rgba(17,24,34,.05); --sh2:0 2px 6px rgba(17,24,34,.06),0 10px 24px -8px rgba(17,24,34,.10);
+    --r:12px; --r-sm:8px;
+    --ff:Inter,ui-sans-serif,-apple-system,"Segoe UI",Roboto,sans-serif;
+    --fm:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  }
+  @media (prefers-color-scheme:dark){:root{
+    --bg:#0c0f14; --card:#151a21; --sunk:#1b212a; --bd:#293038; --bd2:#222831;
+    --fg:#e8ecf2; --fg2:#c3cad4; --mut:#8f99a8;
+    --ac:#6d95ff; --ac-h:#8cabff; --ac-sf:#16223d; --ac-bd:#2d4680;
+    --ok:#48c98a; --ok-sf:#0f2a1e; --err:#ff8a93; --err-sf:#2e1518; --warn:#e0b341; --warn-sf:#2b2210;
+    --vio:#b39aff; --vio-sf:#231a3d;
+    --sh1:0 1px 2px rgba(0,0,0,.5); --sh2:0 4px 18px -6px rgba(0,0,0,.6);
+  }}
+  *{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--fg);font:14px/1.5 var(--ff);-webkit-font-smoothing:antialiased}
+  button,input,select{font:inherit;color:inherit}
+  a{color:var(--ac)}
+  header{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 85%,transparent);backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--bd);padding:12px 22px;display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+  h1{font-size:17px;margin:0;font-weight:650;letter-spacing:-.01em;display:flex;align-items:center;gap:10px}
+  h1 .logo{width:26px;height:26px;border-radius:8px;background:linear-gradient(135deg,#2f5bea,#7a4bf0);display:grid;place-items:center;color:#fff;font-size:13px}
+  h1 small{font-weight:450;color:var(--mut);font-size:12.5px}
+  .toolbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-left:auto}
+  .field{display:flex;align-items:center;gap:6px;font-size:12.5px;color:var(--mut)}
+  input,select{background:var(--card);border:1px solid var(--bd);border-radius:var(--r-sm);padding:6px 9px;min-width:0}
+  input:focus,select:focus{outline:2px solid var(--ac-bd);border-color:var(--ac)}
+  input.num{width:96px;text-align:right;font-variant-numeric:tabular-nums}
+  .btn{border:1px solid var(--bd);background:var(--card);border-radius:var(--r-sm);padding:6px 12px;cursor:pointer;box-shadow:var(--sh1);
+    transition:background .15s,border-color .15s,transform .05s;white-space:nowrap}
+  .btn:hover{border-color:var(--ac-bd);background:var(--ac-sf)} .btn:active{transform:translateY(1px)}
+  .btn.pri{background:var(--ac);border-color:var(--ac);color:#fff} .btn.pri:hover{background:var(--ac-h)}
+  .btn.sm{padding:3px 9px;font-size:12.5px}
+  .seg{display:inline-flex;border:1px solid var(--bd);border-radius:var(--r-sm);overflow:hidden;background:var(--card)}
+  .seg button{border:0;background:transparent;padding:5px 10px;cursor:pointer;font-size:12.5px}
+  .seg button.on{background:var(--ac);color:#fff}
+  main{padding:18px 22px;max-width:1600px;margin:0 auto}
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-bottom:16px}
+  .stat{background:var(--card);border:1px solid var(--bd);border-radius:var(--r);padding:12px 14px;box-shadow:var(--sh1)}
+  .stat .k{font-size:12px;color:var(--mut)} .stat .v{font-size:20px;font-weight:650;font-variant-numeric:tabular-nums;margin-top:2px}
+  .stat .v.ok{color:var(--ok)} .stat .v.warn{color:var(--warn)}
+  .grid{display:grid;grid-template-columns:minmax(380px,520px) 1fr;gap:16px;align-items:start}
+  @media (max-width:1050px){.grid{grid-template-columns:1fr}}
+  .card{background:var(--card);border:1px solid var(--bd);border-radius:var(--r);box-shadow:var(--sh2)}
+  .card-h{display:flex;gap:8px;align-items:center;padding:10px 12px;border-bottom:1px solid var(--bd2);flex-wrap:wrap}
+  .card-h h2{font-size:14px;margin:0;font-weight:620}
+  .list{max-height:calc(100vh - 290px);overflow:auto}
+  table.lst{width:100%;border-collapse:collapse;font-size:13px}
+  table.lst th{position:sticky;top:0;background:var(--sunk);text-align:left;font-weight:560;color:var(--mut);font-size:12px;padding:7px 8px;border-bottom:1px solid var(--bd)}
+  table.lst td{padding:7px 8px;border-bottom:1px solid var(--bd2);vertical-align:middle}
+  table.lst tr.row{cursor:pointer;transition:background .12s} table.lst tr.row:hover{background:var(--sunk)}
+  table.lst tr.sel{background:var(--ac-sf)!important;box-shadow:inset 3px 0 0 var(--ac)}
+  .r{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+  .code{font-weight:600} .sub2{color:var(--mut);font-size:11.5px}
+  .pill{display:inline-block;padding:1px 8px;border-radius:999px;font-size:11.5px;font-weight:560;border:1px solid transparent;white-space:nowrap}
+  .st-DRAFT{background:var(--sunk);color:var(--fg2);border-color:var(--bd)}
+  .st-REVIEWED{background:var(--vio-sf);color:var(--vio)}
+  .st-SENT{background:var(--ac-sf);color:var(--ac)}
+  .st-CONFIRMED,.st-AUTO_CONFIRMED,.st-INVOICED{background:var(--ok-sf);color:var(--ok)}
+  .st-DISPUTED{background:var(--err-sf);color:var(--err)}
+  .w{color:var(--warn)} .ok{color:var(--ok)} .err{color:var(--err)}
+  .detail{padding:14px 16px}
+  .dh{display:flex;gap:10px;align-items:flex-start;flex-wrap:wrap;margin-bottom:12px}
+  .dh h2{margin:0;font-size:17px} .dh .grow{flex:1;min-width:240px}
+  .tabs{display:flex;gap:2px;border-bottom:1px solid var(--bd);margin:6px 0 14px}
+  .tabs button{border:0;background:none;padding:8px 12px;cursor:pointer;color:var(--mut);border-bottom:2px solid transparent;margin-bottom:-1px}
+  .tabs button.on{color:var(--fg);border-color:var(--ac);font-weight:560}
+  .form{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+  .form label{display:flex;flex-direction:column;gap:4px;font-size:12px;color:var(--mut)}
+  .note{background:var(--sunk);border-radius:var(--r-sm);padding:10px 12px;font-size:12.5px;color:var(--fg2);white-space:pre-wrap}
+  .warnbox{background:var(--warn-sf);color:var(--warn);border-radius:var(--r-sm);padding:8px 12px;font-size:12.5px;margin-bottom:10px}
+  .warnbox div+div{margin-top:3px}
+  .preview{overflow:auto;border:1px solid var(--bd2);border-radius:var(--r-sm);padding:4px 14px 14px;background:#fff;color:#1b2333}
+  .preview h2{font-size:15px;margin:14px 0 2px} .preview .sub{color:#5b6475;margin:0 0 8px;font-size:12.5px}
+  .preview table.recon{border-collapse:collapse;font-size:13px;min-width:620px}
+  .preview table.recon th,.preview table.recon td{border:1px solid #c9d1df;padding:5px 9px}
+  .preview table.recon th{background:#eef2f8} .preview td.num,.preview th.num{text-align:right;white-space:nowrap}
+  .preview .b{font-weight:600} .preview table.foot{margin-top:8px}
+  .kv{display:grid;grid-template-columns:150px 1fr;gap:6px 12px;font-size:13px} .kv div:nth-child(odd){color:var(--mut)}
+  .empty{padding:60px 20px;text-align:center;color:var(--mut)}
+  .toast{position:fixed;bottom:20px;right:20px;background:var(--fg);color:var(--bg);padding:10px 16px;border-radius:var(--r-sm);
+    box-shadow:var(--sh2);opacity:0;transform:translateY(8px);transition:all .2s;pointer-events:none;z-index:10}
+  .toast.on{opacity:1;transform:none}
+  .row-actions{display:flex;gap:6px;flex-wrap:wrap}
+  .mono{font-family:var(--fm);font-size:12px}
+  .spin{display:inline-block;width:14px;height:14px;border:2px solid var(--bd);border-top-color:var(--ac);border-radius:50%;animation:sp .7s linear infinite;vertical-align:-2px}
+  @keyframes sp{to{transform:rotate(360deg)}}
+</style>
+</head>
+<body>
+<header>
+  <h1><span class="logo">ĐS</span>Đối soát DigitalOcean <small>sinh · kiểm tra · chỉnh · xuất</small></h1>
+  <div class="toolbar">
+    <label class="field">Kỳ <select id="period-select"></select></label>
+    <span class="field">Làm tròn
+      <span class="seg" id="rounding-seg">
+        <button data-v="BILL" id="rounding-bill" title="Giống file Bill — số đã xuất hóa đơn">BILL</button>
+        <button data-v="RECON" id="rounding-recon" title="Làm tròn từng bước như block đối soát">RECON</button>
+      </span>
+    </span>
+    <label class="field">TCB <input class="num" id="fx-tcb" placeholder="mặc định"></label>
+    <label class="field">VCB <input class="num" id="fx-vcb" placeholder="mặc định"></label>
+    <label class="field">BIDV <input class="num" id="fx-bidv" placeholder="mặc định"></label>
+    <button class="btn" id="save-fx-btn">Áp tỷ giá</button>
+    <button class="btn" id="export-html-btn">Xem HTML</button>
+    <button class="btn pri" id="export-xlsx-btn">⬇ Xuất XLSX</button>
+    <a href="/" class="btn" id="back-link" style="text-decoration:none">← Billing Explorer</a>
+  </div>
+</header>
+
+<main>
+  <section class="stats" id="stats"></section>
+
+  <div class="grid">
+    <section class="card" aria-label="Danh sách khách">
+      <div class="card-h">
+        <h2>Khách hàng</h2>
+        <input id="search-input" placeholder="Tìm khách / team…" style="flex:1;min-width:120px">
+        <select id="status-filter">
+          <option value="">Mọi trạng thái</option>
+        </select>
+        <select id="flag-filter">
+          <option value="">Tất cả</option>
+          <option value="warn">Có cảnh báo</option>
+          <option value="diff">Lệch Excel</option>
+          <option value="override">Đã chỉnh tay</option>
+        </select>
+      </div>
+      <div class="card-h" style="gap:6px">
+        <label class="field"><input type="checkbox" id="check-all"> Chọn hết</label>
+        <span class="sub2" id="sel-count"></span>
+        <span style="margin-left:auto" class="row-actions">
+          <select id="bulk-status"></select>
+          <button class="btn sm" id="bulk-apply-btn">Đổi trạng thái</button>
+        </span>
+      </div>
+      <div class="list">
+        <table class="lst">
+          <thead><tr><th style="width:28px"></th><th>Khách</th><th>Mẫu</th><th class="r">USD</th><th class="r">Tổng (VND)</th><th>TT</th></tr></thead>
+          <tbody id="list-body"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="card" id="detail" aria-label="Chi tiết bảng đối soát">
+      <div class="empty">Chọn một khách để xem bảng đối soát.</div>
+    </section>
+  </div>
+</main>
+<div class="toast" id="toast"></div>
+
+<script>
+const $ = (s, el = document) => el.querySelector(s);
+const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const fUsd = (n) => Number(n || 0).toLocaleString('vi-VN', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+const fVnd = (n) => Number(n || 0).toLocaleString('vi-VN', { maximumFractionDigits: 0 });
+const STATUS_LABEL = { DRAFT: 'Nháp', REVIEWED: 'Đã duyệt', SENT: 'Đã gửi', CONFIRMED: 'Khách xác nhận',
+  AUTO_CONFIRMED: 'Tự xác nhận', DISPUTED: 'Khách phản hồi', INVOICED: 'Đã xuất HĐ' };
+const LAYOUTS = ['VERTICAL_CHAIN', 'VERTICAL_PARALLEL', 'HORIZONTAL_ROWS', 'HORIZONTAL_COLS', 'SERVICE_BREAKDOWN'];
+
+const S = { period: null, data: null, statuses: [], selected: null, checked: new Set(), tab: 'preview' };
+
+function toast(msg, isErr) {
+  const t = $('#toast'); t.textContent = msg; t.style.background = isErr ? 'var(--err)' : '';
+  t.classList.add('on'); clearTimeout(t._h); t._h = setTimeout(() => t.classList.remove('on'), 2200);
+}
+async function api(url, opt = {}) {
+  const res = await fetch(url, { headers: { 'Content-Type': 'application/json' }, ...opt,
+    body: opt.body ? JSON.stringify(opt.body) : undefined });
+  const j = await res.json();
+  if (!j.success) throw new Error(j.error || 'Lỗi');
+  return j;
+}
+
+async function init() {
+  const { periods, statuses } = await api('/api/recon-periods');
+  S.statuses = statuses;
+  $('#period-select').innerHTML = periods.map((p) => `<option>${p}</option>`).join('');
+  const opts = statuses.map((s) => `<option value="${s}">${STATUS_LABEL[s] || s}</option>`).join('');
+  $('#status-filter').insertAdjacentHTML('beforeend', opts);
+  $('#bulk-status').innerHTML = opts;
+  const fromHash = location.hash.slice(1);
+  S.period = periods.includes(fromHash) ? fromHash : periods[0];
+  $('#period-select').value = S.period;
+  await load();
+}
+
+async function load(keepSel = true) {
+  $('#list-body').innerHTML = `<tr><td colspan="6" class="empty"><span class="spin"></span> Đang tính…</td></tr>`;
+  try {
+    S.data = await api(`/api/recon/${S.period}`);
+  } catch (e) { toast(e.message, true); return; }
+  const st = S.data.settings;
+  document.querySelectorAll('#rounding-seg button').forEach((b) => b.classList.toggle('on', b.dataset.v === st.rounding));
+  $('#fx-tcb').value = st.fx.TCB || ''; $('#fx-vcb').value = st.fx.VCB || ''; $('#fx-bidv').value = st.fx.BIDV || '';
+  if (!keepSel || !S.data.sheets.find((s) => s.customerCode === S.selected)) S.selected = null;
+  renderStats(); renderList(); renderDetail();
+}
+
+function renderStats() {
+  const sh = S.data.sheets;
+  const sum = (f) => sh.reduce((a, s) => a + f(s), 0);
+  const diff = sh.filter((s) => s.excelCheck && s.excelCheck.diffVnd).length;
+  const warn = sh.filter((s) => s.warnings.length).length;
+  const by = (st) => sh.filter((s) => s.status === st).length;
+  const done = sh.filter((s) => ['CONFIRMED', 'AUTO_CONFIRMED', 'INVOICED'].includes(s.status)).length;
+  $('#stats').innerHTML = [
+    ['Bảng đối soát', sh.length, '', `${S.data.noUsage.length} khách không phát sinh`],
+    ['Tổng thành tiền (USD)', fUsd(sum((s) => s.amountUsd))],
+    ['Tổng thanh toán (VND)', fVnd(sum((s) => s.total))],
+    ['Khớp file Bill', diff ? `${sh.length - diff}/${sh.length}` : 'Tất cả', diff ? 'warn' : 'ok', diff ? `${diff} bảng lệch` : 'lệch 0đ'],
+    ['Có cảnh báo', warn, warn ? 'warn' : 'ok'],
+    ['Tiến độ', `${done}/${sh.length}`, '', `Nháp ${by('DRAFT')} · Duyệt ${by('REVIEWED')} · Gửi ${by('SENT')}`],
+  ].map(([k, v, c = '', sub = '']) => `<div class="stat"><div class="k">${k}</div><div class="v ${c}">${v}</div>${sub ? `<div class="sub2">${sub}</div>` : ''}</div>`).join('');
+}
+
+function filtered() {
+  const q = $('#search-input').value.trim().toUpperCase();
+  const st = $('#status-filter').value, fl = $('#flag-filter').value;
+  return S.data.sheets.filter((s) => {
+    if (q && !(`${s.customerCode} ${s.customerName} ${s.lines.map((l) => l.teamId + ' ' + (l.doName || '')).join(' ')}`.toUpperCase().includes(q))) return false;
+    if (st && s.status !== st) return false;
+    if (fl === 'warn' && !s.warnings.length) return false;
+    if (fl === 'diff' && !(s.excelCheck && s.excelCheck.diffVnd)) return false;
+    if (fl === 'override' && !s.override) return false;
+    return true;
+  });
+}
+
+function renderList() {
+  const rows = filtered();
+  $('#list-body').innerHTML = rows.map((s) => {
+    const d = s.excelCheck && s.excelCheck.diffVnd;
+    return `<tr class="row ${s.customerCode === S.selected ? 'sel' : ''}" data-code="${esc(s.customerCode)}">
+      <td><input type="checkbox" class="chk" data-code="${esc(s.customerCode)}" ${S.checked.has(s.customerCode) ? 'checked' : ''}></td>
+      <td><div class="code">${esc(s.customerCode)} ${s.warnings.length ? `<span class="w" title="${esc(s.warnings.join('\n'))}">⚠</span>` : ''}${s.override ? ' <span class="sub2" title="Đã chỉnh tay">✎</span>' : ''}</div>
+          <div class="sub2">${s.lines.length} team · ${s.fxBank} ${fVnd(s.fxRate)}${s.sellerEntity === 'CLOUDINO' ? ' · CLOUDINO' : ''}</div></td>
+      <td class="sub2">${s.layout.replace('VERTICAL_', 'V·').replace('HORIZONTAL_', 'H·').replace('SERVICE_BREAKDOWN', 'Dịch vụ')}</td>
+      <td class="r">${fUsd(s.amountUsd)}</td>
+      <td class="r">${fVnd(s.total)}${d ? `<div class="sub2 err">lệch ${fVnd(d)}</div>` : ''}</td>
+      <td><span class="pill st-${s.status}">${STATUS_LABEL[s.status] || s.status}</span></td></tr>`;
+  }).join('') || `<tr><td colspan="6" class="empty">Không có khách nào khớp bộ lọc.</td></tr>`;
+  $('#sel-count').textContent = S.checked.size ? `${S.checked.size} đã chọn` : '';
+}
+
+function renderDetail() {
+  const s = S.data.sheets.find((x) => x.customerCode === S.selected);
+  const el = $('#detail');
+  if (!s) { el.innerHTML = '<div class="empty">Chọn một khách để xem bảng đối soát.</div>'; return; }
+  const t = s.lines[0].term, o = s.override || {};
+  const p = s.profile || {};
+  const nextActions = {
+    DRAFT: [['REVIEWED', 'Duyệt']], REVIEWED: [['SENT', 'Đánh dấu đã gửi'], ['DRAFT', 'Về nháp']],
+    SENT: [['CONFIRMED', 'Khách xác nhận'], ['AUTO_CONFIRMED', `Quá ${p.confirmDays || 2} ngày — tự xác nhận`], ['DISPUTED', 'Khách phản hồi số khác']],
+    DISPUTED: [['REVIEWED', 'Đã điều chỉnh — duyệt lại']], CONFIRMED: [['INVOICED', 'Đã xuất HĐ']], AUTO_CONFIRMED: [['INVOICED', 'Đã xuất HĐ']], INVOICED: [],
+  }[s.status] || [];
+
+  el.innerHTML = `<div class="detail">
+    <div class="dh">
+      <div class="grow">
+        <h2>${esc(s.customerCode)} <span class="pill st-${s.status}">${STATUS_LABEL[s.status]}</span></h2>
+        <div class="sub2">${esc(s.customerName)}</div>
+        ${s.statusInfo ? `<div class="sub2">Cập nhật ${new Date(s.statusInfo.at).toLocaleString('vi-VN')}${s.statusInfo.note ? ' · ' + esc(s.statusInfo.note) : ''}</div>` : ''}
+      </div>
+      <div class="row-actions">
+        ${nextActions.map(([st, label]) => `<button class="btn sm ${st === 'REVIEWED' || st === 'SENT' ? 'pri' : ''}" data-status="${st}">${label}</button>`).join('')}
+      </div>
+    </div>
+    ${s.warnings.length ? `<div class="warnbox">${s.warnings.map((w) => `<div>⚠ ${esc(w)}</div>`).join('')}</div>` : ''}
+    <div class="tabs">
+      ${[['preview', 'Bảng đối soát'], ['terms', 'Điều khoản & chỉnh tay'], ['info', 'Thông tin gửi']].map(([k, l]) =>
+        `<button data-tab="${k}" class="${S.tab === k ? 'on' : ''}">${l}</button>`).join('')}
+    </div>
+    <div id="tab-body"></div>
+  </div>`;
+
+  const body = $('#tab-body');
+  if (S.tab === 'preview') {
+    body.innerHTML = `<div class="row-actions" style="margin-bottom:10px">
+        <button class="btn sm" id="copy-html-btn">⧉ Copy bảng (dán vào mail)</button>
+        <button class="btn sm" id="dl-one-btn">⬇ XLSX khách này</button>
+        <span class="sub2" style="align-self:center">Làm tròn ${s.rounding} · ${s.excelCheck ? (s.excelCheck.diffVnd ? `<span class="err">lệch file Bill ${fVnd(s.excelCheck.diffVnd)}đ</span>` : '<span class="ok">khớp file Bill</span>') : ''}</span>
+      </div>
+      <div class="preview" id="preview">${s.html}</div>`;
+  } else if (S.tab === 'terms') {
+    const opt = (arr, v) => arr.map((x) => `<option ${x === v ? 'selected' : ''}>${x}</option>`).join('');
+    body.innerHTML = `<form id="terms-form" class="form">
+        <label>Chiết khấu khách (%)<input name="discountPct" class="num" value="${+(t.discountPct * 100).toFixed(4)}"></label>
+        <label>Phí dịch vụ (%)<input name="feePct" class="num" value="${+(t.feePct * 100).toFixed(4)}"></label>
+        <label>Cách tính<select name="calcMethod">${opt(['CHAIN', 'PARALLEL'], t.calcMethod)}</select></label>
+        <label>Mẫu bảng<select name="layout">${opt(LAYOUTS, s.layout)}</select></label>
+        <label>Tỷ giá riêng khách<input name="fxRate" class="num" value="${o.fxRate || ''}" placeholder="${fVnd(s.fxRate)}"></label>
+        <label>Số dư trả trước đầu kỳ (VND)<input name="prepaid" class="num" value="${(S.data.settings.prepaid || {})[s.customerCode] || ''}" placeholder="không có"></label>
+      </form>
+      <div class="row-actions" style="margin-top:12px">
+        <button class="btn pri" id="save-terms-btn">Lưu & tính lại</button>
+        ${s.override ? '<button class="btn" id="reset-terms-btn">Bỏ chỉnh tay</button>' : ''}
+      </div>
+      <p class="sub2">Nguồn cách tính: <b>${esc(t.calcMethodSource || '')}</b>.
+        CHAIN = usage × (1+phí) × (1−CK); PARALLEL = usage × (1−CK) + usage × phí.
+        Chỉnh tay chỉ áp cho kỳ ${S.period}, lưu ở <span class="mono">out/recon_state.json</span>.</p>
+      <h3 style="font-size:13px;margin:16px 0 6px">Team trong bảng</h3>
+      <table class="lst"><thead><tr><th>Team</th><th class="r">Billing</th><th class="r">CK</th><th class="r">Phí</th><th class="r">USD</th><th class="r">VND</th></tr></thead>
+      <tbody>${s.lines.map((l) => `<tr><td><div class="mono">${esc(l.teamId)}</div><div class="sub2">${esc(l.doName || '')} · invoice ${esc(l.vendorInvoiceNo || '-')}</div></td>
+        <td class="r">${fUsd(l.billing)}</td><td class="r">${fUsd(l.discount)}</td><td class="r">${fUsd(l.fee)}</td><td class="r">${fUsd(l.amountUsd)}</td><td class="r">${fVnd(l.amountVnd)}</td></tr>`).join('')}</tbody></table>`;
+  } else {
+    body.innerHTML = `<div class="kv">
+      <div>Email nhận đối soát</div><div>${(p.reconEmails || []).map(esc).join('<br>') || '—'}</div>
+      <div>Email nhận hóa đơn</div><div>${esc(p.invoiceEmail || 'như trên')}</div>
+      <div>Pháp nhân bán</div><div>${esc(s.sellerEntity)}</div>
+      <div>Tỷ giá</div><div>${esc(p.fxBank)} · ${p.fxRule === 'INVOICE_DATE' ? 'lúc xuất hóa đơn' : 'cuối tháng'}</div>
+      <div>Chờ xác nhận</div><div>${p.confirmDays || 2} ngày</div>
+      <div>Hồ sơ cần gửi</div><div>${(p.docBundle || []).join(', ') || 'Chỉ HĐ điện tử'}</div>
+      <div>Xuất HĐ chung</div><div>${p.groupInvoice ? 'Có — các team chung 1 HĐ' : 'Không'}</div>
+      <div>Chấp nhận số khách xác nhận</div><div>${p.acceptCustomerAmount ? 'Có' : 'Không'}</div>
+    </div>`;
+  }
+}
+
+async function setStatus(codes, status, note) {
+  await api(`/api/recon/${S.period}/status`, { method: 'PUT', body: { codes, status, note } });
+  toast(`${codes.length} khách → ${STATUS_LABEL[status]}`);
+  await load();
+}
+
+// ── Sự kiện ──
+$('#period-select').addEventListener('change', (e) => { S.period = e.target.value; location.hash = S.period; S.checked.clear(); load(false); });
+$('#rounding-seg').addEventListener('click', async (e) => {
+  const v = e.target.dataset.v; if (!v) return;
+  await api(`/api/recon/${S.period}/settings`, { method: 'PUT', body: { rounding: v } });
+  toast(`Làm tròn ${v}`); load();
+});
+$('#save-fx-btn').addEventListener('click', async () => {
+  await api(`/api/recon/${S.period}/settings`, { method: 'PUT',
+    body: { fx: { TCB: $('#fx-tcb').value, VCB: $('#fx-vcb').value, BIDV: $('#fx-bidv').value } } });
+  toast('Đã áp tỷ giá'); load();
+});
+$('#export-xlsx-btn').addEventListener('click', () => { location.href = `/api/recon/${S.period}/xlsx`; });
+$('#export-html-btn').addEventListener('click', () => window.open(`/api/recon/${S.period}/html`, '_blank'));
+['#search-input', '#status-filter', '#flag-filter'].forEach((id) => $(id).addEventListener('input', renderList));
+
+$('#list-body').addEventListener('click', (e) => {
+  const chk = e.target.closest('.chk');
+  if (chk) { chk.checked ? S.checked.add(chk.dataset.code) : S.checked.delete(chk.dataset.code); renderList(); return; }
+  const tr = e.target.closest('tr.row'); if (!tr) return;
+  S.selected = tr.dataset.code; renderList(); renderDetail();
+});
+$('#check-all').addEventListener('change', (e) => {
+  filtered().forEach((s) => (e.target.checked ? S.checked.add(s.customerCode) : S.checked.delete(s.customerCode)));
+  renderList();
+});
+$('#bulk-apply-btn').addEventListener('click', () => {
+  if (!S.checked.size) return toast('Chưa chọn khách nào', true);
+  setStatus([...S.checked], $('#bulk-status').value).then(() => { S.checked.clear(); $('#check-all').checked = false; renderList(); });
+});
+
+$('#detail').addEventListener('click', async (e) => {
+  const s = S.data.sheets.find((x) => x.customerCode === S.selected); if (!s) return;
+  const tab = e.target.closest('[data-tab]');
+  if (tab) { S.tab = tab.dataset.tab; renderDetail(); return; }
+  const st = e.target.closest('[data-status]');
+  if (st) {
+    const note = st.dataset.status === 'DISPUTED' ? prompt('Ghi chú (số khách xác nhận / lý do):') : '';
+    if (note === null) return;
+    return setStatus([s.customerCode], st.dataset.status, note);
+  }
+  if (e.target.id === 'copy-html-btn') {
+    const html = $('#preview').innerHTML;
+    try {
+      await navigator.clipboard.write([new ClipboardItem({
+        'text/html': new Blob([html], { type: 'text/html' }),
+        'text/plain': new Blob([$('#preview').innerText], { type: 'text/plain' }) })]);
+      toast('Đã copy — dán vào mail');
+    } catch { toast('Trình duyệt chặn clipboard', true); }
+  }
+  if (e.target.id === 'dl-one-btn') location.href = `/api/recon/${S.period}/xlsx?org=${encodeURIComponent(s.customerCode)}`;
+  if (e.target.id === 'save-terms-btn' || e.target.id === 'reset-terms-btn') {
+    const reset = e.target.id === 'reset-terms-btn';
+    const f = new FormData($('#terms-form'));
+    const pct = (v) => (v === '' ? null : Number(String(v).replace(',', '.')) / 100);
+    const body = reset ? {} : {
+      discountPct: pct(f.get('discountPct')), feePct: pct(f.get('feePct')),
+      calcMethod: f.get('calcMethod'), layout: f.get('layout'),
+      fxRate: f.get('fxRate') ? Number(String(f.get('fxRate')).replace(/\D/g, '')) : null,
+    };
+    try {
+      await api(`/api/recon/${S.period}/override/${encodeURIComponent(s.customerCode)}`, { method: 'PUT', body });
+      await api(`/api/recon/${S.period}/settings`, { method: 'PUT',
+        body: { prepaid: { [s.customerCode]: reset ? null : String(f.get('prepaid') || '').replace(/\D/g, '') || null } } });
+      toast(reset ? 'Đã bỏ chỉnh tay' : 'Đã lưu & tính lại'); S.tab = 'preview'; load();
+    } catch (err) { toast(err.message, true); }
+  }
+});
+
+init().catch((e) => toast(e.message, true));
+</script>
+</body>
+</html>

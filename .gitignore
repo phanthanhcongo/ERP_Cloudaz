@@ -30,6 +30,9 @@ out/
 .env.staging
 .env.production
 .env.*.local
+.env.bak
+.env.bak.*
+.env.*.bak
 
 # ── Logs ────────────────────────────────────────────────
 logs/
@@ -93,4 +96,4 @@ temp/
 *.Projects
 
 # ── Project source code ─────────────────────────────────
-ERP_ClouAZ_Project/
+ERP_ClouAZ_Project/.env.bak

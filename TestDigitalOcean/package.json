@@ -5,13 +5,20 @@
   "scripts": {
     "start": "node server.js",
     "dev": "node --watch server.js",
-    "cli": "node cli.js"
+    "cli": "node cli.js",
+    "recon": "node recon/cli.js",
+    "test": "node --test recon/",
+    "db:up": "docker compose up -d",
+    "db:down": "docker compose down",
+    "db:psql": "docker compose exec db sh -c \"psql -U $POSTGRES_USER -d $POSTGRES_DB\"",
+    "smoke": "node scripts/smoke.js"
   },
   "license": "ISC",
   "description": "Test lay data billing tu DigitalOcean API",
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^17.4.2",
+    "exceljs": "^4.4.0",
     "express": "^5.2.1",
     "pg": "^8.23.1"
   }

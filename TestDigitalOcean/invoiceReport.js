@@ -17,6 +17,89 @@ function groupName(item) {
   return item.group_description || item.product || '(không phân nhóm)';
 }
 
+/**
+ * Thứ tự nhóm sản phẩm như PDF của DO in ra. API trả theo thứ tự khác,
+ * nhóm nào không có trong bảng này xếp sau, giữ thứ tự API.
+ */
+const PDF_ORDER = [
+  'Droplets', 'Kubernetes Clusters', 'Database Clusters', 'App Platform',
+  'Spaces', 'Spaces Subscription', 'Container Registry', 'Container Registry Subscription',
+  'Volumes', 'Volume Snapshots', 'Droplet Snapshots', 'Droplet Backups',
+  'Load Balancers', 'HTTP Load Balancers', 'Global Load Balancers',
+  'Reserved IPs', 'Floating IPs', 'Droplet Bandwidth', 'Spaces Bandwidth',
+  'Uptime Health Check', 'Functions', 'Add-Ons',
+];
+
+/** Vị trí sắp xếp: khớp chính xác, hoặc theo product gốc của nhóm */
+function pdfRank(groupName, productName) {
+  let i = PDF_ORDER.indexOf(groupName);
+  if (i < 0 && productName) i = PDF_ORDER.indexOf(productName);
+  if (i < 0) {
+    // Nhóm là tên cluster/resource (vd "db-xyz (PostgreSQL)") -> xếp theo loại
+    const m = String(groupName).match(/\(([^()]+)\)\s*$/);
+    if (m) {
+      const kind = m[1];
+      if (/PostgreSQL|MySQL|MongoDB|Redis|Valkey|Kafka|OpenSearch|Caching/i.test(kind)) {
+        i = PDF_ORDER.indexOf('Database Clusters');
+      }
+    }
+  }
+  return i < 0 ? PDF_ORDER.length : i;
+}
+
+/**
+ * Đổi slug size của DO thành tên như PDF in:
+ *   s-4vcpu-8gb      -> Basic Droplet - 8 GB / 4 vCPU
+ *   c-2-4GiB         -> CPU-Optimized Droplet - 4 GB / 2 vCPU
+ *   s-8vcpu-16gb-amd -> Basic AMD Droplet - 16 GB / 8 vCPU
+ * Không khớp mẫu thì trả nguyên slug.
+ */
+function sizeLabel(slug) {
+  const raw = String(slug || '');
+  const m = raw.match(/^([a-z]+)-(\d+)vcpu-(\d+)gb(?:-(.+))?$/i);
+  if (m) {
+    const fam = { s: 'Basic', g: 'General Purpose', m: 'Memory-Optimized',
+                  c: 'CPU-Optimized', so: 'Storage-Optimized' }[m[1].toLowerCase()] || m[1];
+    const extra = m[4] ? ' ' + m[4].split('-').map((w) =>
+      /^(amd|ssd|nvme)$/i.test(w) ? w.toUpperCase()
+        : w.charAt(0).toUpperCase() + w.slice(1)).join(' ') : '';
+    return `${fam}${extra} Droplet - ${m[3]} GB / ${m[2]} vCPU`;
+  }
+  // Dạng c-2-4GiB / g-4-16GiB
+  const m2 = raw.match(/^([a-z]+)-(\d+)-(\d+)GiB$/i);
+  if (m2) {
+    const fam = { c: 'CPU-Optimized', g: 'General Purpose', m: 'Memory-Optimized',
+                  so: 'Storage-Optimized' }[m2[1].toLowerCase()] || m2[1];
+    return `${fam} Droplet - ${m2[3]} GB / ${m2[2]} vCPU`;
+  }
+  return raw;
+}
+
+/**
+ * Gom Droplets theo size như PDF của DO: "Droplets - Aggregated by size".
+ * PDF không liệt kê từng máy mà gộp "29 instances - 21576 hrs".
+ * Size nằm trong ngoặc cuối description: "adf-dev-02 (s-4vcpu-8gb)".
+ */
+function aggregateBySize(lines) {
+  const order = [];
+  const map = new Map();
+  for (const l of lines) {
+    const m = String(l.description || '').match(/\(([^()]+)\)\s*$/);
+    const size = m ? m[1] : '(không rõ cấu hình)';
+    if (!map.has(size)) {
+      map.set(size, { size, label: sizeLabel(size), instances: 0, hours: 0, amount: 0 });
+      order.push(size);
+    }
+    const r = map.get(size);
+    r.instances += 1;
+    r.hours += Number(l.hours || 0);
+    r.amount += Number(l.amount || 0);
+  }
+  return order
+    .map((k) => { const r = map.get(k); return { ...r, amount: round2(r.amount) }; })
+    .sort((a, b) => b.amount - a.amount);
+}
+
 /** Ngày trên hóa đơn in dạng MM-DD HH:mm (bỏ năm, như PDF của DO) */
 function shortTime(iso) {
   if (!iso) return '';
@@ -116,20 +199,41 @@ function buildInvoiceReport({ invoiceUuid, items = [], summary = null, invoice =
   // ── Mục 4: gom theo nhóm sản phẩm, giữ thứ tự xuất hiện như trên hóa đơn ──
   const order = [];
   const byGroup = new Map();
+  const byGroupProduct = new Map();
   for (const it of chargeItems) {
     const g = groupName(it);
-    if (!byGroup.has(g)) { byGroup.set(g, []); order.push(g); }
+    if (!byGroup.has(g)) { byGroup.set(g, []); order.push(g); byGroupProduct.set(g, it.product || ''); }
     byGroup.get(g).push(lineOf(it));
   }
   const groups = order.map((g) => {
     const lines = byGroup.get(g);
-    return {
+    // Sắp xếp từng hạng mục trong nhóm theo giá (amount) giảm dần
+    lines.sort((a, b) => Number(b.amount || 0) - Number(a.amount || 0));
+    const grp = {
       name: g,
       count: lines.length,
       subtotal: round2(sum(lines, (l) => l.amount)),
       lines,
     };
+    // Nhóm nhiều máy (Droplets…) thì kèm bản gom theo size như PDF.
+    // Chỉ giữ khi thật sự rút gọn được: >=2 size và ít hơn nửa số dòng.
+    if (lines.length >= 5) {
+      const agg = aggregateBySize(lines);
+      if (agg.length >= 2 && agg.length <= lines.length / 2) grp.by_size = agg;
+    }
+    grp._product = lines.length ? (byGroupProduct.get(g) || '') : '';
+    return grp;
   });
+
+  // Sắp xếp các nhóm theo giá (subtotal) giảm dần; nếu bằng nhau thì theo thứ tự PDF
+  groups.forEach((g, i) => { g._i = i; });
+  groups.sort((a, b) => {
+    const diff = Number(b.subtotal || 0) - Number(a.subtotal || 0);
+    if (Math.abs(diff) >= 0.005) return diff;
+    const ra = pdfRank(a.name, a._product), rb = pdfRank(b.name, b._product);
+    return ra !== rb ? ra - rb : a._i - b._i;
+  });
+  groups.forEach((g) => { delete g._i; delete g._product; });
 
   // ── Mục 3: tổng hợp ────────────────────────────────────────────────────
   const chargesTotal = round2(sum(chargeItems, (i) => i.amount));       // chỉ dòng cước
@@ -190,6 +294,7 @@ function buildInvoiceReport({ invoiceUuid, items = [], summary = null, invoice =
       user_name: (summary && summary.user_name) || '',
       user_company: (summary && summary.user_company) || '',
       user_email: (summary && summary.user_email) || '',
+      billing_address: (summary && summary.user_billing_address) || null,
       issue_date: (summary && summary.issue_date) || '',
       due_date: (summary && summary.due_date) || '',
       billing_period: (summary && summary.billing_period) || '',

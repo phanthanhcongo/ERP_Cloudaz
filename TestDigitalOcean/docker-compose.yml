@@ -1,0 +1,31 @@
+# Postgres riêng cho DO billing — tách khỏi Postgres 5432 trên máy.
+#   docker compose up -d          # khởi động
+#   docker compose logs -f db     # xem log
+#   docker compose down           # dừng (giữ dữ liệu)
+#   docker compose down -v        # dừng + XÓA dữ liệu
+#
+# db/schema.sql tự chạy ở lần khởi tạo đầu tiên (volume trống).
+# Biến lấy từ .env: DO_DB_PORT, DO_DB_USER, DO_DB_PASSWORD, DO_DB_NAME
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: do_billing_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${DO_DB_NAME:-do_billing}
+      POSTGRES_USER: ${DO_DB_USER:-do_billing}
+      POSTGRES_PASSWORD: ${DO_DB_PASSWORD:?Thiếu DO_DB_PASSWORD trong .env}
+      TZ: Asia/Ho_Chi_Minh
+    ports:
+      - "127.0.0.1:${DO_DB_PORT:-5450}:5432"   # chỉ mở trên localhost
+    volumes:
+      - do_billing_pgdata:/var/lib/postgresql/data
+      - ./db/schema.sql:/docker-entrypoint-initdb.d/01_schema.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+volumes:
+  do_billing_pgdata:

@@ -85,6 +85,11 @@ class DOClient {
     return `do:account:${uuid}`;
   }
 
+  /** Danh sách team user nhìn thấy. KHÔNG kèm billing. */
+  teams() {
+    return this.requestAll('/teams', { collect: (d) => d.teams });
+  }
+
   // ── Billing ───────────────────────────────────────────
   /** Số dư + usage month-to-date */
   balance() {
