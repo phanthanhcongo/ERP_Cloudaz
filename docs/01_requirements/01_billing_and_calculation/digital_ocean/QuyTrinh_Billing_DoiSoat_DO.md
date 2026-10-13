@@ -1,9 +1,34 @@
-# Phân tích chi tiết quy trình Billing / Đối soát / Xuất hóa đơn — DigitalOcean (CloudAZ)
+# Quy trình Billing / Đối soát / Xuất hóa đơn DigitalOcean — AS-IS
 
-> **Nguồn:** Biên bản trao đổi `docs/DigitalOcean/Traodoi.md` (bản ghi âm chuyển văn bản — phỏng vấn giữa BA và cán bộ phụ trách billing DigitalOcean).
-> **Ngày lập:** 2026-08-28
-> **Tài liệu liên quan:** `docs/GetBillingProcess/do.md`, `docs/GetBillingProcess/solution.md`, `docs/Aws/PhanTich_QuyTrinh_Billing_AWS.md`, `docs/thu-hoi-cong-no/*`
-> **Trạng thái:** Phân tích nghiệp vụ AS-IS + Đề xuất tự động hóa TO-BE — **cần nghiệp vụ review & xác nhận**.
+> **Tài liệu hiện trạng.** Giải pháp tự động hóa (TO-BE): [GiaiPhap_TuDongHoa_DO.md](GiaiPhap_TuDongHoa_DO.md).
+>
+> **Phạm vi:** nhận invoice của hãng → điền bảng tính bill → lập bảng đối soát → gửi mail →
+> thu confirm → xuất hóa đơn VAT → bàn giao công nợ.
+>
+> **Hai nguồn, hai độ tin cậy khác nhau:**
+>
+> | Mục | Nguồn | Ngày lập |
+> |---|---|---|
+> | **1–14** + Phụ lục | Biên bản phỏng vấn cán bộ phụ trách billing DO — [Traodoi.md](Traodoi.md) (speech-to-text chưa hiệu đính) | 2026-08-28 |
+> | **15–20** | **File Excel thật của kế toán**: `AZ_Tính Bill DigitalOcean (DO)- xuất hđ - thu tiền khách 2026.xlsx` và `DO_Bảng tổng hợp_ đối soát chi phí.xlsx` — kỳ đối chiếu 07.2026 | 2026-10-12 |
+>
+> Mục 15–20 **bổ sung bằng chứng** cho mục 1–14 và **sửa lại ba điểm** mà lời kể trong phỏng
+> vấn không chính xác — xem cảnh báo dưới đây và mục 20.
+>
+> **Trạng thái:** cần nghiệp vụ review & xác nhận các câu hỏi mở (mục 13, 20).
+
+> [!IMPORTANT]
+> **Ba số liệu trong phần phỏng vấn (mục 1–14) đã lỗi thời.** Kiểm chứng lại bằng API thật và
+> file Excel thật cho kết quả khác:
+>
+> | Phỏng vấn ghi | Thực tế đã kiểm chứng | Nguồn |
+> |---|---|---|
+> | ~46–47 team dùng chung org + ~2 khách org riêng | **62 team độc lập, KHÔNG team nào thuộc org chung của CloudAZ** — mỗi team một tài khoản billing riêng, cần **một token riêng** | [GiaiPhap_TuDongHoa_DO.md](GiaiPhap_TuDongHoa_DO.md) mục 3 (API thật, 2026-10-12) |
+> | 3 template bảng đối soát | **5 mẫu** + add-on khối trả trước; **bố cục độc lập với công thức tính** | mục 17.3 ở dưới (file Excel thật) |
+> | 1 công thức tính USD chung | **2 công thức** — nhân chuỗi (`CHAIN`) và song song (`PARALLEL`), lệch nhau 1% | mục 16.3 ở dưới |
+>
+> Phần còn lại của mục 1–14 (quy tắc nghiệp vụ BR-01→BR-24, pain point, câu hỏi mở) vẫn còn
+> hiệu lực. Giữ nguyên các con số cũ **trong ngoặc** để truy nguyên lời kể gốc khi cần.
 
 ---
 
@@ -25,7 +50,7 @@ Chuẩn hóa quy trình thủ công hiện tại của nghiệp vụ **nhận in
 | Truy cập console DO (2 mô hình: Org riêng / Team dùng chung) | Giải trình kỹ thuật nguyên nhân tăng/giảm lượng dùng (đội Cloud/IaaS) |
 | Xác minh & phân loại **Credit** (của hãng hay của khách) | Quy trình ký hợp đồng, đàm phán giá, chính sách bán hàng |
 | Tính tiền thu khách (chiết khấu, phí dịch vụ, tỷ giá, VAT) | Nghiệp vụ hạch toán kế toán chi tiết |
-| Lập bảng đối soát (3 template), gửi mail, thu confirm | Quy trình thu hồi công nợ (đã có tài liệu riêng) |
+| Lập bảng đối soát (5 mẫu — xem ghi chú đầu tài liệu), gửi mail, thu confirm | Quy trình thu hồi công nợ (đã có tài liệu riêng) |
 | Xuất hóa đơn VAT & tạo hồ sơ thanh toán bản cứng | Nghiệp vụ gửi chuyển phát của Hành chính nhân sự |
 
 ### 1.3. Vai trò liên quan
@@ -97,7 +122,7 @@ DigitalOcean Console (một console duy nhất, dùng chung cho toàn bộ khác
 ├── Nhánh A — "View Org / Own account"  ── khách dùng ORGANIZATION RIÊNG
 │     ├── Khách X  (org riêng, tài khoản riêng của họ)
 │     └── Khách Y
-│     → Hiện tại chỉ có ~2 khách
+│     → Phỏng vấn nói ~2 khách
 │     → Áp dụng khi khách ĐÃ CÓ org riêng và có nhu cầu tiếp tục dùng
 │     → Một org riêng có thể chứa NHIỀU Team
 │
@@ -105,9 +130,17 @@ DigitalOcean Console (một console duy nhất, dùng chung cho toàn bộ khác
       ├── Team 1  = Khách A
       ├── Team 2  = Khách B
       ├── ...
-      └── Team ~46–47
+      └── Team ~46–47  (phỏng vấn) → nay là 62 team
       → ĐÂY LÀ MẶC ĐỊNH: khách mới luôn được ưu tiên đưa vào nhánh này
 ```
+
+> [!WARNING]
+> **Sơ đồ trên là cách NHÌN TỪ CONSOLE, không phải cấu trúc thật.** Kiểm chứng bằng API
+> 2026-10-12 cho thấy **cả 62 team đều độc lập**, mỗi team thuộc org riêng của từng khách
+> (bằng chứng: trường `user_email` trên invoice mang org id khác nhau cho từng khách).
+> Việc "Switch Team" trong console **không** có nghĩa các team đó nằm chung một organization
+> của CloudAZ. Hệ quả kỹ thuật: **không có token dùng chung** — mỗi team cần một Personal
+> Access Token riêng. Xem [GiaiPhap_TuDongHoa_DO.md](GiaiPhap_TuDongHoa_DO.md) mục 3.
 
 **Các quy tắc nghiệp vụ (Business Rules) rút ra:**
 
@@ -153,7 +186,7 @@ flowchart TD
     O --> P{Kiểm soát bất thường<br/>credit lạ / lượng dùng tăng giảm đột biến?}
     P -->|Có| P1[Truy nguyên; không ra thì nhờ Admin/Sale hỗ trợ]
     P1 --> Q
-    P -->|Không| Q[Lập BẢNG ĐỐI SOÁT theo 1 trong 3 template]
+    P -->|Không| Q[Lập BẢNG ĐỐI SOÁT theo 1 trong 5 mẫu]
     Q --> R[Gửi mail đối soát: nội dung + hạn xác nhận + screenshot + file PDF đính kèm]
     R --> S{Khách confirm?}
     S -->|Có| T[Xuất hóa đơn VAT trên MInvoice]
@@ -181,7 +214,7 @@ flowchart TD
 | **Cấp quyền** | Nhân sự mới cần quyền → gửi yêu cầu qua **anh Đông**. Cơ chế phân quyền người dùng tương tự MISA. |
 | **Quy tắc phân nhóm của hãng** | Nghiệp vụ **không nắm** logic hãng sắp xếp org/team ra sao — cần hỏi Cẩm Anh nếu muốn hiểu sâu. |
 
-> ⚠️ **Tác động lên tự động hóa (2FA):** không thể crawl console bằng script đăng nhập thông thường. **Bắt buộc dùng REST API + Personal Access Token** như `docs/GetBillingProcess/do.md` mục 3.2 đã đề xuất. Đây là điểm khiến hướng API trở thành **lựa chọn duy nhất khả thi**, không phải chỉ là "khuyên dùng".
+> ⚠️ **Tác động lên tự động hóa (2FA):** không thể crawl console bằng script đăng nhập thông thường. **Bắt buộc dùng REST API + Personal Access Token** — xem [GiaiPhap_TuDongHoa_DO.md](GiaiPhap_TuDongHoa_DO.md) mục 3. Đây là điểm khiến hướng API trở thành **lựa chọn duy nhất khả thi**, không phải chỉ là "khuyên dùng".
 
 ### B1. Thu thập invoice
 
@@ -189,7 +222,7 @@ flowchart TD
 |---|---|
 | **Kênh mặc định (hiện tại)** | **DO gửi invoice PDF về email** của nhân sự billing cho **tất cả** khách, hàng tháng. *"Anh không nhất thiết phải vào để lấy — hãng đã gửi invoice bản PDF về mail của tất cả khách rồi."* |
 | **Kênh dự phòng (tương lai)** | Khách nào yêu cầu *"tôi không thích gửi mail mà bắt buộc phải vào lấy"* → đăng nhập console tải về. |
-| **Số lượng** | ~**46–47 Team** (nhánh dùng chung) + ~**2 khách org riêng**. |
+| **Số lượng** | Phỏng vấn: ~46–47 Team + ~2 khách org riêng. **Thực tế 2026-10: 62 team, tất cả đều độc lập.** |
 
 ### B2. Đọc & kiểm tra invoice
 
@@ -251,7 +284,7 @@ Hiện thực trên **Google Sheet**, điền tay. *"Công thức thì đơn gi�
 | 8 | **Số tiền sau thuế hãng** | Công thức | Hiện **bằng cột 6** vì thuế = 0. Là công thức khi có thuế |
 | 9 | **Discount / Partner Discount** | Invoice | ~25% |
 | 10 | **Total Usage — lượng khách dùng thực tế** | Invoice | **⭐ Cơ sở tính tiền khách** |
-| 11 | **Credit** | Console (mục 6) | Của khách → trừ; của CloudAZ → cộng |
+| 11 | **Credit** | Console (mục 20) | Của khách → trừ; của CloudAZ → cộng |
 | 12 | **Chiết khấu (%)** | **Hợp đồng** | 1 trong 2 chỉ tiêu hiện dùng |
 | 13 | **Phí dịch vụ (%)** | **Hợp đồng** | 1 trong 2 chỉ tiêu hiện dùng |
 | 14 | **Phụ thu** | Hợp đồng | **Hiện không dùng** — giữ cột dự phòng |
@@ -325,7 +358,7 @@ sequenceDiagram
     participant CA as Chị Cẩm Anh
     participant S as Sale
     B->>C: Đăng nhập (2FA), Switch Team / View Org
-    Note over B,C: ⚠️ Console KHÔNG CHO SEARCH team<br/>→ phải KÉO TAY tìm trong ~46-47 team
+    Note over B,C: ⚠️ Console KHÔNG CHO SEARCH team<br/>→ phải KÉO TAY tìm trong 62 team
     B->>C: Mở team, vào mục Credit, mở rộng
     C-->>B: Danh sách MÃ CREDIT + số tiền từng mã
     Note over B: Một tháng, một khách CÓ THỂ có<br/>NHIỀU mã credit với số tiền khác nhau
@@ -369,7 +402,7 @@ sequenceDiagram
 
 Quy trình khi phát hiện bất thường: tự truy nguyên → không ra thì **yêu cầu Admin hoặc Sale hỗ trợ** → **chỉ gửi đối soát sau khi số đã đúng**.
 
-> ➜ **Trong ERP:** module **cảnh báo bất thường (anomaly detection)** so sánh với kỳ trước — đây chính là phần *"anh chỉ phải check lại thôi"* mà nghiệp vụ mong muốn ở mục 12.
+> ➜ **Trong ERP:** module **cảnh báo bất thường (anomaly detection)** so sánh với kỳ trước — đây chính là phần *"anh chỉ phải check lại thôi"* mà nghiệp vụ mong muốn ở [GiaiPhap_TuDongHoa_DO.md](GiaiPhap_TuDongHoa_DO.md) mục 1.
 
 ---
 
@@ -390,15 +423,29 @@ Quy trình khi phát hiện bất thường: tự truy nguyên → không ra th�
 
 > *"Có ba kiểu: một kiểu thường, và hai kiểu ngoại lệ."*
 
+> [!IMPORTANT]
+> **Đã lỗi thời.** Phân loại tự động trên toàn bộ 56 sheet của file Đối soát thật cho ra
+> **5 mẫu**, không phải 3 — và **bố cục độc lập với công thức tính**, nên ERP phải tách
+> hai thuộc tính này. Ánh xạ sang phân loại mới:
+>
+> | Ở đây | Thực tế | Số khách |
+> |---|---|---:|
+> | T1 — Chuẩn (dọc) | tách đôi thành `VERTICAL_CHAIN` (nhân chuỗi) và `VERTICAL_PARALLEL` (song song) | ~20 / ~30 |
+> | T2 — Ngang | tách đôi thành `HORIZONTAL_ROWS` (1 dòng/team) và `HORIZONTAL_COLS` (1 cột/team) | 2 / 1 |
+> | T3 — Giống console | `SERVICE_BREAKDOWN` — **sinh tự động 100% được** từ `group_description` của API, không cần copy tay | 2 |
+> | — | add-on `PREPAID_BALANCE` (khối trả trước, ACTLIFE) | 1 |
+>
+> Chi tiết từng mẫu kèm số liệu mẫu: mục 15–20 ở dưới mục 3.2.
+
 | Template | Mô tả | Khách áp dụng | Ghi chú |
 |---|---|---|---|
 | **T1 — Chuẩn (dọc)** | Chỉ tiêu xếp theo **cột dọc** | **Hầu hết** (~"9 phần 10") | Mặc định |
 | **T2 — Ngang** | Chỉ tiêu xếp theo **hàng ngang**, kiểu bảng Excel | VD **Interspace** (dùng 2 Team) | Khách nhiều Team thường thích dạng này |
-| **T3 — Giống console** | **Copy nguyên trạng** bảng hiển thị trên console DO | VD **App Robot / Approve** | ⚠️ **Bắt buộc vào console copy về** — để USD ở bảng, quy đổi VND ở dưới |
+| **T3 — Giống console** | **Copy nguyên trạng** bảng hiển thị trên console DO | VD **App Robot / Approve** → thực tế là **SECOMUS, UPPROMOTE** | ⚠️ Phỏng vấn nói *"bắt buộc vào console copy về"*; thực tế **API đã trả đủ dữ liệu** `group_description` + subtotal → sinh tự động được |
 
 > *"Khác hoàn toàn"* — 3 template **khác nhau về cấu trúc**, không chỉ khác về định dạng.
 
-> ➜ **Yêu cầu thiết kế:** **Template engine CRUD được**, gắn template mặc định ở cấp **khách hàng**. Không hardcode 3 loại — nghiệp vụ nói rõ *"có khách họ lại thích kiểu mẫu A, mẫu B, mẫu C gì đấy mình chiều hết"*.
+> ➜ **Yêu cầu thiết kế:** **Template engine CRUD được**, gắn template mặc định ở cấp **khách hàng**. Không hardcode số loại — nghiệp vụ nói rõ *"có khách họ lại thích kiểu mẫu A, mẫu B, mẫu C gì đấy mình chiều hết"*.
 
 ---
 
@@ -534,11 +581,11 @@ Hợp đồng hiện có **2 loại quy định**:
 
 | # | Điểm nghẽn | Mô tả | Mức độ | Tự động hóa được? |
 |---|---|---|---|---|
-| **P1** | **Tra credit thủ công trên console** | Console **không cho search** → kéo tay qua ~46–47 team; phải mở từng team lấy mã credit | 🔴 Cao | ✅ Hoàn toàn (API invoice summary / CSV) |
+| **P1** | **Tra credit thủ công trên console** | Console **không cho search** → kéo tay qua 62 team; phải mở từng team lấy mã credit | 🔴 Cao | ✅ Hoàn toàn (API invoice summary / CSV) |
 | **P2** | **Chờ Cẩm Anh/Sale chốt chủ sở hữu credit** | Phụ thuộc con người, không có SLA phản hồi | 🔴 Cao | ⚠️ Một phần — cần **workflow phê duyệt** + **tái sử dụng kết quả kỳ trước** |
 | **P3** | **Nhập tay toàn bộ bảng tính** | Copy từng invoice, từng trường, ~48 khách/tháng | 🔴 Cao | ✅ Hoàn toàn (API hoặc AI đọc PDF) |
 | **P4** | **Copy tay tỷ giá từ web ngân hàng** | Mỗi tháng, mỗi khách có thể khác nguồn tỷ giá | 🟠 Trung bình | ✅ Hoàn toàn (tích hợp nguồn tỷ giá) |
-| **P5** | **Lập bảng đối soát bằng cách copy tháng trước** | 3 template khác nhau, sửa tay → dễ sót chỉ tiêu | 🟠 Trung bình | ✅ Hoàn toàn (template engine) |
+| **P5** | **Lập bảng đối soát bằng cách copy tháng trước** | 5 mẫu khác nhau, sửa tay → dễ sót chỉ tiêu | 🟠 Trung bình | ✅ Hoàn toàn (template engine) |
 | **P6** | **Soạn mail + screenshot + xuất PDF thủ công** | Mỗi khách một bộ chứng từ khác nhau | 🟠 Trung bình | ✅ Phần lớn |
 | **P7** | **Tri thức "khách nào cần chứng từ gì" nằm trong đầu một người** | Không được tài liệu hóa | 🔴 Cao (rủi ro nhân sự) | ✅ Số hóa thành master data |
 | **P8** | **2FA khi đăng nhập console** | Không lưu được, nhập lại mỗi lần | 🟡 Thấp | ✅ Vòng qua bằng API Token |
@@ -547,105 +594,7 @@ Hợp đồng hiện có **2 loại quy định**:
 
 ---
 
-## 12. Mục tiêu & cơ hội tự động hóa (TO-BE)
-
-### 12.1. Kỳ vọng trực tiếp của nghiệp vụ
-
-> *"Mong muốn của anh là toàn bộ cái phần này chuyển hết lên ERP, anh chẳng phải làm gì."*
-> *"Ví dụ như ngày đầu tháng, mùng 1 mùng 2 gì đấy, thì trên ERP sẽ có một module ghi là **Tính bill**, anh chỉ cần click vào một cái là nó tự động tính tất cả khách. Anh chỉ phải **check lại** thôi — xem tháng nào bất thường gì đấy thì check lại."*
-
-**Hai phương án lấy dữ liệu do chính nghiệp vụ nêu:**
-
-| Phương án | Mô tả | Đánh giá |
-|---|---|---|
-| **PA1 — Liên kết trực tiếp API DO** | ERP gọi API DO lấy dữ liệu invoice | ⭐ **Khuyến nghị**. DO có API chính thức đầy đủ (xem `docs/GetBillingProcess/do.md` mục 3.2). Chính xác 100%, không lệ thuộc OCR |
-| **PA2 — Upload PDF, dùng AI đọc invoice** | Upload file PDF → AI bóc tách trường → điền bảng | Dự phòng cho khách/kỳ không lấy được qua API. Cần **đối chiếu tự động** để đảm bảo độ chính xác |
-
-> *"Bởi vì cái AI mà anh đang có nó không thông minh đến mức là up lên nó tự động lọc dữ liệu điền vào đây cho anh được."* ➜ Kỳ vọng của nghiệp vụ với AI đọc PDF là **khả thi về mặt kỹ thuật hiện nay**, nhưng **PA1 vẫn ưu tiên** vì DO đã có API.
-
-### 12.2. Đánh giá khả năng tự động hóa từng bước
-
-| Bước | Tự động hóa | Ghi chú |
-|---|---|---|
-| B1. Thu thập invoice | ✅ **100%** | API `GET /v2/customers/my/invoices` |
-| B2. Bóc tách trường invoice | ✅ **100%** | API CSV + PDF; PA2 (AI) làm dự phòng |
-| B3. Check chéo 3 chỉ tiêu (BR-07) | ✅ **100%** | So sánh tự động với kỳ trước + master data |
-| B4. Kiểm tra discount ≥ 25% (BR-06) | ✅ **100%** | Cảnh báo tự động |
-| B5. Lấy chi tiết mã credit | ✅ **100%** | API — thay thế hoàn toàn thao tác "kéo tay" |
-| B6. **Xác định credit của ai** | ⚠️ **Bán tự động** | Cần **workflow phê duyệt**; tự gợi ý theo kết quả kỳ trước cho cùng mã/khách |
-| B7. Áp công thức hợp đồng | ✅ **100%** | Rule engine chỉ tiêu cấu hình được (BR-08 → BR-11) |
-| B8. Lấy tỷ giá | ✅ **100%** | Theo 3 tham số hợp đồng (BR-12) |
-| B9. Tính VAT | ✅ **100%** | Tham số theo hiệu lực thời gian (BR-13) |
-| B10. Cảnh báo bất thường | ✅ **100%** | So sánh kỳ trước (BR-15) |
-| B11. Sinh bảng đối soát | ✅ **100%** | Template engine 3+ mẫu (BR-16) |
-| B12. Sinh mail + screenshot + PDF | ✅ **~90%** | Screenshot → render ảnh từ bảng; cấu hình gộp/tách mail (BR-20) |
-| B13. Theo dõi confirm & auto-timeout | ✅ **100%** | BR-21 |
-| B14. Xuất hóa đơn VAT | ⚠️ **Tùy tích hợp MInvoice** | Cần khảo sát API MInvoice |
-| B15. Sinh hồ sơ thanh toán bản cứng | ✅ **~80%** | Sinh file theo bộ chứng từ cấu hình; ký tươi/đóng dấu vẫn thủ công |
-| B16. Bàn giao công nợ | ✅ **100%** | Tái sử dụng module `thu-hoi-cong-no` |
-
-### 12.3. Kiến trúc dữ liệu đề xuất
-
-Bám theo `docs/GetBillingProcess/solution.md` mục 4 (REST API Pull cho DigitalOcean):
-
-```
-[Cron hàng tháng]
-      │
-      ▼
-[DO Collector]  ── Personal Access Token (read-only)
-      │  GET /v2/customers/my/invoices
-      │  GET /v2/customers/my/invoices/{uuid}/csv   → chi tiết dòng cước
-      │  GET /v2/customers/my/invoices/{uuid}/pdf   → lưu trữ chứng từ
-      ▼
-[Staging: raw invoice + raw cost lines]
-      │
-      ▼
-[Validator]  ── BR-06 discount, BR-07 định danh, BR-15 anomaly
-      │            └─► Hàng đợi "cần người xử lý"
-      ▼
-[Credit Workflow]  ── gợi ý theo kỳ trước → Cẩm Anh/Sale duyệt
-      │
-      ▼
-[Billing Engine]  ── chỉ tiêu hợp đồng + tỷ giá + VAT
-      │
-      ▼
-[Reconciliation]  ── Template engine → PDF + ảnh + mail
-      │
-      ▼
-[Confirm Tracker] ── timeout = auto-approve (BR-21)
-      │
-      ▼
-[E-Invoice (MInvoice)] ──► [Hồ sơ thanh toán] ──► [Công nợ]
-```
-
----
-
-## 13. Mô hình dữ liệu đề xuất (sơ bộ)
-
-| Thực thể | Trường chính | Ghi chú riêng cho DO |
-|---|---|---|
-| `Provider` | code (DO/AWS/GWS/GCP/GMP), tên | |
-| `DoOrganization` | mã org, loại (**CLOUDAZ_SHARED** / **CUSTOMER_OWN**), phương thức truy cập, token | Nhánh A / Nhánh B ở mục 3.2 |
-| `DoTeam` | **team_id (PK nghiệp vụ)**, org_id, display_name, email, customer_id, trạng thái (ACTIVE / **DELETED**) | ⚠️ **Không dùng display_name làm khóa** (BR-04). Ghi nhận lịch sử đổi tên |
-| `Customer` | mã KH, tên, template đối soát mặc định, chính sách gộp/tách mail, bộ chứng từ yêu cầu, hạn confirm, `payment_term_trigger` | Nơi tập trung mọi "tùy chọn theo khách" |
-| `Contract` | customer_id, danh sách team_id, **chiết khấu %**, **phí dịch vụ %**, phụ thu, **ngân hàng tỷ giá**, **loại tỷ giá**, **thời điểm chốt tỷ giá**, hạn confirm, mốc tính hạn thanh toán | Nguồn của mọi công thức (BR-08→BR-12, BR-24) |
-| `ContractCharge` | contract_id, tên chỉ tiêu, **kiểu = PERCENT \| AMOUNT**, giá trị, thứ tự áp dụng, hiệu lực từ | **Configurable** — đáp ứng BR-09, BR-10, BR-11 |
-| `BillingPeriod` | kỳ (YYYY-MM), trạng thái (MỞ / ĐANG TÍNH / CHỜ CONFIRM / ĐÃ XUẤT HĐ / ĐÓNG) | |
-| `DoInvoice` | period, team_id, **invoice_number**, issue_date, **total_due (USD)**, **total_usage (USD)**, discount, provider_tax, file PDF, file CSV | Lưu **archive vĩnh viễn** để chống BR-05 |
-| `CostLine` | invoice_id, service, resource, amount | Nạp từ CSV — hiện nghiệp vụ *bỏ qua*, nhưng nên lưu để giải trình khi khách hỏi |
-| `CreditItem` | period, team_id, **credit_code**, số tiền, **chủ sở hữu (CLOUDAZ / KHÁCH)**, người xác nhận (Cẩm Anh/Sale), thời điểm xác nhận | Cốt lõi workflow P1–P2; **tái sử dụng kết quả kỳ trước** |
-| `ExchangeRate` | ngày, ngân hàng, loại tỷ giá, giá trị | Tự thu thập theo tham số hợp đồng |
-| `TaxRate` | loại (VAT_VN / PROVIDER_TAX), tỷ lệ, hiệu lực từ | BR-13 — **không hardcode 10%** |
-| `BillLine` | period, customer_id, team_id, các cột 6→19 ở mục 5.1 | Thay thế Google Sheet |
-| `ReconciliationSheet` | period, customer_id, template_id, số liệu, file PDF, ảnh screenshot | |
-| `Template` | tên, loại (**DỌC / NGANG / GIỐNG CONSOLE**), nội dung | **CRUD được**, không giới hạn 3 loại (BR-16) |
-| `DocumentRequirement` | customer_id, loại chứng từ (nghiệm thu / đối soát / đề nghị TT), bắt buộc?, mẫu | **Số hóa P7** |
-| `MailLog` | period, customer_id, người nhận, nội dung, đính kèm, thời điểm gửi, thời điểm confirm | Phục vụ BR-21 |
-| `AnomalyAlert` | period, team_id, loại (CREDIT_MỚI / USAGE_ĐỘT_BIẾN / DISCOUNT_THẤP), giá trị kỳ này, kỳ trước, trạng thái xử lý | BR-15 |
-
----
-
-## 14. So sánh DigitalOcean vs AWS
+## 12. So sánh DigitalOcean vs AWS
 
 | Tiêu chí | **DigitalOcean** | AWS |
 |---|---|---|
@@ -656,14 +605,14 @@ Bám theo `docs/GetBillingProcess/solution.md` mục 4 (REST API Pull cho Digita
 | Chi tiết mã Credit | ⚠️ Phải vào console, **không search được team** | ❌ Phải mò từng service (khó hơn) |
 | Tỷ lệ chiết khấu hãng | **~25%** | ~6,8–8% |
 | Số chỉ tiêu tính toán | **2** (chiết khấu, phí dịch vụ) | Nhiều hơn (margin, tax, saving plan, phụ phí...) |
-| Số template đối soát | **3** | Đa dạng hơn |
+| Số mẫu đối soát | **5** (+ add-on trả trước) | Đa dạng hơn |
 | API chính thức lấy invoice | ✅ **Có, đầy đủ & đơn giản** (`doctl` / REST) | Phải qua CUR / Data Exports |
-| Quy mô | ~46–47 Team + ~2 org riêng | Nhiều console, nhiều Account ID |
+| Quy mô | **62 team độc lập** (mỗi team 1 token) | Nhiều console, nhiều Account ID |
 | **Kết luận** | ⭐ **Đơn giản nhất — nên làm PILOT trước** | Phức tạp nhất |
 
 ---
 
-## 15. Câu hỏi cần làm rõ với nghiệp vụ (Open Questions)
+## 13. Câu hỏi cần làm rõ với nghiệp vụ (Open Questions)
 
 | # | Câu hỏi | Vì sao quan trọng |
 |---|---|---|
@@ -683,7 +632,7 @@ Bám theo `docs/GetBillingProcess/solution.md` mục 4 (REST API Pull cho Digita
 
 ---
 
-## 16. Tài liệu & dữ liệu cần thu thập tiếp
+## 14. Tài liệu & dữ liệu cần thu thập tiếp
 
 Nghiệp vụ đã **cam kết cung cấp** trong transcript:
 
@@ -693,30 +642,314 @@ Nghiệp vụ đã **cam kết cung cấp** trong transcript:
 - [ ] **Invoice mẫu có dòng Credit** — để thiết kế workflow xác minh.
 - [ ] **Bảng ánh xạ Team ID ↔ Khách hàng ↔ Hợp đồng**.
 - [ ] **Mẫu biên bản nghiệm thu** và các chứng từ đính kèm khác (theo từng khách).
-- [ ] **Mẫu email đối soát** đã gửi thực tế (đủ 3 template).
+- [ ] **Mẫu email đối soát** đã gửi thực tế (đủ 5 mẫu).
 - [ ] **Trích lục điều khoản hợp đồng** về: tỷ giá, chiết khấu, phí dịch vụ, hạn confirm, mốc tính hạn thanh toán.
 - [ ] **Personal Access Token (read-only)** của DO để dev thử nghiệm API.
 
 ---
 
-## 17. Khuyến nghị triển khai theo giai đoạn
+## 15. Tổng quan cách kế toán đang làm việc
 
-| Giai đoạn | Nội dung | Lý do ưu tiên |
-|---|---|---|
-| **GĐ 1** | Master data (`DoOrganization`, `DoTeam`, `Customer`, `Contract`, `ContractCharge`) + **Collector API DO** nạp invoice tự động | Nền tảng. DO có API sạch — làm được ngay, ít rủi ro |
-| **GĐ 2** | **Billing Engine**: rule engine chỉ tiêu + tỷ giá tự động + VAT + validator (BR-06, BR-07) | Xóa **P3, P4** — khối lượng nhập tay lớn nhất |
-| **GĐ 3** | **Credit Workflow**: tự bóc mã credit từ API + gợi ý theo kỳ trước + phê duyệt nội bộ | Xóa **P1, P2** — điểm nghẽn số 1 của DO |
-| **GĐ 4** | **Anomaly Alert** (BR-15) — cảnh báo credit mới / lượng dùng đột biến / discount thấp | Hiện thực đúng kỳ vọng *"anh chỉ phải check lại thôi"* |
-| **GĐ 5** | **Template engine** bảng đối soát (3 mẫu, CRUD được) + sinh PDF + screenshot | Xóa **P5, P6** |
-| **GĐ 6** | **Mail engine**: gộp/tách theo cấu hình khách (BR-20) + tracking confirm + auto-timeout (BR-21) | Khép kín vòng đối soát |
-| **GĐ 7** | **Bộ chứng từ theo khách** (`DocumentRequirement`) + sinh hồ sơ thanh toán | Xóa **P7** — rủi ro tri thức cá nhân |
-| **GĐ 8** | Tích hợp **MInvoice** + bàn giao công nợ (tái sử dụng module đã có) | Khép kín vòng đời |
+```mermaid
+flowchart LR
+    A["Invoice PDF DO<br/>(mail / console)"] --> B["Sheet tháng MM.YYYY<br/>file Tính Bill"]
+    B -->|"1 dòng / Team ID"| C["Tính USD thu khách<br/>→ VND → VAT"]
+    C --> D["Sheet khách<br/>file Đối soát"]
+    D -->|"copy block tháng trước,<br/>sửa số"| E["Mail đối soát<br/>+ ĐNTT/BBNT/BBĐS"]
+    E --> F["Xuất HĐ VAT<br/>ghi số HĐ ngược lại file Bill"]
+```
 
-> **Đề xuất:** dùng **DO làm PILOT** cho toàn bộ kiến trúc Billing của ERP_Cloudaz. Lý do: quy trình đơn giản nhất, dữ liệu sạch nhất (invoice khớp console 100%), API chính thức đầy đủ. Kiến trúc chạy được với DO sẽ mở rộng sang AWS/GCP/GWS/GMP với chi phí thấp hơn nhiều so với làm ngược lại.
+| Bước | Thao tác thực tế trong Excel |
+|---|---|
+| 1 | Đầu tháng **nhân bản sheet tháng trước** thành sheet mới (`06.2026` → `07.2026`), giữ nguyên danh sách khách, thứ tự dòng, ghi chú |
+| 2 | Với mỗi dòng (= 1 Team ID): gõ tay **Số invoice, Total due, Discount, Total usage** từ PDF |
+| 3 | Gõ **tỷ giá** (đa số TCB cuối tháng — 1 giá trị chung cho gần hết các dòng) |
+| 4 | Công thức tự ra **Thành tiền USD → VND → Tổng có VAT** |
+| 5 | Sang file Đối soát: mở sheet của khách, **copy block tháng trước xuống dưới**, sửa tháng + Billing USD + tỷ giá |
+| 6 | Gửi mail, theo dõi bằng các cột tick `x` (đã gửi mail / khách confirm / đã gửi HĐ / hồ sơ cứng) |
+| 7 | Xuất HĐ trên MInvoice → **ghi số hóa đơn** vào cột Z của file Bill |
+
+> [!NOTE]
+> File Đối soát lưu **toàn bộ lịch sử** theo kiểu cộng dồn: mỗi tháng một block ~12 dòng xếp chồng dưới nhau
+> trong cùng sheet khách (ADFLEX có block từ 2024-06 đến 2026-07). Đây là nguồn đối chiếu lịch sử duy nhất hiện có.
 
 ---
 
-## Phụ lục A — Các câu trích dẫn gốc đáng lưu ý
+## 16. File Tính Bill — cấu trúc sheet tháng
+
+### 16.1. Danh sách sheet
+
+| Sheet | Nội dung |
+|---|---|
+| `01.2026` … `07.2026` | Bảng tính bill theo tháng (~63 dòng khách / tháng) |
+| `Sheet9` | Danh sách 26 tên DO (nháp, không có công thức) |
+| `Resell-ID-Tên công ty` | **Dữ liệu AWS** (Reseller / AWS ID / tên) — để nhầm file, không liên quan DO |
+
+### 16.2. Ý nghĩa 37 cột (sheet `07.2026`)
+
+| Cột | Tiêu đề | Nguồn | Ghi chú |
+|---|---|---|---|
+| A | CTY | Tay | Trống = CloudAZ; `CLOUDINO` = khách thuộc **pháp nhân Cloudino** (5 dòng); `s` = đánh dấu nội bộ (9 dòng, chưa rõ nghĩa) |
+| B | Tên khách trên hóa đơn | Master | Tên pháp nhân để xuất HĐ VAT |
+| C | Sales | Master | Trang CSM (47), Phương CS (6), Hiếu/Yến/Quỳnh/Tài DO |
+| D | Dịch vụ | — | Không dùng |
+| E | Số Invoices | PDF | Đổi mỗi tháng |
+| F | Team ID | PDF | `do:team:<id>` — có dòng chỉ ghi UUID trần, không có tiền tố |
+| G | Mail | PDF | Email đăng ký team |
+| H | DO name | PDF | Tên team, dạng `TÊN KHÁCH - tên team` (vd `INTERSPACE - ISVN`) |
+| I | Phải trả hãng (đã trừ discount, đã cộng VAT VN) | `=L+J` | = Total due |
+| J | VAT Việt Nam | Tay | Hiện = 0 |
+| K | Tỷ lệ discount (%) | `=IFERROR(M/P%,0)` | **Cột kiểm tra** ~25% |
+| L | Invoice đã trừ discount, chưa VAT | PDF | Total due |
+| M | Discount | PDF hoặc `=P-L` | Partner discount 25% |
+| N | Credit của cty | Console | Hầu như trống |
+| O | Credit của khách | Console | Chỉ 2 dòng có (FRESHDI, VIENOSE) |
+| P | Invoice chưa trừ discount | PDF | Total usage charges |
+| Q | **Lượng dùng thực tế** | Tay (= P) | ⭐ **Cơ sở tính tiền khách** |
+| R | Discount (cty giảm cho khách) | Hợp đồng | 10% (52), 12% (9), 11% (1) |
+| S | Charge (phí cty thu khách) | Hợp đồng | 10% (48), **5.88%** (12), **5.26%** (2) |
+| T | Phụ phí ngoài | Hợp đồng | Luôn = 0 |
+| U | **Thành tiền (USD)** | Công thức | **2 công thức khác nhau** — xem 16.3 |
+| V | Tỷ giá | Tay | 26.475 (49 dòng — TCB), 26.350 (3 dòng — VCB/BIDV) |
+| W | Thành tiền (VND) | `=ROUND(U*V,2)` | |
+| X | Thuế GTGT | Tay | 0.1 |
+| Y | **Số tiền xuất HĐ gồm VAT** | `=ROUND(W*110%,0)` | Lưu ý: dùng 110% cố định, **không tham chiếu cột X** |
+| Z | Số hóa đơn xuất cho khách | MInvoice | Nhiều team chung 1 số HĐ (Interspace) |
+| AA | Đã gửi mail tổng hợp chi phí | Tick `x` | |
+| AB | Khách đã confirm | Tick | `x` (27), `khách ko cf` (17), `khách đã thanh toán` |
+| AC | Đã gửi hóa đơn | Tick | |
+| AD | Khách yêu cầu ĐNTT/ĐSCP/BBNT/BBĐS | `x` / `ko` | `x` = 18 khách cần hồ sơ, `ko` = 44 |
+| AE | Đã gửi hồ sơ | Ngày | vd `12/08` |
+| AF | Thu hồi BBNT/BBĐS | Ngày / `ko` | |
+| AG | Ghi chú 1 | Text | **Email nhận đối soát + quy tắc tỷ giá** của khách |
+| AH | Ghi chú 2 | Text | **Bộ hồ sơ cần gửi + hạn thanh toán** |
+| AI | Ghi chú 3 | Text | **Số ngày chờ confirm + quy tắc xuất HĐ** |
+| AJ | Ghi chú 4 (Console) | Text | |
+| AK | Ghi chú 5 (Khác) | Text/link | Cọc, trả trước, link hợp đồng Google Docs |
+| AL | (không tiêu đề) | Text | Số hợp đồng, vd `20260824/HĐ/CLOUDINO-4.01-AUTOMOS` |
+
+> [!IMPORTANT]
+> Các cột **AG–AL là "master data trá hình"**: email nhận, ngân hàng tỷ giá, bộ chứng từ, hạn thanh toán,
+> số hợp đồng… đều nằm trong ô ghi chú dạng text tự do và được **copy lại mỗi tháng**.
+> Đây chính là tri thức P7 cần số hóa thành cấu hình khách hàng / hợp đồng trong ERP.
+
+### 16.3. ⭐ Công thức Thành tiền USD — đang tồn tại 2 cách tính
+
+| Cách | Công thức Excel (cột U) | Áp dụng | Hệ số khi R = S = 10% |
+|---|---|---|---|
+| **A — Nhân chuỗi** | `=ROUND(Q*(1+S)*(1-R),2)` | Dòng 3–24 (khách cũ, ký trước ~03/2025) | **0,99** → khách trả 99% usage |
+| **B — Cộng song song** | `=ROUND(Q*(1-R)+Q*S,2)` | Dòng 25 trở đi (khách mới từ FINSIFY 03/2025) | **1,00** → khách trả đúng 100% usage |
+
+Ví dụ kiểm chứng kỳ 07.2026:
+
+| Khách | Q (usage) | R | S | Cách | U (USD) |
+|---|---:|---:|---:|---|---:|
+| ADFLEX | 2.269,60 | 12% | 10% | A | 2.269,60 × 1,1 × 0,88 = **2.196,97** |
+| VNP GROUP | 790,40 | 10% | 10% | A | 790,40 × 1,1 × 0,9 = **782,50** |
+| FINSIFY | 326,12 | 10% | 10% | B | 326,12 × 0,9 + 326,12 × 0,1 = **326,12** |
+
+> [!WARNING]
+> Cùng tham số 10%/10% nhưng 2 nhóm khách ra **kết quả khác nhau 1%**. Bảng đối soát gửi khách cũng
+> diễn giải theo đúng cách tương ứng (mục 17), nên nhiều khả năng đây là **khác biệt theo hợp đồng** (mẫu HĐ cũ vs mới)
+> chứ không phải lỗi. **Bắt buộc xác nhận với kế toán** trước khi dựng rule engine — ERP phải lưu
+> `calc_method = CHAIN | PARALLEL` ở cấp hợp đồng.
+
+### 16.4. Các trường hợp đặc biệt quan sát được
+
+| Trường hợp | Ví dụ | Cách đang xử lý |
+|---|---|---|
+| Phí dịch vụ lẻ 5.88% / 5.26% | TOUR CHAIN, YOUPASS, ATS, ROI, NIỀM VUI… | Nhập thẳng số lẻ vào cột S. Khả năng là phí 5% quy đổi ngược (5%/85%, 5%/95%) — **cần hỏi** |
+| Phí dịch vụ thay đổi theo thời gian | ADFLEX: 5.26% (2024) → 10% (2026) | Sửa nhãn và công thức trong block đối soát mới |
+| Credit của khách | FRESHDI: Total due = 0, credit khách 1.844,90; VIENOSE: 22 | **Vẫn tính tiền khách trên Q = usage đầy đủ** — credit không bị trừ (khác lời kể "credit khách thì trừ") — **cần hỏi** |
+| 1 khách nhiều team | INTERSPACE (2 team), ONADS (2 team), QUẢNG ÍCH (2 dòng) | 2 dòng riêng trên file Bill, **chung 1 số HĐ VAT** (cột Z), gộp trên bảng đối soát |
+| Khách trả trước | ACTLIFE trả trước 16.625.664đ | Theo dõi số dư trả trước ngay trong sheet đối soát, cấn trừ dần mỗi tháng |
+| Khách đặt cọc | SZEN7 cọc 8.000.000đ | Ghi chú text, trả lại khi hết HĐ |
+| Pháp nhân khác | 5 khách `CLOUDINO` | Chung file, phân biệt bằng cột A — **ERP cần trường pháp nhân bán** |
+| Team không phát sinh / chưa có invoice | SMIT, VBC, MIMOSA, AGAPISC, HAMSA (07.2026) | Giữ dòng, để trống hoặc 0 |
+| Tài khoản nội bộ | CLOUDAZ `do:team:8895c8a5…` | Dòng 2, không tính tiền |
+
+---
+
+## 17. File Đối soát — các mẫu bảng đang dùng
+
+### 17.1. Tổ chức file
+
+- **1 sheet = 1 khách** (56 sheet). Trong sheet, **mỗi tháng 1 block** xếp chồng, cách nhau vài dòng trống.
+- Tiêu đề block: `ĐỐI SOÁT CHI PHÍ DIGITALOCEAN - <KHÁCH>` (bản cũ ghi `TỔNG HỢP CHI PHÍ…`).
+- Đầu vào duy nhất từ file Bill là **Billing (USD) = cột Q (usage)**. Tỷ giá gõ lại tay.
+- Không link công thức sang file Bill → hai file có thể lệch nhau nếu sửa một bên.
+
+### 17.2. Năm mẫu bảng đối soát (phân loại tự động trên toàn bộ 56 sheet)
+
+#### Mẫu 1 — Dọc, "Giá trước chiết khấu (gồm X% phí)" → trừ chiết khấu *(khớp công thức A)*
+
+Khách: TECHPROFIT2, ADAMO, ADFLEX, VIMARKET, COMICOLA, CỎ MỀM, THÁI MINH, SFUND, S3TECH, HSTDT-VINADES,
+DIGIBANK, MIOTO, SECOMM, TUGO, D2M, VNP GROUP, (cũ: FRESHDI, VIETFIRE, TIPO, KOUNSELLY) — **~20 khách**
+
+| STT | ID | Tháng | Billing (USD) | Tỷ giá | Thành tiền |
+|---|---|---|---:|---:|---:|
+| 1 | do:team:20b9… | 2026-07 | 2.269,60 | | |
+| Giá trước chiết khấu (bao gồm 10% phí dịch vụ) | | | 2.496,56 | | |
+| Chiết khấu (12%) | | | 299,59 | | |
+| Thành tiền | | | 2.196,97 | 26.475 | 58.164.781 |
+| Thuế GTGT 10% | | | | | 5.816.478 |
+| **Tổng số tiền phải thanh toán** | | | | | **63.981.259** |
+
+```
+Giá trước CK = ROUND(Billing × (1 + phí), 2)
+Chiết khấu   = ROUND(Giá trước CK × CK%, 2)
+Thành tiền   = Giá trước CK − Chiết khấu
+VND          = ROUND(Thành tiền × Tỷ giá, 0)
+```
+
+#### Mẫu 2 — Dọc, "Chiết khấu" và "Phí dịch vụ" song song trên Billing *(khớp công thức B)*
+
+Khách: FINSIFY, CITICS, VNEXT, ELTON, TINH TẾ, KIAISOFT, GSI, SEMTEK, EPLUGIN, ZODINET, AHAMOVE, NIỀM VUI,
+JITS, DIGIBIRD, BÁCH DUY, ICTS, HOLOMIA, SZEN7, TOUR CHAIN, YOUPASS, GALAXY, ATS, ANVITEQ, ROI, AGAPISC,
+HAMSA, AGAPIOC, CNS, VARMETA, SO9 — **~30 khách, mẫu mặc định cho khách mới**
+
+| STT | ID | Tháng | Billing (USD) | Tỷ giá | Thành tiền |
+|---|---|---|---:|---:|---:|
+| 1 | do:team:… | 2026-07 | 48,00 | | |
+| Chiết khấu (10%) | | | 4,80 | | |
+| Phí dịch vụ (10%) | | | 4,80 | | |
+| Thành tiền | | | 48,00 | 26.475 | 1.270.800 |
+| Thuế GTGT 10% | | | | | 127.080 |
+| **Tổng số tiền phải thanh toán** | | | | | **1.397.880** |
+
+Biến thể: AGAPISC/HAMSA đặt **Phí dịch vụ trước, Chiết khấu sau** (kết quả như nhau).
+
+#### Mẫu 3 — Ngang, cột Discount / Tax-Fee *(nhiều team trên 1 bảng)*
+
+Khách: **MOG** (1 team), **INTERSPACE** (2 team)
+
+| STT | ID | Tháng | Billing DO (USD) | Discount (10%) | Tax, Fee | Tỷ giá | Thành tiền | Thuế GTGT | Tổng thanh toán |
+|---|---|---|---:|---:|---:|---:|---:|---:|---:|
+| 1 | do:team:8b9e… | 2026-07 | 1.319,78 | 131,98 | 118,78 | 26.350 | 34.428.385 | 3.442.838,5 | 37.871.223,5 |
+| 2 | do:team:5522… | 2026-07 | 29,07 | 2,91 | 2,62 | 26.350 | 758.353 | 75.835,3 | 834.188,3 |
+| **Tổng cộng** | | | 1.348,85 | 134,89 | 121,40 | | 35.186.738 | 3.518.673,8 | 38.705.411,8 |
+
+```
+Discount = ROUND(Billing × 10%, 2)
+Tax, Fee = ROUND((Billing − Discount) × 10%, 2)     ← tương đương công thức A
+VND      = ROUND((Billing − Discount + Tax,Fee) × Tỷ giá, …)
+```
+
+#### Mẫu 4 — Ngang theo team, chỉ tiêu xếp dọc *(nhiều team)*
+
+Khách: **ONADS** (2 team) — mỗi team 1 cột, cột cuối "Tổng cộng" gộp VND và tính VAT 1 lần.
+
+| STT | ID | do:team:0327… | do:team:858f… | Tổng cộng |
+|---|---|---:|---:|---:|
+| 1 | Billing (USD) | 841,99 | 1.542,81 | |
+| 2 | Chiết khấu (10%) | 84,20 | 154,28 | |
+| 3 | Phí dịch vụ (10%) | 84,20 | 154,28 | |
+| 4 | Tổng cộng | 841,99 | 1.542,81 | |
+| 5 | Tỷ giá | 26.475 | 26.475 | |
+| 6 | Thành tiền | 22.291.685 | 40.845.895 | 63.137.580 |
+| 7 | Thuế GTGT 10% | | | 6.313.758 |
+| 8 | **Tổng thanh toán** | | | **69.451.338** |
+
+#### Mẫu 5 — Chi tiết theo nhóm dịch vụ (kiểu "giống console")
+
+Khách: **SECOMUS**, **UPPROMOTE** — liệt kê từng nhóm dịch vụ lấy từ invoice/console rồi mới áp công thức mẫu 1.
+
+| STT | Service Name | Service Fee |
+|---|---|---:|
+| 1 | Droplet Snapshots | 97,48 |
+| 2 | Droplets | 1.631,37 |
+| 3 | Kubernetes | 153,20 |
+| 4 | LBaaS | 60,00 |
+| 5 | Spaces | 45,16 |
+| 6 | Spaces Bandwidth | 499,30 |
+| 7 | Volumes | 150,00 |
+| **Total Service Fee** | | **2.636,51** |
+| Giá trước chiết khấu (bao gồm 10% phí dịch vụ) | | 2.900,16 |
+| Chiết khấu (10%) | | 290,02 |
+| Tổng cộng (USD) | | 2.610,14 |
+| Tỷ giá | | 26.475 |
+| Thành tiền (VND) | | 69.103.457 |
+| Thuế GTGT 10% (VND) | | 6.910.346 |
+| **Tổng số tiền phải thanh toán (VND)** | | **76.013.803** |
+
+> [!TIP]
+> Mẫu 5 dùng đúng dữ liệu `group_description` + subtotal mà API `/v2/customers/my/invoices/{uuid}` đã trả về
+> (đã kiểm chứng trong `TestDigitalOcean`), nên **sinh tự động được 100%**, không cần vào console copy tay.
+
+#### Phụ lục mẫu — Theo dõi tiền trả trước (ACTLIFE)
+
+Gắn thêm 2 dòng dưới mẫu 2:
+
+| Khoản | VND |
+|---|---:|
+| Tổng số tiền phải thanh toán | 1.397.880 |
+| Số tiền đã trả trước | 11.050.723 |
+| **Số tiền trả trước còn lại chuyển tháng sau** | **9.652.843** |
+
+Bên phải sheet có bảng phụ (cột I–O) ghi số dư theo từng tháng.
+
+### 17.3. Tổng hợp
+
+| Mẫu | Bố cục | Công thức | Số khách | Gợi ý tên trong ERP |
+|---|---|---|---:|---|
+| 1 | Dọc | Nhân chuỗi (gross-up rồi CK) | ~20 | `VERTICAL_CHAIN` |
+| 2 | Dọc | Song song (CK & phí trên Billing) | ~30 | `VERTICAL_PARALLEL` |
+| 3 | Ngang, nhiều dòng team | Nhân chuỗi | 2 | `HORIZONTAL_ROWS` |
+| 4 | Ngang, mỗi team 1 cột | Song song | 1 | `HORIZONTAL_COLS` |
+| 5 | Dọc + chi tiết nhóm dịch vụ | Nhân chuỗi | 2 | `SERVICE_BREAKDOWN` |
+| + | Khối trả trước | — | 1 | add-on `PREPAID_BALANCE` |
+
+> So với phỏng vấn ("3 mẫu: dọc / ngang / giống console"), file thật cho thấy **5 mẫu**, và
+> **bố cục (layout) độc lập với công thức (calc method)** — ERP nên tách 2 thuộc tính này.
+
+---
+
+## 18. Quy tắc làm tròn đang áp dụng
+
+| Bước | File Bill | File Đối soát | Nhận xét |
+|---|---|---|---|
+| USD thành tiền | `ROUND(…,2)` | `ROUND(…,2)` từng bước trung gian | Đối soát làm tròn **từng bước** (giá trước CK, CK) → có thể lệch 0,01 USD so với file Bill |
+| VND | `ROUND(U×V,2)` (giữ 2 số lẻ) | `ROUND(…,0)` hoặc **không làm tròn** (COMICOLA, DIGIBANK ra số lẻ `.25`) | Không thống nhất |
+| VAT | `ROUND(W×110%,0)` gộp | `ROUND(F×10%,0)` rồi cộng | Có thể lệch 1đ |
+| Interspace | — | VAT `ROUND(…,2)`, có kỳ `ROUND(…,6)`, kỳ 07 gõ cứng `H249=34428385` | Sửa tay, không nhất quán |
+
+> ➜ ERP phải cố định **một** quy tắc làm tròn (đề xuất: USD 2 số lẻ sau cùng, VND 0 số lẻ, VAT tính trên VND đã làm tròn)
+> và cho phép **ghi đè có kiểm soát** khi khách xác nhận số khác ("hoặc đúng số tiền khách xác nhận").
+
+---
+
+## 19. Quy tắc nghiệp vụ trích từ cột ghi chú
+
+| Quy tắc | Giá trị phổ biến | Ngoại lệ |
+|---|---|---|
+| Ngân hàng tỷ giá | **TCB cuối tháng** | MOG: VCB; INTERSPACE: BIDV — "tỷ giá lúc xuất HĐ thì sửa lại" |
+| Hoặc dùng số khách xác nhận | Hầu hết ghi "hoặc đúng số tiền khách xác nhận" | — |
+| Chờ confirm | **2 ngày** rồi xuất HĐ | AGAPISC/HAMSA: 3 ngày; VNEXT: 3 ngày |
+| Thời điểm gửi đối soát | Đầu tháng | HUYỀN HỌC/AUTOMOS: 2 ngày đầu tháng; MOSAIC: 5–7 ngày đầu tháng |
+| Bộ hồ sơ | Chỉ HĐ điện tử (44 khách) | ĐNTT + ĐSCP (MOG, VNEXT, MOSAIC, VIENOSE); ĐNTT + BBNT (CỎ MỀM, THÁI MINH, SECOMUS, UPPROMOTE); BBĐS mẫu khách (DIGIBANK, YOUPASS, GALAXY); ký số PDF (AHAMOVE) |
+| Hạn thanh toán | Theo HĐ | 7 ngày từ khi nhận hồ sơ; 15 ngày (AHAMOVE); 15 ngày làm việc (GALAXY); trước 17h ngày làm việc cuối tháng (VBC) |
+| Gửi HĐ tới mail riêng | — | VIMARKET → `ketoan.mo@meinvoice.vn`; NIỀM VUI → `accounting@niemvuiso.com`; DIGIBANK → mail mới, không reply luồng cũ |
+| Đơn vị tính trên HĐ | — | AGAPISC/HAMSA: "Ghi ĐVT: Gói" |
+| Ảnh chụp | — | Gửi kèm ảnh chụp billing (AGAPISC/HAMSA); gửi ảnh tỷ giá lúc xuất HĐ (khách có ghi chú) |
+
+---
+
+## 20. Điểm lệch so với tài liệu phỏng vấn & câu hỏi cần xác nhận
+
+| # | Nội dung | Phỏng vấn nói | File Excel thể hiện | Câu hỏi |
+|---|---|---|---|---|
+| Q1 | Công thức USD | 1 công thức chung | **2 công thức** (nhân chuỗi / song song) | Phân theo mẫu HĐ cũ/mới? Khách cũ có chuyển sang cách B không? |
+| Q2 | Credit của khách | "Trừ cho khách" | FRESHDI có credit khách nhưng vẫn tính đủ usage | Credit khách là gì trong trường hợp này (prepaid DO của khách?) và khi nào mới trừ? |
+| Q3 | Phí 5.88% / 5.26% | Không nhắc | 14 khách dùng | Đây là phí 5% quy đổi? Công thức gốc trên HĐ là gì? |
+| Q4 | Số mẫu đối soát | 3 mẫu | 5 mẫu + khối trả trước | Xác nhận danh sách mẫu chính thức |
+| Q5 | Pháp nhân bán | Không nhắc | 5 khách `CLOUDINO` | Cloudino xuất HĐ trên MInvoice riêng? |
+| Q6 | Cột A = `s` | — | 9 khách | Ý nghĩa? |
+| Q7 | Làm tròn | — | Không thống nhất (mục 18) | Chốt quy tắc chuẩn |
+| Q8 | Trả trước / cọc | — | ACTLIFE, SZEN7 | Có đưa vào module công nợ không? |
+
+---
+
+## Phụ lục 1 — Các câu trích dẫn gốc đáng lưu ý
 
 | Chủ đề | Trích dẫn |
 |---|---|
@@ -740,7 +973,7 @@ Nghiệp vụ đã **cam kết cung cấp** trong transcript:
 
 ---
 
-## Phụ lục B — Lưu ý khi đọc file nguồn
+## Phụ lục 2 — Lưu ý khi đọc file nguồn
 
 `Traodoi.md` là bản **speech-to-text chưa hiệu đính**, cần lưu ý:
 
