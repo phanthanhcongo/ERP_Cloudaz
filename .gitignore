@@ -95,5 +95,8 @@ temp/
 
 *.Projects
 
-# ── Project source code ─────────────────────────────────
 ERP_ClouAZ_Project/.env.bak
+
+# ── Token exports / Customer sensitive data ─────────────
+TestDigitalOcean/DANH_SACH_TOKEN_TEAMS.md
+*TOKEN_TEAMS.md

@@ -97,6 +97,14 @@
   .mono{font-family:var(--fm);font-size:12px}
   .spin{display:inline-block;width:14px;height:14px;border:2px solid var(--bd);border-top-color:var(--ac);border-radius:50%;animation:sp .7s linear infinite;vertical-align:-2px}
   @keyframes sp{to{transform:rotate(360deg)}}
+.layout-pick{position:relative}
+.layout-pick summary{list-style:none;cursor:pointer}
+.layout-pick summary::-webkit-details-marker{display:none}
+.layout-menu{position:absolute;right:0;top:calc(100% + 6px);z-index:50;min-width:260px;padding:8px;border-radius:10px;
+  background:#fff;color:#1b2333;box-shadow:0 10px 30px rgba(0,0,0,.18);display:flex;flex-direction:column;gap:2px}
+.layout-menu label{display:flex;gap:8px;align-items:center;padding:6px 8px;border-radius:6px;cursor:pointer;font-size:13px}
+.layout-menu label:hover{background:#eef2f8}
+.layout-menu .hint{font-size:11px;color:#5b6475;padding:4px 8px}
 </style>
 </head>
 <body>
@@ -114,8 +122,13 @@
     <label class="field">VCB <input class="num" id="fx-vcb" placeholder="mặc định"></label>
     <label class="field">BIDV <input class="num" id="fx-bidv" placeholder="mặc định"></label>
     <button class="btn" id="save-fx-btn">Áp tỷ giá</button>
+    <details class="field layout-pick" id="layout-pick">
+      <summary class="btn" id="layout-pick-summary">Mẫu: theo khách</summary>
+      <div class="layout-menu" id="layout-menu"></div>
+    </details>
     <button class="btn" id="export-html-btn">Xem HTML</button>
     <button class="btn pri" id="export-xlsx-btn">⬇ Xuất XLSX</button>
+    <a href="/teams.html" class="btn" style="text-decoration:none">🔑 Teams & Tokens</a>
     <a href="/" class="btn" id="back-link" style="text-decoration:none">← Billing Explorer</a>
   </div>
 </header>
@@ -168,7 +181,7 @@ const fUsd = (n) => Number(n || 0).toLocaleString('vi-VN', { minimumFractionDigi
 const fVnd = (n) => Number(n || 0).toLocaleString('vi-VN', { maximumFractionDigits: 0 });
 const STATUS_LABEL = { DRAFT: 'Nháp', REVIEWED: 'Đã duyệt', SENT: 'Đã gửi', CONFIRMED: 'Khách xác nhận',
   AUTO_CONFIRMED: 'Tự xác nhận', DISPUTED: 'Khách phản hồi', INVOICED: 'Đã xuất HĐ' };
-const LAYOUTS = ['VERTICAL_CHAIN', 'VERTICAL_PARALLEL', 'HORIZONTAL_ROWS', 'HORIZONTAL_COLS', 'SERVICE_BREAKDOWN'];
+const LAYOUTS = ['VERTICAL_CHAIN', 'VERTICAL_PARALLEL', 'HORIZONTAL_ROWS', 'HORIZONTAL_COLS', 'SERVICE_BREAKDOWN', 'SERVICE_FEE'];
 
 const S = { period: null, data: null, statuses: [], selected: null, checked: new Set(), tab: 'preview' };
 
@@ -347,8 +360,27 @@ $('#save-fx-btn').addEventListener('click', async () => {
     body: { fx: { TCB: $('#fx-tcb').value, VCB: $('#fx-vcb').value, BIDV: $('#fx-bidv').value } } });
   toast('Đã áp tỷ giá'); load();
 });
-$('#export-xlsx-btn').addEventListener('click', () => { location.href = `/api/recon/${S.period}/xlsx`; });
-$('#export-html-btn').addEventListener('click', () => window.open(`/api/recon/${S.period}/html`, '_blank'));
+// ── Chọn mẫu khi xuất (rỗng = theo mẫu của từng khách) ──
+const LAYOUT_NAMES = {
+  VERTICAL_CHAIN: 'M1 · Dọc — CHAIN', VERTICAL_PARALLEL: 'M2 · Dọc — PARALLEL',
+  HORIZONTAL_ROWS: 'M3 · Ngang theo dòng', HORIZONTAL_COLS: 'M4 · Ngang theo cột',
+  SERVICE_BREAKDOWN: 'M5 · Nhóm dịch vụ', SERVICE_FEE: 'M6 · Service Fee (3 cột)',
+};
+$('#layout-menu').innerHTML = LAYOUTS.map((l) =>
+  `<label><input type="checkbox" class="layout-chk" id="layout-chk-${l}" value="${l}">${LAYOUT_NAMES[l] || l}</label>`).join('')
+  + '<div class="hint">Không chọn = theo mẫu của từng khách. Chọn nhiều → mỗi khách 1 sheet / mẫu.</div>';
+const pickedLayouts = () => [...document.querySelectorAll('.layout-chk:checked')].map((c) => c.value);
+$('#layout-menu').addEventListener('change', () => {
+  const p = pickedLayouts();
+  $('#layout-pick-summary').textContent = p.length ? `Mẫu: ${p.map((l) => (LAYOUT_NAMES[l] || l).split(' · ')[0]).join(', ')}` : 'Mẫu: theo khách';
+});
+const exportQs = (extra = {}) => {
+  const q = new URLSearchParams(extra);
+  const p = pickedLayouts(); if (p.length) q.set('layout', p.join(','));
+  const s = q.toString(); return s ? `?${s}` : '';
+};
+$('#export-xlsx-btn').addEventListener('click', () => { location.href = `/api/recon/${S.period}/xlsx${exportQs()}`; });
+$('#export-html-btn').addEventListener('click', () => window.open(`/api/recon/${S.period}/html${exportQs()}`, '_blank'));
 ['#search-input', '#status-filter', '#flag-filter'].forEach((id) => $(id).addEventListener('input', renderList));
 
 $('#list-body').addEventListener('click', (e) => {
@@ -385,7 +417,7 @@ $('#detail').addEventListener('click', async (e) => {
       toast('Đã copy — dán vào mail');
     } catch { toast('Trình duyệt chặn clipboard', true); }
   }
-  if (e.target.id === 'dl-one-btn') location.href = `/api/recon/${S.period}/xlsx?org=${encodeURIComponent(s.customerCode)}`;
+  if (e.target.id === 'dl-one-btn') location.href = `/api/recon/${S.period}/xlsx${exportQs({ org: s.customerCode })}`;
   if (e.target.id === 'save-terms-btn' || e.target.id === 'reset-terms-btn') {
     const reset = e.target.id === 'reset-terms-btn';
     const f = new FormData($('#terms-form'));

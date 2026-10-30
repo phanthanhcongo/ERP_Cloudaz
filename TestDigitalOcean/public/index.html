@@ -497,6 +497,7 @@
   <span class="mark">DO</span>
   <h1>Billing Explorer<small>DigitalOcean · test lấy dữ liệu cước</small></h1>
   <div class="right">
+    <a href="/teams.html" id="teams-link" class="pill" style="text-decoration:none">🔑 Quản lý Team & Token</a>
     <a href="/recon.html" id="recon-link" class="pill" style="text-decoration:none">📋 Đối soát</a>
     <span class="pill" id="envPill"><i></i>đang kiểm tra…</span>
   </div>
@@ -508,7 +509,10 @@
     <!-- Cột trái: danh sách team -->
     <aside class="side">
       <div class="side-h">
-        <div class="ttl"><b>Teams</b><span id="tCount">đang tải…</span></div>
+        <div class="ttl" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+          <div><b>Teams &amp; Orgs</b> <span id="tCount">đang tải…</span></div>
+          <a href="/teams.html" class="pill" style="font-size:11px; padding:3px 8px; text-decoration:none; color:var(--ok); border-color:color-mix(in srgb,var(--ok) 35%,var(--bd)); background:var(--ok-sf); font-weight:600;">+ Thêm Org</a>
+        </div>
         <input type="search" id="tSearch" placeholder="Tìm theo tên hoặc email…"
                autocomplete="off" aria-label="Tìm team">
       </div>

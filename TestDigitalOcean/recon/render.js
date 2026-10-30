@@ -63,17 +63,20 @@ function vertical(sheet, { breakdown = false } = {}) {
 function horizontalRows(sheet) {
   const d = sheet.lines[0].term.discountPct;
   const cols = ['STT', 'ID', 'Tháng', 'Billing DO (USD)', `Discount (${pct(d)})`, 'Tax, Fee',
-    'Tỷ giá', 'Thành tiền', 'Thuế GTGT', 'Tổng thanh toán'];
+    'Tỷ giá', 'Thành tiền', `Thuế GTGT ${pct(sheet.vatPct)}`, 'Tổng số tiền phải thanh toán'];
+  let sDisc = 0, sTax = 0;
   const rows = sheet.lines.map((l, i) => {
     const vatLine = (l.totalWithVat ?? Math.round(l.amountVnd * (1 + sheet.vatPct))) - l.amountVnd;
     // Mẫu 3 diễn giải CHAIN: Discount trên billing, Tax/Fee trên (billing − discount)
     const discount = Math.round(l.billing * d * 100) / 100;
     const taxFee = Math.round((l.amountUsd - l.billing + discount) * 100) / 100;
+    sDisc += discount; sTax += taxFee;
     return [String(i + 1), l.teamId, sheet.period, usd(l.billing), usd(discount), usd(taxFee),
       vnd(sheet.fxRate), vnd(l.amountVnd), vnd(vatLine), vnd(l.amountVnd + vatLine)];
   });
   const s = (k) => sheet.lines.reduce((a, l) => a + l[k], 0);
-  rows.push([B('Tổng cộng'), '', '', B(usd(s('billing'))), '', '', '', B(vnd(sheet.vnd)), B(vnd(sheet.vat)), B(vnd(sheet.total))]);
+  rows.push([B('Tổng cộng'), '', '', B(usd(s('billing'))), B(usd(sDisc)), B(usd(sTax)),
+    B(vnd(sheet.fxRate)), B(vnd(sheet.vnd)), B(vnd(sheet.vat)), B(vnd(sheet.total))]);
   return { columns: cols, rows };
 }
 
@@ -98,12 +101,49 @@ function horizontalCols(sheet) {
   };
 }
 
+/**
+ * Mẫu 6: 3 cột STT / Service Name / Service Fee — mọi chỉ tiêu xếp dọc trong cột cuối.
+ * Tiêu đề là kỳ (MM/YYYY). Dòng dịch vụ lấy từ invoice items; chưa có thì liệt kê theo team.
+ */
+function serviceFee(sheet) {
+  const L = sheet.lines;
+  const t = L[0].term;
+  const sum = (k) => L.reduce((s, l) => s + (l[k] || 0), 0);
+  const groups = new Map();
+  for (const l of L) for (const it of l.items || []) groups.set(it.group, (groups.get(it.group) || 0) + Number(it.amount || 0));
+  const rows = groups.size
+    ? [...groups.entries()].sort((a, b) => String(a[0]).localeCompare(String(b[0])))
+      .map(([g, a], i) => [String(i + 1), g, usd(a)])
+    : L.map((l, i) => [String(i + 1), l.doName || l.teamId, usd(l.billing)]);
+
+  rows.push(['Total Service Fee', '', usd(sum('billing'))]);
+  if (t.calcMethod === 'CHAIN') {
+    rows.push([`Giá trước chiết khấu (bao gồm ${pct(t.feePct)} phí dịch vụ)`, '', usd(sum('gross'))]);
+    rows.push([`Chiết khấu (${pct(t.discountPct)})`, '', usd(sum('discount'))]);
+  } else {
+    rows.push([`Chiết khấu (${pct(t.discountPct)})`, '', usd(sum('discount'))]);
+    rows.push([`Phí dịch vụ (${pct(t.feePct)})`, '', usd(sum('fee'))]);
+  }
+  rows.push([B('Tổng cộng (USD)'), '', B(usd(sheet.amountUsd))]);
+  rows.push([B('Tỷ giá'), '', vnd(sheet.fxRate)]);
+  rows.push([B('Thành tiền (VND)'), '', B(vnd(sheet.vnd))]);
+  rows.push([B(`Thuế GTGT ${pct(sheet.vatPct)} (VND)`), '', B(vnd(sheet.vat))]);
+  rows.push([B('Tổng số tiền phải thanh toán (VND)'), '', B(vnd(sheet.total))]);
+  const p = String(sheet.period || '');
+  return {
+    columns: ['STT', 'Service Name', 'Service Fee'],
+    rows,
+    xlsxTitle: /^\d{4}-\d{2}$/.test(p) ? `${p.slice(5)}/${p.slice(0, 4)}` : p,
+  };
+}
+
 function toTable(sheet) {
   let body;
   switch (sheet.layout) {
     case 'HORIZONTAL_ROWS': body = horizontalRows(sheet); break;
     case 'HORIZONTAL_COLS': body = horizontalCols(sheet); break;
     case 'SERVICE_BREAKDOWN': body = vertical(sheet, { breakdown: true }); break;
+    case 'SERVICE_FEE': body = serviceFee(sheet); break;
     default: body = vertical(sheet);
   }
   const footer = [];

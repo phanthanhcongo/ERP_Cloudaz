@@ -94,6 +94,22 @@ SELECT
   END AS verification_status`;
 }
 
+function getDailyProjectQuery(invoiceMonth) {
+  return `
+SELECT
+  FORMAT_DATE('%Y-%m-%d', DATE(usage_start_time, 'Asia/Ho_Chi_Minh')) AS usage_date,
+  COALESCE(project.name, project.id, '[Charges not specific to a project]') AS project,
+  project.id                AS project_id,
+  SUM(cost) + SUM((SELECT COALESCE(SUM(c.amount), 0)
+       FROM UNNEST(credits) c
+       WHERE c.type != 'RESELLER_MARGIN')) AS subtotal
+FROM \`${GCP_STANDARD_TABLE}\`
+WHERE invoice.month = '${invoiceMonth}'
+  AND cost_type = 'regular'
+GROUP BY 1, 2, 3
+ORDER BY usage_date ASC, subtotal DESC`;
+}
+
 function getGcpPresetQueries() {
   const T = GCP_STANDARD_TABLE;
   return [
@@ -102,6 +118,12 @@ function getGcpPresetQueries() {
       title: 'Bảng 1 — GCP theo Project (8 cột, khớp Console)',
       description: 'Group by project: list cost, negotiated savings, discounts, promotions, subtotal. Thay invoiceMonth.',
       sql: getProjectLevelQuery('202606')
+    },
+    {
+      id: 'gcp_daily_project',
+      title: 'Bảng Daily Project — Chi phí theo ngày và Project (Khớp biểu đồ Console)',
+      description: 'Group by date + project: vẽ biểu đồ stacked bar chart hàng ngày y hệt Google Console.',
+      sql: getDailyProjectQuery('202606')
     },
     {
       id: 'gcp_table2_billing',
@@ -129,7 +151,9 @@ GROUP BY 1, 2 ORDER BY total`
 
 module.exports = {
   getProjectLevelQuery,
+  getDailyProjectQuery,
   getBillingAccountLevelQuery,
   getVerificationQuery,
   getGcpPresetQueries
 };
+

@@ -1,5 +1,5 @@
 /**
- * Xuất bảng đối soát ra XLSX: sheet "Tổng hợp" + mỗi khách 1 sheet, bố cục
+ * Xuất bảng đối soát ra XLSX: mỗi khách 1 sheet (chỉ bảng đối soát), bố cục
  * giống block trong file "DO_Bảng tổng hợp_ đối soát chi phí.xlsx".
  */
 const ExcelJS = require('exceljs');
@@ -23,66 +23,109 @@ const sheetName = (s, used) => {
   return name;
 };
 
+const LAYOUT_SHORT = {
+  VERTICAL_CHAIN: 'M1', VERTICAL_PARALLEL: 'M2', HORIZONTAL_ROWS: 'M3',
+  HORIZONTAL_COLS: 'M4', SERVICE_BREAKDOWN: 'M5', SERVICE_FEE: 'M6',
+};
+
+const FONT = 'Times New Roman';
+const THIN = { style: 'thin', color: { argb: 'FF000000' } };
+const BORDER = { top: THIN, left: THIN, bottom: THIN, right: THIN };
+const FMT_USD = '"$"#,##0.00';
+const FMT_VND = '#,##0 "đ"';
+const CENTER = { vertical: 'middle', horizontal: 'center', wrapText: true };
+
+/** "2026-07" → "07/2026" */
+const fmtPeriod = (p) => (/^\d{4}-\d{2}$/.test(p) ? `${p.slice(5)}/${p.slice(0, 4)}` : p);
+/** Ô tiền: render dùng 2 số lẻ cho USD, 0 số lẻ cho VND */
+const isUsdText = (s) => /,\d{2}$/.test(String(s));
+
+/** Ghi 1 bảng (columns + rows) từ dòng `r0`, trả về dòng cuối */
+function writeTable(ws, columns, rows, r0, { period }) {
+  const n = columns.length;
+  const head = ws.getRow(r0);
+  columns.forEach((c, i) => {
+    const cell = head.getCell(i + 1);
+    cell.value = c;
+    cell.font = { name: FONT, size: 12, bold: true };
+    cell.alignment = CENTER;
+  });
+  head.height = n >= 9 ? 36 : 22;
+
+  rows.forEach((r, ri) => {
+    const row = ws.getRow(r0 + 1 + ri);
+    row.height = n >= 9 && /^\d+$/.test(cellText(r[0])) ? 34 : 20;
+    r.forEach((c, i) => {
+      const cell = row.getCell(i + 1);
+      let raw = cellText(c);
+      if (raw === period) raw = fmtPeriod(period);
+      const v = i === 0 ? (/^\d+$/.test(raw) ? Number(raw) : raw) : toValue(raw);
+      cell.value = v === '' ? null : v;
+      cell.font = { name: FONT, size: 12, bold: isBold(c) || /^Thuế GTGT/.test(cellText(r[0])) };
+      if (typeof v === 'number' && i > 0) {
+        cell.numFmt = isUsdText(raw) ? FMT_USD : FMT_VND;
+      }
+      cell.alignment = CENTER;
+    });
+    // Dòng nhãn tính toán (cột 2–3 trống) → gộp 3 ô đầu; mẫu 3 cột → gộp 2 ô đầu
+    const label = cellText(r[0]);
+    if (label && !/^\d+$/.test(label)) {
+      if (n >= 4 && !cellText(r[1]) && !cellText(r[2])) ws.mergeCells(row.number, 1, row.number, 3);
+      else if (n === 3 && !cellText(r[1])) ws.mergeCells(row.number, 1, row.number, 2);
+    }
+  });
+
+  const last = r0 + rows.length;
+  for (let r = r0; r <= last; r++) {
+    for (let c = 1; c <= n; c++) {
+      const cell = ws.getRow(r).getCell(c);
+      cell.border = BORDER;
+      cell.alignment = CENTER;
+    }
+  }
+  return last;
+}
+
 async function toXlsx(result, file) {
   const wb = new ExcelJS.Workbook();
   wb.creator = 'CloudAZ ERP — recon';
   const used = new Set();
 
-  // ── Tổng hợp ──
-  const sum = wb.addWorksheet(sheetName('Tổng hợp', used));
-  sum.columns = [
-    { header: 'Khách', key: 'code', width: 26 },
-    { header: 'Tên trên hóa đơn', key: 'name', width: 48 },
-    { header: 'Pháp nhân', key: 'seller', width: 11 },
-    { header: 'Mẫu', key: 'layout', width: 19 },
-    { header: 'Số team', key: 'teams', width: 8 },
-    { header: 'Billing (USD)', key: 'billing', width: 14, style: { numFmt: '#,##0.00' } },
-    { header: 'Thành tiền (USD)', key: 'usd', width: 15, style: { numFmt: '#,##0.00' } },
-    { header: 'Tỷ giá', key: 'fx', width: 10, style: { numFmt: '#,##0' } },
-    { header: 'Thành tiền (VND)', key: 'vnd', width: 16, style: { numFmt: '#,##0' } },
-    { header: 'VAT', key: 'vat', width: 14, style: { numFmt: '#,##0' } },
-    { header: 'Tổng thanh toán', key: 'total', width: 16, style: { numFmt: '#,##0' } },
-    { header: 'Lệch Excel (VND)', key: 'diff', width: 14, style: { numFmt: '#,##0' } },
-    { header: 'Cảnh báo', key: 'warn', width: 60 },
-  ];
-  for (const s of result.sheets) {
-    sum.addRow({
-      code: s.customerCode, name: s.customerName, seller: s.sellerEntity, layout: s.layout,
-      teams: s.lines.length, billing: s.lines.reduce((a, l) => a + l.billing, 0),
-      usd: s.amountUsd, fx: s.fxRate, vnd: s.vnd, vat: s.vat, total: s.total,
-      diff: s.excelCheck ? s.excelCheck.diffVnd : null, warn: s.warnings.join('; '),
-    });
-  }
-  sum.getRow(1).font = { bold: true };
-  sum.views = [{ state: 'frozen', ySplit: 1 }];
-
-  // ── Mỗi khách 1 sheet ──
+  // ── Mỗi khách 1 sheet (chỉ bảng đối soát, không có sheet tổng hợp) ──
   for (const s of result.sheets) {
     const t = toTable(s);
-    const ws = wb.addWorksheet(sheetName(s.customerCode, used));
-    ws.addRow([t.title]).font = { bold: true, size: 13 };
-    ws.addRow([t.subtitle]).font = { italic: true, color: { argb: 'FF5B6475' } };
-    ws.addRow([]);
-    const head = ws.addRow(t.columns);
-    head.font = { bold: true };
-    head.eachCell((c) => { c.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFEEF2F8' } }; });
-    for (const r of [...t.rows, ...(t.footer.length ? [[], ...t.footer] : [])]) {
-      const row = ws.addRow(r.map((c) => toValue(cellText(c))));
-      r.forEach((c, i) => {
-        const cell = row.getCell(i + 1);
-        if (isBold(c)) cell.font = { bold: true };
-        if (typeof cell.value === 'number') cell.numFmt = Number.isInteger(cell.value) && i !== 3 ? '#,##0' : '#,##0.00';
-      });
+    const suffix = s.sheetSuffix ? ` ${LAYOUT_SHORT[s.sheetSuffix] || s.sheetSuffix}` : '';
+    const ws = wb.addWorksheet(sheetName(`${s.customerCode.slice(0, 31 - suffix.length - 3)}${suffix}`, used), {
+      views: [{ showGridLines: false }],
+      pageSetup: { orientation: 'landscape', fitToPage: true, fitToWidth: 1, fitToHeight: 0 },
+    });
+    const n = t.columns.length;
+
+    // Tiêu đề lớn, gộp ngang toàn bảng
+    ws.mergeCells(1, 1, 1, n);
+    const title = ws.getCell(1, 1);
+    title.value = t.xlsxTitle || `TỔNG HỢP CHI PHÍ DIGITALOCEAN - ${s.customerCode}`;
+    title.font = t.xlsxTitle ? { name: FONT, size: 14, bold: true } : { name: FONT, size: 18 };
+    title.alignment = CENTER;
+    ws.getRow(1).height = 32;
+
+    let last = writeTable(ws, t.columns, t.rows, 3, { period: s.period });
+
+    if (t.footer.length) {
+      last = writeTable(ws, ['Khoản', 'Số tiền'], t.footer, last + 2, { period: s.period });
     }
-    ws.columns.forEach((col, i) => { col.width = i === 0 ? 44 : i === 1 ? 46 : 16; });
-    if (s.warnings.length) {
-      ws.addRow([]);
-      s.warnings.forEach((w) => { ws.addRow([`⚠ ${w}`]).font = { color: { argb: 'FFB45309' } }; });
-    }
+
+    // Độ rộng cột theo tiêu đề
+    t.columns.forEach((c, i) => {
+      const wide = n >= 9; // mẫu ngang: ID xuống dòng cho gọn
+      const w = { STT: 7, ID: wide ? 28 : 46, 'Tháng': 11, 'Chỉ tiêu': 30, 'Service Name': 42, 'Service Fee': 24,
+        'Tổng số tiền phải thanh toán': 30, 'Thành tiền': 18 }[c] || (wide ? 15 : 18);
+      ws.getColumn(i + 1).width = w;
+    });
+    if (t.footer.length && n < 2) ws.getColumn(2).width = 18;
   }
 
   await wb.xlsx.writeFile(file);
   return file;
 }
-
 module.exports = { toXlsx };
